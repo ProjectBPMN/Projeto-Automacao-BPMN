@@ -1,0 +1,71 @@
+{
+  "schema_version": "e2e-webhooks-consolidado-v1",
+  "natureza_evidencia": "VALIDACAO_TECNICA_NAO_CONFIRMATORIA",
+  "tentativas": [
+    {
+      "run_id": "VALIDACAO-POSTS-E2E-20260722T040208Z",
+      "resultado": "ABORTADO_ANTES_DOS_WEBHOOKS",
+      "motivo": "Conflito de chave causado pela sincronizacao concorrente do WF01 durante a preparacao",
+      "ticket_ids": [292, 293],
+      "post_wf04_executado": false,
+      "post_wf05_executado": false,
+      "artefato": "../validacao-posts-e2e-20260722t040208z/resultado.json"
+    },
+    {
+      "run_id": "VALIDACAO-POSTS-E2E-20260722T040402Z",
+      "resultado": "ABORTADO_ANTES_DOS_WEBHOOKS",
+      "motivo": "Falha no leitor do ID retornado por cursor nomeado durante a preparacao",
+      "ticket_ids": [298, 299],
+      "post_wf04_executado": false,
+      "post_wf05_executado": false,
+      "artefato": "../validacao-posts-e2e-20260722t040402z/resultado.json"
+    },
+    {
+      "run_id": "VALIDACAO-POSTS-E2E-20260722T040445Z",
+      "resultado": "APROVADO",
+      "ticket_ids": [300, 301],
+      "auto_confirmation_ids": [5, 6],
+      "http": {
+        "wf04": {"get": 200, "post": 202, "replay": 409},
+        "wf05": {"get": 200, "post": 200, "replay": 403}
+      },
+      "observacao": "Execucao valida; a captura imediata ainda nao aguardava o evento assincrono do replay de WF04",
+      "artefato": "../validacao-posts-e2e-20260722t040445z/resultado.json"
+    },
+    {
+      "run_id": "VALIDACAO-POSTS-E2E-20260722T040652Z",
+      "resultado": "APROVADO_FINAL",
+      "ticket_ids": [302, 303],
+      "auto_confirmation_ids": [7, 8],
+      "http": {
+        "wf04": {"get": 200, "post": 202, "replay": 409},
+        "wf05": {"get": 200, "post": 200, "replay": 403}
+      },
+      "get_preview_no_mutation": true,
+      "wf04_state_transition_once": true,
+      "wf05_state_transition_once": true,
+      "wf04_idempotent": true,
+      "wf05_idempotent": true,
+      "artefato": "resultado.json"
+    }
+  ],
+  "cleanup": {
+    "ticket_ids": [292, 293, 298, 299, 300, 301, 302, 303],
+    "prefix_guard": "[TESTE_AUTOMATIZADO_E2E_WF04_WF05]",
+    "status_num_final": 6,
+    "preservados_como_duplicado_fechado": [301, 303],
+    "demais_marcados_validacao_e2e_encerrado": [292, 293, 298, 299, 300, 302],
+    "residuos_na_fila_apos_cleanup": 0,
+    "eventos_cleanup_consolidado": 8
+  },
+  "calibration_overlap": {
+    "run_id": "VALIDACAO-POSTS-E2E-20260722T040652Z",
+    "ticket_id_temporariamente_na_fila": 302,
+    "intervalo_local": "2026-07-22T01:06:54-03:00/2026-07-22T01:09:18-03:00",
+    "processado_por_wf06": false,
+    "decisao_ia_operacional_gerada": false,
+    "uso_em_calibracao_vazao": "PROIBIDO",
+    "observacao": "Pode ter elevado temporariamente a profundidade global da fila"
+  },
+  "segredos_persistidos": false
+}

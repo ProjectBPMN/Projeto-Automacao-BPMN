@@ -1,0 +1,9 @@
+PASTA DATABASE
+==============
+
+Contém a definição estrutural do PostgreSQL de triagem.
+
+- init_v9.sql: cria e atualiza tabelas, índices, gatilhos e views da V9,
+  incluindo tickets_processados, ia_decisoes, avaliacoes_humanas,
+  workflow_eventos, dataset_controle, telemetria da fila, dead-letter e
+  métricas estatísticas.

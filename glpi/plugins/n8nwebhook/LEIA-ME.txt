@@ -1,0 +1,9 @@
+PASTA GLPI/PLUGINS/N8NWEBHOOK
+=============================
+
+Implementa a integração  entre GLPI e n8n.
+
+- setup.php: metadados, instalação e registro dos hooks do plugin.
+- hook.php: envia eventos de chamados ao webhook n8n com autenticação,
+  repetição e tratamento de falhas.
+- LEIA-ME.txt: este inventário.

@@ -1,0 +1,558 @@
+{
+  "abstention_policy": {
+    "abstention_never_counted_as_nao_duplicado": true,
+    "classification_triagem_manual_is_semantic_class": true,
+    "dedup_intermediate_probability_is_abstention": true,
+    "dedup_negative_threshold": 0.07,
+    "dedup_positive_threshold": 0.95,
+    "human_routing_is_reported_separately": true,
+    "operational_abstention_is_separate": true
+  },
+  "confirmatory_claim_allowed": false,
+  "created_at": "2026-08-17T23:44:13.255623+00:00",
+  "metric_recalculation": {
+    "benchmark_script_sha256": "122128e18a01a0e07571d07032ce3787604be9a0c2202f1c923154d35106d88f",
+    "contract_version": "1.2.0",
+    "inference_reexecuted": false,
+    "source_artifacts_unchanged": true,
+    "source_plan": "avaliacao/resultados/local-only-pilot-v1.9.0-batch4-20260817b/local_only_plan.json",
+    "source_plan_sha256": "7a341b394159057cd3f759bdd33ec63954b0057047e0bfb687ff3fec7aaf2c06",
+    "source_predictions": "avaliacao/resultados/local-only-pilot-v1.9.0-batch4-20260817b/local_only_predictions.jsonl",
+    "source_predictions_sha256": "e6ffbd4022707129c047db66910ecf48da85c9b27f5dbe2d50b818475a0500bc",
+    "source_summary": "avaliacao/resultados/local-only-pilot-v1.9.0-batch4-20260817b/local_only_summary.json",
+    "source_summary_sha256": "8b44f126dd8ebe3959c0ac7c375ab5bd5f7a0a10ef198553479a7c58ee8fc5dc"
+  },
+  "metrics": {
+    "all_contract_valid": {
+      "abstention_count": 14,
+      "abstentions": 14,
+      "accuracy_abstention_as_not_correct": 0.5333333333333333,
+      "automation_coverage": 0.5333333333333333,
+      "confusion": {
+        "DEMO->DEMO": 5,
+        "DUPLICADO->ABSTENCAO": 5,
+        "NAO_DUPLICADO->ABSTENCAO": 4,
+        "NAO_DUPLICADO->NAO_DUPLICADO": 1,
+        "OBRA->OBRA": 5,
+        "SOB_DEMANDA->SOB_DEMANDA": 5,
+        "TRIAGEM_MANUAL->ABSTENCAO": 5
+      },
+      "dedup_false_negatives": 0,
+      "dedup_false_positives": 0,
+      "dedup_weighted_error_cost_fn5_fp1": 0,
+      "failures": 0,
+      "latency_ms": {
+        "mean": 454.9310666666667,
+        "p50": 120.31,
+        "p95": 1464.24
+      },
+      "metric_semantics": {
+        "coverage_excludes_only_operational_abstention": true,
+        "legacy_records_reinterpreted_from_decision_path": 0,
+        "routed_to_human_includes_duplicate_confirmation": true,
+        "triagem_manual_is_semantic_class_for_classification": true
+      },
+      "predicted_class_triagem_manual": 0,
+      "routed_to_human_rate": 0.4666666666666667,
+      "routed_to_human_total": 14,
+      "selective_accuracy": 1.0,
+      "semantic_coverage": 0.5333333333333333,
+      "straight_through_automation_coverage": 0.5333333333333333,
+      "total": 30,
+      "unresolved_semantic_prediction_count": 0,
+      "valid": 30
+    },
+    "by_core": {
+      "DEV_CLS_DEMO_016": {
+        "abstention_count": 0,
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 110.4008,
+          "p50": 114.512,
+          "p95": 128.031
+        },
+        "metric_semantics": {
+          "coverage_excludes_only_operational_abstention": true,
+          "legacy_records_reinterpreted_from_decision_path": 0,
+          "routed_to_human_includes_duplicate_confirmation": true,
+          "triagem_manual_is_semantic_class_for_classification": true
+        },
+        "predicted_class_triagem_manual": 0,
+        "routed_to_human_rate": 0.0,
+        "routed_to_human_total": 0,
+        "selective_accuracy": 1.0,
+        "semantic_coverage": 1.0,
+        "straight_through_automation_coverage": 1.0,
+        "total": 5,
+        "unresolved_semantic_prediction_count": 0,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_017": {
+        "abstention_count": 0,
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 196.6226,
+          "p50": 120.31,
+          "p95": 522.163
+        },
+        "metric_semantics": {
+          "coverage_excludes_only_operational_abstention": true,
+          "legacy_records_reinterpreted_from_decision_path": 0,
+          "routed_to_human_includes_duplicate_confirmation": true,
+          "triagem_manual_is_semantic_class_for_classification": true
+        },
+        "predicted_class_triagem_manual": 0,
+        "routed_to_human_rate": 0.0,
+        "routed_to_human_total": 0,
+        "selective_accuracy": 1.0,
+        "semantic_coverage": 1.0,
+        "straight_through_automation_coverage": 1.0,
+        "total": 5,
+        "unresolved_semantic_prediction_count": 0,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_026": {
+        "abstention_count": 0,
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 102.0044,
+          "p50": 96.948,
+          "p95": 130.617
+        },
+        "metric_semantics": {
+          "coverage_excludes_only_operational_abstention": true,
+          "legacy_records_reinterpreted_from_decision_path": 0,
+          "routed_to_human_includes_duplicate_confirmation": true,
+          "triagem_manual_is_semantic_class_for_classification": true
+        },
+        "predicted_class_triagem_manual": 0,
+        "routed_to_human_rate": 0.0,
+        "routed_to_human_total": 0,
+        "selective_accuracy": 1.0,
+        "semantic_coverage": 1.0,
+        "straight_through_automation_coverage": 1.0,
+        "total": 5,
+        "unresolved_semantic_prediction_count": 0,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_029": {
+        "abstention_count": 5,
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->ABSTENCAO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 15.7758,
+          "p50": 15.74,
+          "p95": 18.95
+        },
+        "metric_semantics": {
+          "coverage_excludes_only_operational_abstention": true,
+          "legacy_records_reinterpreted_from_decision_path": 0,
+          "routed_to_human_includes_duplicate_confirmation": true,
+          "triagem_manual_is_semantic_class_for_classification": true
+        },
+        "predicted_class_triagem_manual": 0,
+        "routed_to_human_rate": 1.0,
+        "routed_to_human_total": 5,
+        "selective_accuracy": null,
+        "semantic_coverage": 0.0,
+        "straight_through_automation_coverage": 0.0,
+        "total": 5,
+        "unresolved_semantic_prediction_count": 0,
+        "valid": 5
+      },
+      "DEV_DD_NEG_018": {
+        "abstention_count": 4,
+        "abstentions": 4,
+        "accuracy_abstention_as_not_correct": 0.2,
+        "automation_coverage": 0.2,
+        "confusion": {
+          "NAO_DUPLICADO->ABSTENCAO": 4,
+          "NAO_DUPLICADO->NAO_DUPLICADO": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 1045.848,
+          "p50": 1067.438,
+          "p95": 1464.24
+        },
+        "metric_semantics": {
+          "coverage_excludes_only_operational_abstention": true,
+          "legacy_records_reinterpreted_from_decision_path": 0,
+          "routed_to_human_includes_duplicate_confirmation": true,
+          "triagem_manual_is_semantic_class_for_classification": true
+        },
+        "predicted_class_triagem_manual": 0,
+        "routed_to_human_rate": 0.8,
+        "routed_to_human_total": 4,
+        "selective_accuracy": 1.0,
+        "semantic_coverage": 0.2,
+        "straight_through_automation_coverage": 0.2,
+        "total": 5,
+        "unresolved_semantic_prediction_count": 0,
+        "valid": 5
+      },
+      "DEV_DD_POS_017": {
+        "abstention_count": 5,
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->ABSTENCAO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 1258.9348,
+          "p50": 1026.701,
+          "p95": 2623.686
+        },
+        "metric_semantics": {
+          "coverage_excludes_only_operational_abstention": true,
+          "legacy_records_reinterpreted_from_decision_path": 0,
+          "routed_to_human_includes_duplicate_confirmation": true,
+          "triagem_manual_is_semantic_class_for_classification": true
+        },
+        "predicted_class_triagem_manual": 0,
+        "routed_to_human_rate": 1.0,
+        "routed_to_human_total": 5,
+        "selective_accuracy": null,
+        "semantic_coverage": 0.0,
+        "straight_through_automation_coverage": 0.0,
+        "total": 5,
+        "unresolved_semantic_prediction_count": 0,
+        "valid": 5
+      }
+    },
+    "by_decision_path": {
+      "DETERMINISTIC_CONTRADICTION": {
+        "abstention_count": 5,
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->ABSTENCAO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 15.7758,
+          "p50": 15.74,
+          "p95": 18.95
+        },
+        "metric_semantics": {
+          "coverage_excludes_only_operational_abstention": true,
+          "legacy_records_reinterpreted_from_decision_path": 0,
+          "routed_to_human_includes_duplicate_confirmation": true,
+          "triagem_manual_is_semantic_class_for_classification": true
+        },
+        "predicted_class_triagem_manual": 0,
+        "routed_to_human_rate": 1.0,
+        "routed_to_human_total": 5,
+        "selective_accuracy": null,
+        "semantic_coverage": 0.0,
+        "straight_through_automation_coverage": 0.0,
+        "total": 5,
+        "unresolved_semantic_prediction_count": 0,
+        "valid": 5
+      },
+      "HYBRID_MODEL": {
+        "abstention_count": 0,
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5,
+          "NAO_DUPLICADO->NAO_DUPLICADO": 1,
+          "OBRA->OBRA": 5,
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 204.116,
+          "p50": 114.512,
+          "p95": 1220.717
+        },
+        "metric_semantics": {
+          "coverage_excludes_only_operational_abstention": true,
+          "legacy_records_reinterpreted_from_decision_path": 0,
+          "routed_to_human_includes_duplicate_confirmation": true,
+          "triagem_manual_is_semantic_class_for_classification": true
+        },
+        "predicted_class_triagem_manual": 0,
+        "routed_to_human_rate": 0.0,
+        "routed_to_human_total": 0,
+        "selective_accuracy": 1.0,
+        "semantic_coverage": 1.0,
+        "straight_through_automation_coverage": 1.0,
+        "total": 16,
+        "unresolved_semantic_prediction_count": 0,
+        "valid": 16
+      },
+      "HYBRID_MODEL_ABSTENTION": {
+        "abstention_count": 9,
+        "abstentions": 9,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->ABSTENCAO": 5,
+          "NAO_DUPLICADO->ABSTENCAO": 4
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 1144.7996666666668,
+          "p50": 1026.701,
+          "p95": 2623.686
+        },
+        "metric_semantics": {
+          "coverage_excludes_only_operational_abstention": true,
+          "legacy_records_reinterpreted_from_decision_path": 0,
+          "routed_to_human_includes_duplicate_confirmation": true,
+          "triagem_manual_is_semantic_class_for_classification": true
+        },
+        "predicted_class_triagem_manual": 0,
+        "routed_to_human_rate": 1.0,
+        "routed_to_human_total": 9,
+        "selective_accuracy": null,
+        "semantic_coverage": 0.0,
+        "straight_through_automation_coverage": 0.0,
+        "total": 9,
+        "unresolved_semantic_prediction_count": 0,
+        "valid": 9
+      }
+    },
+    "by_task": {
+      "classification": {
+        "abstention_count": 5,
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.75,
+        "automation_coverage": 0.75,
+        "confusion": {
+          "DEMO->DEMO": 5,
+          "OBRA->OBRA": 5,
+          "SOB_DEMANDA->SOB_DEMANDA": 5,
+          "TRIAGEM_MANUAL->ABSTENCAO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 106.2009,
+          "p50": 96.948,
+          "p95": 140.949
+        },
+        "metric_semantics": {
+          "coverage_excludes_only_operational_abstention": true,
+          "legacy_records_reinterpreted_from_decision_path": 0,
+          "routed_to_human_includes_duplicate_confirmation": true,
+          "triagem_manual_is_semantic_class_for_classification": true
+        },
+        "predicted_class_triagem_manual": 0,
+        "routed_to_human_rate": 0.25,
+        "routed_to_human_total": 5,
+        "selective_accuracy": 1.0,
+        "semantic_coverage": 0.75,
+        "straight_through_automation_coverage": 0.75,
+        "total": 20,
+        "unresolved_semantic_prediction_count": 0,
+        "valid": 20
+      },
+      "deduplication": {
+        "abstention_count": 9,
+        "abstentions": 9,
+        "accuracy_abstention_as_not_correct": 0.1,
+        "automation_coverage": 0.1,
+        "confusion": {
+          "DUPLICADO->ABSTENCAO": 5,
+          "NAO_DUPLICADO->ABSTENCAO": 4,
+          "NAO_DUPLICADO->NAO_DUPLICADO": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 1152.3914,
+          "p50": 1026.701,
+          "p95": 2623.686
+        },
+        "metric_semantics": {
+          "coverage_excludes_only_operational_abstention": true,
+          "legacy_records_reinterpreted_from_decision_path": 0,
+          "routed_to_human_includes_duplicate_confirmation": true,
+          "triagem_manual_is_semantic_class_for_classification": true
+        },
+        "predicted_class_triagem_manual": 0,
+        "routed_to_human_rate": 0.9,
+        "routed_to_human_total": 9,
+        "selective_accuracy": 1.0,
+        "semantic_coverage": 0.1,
+        "straight_through_automation_coverage": 0.1,
+        "total": 10,
+        "unresolved_semantic_prediction_count": 0,
+        "valid": 10
+      }
+    },
+    "eligibility_strata": {
+      "model_only": {
+        "metrics": {
+          "abstention_count": 9,
+          "abstentions": 9,
+          "accuracy_abstention_as_not_correct": 0.64,
+          "automation_coverage": 0.64,
+          "confusion": {
+            "DEMO->DEMO": 5,
+            "DUPLICADO->ABSTENCAO": 5,
+            "NAO_DUPLICADO->ABSTENCAO": 4,
+            "NAO_DUPLICADO->NAO_DUPLICADO": 1,
+            "OBRA->OBRA": 5,
+            "SOB_DEMANDA->SOB_DEMANDA": 5
+          },
+          "dedup_false_negatives": 0,
+          "dedup_false_positives": 0,
+          "dedup_weighted_error_cost_fn5_fp1": 0,
+          "failures": 0,
+          "latency_ms": {
+            "mean": 542.76212,
+            "p50": 130.617,
+            "p95": 1464.24
+          },
+          "metric_semantics": {
+            "coverage_excludes_only_operational_abstention": true,
+            "legacy_records_reinterpreted_from_decision_path": 0,
+            "routed_to_human_includes_duplicate_confirmation": true,
+            "triagem_manual_is_semantic_class_for_classification": true
+          },
+          "predicted_class_triagem_manual": 0,
+          "routed_to_human_rate": 0.36,
+          "routed_to_human_total": 9,
+          "selective_accuracy": 1.0,
+          "semantic_coverage": 0.64,
+          "straight_through_automation_coverage": 0.64,
+          "total": 25,
+          "unresolved_semantic_prediction_count": 0,
+          "valid": 25
+        },
+        "selection": "candidate_evaluation_eligible=true e decision_path em HYBRID_MODEL/HYBRID_MODEL_ABSTENTION"
+      },
+      "pipeline_complete_system": {
+        "metrics": {
+          "abstention_count": 14,
+          "abstentions": 14,
+          "accuracy_abstention_as_not_correct": 0.5333333333333333,
+          "automation_coverage": 0.5333333333333333,
+          "confusion": {
+            "DEMO->DEMO": 5,
+            "DUPLICADO->ABSTENCAO": 5,
+            "NAO_DUPLICADO->ABSTENCAO": 4,
+            "NAO_DUPLICADO->NAO_DUPLICADO": 1,
+            "OBRA->OBRA": 5,
+            "SOB_DEMANDA->SOB_DEMANDA": 5,
+            "TRIAGEM_MANUAL->ABSTENCAO": 5
+          },
+          "dedup_false_negatives": 0,
+          "dedup_false_positives": 0,
+          "dedup_weighted_error_cost_fn5_fp1": 0,
+          "failures": 0,
+          "latency_ms": {
+            "mean": 454.9310666666667,
+            "p50": 120.31,
+            "p95": 1464.24
+          },
+          "metric_semantics": {
+            "coverage_excludes_only_operational_abstention": true,
+            "legacy_records_reinterpreted_from_decision_path": 0,
+            "routed_to_human_includes_duplicate_confirmation": true,
+            "triagem_manual_is_semantic_class_for_classification": true
+          },
+          "predicted_class_triagem_manual": 0,
+          "routed_to_human_rate": 0.4666666666666667,
+          "routed_to_human_total": 14,
+          "selective_accuracy": 1.0,
+          "semantic_coverage": 0.5333333333333333,
+          "straight_through_automation_coverage": 0.5333333333333333,
+          "total": 30,
+          "unresolved_semantic_prediction_count": 0,
+          "valid": 30
+        },
+        "selection": "pipeline_evaluation_eligible=true"
+      }
+    }
+  },
+  "plan_manifest_payload_sha256": "d2ea789ff14ffe7d566757277051899651427380721dbc16831173d3644299cd",
+  "predictions_sha256": "e6ffbd4022707129c047db66910ecf48da85c9b27f5dbe2d50b818475a0500bc",
+  "records": 30,
+  "runtime_provenance": {
+    "distinct_response_fingerprints_sha256": [
+      "258e6f11b8cbf0a5932a70a13ebcae35caec3288139b772213c42ce85d97f00c",
+      "46bc4daecd41d875219beb38c58537754ef281ecac46060c8c30e04ba643372f",
+      "4f38a63af92508dc4a22446cdd04c3761cf860a4990422f91186dcb3299f72e6",
+      "69e3907e50344f54807a32f263cc34ac6fe0b727c51d8c33548b783b7351e1aa",
+      "8b86db3f436220e299942ff3d52346f9508076327b1d4654de49939b5556d37e",
+      "917e174256346ad5327654ef20b9e62911b62535613b7cd47ae9db6c7a0b364f",
+      "932f9a0a8b62b9ff3c86c6ffce025e17c499e3fa57e1e2a8e7b06f9aafd1e5db",
+      "e4433df69a735433264455d8cb187aa0b8641e24c89a6ed999ed7a3325a808a3"
+    ],
+    "legacy_pipeline_eligibility_fallback_records": 0,
+    "pipeline_eligibility_declared_records": 30,
+    "source_hashes": {
+      "artifacts.py": "27bba855b42d0d2ecb0bdfd37287c323c2ab271b080bef53662b8e5487c19261",
+      "backends.py": "d9fb0ee3a971e6d7314ae875a88b87bd9c1f41b8e103a6140554ebcaaf157561",
+      "extraction.py": "5e3af908750711313d462f01f5d772ac8c42b83d77f050fffdb97a99c9c2d934",
+      "http_api.py": "0172253cb7d1385709759e6e98ae4d5629dd1d0c078018388e2a9b29c17f036a",
+      "hybrid.py": "539a4c864bc36a83332633756a80d0ce0e19eeb2784b3ebb065867515507eec4",
+      "inference.py": "9d34c18b17cf4ec5a77737061362f0ffea8a873201739a16078838e821d6c04b"
+    }
+  },
+  "schema_version": "1.2.0",
+  "scientific_result": false,
+  "status": "LOCAL_ONLY_ENGINEERING_RESULTS_NON_CONFIRMATORY"
+}

@@ -1,0 +1,131 @@
+{
+  "confirmatory_block": {
+    "allowed_uses": [
+      "treino exploratório",
+      "calibração interna agrupada por núcleo",
+      "testes de engenharia e integração"
+    ],
+    "blocked": true,
+    "forbidden_uses": [
+      "métrica confirmatória",
+      "seleção pós-hoc com o holdout final",
+      "alegação de desempenho em produção"
+    ],
+    "reason": "Corpus sintético de desenvolvimento não estima eficácia ou prevalência real."
+  },
+  "confirmatory_eligible": false,
+  "counts": {
+    "classification_by_class": {
+      "DEMO": 160,
+      "OBRA": 160,
+      "SOB_DEMANDA": 160,
+      "TRIAGEM_MANUAL": 160
+    },
+    "classification_cores": 128,
+    "classification_cores_by_class": {
+      "DEMO": 32,
+      "OBRA": 32,
+      "SOB_DEMANDA": 32,
+      "TRIAGEM_MANUAL": 32
+    },
+    "classification_records": 640,
+    "dedup_challenges": 600,
+    "dedup_challenges_by_label": {
+      "DUPLICADO": 300,
+      "NAO_DUPLICADO": 300
+    },
+    "dedup_episodes": 120,
+    "dedup_episodes_by_family": {
+      "detail_asymmetry": 10,
+      "different_asset_same_room": 10,
+      "different_requester_same_issue": 10,
+      "different_symptom_same_asset": 10,
+      "explicit_previous_reference": 10,
+      "missing_location_with_reference": 10,
+      "missing_location_without_evidence": 10,
+      "noisy_paraphrase": 10,
+      "prompt_injection_hard_negative": 10,
+      "resolved_then_new_recurrence": 10,
+      "same_issue_different_location": 10,
+      "unresolved_recurrence": 10
+    },
+    "dedup_records": 720,
+    "narrative_core_hash_overlap": 0,
+    "records": 1360,
+    "scenario_id_overlap": 0,
+    "status": "PASSOU_VALIDACAO_ESTRUTURAL_E_ANTI_VAZAMENTO",
+    "template_family_overlap": 0,
+    "visible_text_hash_overlap": 0,
+    "wrong_category_fraction": 0.151471,
+    "wrong_category_records": 206
+  },
+  "dataset_version": "desenvolvimento-local-v1.1.0",
+  "deterministic_generation": true,
+  "domain": "manutenção de patrimônio predial de campus federal",
+  "files": {
+    "anti_leakage_reference": {
+      "path": "avaliacao\\datasets\\corpus_v3_teste.jsonl",
+      "sha256": "26e692ba247ef7439b9a057873c7034318423214b9797b2dbe72f9f24e6801f0"
+    },
+    "generator": {
+      "path": "avaliacao\\scripts\\gerar_corpus_desenvolvimento_local.py",
+      "sha256": "5b9451380c6b8546fd990502a5e29a2a90f5b79c1edb1c079b2f11d6a630530d"
+    },
+    "jsonl": {
+      "path": "avaliacao\\datasets\\desenvolvimento_local_v1.jsonl",
+      "sha256": "0de50381c0dfaefeb1a940cd697f9c9a8e87b5efee9252a1f4ca43c9d904f204"
+    }
+  },
+  "generated_at": "2026-07-15T19:19:21.470140+00:00",
+  "grouping_policy": {
+    "classification_variations_per_core": 5,
+    "dedup_challenges_per_episode": 5,
+    "group_field": "scenario_id",
+    "split_requirement": "Todas as realizações do mesmo núcleo/episódio permanecem juntas."
+  },
+  "license": {
+    "holder": "Projeto de iniciação científica",
+    "id": "USO_INTERNO_ACADEMICO_IF_SUDESTE_MG",
+    "personal_data": false,
+    "redistribution": "Não autorizada sem revisão institucional"
+  },
+  "manifest_revision_history": [
+    {
+      "changed_at": "2026-08-12",
+      "content_data_unchanged": true,
+      "dataset_sha256": "0de50381c0dfaefeb1a940cd697f9c9a8e87b5efee9252a1f4ca43c9d904f204",
+      "previous_manifest_sha256": "bb2732014f0ee6b734190f8bf6ddb26bb61f4f2d9aa53b66366d4c9718a0e2b1",
+      "reason": "Sincronização do SHA-256 do gerador; JSONL e rótulos permaneceram inalterados.",
+      "scope": "PROVENANCE_ONLY"
+    }
+  ],
+  "limitations": [
+    "As variações do mesmo núcleo não são observações independentes.",
+    "Categorias GLPI foram intencionalmente corrompidas em uma fração dos registros.",
+    "Os rótulos derivam das regras documentais e ainda são piloto, não padrão-ouro confirmatório.",
+    "O corpus não contém chamados reais e não representa a frequência cotidiana das classes."
+  ],
+  "pilot_only": true,
+  "policy": {
+    "DEMO": "Reparo, reposição ou pequena intervenção em elemento existente, sem criar área nem alterar a estrutura.",
+    "DESEMPATE": "Telha pontual e divisória interna simples são DEMO; mudança do sistema construtivo, nova área ou rampa nova com fundação são OBRA.",
+    "GOVERNANCA": "Descrição vaga, contraditória ou insuficiente deve ir para TRIAGEM_MANUAL; não se admite escolha automática sem evidência suficiente.",
+    "OBRA": "Criação ou ampliação de área, alteração estrutural, infraestrutura de grande porte implantada do zero ou reforma integral com mudança de projeto/layout.",
+    "SOB_DEMANDA": "Serviço que exige empresa, assistência técnica ou especialidade externa, incluindo qualquer intervenção em ar-condicionado.",
+    "source": "docs/DocumentaçãoInicialProjeto.txt:39-44"
+  },
+  "provenance": {
+    "authored_for_project": true,
+    "external_personal_data_used": false,
+    "llm_generated": false,
+    "reference_corpus_role": "ANTI_LEAKAGE_CHECK_ONLY",
+    "reserved_evaluation_corpus_used_for_training": false,
+    "sigmu_used": false
+  },
+  "scenario_set": "DEV_LOCAL_V1",
+  "schema_version": "1.0.0",
+  "seed": 20260715,
+  "split": "DESENVOLVIMENTO",
+  "status": "SINTETICO_PILOTO_SOMENTE_DESENVOLVIMENTO",
+  "synthetic": true
+}

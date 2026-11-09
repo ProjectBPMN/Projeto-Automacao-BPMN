@@ -1,0 +1,1176 @@
+{
+  "active": false,
+  "connections": {
+    "Aplicar Reclassificacao": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "GLPI: Aplicar Status",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Extrair Decisao": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Link Valido?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GLPI: Aplicar Status": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "GLPI: Followup Reclass",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GLPI: Encerrar Sessao": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Resp: Rejeitado",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GLPI: Encerrar Sessao Erro Reclass": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Resp: Erro Reclass",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GLPI: Fechar Confirmado": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "PG: Duplicado Fechado",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GLPI: Followup Confirmado": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "GLPI: Fechar Confirmado",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GLPI: Followup Reclass": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "PG: Atualizar Reclass",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GLPI: Iniciar Sessao": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "PG: Buscar Chamado",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GLPI: Restaurar Titulo": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Preparar Reclassificacao",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "IA: Reclassificar": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Normalizar Reclass",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "PG: Erro Reclass Fiscal",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Link Valido?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "GLPI: Iniciar Sessao",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Resp: Link Invalido",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Normalizar Reclass": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Switch Reclass",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "PG: Atualizar Reclass": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "GLPI: Encerrar Sessao",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "PG: Buscar Chamado": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Validar",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "PG: Duplicado Fechado": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Resp: Confirmado",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "PG: Erro Reclass Fiscal": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "GLPI: Encerrar Sessao Erro Reclass",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "PG: Limpar Duplicidade": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "GLPI: Restaurar Titulo",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Preparar Reclassificacao": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "IA: Reclassificar",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Switch Acao": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "GLPI: Followup Confirmado",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "PG: Limpar Duplicidade",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Resp: Invalido",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Switch Reclass": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "PG: Erro Reclass Fiscal",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Aplicar Reclassificacao",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Aplicar Reclassificacao",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Aplicar Reclassificacao",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Aplicar Reclassificacao",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "PG: Erro Reclass Fiscal",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Validar": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Switch Acao",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Webhook Fiscal": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Extrair Decisao",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "name": "V8 - WF03 Decisao Fiscal",
+  "nodes": [
+    {
+      "id": "wf03-wh",
+      "name": "Webhook Fiscal",
+      "parameters": {
+        "httpMethod": "GET",
+        "options": {},
+        "path": "fiscal-decisao-troque-esta-chave-fiscal",
+        "responseMode": "responseNode"
+      },
+      "position": [
+        -400,
+        300
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "wf03-fiscal-decisao"
+    },
+    {
+      "id": "wf03-ext",
+      "name": "Extrair Decisao",
+      "parameters": {
+        "jsCode": "\nconst q=$json.query||{};\nconst dec=String(q.decisao??'').toLowerCase().trim();\nconst cid=Number(q.chamado_id);const rid=Number(q.ref_id||0);\nconst ok=Number.isFinite(cid)&&cid>0&&['confirmar','nao_duplicado'].includes(dec);\nreturn[{json:{ok,decisao:dec,chamado_id:ok?cid:null,ref_id:rid>0?rid:null}}];\n"
+      },
+      "position": [
+        -160,
+        300
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "wf03-chk",
+      "name": "Link Valido?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "a3a7c3a4",
+              "leftValue": "={{ $json.ok }}",
+              "operator": {
+                "operation": "true",
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          }
+        }
+      },
+      "position": [
+        80,
+        300
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "wf03-resp-bad",
+      "name": "Resp: Link Invalido",
+      "parameters": {
+        "options": {
+          "responseCode": 400,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              }
+            ]
+          }
+        },
+        "respondWith": "text",
+        "responseBody": "Link invalido."
+      },
+      "position": [
+        80,
+        500
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5
+    },
+    {
+      "id": "wf03-gs",
+      "name": "GLPI: Iniciar Sessao",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ 'user_token ' + $env.GLPI_USER_TOKEN }}"
+            }
+          ]
+        },
+        "options": {},
+        "sendHeaders": true,
+        "url": "http://host.docker.internal:8080/apirest.php/initSession"
+      },
+      "position": [
+        320,
+        300
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "wf03-buscar",
+      "name": "PG: Buscar Chamado",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {
+          "queryReplacement": "={{ String($('Extrair Decisao').first().json.chamado_id) }}"
+        },
+        "query": "SELECT id,titulo,descricao,tipo_servico,localizacao,solicitante,email_solicitante,\nstatus_num,status_nome,data_abertura,data_ultima_mudanca,triagem_status,\nclassificacao,duplicado_de_id,motivo_classificacao,em_aprovacao_fiscal\nFROM tickets_processados WHERE id=$1::bigint;"
+      },
+      "position": [
+        560,
+        300
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5
+    },
+    {
+      "id": "wf03-validar",
+      "name": "Validar",
+      "parameters": {
+        "jsCode": "\nconst r=$json;const d=$('Extrair Decisao').first().json;\nlet acao='INVALIDO',msg='';\nif(!r.id){msg='Chamado nao encontrado.';}\nelse if(!r.em_aprovacao_fiscal){msg='Nao aguarda decisao fiscal.';}\nelse if(d.decisao==='confirmar'){acao='CONFIRMAR';msg='Duplicidade confirmada para #'+r.id;}\nelse if(d.decisao==='nao_duplicado'){acao='REJEITAR';msg='Duplicidade rejeitada para #'+r.id;}\nelse{msg='Decisao invalida.';}\nreturn[{json:{...r,acao,msg}}];\n"
+      },
+      "position": [
+        800,
+        300
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "wf03-sw",
+      "name": "Switch Acao",
+      "parameters": {
+        "options": {},
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "4c363bab",
+                    "leftValue": "={{ $json.acao }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "CONFIRMAR"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "CONFIRMAR",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "bf30b358",
+                    "leftValue": "={{ $json.acao }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "REJEITAR"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "REJEITAR",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "1f331296",
+                    "leftValue": "={{ $json.acao }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "INVALIDO"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "INVALIDO",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        1040,
+        300
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2
+    },
+    {
+      "id": "wf03-cf1",
+      "name": "GLPI: Followup Confirmado",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": {
+          "input": {
+            "content": "={{'[TRIAGEM_IA] Duplicidade CONFIRMADA pelo fiscal. Ref: #'+($json.duplicado_de_id||'N/A')}}",
+            "items_id": "={{$json.id}}",
+            "itemtype": "Ticket"
+          }
+        },
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "http://host.docker.internal:8080/apirest.php/ITILFollowup"
+      },
+      "position": [
+        1320,
+        100
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "wf03-cf2",
+      "name": "GLPI: Fechar Confirmado",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": {
+          "input": {
+            "id": "={{$('Validar').first().json.id}}",
+            "status": 6
+          }
+        },
+        "method": "PUT",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/'+$('Validar').first().json.id }}"
+      },
+      "position": [
+        1560,
+        100
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "wf03-cf3",
+      "name": "PG: Duplicado Fechado",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {
+          "queryReplacement": "={{ String($('Validar').first().json.id) }}"
+        },
+        "query": "UPDATE tickets_processados SET status_num=6,status_nome='Fechado',triagem_status='DUPLICADO_FECHADO',em_aprovacao_fiscal=FALSE,aprovacao_decidida_em=NOW(),decisao_fiscal='CONFIRMOU_DUP',classificacao='DUPLICADO',triado_em=NOW(),ultima_acao_workflow='DUPLICADO_FECHADO',atualizado_em=NOW() WHERE id=$1::bigint RETURNING id,triagem_status;"
+      },
+      "position": [
+        1800,
+        100
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5
+    },
+    {
+      "id": "wf03-cf-resp",
+      "name": "Resp: Confirmado",
+      "parameters": {
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              }
+            ]
+          }
+        },
+        "respondWith": "text",
+        "responseBody": "={{ 'Chamado #'+$json.id+' confirmado como duplicado e fechado.' }}"
+      },
+      "position": [
+        2040,
+        100
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5
+    },
+    {
+      "id": "wf03-rj1",
+      "name": "PG: Limpar Duplicidade",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {
+          "queryReplacement": "={{ String($json.id) }}"
+        },
+        "query": "UPDATE tickets_processados SET em_aprovacao_fiscal=FALSE,aprovacao_decidida_em=NOW(),decisao_fiscal='REJEITOU_DUP',classificacao=NULL,motivo_classificacao=NULL WHERE id=$1::bigint RETURNING id,titulo,descricao,tipo_servico,localizacao,solicitante,email_solicitante,status_num,status_nome,data_abertura,data_ultima_mudanca;"
+      },
+      "position": [
+        1320,
+        400
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5
+    },
+    {
+      "id": "wf03-rj1b",
+      "name": "GLPI: Restaurar Titulo",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": {
+          "input": {
+            "id": "={{$json.id}}",
+            "name": "={{String($json.titulo||'').replace('[Duplicado] ','').replace('[Duplicado]','')}}"
+          }
+        },
+        "method": "PUT",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/'+$json.id }}"
+      },
+      "position": [
+        1560,
+        400
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "wf03-rj-resp",
+      "name": "Resp: Rejeitado",
+      "parameters": {
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              }
+            ]
+          }
+        },
+        "respondWith": "text",
+        "responseBody": "={{ 'Chamado #'+$('PG: Limpar Duplicidade').first().json.id+' reclassificado.' }}"
+      },
+      "position": [
+        1800,
+        400
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5
+    },
+    {
+      "id": "wf03-rj2",
+      "name": "Preparar Reclassificacao",
+      "parameters": {
+        "jsCode": "\nconst r=$('PG: Limpar Duplicidade').first().json;\nreturn[{json:{id:r.id,titulo:String(r.titulo||'').replace('[Duplicado] ',''),\ndescricao:r.descricao,tipo_servico:r.tipo_servico,localizacao:r.localizacao,\nsolicitante:r.solicitante,email_solicitante:r.email_solicitante,\nstatus_num:r.status_num,status_nome:r.status_nome,\ndata_abertura:r.data_abertura,data_ultima_mudanca:r.data_ultima_mudanca}}];\n"
+      },
+      "position": [
+        2040,
+        400
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "wf03-rj3",
+      "maxTries": 3,
+      "name": "IA: Reclassificar",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "builtInTools": {},
+        "jsonOutput": true,
+        "messages": {
+          "values": [
+            {
+              "content": "=Voce e o Especialista em Triagem. Classifique o chamado:\n1) INVIAVEL -> executor NENHUM  2) OBRA -> executor DDI_DG\n3) MANUTENCAO+DEMO  4) MANUTENCAO+SOB_DEMANDA\n\nCHAMADO: {{ JSON.stringify($json) }}\n\nJSON puro: {\"tipo\":\"...\",\"executor\":\"...\",\"categoria\":\"...\",\"justificativa\":\"...\",\"mensagem_solicitante\":\"...\"}"
+            }
+          ]
+        },
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "models/gemini-2.0-flash"
+        },
+        "options": {}
+      },
+      "position": [
+        2280,
+        400
+      ],
+      "retryOnFail": true,
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "waitBetweenTries": 20000
+    },
+    {
+      "id": "wf03-rj-err-pg",
+      "name": "PG: Erro Reclass Fiscal",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {},
+        "query": "={{ (() => {\nconst r=$('PG: Limpar Duplicidade').first().json;\nconst raw=$input.first().json||{};\nconst esc=s=>\"'\"+String(s??'').replace(/'/g,\"''\")+\"'\";\nconst msg=raw.mensagem_erro||raw.error?.message||raw.error||'Erro na IA de reclassificacao fiscal';\nreturn `UPDATE tickets_processados SET triagem_status='ERRO_IA',ultima_acao_workflow='ERRO_IA_RECLASS_FISCAL',motivo_classificacao=${esc(msg)},atualizado_em=NOW() WHERE id=${Number(r.id)} RETURNING id;`;\n})() }}"
+      },
+      "position": [
+        2520,
+        560
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5
+    },
+    {
+      "alwaysOutputData": true,
+      "id": "wf03-rj-err-gk",
+      "name": "GLPI: Encerrar Sessao Erro Reclass",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "options": {},
+        "sendHeaders": true,
+        "url": "http://host.docker.internal:8080/apirest.php/killSession"
+      },
+      "position": [
+        2760,
+        560
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "wf03-rj-err-resp",
+      "name": "Resp: Erro Reclass",
+      "parameters": {
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              }
+            ]
+          }
+        },
+        "respondWith": "text",
+        "responseBody": "={{ 'Chamado #'+$('PG: Erro Reclass Fiscal').first().json.id+' ficou marcado para reprocessamento por erro na IA.' }}"
+      },
+      "position": [
+        3000,
+        560
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5
+    },
+    {
+      "id": "wf03-rj4",
+      "name": "Normalizar Reclass",
+      "parameters": {
+        "jsCode": "\nfunction tp(t){try{return JSON.parse(t)}catch{return null}}\nfunction ext(j){let d=j;const t1=d?.content?.parts?.[0]?.text;if(typeof t1==='string'){const p=tp(t1);if(p)d=p;}\nconst t2=d?.message?.content;if(typeof t2==='string'){const p=tp(t2);if(p)d=p;}return d;}\nconst ch=$('Preparar Reclassificacao').first().json;\nconst raw=$input.first().json||{};\nif(raw.error){\n  const msg=raw.error?.message||raw.error||'Erro na IA de reclassificacao';\n  return[{json:{chamado:ch,erro_ia:true,mensagem_erro:String(msg)}}];\n}\nconst r=ext(raw)||{};\nlet tipo=String(r.tipo||'MANUTENCAO').toUpperCase();\nlet exec=String(r.executor||'DEMO').toUpperCase();\nif(!['INVIAVEL','OBRA','MANUTENCAO'].includes(tipo)){\n  return[{json:{chamado:ch,erro_ia:true,mensagem_erro:'Resposta da IA com tipo invalido'}}];\n}\nif(tipo==='INVIAVEL')exec='NENHUM';if(tipo==='OBRA')exec='DDI_DG';\nif(tipo==='MANUTENCAO'&&!['DEMO','SOB_DEMANDA'].includes(exec)){\n  return[{json:{chamado:ch,erro_ia:true,mensagem_erro:'Resposta da IA com executor invalido'}}];\n}\nreturn[{json:{chamado:ch,classificacao:{tipo,executor:exec,justificativa:r.justificativa||'Reclassificado apos rejeicao de duplicidade',mensagem_solicitante:r.mensagem_solicitante||'',categoria:r.categoria||''},erro_ia:false,mensagem_erro:null}}];\n"
+      },
+      "position": [
+        2520,
+        400
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "wf03-rj5-sw",
+      "name": "Switch Reclass",
+      "parameters": {
+        "options": {
+          "fallbackOutput": "extra"
+        },
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "ef4625f3",
+                    "leftValue": "={{ String($json.erro_ia) }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "true"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "ERRO_IA",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "6d5aefa0",
+                    "leftValue": "={{ $json.classificacao.tipo }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "INVIAVEL"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "INVIAVEL",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "75260f83",
+                    "leftValue": "={{ $json.classificacao.tipo }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "OBRA"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "OBRA",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "30574173",
+                    "leftValue": "={{ $json.classificacao.executor }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "DEMO"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "DEMO",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "a6f5ee62",
+                    "leftValue": "={{ $json.classificacao.executor }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "SOB_DEMANDA"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "SOB_DEMANDA",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        2760,
+        400
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2
+    },
+    {
+      "id": "wf03-rj-acao",
+      "name": "Aplicar Reclassificacao",
+      "parameters": {
+        "jsCode": "\nconst c=$('Normalizar Reclass').first().json;\n// Retorna dados para os proximos nos GLPI atualizarem\nconst tipo=c.classificacao.tipo;const exec=c.classificacao.executor;\nlet glpi_status=4;\nif(tipo==='INVIAVEL'||tipo==='OBRA')glpi_status=6;\nelse if(exec==='DEMO')glpi_status=2;\nelse if(exec==='SOB_DEMANDA')glpi_status=3;\nreturn[{json:{...c,glpi_status}}];\n"
+      },
+      "position": [
+        3000,
+        400
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "wf03-rj-glpi",
+      "name": "GLPI: Aplicar Status",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": {
+          "input": {
+            "id": "={{$json.chamado.id}}",
+            "status": "={{$json.glpi_status}}"
+          }
+        },
+        "method": "PUT",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/'+$json.chamado.id }}"
+      },
+      "position": [
+        3240,
+        400
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "wf03-rj-fu",
+      "name": "GLPI: Followup Reclass",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": {
+          "input": {
+            "content": "={{'[TRIAGEM_IA][RECLASSIFICADO] Tipo: '+$('Aplicar Reclassificacao').first().json.classificacao.tipo+' Executor: '+$('Aplicar Reclassificacao').first().json.classificacao.executor+' Justificativa: '+$('Aplicar Reclassificacao').first().json.classificacao.justificativa}}",
+            "items_id": "={{$('Aplicar Reclassificacao').first().json.chamado.id}}",
+            "itemtype": "Ticket"
+          }
+        },
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "http://host.docker.internal:8080/apirest.php/ITILFollowup"
+      },
+      "position": [
+        3480,
+        400
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "wf03-rj-pg",
+      "name": "PG: Atualizar Reclass",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {},
+        "query": "={{ (() => {\nconst r=$('Aplicar Reclassificacao').first().json;\nconst esc=s=>\"'\"+String(s??'').replace(/'/g,\"''\")+\"'\";\nconst statusNome=r.glpi_status===6?'Fechado':r.glpi_status===2?'Atribuido':'Planejado';\nconst triagem=r.classificacao.tipo==='INVIAVEL'?'FECHADO_INVIAVEL':r.classificacao.tipo==='OBRA'?'FECHADO_OBRA':r.classificacao.executor==='DEMO'?'ATRIBUIDO_DEMO':'ENCAMINHADO_PLANEJADO';\nreturn `UPDATE tickets_processados SET status_num=${Number(r.glpi_status)},status_nome=${esc(statusNome)},triagem_status=${esc(triagem)},classificacao=${esc(r.classificacao.tipo)},executor=${esc(r.classificacao.executor)},em_aprovacao_fiscal=FALSE,motivo_classificacao=${esc(r.classificacao.justificativa)},triado_em=NOW() WHERE id=${Number(r.chamado.id)};`;\n})() }}"
+      },
+      "position": [
+        3720,
+        400
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5
+    },
+    {
+      "alwaysOutputData": true,
+      "id": "wf03-gk",
+      "name": "GLPI: Encerrar Sessao",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "options": {},
+        "sendHeaders": true,
+        "url": "http://host.docker.internal:8080/apirest.php/killSession"
+      },
+      "position": [
+        3960,
+        400
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "wf03-inv-resp",
+      "name": "Resp: Invalido",
+      "parameters": {
+        "options": {
+          "responseCode": 400,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              }
+            ]
+          }
+        },
+        "respondWith": "text",
+        "responseBody": "={{ $json.msg }}"
+      },
+      "position": [
+        1320,
+        600
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "timezone": "America/Sao_Paulo"
+  }
+}

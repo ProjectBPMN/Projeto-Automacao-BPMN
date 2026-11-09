@@ -1,0 +1,344 @@
+{
+  "dataset_structure": {
+    "actionable_hierarchy_distinct_cores": 96,
+    "actionable_hierarchy_records": 480,
+    "classification_records": 640,
+    "distinct_narrative_cores": 128,
+    "failed_records": 0,
+    "gold_support": {
+      "DEMO": 160,
+      "OBRA": 160,
+      "SOB_DEMANDA": 160,
+      "TRIAGEM_MANUAL": 160
+    },
+    "maintenance_subtype_distinct_cores": 64,
+    "maintenance_subtype_records": 320,
+    "realizations_per_core": 5.0,
+    "scenario_ids": 128,
+    "surface_realizations": 5,
+    "valid_records": 640
+  },
+  "four_class_classification": {
+    "confusion": {
+      "DEMO->ABSTENCAO": 15,
+      "DEMO->DEMO": 144,
+      "DEMO->TRIAGEM_MANUAL": 1,
+      "OBRA->ABSTENCAO": 59,
+      "OBRA->OBRA": 101,
+      "SOB_DEMANDA->ABSTENCAO": 5,
+      "SOB_DEMANDA->SOB_DEMANDA": 155,
+      "TRIAGEM_MANUAL->ABSTENCAO": 103,
+      "TRIAGEM_MANUAL->SOB_DEMANDA": 1,
+      "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 56
+    },
+    "decision_path_support": {
+      "DETERMINISTIC_CONTRADICTION": 37,
+      "DETERMINISTIC_INSUFFICIENT_INFORMATION": 88,
+      "DETERMINISTIC_OUT_OF_SCOPE": 5,
+      "DETERMINISTIC_SPECIALIZED_ASSET": 2,
+      "HYBRID_MODEL": 456,
+      "HYBRID_MODEL_ABSTENTION": 52
+    },
+    "evaluated_prediction_support": {
+      "ABSTENCAO": 182,
+      "DEMO": 144,
+      "OBRA": 101,
+      "SOB_DEMANDA": 156,
+      "TRIAGEM_MANUAL": 57
+    },
+    "failures": 0,
+    "gold_support": {
+      "DEMO": 160,
+      "OBRA": 160,
+      "SOB_DEMANDA": 160,
+      "TRIAGEM_MANUAL": 160
+    },
+    "latency_ms": {
+      "mean": 141.91073281250002,
+      "p50": 159.782,
+      "p95": 242.037
+    },
+    "operational_abstentions": 182,
+    "predicted_triagem_manual": 57,
+    "routed_to_human": 239,
+    "routed_to_human_rate": 0.3734375,
+    "selective_accuracy": 0.9956331877729258,
+    "semantic_coverage": 0.715625,
+    "semantic_covered_records": 458,
+    "semantic_errors_on_covered_records": 2,
+    "straight_through_automation_coverage": 0.6265625,
+    "straight_through_automation_records": 401,
+    "total": 640,
+    "valid": 640
+  },
+  "generated_at": "2026-07-21T15:45:26.621836-03:00",
+  "hierarchical_operational_classification": {
+    "maintenance_demo_vs_sob_demanda": {
+      "automatic_coverage": 0.934375,
+      "automatic_records": 299,
+      "confusion_with_human_review": {
+        "DEMO": {
+          "DEMO": 144,
+          "REVISAO_HUMANA": 16
+        },
+        "SOB_DEMANDA": {
+          "REVISAO_HUMANA": 5,
+          "SOB_DEMANDA": 155
+        }
+      },
+      "demo_as_sob_demanda": 0,
+      "distinct_narrative_cores": 64,
+      "eligible_records": 320,
+      "gold_support": {
+        "DEMO": 160,
+        "SOB_DEMANDA": 160
+      },
+      "human_review_records": 21,
+      "selective_accuracy": 1.0,
+      "sob_demanda_as_demo": 0
+    },
+    "obra_vs_manutencao": {
+      "automatic_coverage": 0.8333333333333334,
+      "automatic_errors": [],
+      "automatic_records": 400,
+      "by_gold_group": {
+        "MANUTENCAO": {
+          "automatic_correct": 299,
+          "automatic_coverage": 0.934375,
+          "human_review": 21,
+          "total": 320
+        },
+        "OBRA": {
+          "automatic_correct": 101,
+          "automatic_coverage": 0.63125,
+          "human_review": 59,
+          "total": 160
+        }
+      },
+      "confusion_with_human_review": {
+        "MANUTENCAO": {
+          "MANUTENCAO": 299,
+          "REVISAO_HUMANA": 21
+        },
+        "OBRA": {
+          "OBRA": 101,
+          "REVISAO_HUMANA": 59
+        }
+      },
+      "critical_maintenance_as_obra": {
+        "count": 0,
+        "rate_over_all_maintenance": 0.0,
+        "rate_over_automatic_maintenance": 0.0
+      },
+      "distinct_narrative_cores": 96,
+      "eligible_records": 480,
+      "gold_support": {
+        "MANUTENCAO": 320,
+        "OBRA": 160
+      },
+      "human_review_records": 80,
+      "obra_as_maintenance": 0,
+      "selective_accuracy": 1.0
+    },
+    "safety_across_all_four_gold_classes": {
+      "errors": [
+        {
+          "case_id": "DEV-LOCAL-V1-000592",
+          "confidence": 0.760599,
+          "decision_path": "HYBRID_MODEL",
+          "gold": "TRIAGEM_MANUAL",
+          "prediction": "SOB_DEMANDA",
+          "scenario_id": "DEV_CLS_TRIAGEM_MANUAL_023",
+          "shared_input_sha256": "c06fd366f419cf221aa080cc5fb67d64dd32110f68056cd6005ba97b0ba88bd5",
+          "surface_realization": "DEV_R02"
+        }
+      ],
+      "note": "Inclui TRIAGEM_MANUAL no gabarito; por isso registra um encaminhamento automatico indevido que fica fora do subconjunto OBRA/DEMO/SOB_DEMANDA.",
+      "straight_through_automatic_errors": 1
+    }
+  },
+  "model": {
+    "bundle_version": "local-hybrid-bundle-v1.8.0",
+    "candidate_frozen": true,
+    "embedding": {
+      "backend": "pytorch_fp32",
+      "dimension": 384,
+      "model_id": "ibm-granite/granite-embedding-97m-multilingual-r2",
+      "revision": "835ad14087e140460703cf0fae09f97d469d65c2"
+    },
+    "generation_profile": "granite97m-pytorch-fp32-tfidf-logreg-calibrated-v1.8.0",
+    "model_version": "local-hybrid-v1.8.0",
+    "scientific_claim_status": "PENDING_CONFIRMATORY_HOLDOUT",
+    "scientifically_validated": false
+  },
+  "schema_version": "classificacao-hierarquica-v1.0.0",
+  "scientific_interpretation": {
+    "confirmatory_result": false,
+    "descriptive_result": true,
+    "local_model_beats_external_llm_claim_supported": false,
+    "permitted_claim": "No benchmark de desenvolvimento v1.8, entre 480 exemplos com gabarito acionavel, houve zero encaminhamentos automaticos de manutencao para OBRA; a cobertura automatica hierarquica foi 400/480 e todos os 400 casos automatizados desse subconjunto foram corretos.",
+    "pseudoreplication_warning": "As 640 linhas nao sao 640 unidades independentes: correspondem a 128 nucleos narrativos, cada um repetido em cinco realizacoes. Intervalos e testes inferenciais devem agrupar por narrative_core_sha256. A distincao por hash define o cluster, mas nao prova independencia entre nucleos sinteticos.",
+    "reason": "O candidato foi medido em conjunto sintetico de desenvolvimento com cinco realizacoes por nucleo narrativo. O manifesto mantem o holdout confirmatorio pendente e nao ha comparacao pareada valida com Gemini ou DeepSeek neste artefato."
+  },
+  "scope": "development_descriptive_non_confirmatory",
+  "sources": {
+    "artifact_manifest": {
+      "bytes": 1843720,
+      "path": "local_ai/artifacts/local_hybrid_manifest.json",
+      "sha256": "3e818b5513bdaa4b7f037f2d4ada743d9b47ade1e882e8d90ae216d0b215eb25"
+    },
+    "corrected_summary": {
+      "bytes": 321943,
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.8.0-20260716/local_only_summary_metrics_v1.1.json",
+      "sha256": "57def48701719c8abf243c56b32e91a251ef110841b9301e21a2854b13af94f7"
+    },
+    "frozen_bundle": {
+      "bytes": 306224,
+      "matches_manifest_declaration": true,
+      "path": "local_ai/artifacts/local_hybrid_bundle.joblib",
+      "sha256": "f518b7f9699aa9e23aab7eb2479990619ad5085994569b3f7c3f253e5207bb5d"
+    },
+    "model_manifest": {
+      "bytes": 3794,
+      "path": "local_ai/models/manifest.json",
+      "sha256": "e596681fa782b49242ff60f887e000e999b7d02b5f710fa69570221f4d2bbd80"
+    },
+    "plan": {
+      "bytes": 13343,
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.8.0-20260716/local_only_plan.json",
+      "sha256": "ae7ed0b9ae262b165e15c86af57805639a892fb9fbc3908901c7209e1402d618"
+    },
+    "predictions": {
+      "bytes": 2773710,
+      "matches_summary_declaration": true,
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.8.0-20260716/local_only_predictions.jsonl",
+      "sha256": "258106f1eebbaee5a56e118c1b4bda09c193719de8af4ce7f40e565562103603"
+    },
+    "training_dataset": {
+      "bytes": 2591998,
+      "matches_manifest_declaration": true,
+      "path": "avaliacao/datasets/desenvolvimento_local_v1.jsonl",
+      "sha256": "0de50381c0dfaefeb1a940cd697f9c9a8e87b5efee9252a1f4ca43c9d904f204"
+    },
+    "units": {
+      "bytes": 6331977,
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.8.0-20260716/local_only_units.jsonl",
+      "sha256": "88b6b2125e8d7ba11edfe50c09c55fd9069a1778f7a79ff0e294c8f7b233d6f6"
+    }
+  },
+  "thresholds": {
+    "classification": 0.76,
+    "classification_obra": 0.9,
+    "critical_error": "maintenance_as_obra",
+    "selection_source": "independent_group_cross_fitted_calibration_split"
+  },
+  "training_development_evidence": {
+    "calibration_groups": 62,
+    "calibration_records": 339,
+    "full_pipeline_cross_fitted_classification": {
+      "automatic_coverage": 0.5151515151515151,
+      "automatic_errors": 0,
+      "automatic_records": 85,
+      "automatic_risk": 0.0,
+      "by_decision_path": {
+        "deterministic_insufficient_information": {
+          "automatic_records": 0,
+          "records": 10,
+          "semantic_correct": 10,
+          "semantic_errors": 0
+        },
+        "deterministic_out_of_scope": {
+          "automatic_records": 0,
+          "records": 5,
+          "semantic_correct": 5,
+          "semantic_errors": 0
+        },
+        "deterministic_specialized_asset": {
+          "automatic_records": 2,
+          "records": 2,
+          "semantic_correct": 2,
+          "semantic_errors": 0
+        },
+        "hybrid_model": {
+          "automatic_records": 83,
+          "records": 108,
+          "semantic_correct": 107,
+          "semantic_errors": 1
+        },
+        "hybrid_model_abstention": {
+          "automatic_records": 0,
+          "records": 40,
+          "semantic_correct": 32,
+          "semantic_errors": 8
+        }
+      },
+      "critical_error_policy": {
+        "automatic_errors": 0,
+        "error": "maintenance_as_obra",
+        "maximum_automatic_errors_for_approval": 0,
+        "obra_safety_gated_records": 13,
+        "rationale": "OBRA dispara comunicacao automatica ao DDI/DG; predicoes sem evidencia explicita sao abstidas para revisao fiscal",
+        "semantic_errors_before_gate": 0
+      },
+      "deterministic_policy_probabilities_excluded": true,
+      "human_review_records": 80,
+      "model_probability_records": 148,
+      "operational_information_insufficient_records": 25,
+      "operational_information_sufficient_records": 140,
+      "probability_metrics_are_model_only": true,
+      "records": 165,
+      "scope": "full_pipeline_including_deterministic_paths",
+      "semantic_accuracy": 0.9454545454545454,
+      "semantic_confusion_matrix": {
+        "labels": [
+          "OBRA",
+          "DEMO",
+          "SOB_DEMANDA",
+          "TRIAGEM_MANUAL"
+        ],
+        "values": [
+          [
+            38,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            31,
+            3,
+            1
+          ],
+          [
+            0,
+            1,
+            59,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            28
+          ]
+        ]
+      },
+      "semantic_macro_f1": 0.9434187861488359,
+      "source": "development_group_cross_fitted_calibration"
+    },
+    "group_overlap_counts": {
+      "case_id": 0,
+      "episode_id": 0,
+      "narrative_core": 0,
+      "narrative_core_sha256": 0,
+      "normalized_visible_text": 0,
+      "scenario_id": 0,
+      "template_family": 0,
+      "visible_text_sha256": 0
+    },
+    "primary33_used": false,
+    "test_data_used": false,
+    "train_groups": 186,
+    "training_records": 1021
+  }
+}

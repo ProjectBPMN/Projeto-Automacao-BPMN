@@ -1,0 +1,27 @@
+{
+  "versao_instrucoes": "rotulagem-v2.0.0",
+  "procedimento": "Dois especialistas rotulam independentemente e às cegas. Divergências são resolvidas por terceiro adjudicador antes do congelamento.",
+  "avaliadores": [
+    {
+      "id_anonimo": "ESP-01",
+      "area_atuacao": "PREENCHER",
+      "anos_experiencia": 0,
+      "treinamento_protocolo": "PREENCHER",
+      "conflito_interesse_declarado": false
+    },
+    {
+      "id_anonimo": "ESP-02",
+      "area_atuacao": "PREENCHER",
+      "anos_experiencia": 0,
+      "treinamento_protocolo": "PREENCHER",
+      "conflito_interesse_declarado": false
+    },
+    {
+      "id_anonimo": "ADJ-01",
+      "area_atuacao": "PREENCHER",
+      "anos_experiencia": 0,
+      "treinamento_protocolo": "PREENCHER",
+      "conflito_interesse_declarado": false
+    }
+  ]
+}

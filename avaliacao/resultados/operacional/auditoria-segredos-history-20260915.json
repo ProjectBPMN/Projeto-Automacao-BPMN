@@ -1,0 +1,605 @@
+{
+  "scope": "reachable_history_blobs_up_to_2MiB",
+  "finding_count": 67,
+  "blob_count": 15091,
+  "findings": [
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V1/Teste01_v1.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 70,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "7ac9117db41fe499873760933077d0336de90fb4"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V1/Teste01_v1.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 74,
+      "fingerprint": "d28f0545ba5af5e8",
+      "blob": "7ac9117db41fe499873760933077d0336de90fb4"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V2/Teste01_v2.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 497,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "c7c4d83f6f647ca97f8e2e47c529770ec706b7d0"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V2/Teste01_v2.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 501,
+      "fingerprint": "d28f0545ba5af5e8",
+      "blob": "c7c4d83f6f647ca97f8e2e47c529770ec706b7d0"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V3/Teste01_v3.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 1,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "cfa0bcfafa77b0938e0de391fed42ab2bbf9ef94"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V3/Teste01_v3.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 1,
+      "fingerprint": "d28f0545ba5af5e8",
+      "blob": "cfa0bcfafa77b0938e0de391fed42ab2bbf9ef94"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V4/Teste01_v4.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 1689,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "ad1a3004b4969b5d77ccac21febf553545bafe1a"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V4/Teste01_v4.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 854,
+      "fingerprint": "43dfa7d03bacc027",
+      "blob": "ad1a3004b4969b5d77ccac21febf553545bafe1a"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V7/Teste01_v7.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 2112,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "e5921081b4819fc50b30e98f671ba566a271db1f"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V7/Teste01_v7.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 114,
+      "fingerprint": "43dfa7d03bacc027",
+      "blob": "e5921081b4819fc50b30e98f671ba566a271db1f"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V7/Teste01_v7_MANUTENCAO.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 2121,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "d2aaee6c93be7a4dbbcfca4a7c5b2c03ef78f85b"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V7/Teste01_v7_MANUTENCAO.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 121,
+      "fingerprint": "43dfa7d03bacc027",
+      "blob": "d2aaee6c93be7a4dbbcfca4a7c5b2c03ef78f85b"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V7/v7_current.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 2126,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "f5eeb706c52ae52752c6821ebfc04a6d13f7d768"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V7/v7_current.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 120,
+      "fingerprint": "43dfa7d03bacc027",
+      "blob": "f5eeb706c52ae52752c6821ebfc04a6d13f7d768"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V8/WF01_Orquestrador.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 772,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "9adf99b4b1d696c6381aa5c7c94017ffc10307f5"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V8/WF01_Orquestrador.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 111,
+      "fingerprint": "43dfa7d03bacc027",
+      "blob": "9adf99b4b1d696c6381aa5c7c94017ffc10307f5"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V8/WF02_Triagem.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 1043,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "36631fe6722c9f4dbc93af0e2087d2af734aac2e"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V8/WF02_Triagem.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 43,
+      "fingerprint": "43dfa7d03bacc027",
+      "blob": "36631fe6722c9f4dbc93af0e2087d2af734aac2e"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V8/WF03_Fiscal.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 841,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "345c885f020184b45aa918981731012ad5db27fe"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "backups/workflows/V8/WF03_Fiscal.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 104,
+      "fingerprint": "43dfa7d03bacc027",
+      "blob": "345c885f020184b45aa918981731012ad5db27fe"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "local_ai/scripts/local-ai-common.ps1",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 143,
+      "fingerprint": "f0f82c62b85a1443",
+      "blob": "85d6c7e13f2b92cee7678202c7bd928ede17a20a"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "local_ai/scripts/start-local-ai.ps1",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 162,
+      "fingerprint": "7fb88602ac6e86ae",
+      "blob": "05bc34d4983d4112ea1ad64ea7811d9caed1e933"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/Teste01_webhook_runtime.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 1694,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "46e50134a1dbea6502b03f0ae3fcac0f17bc6296"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/Teste01_webhook_runtime.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 855,
+      "fingerprint": "d28f0545ba5af5e8",
+      "blob": "46e50134a1dbea6502b03f0ae3fcac0f17bc6296"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/Vers\u00e3o8/wf01_export.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 1,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "d8144eb49e281802e6f299ef964f8da8c8082c9a"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/Vers\u00e3o8/wf01_export.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 1,
+      "fingerprint": "43dfa7d03bacc027",
+      "blob": "d8144eb49e281802e6f299ef964f8da8c8082c9a"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/Vers\u00e3o8/wf01_reimport.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 778,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "d070bddacf8d95094d0bfe14dd3a3d5c617ebe2f"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/Vers\u00e3o8/wf01_reimport.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 117,
+      "fingerprint": "43dfa7d03bacc027",
+      "blob": "d070bddacf8d95094d0bfe14dd3a3d5c617ebe2f"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/Vers\u00e3o8/wf02_export.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 1,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "d2d008758a4f930652a2cb8241c785a0be8034e9"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/Vers\u00e3o8/wf02_export.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 1,
+      "fingerprint": "43dfa7d03bacc027",
+      "blob": "d2d008758a4f930652a2cb8241c785a0be8034e9"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/Vers\u00e3o8/wf02_reimport.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 1048,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "b267b851d5788740c415e5e04916a5d891fdc44d"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/Vers\u00e3o8/wf02_reimport.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 48,
+      "fingerprint": "43dfa7d03bacc027",
+      "blob": "b267b851d5788740c415e5e04916a5d891fdc44d"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/all_workflows_after_v7.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 1,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "7093639d2c6c1f8798020c238aa59b0f56128533"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/all_workflows_after_v7.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 1,
+      "fingerprint": "d28f0545ba5af5e8",
+      "blob": "7093639d2c6c1f8798020c238aa59b0f56128533"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/all_workflows_after_v7.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 1,
+      "fingerprint": "43dfa7d03bacc027",
+      "blob": "7093639d2c6c1f8798020c238aa59b0f56128533"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/all_workflows_after_v7.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 1,
+      "fingerprint": "8b15350f80d8b034",
+      "blob": "7093639d2c6c1f8798020c238aa59b0f56128533"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/all_workflows_export_runtime.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 1,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "fce1080f33a63a3874957bc3cd84ed8305a12371"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/all_workflows_export_runtime.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 1,
+      "fingerprint": "d28f0545ba5af5e8",
+      "blob": "fce1080f33a63a3874957bc3cd84ed8305a12371"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/all_workflows_export_runtime.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 1,
+      "fingerprint": "43dfa7d03bacc027",
+      "blob": "fce1080f33a63a3874957bc3cd84ed8305a12371"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/all_workflows_export_runtime.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 1,
+      "fingerprint": "8b15350f80d8b034",
+      "blob": "fce1080f33a63a3874957bc3cd84ed8305a12371"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/v7_runtime_export.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 1,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "5f5972eb5d6193c412cce8ea5ac51b154d467679"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/v7_runtime_export.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 1,
+      "fingerprint": "43dfa7d03bacc027",
+      "blob": "5f5972eb5d6193c412cce8ea5ac51b154d467679"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "local_ai/scripts/start-local-ai.ps1",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 156,
+      "fingerprint": "7fb88602ac6e86ae",
+      "blob": "e4fd75ec6fee4ab02dad6a6723b6e883e5b4675d"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": ".codex/Mem\u00f3ria.md",
+      "rule": "openai_key",
+      "line": 215,
+      "fingerprint": "2cde2abdb21a3c38",
+      "blob": "fc8618fe3cb28899c62c053d23c156d58e85a245"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": ".codex/Mem\u00f3ria.md",
+      "rule": "google_api_key",
+      "line": 215,
+      "fingerprint": "fb62c2ed4afe56bf",
+      "blob": "fc8618fe3cb28899c62c053d23c156d58e85a245"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "glpi/.env",
+      "rule": "credential_assignment",
+      "variable": "MYSQL_ROOT_PASSWORD",
+      "line": 2,
+      "fingerprint": "cdf95b61a1525a57",
+      "blob": "d763f10ae0563a8184dd45828874fb644b2ba654"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "glpi/.env",
+      "rule": "credential_assignment",
+      "variable": "MYSQL_PASSWORD",
+      "line": 5,
+      "fingerprint": "801309fed736ed9a",
+      "blob": "d763f10ae0563a8184dd45828874fb644b2ba654"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "glpi/.env",
+      "rule": "credential_assignment",
+      "variable": "GLPI_APP_TOKEN",
+      "line": 6,
+      "fingerprint": "783e2e5720889347",
+      "blob": "d763f10ae0563a8184dd45828874fb644b2ba654"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "glpi/backups/glpi_full_backup_20260506_210824/app_files/glpi_app/config/oauth.pem",
+      "rule": "private_key",
+      "line": 1,
+      "fingerprint": "3021d90eb9437b2d",
+      "blob": "a685d3dca08dc9aeb047ed6399892748fd5e0779"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "glpi/backups/glpi_full_backup_20260506_210824/app_files/glpi_app/vendor/firebase/php-jwt/README.md",
+      "rule": "private_key",
+      "line": 113,
+      "fingerprint": "8bcac7908eb95041",
+      "blob": "65b6c8609dde7241add142c82d0b11c499514ed7"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "glpi/backups/glpi_full_backup_20260506_210824/integration_webhook/WF01_Orquestrador.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 767,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "e2497a97886c9cec45daea08660f9c94a8330402"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "glpi/backups/glpi_full_backup_20260506_210824/integration_webhook/WF01_Orquestrador.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 111,
+      "fingerprint": "43dfa7d03bacc027",
+      "blob": "e2497a97886c9cec45daea08660f9c94a8330402"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "glpi/backups/glpi_full_backup_20260506_210824/integration_webhook/WF02_Triagem.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 1019,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "2c61705a2e97c08a7a8750f69422915fbc225cab"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "glpi/backups/glpi_full_backup_20260506_210824/integration_webhook/WF02_Triagem.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 43,
+      "fingerprint": "43dfa7d03bacc027",
+      "blob": "2c61705a2e97c08a7a8750f69422915fbc225cab"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "glpi/backups/glpi_full_backup_20260506_210824/integration_webhook/WF03_Fiscal.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 817,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "ffe9ce69ca19c8311a241173d94538a06c45c164"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "glpi/backups/glpi_full_backup_20260506_210824/integration_webhook/WF03_Fiscal.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 104,
+      "fingerprint": "43dfa7d03bacc027",
+      "blob": "ffe9ce69ca19c8311a241173d94538a06c45c164"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "glpi/backups/glpi_full_backup_20260506_210824/integration_webhook/glpi_docker-compose.yml",
+      "rule": "credential_assignment",
+      "variable": "MYSQL_ROOT_PASSWORD",
+      "line": 11,
+      "fingerprint": "cdf95b61a1525a57",
+      "blob": "f60ed1ed65f700a1ff846bf92cc3d40095d40005"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "glpi/backups/glpi_full_backup_20260506_210824/integration_webhook/glpi_docker-compose.yml",
+      "rule": "credential_assignment",
+      "variable": "MYSQL_PASSWORD",
+      "line": 14,
+      "fingerprint": "801309fed736ed9a",
+      "blob": "f60ed1ed65f700a1ff846bf92cc3d40095d40005"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "glpi/backups/glpi_full_backup_20260506_210824/integration_webhook/n8n_docker-compose.yml",
+      "rule": "google_api_key",
+      "line": 38,
+      "fingerprint": "fb62c2ed4afe56bf",
+      "blob": "8e8e9ef316b22cbaf7b9d62cde53b8da6c3663dd"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "glpi/backups/glpi_full_backup_20260506_210824/integration_webhook/n8n_v8_workflows_api.json",
+      "rule": "structured_credential_literal",
+      "variable": "APP-TOKEN",
+      "line": 7068,
+      "fingerprint": "bfb33be83dd2f77d",
+      "blob": "fb48b4cfe09587175b7512a9d121d707b0a753ad"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "glpi/backups/glpi_full_backup_20260506_210824/integration_webhook/n8n_v8_workflows_api.json",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 6412,
+      "fingerprint": "43dfa7d03bacc027",
+      "blob": "fb48b4cfe09587175b7512a9d121d707b0a753ad"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/.env",
+      "rule": "credential_assignment",
+      "variable": "POSTGRES_PASSWORD",
+      "line": 1,
+      "fingerprint": "8a63428090aa967a",
+      "blob": "1d0d8b47f774bc8b534308c350178da2594d6f41"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/.env",
+      "rule": "credential_assignment",
+      "variable": "GLPI_APP_TOKEN",
+      "line": 8,
+      "fingerprint": "783e2e5720889347",
+      "blob": "1d0d8b47f774bc8b534308c350178da2594d6f41"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/.env",
+      "rule": "credential_assignment",
+      "variable": "TEST_AUTO_REVIEW_TOKEN",
+      "line": 17,
+      "fingerprint": "5c9b97780d2be7a5",
+      "blob": "1d0d8b47f774bc8b534308c350178da2594d6f41"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/.env",
+      "rule": "credential_assignment",
+      "variable": "IA_LOCAL_API_TOKEN",
+      "line": 46,
+      "fingerprint": "7d7b5ffb947701e1",
+      "blob": "1d0d8b47f774bc8b534308c350178da2594d6f41"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "n8n/workflows/all_credentials_export_runtime.json",
+      "rule": "google_api_key",
+      "line": 1,
+      "fingerprint": "fb62c2ed4afe56bf",
+      "blob": "291e265b3701f4d14fdd01a37e4890081ef81fcd"
+    },
+    {
+      "scope": "reachable_git_history",
+      "path": "local_ai/scripts/start-local-ai.ps1",
+      "rule": "structured_credential_literal",
+      "variable": "AUTHORIZATION",
+      "line": 144,
+      "fingerprint": "7fb88602ac6e86ae",
+      "blob": "cf7a29f0ba07ef21be6522037d35756d97512bf2"
+    }
+  ],
+  "secrets_printed": false
+}

@@ -1,0 +1,297 @@
+{
+  "bootstrap_group_resamples": 2000,
+  "config_path": "avaliacao\\config\\selecao_modelos_supervisionados_v3.json",
+  "config_sha256": "5632375c8b0c4db66c5da375bb1fdf1f84d0890637f8a2684447bff2b78db2f0",
+  "development_dataset_path": "avaliacao\\datasets\\semantico_v3\\desenvolvimento_semantico_v3_1.jsonl",
+  "development_dataset_sha256": "437e516f6d198927817a9fb2dd730105e7814958c37656f864f35b90d9ac4bbb",
+  "embedding": {
+    "cache": {
+      "backend": "pytorch_fp32",
+      "batch8_latency_ms": {
+        "n": 10,
+        "p50": 397.77459999822895,
+        "p95": 946.6216649996559
+      },
+      "cache_hit": true,
+      "confirmatory_eligible": false,
+      "created_at": "2026-09-15T15:44:05.705718+00:00",
+      "dataset_sha256": "437e516f6d198927817a9fb2dd730105e7814958c37656f864f35b90d9ac4bbb",
+      "development_only": true,
+      "dimension": 384,
+      "encode_peak_rss_mb": 817.75,
+      "evidence_basis": "SYNTHETIC_PROXY_LABELS",
+      "file_count": 11,
+      "load_peak_rss_mb": 743.46484375,
+      "load_seconds": 2.931444499998179,
+      "local_path": "local_ai\\models\\multilingual-e5-small",
+      "measurement_scope": "encoder_only_sequential_process",
+      "model_id": "multilingual_e5_small",
+      "normalized": true,
+      "packages": {
+        "sentence_transformers": "5.6.0",
+        "torch": "2.13.0+cpu",
+        "transformers": "4.57.6"
+      },
+      "repository": "intfloat/multilingual-e5-small",
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+      "roles": {
+        "retrieval_passage": {
+          "keys_sha256": "e66a91660d28074a5e4159598643512e8bf415fa88c315c6a9dd2e53a2002668",
+          "npz_sha256": "cb05a34963ff0d7cc77b7fc38d29eef59d082365fc53ecca598864746e42af7a",
+          "peak_rss_mb": 817.75,
+          "prefix": "passage: ",
+          "records": 358,
+          "seconds": 33.500177499998244,
+          "texts_per_second": 10.686510541623809
+        },
+        "retrieval_query": {
+          "keys_sha256": "ffe13abc66c40338cb013feab20e690280b93c5f42b896d7165e6a3c3882be42",
+          "npz_sha256": "be0dac75e2e239d69fb53e194aab815919f38f3b15efe9fdf92a2539a79d938e",
+          "peak_rss_mb": 815.98828125,
+          "prefix": "query: ",
+          "records": 186,
+          "seconds": 15.076655799999571,
+          "texts_per_second": 12.3369533978487
+        },
+        "symmetric": {
+          "keys_sha256": "0babb15b0215ed83c749b3872eaa202dc18a00cbb957197b8d0bd3f4d1b73a97",
+          "npz_sha256": "683c623a17184383effbff8e9c49575ef09cb2f5e8438527f61601fce91f71c9",
+          "peak_rss_mb": 815.73828125,
+          "prefix": "query: ",
+          "records": 1164,
+          "seconds": 60.806067199999234,
+          "texts_per_second": 19.14282658951531
+        }
+      },
+      "rss_before_mb": 435.8671875,
+      "schema": "projeto-ic-embedding-cache-v1",
+      "scientific_result": false,
+      "single_text_latency_ms": {
+        "n": 20,
+        "p50": 98.28470000138623,
+        "p95": 155.37244500119414
+      },
+      "total_bytes": 493294398,
+      "tree_sha256": "ea6db56024d2b0c8743c6af329e69b6e5628edf75e99d9fdf9b68ba730f8e8c9",
+      "validated_at": "2026-09-15T20:42:47.516906+00:00"
+    },
+    "id": "multilingual_e5_small",
+    "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "tree_sha256": "ea6db56024d2b0c8743c6af329e69b6e5628edf75e99d9fdf9b68ba730f8e8c9"
+  },
+  "frozen_at": "2026-09-15T20:43:10.003737+00:00",
+  "implementation_sha256": {
+    "avaliacao\\scripts\\avaliar_desafio_selado.py": "f46a1fb71944e7f004724e3a07699d3775d9d5c7e5d4839039c190be718f5254",
+    "avaliacao\\scripts\\selecionar_modelos_supervisionados.py": "32f7937b00a9816c6b090d38dd68d4f39bb2494ffb98717387102de8f6ae6fbf",
+    "avaliacao\\scripts\\treinar_modelo_local.py": "73bc75ff565c7b40c2190b4fed18f8507d8ab8e32110699d037946bc87fbc5f7"
+  },
+  "locked_challenge_expected_sha256": "a5a23ce013655ba30c4643c4eab712e541c3faf1b4db33ad988ee5d0ed45d9e3",
+  "locked_challenge_path": "avaliacao\\datasets\\semantico_v3\\desafio_semantico_bloqueado_v3_1.jsonl",
+  "schema": "projeto-ic-avaliacao-desafio-selado-v1",
+  "selection_results_path": "avaliacao\\resultados\\selecao-supervisionada-v3-20260915\\resultados.json",
+  "selection_results_sha256": "1b656b6c53231597e5710b7277667a2095d40a52329d0fabc7eb8f118dc0a722",
+  "selection_run_fingerprint": "4e693e499be3b80489c2e27e6f7bed5c9c2a5f704253f8e7533cbdf538122484",
+  "status": "FROZEN_BEFORE_CHALLENGE_ACCESS",
+  "tasks": {
+    "classification": {
+      "artifact": "modelos_congelados\\classification.joblib",
+      "artifact_sha256": "9debfb49733790944b348e5abfd68187745f1ba96a57fcaa7be67d91ae4b74b9",
+      "best_parameters_mode": {
+        "model__alpha": 0.001,
+        "model__hidden_layer_sizes": [
+          16
+        ]
+      },
+      "calibration_folds": [
+        {
+          "fit_group_counts_by_label": {
+            "0": 5,
+            "1": 3,
+            "2": 4,
+            "3": 4
+          },
+          "fit_groups": 16,
+          "fit_records": 82,
+          "fold": 0,
+          "group_overlap": 0,
+          "validation_group_counts_by_label": {
+            "0": 3,
+            "1": 5,
+            "2": 4,
+            "3": 4
+          },
+          "validation_groups": 16,
+          "validation_records": 94
+        },
+        {
+          "fit_group_counts_by_label": {
+            "0": 3,
+            "1": 5,
+            "2": 4,
+            "3": 4
+          },
+          "fit_groups": 16,
+          "fit_records": 94,
+          "fold": 1,
+          "group_overlap": 0,
+          "validation_group_counts_by_label": {
+            "0": 5,
+            "1": 3,
+            "2": 4,
+            "3": 4
+          },
+          "validation_groups": 16,
+          "validation_records": 82
+        }
+      ],
+      "calibration_method": "sigmoid",
+      "calibration_unit_ids_sha256": "deade056afc05cc070a7f57af0bf74f652138836596072641afd726df89e50d6",
+      "combination_id": "classification__hybrid__multilingual_e5_small__mlp",
+      "fit_calibration_split": {
+        "balance_score": 0.03961038961038958,
+        "calibration_group_counts_by_label": {
+          "0": 8,
+          "1": 8,
+          "2": 8,
+          "3": 8
+        },
+        "calibration_groups": 32,
+        "calibration_label_counts": {
+          "0": 32,
+          "1": 80,
+          "2": 48,
+          "3": 16
+        },
+        "calibration_records": 176,
+        "fit_group_counts_by_label": {
+          "0": 12,
+          "1": 12,
+          "2": 12,
+          "3": 12
+        },
+        "fit_groups": 48,
+        "fit_label_counts": {
+          "0": 48,
+          "1": 120,
+          "2": 72,
+          "3": 32
+        },
+        "fit_records": 272,
+        "group_overlap": 0
+      },
+      "fit_unit_ids_sha256": "529c031ce86438db25b82a8061e569c417ea3e162f2280414b9ee9b3345ed67a",
+      "policy": {
+        "automatic_maintenance_as_obra": 0,
+        "automatic_non_obra_as_obra": 0,
+        "coverage": 0.8977272727272727,
+        "covered": 158,
+        "eligible": true,
+        "errors": 0,
+        "obra_threshold": 0.92,
+        "risk": 0.0,
+        "threshold": 0.92
+      },
+      "selection_evidence": "PROVISIONAL_POINT_CANDIDATE"
+    },
+    "deduplication": {
+      "artifact": "modelos_congelados\\deduplication.joblib",
+      "artifact_sha256": "f9bf53a6d0a984e8890ca9e598b40fca98b9e5e6dd20928a1ce26a5b6cbbdfee",
+      "best_parameters_mode": {
+        "model__C": 10.0
+      },
+      "calibration_folds": [
+        {
+          "fit_group_counts_by_label": {
+            "0": 4,
+            "1": 6
+          },
+          "fit_groups": 6,
+          "fit_records": 80,
+          "fold": 0,
+          "group_overlap": 0,
+          "validation_group_counts_by_label": {
+            "0": 3,
+            "1": 7
+          },
+          "validation_groups": 7,
+          "validation_records": 70
+        },
+        {
+          "fit_group_counts_by_label": {
+            "0": 3,
+            "1": 7
+          },
+          "fit_groups": 7,
+          "fit_records": 70,
+          "fold": 1,
+          "group_overlap": 0,
+          "validation_group_counts_by_label": {
+            "0": 4,
+            "1": 6
+          },
+          "validation_groups": 6,
+          "validation_records": 80
+        }
+      ],
+      "calibration_method": "sigmoid",
+      "calibration_unit_ids_sha256": "0033134ed1c081d60f3b619d7112aa42fcc459d0b5c681e375e3004feed47bc7",
+      "combination_id": "deduplication__hybrid_metadata__multilingual_e5_small__logistic_regression",
+      "fit_calibration_split": {
+        "balance_score": 0.019888268156424638,
+        "calibration_group_counts_by_label": {
+          "0": 7,
+          "1": 13
+        },
+        "calibration_groups": 13,
+        "calibration_label_counts": {
+          "0": 72,
+          "1": 78
+        },
+        "calibration_records": 150,
+        "fit_group_counts_by_label": {
+          "0": 10,
+          "1": 18
+        },
+        "fit_groups": 18,
+        "fit_label_counts": {
+          "0": 100,
+          "1": 108
+        },
+        "fit_records": 208,
+        "group_overlap": 0
+      },
+      "fit_unit_ids_sha256": "7aea22f622f003d5182f8a99e21ad03c8e10d9a18dfe98beeda1c1fd0fa3aca8",
+      "policy": {
+        "curve_points": 2450,
+        "eligible": true,
+        "negative_threshold": 0.21,
+        "positive_threshold": 0.93,
+        "selected": {
+          "abstained": 0,
+          "automated_false_negative_rate": 0.0,
+          "automated_false_positive_rate": 0.0,
+          "automation_duplicate_recall": 1.0,
+          "automation_nonduplicate_recall": 1.0,
+          "coverage": 1.0,
+          "covered": 150,
+          "covered_error_rate": 0.0,
+          "false_negative_cost": 5.0,
+          "false_positive_cost": 1.0,
+          "fn": 0,
+          "fp": 0,
+          "negative_predictive_value": 1.0,
+          "negative_threshold": 0.21,
+          "negatives": 72,
+          "positive_threshold": 0.93,
+          "positives": 78,
+          "precision": 1.0,
+          "threshold": 0.93,
+          "tn": 72,
+          "tp": 78,
+          "weighted_covered_error": 0.0
+        }
+      },
+      "selection_evidence": "PROVISIONAL_POINT_CANDIDATE"
+    }
+  }
+}

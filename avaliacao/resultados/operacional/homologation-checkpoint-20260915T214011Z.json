@@ -1,0 +1,44 @@
+{
+  "schema_version": "projeto-ic-homologation-checkpoint-v1",
+  "checkpoint_at_utc": "2026-09-15T21:40:11.374627Z",
+  "checkpoint_at_brt": "2026-09-15T18:40:11.374627-03:00",
+  "timezone": "America/Sao_Paulo",
+  "daemon": {
+    "valid_instance_count": 1,
+    "executable_path": ".venv\\Scripts\\pythonw.exe",
+    "command_requirements": [
+      "monitor_daemon.py",
+      "monitoring-homolog-20260910-v2",
+      "--interval-seconds 60"
+    ]
+  },
+  "technical_windows": {
+    "completed": 18,
+    "complete_decision_coverage": 18,
+    "passing_all_slo": 0,
+    "latest_drift_status": "INSUFFICIENT_DATA"
+  },
+  "atomic_queue_state_artifact": "runtime-queue-state-20260915T214010Z.json",
+  "atomic_queue_state": {
+    "status": "PASS",
+    "erro_ia": 0,
+    "active_queue": 0,
+    "open_dlq": 0
+  },
+  "validation": {
+    "operational_tests": "45 passed",
+    "v9_static_validation": "passed"
+  },
+  "selection_checkpoint": {
+    "completed": 10,
+    "failed": 0,
+    "pending": 0,
+    "running": 0,
+    "xai_complete": true,
+    "performance_benchmark_complete": true,
+    "challenge_evaluation_recorded": true
+  },
+  "scientific_result": false,
+  "production_ready": false,
+  "interpretation_limit": "Telemetria e resultados de seleção/desafio são técnicos e sintéticos/proxy; não demonstram eficácia institucional, correção semântica institucional, scientific_ready ou production_ready."
+}

@@ -1,0 +1,542 @@
+{
+  "comparisons": {
+    "classification": {
+      "exact_paired_transition_counts": {
+        "availability": {
+          "baseline_only": 0,
+          "both_negative": 0,
+          "both_positive": 640,
+          "candidate_only": 0
+        },
+        "semantic_coverage": {
+          "baseline_only": 19,
+          "both_negative": 168,
+          "both_positive": 439,
+          "candidate_only": 14
+        },
+        "straight_through_automation": {
+          "baseline_only": 19,
+          "both_negative": 226,
+          "both_positive": 382,
+          "candidate_only": 13
+        },
+        "strict_correctness": {
+          "baseline_only": 18,
+          "both_negative": 169,
+          "both_positive": 438,
+          "candidate_only": 15
+        }
+      },
+      "latency_on_common_available_units": {
+        "baseline_ms": {
+          "mean": 141.91073281250002,
+          "p50": 159.782,
+          "p95": 242.037
+        },
+        "candidate_ms": {
+          "mean": 215.74760625,
+          "p50": 169.715,
+          "p95": 662.508
+        },
+        "common_available_records": 640,
+        "paired_difference_candidate_minus_baseline_ms": {
+          "candidate_faster": 215,
+          "candidate_slower": 425,
+          "equal": 0,
+          "mean": 73.8368734375,
+          "p50": 12.048000000000002,
+          "p95": 477.3829999999999
+        }
+      },
+      "marginal_descriptive_metrics": {
+        "baseline": {
+          "availability": {
+            "denominator": 640,
+            "numerator": 640,
+            "value": 1.0
+          },
+          "latency_ms_available_only": {
+            "mean": 141.91073281250002,
+            "p50": 159.782,
+            "p95": 242.037
+          },
+          "records": 640,
+          "selective_accuracy": {
+            "denominator": 458,
+            "numerator": 456,
+            "value": 0.9956331877729258
+          },
+          "semantic_coverage": {
+            "denominator": 640,
+            "numerator": 458,
+            "value": 0.715625
+          },
+          "straight_through_automation": {
+            "denominator": 640,
+            "numerator": 401,
+            "value": 0.6265625
+          }
+        },
+        "candidate": {
+          "availability": {
+            "denominator": 640,
+            "numerator": 640,
+            "value": 1.0
+          },
+          "latency_ms_available_only": {
+            "mean": 215.74760625,
+            "p50": 169.715,
+            "p95": 662.508
+          },
+          "records": 640,
+          "selective_accuracy": {
+            "denominator": 453,
+            "numerator": 453,
+            "value": 1.0
+          },
+          "semantic_coverage": {
+            "denominator": 640,
+            "numerator": 453,
+            "value": 0.7078125
+          },
+          "straight_through_automation": {
+            "denominator": 640,
+            "numerator": 395,
+            "value": 0.6171875
+          }
+        },
+        "delta_candidate_minus_baseline": {
+          "availability": 0.0,
+          "latency_ms_available_only": {
+            "mean": 73.83687343749997,
+            "p50": 9.932999999999993,
+            "p95": 420.471
+          },
+          "selective_accuracy": 0.004366812227074246,
+          "semantic_coverage": -0.0078125,
+          "straight_through_automation": -0.009375000000000022
+        },
+        "records": 640
+      },
+      "selective_accuracy_on_common_covered_units": {
+        "baseline_accuracy": 0.9977220956719818,
+        "candidate_accuracy": 1.0,
+        "common_covered_records": 439,
+        "correctness_transitions": {
+          "baseline_only": 0,
+          "both_negative": 0,
+          "both_positive": 438,
+          "candidate_only": 1
+        },
+        "delta_candidate_minus_baseline": 0.002277904328018221
+      }
+    },
+    "deduplication": {
+      "exact_paired_transition_counts": {
+        "availability": {
+          "baseline_only": 1,
+          "both_negative": 0,
+          "both_positive": 599,
+          "candidate_only": 0
+        },
+        "semantic_coverage": {
+          "baseline_only": 0,
+          "both_negative": 300,
+          "both_positive": 213,
+          "candidate_only": 87
+        },
+        "straight_through_automation": {
+          "baseline_only": 0,
+          "both_negative": 409,
+          "both_positive": 104,
+          "candidate_only": 87
+        },
+        "strict_correctness": {
+          "baseline_only": 0,
+          "both_negative": 300,
+          "both_positive": 213,
+          "candidate_only": 87
+        }
+      },
+      "latency_on_common_available_units": {
+        "baseline_ms": {
+          "mean": 704.9719098497496,
+          "p50": 658.908,
+          "p95": 924.554
+        },
+        "candidate_ms": {
+          "mean": 1142.857305509182,
+          "p50": 878.591,
+          "p95": 2405.252
+        },
+        "common_available_records": 599,
+        "paired_difference_candidate_minus_baseline_ms": {
+          "candidate_faster": 115,
+          "candidate_slower": 484,
+          "equal": 0,
+          "mean": 437.8853956594324,
+          "p50": 205.462,
+          "p95": 1762.585
+        }
+      },
+      "marginal_descriptive_metrics": {
+        "baseline": {
+          "availability": {
+            "denominator": 600,
+            "numerator": 600,
+            "value": 1.0
+          },
+          "latency_ms_available_only": {
+            "mean": 704.9131783333333,
+            "p50": 658.908,
+            "p95": 924.514
+          },
+          "records": 600,
+          "selective_accuracy": {
+            "denominator": 213,
+            "numerator": 213,
+            "value": 1.0
+          },
+          "semantic_coverage": {
+            "denominator": 600,
+            "numerator": 213,
+            "value": 0.355
+          },
+          "straight_through_automation": {
+            "denominator": 600,
+            "numerator": 104,
+            "value": 0.17333333333333334
+          }
+        },
+        "candidate": {
+          "availability": {
+            "denominator": 600,
+            "numerator": 599,
+            "value": 0.9983333333333333
+          },
+          "latency_ms_available_only": {
+            "mean": 1142.857305509182,
+            "p50": 878.591,
+            "p95": 2405.252
+          },
+          "records": 600,
+          "selective_accuracy": {
+            "denominator": 300,
+            "numerator": 300,
+            "value": 1.0
+          },
+          "semantic_coverage": {
+            "denominator": 600,
+            "numerator": 300,
+            "value": 0.5
+          },
+          "straight_through_automation": {
+            "denominator": 600,
+            "numerator": 191,
+            "value": 0.31833333333333336
+          }
+        },
+        "delta_candidate_minus_baseline": {
+          "availability": -0.0016666666666667052,
+          "latency_ms_available_only": {
+            "mean": 437.9441271758486,
+            "p50": 219.683,
+            "p95": 1480.7379999999998
+          },
+          "selective_accuracy": 0.0,
+          "semantic_coverage": 0.14500000000000002,
+          "straight_through_automation": 0.14500000000000002
+        },
+        "records": 600
+      },
+      "selective_accuracy_on_common_covered_units": {
+        "baseline_accuracy": 1.0,
+        "candidate_accuracy": 1.0,
+        "common_covered_records": 213,
+        "correctness_transitions": {
+          "baseline_only": 0,
+          "both_negative": 0,
+          "both_positive": 213,
+          "candidate_only": 0
+        },
+        "delta_candidate_minus_baseline": 0.0
+      }
+    },
+    "overall": {
+      "exact_paired_transition_counts": {
+        "availability": {
+          "baseline_only": 1,
+          "both_negative": 0,
+          "both_positive": 1239,
+          "candidate_only": 0
+        },
+        "semantic_coverage": {
+          "baseline_only": 19,
+          "both_negative": 468,
+          "both_positive": 652,
+          "candidate_only": 101
+        },
+        "straight_through_automation": {
+          "baseline_only": 19,
+          "both_negative": 635,
+          "both_positive": 486,
+          "candidate_only": 100
+        },
+        "strict_correctness": {
+          "baseline_only": 18,
+          "both_negative": 469,
+          "both_positive": 651,
+          "candidate_only": 102
+        }
+      },
+      "latency_on_common_available_units": {
+        "baseline_ms": {
+          "mean": 414.12513559322036,
+          "p50": 306.28,
+          "p95": 838.867
+        },
+        "candidate_ms": {
+          "mean": 663.9628684422921,
+          "p50": 544.94,
+          "p95": 1781.497
+        },
+        "common_available_records": 1239,
+        "paired_difference_candidate_minus_baseline_ms": {
+          "candidate_faster": 330,
+          "candidate_slower": 909,
+          "equal": 0,
+          "mean": 249.83773284907184,
+          "p50": 50.551000000000045,
+          "p95": 1137.8500000000001
+        }
+      },
+      "marginal_descriptive_metrics": {
+        "baseline": {
+          "availability": {
+            "denominator": 1240,
+            "numerator": 1240,
+            "value": 1.0
+          },
+          "latency_ms_available_only": {
+            "mean": 414.33127096774194,
+            "p50": 306.28,
+            "p95": 838.088
+          },
+          "records": 1240,
+          "selective_accuracy": {
+            "denominator": 671,
+            "numerator": 669,
+            "value": 0.9970193740685543
+          },
+          "semantic_coverage": {
+            "denominator": 1240,
+            "numerator": 671,
+            "value": 0.5411290322580645
+          },
+          "straight_through_automation": {
+            "denominator": 1240,
+            "numerator": 505,
+            "value": 0.40725806451612906
+          }
+        },
+        "candidate": {
+          "availability": {
+            "denominator": 1240,
+            "numerator": 1239,
+            "value": 0.9991935483870967
+          },
+          "latency_ms_available_only": {
+            "mean": 663.9628684422921,
+            "p50": 544.94,
+            "p95": 1781.497
+          },
+          "records": 1240,
+          "selective_accuracy": {
+            "denominator": 753,
+            "numerator": 753,
+            "value": 1.0
+          },
+          "semantic_coverage": {
+            "denominator": 1240,
+            "numerator": 753,
+            "value": 0.6072580645161291
+          },
+          "straight_through_automation": {
+            "denominator": 1240,
+            "numerator": 586,
+            "value": 0.47258064516129034
+          }
+        },
+        "delta_candidate_minus_baseline": {
+          "availability": -0.0008064516129032695,
+          "latency_ms_available_only": {
+            "mean": 249.63159747455018,
+            "p50": 238.66000000000008,
+            "p95": 943.4090000000001
+          },
+          "selective_accuracy": 0.0029806259314456574,
+          "semantic_coverage": 0.06612903225806455,
+          "straight_through_automation": 0.06532258064516128
+        },
+        "records": 1240
+      },
+      "selective_accuracy_on_common_covered_units": {
+        "baseline_accuracy": 0.9984662576687117,
+        "candidate_accuracy": 1.0,
+        "common_covered_records": 652,
+        "correctness_transitions": {
+          "baseline_only": 0,
+          "both_negative": 0,
+          "both_positive": 651,
+          "candidate_only": 1
+        },
+        "delta_candidate_minus_baseline": 0.0015337423312883347
+      }
+    }
+  },
+  "created_at": "2026-08-17T23:47:16.978030+00:00",
+  "engineering_interpretation": {
+    "candidate_equal_or_higher_selective_accuracy": true,
+    "candidate_improves_availability": false,
+    "candidate_improves_mean_available_latency": false,
+    "candidate_improves_semantic_coverage": true,
+    "candidate_improves_straight_through_automation": true,
+    "not_proven_superior_in_generalization": true,
+    "recommendation": {
+      "candidate_version": "local-hybrid-v1.9.0",
+      "criteria": [
+        {
+          "name": "availability_delta",
+          "observed": -0.0008064516129032695,
+          "operator": ">=",
+          "passed": false,
+          "threshold": 0.0
+        },
+        {
+          "name": "semantic_coverage_delta",
+          "observed": 0.06612903225806455,
+          "operator": ">=",
+          "passed": true,
+          "threshold": 0.0
+        },
+        {
+          "name": "straight_through_automation_delta",
+          "observed": 0.06532258064516128,
+          "operator": ">=",
+          "passed": true,
+          "threshold": 0.0
+        },
+        {
+          "name": "common_covered_accuracy_delta",
+          "observed": 0.0015337423312883347,
+          "operator": ">=",
+          "passed": true,
+          "threshold": -0.0
+        },
+        {
+          "name": "strict_correctness_delta_all_units",
+          "observed": 0.06774193548387097,
+          "operator": ">=",
+          "passed": true,
+          "threshold": 0.0
+        },
+        {
+          "name": "mean_paired_latency_delta_ms",
+          "observed": 249.83773284907184,
+          "operator": "<=",
+          "passed": false,
+          "threshold": 0.0
+        },
+        {
+          "name": "common_covered_units",
+          "observed": 652,
+          "operator": ">=",
+          "passed": true,
+          "threshold": 30
+        }
+      ],
+      "failed_criteria": [
+        "availability_delta",
+        "mean_paired_latency_delta_ms"
+      ],
+      "missing_criteria": [],
+      "policy": {
+        "max_common_covered_accuracy_regression": 0.0,
+        "max_mean_paired_latency_regression_ms": 0.0,
+        "min_availability_delta": 0.0,
+        "min_common_covered_units": 30,
+        "min_semantic_coverage_delta": 0.0,
+        "min_straight_through_automation_delta": 0.0
+      },
+      "recommended_for_next_engineering_stage": false,
+      "scientific_superiority_claim_allowed": false,
+      "scope": "DESCRIPTIVE_ENGINEERING_ONLY",
+      "status": "CANDIDATE_NOT_RECOMMENDED"
+    },
+    "recommended_for_next_engineering_stage": false
+  },
+  "pairing_validation": {
+    "baseline_unique_unit_ids": 1240,
+    "candidate_unique_unit_ids": 1240,
+    "dataset_manifest_sha256_identical": true,
+    "dataset_sha256_identical": true,
+    "expected_units": 1240,
+    "gold_identical_for_all_units": true,
+    "passed": true,
+    "prediction_identity_matches_units": true,
+    "shared_input_sha256_identical_for_all_units": true,
+    "standardized_summary_metrics_reproduced": true,
+    "task_identical_for_all_units": true,
+    "unit_file_sha256": "88b6b2125e8d7ba11edfe50c09c55fd9069a1778f7a79ff0e294c8f7b233d6f6",
+    "unit_files_byte_identical": true,
+    "unit_id_sets_identical": true
+  },
+  "schema_version": "projeto-ic-local-version-engineering-comparison-v1.0.0",
+  "scientific_scope": {
+    "confirmatory_result": false,
+    "generalization_claim_allowed": false,
+    "noninferiority_test_performed": false,
+    "reason": "As duas versões foram reexecutadas no mesmo corpus sintético de desenvolvimento; as realizações do mesmo núcleo semântico não são uma amostra externa independente.",
+    "significance_test_performed": false
+  },
+  "sources": {
+    "baseline": {
+      "artifact_sha256": {
+        "plan": "ae7ed0b9ae262b165e15c86af57805639a892fb9fbc3908901c7209e1402d618",
+        "predictions": "258106f1eebbaee5a56e118c1b4bda09c193719de8af4ce7f40e565562103603",
+        "summary": "e0409cd463798e8a65b4d14ec4dd8968c04de211d468f58df3d3acf0f31da55e",
+        "units": "88b6b2125e8d7ba11edfe50c09c55fd9069a1778f7a79ff0e294c8f7b233d6f6"
+      },
+      "bundle_sha256": "f518b7f9699aa9e23aab7eb2479990619ad5085994569b3f7c3f253e5207bb5d",
+      "dataset_manifest_sha256": "deb2dc0d60a22d8022dcc85722ab46dbb0a0808c5c87a6b2b7e25deef336870d",
+      "dataset_sha256": "0de50381c0dfaefeb1a940cd697f9c9a8e87b5efee9252a1f4ca43c9d904f204",
+      "dataset_version": "desenvolvimento-local-v1.1.0",
+      "directory": "avaliacao\\resultados\\local-only-desenvolvimento-v1.8.0-20260716",
+      "model_version": "local-hybrid-v1.8.0",
+      "summary_contract": "1.2.0",
+      "summary_status": "LOCAL_ONLY_ENGINEERING_RESULTS_NON_CONFIRMATORY"
+    },
+    "candidate": {
+      "artifact_sha256": {
+        "plan": "82ea77fd70eb935da62c72026775b6115447a0fb02cc614892a43a47694e4c2c",
+        "predictions": "476982c0a3b3676cc922263c1710904ce469734caa1de0e74ebca4d6ed4ec218",
+        "summary": "08621726e1bcd95a55b5e01d1409caf2ff4ecb6f0f5fc7050d939f2173dbfc71",
+        "units": "88b6b2125e8d7ba11edfe50c09c55fd9069a1778f7a79ff0e294c8f7b233d6f6"
+      },
+      "bundle_sha256": "895191ef9281d39260fc5071fc6e8f3c3b15a0d85612f0e5b271d434b6e1af83",
+      "dataset_manifest_sha256": "deb2dc0d60a22d8022dcc85722ab46dbb0a0808c5c87a6b2b7e25deef336870d",
+      "dataset_sha256": "0de50381c0dfaefeb1a940cd697f9c9a8e87b5efee9252a1f4ca43c9d904f204",
+      "dataset_version": "desenvolvimento-local-v1.1.0",
+      "directory": "avaliacao\\resultados\\local-only-desenvolvimento-v1.9.0-20260817-rerun02",
+      "model_version": "local-hybrid-v1.9.0",
+      "summary_contract": "1.2.0",
+      "summary_status": "LOCAL_ONLY_ENGINEERING_RESULTS_NON_CONFIRMATORY"
+    },
+    "metric_contract_implementation": {
+      "contract": "1.2.0",
+      "path": "avaliacao\\scripts\\benchmark_pareado_local_gemini.py",
+      "sha256": "122128e18a01a0e07571d07032ce3787604be9a0c2202f1c923154d35106d88f"
+    }
+  },
+  "status": "DESCRIPTIVE_ENGINEERING_COMPARISON_NON_CONFIRMATORY"
+}

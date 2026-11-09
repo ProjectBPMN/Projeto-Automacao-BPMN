@@ -1,0 +1,36 @@
+projeto-ic
+Copyright 2026 Contributors to projeto-ic
+
+The Apache License, Version 2.0, applies only to the original source code,
+configuration templates, and documentation deliberately distributed as part
+of the public software repository.
+
+DATA AND MODEL ARTIFACTS
+
+Datasets, trained weights, cached models, institutional exports, credentials,
+and generated experimental results are not licensed under Apache-2.0 merely
+because they are stored beside the software. Their own manifest or license,
+when present, governs them. In the absence of an explicit license grant, no
+right to redistribute those artifacts is granted.
+
+In particular, the following institutional-development artifacts are marked
+for internal academic use and are excluded from public distribution:
+
+  - avaliacao/datasets/desenvolvimento_local_v1.jsonl
+  - avaliacao/datasets/desenvolvimento_local_v1_manifest.json
+
+They are intentionally ignored by version control. Do not publish them without
+institutional review and an explicit redistribution authorization.
+
+THIRD-PARTY COMPONENTS
+
+This project interoperates with or references n8n, GLPI, PostgreSQL, MariaDB,
+Mailpit, IBM Granite models, container images, and Python packages. Each
+third-party component remains subject to its own license and notices. A name,
+image reference, API integration, or dependency declaration does not grant any
+additional rights in that component.
+
+INSTITUTIONAL STATUS
+
+This repository documents an academic research prototype. It is not an
+official production service, endorsement, or warranty from any institution.

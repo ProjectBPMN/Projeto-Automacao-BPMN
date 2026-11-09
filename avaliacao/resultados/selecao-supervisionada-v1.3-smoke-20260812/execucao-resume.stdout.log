@@ -1,0 +1,22 @@
+[embedding] granite97m
+[resume] classification__tfidf__none__logistic_regression
+[resume] deduplication__tfidf__none__logistic_regression
+[resume] classification__embedding__granite97m__logistic_regression
+[resume] deduplication__embedding__granite97m__logistic_regression
+[resume] classification__hybrid__granite97m__logistic_regression
+[deduplication__hybrid__granite97m__logistic_regression] fold 1/5 fit=7.78s
+[deduplication__hybrid__granite97m__logistic_regression] fold 2/5 fit=9.99s
+[deduplication__hybrid__granite97m__logistic_regression] fold 3/5 fit=8.25s
+[deduplication__hybrid__granite97m__logistic_regression] fold 4/5 fit=8.34s
+[deduplication__hybrid__granite97m__logistic_regression] fold 5/5 fit=7.53s
+[deduplication__metadata__none__logistic_regression] fold 1/5 fit=0.26s
+[deduplication__metadata__none__logistic_regression] fold 2/5 fit=0.14s
+[deduplication__metadata__none__logistic_regression] fold 3/5 fit=0.26s
+[deduplication__metadata__none__logistic_regression] fold 4/5 fit=0.13s
+[deduplication__metadata__none__logistic_regression] fold 5/5 fit=0.13s
+[deduplication__hybrid_metadata__granite97m__logistic_regression] fold 1/5 fit=7.68s
+[deduplication__hybrid_metadata__granite97m__logistic_regression] fold 2/5 fit=9.28s
+[deduplication__hybrid_metadata__granite97m__logistic_regression] fold 3/5 fit=8.02s
+[deduplication__hybrid_metadata__granite97m__logistic_regression] fold 4/5 fit=7.65s
+[deduplication__hybrid_metadata__granite97m__logistic_regression] fold 5/5 fit=7.59s
+Seleo concluda em avaliacao\resultados\selecao-supervisionada-v1.3-smoke-20260812

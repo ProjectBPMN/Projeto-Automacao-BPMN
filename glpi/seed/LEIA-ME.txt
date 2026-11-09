@@ -1,0 +1,11 @@
+PASTA GLPI/SEED
+===============
+
+Preparação do GLPI de teste.
+
+- requirements.txt: dependências Python do gerador.
+- seed_glpi.py: gera categorias, locais, usuários e chamados de teste.
+- seed_finalizados.sql: massa histórica de chamados encerrados.
+- reset_operational_data.sql: limpa dados operacionais sem apagar a instalação.
+- setup_api_token.php: configura o acesso automatizado à API GLPI.
+

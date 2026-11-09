@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "validated_at": "2026-09-10T15:24:00Z",
+  "status": "PASS_ACCESS_AND_VISIBLE_PATHS",
+  "browser": "Codex In-app Browser",
+  "n8n": {
+    "url": "http://localhost:5678/home/workflows",
+    "authenticated_session": true,
+    "visible_workflows_total": 6,
+    "wf06_visible": true,
+    "wf06_published": true,
+    "recent_wf06_executions_visible_as_success": true
+  },
+  "glpi": {
+    "url": "http://localhost:9180/front/ticket.php",
+    "login_performed": true,
+    "account": "tech",
+    "tickets_list_visible": true,
+    "ticket_created_or_edited_by_browser": false
+  },
+  "credentials_recorded": false,
+  "scientific_result": false,
+  "semantic_correctness_confirmed": false,
+  "interpretation_limit": "A inspeção visual confirma autenticação, acesso e caminhos visíveis. A correção semântica e o cleanup são verificados pelo E2E e pelo banco."
+}

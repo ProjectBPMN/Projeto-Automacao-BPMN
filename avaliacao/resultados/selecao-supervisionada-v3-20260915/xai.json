@@ -1,0 +1,2252 @@
+[
+  {
+    "status": "COMPLETED_FALLBACK",
+    "task": "classification",
+    "combination_id": "classification__hybrid__multilingual_e5_small__mlp",
+    "method": "GroupedPermutationImportance",
+    "explains": "base_model_macro_f1_association_before_calibration_and_threshold",
+    "causal_interpretation": false,
+    "feature_count": 7375,
+    "family_importance": [
+      {
+        "family": "embedding",
+        "baseline_macro_f1": 1.0,
+        "mean_permuted_macro_f1": 1.0,
+        "macro_f1_drop": 0.0,
+        "repeats": 5,
+        "fraction": 0.0
+      },
+      {
+        "family": "tfidf_character",
+        "baseline_macro_f1": 1.0,
+        "mean_permuted_macro_f1": 0.29500000000000004,
+        "macro_f1_drop": 0.705,
+        "repeats": 5,
+        "fraction": 1.0
+      },
+      {
+        "family": "tfidf_word",
+        "baseline_macro_f1": 1.0,
+        "mean_permuted_macro_f1": 1.0,
+        "macro_f1_drop": 0.0,
+        "repeats": 5,
+        "fraction": 0.0
+      }
+    ],
+    "global_top_features": [],
+    "local_explanations": [],
+    "background_groups": [
+      "4ce6860b429b934bf36f73956fbf44430c1490c543df90201f1f723b6c02353a",
+      "c99cf3ec4317fe577f7dfd0e1fa80f53f0c6f56696ad270e50ca1d17aaebbb00",
+      "6b006e3bc91032618ebc840db41921d053d700df29b0d918fd84b2b63c38ac56",
+      "26b3d821179d9af47bdf4e81c85d4a34769eee804b9710573420a5fa7479a6bf",
+      "e7b513dbd7d8b31f40f7ba0bb70c3a6cc86d424c8a0940ec407a7c1f88a8abd0",
+      "0f34bf14bfb9dc337c31b7f3ab25d747641f38ca6bc19ada0367691c3e8cba5a",
+      "b73585f3bf8715b9ac417664042e11a15657c01099da7e174b5ed8115e3f458f",
+      "880ddcd9ffe143ce490acde7219a46fb903ae1999d91856f2596b2f2619b9ad3",
+      "4d2a896fc32c5e3f26818f4d0088eb599542a8bdeb3d30cc635a61cf3fac43d2",
+      "2c732c42891dcee77582bff703b8ffc17234e91908315a403e7044a9cd3b29b4",
+      "c5d47c5a36961b65972f1e6248a443f36a314970131fbf101ccb3169aef71a2b",
+      "1ca61c55177f52cd7068e0b582a3ffe30c06bee70ee51ace8df936fae26ae41b",
+      "cb65e6b44d2d29857539a4b7b043f175a7c0ea92b4db63411e461899a73a155a",
+      "f4b630764f69dc60892f6d68f570dcd5bd5a2b00b148c458d00f9c64df38e9ad",
+      "f8983a9c3e0b267c4b614f2bfdea0b41a2bb1bc3d370146b39f9fd0293fa8d7a",
+      "90ae9025bea7b80b1c3b394f404325f74f9fb210fc4ae2273e5f9a75607a96e9",
+      "8e583d6d8a08e0a800e9655ac345383ec4a5d981615fabee304e332555a67c73",
+      "d280a39194dc8c33676cec2e4a30482db330497add2655753cdbe17e8aeb18c1",
+      "0d586ec629533b40feec9aebd79d1c53b8f0ce29b0a4816782fbb96286edd324",
+      "2b7d02badb85596ac2b2d2a8abc7db90e408969996f2c48b249e643031112fc3"
+    ],
+    "background_groups_sha256": "df392ba7bd77da2529dbbcff71f9a7338591e699c2862096e555bec50351f4e7",
+    "explained_unit_ids": [
+      "DEV-SEM31-C-0077-R2",
+      "DEV-SEM31-C-0168-R1",
+      "DEV-SEM31-C-0254-R2",
+      "DEV-SEM31-C-0372-R2",
+      "DEV-SEM31-C-0123-R1",
+      "DEV-SEM31-C-0120-R1",
+      "DEV-SEM31-C-0103-R1",
+      "DEV-SEM31-C-0392-R1",
+      "DEV-SEM31-C-0154-R2",
+      "DEV-SEM31-C-0179-R1",
+      "DEV-SEM31-C-0131-R1",
+      "DEV-SEM31-C-0141-R1",
+      "DEV-SEM31-C-0258-R1",
+      "DEV-SEM31-C-0165-R1",
+      "DEV-SEM31-C-0302-R1",
+      "DEV-SEM31-C-0185-R2",
+      "DEV-SEM31-C-0149-R2",
+      "DEV-SEM31-C-0092-R1",
+      "DEV-SEM31-C-0235-R2",
+      "DEV-SEM31-C-0047-R2",
+      "DEV-SEM31-C-0022-R1",
+      "DEV-SEM31-C-0266-R2",
+      "DEV-SEM31-C-0196-R1",
+      "DEV-SEM31-C-0036-R1"
+    ],
+    "explained_labels": [
+      0,
+      1,
+      2,
+      3,
+      1,
+      1,
+      1,
+      3,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      3,
+      1,
+      1,
+      0,
+      2,
+      0,
+      0,
+      2,
+      1,
+      0
+    ],
+    "selection_evidence_status": "PROVISIONAL_POINT_CANDIDATE",
+    "scientific_result": false,
+    "development_only": true,
+    "confirmatory_eligible": false,
+    "evidence_basis": "SYNTHETIC_PROXY_LABELS"
+  },
+  {
+    "status": "COMPLETED",
+    "task": "deduplication",
+    "combination_id": "deduplication__hybrid_metadata__multilingual_e5_small__logistic_regression",
+    "method": "LinearExplainer",
+    "explains": "base_model_score_before_sigmoid_calibration_and_threshold",
+    "causal_interpretation": false,
+    "background_groups": [
+      "5621cc5358bb5d7aead4c04de3f1af56e7cf28cde56266ecfb82c71023db9def",
+      "cf0dcfd88aa5f797203e0c41097eb19c20811f36bef371d950511d9838e59acd",
+      "5857b68c6a9c5f357abaf1fbe4ea1a26076605519dfc3954535028be46e5726b",
+      "1461b170bbe62ba6df2bba2d28781c142fc689b60b3d8f5e7439b219f884e2a4",
+      "c40d308fd18d34a6fbce81acc895aa5eb1c78ea62152e0943e19f90a604e24c6",
+      "1430b92356b875227e9ed13891d6031df7448b927244fae3a76102784cfefcaa",
+      "cec12d2ecb8c068dfd3b3a7873561c42edc21c9fd2cc1ac940a47bf00c5d1a58",
+      "8ff5074f5c6d83583836c6cf03ac50fd34ff1edb9cbc4b614f4fed1532a414f7",
+      "79129f85aa59cbae4cb6b9c13b10402ba7cb603a126e541e50ba595b8a567ed6",
+      "95557890c27277106fad5d0434d2ab6e4bc39277245ffbc745243e753f5caa07",
+      "933745e0255a8d27b2cf616368a96777aa7d357d5146535516eaa8063f50a994",
+      "27833e2b4050d8d86ead022c121180cf781bd43fbc98dd12ca7200fd3c95f1e9",
+      "b32231c0f690a1a9ea3858c17fb36f29d6db86ff5b0ba6664bad3037247d3171",
+      "e3ce7a6c8f9e169e71ee5fce1a613c9890c5c8ffcea576045d5feaa3c1dc881d",
+      "827119675606441576f95a35d47939a879a531851eca7d1c0788dd4914945d86",
+      "69666555e648d81261fb62ccfdad02aa92de2fbe06b3a1bad290fb324d7e9705",
+      "7bd7fa3bbdd71f142f3b909727d291fddfcec9e90eb444a30c4fa259a3762a5c",
+      "b0d4ccbbfd70883a56f9afd68e98ed6ebd9d223aa25e755dac3c1fe5d31e39f0",
+      "131623c302098d6b00159d0dbc15e351c3b22a718c65c5a6b75d7833cee99c93",
+      "33e82563d982e3f25933fcf58f28db9fe7817e9625d3fe6d09bc02ba6a686d43"
+    ],
+    "background_groups_sha256": "c1f3a57150050364c1f6728b2a54ef5303aa535d0343fba7173b2b9b460d20ca",
+    "explained_unit_ids": [
+      "DEV-SEM31-D-0195-C",
+      "DEV-SEM31-D-0160-C",
+      "DEV-SEM31-D-0357-C",
+      "DEV-SEM31-D-0076-C",
+      "DEV-SEM31-D-0186-C",
+      "DEV-SEM31-D-0233-C",
+      "DEV-SEM31-D-0064-C",
+      "DEV-SEM31-D-0282-C",
+      "DEV-SEM31-D-0308-C",
+      "DEV-SEM31-D-0221-C",
+      "DEV-SEM31-D-0288-C",
+      "DEV-SEM31-D-0080-C",
+      "DEV-SEM31-D-0150-C",
+      "DEV-SEM31-D-0163-C",
+      "DEV-SEM31-D-0071-C",
+      "DEV-SEM31-D-0120-C",
+      "DEV-SEM31-D-0206-C",
+      "DEV-SEM31-D-0201-C",
+      "DEV-SEM31-D-0246-C",
+      "DEV-SEM31-D-0327-C",
+      "DEV-SEM31-D-0130-C",
+      "DEV-SEM31-D-0153-C",
+      "DEV-SEM31-D-0105-C",
+      "DEV-SEM31-D-0175-C"
+    ],
+    "explained_labels": [
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1
+    ],
+    "max_absolute_additivity_residual": 3.019806626980426e-14,
+    "feature_count": 28447,
+    "family_importance": [
+      {
+        "family": "tfidf_character",
+        "mean_abs_shap_sum": 3.3167788397069455,
+        "fraction": 0.4127250827181514
+      },
+      {
+        "family": "tfidf_word",
+        "mean_abs_shap_sum": 2.6767354448096103,
+        "fraction": 0.3330809533177271
+      },
+      {
+        "family": "metadata",
+        "mean_abs_shap_sum": 1.5167701580760788,
+        "fraction": 0.1887400756004836
+      },
+      {
+        "family": "embedding",
+        "mean_abs_shap_sum": 0.26427030670404295,
+        "fraction": 0.03288461168668525
+      },
+      {
+        "family": "tfidf_other",
+        "mean_abs_shap_sum": 0.2617361828247491,
+        "fraction": 0.03256927667695273
+      }
+    ],
+    "global_top_features": [
+      {
+        "feature": "metadata__location_equal",
+        "family": "metadata",
+        "mean_abs_shap": 1.0427121501642878
+      },
+      {
+        "feature": "metadata__both_locations_present",
+        "family": "metadata",
+        "mean_abs_shap": 0.4740580079117904
+      },
+      {
+        "feature": "tfidf_cosine",
+        "family": "tfidf_other",
+        "mean_abs_shap": 0.2617361828247491
+      },
+      {
+        "feature": "tfidf_abs__word__um",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.04292717352031877
+      },
+      {
+        "feature": "tfidf_abs__word__ainda",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.03940868535105319
+      },
+      {
+        "feature": "tfidf_abs__word__falha",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.03254156752118897
+      },
+      {
+        "feature": "tfidf_abs__word__mesma",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.032108912238178085
+      },
+      {
+        "feature": "tfidf_abs__word__mesma ocorrencia",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.032108912238178085
+      },
+      {
+        "feature": "tfidf_abs__word__mas",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.030483750569607032
+      },
+      {
+        "feature": "tfidf_abs__word__mesmo",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.030087565041704036
+      },
+      {
+        "feature": "tfidf_abs__word__no mesmo",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.030087565041704036
+      },
+      {
+        "feature": "tfidf_abs__word__semelhante",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.026249881463431435
+      },
+      {
+        "feature": "tfidf_abs__word__identificado",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.02421676353572644
+      },
+      {
+        "feature": "tfidf_abs__word__segue apresentando",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.023967915512703334
+      },
+      {
+        "feature": "tfidf_abs__word__equipamento eq",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.023967915512703334
+      },
+      {
+        "feature": "tfidf_abs__word__ja",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.023967915512703334
+      },
+      {
+        "feature": "tfidf_abs__word__anomalia ja",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.023967915512703334
+      },
+      {
+        "feature": "tfidf_abs__word__apresentando anomalia",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.023967915512703334
+      },
+      {
+        "feature": "tfidf_abs__word__apresentando",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.023967915512703334
+      },
+      {
+        "feature": "tfidf_abs__word__segue",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.023967915512703334
+      },
+      {
+        "feature": "tfidf_abs__word__equipamento",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.023967915512703334
+      },
+      {
+        "feature": "tfidf_abs__word__ja descrita",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.023967915512703334
+      },
+      {
+        "feature": "tfidf_abs__word__descrita",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.023967915512703334
+      },
+      {
+        "feature": "tfidf_abs__word__anomalia",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.023967915512703334
+      },
+      {
+        "feature": "tfidf_abs__word__usuario confirmou",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.02365182468527582
+      },
+      {
+        "feature": "tfidf_abs__word__usuario",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.02365182468527582
+      },
+      {
+        "feature": "tfidf_abs__word__outro usuario",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.02365182468527582
+      },
+      {
+        "feature": "tfidf_abs__word__confirmou",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.02365182468527582
+      },
+      {
+        "feature": "tfidf_abs__word__complemento do",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.022323270544514922
+      },
+      {
+        "feature": "tfidf_abs__word__complemento",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.022323270544514922
+      },
+      {
+        "feature": "tfidf_abs__word__continua com",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.022323270544514922
+      },
+      {
+        "feature": "tfidf_abs__word__do os",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.022323270544514922
+      },
+      {
+        "feature": "tfidf_abs__word__encerrada",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.020981255643288507
+      },
+      {
+        "feature": "tfidf_abs__char__q-9",
+        "family": "tfidf_character",
+        "mean_abs_shap": 0.019792416421117117
+      },
+      {
+        "feature": "tfidf_abs__char__eq-9",
+        "family": "tfidf_character",
+        "mean_abs_shap": 0.019792416421117117
+      },
+      {
+        "feature": "tfidf_abs__char__ eq-9",
+        "family": "tfidf_character",
+        "mean_abs_shap": 0.019792416421117117
+      },
+      {
+        "feature": "tfidf_abs__word__mesmo conjunto",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.019454903524721626
+      },
+      {
+        "feature": "tfidf_abs__word__componente identificado",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.019454903524721626
+      },
+      {
+        "feature": "tfidf_abs__word__componente",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.019454903524721626
+      },
+      {
+        "feature": "tfidf_abs__word__um componente",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.019454903524721626
+      },
+      {
+        "feature": "tfidf_abs__word__identificado eq",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.019454903524721626
+      },
+      {
+        "feature": "tfidf_abs__word__conjunto um",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.019454903524721626
+      },
+      {
+        "feature": "tfidf_abs__word__esta normal",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.019454903524721626
+      },
+      {
+        "feature": "tfidf_abs__word__normal",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.019454903524721626
+      },
+      {
+        "feature": "tfidf_abs__word__conjunto",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.019454903524721626
+      },
+      {
+        "feature": "tfidf_abs__word__com",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.019189573919639904
+      },
+      {
+        "feature": "tfidf_abs__word__apresenta",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.018995355955313514
+      },
+      {
+        "feature": "tfidf_abs__word__ruptura",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.018588431730326132
+      },
+      {
+        "feature": "tfidf_abs__word__ruptura fisica",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.018588431730326132
+      },
+      {
+        "feature": "tfidf_abs__word__diferente",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.018588431730326132
+      },
+      {
+        "feature": "tfidf_abs__word__apresenta ruptura",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.018588431730326132
+      },
+      {
+        "feature": "tfidf_abs__word__opera",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.018588431730326132
+      },
+      {
+        "feature": "tfidf_abs__word__fisica diferente",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.018588431730326132
+      },
+      {
+        "feature": "tfidf_abs__word__mas agora",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.018588431730326132
+      },
+      {
+        "feature": "tfidf_abs__word__agora",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.018588431730326132
+      },
+      {
+        "feature": "tfidf_abs__word__agora apresenta",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.018588431730326132
+      },
+      {
+        "feature": "tfidf_abs__word__opera quanto",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.018588431730326132
+      },
+      {
+        "feature": "tfidf_abs__word__fisica",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.018588431730326132
+      },
+      {
+        "feature": "tfidf_abs__char__s-83",
+        "family": "tfidf_character",
+        "mean_abs_shap": 0.018419533302998153
+      },
+      {
+        "feature": "tfidf_abs__char__os-83",
+        "family": "tfidf_character",
+        "mean_abs_shap": 0.018419533302998153
+      },
+      {
+        "feature": "tfidf_abs__char__-83",
+        "family": "tfidf_character",
+        "mean_abs_shap": 0.018419533302998153
+      },
+      {
+        "feature": "tfidf_abs__word__ativo atual",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.016877486549590953
+      },
+      {
+        "feature": "tfidf_abs__word__atual eq",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.016877486549590953
+      },
+      {
+        "feature": "tfidf_abs__word__titulo semelhante",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.016877486549590953
+      },
+      {
+        "feature": "tfidf_abs__word__porem",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.016877486549590953
+      },
+      {
+        "feature": "tfidf_abs__word__ele",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.016877486549590953
+      },
+      {
+        "feature": "tfidf_abs__word__porem ativo",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.016877486549590953
+      },
+      {
+        "feature": "tfidf_abs__word__semelhante porem",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.016877486549590953
+      },
+      {
+        "feature": "tfidf_abs__word__titulo",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.016877486549590953
+      },
+      {
+        "feature": "tfidf_abs__word__nao eq",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.016877486549590953
+      },
+      {
+        "feature": "tfidf_abs__word__ocorrencia unidade",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.016815232944869443
+      },
+      {
+        "feature": "tfidf_abs__word__continua",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.016281969623376535
+      },
+      {
+        "feature": "tfidf_abs__word__quanto",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.01512842098588721
+      },
+      {
+        "feature": "tfidf_abs__word__atual",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.014677078248745196
+      },
+      {
+        "feature": "tfidf_abs__word__tambem",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.01403561313183455
+      },
+      {
+        "feature": "tfidf_abs__word__relato existente",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.01403561313183455
+      },
+      {
+        "feature": "tfidf_abs__word__aquecer",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.01403561313183455
+      },
+      {
+        "feature": "tfidf_abs__word__tambem ocorre",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.01403561313183455
+      },
+      {
+        "feature": "tfidf_abs__word__de aquecer",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.01403561313183455
+      },
+      {
+        "feature": "tfidf_abs__word__existente",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.01403561313183455
+      },
+      {
+        "feature": "tfidf_abs__word__falha de",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.01403561313183455
+      },
+      {
+        "feature": "tfidf_abs__word__ao relato",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.01403561313183455
+      },
+      {
+        "feature": "tfidf_abs__word__anexar ao",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.01403561313183455
+      },
+      {
+        "feature": "tfidf_abs__word__depois de",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.01403561313183455
+      },
+      {
+        "feature": "tfidf_abs__word__ocorre",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.01403561313183455
+      },
+      {
+        "feature": "tfidf_abs__word__anexar",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.01403561313183455
+      },
+      {
+        "feature": "tfidf_abs__word__aquecer anexar",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.01403561313183455
+      },
+      {
+        "feature": "tfidf_abs__word__ocorre depois",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.01403561313183455
+      },
+      {
+        "feature": "tfidf_abs__word__ativo",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.013827580131698275
+      },
+      {
+        "feature": "tfidf_abs__char__l. ",
+        "family": "tfidf_character",
+        "mean_abs_shap": 0.013172079700163106
+      },
+      {
+        "feature": "tfidf_abs__word__no",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.01293316289674646
+      },
+      {
+        "feature": "tfidf_abs__char__al.",
+        "family": "tfidf_character",
+        "mean_abs_shap": 0.01162572291942489
+      },
+      {
+        "feature": "tfidf_abs__char__al. ",
+        "family": "tfidf_character",
+        "mean_abs_shap": 0.01162572291942489
+      },
+      {
+        "feature": "tfidf_abs__word__ao",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.011265383168990955
+      },
+      {
+        "feature": "tfidf_abs__word__eliminou",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00991928558196855
+      },
+      {
+        "feature": "tfidf_abs__word__eliminou falha",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00991928558196855
+      },
+      {
+        "feature": "tfidf_abs__word__nao eliminou",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00991928558196855
+      },
+      {
+        "feature": "tfidf_abs__word__permanece com",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00991928558196855
+      },
+      {
+        "feature": "tfidf_abs__word__atendimento nao",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00991928558196855
+      },
+      {
+        "feature": "tfidf_abs__char__ no",
+        "family": "tfidf_character",
+        "mean_abs_shap": 0.009888687708227406
+      }
+    ],
+    "local_explanations": [
+      {
+        "unit_id": "DEV-SEM31-D-0195-C",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": -4.660451451004962,
+        "reconstructed_base_model_output": -4.660451451004969,
+        "additivity_residual": -6.217248937900877e-15,
+        "top_positive_features": [
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_abs__word__mas",
+            "family": "tfidf_word",
+            "signed_shap": 0.02197270583247253
+          },
+          {
+            "feature": "tfidf_abs__char__a. ",
+            "family": "tfidf_character",
+            "signed_shap": 0.021670324223045545
+          },
+          {
+            "feature": "tfidf_abs__word__mesmo",
+            "family": "tfidf_word",
+            "signed_shap": 0.021201834124350043
+          },
+          {
+            "feature": "tfidf_abs__word__no mesmo",
+            "family": "tfidf_word",
+            "signed_shap": 0.021201834124350043
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": -2.727093315814294
+          },
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.5046983552361377
+          },
+          {
+            "feature": "tfidf_abs__word__um",
+            "family": "tfidf_word",
+            "signed_shap": -0.12199084662148772
+          },
+          {
+            "feature": "tfidf_abs__word__identificado",
+            "family": "tfidf_word",
+            "signed_shap": -0.08202824894665191
+          },
+          {
+            "feature": "tfidf_abs__word__de materiais",
+            "family": "tfidf_word",
+            "signed_shap": -0.04387109059225888
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0160-C",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": 4.4289771083719245,
+        "reconstructed_base_model_output": 4.42897710837191,
+        "additivity_residual": -1.4210854715202004e-14,
+        "top_positive_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": 0.48125176161428634
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_abs__word__apresentando anomalia",
+            "family": "tfidf_word",
+            "signed_shap": 0.09264442557616602
+          },
+          {
+            "feature": "tfidf_abs__word__apresentando",
+            "family": "tfidf_word",
+            "signed_shap": 0.09264442557616602
+          },
+          {
+            "feature": "tfidf_abs__word__segue",
+            "family": "tfidf_word",
+            "signed_shap": 0.09264442557616602
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.09454898527233746
+          },
+          {
+            "feature": "tfidf_abs__word__falha",
+            "family": "tfidf_word",
+            "signed_shap": -0.023628899749070006
+          },
+          {
+            "feature": "tfidf_abs__word__ainda",
+            "family": "tfidf_word",
+            "signed_shap": -0.019311529751153557
+          },
+          {
+            "feature": "tfidf_abs__word__confirmou",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          },
+          {
+            "feature": "tfidf_abs__word__usuario confirmou",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0357-C",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": -5.399520397477635,
+        "reconstructed_base_model_output": -5.399520397477634,
+        "additivity_residual": 8.881784197001252e-16,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__ainda",
+            "family": "tfidf_word",
+            "signed_shap": 0.09859453300081275
+          },
+          {
+            "feature": "tfidf_abs__word__um",
+            "family": "tfidf_word",
+            "signed_shap": 0.0246807055356191
+          },
+          {
+            "feature": "tfidf_abs__char__ainda",
+            "family": "tfidf_character",
+            "signed_shap": 0.02166459208220864
+          },
+          {
+            "feature": "tfidf_abs__char__aind",
+            "family": "tfidf_character",
+            "signed_shap": 0.02166459208220864
+          },
+          {
+            "feature": "tfidf_abs__char__nda",
+            "family": "tfidf_character",
+            "signed_shap": 0.02166459208220864
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": -2.727093315814294
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": -1.511059900218833
+          },
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.2445795721348343
+          },
+          {
+            "feature": "tfidf_abs__word__encerrada",
+            "family": "tfidf_word",
+            "signed_shap": -0.09048409425188549
+          },
+          {
+            "feature": "tfidf_abs__word__mas",
+            "family": "tfidf_word",
+            "signed_shap": -0.0886580342491963
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0076-C",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": 4.151458018394737,
+        "reconstructed_base_model_output": 4.1514580183947265,
+        "additivity_residual": -1.0658141036401503e-14,
+        "top_positive_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": 0.48125176161428634
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_abs__word__ja descrita",
+            "family": "tfidf_word",
+            "signed_shap": 0.09561006210444886
+          },
+          {
+            "feature": "tfidf_abs__word__ja",
+            "family": "tfidf_word",
+            "signed_shap": 0.09561006210444886
+          },
+          {
+            "feature": "tfidf_abs__word__anomalia ja",
+            "family": "tfidf_word",
+            "signed_shap": 0.09561006210444886
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.23874300958339384
+          },
+          {
+            "feature": "tfidf_abs__word__falha",
+            "family": "tfidf_word",
+            "signed_shap": -0.023628899749070006
+          },
+          {
+            "feature": "tfidf_abs__word__em controlador",
+            "family": "tfidf_word",
+            "signed_shap": -0.02124717679234118
+          },
+          {
+            "feature": "tfidf_abs__word__de controlador",
+            "family": "tfidf_word",
+            "signed_shap": -0.020162677064049617
+          },
+          {
+            "feature": "tfidf_abs__word__ainda",
+            "family": "tfidf_word",
+            "signed_shap": -0.019311529751153557
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0186-C",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": 3.878376544008101,
+        "reconstructed_base_model_output": 3.878376544008102,
+        "additivity_residual": 8.881784197001252e-16,
+        "top_positive_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": 0.48125176161428634
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": 0.20088450033437905
+          },
+          {
+            "feature": "tfidf_abs__word__mesma",
+            "family": "tfidf_word",
+            "signed_shap": 0.18457896481712668
+          },
+          {
+            "feature": "tfidf_abs__word__mesma ocorrencia",
+            "family": "tfidf_word",
+            "signed_shap": 0.18457896481712668
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__falha",
+            "family": "tfidf_word",
+            "signed_shap": -0.023628899749070006
+          },
+          {
+            "feature": "tfidf_abs__word__usuario confirmou",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          },
+          {
+            "feature": "tfidf_abs__word__confirmou",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          },
+          {
+            "feature": "tfidf_abs__word__usuario",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          },
+          {
+            "feature": "tfidf_abs__word__outro usuario",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0233-C",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": -3.598869925160165,
+        "reconstructed_base_model_output": -3.598869925160181,
+        "additivity_residual": -1.5987211554602254e-14,
+        "top_positive_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": 0.48125176161428634
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_abs__word__apresenta esta",
+            "family": "tfidf_word",
+            "signed_shap": 0.039718482772852615
+          },
+          {
+            "feature": "tfidf_abs__char__a. ",
+            "family": "tfidf_character",
+            "signed_shap": 0.029504615993450754
+          },
+          {
+            "feature": "tfidf_abs__word__um",
+            "family": "tfidf_word",
+            "signed_shap": 0.0246807055356191
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.44414489464566875
+          },
+          {
+            "feature": "tfidf_abs__word__ele",
+            "family": "tfidf_word",
+            "signed_shap": -0.13280053319069776
+          },
+          {
+            "feature": "tfidf_abs__word__titulo semelhante",
+            "family": "tfidf_word",
+            "signed_shap": -0.13280053319069776
+          },
+          {
+            "feature": "tfidf_abs__word__titulo",
+            "family": "tfidf_word",
+            "signed_shap": -0.13280053319069776
+          },
+          {
+            "feature": "tfidf_abs__word__atual eq",
+            "family": "tfidf_word",
+            "signed_shap": -0.13280053319069776
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0064-C",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": 4.17290454453543,
+        "reconstructed_base_model_output": 4.172904544535428,
+        "additivity_residual": -1.7763568394002505e-15,
+        "top_positive_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": 0.48125176161428634
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_abs__word__ja descrita",
+            "family": "tfidf_word",
+            "signed_shap": 0.08973659061402235
+          },
+          {
+            "feature": "tfidf_abs__word__ja",
+            "family": "tfidf_word",
+            "signed_shap": 0.08973659061402235
+          },
+          {
+            "feature": "tfidf_abs__word__anomalia",
+            "family": "tfidf_word",
+            "signed_shap": 0.08973659061402235
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.05540956922704614
+          },
+          {
+            "feature": "tfidf_abs__word__de fecho",
+            "family": "tfidf_word",
+            "signed_shap": -0.03624189915188337
+          },
+          {
+            "feature": "tfidf_abs__word__em fecho",
+            "family": "tfidf_word",
+            "signed_shap": -0.03329867365209162
+          },
+          {
+            "feature": "tfidf_abs__word__falha",
+            "family": "tfidf_word",
+            "signed_shap": -0.023628899749070006
+          },
+          {
+            "feature": "tfidf_abs__word__fechada em",
+            "family": "tfidf_word",
+            "signed_shap": -0.02345590350011404
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0282-C",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": -3.400684126344884,
+        "reconstructed_base_model_output": -3.400684126344914,
+        "additivity_residual": -3.019806626980426e-14,
+        "top_positive_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": 0.48125176161428634
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_abs__word__mas",
+            "family": "tfidf_word",
+            "signed_shap": 0.02197270583247253
+          },
+          {
+            "feature": "tfidf_abs__word__encerrada",
+            "family": "tfidf_word",
+            "signed_shap": 0.014944002099782508
+          },
+          {
+            "feature": "tfidf_abs__word__agora",
+            "family": "tfidf_word",
+            "signed_shap": 0.013635307683988365
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.2410655047603219
+          },
+          {
+            "feature": "tfidf_abs__word__um",
+            "family": "tfidf_word",
+            "signed_shap": -0.14662267784729538
+          },
+          {
+            "feature": "tfidf_abs__word__conjunto",
+            "family": "tfidf_word",
+            "signed_shap": -0.10390658959601907
+          },
+          {
+            "feature": "tfidf_abs__word__normal",
+            "family": "tfidf_word",
+            "signed_shap": -0.10390658959601907
+          },
+          {
+            "feature": "tfidf_abs__word__conjunto um",
+            "family": "tfidf_word",
+            "signed_shap": -0.10390658959601907
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0308-C",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": -6.179770074790931,
+        "reconstructed_base_model_output": -6.179770074790936,
+        "additivity_residual": -4.440892098500626e-15,
+        "top_positive_features": [
+          {
+            "feature": "embedding_cosine",
+            "family": "embedding",
+            "signed_shap": 0.029700878370230104
+          },
+          {
+            "feature": "tfidf_abs__word__um",
+            "family": "tfidf_word",
+            "signed_shap": 0.0246807055356191
+          },
+          {
+            "feature": "tfidf_abs__word__mas",
+            "family": "tfidf_word",
+            "signed_shap": 0.02197270583247253
+          },
+          {
+            "feature": "tfidf_abs__word__no mesmo",
+            "family": "tfidf_word",
+            "signed_shap": 0.021201834124350043
+          },
+          {
+            "feature": "tfidf_abs__word__mesmo",
+            "family": "tfidf_word",
+            "signed_shap": 0.021201834124350043
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": -2.727093315814294
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": -1.511059900218833
+          },
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.6758590190054152
+          },
+          {
+            "feature": "tfidf_abs__word__semelhante",
+            "family": "tfidf_word",
+            "signed_shap": -0.10679925995439139
+          },
+          {
+            "feature": "tfidf_abs__word__apresenta",
+            "family": "tfidf_word",
+            "signed_shap": -0.03320580734392094
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0221-C",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": -3.489680411832893,
+        "reconstructed_base_model_output": -3.4896804118328966,
+        "additivity_residual": -3.552713678800501e-15,
+        "top_positive_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": 0.48125176161428634
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_abs__word__um",
+            "family": "tfidf_word",
+            "signed_shap": 0.0246807055356191
+          },
+          {
+            "feature": "tfidf_abs__word__mas",
+            "family": "tfidf_word",
+            "signed_shap": 0.02197270583247253
+          },
+          {
+            "feature": "tfidf_abs__word__no mesmo",
+            "family": "tfidf_word",
+            "signed_shap": 0.021201834124350043
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.38081526909949076
+          },
+          {
+            "feature": "tfidf_abs__word__ele",
+            "family": "tfidf_word",
+            "signed_shap": -0.13169432978116116
+          },
+          {
+            "feature": "tfidf_abs__word__porem ativo",
+            "family": "tfidf_word",
+            "signed_shap": -0.13169432978116116
+          },
+          {
+            "feature": "tfidf_abs__word__semelhante porem",
+            "family": "tfidf_word",
+            "signed_shap": -0.13169432978116116
+          },
+          {
+            "feature": "tfidf_abs__word__titulo semelhante",
+            "family": "tfidf_word",
+            "signed_shap": -0.13169432978116116
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0288-C",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": -6.388615152102508,
+        "reconstructed_base_model_output": -6.388615152102505,
+        "additivity_residual": 2.6645352591003757e-15,
+        "top_positive_features": [
+          {
+            "feature": "embedding_cosine",
+            "family": "embedding",
+            "signed_shap": 0.024891849832271905
+          },
+          {
+            "feature": "tfidf_abs__word__um",
+            "family": "tfidf_word",
+            "signed_shap": 0.0246807055356191
+          },
+          {
+            "feature": "tfidf_abs__word__mas",
+            "family": "tfidf_word",
+            "signed_shap": 0.02197270583247253
+          },
+          {
+            "feature": "tfidf_abs__word__mesmo",
+            "family": "tfidf_word",
+            "signed_shap": 0.021201834124350043
+          },
+          {
+            "feature": "tfidf_abs__word__no mesmo",
+            "family": "tfidf_word",
+            "signed_shap": 0.021201834124350043
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": -2.727093315814294
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": -1.511059900218833
+          },
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.6756010143545802
+          },
+          {
+            "feature": "tfidf_abs__word__semelhante",
+            "family": "tfidf_word",
+            "signed_shap": -0.1065085582203889
+          },
+          {
+            "feature": "tfidf_abs__word__apresenta",
+            "family": "tfidf_word",
+            "signed_shap": -0.036051200568726016
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0080-C",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": 3.45768545282647,
+        "reconstructed_base_model_output": 3.457685452826464,
+        "additivity_residual": -6.217248937900877e-15,
+        "top_positive_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": 0.48125176161428634
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_abs__word__usuario",
+            "family": "tfidf_word",
+            "signed_shap": 0.18697252708563616
+          },
+          {
+            "feature": "tfidf_abs__word__usuario confirmou",
+            "family": "tfidf_word",
+            "signed_shap": 0.18697252708563616
+          },
+          {
+            "feature": "tfidf_abs__word__confirmou",
+            "family": "tfidf_word",
+            "signed_shap": 0.18697252708563616
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__no mesmo",
+            "family": "tfidf_word",
+            "signed_shap": -0.10350593537254113
+          },
+          {
+            "feature": "tfidf_abs__word__mesmo",
+            "family": "tfidf_word",
+            "signed_shap": -0.10350593537254113
+          },
+          {
+            "feature": "tfidf_abs__word__outro",
+            "family": "tfidf_word",
+            "signed_shap": -0.06053544398615323
+          },
+          {
+            "feature": "tfidf_abs__word__no",
+            "family": "tfidf_word",
+            "signed_shap": -0.027312416438897095
+          },
+          {
+            "feature": "tfidf_abs__word__falha",
+            "family": "tfidf_word",
+            "signed_shap": -0.023628899749070006
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0150-C",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": 3.9032239230639716,
+        "reconstructed_base_model_output": 3.90322392306397,
+        "additivity_residual": -1.7763568394002505e-15,
+        "top_positive_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": 0.48125176161428634
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": 0.21121195445115415
+          },
+          {
+            "feature": "tfidf_abs__word__mesma",
+            "family": "tfidf_word",
+            "signed_shap": 0.1845342679673139
+          },
+          {
+            "feature": "tfidf_abs__word__mesma ocorrencia",
+            "family": "tfidf_word",
+            "signed_shap": 0.1845342679673139
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__falha",
+            "family": "tfidf_word",
+            "signed_shap": -0.023628899749070006
+          },
+          {
+            "feature": "tfidf_abs__word__outro usuario",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          },
+          {
+            "feature": "tfidf_abs__word__confirmou",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          },
+          {
+            "feature": "tfidf_abs__word__usuario",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          },
+          {
+            "feature": "tfidf_abs__word__usuario confirmou",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0163-C",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": 3.750654781483063,
+        "reconstructed_base_model_output": 3.750654781483057,
+        "additivity_residual": -6.217248937900877e-15,
+        "top_positive_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": 0.48125176161428634
+          },
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": 0.3401240187451879
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_abs__word__continua com",
+            "family": "tfidf_word",
+            "signed_shap": 0.11907279558481504
+          },
+          {
+            "feature": "tfidf_abs__word__complemento",
+            "family": "tfidf_word",
+            "signed_shap": 0.11907279558481504
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__falha",
+            "family": "tfidf_word",
+            "signed_shap": -0.023628899749070006
+          },
+          {
+            "feature": "tfidf_abs__word__ainda",
+            "family": "tfidf_word",
+            "signed_shap": -0.019311529751153557
+          },
+          {
+            "feature": "tfidf_abs__char__vo ",
+            "family": "tfidf_character",
+            "signed_shap": -0.017163657414276473
+          },
+          {
+            "feature": "tfidf_abs__word__outro usuario",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          },
+          {
+            "feature": "tfidf_abs__word__confirmou",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0071-C",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": 3.9159411356922416,
+        "reconstructed_base_model_output": 3.9159411356922478,
+        "additivity_residual": 6.217248937900877e-15,
+        "top_positive_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": 0.48125176161428634
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_abs__word__falha",
+            "family": "tfidf_word",
+            "signed_shap": 0.1107131994644939
+          },
+          {
+            "feature": "tfidf_abs__word__permanece com",
+            "family": "tfidf_word",
+            "signed_shap": 0.10512792198773857
+          },
+          {
+            "feature": "tfidf_abs__word__eliminou",
+            "family": "tfidf_word",
+            "signed_shap": 0.10512792198773857
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__em registro",
+            "family": "tfidf_word",
+            "signed_shap": -0.022434194372925494
+          },
+          {
+            "feature": "tfidf_abs__word__ainda",
+            "family": "tfidf_word",
+            "signed_shap": -0.019311529751153557
+          },
+          {
+            "feature": "tfidf_abs__word__de registro",
+            "family": "tfidf_word",
+            "signed_shap": -0.018762175660721206
+          },
+          {
+            "feature": "tfidf_abs__word__em pavilhao",
+            "family": "tfidf_word",
+            "signed_shap": -0.018107129725167613
+          },
+          {
+            "feature": "tfidf_abs__word__graduacao foi",
+            "family": "tfidf_word",
+            "signed_shap": -0.018107129725167613
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0120-C",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": 3.86153989878352,
+        "reconstructed_base_model_output": 3.861539898783513,
+        "additivity_residual": -7.105427357601002e-15,
+        "top_positive_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": 0.48125176161428634
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": 0.23138485406901177
+          },
+          {
+            "feature": "tfidf_abs__word__mesma",
+            "family": "tfidf_word",
+            "signed_shap": 0.18313972522990357
+          },
+          {
+            "feature": "tfidf_abs__word__mesma ocorrencia",
+            "family": "tfidf_word",
+            "signed_shap": 0.18313972522990357
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__falha",
+            "family": "tfidf_word",
+            "signed_shap": -0.023628899749070006
+          },
+          {
+            "feature": "tfidf_abs__word__confirmou",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          },
+          {
+            "feature": "tfidf_abs__word__outro usuario",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          },
+          {
+            "feature": "tfidf_abs__word__usuario",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          },
+          {
+            "feature": "tfidf_abs__word__usuario confirmou",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0206-C",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": -3.527993143938976,
+        "reconstructed_base_model_output": -3.5279931439389802,
+        "additivity_residual": -4.440892098500626e-15,
+        "top_positive_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": 0.48125176161428634
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_abs__word__um",
+            "family": "tfidf_word",
+            "signed_shap": 0.0246807055356191
+          },
+          {
+            "feature": "tfidf_abs__word__mesmo",
+            "family": "tfidf_word",
+            "signed_shap": 0.021201834124350043
+          },
+          {
+            "feature": "tfidf_abs__word__no mesmo",
+            "family": "tfidf_word",
+            "signed_shap": 0.021201834124350043
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.16692758337265057
+          },
+          {
+            "feature": "tfidf_abs__word__mas agora",
+            "family": "tfidf_word",
+            "signed_shap": -0.13251028479609486
+          },
+          {
+            "feature": "tfidf_abs__word__ruptura",
+            "family": "tfidf_word",
+            "signed_shap": -0.13251028479609486
+          },
+          {
+            "feature": "tfidf_abs__word__diferente",
+            "family": "tfidf_word",
+            "signed_shap": -0.13251028479609486
+          },
+          {
+            "feature": "tfidf_abs__word__agora",
+            "family": "tfidf_word",
+            "signed_shap": -0.13251028479609486
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0201-C",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": -4.562210278074107,
+        "reconstructed_base_model_output": -4.5622102780741045,
+        "additivity_residual": 2.6645352591003757e-15,
+        "top_positive_features": [
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_abs__word__mas",
+            "family": "tfidf_word",
+            "signed_shap": 0.02197270583247253
+          },
+          {
+            "feature": "tfidf_abs__word__no mesmo",
+            "family": "tfidf_word",
+            "signed_shap": 0.021201834124350043
+          },
+          {
+            "feature": "tfidf_abs__word__mesmo",
+            "family": "tfidf_word",
+            "signed_shap": 0.021201834124350043
+          },
+          {
+            "feature": "tfidf_abs__word__encerrada",
+            "family": "tfidf_word",
+            "signed_shap": 0.014944002099782508
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": -2.727093315814294
+          },
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.38523523805957294
+          },
+          {
+            "feature": "tfidf_abs__word__um",
+            "family": "tfidf_word",
+            "signed_shap": -0.12273557654859547
+          },
+          {
+            "feature": "tfidf_abs__word__identificado",
+            "family": "tfidf_word",
+            "signed_shap": -0.08250115674124614
+          },
+          {
+            "feature": "tfidf_abs__word__setor de",
+            "family": "tfidf_word",
+            "signed_shap": -0.05526266463745464
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0246-C",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": -3.5545235619044186,
+        "reconstructed_base_model_output": -3.5545235619044284,
+        "additivity_residual": -9.769962616701378e-15,
+        "top_positive_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": 0.48125176161428634
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_abs__word__mas",
+            "family": "tfidf_word",
+            "signed_shap": 0.02197270583247253
+          },
+          {
+            "feature": "tfidf_abs__word__encerrada",
+            "family": "tfidf_word",
+            "signed_shap": 0.014944002099782508
+          },
+          {
+            "feature": "tfidf_abs__word__mas agora",
+            "family": "tfidf_word",
+            "signed_shap": 0.013635307683988365
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.2518726416762337
+          },
+          {
+            "feature": "tfidf_abs__word__um",
+            "family": "tfidf_word",
+            "signed_shap": -0.1452889527578904
+          },
+          {
+            "feature": "tfidf_abs__word__mesmo conjunto",
+            "family": "tfidf_word",
+            "signed_shap": -0.10300558366040174
+          },
+          {
+            "feature": "tfidf_abs__word__identificado eq",
+            "family": "tfidf_word",
+            "signed_shap": -0.10300558366040174
+          },
+          {
+            "feature": "tfidf_abs__word__normal",
+            "family": "tfidf_word",
+            "signed_shap": -0.10300558366040174
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0327-C",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": -5.507282918052009,
+        "reconstructed_base_model_output": -5.507282918052014,
+        "additivity_residual": -5.329070518200751e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__ainda",
+            "family": "tfidf_word",
+            "signed_shap": 0.09167627655128112
+          },
+          {
+            "feature": "tfidf_abs__word__um",
+            "family": "tfidf_word",
+            "signed_shap": 0.0246807055356191
+          },
+          {
+            "feature": "tfidf_abs__char__ aind",
+            "family": "tfidf_character",
+            "signed_shap": 0.021441791206414523
+          },
+          {
+            "feature": "tfidf_abs__char__aind",
+            "family": "tfidf_character",
+            "signed_shap": 0.021441791206414523
+          },
+          {
+            "feature": "tfidf_abs__char__ ai",
+            "family": "tfidf_character",
+            "signed_shap": 0.021441791206414523
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": -2.727093315814294
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": -1.511059900218833
+          },
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.17621196250696392
+          },
+          {
+            "feature": "tfidf_abs__word__encerrada",
+            "family": "tfidf_word",
+            "signed_shap": -0.0842979949918234
+          },
+          {
+            "feature": "tfidf_abs__word__mas",
+            "family": "tfidf_word",
+            "signed_shap": -0.08216666465188778
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0130-C",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": 4.415644752148316,
+        "reconstructed_base_model_output": 4.415644752148305,
+        "additivity_residual": -1.1546319456101628e-14,
+        "top_positive_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": 0.48125176161428634
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_abs__word__ja descrita",
+            "family": "tfidf_word",
+            "signed_shap": 0.09245444442083708
+          },
+          {
+            "feature": "tfidf_abs__word__segue apresentando",
+            "family": "tfidf_word",
+            "signed_shap": 0.09245444442083708
+          },
+          {
+            "feature": "tfidf_abs__word__apresentando anomalia",
+            "family": "tfidf_word",
+            "signed_shap": 0.09245444442083708
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.10366215699517425
+          },
+          {
+            "feature": "tfidf_abs__char__l. ",
+            "family": "tfidf_character",
+            "signed_shap": -0.06244122019131974
+          },
+          {
+            "feature": "tfidf_abs__word__falha",
+            "family": "tfidf_word",
+            "signed_shap": -0.023628899749070006
+          },
+          {
+            "feature": "tfidf_abs__word__ainda",
+            "family": "tfidf_word",
+            "signed_shap": -0.019311529751153557
+          },
+          {
+            "feature": "tfidf_abs__word__usuario",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0153-C",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": 4.327950124417767,
+        "reconstructed_base_model_output": 4.327950124417785,
+        "additivity_residual": 1.7763568394002505e-14,
+        "top_positive_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": 0.48125176161428634
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": 0.10938044997995867
+          },
+          {
+            "feature": "tfidf_abs__word__falha",
+            "family": "tfidf_word",
+            "signed_shap": 0.08789348356664468
+          },
+          {
+            "feature": "tfidf_abs__word__de aquecer",
+            "family": "tfidf_word",
+            "signed_shap": 0.057710920468791095
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__ainda",
+            "family": "tfidf_word",
+            "signed_shap": -0.019311529751153557
+          },
+          {
+            "feature": "tfidf_abs__word__no",
+            "family": "tfidf_word",
+            "signed_shap": -0.018483405229085453
+          },
+          {
+            "feature": "tfidf_abs__word__confirmou",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          },
+          {
+            "feature": "tfidf_abs__word__outro usuario",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          },
+          {
+            "feature": "tfidf_abs__word__usuario",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0105-C",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": 4.354359642418445,
+        "reconstructed_base_model_output": 4.354359642418451,
+        "additivity_residual": 6.217248937900877e-15,
+        "top_positive_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": 0.48125176161428634
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": 0.1058936977766823
+          },
+          {
+            "feature": "tfidf_abs__word__falha",
+            "family": "tfidf_word",
+            "signed_shap": 0.08618404274692652
+          },
+          {
+            "feature": "tfidf_abs__word__aquecer",
+            "family": "tfidf_word",
+            "signed_shap": 0.05667130918489728
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__ainda",
+            "family": "tfidf_word",
+            "signed_shap": -0.019311529751153557
+          },
+          {
+            "feature": "tfidf_abs__word__no",
+            "family": "tfidf_word",
+            "signed_shap": -0.018026989497079697
+          },
+          {
+            "feature": "tfidf_abs__word__confirmou",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          },
+          {
+            "feature": "tfidf_abs__word__outro usuario",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          },
+          {
+            "feature": "tfidf_abs__word__usuario confirmou",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-SEM31-D-0175-C",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.3396285877996037,
+        "base_model_output": 3.8255147964255025,
+        "reconstructed_base_model_output": 3.8255147964255016,
+        "additivity_residual": -8.881784197001252e-16,
+        "top_positive_features": [
+          {
+            "feature": "metadata__location_equal",
+            "family": "metadata",
+            "signed_shap": 0.48125176161428634
+          },
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": 0.29046997009928477
+          },
+          {
+            "feature": "metadata__both_locations_present",
+            "family": "metadata",
+            "signed_shap": 0.2666576294503819
+          },
+          {
+            "feature": "tfidf_abs__word__complemento",
+            "family": "tfidf_word",
+            "signed_shap": 0.12328815227448842
+          },
+          {
+            "feature": "tfidf_abs__word__complemento do",
+            "family": "tfidf_word",
+            "signed_shap": 0.12328815227448842
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__falha",
+            "family": "tfidf_word",
+            "signed_shap": -0.023628899749070006
+          },
+          {
+            "feature": "tfidf_abs__word__ainda",
+            "family": "tfidf_word",
+            "signed_shap": -0.019311529751153557
+          },
+          {
+            "feature": "tfidf_abs__char__e, ",
+            "family": "tfidf_character",
+            "signed_shap": -0.018398571862011055
+          },
+          {
+            "feature": "tfidf_abs__word__confirmou",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          },
+          {
+            "feature": "tfidf_abs__word__usuario",
+            "family": "tfidf_word",
+            "signed_shap": -0.01655092458091232
+          }
+        ]
+      }
+    ],
+    "selection_evidence_status": "PROVISIONAL_POINT_CANDIDATE",
+    "scientific_result": false,
+    "development_only": true,
+    "confirmatory_eligible": false,
+    "evidence_basis": "SYNTHETIC_PROXY_LABELS"
+  }
+]

@@ -1,0 +1,915 @@
+PASS: n8n\workflows\Vers�o9\helpers.py exists
+PASS: n8n\workflows\Vers�o9\helpers.py compiles
+PASS: n8n\workflows\Vers�o9\deploy.py exists
+PASS: n8n\workflows\Vers�o9\deploy.py compiles
+PASS: n8n\workflows\Vers�o9\deploy_rest_session.py exists
+PASS: n8n\workflows\Vers�o9\deploy_rest_session.py compiles
+PASS: n8n\workflows\Vers�o9\build_wf01.py exists
+PASS: n8n\workflows\Vers�o9\build_wf01.py compiles
+PASS: n8n\workflows\Vers�o9\build_wf02.py exists
+PASS: n8n\workflows\Vers�o9\build_wf02.py compiles
+PASS: n8n\workflows\Vers�o9\build_wf03.py exists
+PASS: n8n\workflows\Vers�o9\build_wf03.py compiles
+PASS: n8n\workflows\Vers�o9\build_wf04.py exists
+PASS: n8n\workflows\Vers�o9\build_wf04.py compiles
+PASS: n8n\workflows\Vers�o9\build_wf05.py exists
+PASS: n8n\workflows\Vers�o9\build_wf05.py compiles
+PASS: n8n\workflows\Vers�o9\build_wf06.py exists
+PASS: n8n\workflows\Vers�o9\build_wf06.py compiles
+PASS: n8n\workflows\Vers�o9\ai_gateway_builder.py exists
+PASS: n8n\workflows\Vers�o9\ai_gateway_builder.py compiles
+PASS: n8n\workflows\Vers�o9\retry_queue_builder.py exists
+PASS: n8n\workflows\Vers�o9\retry_queue_builder.py compiles
+PASS: glpi\seed\seed_glpi.py exists
+PASS: glpi\seed\seed_glpi.py compiles
+PASS: avaliacao\scripts\gerar_dataset_avaliacao.py exists
+PASS: avaliacao\scripts\gerar_dataset_avaliacao.py compiles
+PASS: avaliacao\scripts\conferir_gabarito.py exists
+PASS: avaliacao\scripts\conferir_gabarito.py compiles
+PASS: avaliacao\scripts\calibrar_vazao.py exists
+PASS: avaliacao\scripts\calibrar_vazao.py compiles
+PASS: avaliacao\scripts\calibrar_limiar.py exists
+PASS: avaliacao\scripts\calibrar_limiar.py compiles
+PASS: avaliacao\scripts\executar_avaliacao.py exists
+PASS: avaliacao\scripts\executar_avaliacao.py compiles
+PASS: avaliacao\scripts\executar_demo_off.py exists
+PASS: avaliacao\scripts\executar_demo_off.py compiles
+PASS: avaliacao\scripts\comparar_baselines.py exists
+PASS: avaliacao\scripts\comparar_baselines.py compiles
+PASS: avaliacao\scripts\validar_dataset.py exists
+PASS: avaliacao\scripts\validar_dataset.py compiles
+PASS: avaliacao\scripts\sincronizar_manifesto.py exists
+PASS: avaliacao\scripts\sincronizar_manifesto.py compiles
+PASS: avaliacao\scripts\validar_rotulos_especialistas.py exists
+PASS: avaliacao\scripts\validar_rotulos_especialistas.py compiles
+PASS: avaliacao\scripts\estatistica.py exists
+PASS: avaliacao\scripts\estatistica.py compiles
+PASS: avaliacao\scripts\planejar_amostra.py exists
+PASS: avaliacao\scripts\planejar_amostra.py compiles
+PASS: avaliacao\scripts\gerar_diagnostico_operacional.py exists
+PASS: avaliacao\scripts\gerar_diagnostico_operacional.py compiles
+PASS: avaliacao\scripts\auditar_suficiencia_amostral.py exists
+PASS: avaliacao\scripts\auditar_suficiencia_amostral.py compiles
+PASS: avaliacao\scripts\testar_interfaces_web.py exists
+PASS: avaliacao\scripts\testar_interfaces_web.py compiles
+PASS: avaliacao\scripts\project_env.py exists
+PASS: avaliacao\scripts\project_env.py compiles
+PASS: experimental completion enforces label and human-audit gates
+PASS: automated validation cannot be promoted to confirmatory benchmark
+PASS: runner exposes a separate non-confirmatory automated validation phase
+PASS: WF01 builder protects the approved JSON with a snapshot hash
+PASS: WF02 builder protects the approved JSON with a snapshot hash
+PASS: WF03 builder protects the approved JSON with a snapshot hash
+PASS: WF04 builder protects the approved JSON with a snapshot hash
+PASS: WF05 builder protects the approved JSON with a snapshot hash
+PASS: WF06 builder protects the approved JSON with a snapshot hash
+PASS: V9-WF01-Sincronizador.json exists
+PASS: V9-WF01-Sincronizador.json is valid JSON
+PASS: V9-WF02-Triagem.json exists
+PASS: V9-WF02-Triagem.json is valid JSON
+PASS: V9-WF03-Classificacao.json exists
+PASS: V9-WF03-Classificacao.json is valid JSON
+PASS: V9-WF04-Decisao-Fiscal.json exists
+PASS: V9-WF04-Decisao-Fiscal.json is valid JSON
+PASS: V9-WF05-Metricas.json exists
+PASS: V9-WF05-Metricas.json is valid JSON
+PASS: V9-WF06-Fila-IA.json exists
+PASS: V9-WF06-Fila-IA.json is valid JSON
+PASS: WF01 has the expected workflow name
+PASS: WF01 has nodes
+PASS: WF01 has unique node names
+PASS: WF01 has no Wait node
+PASS: WF01 has no mock/deterministic node names
+PASS: WF01 connection source exists: T1. Manual
+PASS: WF01 connection target exists: LOG: In�cio
+PASS: WF01 connection source exists: T2. Schedule 06h/12h
+PASS: WF01 connection target exists: LOG: In�cio
+PASS: WF01 connection source exists: LOG: In�cio
+PASS: WF01 connection target exists: PG: Garantir Schema
+PASS: WF01 connection source exists: PG: Garantir Schema
+PASS: WF01 connection target exists: PG: Reten��o 90 dias
+PASS: WF01 connection source exists: PG: Reten��o 90 dias
+PASS: WF01 connection target exists: LOG: Reten��o 90 dias
+PASS: WF01 connection source exists: LOG: Reten��o 90 dias
+PASS: WF01 connection target exists: GLPI: Iniciar Sess�o
+PASS: WF01 connection source exists: GLPI: Iniciar Sess�o
+PASS: WF01 connection target exists: Validar Sess�o GLPI
+PASS: WF01 connection source exists: GLPI: Buscar Chamados
+PASS: WF01 connection target exists: Estruturar e Filtrar
+PASS: WF01 connection source exists: Estruturar e Filtrar
+PASS: WF01 connection target exists: Tem Chamados?
+PASS: WF01 connection source exists: Tem Chamados?
+PASS: WF01 connection target exists: GLPI: Encerrar Sess�o
+PASS: WF01 connection target exists: PG: UPSERT Chamado
+PASS: WF01 connection source exists: PG: UPSERT Chamado
+PASS: WF01 connection target exists: LOG: Resumo Sync
+PASS: WF01 connection source exists: LOG: Resumo Sync
+PASS: WF01 connection target exists: PG: Enfileirar Pendentes WF06
+PASS: WF01 connection source exists: GLPI: Encerrar Sess�o
+PASS: WF01 connection target exists: LOG: Fim
+PASS: WF01 connection source exists: Validar Sess�o GLPI
+PASS: WF01 connection target exists: GLPI: Buscar Chamados
+PASS: WF01 connection source exists: PG: Enfileirar Pendentes WF06
+PASS: WF01 connection target exists: GLPI: Encerrar Sess�o
+PASS: WF01/Estruturar e Filtrar reads $env before process.env
+PASS: WF02 has the expected workflow name
+PASS: WF02 has nodes
+PASS: WF02 has unique node names
+PASS: WF02 has no Wait node
+PASS: WF02 has no mock/deterministic node names
+PASS: WF02 connection source exists: In�cio Subworkflow/Teste
+PASS: WF02 connection target exists: Preparar Entrada
+PASS: WF02 connection source exists: Preparar Entrada
+PASS: WF02 connection target exists: Entrada V�lida?
+PASS: WF02 connection source exists: Entrada V�lida?
+PASS: WF02 connection target exists: GLPI: Iniciar Sess�o
+PASS: WF02 connection target exists: LOG: Entrada Inv�lida
+PASS: WF02 connection source exists: LOG: Entrada Inv�lida
+PASS: WF02 connection target exists: LOG: Fim WF02
+PASS: WF02 connection source exists: GLPI: Iniciar Sess�o
+PASS: WF02 connection target exists: Validar Sess�o GLPI
+PASS: WF02 connection source exists: GLPI: Buscar Ticket
+PASS: WF02 connection target exists: Estruturar Chamado
+PASS: WF02 connection source exists: Estruturar Chamado
+PASS: WF02 connection target exists: Chamado � Novo?
+PASS: WF02 connection source exists: Chamado � Novo?
+PASS: WF02 connection target exists: Validar Categoria T�cnica
+PASS: WF02 connection target exists: LOG: Ignorar N�o Novo
+PASS: WF02 connection source exists: LOG: Ignorar N�o Novo
+PASS: WF02 connection target exists: GLPI: Encerrar Sess�o
+PASS: WF02 connection source exists: PG: UPSERT Webhook
+PASS: WF02 connection target exists: Deve processar dedup?
+PASS: WF02 connection source exists: Deve processar dedup?
+PASS: WF02 connection target exists: GLPI: Encerrar Sess�o
+PASS: WF02 connection target exists: PG: Hist�rico Dedup
+PASS: WF02 connection source exists: PG: Hist�rico Dedup
+PASS: WF02 connection target exists: Montar Payload Dedup
+PASS: WF02 connection source exists: Montar Payload Dedup
+PASS: WF02 connection target exists: IA: Verificar Duplicidade
+PASS: WF02 connection source exists: IA: Verificar Duplicidade
+PASS: WF02 connection target exists: Normalizar Dedup
+PASS: WF02 connection source exists: Normalizar Dedup
+PASS: WF02 connection target exists: PG: Registrar IA Dedup
+PASS: WF02 connection source exists: Duplicado?
+PASS: WF02 connection target exists: GLPI: Pendente Revis�o Dedup
+PASS: WF02 connection target exists: PG: Marcar Poss�vel Duplicado
+PASS: WF02 connection target exists: PG: Marcar N�o Duplicado
+PASS: WF02 connection target exists: PG: Erro IA Dedup
+PASS: WF02 connection source exists: PG: Erro IA Dedup
+PASS: WF02 connection target exists: Retry Dedup?
+PASS: WF02 connection source exists: Retry Dedup?
+PASS: WF02 connection target exists: Preparar Retry Dedup
+PASS: WF02 connection target exists: Preparar Erro
+PASS: WF02 connection source exists: Preparar Retry Dedup
+PASS: WF02 connection target exists: GLPI: Encerrar Sess�o
+PASS: WF02 connection source exists: Preparar Erro
+PASS: WF02 connection target exists: Atualizar T�tulo
+PASS: WF02 connection source exists: Atualizar T�tulo
+PASS: WF02 connection target exists: Inserir Aviso
+PASS: WF02 connection source exists: Inserir Aviso
+PASS: WF02 connection target exists: Notificar TI
+PASS: WF02 connection source exists: Notificar TI
+PASS: WF02 connection target exists: GLPI: Encerrar Sess�o
+PASS: WF02 connection source exists: PG: Marcar Poss�vel Duplicado
+PASS: WF02 connection target exists: Preparar Followup Dup
+PASS: WF02 connection source exists: Preparar Followup Dup
+PASS: WF02 connection target exists: GLPI: Marcar [Duplicado]
+PASS: WF02 connection source exists: GLPI: Marcar [Duplicado]
+PASS: WF02 connection target exists: GLPI: Followup Links
+PASS: WF02 connection source exists: GLPI: Followup Links
+PASS: WF02 connection target exists: GLPI: Marcar Pendente2
+PASS: WF02 connection source exists: PG: Marcar N�o Duplicado
+PASS: WF02 connection target exists: GLPI: Marcar Pendente
+PASS: WF02 connection source exists: GLPI: Marcar Pendente
+PASS: WF02 connection target exists: GLPI: Encerrar Sess�o
+PASS: WF02 connection source exists: GLPI: Encerrar Sess�o
+PASS: WF02 connection target exists: LOG: Fim WF02
+PASS: WF02 connection source exists: GLPI: Marcar Pendente2
+PASS: WF02 connection target exists: GLPI: Encerrar Sess�o
+PASS: WF02 connection source exists: Validar Categoria T�cnica
+PASS: WF02 connection target exists: Categoria precisa corre��o?
+PASS: WF02 connection source exists: Categoria precisa corre��o?
+PASS: WF02 connection target exists: PG: UPSERT Webhook
+PASS: WF02 connection target exists: GLPI: Corrigir Categoria
+PASS: WF02 connection source exists: GLPI: Corrigir Categoria
+PASS: WF02 connection target exists: GLPI: Followup Categoria Corrigida
+PASS: WF02 connection source exists: GLPI: Followup Categoria Corrigida
+PASS: WF02 connection target exists: PG: UPSERT Webhook
+PASS: WF02 connection source exists: Validar Sess�o GLPI
+PASS: WF02 connection target exists: GLPI: Buscar Ticket
+PASS: WF02 connection source exists: GLPI: Pendente Revis�o Dedup
+PASS: WF02 connection target exists: GLPI: Followup Revis�o Dedup
+PASS: WF02 connection source exists: GLPI: Followup Revis�o Dedup
+PASS: WF02 connection target exists: PG: Triagem Manual Dedup
+PASS: WF02 connection source exists: PG: Triagem Manual Dedup
+PASS: WF02 connection target exists: GLPI: Encerrar Sess�o
+PASS: WF02 connection source exists: PG: Registrar IA Dedup
+PASS: WF02 connection target exists: Decis�o IA Persistida?
+PASS: WF02 connection source exists: Decis�o IA Persistida?
+PASS: WF02 connection target exists: Preparar Erro Persist�ncia IA
+PASS: WF02 connection target exists: Duplicado?
+PASS: WF02 connection source exists: Preparar Erro Persist�ncia IA
+PASS: WF02 connection target exists: PG: Erro IA Dedup
+PASS: WF02/Preparar Entrada reads $env before process.env
+PASS: WF02/Estruturar Chamado reads $env before process.env
+PASS: WF02/Montar Payload Dedup reads $env before process.env
+PASS: WF02/IA: Verificar Duplicidade reads $env before process.env
+PASS: WF02/Normalizar Dedup reads $env before process.env
+PASS: WF02/PG: Erro IA Dedup reads $env before process.env
+PASS: WF02/PG: Marcar Poss�vel Duplicado reads $env before process.env
+PASS: WF02/Preparar Followup Dup reads $env before process.env
+PASS: WF02/Validar Categoria T�cnica reads $env before process.env
+PASS: WF02/PG: Registrar IA Dedup reads $env before process.env
+PASS: WF03 has the expected workflow name
+PASS: WF03 has nodes
+PASS: WF03 has unique node names
+PASS: WF03 has no Wait node
+PASS: WF03 has no mock/deterministic node names
+PASS: WF03 connection source exists: In�cio Classifica��o
+PASS: WF03 connection target exists: Preparar Classifica��o
+PASS: WF03 connection source exists: Preparar Classifica��o
+PASS: WF03 connection target exists: GLPI: Iniciar Sess�o
+PASS: WF03 connection source exists: GLPI: Iniciar Sess�o
+PASS: WF03 connection target exists: Validar Sess�o GLPI
+PASS: WF03 connection source exists: PG: Pendente Inicial
+PASS: WF03 connection target exists: Montar Payload Classifica��o
+PASS: WF03 connection source exists: Montar Payload Classifica��o
+PASS: WF03 connection target exists: IA: Classificar
+PASS: WF03 connection source exists: IA: Classificar
+PASS: WF03 connection target exists: Normalizar Classifica��o
+PASS: WF03 connection source exists: Normalizar Classifica��o
+PASS: WF03 connection target exists: PG: Registrar IA Classifica��o
+PASS: WF03 connection source exists: Switch Classifica��o
+PASS: WF03 connection target exists: GLPI: Pendente Triagem Manual
+PASS: WF03 connection target exists: GLPI: Atribuir DEMO
+PASS: WF03 connection target exists: PG: Erro IA Classif
+PASS: WF03 connection target exists: GLPI: Followup OBRA
+PASS: WF03 connection target exists: GLPI: Planejado SOB_DEMANDA
+PASS: WF03 connection target exists: GLPI: Planejar DEMO sem equipe
+PASS: WF03 connection source exists: PG: Erro IA Classif
+PASS: WF03 connection target exists: Retry Classifica��o?
+PASS: WF03 connection source exists: Retry Classifica��o?
+PASS: WF03 connection target exists: Preparar Retry Classifica��o
+PASS: WF03 connection target exists: Preparar Erro
+PASS: WF03 connection source exists: Preparar Retry Classifica��o
+PASS: WF03 connection target exists: GLPI: Encerrar Sess�o
+PASS: WF03 connection source exists: Preparar Erro
+PASS: WF03 connection target exists: GLPI: Atualizar T�tulo [Erro IA]
+PASS: WF03 connection source exists: GLPI: Atualizar T�tulo [Erro IA]
+PASS: WF03 connection target exists: GLPI: Followup Aviso
+PASS: WF03 connection source exists: GLPI: Followup Aviso
+PASS: WF03 connection target exists: GLPI: Encerrar Sess�o
+PASS: WF03 connection source exists: GLPI: Pendente Triagem Manual
+PASS: WF03 connection target exists: GLPI: Followup Triagem Manual
+PASS: WF03 connection source exists: GLPI: Followup Triagem Manual
+PASS: WF03 connection target exists: PG: Triagem Manual
+PASS: WF03 connection source exists: PG: Triagem Manual
+PASS: WF03 connection target exists: GLPI: Encerrar Sess�o
+PASS: WF03 connection source exists: GLPI: Followup OBRA
+PASS: WF03 connection target exists: GLPI: Fechar OBRA
+PASS: WF03 connection source exists: GLPI: Fechar OBRA
+PASS: WF03 connection target exists: PG: Fechado OBRA
+PASS: WF03 connection source exists: PG: Fechado OBRA
+PASS: WF03 connection target exists: Email DDI/DG (OBRA)
+PASS: WF03 connection source exists: Email DDI/DG (OBRA)
+PASS: WF03 connection target exists: GLPI: Encerrar Sess�o
+PASS: WF03 connection source exists: GLPI: Planejar DEMO sem equipe
+PASS: WF03 connection target exists: GLPI: Followup DEMO sem equipe
+PASS: WF03 connection source exists: GLPI: Followup DEMO sem equipe
+PASS: WF03 connection target exists: PG: Planejado DEMO sem equipe
+PASS: WF03 connection source exists: PG: Planejado DEMO sem equipe
+PASS: WF03 connection target exists: GLPI: Encerrar Sess�o
+PASS: WF03 connection source exists: GLPI: Atribuir DEMO
+PASS: WF03 connection target exists: GLPI: Followup DEMO
+PASS: WF03 connection source exists: GLPI: Followup DEMO
+PASS: WF03 connection target exists: PG: Atribu�do DEMO
+PASS: WF03 connection source exists: PG: Atribu�do DEMO
+PASS: WF03 connection target exists: GLPI: Encerrar Sess�o
+PASS: WF03 connection source exists: GLPI: Planejado SOB_DEMANDA
+PASS: WF03 connection target exists: GLPI: Followup SOB_DEMANDA
+PASS: WF03 connection source exists: GLPI: Followup SOB_DEMANDA
+PASS: WF03 connection target exists: PG: Planejado SOB_DEMANDA
+PASS: WF03 connection source exists: PG: Planejado SOB_DEMANDA
+PASS: WF03 connection target exists: GLPI: Encerrar Sess�o
+PASS: WF03 connection source exists: GLPI: Encerrar Sess�o
+PASS: WF03 connection target exists: LOG: Fim Classifica��o
+PASS: WF03 connection source exists: J� est� Pendente?
+PASS: WF03 connection target exists: PG: Pendente Inicial
+PASS: WF03 connection target exists: GLPI: Marcar Pendente Inicial
+PASS: WF03 connection source exists: GLPI: Marcar Pendente Inicial
+PASS: WF03 connection target exists: PG: Pendente Inicial
+PASS: WF03 connection source exists: Validar Sess�o GLPI
+PASS: WF03 connection target exists: J� est� Pendente?
+PASS: WF03 connection source exists: PG: Registrar IA Classifica��o
+PASS: WF03 connection target exists: Decis�o IA Classifica��o Persistida?
+PASS: WF03 connection source exists: Decis�o IA Classifica��o Persistida?
+PASS: WF03 connection target exists: Switch Classifica��o
+PASS: WF03 connection target exists: Preparar Erro Persist�ncia IA Classif
+PASS: WF03 connection source exists: Preparar Erro Persist�ncia IA Classif
+PASS: WF03 connection target exists: PG: Erro IA Classif
+PASS: WF03/IA: Classificar reads $env before process.env
+PASS: WF03/Normalizar Classifica��o reads $env before process.env
+PASS: WF03/PG: Erro IA Classif reads $env before process.env
+PASS: WF03/PG: Registrar IA Classifica��o reads $env before process.env
+PASS: WF04 has the expected workflow name
+PASS: WF04 has nodes
+PASS: WF04 has unique node names
+PASS: WF04 has no Wait node
+PASS: WF04 has no mock/deterministic node names
+PASS: WF04 connection source exists: Webhook Fiscal
+PASS: WF04 connection target exists: Extrair Decis�o
+PASS: WF04 connection source exists: Extrair Decis�o
+PASS: WF04 connection target exists: Link V�lido?
+PASS: WF04 connection target exists: PG: Registrar Link Fiscal
+PASS: WF04 connection source exists: Link V�lido?
+PASS: WF04 connection target exists: GLPI: Sess�o Fiscal
+PASS: WF04 connection target exists: Tem Chamado no Link?
+PASS: WF04 connection source exists: Tem Chamado no Link?
+PASS: WF04 connection target exists: GLPI: Sess�o Link Inv�lido
+PASS: WF04 connection target exists: LOG: Link Sem Chamado
+PASS: WF04 connection source exists: GLPI: Sess�o Link Inv�lido
+PASS: WF04 connection target exists: GLPI: Anotar Link Inv�lido
+PASS: WF04 connection source exists: GLPI: Anotar Link Inv�lido
+PASS: WF04 connection target exists: Resp: Falha Anotada
+PASS: WF04 connection source exists: Resp: Falha Anotada
+PASS: WF04 connection target exists: GLPI: Encerrar Sess�o Link Inv�lido
+PASS: WF04 connection source exists: GLPI: Encerrar Sess�o Link Inv�lido
+PASS: WF04 connection target exists: LOG: Link Inv�lido Anotado
+PASS: WF04 connection source exists: LOG: Link Sem Chamado
+PASS: WF04 connection target exists: Resp: Falha Sem Chamado
+PASS: WF04 connection source exists: GLPI: Sess�o Fiscal
+PASS: WF04 connection target exists: PG: Buscar Chamado
+PASS: WF04 connection source exists: PG: Buscar Chamado
+PASS: WF04 connection target exists: Validar Fiscal
+PASS: WF04 connection source exists: Validar Fiscal
+PASS: WF04 connection target exists: Switch A��o Fiscal
+PASS: WF04 connection target exists: PG: Registrar Decis�o Fiscal
+PASS: WF04 connection source exists: Switch A��o Fiscal
+PASS: WF04 connection target exists: Resp: Confirmado
+PASS: WF04 connection target exists: Resp: Rejeitado
+PASS: WF04 connection target exists: Resp: Inv�lido
+PASS: WF04 connection target exists: Resp: Decis�o J� Registrada
+PASS: WF04 connection source exists: Resp: Confirmado
+PASS: WF04 connection target exists: GLPI: Followup Confirmado
+PASS: WF04 connection source exists: GLPI: Followup Confirmado
+PASS: WF04 connection target exists: GLPI: Fechar Confirmado
+PASS: WF04 connection source exists: GLPI: Fechar Confirmado
+PASS: WF04 connection target exists: PG: Duplicado Fechado
+PASS: WF04 connection source exists: PG: Duplicado Fechado
+PASS: WF04 connection target exists: GLPI: Encerrar Sess�o Fiscal
+PASS: WF04 connection target exists: PG: Evento Fiscal Confirmado
+PASS: WF04 connection source exists: GLPI: Encerrar Sess�o Fiscal
+PASS: WF04 connection target exists: LOG: Fim Fiscal
+PASS: WF04 connection source exists: Resp: Rejeitado
+PASS: WF04 connection target exists: PG: Limpar Duplicidade
+PASS: WF04 connection source exists: PG: Limpar Duplicidade
+PASS: WF04 connection target exists: PG: Evento Fiscal Rejeitado
+PASS: WF04 connection target exists: GLPI: Remover Followups Dup
+PASS: WF04 connection source exists: GLPI: Remover Followups Dup
+PASS: WF04 connection target exists: GLPI: Restaurar T�tulo
+PASS: WF04 connection source exists: GLPI: Restaurar T�tulo
+PASS: WF04 connection target exists: GLPI: Followup Rejeitado
+PASS: WF04 connection source exists: GLPI: Followup Rejeitado
+PASS: WF04 connection target exists: GLPI: Encerrar Sess�o Fiscal Rejei��o
+PASS: WF04 connection source exists: GLPI: Encerrar Sess�o Fiscal Rejei��o
+PASS: WF04 connection target exists: PG: Enfileirar Classifica��o
+PASS: WF04 connection source exists: Resp: Decis�o J� Registrada
+PASS: WF04 connection target exists: GLPI: Encerrar Sess�o Fiscal J� Registrada
+PASS: WF04 connection source exists: GLPI: Encerrar Sess�o Fiscal J� Registrada
+PASS: WF04 connection target exists: LOG: Fim Fiscal J� Registrada
+PASS: WF04 connection source exists: Resp: Inv�lido
+PASS: WF04 connection target exists: GLPI: Encerrar Sess�o Fiscal Inv�lido
+PASS: WF04 connection source exists: GLPI: Encerrar Sess�o Fiscal Inv�lido
+PASS: WF04 connection target exists: LOG: Fim Fiscal Inv�lido
+PASS: WF04 connection source exists: PG: Enfileirar Classifica��o
+PASS: WF04 connection target exists: LOG: Fim Fiscal Rejei��o
+PASS: WF04 connection source exists: Webhook Fiscal Confirma��o
+PASS: WF04 connection target exists: Renderizar Confirma��o Fiscal
+PASS: WF04 connection source exists: Renderizar Confirma��o Fiscal
+PASS: WF04 connection target exists: Resp: Confirma��o Fiscal
+PASS: WF04/Extrair Decis�o reads $env before process.env
+PASS: WF04/GLPI: Remover Followups Dup reads $env before process.env
+PASS: WF05 has the expected workflow name
+PASS: WF05 has nodes
+PASS: WF05 has unique node names
+PASS: WF05 has no Wait node
+PASS: WF05 has no mock/deterministic node names
+PASS: WF05 connection source exists: T1. Manual
+PASS: WF05 connection target exists: LOG: In�cio
+PASS: WF05 connection source exists: T2. Schedule 23h
+PASS: WF05 connection target exists: LOG: In�cio
+PASS: WF05 connection source exists: LOG: In�cio
+PASS: WF05 connection target exists: PG: Garantir Schema Observabilidade
+PASS: WF05 connection source exists: PG: Garantir Schema Observabilidade
+PASS: WF05 connection target exists: PG: Consolidar M�tricas
+PASS: WF05 connection source exists: PG: Consolidar M�tricas
+PASS: WF05 connection target exists: Alerta necess�rio?
+PASS: WF05 connection source exists: Alerta necess�rio?
+PASS: WF05 connection target exists: LOG: Fim
+PASS: WF05 connection target exists: Email: Alerta M�tricas
+PASS: WF05 connection source exists: Email: Alerta M�tricas
+PASS: WF05 connection target exists: LOG: Fim
+PASS: WF05 connection source exists: Webhook Avalia��o Humana
+PASS: WF05 connection target exists: Extrair Avalia��o Humana
+PASS: WF05 connection source exists: Extrair Avalia��o Humana
+PASS: WF05 connection target exists: PG: Registrar Avalia��o Humana
+PASS: WF05 connection source exists: PG: Registrar Avalia��o Humana
+PASS: WF05 connection target exists: Resp: Avalia��o Humana
+PASS: WF05 connection source exists: Webhook Confirma��o Avalia��o
+PASS: WF05 connection target exists: Renderizar Confirma��o Avalia��o
+PASS: WF05 connection source exists: Renderizar Confirma��o Avalia��o
+PASS: WF05 connection target exists: Resp: Confirma��o Avalia��o
+PASS: WF05/Extrair Avalia��o Humana reads $env before process.env
+PASS: WF06 has the expected workflow name
+PASS: WF06 has nodes
+PASS: WF06 has unique node names
+PASS: WF06 has a controlled Wait node for paced IA release
+PASS: WF06 has no mock/deterministic node names
+PASS: WF06 connection source exists: Webhook GLPI Fila
+PASS: WF06 connection target exists: Preparar Entrada GLPI
+PASS: WF06 connection source exists: Preparar Entrada GLPI
+PASS: WF06 connection target exists: Entrada Autorizada?
+PASS: WF06 connection source exists: Entrada Autorizada?
+PASS: WF06 connection target exists: Resp: Rejeitado
+PASS: WF06 connection target exists: PG: Enfileirar Ticket
+PASS: WF06 connection source exists: PG: Enfileirar Ticket
+PASS: WF06 connection target exists: Resp: Enfileirado 202
+PASS: WF06 connection source exists: Resp: Enfileirado 202
+PASS: WF06 connection target exists: LOG: Ingresso Enfileirado
+PASS: WF06 connection source exists: Agendador Fila IA
+PASS: WF06 connection target exists: LOG: In�cio Fila
+PASS: WF06 connection source exists: Manual
+PASS: WF06 connection target exists: LOG: In�cio Fila
+PASS: WF06 connection source exists: LOG: In�cio Fila
+PASS: WF06 connection target exists: PG: Reservar Fila IA
+PASS: WF06 connection source exists: PG: Reservar Fila IA
+PASS: WF06 connection target exists: Preparar Lote
+PASS: WF06 connection source exists: Preparar Lote
+PASS: WF06 connection target exists: Tem Chamados?
+PASS: WF06 connection source exists: Tem Chamados?
+PASS: WF06 connection target exists: Aguardar Janela
+PASS: WF06 connection source exists: Aguardar Janela
+PASS: WF06 connection target exists: � Classifica��o?
+PASS: WF06 connection source exists: � Classifica��o?
+PASS: WF06 connection target exists: Chamar WF03 da Fila
+PASS: WF06 connection target exists: Chamar WF02 da Fila
+PASS: WF06 connection source exists: Chamar WF02 da Fila
+PASS: WF06 connection target exists: LOG: Fim Fila
+PASS: WF06 connection source exists: Chamar WF03 da Fila
+PASS: WF06 connection target exists: LOG: Fim Fila
+PASS: WF06/Preparar Entrada GLPI reads $env before process.env
+PASS: WF06/PG: Reservar Fila IA reads $env before process.env
+PASS: WF06/Preparar Lote reads $env before process.env
+PASS: WF01 validates GLPI initSession output
+PASS: WF01 only searches tickets after GLPI session validation
+PASS: WF01 no longer duplicates the GLPI search inside code
+PASS: WF01 recovers synchronized tickets into the shared WF06 queue
+PASS: WF01 never bypasses WF06
+PASS: WF01 guarantees ia_decisoes before operational use
+PASS: WF01 fails closed when GLPI_APP_TOKEN is absent
+PASS: WF01 fails closed when GLPI_AUTH_BASIC is absent
+PASS: WF01 has no weak empty GLPI credential header fallback
+PASS: WF01 Code nodes require GLPI_APP_TOKEN before HTTP
+PASS: WF01/GLPI: Iniciar Sess�o App-Token header fails closed
+PASS: WF01/GLPI: Iniciar Sess�o GLPI Authorization header fails closed
+PASS: WF01/GLPI: Buscar Chamados App-Token header fails closed
+PASS: WF01/Estruturar e Filtrar requires GLPI app and session tokens before direct HTTP
+PASS: WF01/GLPI: Encerrar Sess�o App-Token header fails closed
+PASS: WF02 fails closed when GLPI_APP_TOKEN is absent
+PASS: WF02 fails closed when GLPI_AUTH_BASIC is absent
+PASS: WF02 has no weak empty GLPI credential header fallback
+PASS: WF02 Code nodes require GLPI_APP_TOKEN before HTTP
+PASS: WF02/GLPI: Iniciar Sess�o App-Token header fails closed
+PASS: WF02/GLPI: Iniciar Sess�o GLPI Authorization header fails closed
+PASS: WF02/GLPI: Buscar Ticket App-Token header fails closed
+PASS: WF02/Estruturar Chamado requires GLPI app and session tokens before direct HTTP
+PASS: WF02/Atualizar T�tulo App-Token header fails closed
+PASS: WF02/Inserir Aviso App-Token header fails closed
+PASS: WF02/GLPI: Marcar [Duplicado] App-Token header fails closed
+PASS: WF02/GLPI: Followup Links App-Token header fails closed
+PASS: WF02/GLPI: Marcar Pendente App-Token header fails closed
+PASS: WF02/GLPI: Encerrar Sess�o App-Token header fails closed
+PASS: WF02/GLPI: Marcar Pendente2 App-Token header fails closed
+PASS: WF02/Validar Categoria T�cnica requires GLPI app and session tokens before direct HTTP
+PASS: WF02/GLPI: Corrigir Categoria App-Token header fails closed
+PASS: WF02/GLPI: Followup Categoria Corrigida App-Token header fails closed
+PASS: WF02/GLPI: Pendente Revis�o Dedup App-Token header fails closed
+PASS: WF02/GLPI: Followup Revis�o Dedup App-Token header fails closed
+PASS: WF03 fails closed when GLPI_APP_TOKEN is absent
+PASS: WF03 fails closed when GLPI_AUTH_BASIC is absent
+PASS: WF03 has no weak empty GLPI credential header fallback
+PASS: WF03 Code nodes require GLPI_APP_TOKEN before HTTP
+PASS: WF03/GLPI: Iniciar Sess�o App-Token header fails closed
+PASS: WF03/GLPI: Iniciar Sess�o GLPI Authorization header fails closed
+PASS: WF03/GLPI: Atualizar T�tulo [Erro IA] App-Token header fails closed
+PASS: WF03/GLPI: Followup Aviso App-Token header fails closed
+PASS: WF03/GLPI: Pendente Triagem Manual App-Token header fails closed
+PASS: WF03/GLPI: Followup Triagem Manual App-Token header fails closed
+PASS: WF03/GLPI: Followup OBRA App-Token header fails closed
+PASS: WF03/GLPI: Fechar OBRA App-Token header fails closed
+PASS: WF03/GLPI: Planejar DEMO sem equipe App-Token header fails closed
+PASS: WF03/GLPI: Followup DEMO sem equipe App-Token header fails closed
+PASS: WF03/GLPI: Atribuir DEMO App-Token header fails closed
+PASS: WF03/GLPI: Followup DEMO App-Token header fails closed
+PASS: WF03/GLPI: Planejado SOB_DEMANDA App-Token header fails closed
+PASS: WF03/GLPI: Followup SOB_DEMANDA App-Token header fails closed
+PASS: WF03/GLPI: Encerrar Sess�o App-Token header fails closed
+PASS: WF03/GLPI: Marcar Pendente Inicial App-Token header fails closed
+PASS: WF04 fails closed when GLPI_APP_TOKEN is absent
+PASS: WF04 fails closed when GLPI_AUTH_BASIC is absent
+PASS: WF04 has no weak empty GLPI credential header fallback
+PASS: WF04 Code nodes require GLPI_APP_TOKEN before HTTP
+PASS: WF04/GLPI: Sess�o Link Inv�lido App-Token header fails closed
+PASS: WF04/GLPI: Sess�o Link Inv�lido GLPI Authorization header fails closed
+PASS: WF04/GLPI: Anotar Link Inv�lido App-Token header fails closed
+PASS: WF04/GLPI: Encerrar Sess�o Link Inv�lido App-Token header fails closed
+PASS: WF04/GLPI: Sess�o Fiscal App-Token header fails closed
+PASS: WF04/GLPI: Sess�o Fiscal GLPI Authorization header fails closed
+PASS: WF04/GLPI: Followup Confirmado App-Token header fails closed
+PASS: WF04/GLPI: Fechar Confirmado App-Token header fails closed
+PASS: WF04/GLPI: Encerrar Sess�o Fiscal App-Token header fails closed
+PASS: WF04/GLPI: Remover Followups Dup requires GLPI app and session tokens before direct HTTP
+PASS: WF04/GLPI: Restaurar T�tulo App-Token header fails closed
+PASS: WF04/GLPI: Followup Rejeitado App-Token header fails closed
+PASS: WF04/GLPI: Encerrar Sess�o Fiscal Rejei��o App-Token header fails closed
+PASS: WF04/GLPI: Encerrar Sess�o Fiscal J� Registrada App-Token header fails closed
+PASS: WF04/GLPI: Encerrar Sess�o Fiscal Inv�lido App-Token header fails closed
+PASS: WF05 has no weak empty GLPI credential header fallback
+PASS: WF05 Code nodes require GLPI_APP_TOKEN before HTTP
+PASS: WF06 has no weak empty GLPI credential header fallback
+PASS: WF06 Code nodes require GLPI_APP_TOKEN before HTTP
+PASS: WF02/WF06 authenticate ingress only with a non-empty GLPI_WEBHOOK_KEY from env
+PASS: WF02 has no public webhook ingress
+PASS: WF02 is an internal subworkflow worker
+PASS: WF02 persists the scientific dedup decision before any operational action
+PASS: WF02 routes decision-persistence errors to its fail-closed gate
+PASS: WF02 uses DEDUP_CANDIDATE_LIMIT
+PASS: WF02 keeps an auditable configurable local top-k candidate view
+PASS: WF02 keeps the 80-row dedup retrieval pool
+PASS: WF02 writes fiscal_token_expira_em
+PASS: WF02 uses FISCAL_TOKEN_TTL_MINUTOS
+PASS: WF02 applies the frozen asymmetric dedup thresholds with operational abstention
+PASS: WF02 records dedup probabilities for ROC/AUC and Log Loss
+PASS: WF02 inserts into ia_decisoes
+PASS: WF02 inserts into workflow_eventos
+PASS: WF02 records the dedup prompt version
+PASS: WF02 validates GLPI initSession output
+PASS: WF02 does not own the ingress queue
+PASS: WF02 writes the IA queue status
+PASS: WF02 accepts tickets released by WF06
+PASS: WF02 uses prior distractors from the same experimental run
+PASS: WF02 does not create a closed-world episode-only candidate set
+PASS: WF02 uses the in-n8n multi-model gateway
+PASS: WF02 embeds the remote chain plus the explicit LOCAL provider role
+PASS: WF02 persists every provider attempt
+PASS: WF02 persists transport, input profile and scientific metadata for every attempt
+PASS: WF02 preserves HTTP status and provider retry metadata
+PASS: WF02 fails closed on experimental model mismatch
+PASS: WF02 sends exhausted retries to the DLQ
+PASS: WF02 schedules exponential retry backoff
+PASS: WF02 uses status-aware retry, permanent failure handling and global cooldown
+PASS: WF02 locks queue control before updating a retry ticket
+PASS: WF02 preserves the raw provider response
+PASS: WF02 rejects malformed probability vectors instead of renormalizing them
+PASS: WF02 rejects a dedup label inconsistent with its probability vector
+PASS: WF02 preserves semantic candidate scores separately from operational abstention
+PASS: WF02 routes every low-confidence dedup decision to human review
+PASS: WF02 hashes and records the exact dedup model input
+PASS: WF02 records which candidate view reached the selected model for recall auditing
+PASS: WF02 preserves the ticket payload after GLPI category-correction HTTP responses
+PASS: WF02 retry after dedup IA error returns to queue instead of immediate reprocessing
+PASS: WF02 records dedup IA retry requeue events
+PASS: WF02 returns classification to WF06 instead of invoking WF03 directly
+PASS: WF02 enqueues the classification stage with a clean queue lease
+PASS: WF03 persists the scientific classification decision before any operational action
+PASS: WF03 routes decision-persistence errors to its fail-closed gate
+PASS: WF03 inserts into ia_decisoes
+PASS: WF03 inserts into workflow_eventos
+PASS: WF03 handles TRIAGEM_MANUAL
+PASS: WF03 separates semantic IA class from DEMO availability routing
+PASS: WF03 records class probabilities for ROC/AUC and Log Loss
+PASS: WF03 records the classification prompt version
+PASS: WF03 validates GLPI initSession output
+PASS: WF03 uses the in-n8n multi-model gateway
+PASS: WF03 embeds the remote chain plus the explicit LOCAL provider role
+PASS: WF03 persists every provider attempt
+PASS: WF03 persists transport, input profile and scientific metadata for every attempt
+PASS: WF03 preserves HTTP status and provider retry metadata
+PASS: WF03 fails closed on experimental model mismatch
+PASS: WF03 sends exhausted retries to the DLQ
+PASS: WF03 schedules exponential retry backoff
+PASS: WF03 uses status-aware retry, permanent failure handling and global cooldown
+PASS: WF03 locks queue control before updating a retry ticket
+PASS: WF03 preserves the raw provider response
+PASS: WF03 records DEMO operational state
+PASS: WF03 rejects malformed probability vectors instead of renormalizing them
+PASS: WF03 rejects a semantic class inconsistent with its probability vector
+PASS: WF03 preserves semantic candidate scores separately from operational abstention
+PASS: WF03 hashes and records the exact classification model input
+PASS: WF03 sends only compact essential ticket fields to the model
+PASS: WF03 does not ask the LLM to infer DEMO availability
+PASS: WF03 retries return to WF06 instead of bypassing queue pacing
+PASS: WF03 continues after GLPI status failure at GLPI: Pendente Triagem Manual
+PASS: WF03 continues after GLPI status failure at GLPI: Atribuir DEMO
+PASS: WF03 continues after GLPI status failure at GLPI: Planejado SOB_DEMANDA
+PASS: WF03 continues after GLPI status failure at GLPI: Planejar DEMO sem equipe
+PASS: WF03 continues after GLPI status failure at GLPI: Fechar OBRA
+PASS: WF04 fiscal webhook path is stable
+PASS: WF04 mutates fiscal decisions only through POST
+PASS: WF04 GET link only renders a confirmation page
+PASS: WF04 records every fiscal link hit
+PASS: WF04 records every fiscal validation result
+PASS: WF04 records confirmed duplicate final result
+PASS: WF04 records rejected duplicate final result
+PASS: WF04 never bypasses WF06 after fiscal rejection
+PASS: WF04 returns rejected duplicates to the paced classification queue
+PASS: WF04 validates fiscal token expiry
+PASS: WF04 distinguishes expired fiscal tokens
+PASS: WF04 records double clicks
+PASS: WF04 records invalid tokens
+PASS: WF04 records expired tokens
+PASS: WF05 references analytic table ia_decisoes
+PASS: WF05 references analytic table ia_tentativas_modelo
+PASS: WF05 references analytic table workflow_eventos
+PASS: WF05 references analytic table avaliacoes_humanas
+PASS: WF05 references analytic table avaliacao_auto_confirmacoes
+PASS: WF05 references analytic table dataset_controle
+PASS: WF05 references analytic table experimentos_avaliacao
+PASS: WF05 references analytic table fila_ia_controle
+PASS: WF05 creates analytic statistic view vw_matriz_confusao_classificacao
+PASS: WF05 creates analytic statistic view vw_kpi_classificacao
+PASS: WF05 creates analytic statistic view vw_scores_classificacao
+PASS: WF05 creates analytic statistic view vw_metricas_assertividade_classificacao
+PASS: WF05 creates analytic statistic view vw_roc_classificacao
+PASS: WF05 creates analytic statistic view vw_auc_classificacao
+PASS: WF05 creates analytic statistic view vw_pr_classificacao
+PASS: WF05 creates analytic statistic view vw_average_precision_classificacao
+PASS: WF05 creates analytic statistic view vw_log_loss_classificacao
+PASS: WF05 creates analytic statistic view vw_brier_classificacao
+PASS: WF05 creates analytic statistic view vw_risco_cobertura_classificacao
+PASS: WF05 creates analytic statistic view vw_metricas_deduplicacao
+PASS: WF05 creates analytic statistic view vw_metricas_deduplicacao_desafio
+PASS: WF05 creates analytic statistic view vw_recall_candidatos_deduplicacao
+PASS: WF05 creates analytic statistic view vw_roc_deduplicacao
+PASS: WF05 creates analytic statistic view vw_auc_deduplicacao
+PASS: WF05 creates analytic statistic view vw_pr_deduplicacao
+PASS: WF05 creates analytic statistic view vw_average_precision_deduplicacao
+PASS: WF05 creates analytic statistic view vw_log_loss_deduplicacao
+PASS: WF05 creates analytic statistic view vw_proveniencia_gateway_ia
+PASS: WF05 creates analytic statistic view vw_decisoes_confirmatorias_elegiveis
+PASS: WF05 creates analytic statistic view vw_erros_ia_sem_dead_letter
+PASS: WF05 exposes the human evaluation webhook
+PASS: WF05 uses the stable human evaluation webhook path
+PASS: WF05 mutates human evaluations only through POST
+PASS: WF05 GET link only renders a confirmation page
+PASS: WF05 does not create a competing random research sample
+PASS: WF05 records human review responses
+PASS: WF06 has a scheduled queue drain
+PASS: WF06 reserves pending IA queue tickets
+PASS: WF06 waits between IA releases
+PASS: WF06 dispatches released tickets to WF02
+PASS: WF06 paces classification retries and fiscal rejections
+PASS: WF06 reads the pending IA queue status
+PASS: WF06 marks tickets released for IA
+PASS: WF06 uses FILA_IA_LOTE_TAMANHO
+PASS: WF06 uses FILA_IA_INTERVALO_SEGUNDOS
+PASS: WF06 recovers expired queue reservations
+PASS: WF06 can isolate reservations and experiment context to one calibration run
+PASS: WF06 serializes concurrent schedulers
+PASS: WF06 advisory lock is part of the single reservation statement
+PASS: WF06 selects the SQL result containing the ticket array
+PASS: WF06 carries authenticated internal source in the dispatched item
+PASS: WF06 reads the internal webhook key from n8n environment access
+PASS: WF06 waits for Chamar WF02 da Fila completion
+PASS: WF06 waits for Chamar WF03 da Fila completion
+PASS: WF06 tests total_lote with an explicit boolean condition
+PASS: WF06 honors retry backoff availability
+PASS: WF06 reserves pending classification retries as well as new dedup tickets
+PASS: WF06 persists queue telemetry
+PASS: WF06 is the public GLPI ingress
+PASS: WF06 exposes the stable GLPI queue webhook path
+PASS: WF06 preserves 401 versus 422 ingress rejection semantics
+PASS: WF06 only waits and dispatches when there are queued tickets
+PASS: WF06 routes each reserved item to the requested IA stage
+PASS: model, prompt, schema, gateway and workflow hashes match the frozen manifest
+PASS: init_v9.sql creates ia_decisoes idempotently
+PASS: init_v9.sql creates ia_tentativas_modelo idempotently
+PASS: init_v9.sql creates workflow_eventos idempotently
+PASS: init_v9.sql creates avaliacoes_humanas idempotently
+PASS: init_v9.sql creates avaliacao_auto_confirmacoes idempotently
+PASS: init_v9.sql creates dataset_controle idempotently
+PASS: init_v9.sql creates experimentos_avaliacao idempotently
+PASS: init_v9.sql creates fila_ia_controle idempotently
+PASS: init_v9.sql creates fila_ia_metricas idempotently
+PASS: init_v9.sql creates fila_ia_dead_letter idempotently
+PASS: init_v9.sql creates analytic statistic view vw_matriz_confusao_classificacao
+PASS: init_v9.sql creates analytic statistic view vw_kpi_classificacao
+PASS: init_v9.sql creates analytic statistic view vw_scores_classificacao
+PASS: init_v9.sql creates analytic statistic view vw_metricas_assertividade_classificacao
+PASS: init_v9.sql creates analytic statistic view vw_roc_classificacao
+PASS: init_v9.sql creates analytic statistic view vw_auc_classificacao
+PASS: init_v9.sql creates analytic statistic view vw_pr_classificacao
+PASS: init_v9.sql creates analytic statistic view vw_average_precision_classificacao
+PASS: init_v9.sql creates analytic statistic view vw_log_loss_classificacao
+PASS: init_v9.sql creates analytic statistic view vw_brier_classificacao
+PASS: init_v9.sql creates analytic statistic view vw_risco_cobertura_classificacao
+PASS: init_v9.sql creates analytic statistic view vw_metricas_deduplicacao
+PASS: init_v9.sql creates analytic statistic view vw_metricas_deduplicacao_desafio
+PASS: init_v9.sql creates analytic statistic view vw_recall_candidatos_deduplicacao
+PASS: init_v9.sql creates analytic statistic view vw_roc_deduplicacao
+PASS: init_v9.sql creates analytic statistic view vw_auc_deduplicacao
+PASS: init_v9.sql creates analytic statistic view vw_pr_deduplicacao
+PASS: init_v9.sql creates analytic statistic view vw_average_precision_deduplicacao
+PASS: init_v9.sql creates analytic statistic view vw_log_loss_deduplicacao
+PASS: init_v9.sql creates analytic statistic view vw_proveniencia_gateway_ia
+PASS: init_v9.sql creates analytic statistic view vw_decisoes_confirmatorias_elegiveis
+PASS: init_v9.sql creates analytic statistic view vw_erros_ia_sem_dead_letter
+PASS: final probabilistic score view has no label-derived imputation
+PASS: classification probability metrics retain pre-abstention local candidate scores
+PASS: dedup probability metrics retain pre-abstention local candidate scores
+PASS: confirmatory metrics require normative human gold provenance
+PASS: init_v9.sql contains the run-isolated experimental metric layer
+PASS: init_v9.sql includes api_response_raw
+PASS: init_v9.sql includes operational_config
+PASS: init_v9.sql includes fila_disponivel_em
+PASS: init_v9.sql includes perfil_entrada
+PASS: init_v9.sql includes http_status
+PASS: init_v9.sql includes retry_after_seconds
+PASS: init_v9.sql includes retryable
+PASS: init_v9.sql includes metadata_cientifica
+PASS: init_v9.sql includes partial research index
+PASS: n8n .env.example exists
+PASS: n8n docker-compose.yml exposes GLPI_WEBHOOK_KEY
+PASS: .env defines GLPI_WEBHOOK_KEY
+PASS: n8n docker-compose.yml exposes FISCAL_WEBHOOK_KEY
+PASS: .env defines FISCAL_WEBHOOK_KEY
+PASS: n8n docker-compose.yml exposes TEST_MODE
+PASS: .env defines TEST_MODE
+PASS: n8n docker-compose.yml exposes TEST_AUTO_HUMAN_CONFIRMATION
+PASS: .env defines TEST_AUTO_HUMAN_CONFIRMATION
+PASS: n8n docker-compose.yml exposes TEST_AUTO_REVIEW_TOKEN
+PASS: .env defines TEST_AUTO_REVIEW_TOKEN
+PASS: n8n docker-compose.yml exposes TEST_AUTO_REVIEW_BATCH_SIZE
+PASS: .env defines TEST_AUTO_REVIEW_BATCH_SIZE
+PASS: n8n docker-compose.yml exposes FISCAL_TOKEN_TTL_MINUTOS
+PASS: .env defines FISCAL_TOKEN_TTL_MINUTOS
+PASS: n8n docker-compose.yml exposes DEDUP_CANDIDATE_LIMIT
+PASS: .env defines DEDUP_CANDIDATE_LIMIT
+PASS: n8n docker-compose.yml exposes DEDUP_LOCAL_TOP_K
+PASS: .env defines DEDUP_LOCAL_TOP_K
+PASS: n8n docker-compose.yml exposes DEDUP_POSITIVE_THRESHOLD
+PASS: .env defines DEDUP_POSITIVE_THRESHOLD
+PASS: n8n docker-compose.yml exposes DEDUP_NEGATIVE_THRESHOLD
+PASS: .env defines DEDUP_NEGATIVE_THRESHOLD
+PASS: n8n docker-compose.yml exposes AVALIACAO_HUMANA_BASE_URL
+PASS: .env defines AVALIACAO_HUMANA_BASE_URL
+PASS: n8n docker-compose.yml exposes AVALIACAO_HUMANA_AMOSTRA_PERCENT
+PASS: .env defines AVALIACAO_HUMANA_AMOSTRA_PERCENT
+PASS: n8n docker-compose.yml exposes AVALIACAO_HUMANA_AMOSTRA_MIN
+PASS: .env defines AVALIACAO_HUMANA_AMOSTRA_MIN
+PASS: n8n docker-compose.yml exposes AVALIACAO_HUMANA_AMOSTRA_LIMIT
+PASS: .env defines AVALIACAO_HUMANA_AMOSTRA_LIMIT
+PASS: n8n docker-compose.yml exposes AVALIACAO_HUMANA_TOKEN_TTL_DIAS
+PASS: .env defines AVALIACAO_HUMANA_TOKEN_TTL_DIAS
+PASS: n8n docker-compose.yml exposes IA_CONFIANCA_MINIMA
+PASS: .env defines IA_CONFIANCA_MINIMA
+PASS: n8n docker-compose.yml exposes IA_OBRA_CONFIANCA_MINIMA
+PASS: .env defines IA_OBRA_CONFIANCA_MINIMA
+PASS: n8n docker-compose.yml exposes FILA_IA_ATIVA
+PASS: .env defines FILA_IA_ATIVA
+PASS: n8n docker-compose.yml exposes FILA_IA_LOTE_TAMANHO
+PASS: .env defines FILA_IA_LOTE_TAMANHO
+PASS: n8n docker-compose.yml exposes FILA_IA_INTERVALO_SEGUNDOS
+PASS: .env defines FILA_IA_INTERVALO_SEGUNDOS
+PASS: n8n docker-compose.yml exposes FILA_IA_LEASE_SEGUNDOS
+PASS: .env defines FILA_IA_LEASE_SEGUNDOS
+PASS: n8n docker-compose.yml exposes FILA_IA_INGRESS_GRACE_SEGUNDOS
+PASS: .env defines FILA_IA_INGRESS_GRACE_SEGUNDOS
+PASS: n8n docker-compose.yml exposes IA_RETRY_BASE_SEGUNDOS
+PASS: .env defines IA_RETRY_BASE_SEGUNDOS
+PASS: n8n docker-compose.yml exposes IA_RETRY_MAX_SEGUNDOS
+PASS: .env defines IA_RETRY_MAX_SEGUNDOS
+PASS: n8n docker-compose.yml exposes IA_RETRY_HARD_MAX_SEGUNDOS
+PASS: .env defines IA_RETRY_HARD_MAX_SEGUNDOS
+PASS: n8n docker-compose.yml exposes IA_MODEL_NAME
+PASS: .env defines IA_MODEL_NAME
+PASS: n8n docker-compose.yml exposes IA_MODEL_VERSION
+PASS: .env defines IA_MODEL_VERSION
+PASS: n8n docker-compose.yml exposes IA_EXECUTION_MODE
+PASS: .env defines IA_EXECUTION_MODE
+PASS: n8n docker-compose.yml exposes IA_FAILOVER_ENABLED
+PASS: .env defines IA_FAILOVER_ENABLED
+PASS: n8n docker-compose.yml exposes IA_FIXED_MODEL_ROLE
+PASS: .env defines IA_FIXED_MODEL_ROLE
+PASS: n8n docker-compose.yml exposes IA_OPERATIONAL_SEQUENCE
+PASS: .env defines IA_OPERATIONAL_SEQUENCE
+PASS: n8n docker-compose.yml exposes IA_MODEL_SECONDARY
+PASS: .env defines IA_MODEL_SECONDARY
+PASS: n8n docker-compose.yml exposes IA_MODEL_LOCAL
+PASS: .env defines IA_MODEL_LOCAL
+PASS: n8n docker-compose.yml exposes IA_LOCAL_BASE_URL
+PASS: .env defines IA_LOCAL_BASE_URL
+PASS: n8n docker-compose.yml exposes IA_LOCAL_API_TOKEN
+PASS: .env defines IA_LOCAL_API_TOKEN
+PASS: n8n docker-compose.yml exposes IA_LOCAL_TIMEOUT_MS
+PASS: .env defines IA_LOCAL_TIMEOUT_MS
+PASS: n8n docker-compose.yml exposes LOCAL_AI_EMBED_BACKEND
+PASS: .env defines LOCAL_AI_EMBED_BACKEND
+PASS: n8n docker-compose.yml exposes LOCAL_AI_EMBED_MODEL_REVISION
+PASS: .env defines LOCAL_AI_EMBED_MODEL_REVISION
+PASS: n8n docker-compose.yml exposes IA_GENERATION_SEED
+PASS: .env defines IA_GENERATION_SEED
+PASS: n8n docker-compose.yml exposes IA_GENERATION_PROFILE
+PASS: .env defines IA_GENERATION_PROFILE
+PASS: n8n docker-compose.yml exposes DEMO_EQUIPE_DISPONIVEL
+PASS: .env defines DEMO_EQUIPE_DISPONIVEL
+PASS: n8n docker-compose.yml exposes AVALIACAO_DATASET_VERSION
+PASS: .env defines AVALIACAO_DATASET_VERSION
+PASS: n8n docker-compose.yml exposes PROMPT_DEDUP_VERSION
+PASS: .env defines PROMPT_DEDUP_VERSION
+PASS: n8n docker-compose.yml exposes PROMPT_CLASSIF_VERSION
+PASS: .env defines PROMPT_CLASSIF_VERSION
+PASS: n8n compose exposes an empty-by-default calibration queue scope
+PASS: n8n compose has no mutable latest images
+PASS: PostgreSQL compose has a healthcheck
+PASS: n8n waits for healthy PostgreSQL
+PASS: compose declares isolated research network
+PASS: research database network is internal
+PASS: GLPI compose has no mutable latest images
+PASS: MariaDB compose has a healthcheck
+PASS: GLPI waits for healthy MariaDB
+PASS: GLPI compose declares the n8n webhook URL
+PASS: GLPI compose declares the n8n webhook key
+PASS: GLPI compose declares webhook retry attempts
+PASS: GLPI compose declares webhook retry delay
+PASS: GLPI sends new tickets to WF06
+PASS: GLPI API setup requires token and database password from environment
+PASS: GLPI API setup never prints the application token
+PASS: calibrar_vazao.py loads project environment configuration
+PASS: gerar_dataset_avaliacao.py loads project environment configuration
+PASS: conferir_gabarito.py loads project environment configuration
+PASS: gerar_diagnostico_operacional.py loads project environment configuration
+PASS: n8n .env.local found; configured remote secrets will be validated
+PASS: .env contains no remote AI credential value
+PASS: n8n docker-compose.yml loads .env.local
+PASS: configured remote AI credentials have plausible values
+PASS: AI credential values do not appear in builders, workflows or compose
+PASS: public builders, workflows and scripts contain no predictable credential fallback
+PASS: multi-model policy manifest exists
+PASS: multi-model policy freezes operational model roles
+PASS: multi-model policy freezes the local-first operational failover order
+PASS: multi-model policy freezes the native local PyTorch FP32 role
+PASS: confirmatory policy forbids model mixing and failover
+PASS: automated V4 sample-size plan exists
+PASS: automated V4 plan sizes independent semantic cores, not raw paraphrases
+PASS: automated V4 plan is explicitly non-confirmatory
+PASS: model/prompt manifest exists
+PASS: model/prompt manifest freezes Gemini 3.5 Flash
+PASS: WF02 gateway embeds the exact canonical prompt
+PASS: WF02 canonical prompt hash matches manifest
+PASS: WF02 calls providers inside a controlled n8n Code gateway
+PASS: WF02 gateway contains official provider endpoint
+PASS: WF02 reads all provider credentials only from environment
+PASS: WF02 freezes the operational failover sequence
+PASS: WF02 exposes an explicit native local role with optional bearer authentication
+PASS: WF02 calls the native structured local endpoints with scientific metadata
+PASS: WF02 uses an environment-configurable audited operational sequence
+PASS: WF02 fallback chain does not repeat the LOCAL provider
+PASS: WF02 audits local endpoint and per-attempt input profile
+PASS: WF02 separates canonical V9 output from local scientific metadata
+PASS: WF02 accepts local decisions only from frozen PyTorch FP32 Granite runtime
+PASS: WF02 requests structured JSON from providers
+PASS: WF02 gateway embeds exact canonical JSON Schema
+PASS: WF02 freezes generation seed through environment
+PASS: WF02 follows Gemini 3.5 generation parameter contract
+PASS: WF02 disables fallback for every experimental/benchmark run
+PASS: WF02 fails closed when a research run omits its frozen role/model
+PASS: WF02 gateway exposes transport retry metadata
+PASS: WF02 canonical schema hash matches manifest
+PASS: WF03 gateway embeds the exact canonical prompt
+PASS: WF03 canonical prompt hash matches manifest
+PASS: WF03 calls providers inside a controlled n8n Code gateway
+PASS: WF03 gateway contains official provider endpoint
+PASS: WF03 reads all provider credentials only from environment
+PASS: WF03 freezes the operational failover sequence
+PASS: WF03 exposes an explicit native local role with optional bearer authentication
+PASS: WF03 calls the native structured local endpoints with scientific metadata
+PASS: WF03 uses an environment-configurable audited operational sequence
+PASS: WF03 fallback chain does not repeat the LOCAL provider
+PASS: WF03 audits local endpoint and per-attempt input profile
+PASS: WF03 separates canonical V9 output from local scientific metadata
+PASS: WF03 accepts local decisions only from frozen PyTorch FP32 Granite runtime
+PASS: WF03 requests structured JSON from providers
+PASS: WF03 gateway embeds exact canonical JSON Schema
+PASS: WF03 freezes generation seed through environment
+PASS: WF03 follows Gemini 3.5 generation parameter contract
+PASS: WF03 disables fallback for every experimental/benchmark run
+PASS: WF03 fails closed when a research run omits its frozen role/model
+PASS: WF03 gateway exposes transport retry metadata
+PASS: WF03 canonical schema hash matches manifest
+PASS: requirements.txt exists
+PASS: all Python dependencies are exactly pinned
+PASS: GLPI webhook plugin reads retry attempts
+PASS: GLPI webhook plugin waits between retry attempts
+
+Static validation passed.

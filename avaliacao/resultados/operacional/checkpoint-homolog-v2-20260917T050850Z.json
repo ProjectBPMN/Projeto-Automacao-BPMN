@@ -1,0 +1,51 @@
+{
+  "schema_version": "projeto-ic-homologacao-checkpoint-v2",
+  "checkpoint_at_utc": "2026-09-17T05:08:50.0354229Z",
+  "checkpoint_at_brt": "2026-09-17T02:08:50.0354229-03:00",
+  "timezone": "America/Sao_Paulo",
+  "authorized_daemon": {
+    "valid_instance_count": 1,
+    "pid": 9192,
+    "executable_path": ".venv\\Scripts\\pythonw.exe",
+    "required_command_fragments": ["monitor_daemon.py", "monitoring-homolog-20260910-v2", "--interval-seconds 60"],
+    "action": "PRESERVED"
+  },
+  "technical_windows": {
+    "completed": 26,
+    "required": 3,
+    "complete_decision_coverage": 26,
+    "passing_all_slo_checks": 0,
+    "latest_window_index": 26,
+    "latest_slo_status": "FAIL",
+    "latest_local_ai_availability": 0.0,
+    "latest_drift_status": "INSUFFICIENT_DATA"
+  },
+  "atomic_queue_capture": {
+    "artifact": "runtime-queue-state-20260917T050816Z.json",
+    "status": "PASS",
+    "erro_ia": 0,
+    "active_queue": 0,
+    "open_dlq": 0
+  },
+  "validation": {
+    "operational_pytest": "45 passed",
+    "v9_static_validation": "PASS"
+  },
+  "development_selection": {
+    "expected": 10,
+    "completed": 10,
+    "failed": 0,
+    "pending": 0,
+    "running": 0,
+    "protocol_sha256": "5632375c8b0c4db66c5da375bb1fdf1f84d0890637f8a2684447bff2b78db2f0",
+    "run_fingerprint": "4e693e499be3b80489c2e27e6f7bed5c9c2a5f704253f8e7533cbdf538122484",
+    "resultados_readable": true,
+    "xai_complete": true,
+    "performance_benchmark_complete": true,
+    "locked_challenge_readable": true
+  },
+  "scientific_result": false,
+  "scientific_ready": false,
+  "production_ready": false,
+  "interpretation_limit": "A telemetria técnica e as evidências de seleção/desafio são locais, sintéticas/proxy. Não demonstram eficácia institucional, correção semântica ou prontidão de produção."
+}

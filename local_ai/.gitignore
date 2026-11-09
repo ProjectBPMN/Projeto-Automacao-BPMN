@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+models/*
+!models/.gitkeep
+!models/manifest.json
+runtime/state/
+runtime/logs/*.log

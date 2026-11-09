@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "observed_at": "2026-09-03T14:25:00Z",
+  "mode": "MANUAL_AUTHENTICATED_READ_ONLY_BROWSER_INSPECTION",
+  "status": "PASS",
+  "credentials_logged": false,
+  "mutations_performed": false,
+  "scientific_result": false,
+  "semantic_correctness_confirmed": false,
+  "n8n": {
+    "url": "http://127.0.0.1:5678/home/workflows",
+    "page_title": "Workflows - n8n",
+    "authenticated": true,
+    "workflow_count": 6,
+    "published_workflows": [
+      "V9 - WF01 Sincronizador",
+      "V9 - WF02 Triagem",
+      "V9 - WF03 Classificação",
+      "V9 - WF04 Decisão Fiscal",
+      "V9 - WF05 Métricas",
+      "V9 - WF06 Fila IA"
+    ],
+    "recent_execution_observation": {
+      "workflow": "V9 - WF06 Fila IA",
+      "visible_execution_ids": [61048, 61049, 61050, 61051, 61052, 61053, 61054, 61055, 61056, 61057],
+      "visible_status": "Success"
+    }
+  },
+  "glpi": {
+    "url": "http://127.0.0.1:9180/front/ticket.php",
+    "page_title": "Chamados - GLPI",
+    "authenticated": true,
+    "profile_visible": "Super-Admin",
+    "ticket_list_visible": true,
+    "historical_error_titles_preserved": true
+  },
+  "interpretation_limit": "A inspeção visual comprova somente o estado exibido nas páginas locais naquele instante; não prova correção universal do workflow nem correção semântica dos chamados."
+}

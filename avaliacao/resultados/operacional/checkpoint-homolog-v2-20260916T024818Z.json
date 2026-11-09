@@ -1,0 +1,50 @@
+{
+  "schema_version": "projeto-ic-homolog-checkpoint-v1",
+  "checkpoint_at_utc": "2026-09-16T02:48:18.7740333Z",
+  "checkpoint_at_brt": "2026-09-15T23:48:18.7823540-03:00",
+  "timezone": "America/Sao_Paulo",
+  "daemon": {
+    "state": "RUNNING",
+    "updated_at": "2026-09-16T02:47:37.580491Z",
+    "valid_process_count": 1,
+    "valid_process_pids": [9192],
+    "required_executable_path": ".venv\\Scripts\\pythonw.exe",
+    "required_command_line_fragments": ["monitor_daemon.py", "monitoring-homolog-20260910-v2", "--interval-seconds 60"],
+    "action": "NONE_VALID_DAEMON_PRESERVED"
+  },
+  "technical_windows": {
+    "completed": 19,
+    "required": 3,
+    "complete_decision_coverage": 19,
+    "passing_all_slo_checks": 0,
+    "latest_window_index": 19,
+    "latest_slo_status": "FAIL",
+    "latest_drift_status": "INSUFFICIENT_DATA",
+    "interpretation_limit": "Janelas técnicas locais/sintéticas não comprovam disponibilidade longitudinal nem correção semântica institucional."
+  },
+  "queue_evidence": {
+    "artifact": "runtime-queue-state-20260916T024540Z.json",
+    "status": "PASS",
+    "erro_ia": 0,
+    "active_queue": 0,
+    "open_dlq": 0
+  },
+  "validation": {
+    "pytest_artifact": "pytest-homolog-20260916T0246Z.xml",
+    "pytest": "45 passed",
+    "v9_static_validation": "PASS"
+  },
+  "scientific_grid": {
+    "artifact": "../selecao-supervisionada-v3-20260915/execucao_checkpoint.json",
+    "expected": 10,
+    "completed": 10,
+    "failed": 0,
+    "pending": 0,
+    "running": 0,
+    "xai_complete": true,
+    "performance_benchmark_complete": true,
+    "challenge_evaluation_recorded": true,
+    "scientific_result": false,
+    "production_ready": false
+  }
+}

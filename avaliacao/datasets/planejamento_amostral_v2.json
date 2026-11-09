@@ -1,0 +1,30 @@
+{
+  "method": {
+    "support_per_class": "aproximação conservadora binomial de pior caso p=0.5; a precisão final deve ser verificada por bootstrap episódico",
+    "paired_comparison": "aproximação normal para McNemar pareado"
+  },
+  "parameters": {
+    "margin": 0.1,
+    "confidence": 0.95,
+    "power": 0.8,
+    "alpha": 0.05,
+    "discordant_rate": 0.2,
+    "discordant_difference": 0.1
+  },
+  "pilot_support_per_variation": {
+    "DEMO": 23,
+    "OBRA": 3,
+    "SOB_DEMANDA": 9,
+    "TRIAGEM_MANUAL": 9
+  },
+  "minimum_support_per_class": 97,
+  "variations_required_by_class": {
+    "SOB_DEMANDA": 11,
+    "DEMO": 5,
+    "TRIAGEM_MANUAL": 11,
+    "OBRA": 33
+  },
+  "recommended_variations": 33,
+  "minimum_paired_cases_mcnemar": 155,
+  "decision_rule": "usar o maior requisito entre suporte por classe e pares; não concluir equivalência quando o IC permanecer amplo"
+}

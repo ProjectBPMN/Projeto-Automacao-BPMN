@@ -1,0 +1,53 @@
+{
+  "schema_version": "projeto-ic-homolog-checkpoint-v2",
+  "checkpoint_at_utc": "2026-09-18T00:25:23.4940029Z",
+  "checkpoint_at_brt": "2026-09-17T21:25:23.6625171-03:00",
+  "timezone": "America/Sao_Paulo",
+  "authorized_daemon": {
+    "status": "PASS",
+    "valid_instance_count": 1,
+    "pid": 9192,
+    "executable_path": ".venv\\Scripts\\pythonw.exe",
+    "command_requirements": ["monitor_daemon.py", "monitoring-homolog-20260910-v2", "--interval-seconds 60"],
+    "action": "PRESERVED"
+  },
+  "technical_windows": {
+    "completed": 31,
+    "required": 3,
+    "complete_decision_coverage": 31,
+    "latest_window_index": 31,
+    "latest_slo_status": "FAIL",
+    "latest_local_ai_availability": 0.0,
+    "latest_backup_restore_age_hours": 172.21850186805554,
+    "latest_drift_status": "INSUFFICIENT_DATA"
+  },
+  "queue_capture": {
+    "artifact": "runtime-queue-state-20260918T002418Z.json",
+    "status": "PASS",
+    "erro_ia": 0,
+    "active_queue": 0,
+    "open_dlq": 0
+  },
+  "validation": {
+    "operational_pytest": {"passed": 32, "status": "PASS"},
+    "v9_static": {"status": "PASS"}
+  },
+  "scientific_protocol": {
+    "execution_manifest": "../../selecao-supervisionada-v3-20260915/execucao_checkpoint.json",
+    "expected": 10,
+    "completed": 10,
+    "failed": 0,
+    "pending": 0,
+    "running": 0,
+    "retry_count": 0,
+    "last_error_fingerprint": null,
+    "xai_complete": true,
+    "performance_benchmark_complete": true,
+    "locked_challenge_recorded": true,
+    "scientific_result": false,
+    "production_ready": false,
+    "interpretation_limit": "A grade e o desafio usam rótulos sintéticos/proxy; não demonstram eficácia institucional, scientific_ready ou production_ready."
+  },
+  "homologation_status": "BLOCKED_BY_SLO_AND_INSUFFICIENT_DATA",
+  "required_action": "Renew and verify backup/restore evidence; restore local-AI and decision-level observability before reconsidering SLO/drift gates."
+}

@@ -1,0 +1,9 @@
+PASTA AVALIACAO/SQL
+===================
+Contém SQL exclusivo da avaliação científica.
+
+- registrar_avaliacoes_do_dataset.sql: materializa o gabarito de um único
+  `run_id`; não apresenta rótulo sintético como revisão humana.
+- consultas_metricas_avaliacao.sql: extrai métricas de classificação,
+  deduplicação, probabilidade, fila, matriz normalizada, kappa e desempenho
+  filtradas por `run_id`.

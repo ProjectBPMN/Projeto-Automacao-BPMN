@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-10T18:54:26.799725Z",
+  "status": "CAPTURED",
+  "evidence_status": "LIVE_CONSISTENT_DATABASE_BACKUP_CAPTURE",
+  "scientific_result": false,
+  "daemon_touched": false,
+  "live_databases_mutated": false,
+  "docker_context": "desktop-linux",
+  "consistency": {
+    "postgresql": "pg_dump custom format consistent snapshot",
+    "mariadb": "mariadb-dump --single-transaction"
+  },
+  "artifacts": {
+    "postgresql": {
+      "path": "avaliacao\\runtime\\backups\\live-20260910T1850Z\\triagem-live.dump",
+      "bytes": 1685871,
+      "sha256": "ecc82f405e26df5e22adadb9e55a58c8b45c4d85b292206d9a66808b60d85fe3",
+      "source_row_counts": {
+        "tickets_processados": 230,
+        "fila_ia_controle": 1,
+        "fila_ia_dead_letter": 110,
+        "ia_decisoes": 411,
+        "ia_tentativas_modelo": 339,
+        "avaliacoes_humanas": 50,
+        "workflow_eventos": 929
+      }
+    },
+    "mariadb": {
+      "path": "avaliacao\\runtime\\backups\\live-20260910T1850Z\\glpi-live.sql",
+      "bytes": 29583950,
+      "sha256": "0f8400eef1661d535ce78a5913df00f86ae31a17315092ef966c182325d9889f",
+      "source_row_counts": {
+        "glpi_tickets": 210,
+        "glpi_users": 16,
+        "glpi_itilcategories": 13
+      }
+    }
+  },
+  "interpretation_limit": "A captura prova a criação de snapshots consistentes dos bancos locais. A recuperabilidade só é estabelecida pelo drill isolado de restauração."
+}

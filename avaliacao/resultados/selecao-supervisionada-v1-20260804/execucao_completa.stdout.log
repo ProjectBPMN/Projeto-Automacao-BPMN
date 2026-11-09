@@ -1,0 +1,35 @@
+[embedding] granite97m
+[embedding] multilingual_e5_small
+[embedding] multilingual_minilm_l12
+[resume] classification__tfidf__none__logistic_regression
+[classification__tfidf__none__decision_tree] fold 1/5 fit=6.25s
+[classification__tfidf__none__decision_tree] fold 2/5 fit=6.58s
+[classification__tfidf__none__decision_tree] fold 3/5 fit=5.85s
+[classification__tfidf__none__decision_tree] fold 4/5 fit=5.47s
+[classification__tfidf__none__decision_tree] fold 5/5 fit=8.31s
+[classification__tfidf__none__linear_svm] fold 1/5 fit=6.41s
+[classification__tfidf__none__linear_svm] fold 2/5 fit=6.56s
+[classification__tfidf__none__linear_svm] fold 3/5 fit=7.66s
+[classification__tfidf__none__linear_svm] fold 4/5 fit=5.23s
+[classification__tfidf__none__linear_svm] fold 5/5 fit=5.78s
+[classification__tfidf__none__mlp] fold 1/5 fit=92.67s
+[classification__tfidf__none__mlp] fold 2/5 fit=94.27s
+[classification__tfidf__none__mlp] fold 3/5 fit=86.71s
+[classification__tfidf__none__mlp] fold 4/5 fit=100.98s
+[classification__tfidf__none__mlp] fold 5/5 fit=83.41s
+[classification__tfidf__none__xgboost] fold 1/5 fit=107.95s
+[classification__tfidf__none__xgboost] fold 2/5 fit=92.74s
+[classification__tfidf__none__xgboost] fold 3/5 fit=121.64s
+[classification__tfidf__none__xgboost] fold 4/5 fit=107.11s
+[classification__tfidf__none__xgboost] fold 5/5 fit=98.78s
+[resume] deduplication__tfidf__none__logistic_regression
+[deduplication__tfidf__none__decision_tree] fold 1/5 fit=15.84s
+[deduplication__tfidf__none__decision_tree] fold 2/5 fit=20.92s
+[deduplication__tfidf__none__decision_tree] fold 3/5 fit=14.79s
+[deduplication__tfidf__none__decision_tree] fold 4/5 fit=14.10s
+[deduplication__tfidf__none__decision_tree] fold 5/5 fit=17.05s
+[deduplication__tfidf__none__linear_svm] fold 1/5 fit=12.91s
+[deduplication__tfidf__none__linear_svm] fold 2/5 fit=16.37s
+[deduplication__tfidf__none__linear_svm] fold 3/5 fit=13.69s
+[deduplication__tfidf__none__linear_svm] fold 4/5 fit=13.49s
+[deduplication__tfidf__none__linear_svm] fold 5/5 fit=11.29s

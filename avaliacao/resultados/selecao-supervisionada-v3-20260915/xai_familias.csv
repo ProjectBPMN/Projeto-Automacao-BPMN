@@ -1,0 +1,9 @@
+﻿task,combination_id,family,baseline_macro_f1,mean_permuted_macro_f1,macro_f1_drop,repeats,fraction,scientific_result,development_only,confirmatory_eligible,evidence_basis,mean_abs_shap_sum
+classification,classification__hybrid__multilingual_e5_small__mlp,embedding,1.0,1.0,0.0,5,0.0,False,True,False,SYNTHETIC_PROXY_LABELS,
+classification,classification__hybrid__multilingual_e5_small__mlp,tfidf_character,1.0,0.29500000000000004,0.705,5,1.0,False,True,False,SYNTHETIC_PROXY_LABELS,
+classification,classification__hybrid__multilingual_e5_small__mlp,tfidf_word,1.0,1.0,0.0,5,0.0,False,True,False,SYNTHETIC_PROXY_LABELS,
+deduplication,deduplication__hybrid_metadata__multilingual_e5_small__logistic_regression,tfidf_character,,,,,0.4127250827181514,False,True,False,SYNTHETIC_PROXY_LABELS,3.3167788397069455
+deduplication,deduplication__hybrid_metadata__multilingual_e5_small__logistic_regression,tfidf_word,,,,,0.3330809533177271,False,True,False,SYNTHETIC_PROXY_LABELS,2.6767354448096103
+deduplication,deduplication__hybrid_metadata__multilingual_e5_small__logistic_regression,metadata,,,,,0.1887400756004836,False,True,False,SYNTHETIC_PROXY_LABELS,1.5167701580760788
+deduplication,deduplication__hybrid_metadata__multilingual_e5_small__logistic_regression,embedding,,,,,0.03288461168668525,False,True,False,SYNTHETIC_PROXY_LABELS,0.26427030670404295
+deduplication,deduplication__hybrid_metadata__multilingual_e5_small__logistic_regression,tfidf_other,,,,,0.03256927667695273,False,True,False,SYNTHETIC_PROXY_LABELS,0.2617361828247491

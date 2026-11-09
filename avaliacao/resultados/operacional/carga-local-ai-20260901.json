@@ -1,0 +1,281 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-01T23:28:58.601897Z",
+  "mode": "EXPLICIT_ACTIVE_PROBE",
+  "policy_status": "PROPOSTA_NAO_APROVADA",
+  "institutionally_approved": false,
+  "production_ready": false,
+  "readiness_blockers": [
+    "POLICY_NOT_INSTITUTIONALLY_APPROVED",
+    "LEAST_PRIVILEGE_REMEDIATION_NOT_VERIFIED",
+    "ISOLATED_BACKUP_RESTORE_NOT_VERIFIED_IN_THIS_REPORT",
+    "THREE_COMPLETE_SLO_WINDOWS_NOT_VERIFIED",
+    "FAILING_OPERATIONAL_CHECKS",
+    "INSUFFICIENT_OPERATIONAL_EVIDENCE"
+  ],
+  "scientific_result": false,
+  "failing_sections": [
+    "static_audit"
+  ],
+  "insufficient_sections": [
+    "slo_proposal_evaluation"
+  ],
+  "sections": {
+    "static_audit": {
+      "status": "FAIL",
+      "evidence_status": "STATIC_CONFIGURATION_AUDIT",
+      "scientific_result": false,
+      "collected_at": "2026-09-01T23:28:57.363328Z",
+      "checks": [
+        {
+          "id": "network.loopback_ports",
+          "status": "PASS",
+          "summary": "Portas HTTP canônicas devem permanecer vinculadas ao loopback.",
+          "evidence": {}
+        },
+        {
+          "id": "supply_chain.image_digests",
+          "status": "PASS",
+          "summary": "Todas as imagens declaradas devem estar congeladas por digest.",
+          "evidence": {}
+        },
+        {
+          "id": "postgres.healthcheck",
+          "status": "PASS",
+          "summary": "PostgreSQL possui healthcheck explícito.",
+          "evidence": {}
+        },
+        {
+          "id": "n8n.healthcheck",
+          "status": "FAIL",
+          "summary": "O container n8n deve possuir healthcheck próprio no Compose.",
+          "evidence": {}
+        },
+        {
+          "id": "n8n.code_node_sandbox",
+          "status": "FAIL",
+          "summary": "Sandbox de Code nodes não deve permanecer desabilitada em produção.",
+          "evidence": {
+            "configured_value": "N8N_DISABLE_SANDBOX=true"
+          }
+        },
+        {
+          "id": "n8n.environment_access",
+          "status": "FAIL",
+          "summary": "O acesso amplo a variáveis de ambiente por Code nodes amplia o impacto de comprometimento.",
+          "evidence": {}
+        },
+        {
+          "id": "postgres.runtime_not_bootstrap_role",
+          "status": "FAIL",
+          "summary": "O usuário de bootstrap do PostgreSQL não deve ser a credencial runtime do n8n.",
+          "evidence": {}
+        },
+        {
+          "id": "workflow.runtime_ddl_separation",
+          "status": "FAIL",
+          "summary": "DDL ainda está embutido no WF05; separar migração é pré-requisito para menor privilégio estrito.",
+          "evidence": {}
+        },
+        {
+          "id": "test_flags.safe_defaults",
+          "status": "PASS",
+          "summary": "Flags de teste devem iniciar desligadas.",
+          "evidence": {}
+        }
+      ]
+    },
+    "isolated_failure_simulation": {
+      "status": "PASS",
+      "evidence_status": "ISOLATED_COMPONENT_HARNESS_ONLY",
+      "scientific_result": false,
+      "collected_at": "2026-09-01T23:28:58.601897Z",
+      "live_services_touched": false,
+      "scenarios": [
+        {
+          "dependency": "glpi",
+          "detected_failure": "HTTP_503",
+          "required_action": "BLOCK_GLPI_MUTATION_AND_RETRY",
+          "automatic_decision_allowed": false,
+          "status": "PASS",
+          "isolated_observation": {
+            "status": 503,
+            "latency_ms": 2.548899967223406,
+            "error": "HTTP_503",
+            "body": null
+          },
+          "isolated_target_only": true
+        },
+        {
+          "dependency": "local_ai",
+          "detected_failure": "TIMEOUT",
+          "required_action": "ABSTAIN_RETRY_THEN_DLQ_OR_HUMAN",
+          "automatic_decision_allowed": false,
+          "status": "PASS",
+          "isolated_observation": {
+            "status": 0,
+            "latency_ms": 45.02550000324845,
+            "error": "TIMEOUT",
+            "body": null
+          },
+          "isolated_target_only": true
+        },
+        {
+          "dependency": "postgresql",
+          "detected_failure": "CONNECTION_REFUSED",
+          "required_action": "FAIL_CLOSED_WITHOUT_GLPI_MUTATION",
+          "automatic_decision_allowed": false,
+          "status": "PASS",
+          "isolated_observation": {
+            "connect_ex": 10035,
+            "latency_ms": 205.661499989219
+          },
+          "isolated_target_only": true
+        }
+      ],
+      "interpretation_limit": "Simulação técnica em loopback efêmero. Não comprova failover ou rollback do workflow vivo e não autoriza indisponibilizar dependências reais."
+    },
+    "monitoring_plan": {
+      "status": "PROPOSED_NOT_APPROVED",
+      "collector_status": "NAO_INSTALADO",
+      "required_signals": [
+        "component_availability",
+        "local_ai_inference_latency",
+        "queue_wait",
+        "open_dead_letters",
+        "technical_error_rate",
+        "critical_automatic_errors",
+        "rollback_recovery_time",
+        "backup_restore_age",
+        "input_and_output_drift",
+        "role_and_workflow_changes"
+      ],
+      "automatic_retraining_allowed": false,
+      "scientific_result": false
+    },
+    "slo_proposal_evaluation": {
+      "status": "INSUFFICIENT_DATA",
+      "policy_status": "PROPOSTA_NAO_APROVADA",
+      "institutionally_approved": false,
+      "checks": [
+        {
+          "metric": "availability.local_ai",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.995
+        },
+        {
+          "metric": "availability.n8n",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.995
+        },
+        {
+          "metric": "availability.glpi",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.99
+        },
+        {
+          "metric": "availability.postgresql",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.995
+        },
+        {
+          "metric": "local_ai.inference_p95_ms",
+          "status": "INSUFFICIENT_DATA",
+          "target": 1500.0
+        },
+        {
+          "metric": "queue.wait_p95_seconds",
+          "status": "INSUFFICIENT_DATA",
+          "target": 900.0
+        },
+        {
+          "metric": "dlq.open",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.0
+        },
+        {
+          "metric": "technical_error_rate",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.01
+        },
+        {
+          "metric": "critical_automatic_errors",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.0
+        },
+        {
+          "metric": "rollback.recovery_minutes",
+          "status": "INSUFFICIENT_DATA",
+          "target": 30.0
+        },
+        {
+          "metric": "backup.restore_age_hours",
+          "status": "INSUFFICIENT_DATA",
+          "target": 168.0
+        }
+      ],
+      "scientific_result": false,
+      "interpretation_limit": "Os limiares são uma proposta técnica pré-registrada. PASS não equivale a aceite institucional, certificação de produção ou disponibilidade mensal comprovada."
+    },
+    "drift": {
+      "status": "NOT_REQUESTED",
+      "scientific_result": false
+    },
+    "bounded_load": {
+      "evidence_status": "BOUNDED_TECHNICAL_LOAD_SCENARIO",
+      "scientific_result": false,
+      "collected_at": "2026-09-01T23:28:54.787480Z",
+      "target": "http://127.0.0.1:8090/health",
+      "requests": 100,
+      "concurrency": 8,
+      "duration_seconds": 4.045190899982117,
+      "throughput_requests_second": 24.72071219196159,
+      "success_rate": 1.0,
+      "saturation_rate": 0.0,
+      "server_error_rate": 0.0,
+      "status_counts": {
+        "200": 100
+      },
+      "error_counts": {},
+      "latency_ms": {
+        "p50": 13.486499985447153,
+        "p95": 3509.93841503805,
+        "p99": 4023.139104988659,
+        "maximum": 4027.802500000689
+      },
+      "interpretation_limit": "Cenário técnico limitado no loopback; não estima disponibilidade mensal, desempenho multiusuário institucional nem eficácia científica."
+    },
+    "live_point_in_time": {
+      "status": "PASS",
+      "evidence_status": "POINT_IN_TIME_TECHNICAL_EVIDENCE",
+      "scientific_result": false,
+      "collected_at": "2026-09-01T23:28:57.266767Z",
+      "http_probes": {
+        "local_ai": {
+          "status": 200,
+          "latency_ms": 3.5764999920502305,
+          "error": null
+        },
+        "n8n": {
+          "status": 200,
+          "latency_ms": 276.02059999480844,
+          "error": null
+        },
+        "glpi": {
+          "status": 200,
+          "latency_ms": 1846.1817000061274,
+          "error": null
+        }
+      },
+      "containers": [
+        "/glpi|running|none",
+        "/glpi-db|running|healthy",
+        "/glpi-dedup-db|running|healthy",
+        "/n8n|running|none"
+      ],
+      "docker_probe_error": null,
+      "interpretation_limit": "Uma coleta pontual não mede disponibilidade na janela do SLO."
+    }
+  },
+  "interpretation_limit": "O relatório reúne evidência técnica de escopo limitado. Não substitui aceite institucional, janela observacional de SLO, piloto prospectivo ou avaliação científica confirmatória."
+}

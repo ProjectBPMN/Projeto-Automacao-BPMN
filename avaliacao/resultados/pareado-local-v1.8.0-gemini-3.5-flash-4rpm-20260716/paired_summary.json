@@ -1,0 +1,86 @@
+{
+  "confirmatory_claim_allowed": false,
+  "created_at": "2026-07-16T18:20:09.222495+00:00",
+  "paired": {
+    "abstention_counted_as_not_correct_for_pair_test": true,
+    "both_correct": 0,
+    "both_not_correct": 40,
+    "complete_pairs": 40,
+    "gemini_only_correct": 0,
+    "local_only_correct": 0,
+    "mcnemar_exact_two_sided_p": 1.0
+  },
+  "plan_manifest_payload_sha256": "5bff1fc3f4abc5d5c49e6fe9aab83ff7428bb859acab490cc1bb19e8964ad335",
+  "predictions_sha256": "b134408d80dc855bea00006a0808c216a985f885f30b47bef9ab26a4e70d7bd7",
+  "providers": {
+    "google-gemini": {
+      "abstentions": 0,
+      "accuracy_abstention_as_not_correct": 0.0,
+      "automation_coverage": 0.0,
+      "confusion": {
+        "DEMO->ERROR": 2,
+        "DUPLICADO->ERROR": 15,
+        "NAO_DUPLICADO->ERROR": 15,
+        "OBRA->ERROR": 3,
+        "SOB_DEMANDA->ERROR": 2,
+        "TRIAGEM_MANUAL->ERROR": 3
+      },
+      "dedup_false_negatives": 0,
+      "dedup_false_positives": 0,
+      "dedup_weighted_error_cost_fn5_fp1": 0,
+      "failures": 40,
+      "latency_ms": {
+        "mean": null,
+        "p50": null,
+        "p95": null
+      },
+      "selective_accuracy": null,
+      "total": 40,
+      "valid": 0
+    },
+    "local-pytorch-fp32": {
+      "abstentions": 0,
+      "accuracy_abstention_as_not_correct": 0.0,
+      "automation_coverage": 0.0,
+      "confusion": {
+        "DEMO->ERROR": 2,
+        "DUPLICADO->ERROR": 15,
+        "NAO_DUPLICADO->ERROR": 15,
+        "OBRA->ERROR": 3,
+        "SOB_DEMANDA->ERROR": 2,
+        "TRIAGEM_MANUAL->ERROR": 3
+      },
+      "dedup_false_negatives": 0,
+      "dedup_false_positives": 0,
+      "dedup_weighted_error_cost_fn5_fp1": 0,
+      "failures": 40,
+      "latency_ms": {
+        "mean": null,
+        "p50": null,
+        "p95": null
+      },
+      "selective_accuracy": null,
+      "total": 40,
+      "valid": 0
+    }
+  },
+  "records": 80,
+  "remote_budget_observed": {
+    "calls": 40,
+    "limits": {
+      "approved": true,
+      "max_remote_calls": 40,
+      "max_remote_tokens": 500000,
+      "max_rpm": 4,
+      "required": {
+        "remote_calls": 40,
+        "remote_tokens_conservative": 492324
+      },
+      "token_estimation": "Reserva conservadora: bytes UTF-8 do prompt + 4096 tokens de overhead de request/schema + maxOutputTokens; não usa endpoint remoto de contagem."
+    },
+    "reported_total_tokens": 0
+  },
+  "schema_version": "1.0.0",
+  "scientific_result": false,
+  "status": "PRELIMINARY_PAIRED_RESULTS_PENDING_GOLD_GATE"
+}

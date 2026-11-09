@@ -1,0 +1,52 @@
+{
+  "action": "FINALIZE",
+  "exact_process_count": 1,
+  "pids": [
+    9192
+  ],
+  "daemon_age_seconds": 53.6,
+  "status": "TECHNICAL_WINDOWS_COMPLETE",
+  "completed_technical_windows": 17,
+  "windows_with_complete_decision_coverage": 17,
+  "windows_passing_all_slo_checks": 0,
+  "first_three": [
+    {
+      "index": 1,
+      "end": "2026-09-10T19:27:48.876537Z",
+      "observations": 240,
+      "coverage": "COMPLETE",
+      "decisions": 0,
+      "slo": "FAIL",
+      "drift": "INSUFFICIENT_DATA"
+    },
+    {
+      "index": 2,
+      "end": "2026-09-10T23:27:48.876537Z",
+      "observations": 240,
+      "coverage": "COMPLETE",
+      "decisions": 0,
+      "slo": "INSUFFICIENT_DATA",
+      "drift": "INSUFFICIENT_DATA"
+    },
+    {
+      "index": 3,
+      "end": "2026-09-11T03:27:48.876537Z",
+      "observations": 240,
+      "coverage": "COMPLETE",
+      "decisions": 0,
+      "slo": "INSUFFICIENT_DATA",
+      "drift": "INSUFFICIENT_DATA"
+    }
+  ],
+  "scientific_ready": false,
+  "production_ready": false,
+  "gaps": {
+    "count_over_120_seconds": 3,
+    "largest": {
+      "from": "2026-09-12T23:22:54.365170+00:00",
+      "to": "2026-09-14T19:56:06.638617+00:00",
+      "seconds": 160392.27
+    }
+  },
+  "checked_at": "2026-09-15T16:23:59.951675+00:00"
+}

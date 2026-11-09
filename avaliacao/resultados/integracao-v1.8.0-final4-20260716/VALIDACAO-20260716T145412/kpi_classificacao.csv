@@ -1,0 +1,2 @@
+run_id,total,cobertos,abstencoes,acuracia_geral,f1_macro,cobertura_automatica,acuracia_sob_cobertura
+VALIDACAO-20260716T145412,2,1,1,0.500000,1.000000,0.500000,1.000000

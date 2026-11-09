@@ -1,0 +1,132 @@
+{
+  "confirmatory_claim_allowed": false,
+  "created_at": "2026-07-16T18:20:09.222495+00:00",
+  "metric_recalculation": {
+    "benchmark_script_sha256": "f76b3b80e35155392cb049d063df2f03d972e8819089605f883c068ecd7f4515",
+    "contract_version": "1.1.0",
+    "inference_reexecuted": false,
+    "source_artifacts_unchanged": true,
+    "source_plan": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-4rpm-20260716/paired_plan.json",
+    "source_plan_sha256": "534a6be45bf598d9ec8a9890305b2a1b4ca32be76aa560e990f2e713c627f1fe",
+    "source_predictions": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-4rpm-20260716/paired_predictions.jsonl",
+    "source_predictions_sha256": "b134408d80dc855bea00006a0808c216a985f885f30b47bef9ab26a4e70d7bd7",
+    "source_summary": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-4rpm-20260716/paired_summary.json",
+    "source_summary_sha256": "f6e00818bb51626c3fa76450c7d2b55d27054213deae01386bc056a01df4dfea"
+  },
+  "paired": {
+    "abstention_counted_as_not_correct_for_pair_test": true,
+    "attempted_pairs": 40,
+    "both_correct": 0,
+    "both_invalid_pairs": 40,
+    "both_not_correct": 0,
+    "comparison_status": "REJECTED_NO_JOINTLY_VALID_PAIRS",
+    "complete_pairs": 0,
+    "gemini_only_correct": 0,
+    "invalid_pairs": 40,
+    "jointly_valid_pairs": 0,
+    "local_invalid_pairs": 40,
+    "local_only_correct": 0,
+    "mcnemar_evaluable": false,
+    "mcnemar_exact_two_sided_p": null,
+    "remote_invalid_pairs": 40
+  },
+  "plan_manifest_payload_sha256": "5bff1fc3f4abc5d5c49e6fe9aab83ff7428bb859acab490cc1bb19e8964ad335",
+  "predictions_sha256": "b134408d80dc855bea00006a0808c216a985f885f30b47bef9ab26a4e70d7bd7",
+  "providers": {
+    "google-gemini": {
+      "abstention_count": 0,
+      "abstentions": 0,
+      "accuracy_abstention_as_not_correct": 0.0,
+      "automation_coverage": 0.0,
+      "confusion": {
+        "DEMO->ERROR": 2,
+        "DUPLICADO->ERROR": 15,
+        "NAO_DUPLICADO->ERROR": 15,
+        "OBRA->ERROR": 3,
+        "SOB_DEMANDA->ERROR": 2,
+        "TRIAGEM_MANUAL->ERROR": 3
+      },
+      "dedup_false_negatives": 0,
+      "dedup_false_positives": 0,
+      "dedup_weighted_error_cost_fn5_fp1": 0,
+      "failures": 40,
+      "latency_ms": {
+        "mean": null,
+        "p50": null,
+        "p95": null
+      },
+      "metric_semantics": {
+        "coverage_excludes_only_operational_abstention": true,
+        "legacy_records_reinterpreted_from_decision_path": 0,
+        "routed_to_human_includes_duplicate_confirmation": true,
+        "triagem_manual_is_semantic_class_for_classification": true
+      },
+      "predicted_class_triagem_manual": 0,
+      "routed_to_human_rate": 0.0,
+      "routed_to_human_total": 0,
+      "selective_accuracy": null,
+      "semantic_coverage": 0.0,
+      "straight_through_automation_coverage": 0.0,
+      "total": 40,
+      "unresolved_semantic_prediction_count": 0,
+      "valid": 0
+    },
+    "local-pytorch-fp32": {
+      "abstention_count": 0,
+      "abstentions": 0,
+      "accuracy_abstention_as_not_correct": 0.0,
+      "automation_coverage": 0.0,
+      "confusion": {
+        "DEMO->ERROR": 2,
+        "DUPLICADO->ERROR": 15,
+        "NAO_DUPLICADO->ERROR": 15,
+        "OBRA->ERROR": 3,
+        "SOB_DEMANDA->ERROR": 2,
+        "TRIAGEM_MANUAL->ERROR": 3
+      },
+      "dedup_false_negatives": 0,
+      "dedup_false_positives": 0,
+      "dedup_weighted_error_cost_fn5_fp1": 0,
+      "failures": 40,
+      "latency_ms": {
+        "mean": null,
+        "p50": null,
+        "p95": null
+      },
+      "metric_semantics": {
+        "coverage_excludes_only_operational_abstention": true,
+        "legacy_records_reinterpreted_from_decision_path": 0,
+        "routed_to_human_includes_duplicate_confirmation": true,
+        "triagem_manual_is_semantic_class_for_classification": true
+      },
+      "predicted_class_triagem_manual": 0,
+      "routed_to_human_rate": 0.0,
+      "routed_to_human_total": 0,
+      "selective_accuracy": null,
+      "semantic_coverage": 0.0,
+      "straight_through_automation_coverage": 0.0,
+      "total": 40,
+      "unresolved_semantic_prediction_count": 0,
+      "valid": 0
+    }
+  },
+  "records": 80,
+  "remote_budget_observed": {
+    "calls": 40,
+    "limits": {
+      "approved": true,
+      "max_remote_calls": 40,
+      "max_remote_tokens": 500000,
+      "max_rpm": 4,
+      "required": {
+        "remote_calls": 40,
+        "remote_tokens_conservative": 492324
+      },
+      "token_estimation": "Reserva conservadora: bytes UTF-8 do prompt + 4096 tokens de overhead de request/schema + maxOutputTokens; não usa endpoint remoto de contagem."
+    },
+    "reported_total_tokens": 0
+  },
+  "schema_version": "1.1.0",
+  "scientific_result": false,
+  "status": "REJECTED_NO_JOINTLY_VALID_PAIRS"
+}

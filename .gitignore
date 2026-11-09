@@ -1,0 +1,58 @@
+# Artefatos reproduziveis do Python
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Ambientes virtuais e pastas de assistentes/agentes
+.venv/
+venv/
+.agents/
+.codex/
+.agentes/
+
+# Segredos e configuracoes de ambiente locais
+**/.env
+**/.env.local
+**/.env.*
+!**/.env.example
+!**/.env.local.example
+api_key.txt
+**/api_key.txt
+docs/historico/
+docs/artigos/
+backups/
+tmp/
+*.tmp
+ops_test.json
+test_input.txt
+test_ops_b19.json
+
+# Bancos de dados e binarios pesados (> 100MB)
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*
+glpi/backups/**
+local_ai/models/**
+!local_ai/models/manifest.json
+
+# Artefatos locais reproduziveis ou sensiveis
+local_ai/runtime/**
+n8n/workflows/all_credentials_export_runtime.json
+*.pid
+
+# Saidas intermediarias recuperaveis da selecao comparativa
+avaliacao/resultados/**/partials/
+avaliacao/resultados/**/execucao.stdout.log
+avaliacao/resultados/**/execucao.stderr.log
+avaliacao/runtime/monitoring*/
+avaliacao/runtime/backups/
+avaliacao/runtime/*.log
+

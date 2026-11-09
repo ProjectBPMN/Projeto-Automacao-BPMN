@@ -1,0 +1,17 @@
+PASTA N8N/WORKFLOWS
+===================
+
+Contém a linha de workflows atualmente mantida e fontes históricas privadas
+usadas para reconstrução de proveniência.
+
+Arquivos:
+- LEIA-ME.txt: este inventário.
+
+Subpastas:
+- Versão9: builders, JSONs canônicos, ferramentas e relatório da V9.
+
+As versões V1 a V8 não fazem parte do fluxo ativo. O pacote público, inativo e
+sanitizado está em n8n/history, com manifesto de hashes e validador. Alguns
+exports-fonte privados ainda permanecem nesta árvore apenas para recuperação e
+reconstrução determinística; eles podem conter dados sensíveis e não devem ser
+incluídos em publicação. A release operacional continua sendo a V9.

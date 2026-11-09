@@ -1,0 +1,91 @@
+{
+  "schema_version": "3.0.0",
+  "status": "CORPUS_GERADO_PENDENTE_VALIDACAO_ESPECIALISTAS",
+  "scientific_result": false,
+  "generated_at": "2026-07-10T19:20:57.036195+00:00",
+  "namespace": "EFE4F26CB2",
+  "logical_corpus_id": "CORPUS-V3-TESTE-EFE4F26CB2",
+  "dataset_version": "dataset-v3.0.0-contrastes-agrupados",
+  "split": "TESTE",
+  "split_semantics": "NOME_HISTORICO; ARTEFATO EXPOSTO E USADO EM DESENVOLVIMENTO",
+  "analysis_scope": "DEVELOPMENT_PILOT_ONLY",
+  "confirmatory_eligible": false,
+  "pilot_only": true,
+  "labels_exposed": true,
+  "seed": 20260710,
+  "execution_partitions": {
+    "CLASS-R01": 40,
+    "CLASS-R02": 40,
+    "CLASS-R03": 40,
+    "CLASS-R04": 40,
+    "CLASS-R05": 40,
+    "DEDUP-R01": 200,
+    "DEDUP-R02": 200,
+    "DEDUP-R03": 200,
+    "DEDUP-R04": 200,
+    "DEDUP-R05": 200
+  },
+  "partition_rule": "Cada realização superficial usa um run_id físico separado. Isso impede que paráfrases do mesmo núcleo sejam candidatas entre si; cada partição ainda contém distratores anteriores de outros núcleos.",
+  "counts": {
+    "tickets": 1200,
+    "episodes": 700,
+    "dedup_paired_episodes": 500,
+    "duplicate_challenges": 200,
+    "hard_nonduplicate_challenges": 300,
+    "classification_cases": 200,
+    "classification_by_class": {
+      "DEMO": 50,
+      "OBRA": 50,
+      "SOB_DEMANDA": 50,
+      "TRIAGEM_MANUAL": 50
+    },
+    "dedup_contrast_families": 25,
+    "dedup_narrative_cores": 100,
+    "classification_narrative_cores": 40
+  },
+  "validation": {
+    "status": "PASSOU_VALIDACAO_ESTRUTURAL_AUTOMATICA",
+    "checks": [
+      "contagens e distribuições exatas",
+      "IDs e episódios únicos",
+      "referência positiva anterior e no mesmo episódio",
+      "quatro núcleos e cinco realizações por família dedup",
+      "uma ocorrência de cada núcleo por partição física",
+      "texto visível sem identificador experimental",
+      "texto normalizado e hash visível sem duplicação exata",
+      "categorias e localizações existentes no seed GLPI",
+      "vazamento contra corpora informados em --comparar-com"
+    ],
+    "human_label_gate": "PENDENTE",
+    "rendered_text_audit_gate": "PENDENTE"
+  },
+  "files": {
+    "jsonl": {
+      "path": "avaliacao\\datasets\\corpus_v3_teste.jsonl",
+      "sha256": "26e692ba247ef7439b9a057873c7034318423214b9797b2dbe72f9f24e6801f0"
+    },
+    "csv": {
+      "path": "avaliacao\\datasets\\corpus_v3_teste.csv",
+      "sha256": "fdac1937ba2cf64e53b9954030c551d472a61860128d2372399ea3447d53910c"
+    },
+    "catalog": {
+      "path": "avaliacao\\datasets\\catalogo_corpus_v3.json",
+      "sha256": "4b2e9b69a4659588bca205180be3ce70f5b436f31d2b22f7a906b0d214afaef7"
+    },
+    "generator": {
+      "path": "avaliacao\\scripts\\gerar_dataset_v3.py",
+      "sha256": "b6dd63c93dc319f37c7a70fff0868560fac572a0583a9c174414a3c3713d9794",
+      "availability": "HISTORICAL_SOURCE_MISSING",
+      "note": "O gerador histórico não está presente no repositório atual; o hash foi preservado como evidência e não foi atribuído a outro script."
+    }
+  },
+  "limitations": [
+    "O corpus é sintético e não estima a prevalência real do GLPI.",
+    "Os rótulos precisam de dupla revisão e adjudicação antes do uso confirmatório.",
+    "As realizações superficiais são dependentes; intervalos devem agrupar por narrative_core.",
+    "O executor V2 não deve ser usado silenciosamente: o V3 exige dez partições físicas agregadas em um corpus lógico.",
+    "Este artefato não contém saída de LLM e não constitui resultado de eficácia.",
+    "Os gabaritos e justificativas estão expostos e o corpus foi usado durante o desenvolvimento; apesar do nome histórico TESTE, ele não é holdout confirmatório.",
+    "O gerador histórico registrado no manifesto não está disponível no repositório atual, portanto a geração original não é reproduzível somente com esta árvore."
+  ]
+}

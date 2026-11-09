@@ -1,0 +1,159 @@
+{
+  "schema_version": "e2e-webhooks-v1",
+  "run_id": "VALIDACAO-POSTS-E2E-20260818T001859Z",
+  "natureza_evidencia": "VALIDACAO_TECNICA_NAO_CONFIRMATORIA",
+  "synthetic_only": true,
+  "started_at": "2026-08-18T00:19:06.547898+00:00",
+  "ids": {
+    "glpi_reference_ticket_id": 304,
+    "glpi_target_ticket_id": 305,
+    "wf04_auto_confirmation_id": 10,
+    "wf05_auto_confirmation_id": 9
+  },
+  "wf04": {
+    "get_preview": {
+      "http_status": 200,
+      "elapsed_ms": 152.934,
+      "content_type": "text/html; charset=utf-8",
+      "contains_form": true,
+      "body_summary": "<!doctype html><html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Confirmar decisão fiscal</title></head><body><main><h1>Confirmar decisão fiscal</h1><p>Chamado #305: Con"
+    },
+    "post_first": {
+      "http_status": 202,
+      "elapsed_ms": 2789.157,
+      "content_type": "text/plain; charset=utf-8",
+      "contains_form": false,
+      "body_summary": "Decisão recebida! O chamado #305 está sendo processado em segundo plano."
+    },
+    "post_replay": {
+      "http_status": 409,
+      "elapsed_ms": 2502.659,
+      "content_type": "text/plain; charset=utf-8",
+      "contains_form": false,
+      "body_summary": "Confirmacao automatica sem reserva ou contexto experimental valido."
+    },
+    "state_before": {
+      "id": 305,
+      "status_num": 4,
+      "status_nome": "Pendente",
+      "classificacao": "DUPLICADO",
+      "decisao_fiscal": null,
+      "token_presente": true,
+      "triagem_status": "AGUARDANDO_APROVACAO_FISCAL",
+      "duplicado_de_id": 304,
+      "classificacao_final": "DUPLICADO",
+      "em_aprovacao_fiscal": true,
+      "ultima_acao_workflow": "E2E_PREPARADO"
+    },
+    "state_after": {
+      "id": 305,
+      "status_num": 6,
+      "status_nome": "Fechado",
+      "classificacao": "DUPLICADO",
+      "decisao_fiscal": "CONFIRMOU_DUP",
+      "token_presente": false,
+      "triagem_status": "DUPLICADO_FECHADO",
+      "duplicado_de_id": 304,
+      "classificacao_final": "DUPLICADO",
+      "em_aprovacao_fiscal": false,
+      "ultima_acao_workflow": "DUPLICADO_FECHADO"
+    },
+    "state_after_replay": {
+      "id": 305,
+      "status_num": 6,
+      "status_nome": "Fechado",
+      "classificacao": "DUPLICADO",
+      "decisao_fiscal": "CONFIRMOU_DUP",
+      "token_presente": false,
+      "triagem_status": "DUPLICADO_FECHADO",
+      "duplicado_de_id": 304,
+      "classificacao_final": "DUPLICADO",
+      "em_aprovacao_fiscal": false,
+      "ultima_acao_workflow": "DUPLICADO_FECHADO"
+    },
+    "workflow_event_count_delta_first_post": 3,
+    "workflow_event_count_delta_replay": 2,
+    "state_transition_once": true,
+    "idempotent": true
+  },
+  "wf05": {
+    "get_preview": {
+      "http_status": 200,
+      "elapsed_ms": 289.478,
+      "content_type": "text/html; charset=utf-8",
+      "contains_form": true,
+      "body_summary": "<!doctype html><html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Confirmar avaliação</title></head><body><main><h1>Confirmar avaliação humana</h1><p>Confirmar a decisão "
+    },
+    "post_first": {
+      "http_status": 200,
+      "elapsed_ms": 2404.379,
+      "content_type": "text/plain; charset=utf-8",
+      "contains_form": false,
+      "body_summary": "Avaliacao registrada para o chamado #305."
+    },
+    "post_replay": {
+      "http_status": 403,
+      "elapsed_ms": 2138.672,
+      "content_type": "text/plain; charset=utf-8",
+      "contains_form": false,
+      "body_summary": "Confirmacao automatica sem reserva ou contexto experimental valido."
+    },
+    "state_before": {
+      "id": 89,
+      "decisao_ia": "DUPLICADO",
+      "classe_correta": null,
+      "decisao_humana": null,
+      "fonte_gabarito": null,
+      "status_avaliacao": "PENDENTE",
+      "ia_estava_correta": null
+    },
+    "state_after": {
+      "id": 89,
+      "decisao_ia": "DUPLICADO",
+      "classe_correta": "DUPLICADO",
+      "decisao_humana": "DUPLICADO",
+      "fonte_gabarito": "ORACULO_GABARITO",
+      "status_avaliacao": "CONCLUIDA",
+      "ia_estava_correta": true
+    },
+    "state_after_replay": {
+      "id": 89,
+      "decisao_ia": "DUPLICADO",
+      "classe_correta": "DUPLICADO",
+      "decisao_humana": "DUPLICADO",
+      "fonte_gabarito": "ORACULO_GABARITO",
+      "status_avaliacao": "CONCLUIDA",
+      "ia_estava_correta": true
+    },
+    "workflow_event_count_delta_first_post": 1,
+    "workflow_event_count_delta_replay": 0,
+    "state_transition_once": true,
+    "idempotent": true
+  },
+  "get_preview_no_mutation": true,
+  "database_queue_cleanup": [
+    {
+      "id": 304,
+      "triagem_status": "VALIDACAO_E2E_REFERENCIA_ENCERRADA",
+      "status_num": 6,
+      "status_nome": "Fechado",
+      "fila_enfileirada_em": null,
+      "fila_disponivel_em": null,
+      "fila_liberar_em": null,
+      "fila_reservada_em": null
+    },
+    {
+      "id": 305,
+      "triagem_status": "DUPLICADO_FECHADO",
+      "status_num": 6,
+      "status_nome": "Fechado",
+      "fila_enfileirada_em": null,
+      "fila_disponivel_em": null,
+      "fila_liberar_em": null,
+      "fila_reservada_em": null
+    }
+  ],
+  "glpi_synthetic_tickets_closed": true,
+  "passed": true,
+  "finished_at": "2026-08-18T00:19:22.710889+00:00"
+}

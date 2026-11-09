@@ -1,0 +1,28 @@
+[
+  {
+    "status": "COMPLETED",
+    "task": "classification",
+    "combination_id": "classification__hybrid__multilingual_e5_small__linear_svm",
+    "scenario": "classification_raw_text",
+    "measurement_scope": "raw_text_to_base_classifier_prediction_before_calibration_and_threshold",
+    "device": "cpu",
+    "precision": "fp32",
+    "seed": 20260804,
+    "records": 20,
+    "warmup_records": 3,
+    "encoder_calls_per_record": 1,
+    "reference_cache_precompute_seconds": 0.0,
+    "cold_encoder_load_seconds": 2.3892522000242025,
+    "cold_encoder_load_peak_rss_mb": 435.06640625,
+    "final_base_fit_seconds": 2.113185300026089,
+    "latency_ms_p50": 81.8195000756532,
+    "latency_ms_p95": 105.40772503009069,
+    "throughput_records_per_second": 11.911990638932895,
+    "peak_process_rss_mb": 483.59765625
+  },
+  {
+    "status": "FAILED",
+    "task": "deduplication",
+    "failure": "Nenhum candidato concluído para medir"
+  }
+]

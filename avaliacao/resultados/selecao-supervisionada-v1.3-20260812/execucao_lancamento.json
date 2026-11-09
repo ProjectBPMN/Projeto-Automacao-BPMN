@@ -1,0 +1,11 @@
+{
+  "schema": "projeto-ic-lancamento-selecao-v1",
+  "launcher_pid": 536,
+  "started_at": "2026-08-12T21:29:11.5850428-03:00",
+  "output": "avaliacao\\resultados\\selecao-supervisionada-v1.3-20260812",
+  "thread_limits": 4,
+  "skip_xai": false,
+  "resume": false,
+  "finished_at": "2026-08-13T00:41:41.9508191-03:00",
+  "exit_code": 0
+}

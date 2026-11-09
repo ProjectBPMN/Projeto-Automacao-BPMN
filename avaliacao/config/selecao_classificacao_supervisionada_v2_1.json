@@ -1,0 +1,306 @@
+{
+  "schema": "projeto-ic-selecao-modelos-supervisionados-v1",
+  "protocol_version": "2.1.1",
+  "created_at": "2026-08-27",
+  "execution_tasks": [
+    "classification"
+  ],
+  "development_only": true,
+  "scientific_result": false,
+  "confirmatory_eligible": false,
+  "dataset": {
+    "path": "avaliacao/datasets/desenvolvimento_local_v2.jsonl",
+    "sha256": "305e84164d663a19a2e224b2dc8bf08e8d3173bf50bc15c7675f9de553d2de9a",
+    "allowed_split": "DESENVOLVIMENTO",
+    "classification_group_field": "source_dependency_group_sha256",
+    "deduplication_group_field": "source_dependency_group_sha256",
+    "forbidden_paths": [
+      "avaliacao/datasets/corpus_v3_teste.jsonl",
+      "avaliacao/datasets/dataset_avaliacao_v2.jsonl",
+      "avaliacao/datasets/dataset_piloto_v2.jsonl"
+    ]
+  },
+  "hardware": {
+    "device": "cpu",
+    "torch_precision": "fp32",
+    "cpu_threads": 4,
+    "embedding_batch_size": 8,
+    "parallel_model_fits": 1
+  },
+  "embeddings": [
+    {
+      "id": "granite97m",
+      "repository": "ibm-granite/granite-embedding-97m-multilingual-r2",
+      "revision": "835ad14087e140460703cf0fae09f97d469d65c2",
+      "local_path": "local_ai/models/granite-embedding-97m-multilingual-r2",
+      "tree_sha256": "28bb1e36cb3719c0c466de3013404307821da17bf901fc70f62af74bfa57a343",
+      "dimension": 384,
+      "symmetric_prefix": "",
+      "retrieval_query_prefix": "",
+      "retrieval_passage_prefix": ""
+    },
+    {
+      "id": "multilingual_e5_small",
+      "repository": "intfloat/multilingual-e5-small",
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+      "local_path": "local_ai/models/multilingual-e5-small",
+      "tree_sha256": "ea6db56024d2b0c8743c6af329e69b6e5628edf75e99d9fdf9b68ba730f8e8c9",
+      "dimension": 384,
+      "symmetric_prefix": "query: ",
+      "retrieval_query_prefix": "query: ",
+      "retrieval_passage_prefix": "passage: "
+    },
+    {
+      "id": "multilingual_minilm_l12",
+      "repository": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+      "local_path": "local_ai/models/paraphrase-multilingual-MiniLM-L12-v2",
+      "tree_sha256": "2d8f7cfb97778ba4c0d8a0d17309e6ef460e40fe36f2eb0e2bbbe1777a09e217",
+      "dimension": 384,
+      "symmetric_prefix": "",
+      "retrieval_query_prefix": "",
+      "retrieval_passage_prefix": ""
+    }
+  ],
+  "representations": {
+    "tfidf": {
+      "uses_tfidf": true,
+      "uses_embedding": false,
+      "uses_metadata": false,
+      "tasks": [
+        "classification",
+        "deduplication"
+      ]
+    },
+    "embedding": {
+      "uses_tfidf": false,
+      "uses_embedding": true,
+      "uses_metadata": false,
+      "tasks": [
+        "classification",
+        "deduplication"
+      ]
+    },
+    "hybrid": {
+      "uses_tfidf": true,
+      "uses_embedding": true,
+      "uses_metadata": false,
+      "tasks": [
+        "classification",
+        "deduplication"
+      ]
+    },
+    "metadata": {
+      "uses_tfidf": false,
+      "uses_embedding": false,
+      "uses_metadata": true,
+      "tasks": [
+        "deduplication"
+      ],
+      "diagnostic_only": true
+    },
+    "hybrid_metadata": {
+      "uses_tfidf": true,
+      "uses_embedding": true,
+      "uses_metadata": true,
+      "tasks": [
+        "deduplication"
+      ],
+      "operational_candidate": true
+    }
+  },
+  "classifiers": [
+    {
+      "id": "logistic_regression",
+      "family": "linear",
+      "calibration": "sigmoid",
+      "grid": {
+        "C": [
+          0.1,
+          1.0,
+          10.0
+        ]
+      }
+    },
+    {
+      "id": "decision_tree",
+      "family": "tree",
+      "calibration": "sigmoid",
+      "grid": {
+        "max_depth": [
+          3,
+          6
+        ],
+        "min_samples_leaf": [
+          2,
+          5
+        ]
+      }
+    },
+    {
+      "id": "linear_svm",
+      "family": "linear",
+      "calibration": "sigmoid",
+      "grid": {
+        "C": [
+          0.1,
+          1.0,
+          10.0
+        ]
+      }
+    },
+    {
+      "id": "mlp",
+      "family": "neural",
+      "calibration": "sigmoid",
+      "grid": {
+        "hidden_layer_sizes": [
+          [
+            16
+          ],
+          [
+            32
+          ]
+        ],
+        "alpha": [
+          0.001
+        ]
+      },
+      "early_stopping": false
+    },
+    {
+      "id": "xgboost",
+      "family": "boosted_tree",
+      "calibration": "sigmoid",
+      "grid": {
+        "max_depth": [
+          2,
+          4
+        ],
+        "n_estimators": [
+          160
+        ],
+        "learning_rate": [
+          0.05
+        ]
+      }
+    }
+  ],
+  "cross_validation": {
+    "outer_strategy": "StratifiedGroupKFold",
+    "outer_folds": 5,
+    "outer_seed": 20260804,
+    "inner_strategy": "StratifiedGroupKFold",
+    "inner_folds": 3,
+    "calibration_fraction": 0.4,
+    "calibration_search_attempts": 512,
+    "calibration_oof_folds": 2,
+    "fit_min_groups_per_class": 5,
+    "calibration_min_groups_per_class": 4,
+    "calibration_fold_min_groups_per_class": 2,
+    "calibration_method": "sigmoid",
+    "bootstrap_group_resamples": 2000,
+    "paired_group_bootstrap_resamples": 2000,
+    "confidence_level": 0.95
+  },
+  "objectives": {
+    "classification_tuning": "macro_f1",
+    "deduplication_tuning": "weighted_error_fn5_fp1",
+    "deduplication_false_negative_cost": 5.0,
+    "deduplication_false_positive_cost": 1.0
+  },
+  "operating_policy": {
+    "classification_max_selective_risk": 0.1,
+    "classification_min_coverage": 0.5,
+    "classification_obra_min_confidence": 0.9,
+    "classification_max_automatic_non_obra_as_obra": 0,
+    "classification_max_critical_group_rate_upper": 0.02,
+    "deduplication_max_false_negative_rate": 0.02,
+    "deduplication_min_negative_predictive_value": 0.98,
+    "deduplication_max_false_positive_rate": 0.05,
+    "deduplication_min_precision": 0.9,
+    "deduplication_min_coverage": 0.5
+  },
+  "selection_rule": {
+    "type": "hierarchical_no_composite_score",
+    "evidence_policy": "strict_confidence_qualified_else_provisional_point_selection",
+    "classification": [
+      "automatic_non_obra_as_obra_equals_zero",
+      "selective_risk_at_most_configured_limit",
+      "automatic_coverage_at_least_configured_limit",
+      "critical_group_upper_at_most_configured_limit",
+      "selective_risk_upper_at_most_configured_limit",
+      "automatic_coverage_lower_at_least_configured_limit",
+      "highest_macro_f1",
+      "highest_obra_recall",
+      "highest_automatic_coverage",
+      "lowest_log_loss",
+      "lowest_mean_fit_seconds"
+    ],
+    "deduplication": [
+      "lowest_automatic_false_negatives",
+      "false_negative_group_upper_at_most_configured_limit",
+      "false_positive_group_upper_at_most_configured_limit",
+      "false_negative_rate_upper_at_most_configured_limit",
+      "false_positive_rate_upper_at_most_configured_limit",
+      "negative_predictive_value_lower_at_least_configured_limit",
+      "precision_lower_at_least_configured_limit",
+      "decision_coverage_lower_at_least_configured_limit",
+      "lowest_weighted_error_fn5_fp1",
+      "highest_negative_predictive_value",
+      "highest_precision",
+      "highest_full_automation_coverage",
+      "highest_decision_coverage",
+      "lowest_mean_fit_seconds"
+    ],
+    "tie_policy": "deterministic_lexicographic_only"
+  },
+  "paired_comparisons": {
+    "classification": [
+      {"id": "e5_vs_granite_hybrid_logreg", "baseline": "classification__hybrid__granite97m__logistic_regression", "candidate": "classification__hybrid__multilingual_e5_small__logistic_regression"},
+      {"id": "minilm_vs_granite_hybrid_logreg", "baseline": "classification__hybrid__granite97m__logistic_regression", "candidate": "classification__hybrid__multilingual_minilm_l12__logistic_regression"},
+      {"id": "tfidf_vs_granite_hybrid_logreg", "baseline": "classification__hybrid__granite97m__logistic_regression", "candidate": "classification__tfidf__none__logistic_regression"},
+      {"id": "granite_embedding_vs_hybrid_logreg", "baseline": "classification__hybrid__granite97m__logistic_regression", "candidate": "classification__embedding__granite97m__logistic_regression"},
+      {"id": "tree_vs_logreg_granite_hybrid", "baseline": "classification__hybrid__granite97m__logistic_regression", "candidate": "classification__hybrid__granite97m__decision_tree"},
+      {"id": "svm_vs_logreg_granite_hybrid", "baseline": "classification__hybrid__granite97m__logistic_regression", "candidate": "classification__hybrid__granite97m__linear_svm"},
+      {"id": "mlp_vs_logreg_granite_hybrid", "baseline": "classification__hybrid__granite97m__logistic_regression", "candidate": "classification__hybrid__granite97m__mlp"},
+      {"id": "xgboost_vs_logreg_granite_hybrid", "baseline": "classification__hybrid__granite97m__logistic_regression", "candidate": "classification__hybrid__granite97m__xgboost"}
+    ],
+    "deduplication": [
+      {"id": "e5_vs_granite_operational_logreg", "baseline": "deduplication__hybrid_metadata__granite97m__logistic_regression", "candidate": "deduplication__hybrid_metadata__multilingual_e5_small__logistic_regression"},
+      {"id": "minilm_vs_granite_operational_logreg", "baseline": "deduplication__hybrid_metadata__granite97m__logistic_regression", "candidate": "deduplication__hybrid_metadata__multilingual_minilm_l12__logistic_regression"},
+      {"id": "tfidf_isolated_vs_operational_logreg", "baseline": "deduplication__hybrid_metadata__granite97m__logistic_regression", "candidate": "deduplication__tfidf__none__logistic_regression"},
+      {"id": "granite_embedding_isolated_vs_operational_logreg", "baseline": "deduplication__hybrid_metadata__granite97m__logistic_regression", "candidate": "deduplication__embedding__granite97m__logistic_regression"},
+      {"id": "granite_hybrid_isolated_vs_operational_logreg", "baseline": "deduplication__hybrid_metadata__granite97m__logistic_regression", "candidate": "deduplication__hybrid__granite97m__logistic_regression"},
+      {"id": "metadata_only_vs_operational_logreg", "baseline": "deduplication__hybrid_metadata__granite97m__logistic_regression", "candidate": "deduplication__metadata__none__logistic_regression"},
+      {"id": "tree_vs_logreg_granite_operational", "baseline": "deduplication__hybrid_metadata__granite97m__logistic_regression", "candidate": "deduplication__hybrid_metadata__granite97m__decision_tree"},
+      {"id": "svm_vs_logreg_granite_operational", "baseline": "deduplication__hybrid_metadata__granite97m__logistic_regression", "candidate": "deduplication__hybrid_metadata__granite97m__linear_svm"},
+      {"id": "mlp_vs_logreg_granite_operational", "baseline": "deduplication__hybrid_metadata__granite97m__logistic_regression", "candidate": "deduplication__hybrid_metadata__granite97m__mlp"},
+      {"id": "xgboost_vs_logreg_granite_operational", "baseline": "deduplication__hybrid_metadata__granite97m__logistic_regression", "candidate": "deduplication__hybrid_metadata__granite97m__xgboost"}
+    ]
+  },
+  "xai": {
+    "enabled": true,
+    "finalists_per_task": 1,
+    "background_groups": 20,
+    "explained_records_per_task": 24,
+    "random_seed": 20260804,
+    "explain_base_score_not_calibrated_probability": true,
+    "aggregate_feature_families": true,
+    "max_absolute_additivity_residual": 0.0001,
+    "failure_policy": "fail_full_run"
+  },
+  "performance_benchmark": {
+    "enabled": true,
+    "warmup_records": 3,
+    "measured_records_per_task": 20,
+    "random_seed": 20260804,
+    "failure_policy": "fail_full_run",
+    "scenarios": [
+      "classification_raw_text",
+      "deduplication_raw_text_tfidf",
+      "deduplication_reference_embedding_cached",
+      "deduplication_no_embedding_cache"
+    ]
+  }
+}

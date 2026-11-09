@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "executed_at": "2026-09-02T18:17:47.106367Z",
+  "mode": "APPLY",
+  "evidence_status": "OPERATIONAL_RECONCILIATION_NOT_SEMANTIC_VALIDATION",
+  "scientific_result": false,
+  "semantic_correctness_confirmed": false,
+  "before": {
+    "erro_ia_tickets": 8,
+    "legacy_pending_alias_tickets": 0,
+    "open_dlq_rows": 8,
+    "open_dlq_tickets": 8
+  },
+  "plan": {
+    "requeue_active_glpi": 8,
+    "archive_closed_glpi": 0,
+    "archive_missing_glpi": 0,
+    "leave_other_glpi_status_unchanged": 0,
+    "active_ticket_set_sha256": "beb9f13893e6905255e07b47a351968983cf5d396634178cfa55357182cc88ed"
+  },
+  "interpretation_limit": "A reconciliação remove pendência operacional preservando DLQ e eventos. Ela não transforma falhas em acertos e não confirma a classe semântica dos tickets.",
+  "after": {
+    "open_dlq_rows": 0,
+    "erro_ia_tickets": 0,
+    "legacy_pending_alias_tickets": 0,
+    "pending_ai_tickets": 41
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,268 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-02T04:45:12.353310Z",
+  "mode": "EXPLICIT_ACTIVE_PROBE",
+  "policy_status": "PROPOSTA_NAO_APROVADA",
+  "institutionally_approved": false,
+  "production_ready": false,
+  "readiness_blockers": [
+    "POLICY_NOT_INSTITUTIONALLY_APPROVED",
+    "LEAST_PRIVILEGE_REMEDIATION_NOT_VERIFIED",
+    "ISOLATED_BACKUP_RESTORE_NOT_VERIFIED_IN_THIS_REPORT",
+    "THREE_COMPLETE_SLO_WINDOWS_NOT_VERIFIED",
+    "INSUFFICIENT_OPERATIONAL_EVIDENCE"
+  ],
+  "scientific_result": false,
+  "failing_sections": [],
+  "insufficient_sections": [
+    "slo_proposal_evaluation"
+  ],
+  "sections": {
+    "static_audit": {
+      "status": "PASS",
+      "evidence_status": "STATIC_CONFIGURATION_AUDIT",
+      "scientific_result": false,
+      "collected_at": "2026-09-02T04:45:11.111509Z",
+      "checks": [
+        {
+          "id": "network.loopback_ports",
+          "status": "PASS",
+          "summary": "Portas HTTP canônicas devem permanecer vinculadas ao loopback.",
+          "evidence": {}
+        },
+        {
+          "id": "supply_chain.image_digests",
+          "status": "PASS",
+          "summary": "Todas as imagens declaradas devem estar congeladas por digest.",
+          "evidence": {}
+        },
+        {
+          "id": "postgres.healthcheck",
+          "status": "PASS",
+          "summary": "PostgreSQL possui healthcheck explícito.",
+          "evidence": {}
+        },
+        {
+          "id": "n8n.healthcheck",
+          "status": "PASS",
+          "summary": "O container n8n deve possuir healthcheck próprio no Compose.",
+          "evidence": {}
+        },
+        {
+          "id": "glpi.healthcheck",
+          "status": "PASS",
+          "summary": "O container GLPI deve possuir healthcheck HTTP próprio.",
+          "evidence": {}
+        },
+        {
+          "id": "n8n.code_node_sandbox",
+          "status": "PASS",
+          "summary": "Sandbox de Code nodes deve ter default seguro no Compose.",
+          "evidence": {}
+        },
+        {
+          "id": "n8n.environment_access",
+          "status": "PASS",
+          "summary": "Acesso a variáveis de ambiente por nodes deve ter default bloqueado.",
+          "evidence": {}
+        },
+        {
+          "id": "n8n.workflow_env_migration",
+          "status": "PASS",
+          "summary": "Code nodes usam runner externo com allowlist sem segredos; $env executável é proibido.",
+          "evidence": {
+            "executable_dollar_env_references": 0,
+            "direct_secret_access": [],
+            "runner_secret_allowlist_overlap": []
+          }
+        },
+        {
+          "id": "postgres.runtime_not_bootstrap_role",
+          "status": "PASS",
+          "summary": "O usuário de bootstrap/migração deve ser distinto da credencial runtime do n8n.",
+          "evidence": {}
+        },
+        {
+          "id": "workflow.runtime_ddl_separation",
+          "status": "PASS",
+          "summary": "O JSON executável do WF05 deve conter somente readiness e DML; DDL fica em database/init_v9.sql.",
+          "evidence": {
+            "runtime_ddl_tokens": []
+          }
+        },
+        {
+          "id": "test_flags.safe_defaults",
+          "status": "PASS",
+          "summary": "Flags de teste devem iniciar desligadas no template, sem serem injetadas no processo principal.",
+          "evidence": {}
+        }
+      ]
+    },
+    "isolated_failure_simulation": {
+      "status": "PASS",
+      "evidence_status": "ISOLATED_COMPONENT_HARNESS_ONLY",
+      "scientific_result": false,
+      "collected_at": "2026-09-02T04:45:12.353310Z",
+      "live_services_touched": false,
+      "scenarios": [
+        {
+          "dependency": "glpi",
+          "detected_failure": "HTTP_503",
+          "required_action": "BLOCK_GLPI_MUTATION_AND_RETRY",
+          "automatic_decision_allowed": false,
+          "status": "PASS",
+          "isolated_observation": {
+            "status": 503,
+            "latency_ms": 2.626700035762042,
+            "error": "HTTP_503",
+            "body": null
+          },
+          "isolated_target_only": true
+        },
+        {
+          "dependency": "local_ai",
+          "detected_failure": "TIMEOUT",
+          "required_action": "ABSTAIN_RETRY_THEN_DLQ_OR_HUMAN",
+          "automatic_decision_allowed": false,
+          "status": "PASS",
+          "isolated_observation": {
+            "status": 0,
+            "latency_ms": 45.76130001805723,
+            "error": "TIMEOUT",
+            "body": null
+          },
+          "isolated_target_only": true
+        },
+        {
+          "dependency": "postgresql",
+          "detected_failure": "CONNECTION_REFUSED",
+          "required_action": "FAIL_CLOSED_WITHOUT_GLPI_MUTATION",
+          "automatic_decision_allowed": false,
+          "status": "PASS",
+          "isolated_observation": {
+            "connect_ex": 10035,
+            "latency_ms": 207.5250000343658
+          },
+          "isolated_target_only": true
+        }
+      ],
+      "interpretation_limit": "Simulação técnica em loopback efêmero. Não comprova failover ou rollback do workflow vivo e não autoriza indisponibilizar dependências reais."
+    },
+    "monitoring_plan": {
+      "status": "PROPOSED_NOT_APPROVED",
+      "collector_status": "INSTALADO_LOCALMENTE_2026-09-02",
+      "required_signals": [
+        "component_availability",
+        "local_ai_inference_latency",
+        "queue_wait",
+        "open_dead_letters",
+        "technical_error_rate",
+        "critical_automatic_errors",
+        "rollback_recovery_time",
+        "backup_restore_age",
+        "input_and_output_drift",
+        "role_and_workflow_changes"
+      ],
+      "automatic_retraining_allowed": false,
+      "scientific_result": false
+    },
+    "slo_proposal_evaluation": {
+      "status": "INSUFFICIENT_DATA",
+      "policy_status": "PROPOSTA_NAO_APROVADA",
+      "institutionally_approved": false,
+      "checks": [
+        {
+          "metric": "availability.local_ai",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.995
+        },
+        {
+          "metric": "availability.n8n",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.995
+        },
+        {
+          "metric": "availability.glpi",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.99
+        },
+        {
+          "metric": "availability.postgresql",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.995
+        },
+        {
+          "metric": "local_ai.inference_p95_ms",
+          "status": "INSUFFICIENT_DATA",
+          "target": 1500.0
+        },
+        {
+          "metric": "queue.wait_p95_seconds",
+          "status": "INSUFFICIENT_DATA",
+          "target": 900.0
+        },
+        {
+          "metric": "dlq.open",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.0
+        },
+        {
+          "metric": "technical_error_rate",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.01
+        },
+        {
+          "metric": "critical_automatic_errors",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.0
+        },
+        {
+          "metric": "rollback.recovery_minutes",
+          "status": "INSUFFICIENT_DATA",
+          "target": 30.0
+        },
+        {
+          "metric": "backup.restore_age_hours",
+          "status": "INSUFFICIENT_DATA",
+          "target": 168.0
+        }
+      ],
+      "scientific_result": false,
+      "interpretation_limit": "Os limiares são uma proposta técnica pré-registrada. PASS não equivale a aceite institucional, certificação de produção ou disponibilidade mensal comprovada."
+    },
+    "drift": {
+      "status": "NOT_REQUESTED",
+      "scientific_result": false
+    },
+    "bounded_load": {
+      "evidence_status": "BOUNDED_TECHNICAL_LOAD_SCENARIO",
+      "scientific_result": false,
+      "collected_at": "2026-09-02T04:45:11.099512Z",
+      "target": "http://127.0.0.1:8090/v1/classify",
+      "requests": 40,
+      "concurrency": 1,
+      "duration_seconds": 1.548441399994772,
+      "throughput_requests_second": 25.832427368665712,
+      "success_rate": 1.0,
+      "saturation_rate": 0.0,
+      "server_error_rate": 0.0,
+      "status_counts": {
+        "200": 40
+      },
+      "error_counts": {},
+      "latency_ms": {
+        "p50": 15.91024998924695,
+        "p95": 29.69614496396388,
+        "p99": 547.6133700017813,
+        "maximum": 877.0335000008345
+      },
+      "interpretation_limit": "Cenário técnico limitado no loopback; não estima disponibilidade mensal, desempenho multiusuário institucional nem eficácia científica."
+    },
+    "live_point_in_time": {
+      "status": "NOT_REQUESTED",
+      "reason": "Use --live-read-only para uma coleta pontual explícita.",
+      "scientific_result": false
+    }
+  },
+  "interpretation_limit": "O relatório reúne evidência técnica de escopo limitado. Não substitui aceite institucional, janela observacional de SLO, piloto prospectivo ou avaliação científica confirmatória."
+}

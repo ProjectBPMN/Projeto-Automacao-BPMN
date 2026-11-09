@@ -1,0 +1,12 @@
+﻿{
+    "resume":  true,
+    "config":  "avaliacao\\config\\selecao_modelos_supervisionados_v2.json",
+    "thread_limits":  4,
+    "schema":  "projeto-ic-lancamento-selecao-v2",
+    "launcher_pid":  20960,
+    "started_at":  "2026-08-26T19:41:24.9135281-03:00",
+    "output":  "avaliacao\\resultados\\selecao-supervisionada-v2.1-20260826",
+    "skip_xai":  false,
+    "finished_at":  "2026-08-26T22:55:07.6155926-03:00",
+    "exit_code":  2
+}

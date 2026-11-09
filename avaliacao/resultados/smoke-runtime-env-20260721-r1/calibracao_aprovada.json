@@ -1,0 +1,270 @@
+{
+  "protocol_version": "calibracao-fila-v2.2.0",
+  "started_at": "2026-07-21T19:36:34",
+  "finished_at": "2026-07-21T19:47:26",
+  "repetitions": 3,
+  "tickets_per_repetition": 2,
+  "warmup_per_repetition": 0,
+  "ingress_concurrency": 2,
+  "randomized_order": true,
+  "model_role": "LOCAL",
+  "model": "local-hybrid-v1.8.0",
+  "ia_execution_mode": "CALIBRACAO",
+  "failover_enabled": false,
+  "p95_sla_seconds": null,
+  "approval_scope": "OPERACIONAL_SEM_GATE_DE_LATENCIA",
+  "scientific_result": false,
+  "confirmatory_eligible": false,
+  "approved": true,
+  "selected_config": {
+    "id": "Q1",
+    "batch": 1,
+    "interval_seconds": 1
+  },
+  "selection_policy": "entre tratamentos elegíveis, menor intervalo e depois maior lote; a elegibilidade exige todas as repetições sem falha e, quando informado, p95 dentro do SLA pré-registrado",
+  "configuration_aggregates": [
+    {
+      "id": "Q1",
+      "batch": 1,
+      "interval_seconds": 1,
+      "runs_expected": 3,
+      "runs_observed": 3,
+      "successful_runs": 3,
+      "all_runs_successful": true,
+      "run_success_wilson_95": {
+        "lower": 0.4385029682449546,
+        "upper": 1.0,
+        "confidence": 0.95
+      },
+      "tickets_total": 6,
+      "latency_observations_after_warmup": 6,
+      "espera_ia_s": {
+        "mean": 11.018,
+        "p50": -0.0865,
+        "p95": 42.638999999999996,
+        "p99": 50.110200000000006
+      },
+      "latencia_total_s": {
+        "mean": 51.46533333333333,
+        "p50": 60.104,
+        "p95": 60.553749999999994,
+        "p99": 60.63075
+      },
+      "throughput_tickets_per_minute": {
+        "mean_between_runs": 0.7654226666666667,
+        "p50_between_runs": 0.710595,
+        "minimum_between_runs": 0.676644
+      },
+      "p95_sla_seconds": null,
+      "p95_sla_met": null,
+      "p99_confirmatory": false,
+      "eligible_for_selection": true
+    }
+  ],
+  "runs": [
+    {
+      "id": "Q1",
+      "batch": 1,
+      "interval_seconds": 1,
+      "repetition": 1,
+      "run_id": "CALQ-20260721T193634-Q1-R1",
+      "tickets": [
+        {
+          "case_id": "AVAL-CAL-D53EA135-000017",
+          "ticket_id": 278,
+          "title": "Construir parede de alvenaria para ampliar sala administrativa"
+        },
+        {
+          "case_id": "AVAL-CAL-D53EA135-000018",
+          "ticket_id": 279,
+          "title": "Instalar divisoria simples na biblioteca"
+        }
+      ],
+      "metrics": {
+        "total": 2,
+        "total_medido": 2,
+        "warmup_descartado": 0,
+        "terminal": 2,
+        "espera_ia_media_s": "25.952",
+        "espera_ia_p50_s": "25.952",
+        "espera_ia_p95_s": "49.375",
+        "espera_ia_p99_s": "51.457",
+        "latencia_total_media_s": "56.564",
+        "latencia_total_p50_s": "56.564",
+        "latencia_total_p95_s": "60.242",
+        "latencia_total_p99_s": "60.569",
+        "erros_ia": 0,
+        "probabilidades_invalidas": 0,
+        "rate_limits": 0,
+        "violacoes_ordem": 0,
+        "observations": [
+          {
+            "ticket_id": 278,
+            "ordem_ingresso": 1,
+            "triagem_status": "TRIAGEM_MANUAL",
+            "fila_enfileirada_em": "2026-07-21 16:37:13.312547-03:00",
+            "fila_liberar_em": null,
+            "primeira_decisao": "2026-07-21 16:38:05.290262-03:00",
+            "atualizado_em": "2026-07-21 16:38:05.789660-03:00",
+            "warmup": false,
+            "espera_ia_s": "51.978",
+            "latencia_total_s": "52.477"
+          },
+          {
+            "ticket_id": 279,
+            "ordem_ingresso": 2,
+            "triagem_status": "TRIAGEM_MANUAL",
+            "fila_enfileirada_em": "2026-07-21 16:39:01.534547-03:00",
+            "fila_liberar_em": "2026-07-21 16:40:00.096382-03:00",
+            "primeira_decisao": "2026-07-21 16:39:01.460293-03:00",
+            "atualizado_em": "2026-07-21 16:40:02.184993-03:00",
+            "warmup": false,
+            "espera_ia_s": "-0.074",
+            "latencia_total_s": "60.650"
+          }
+        ],
+        "drain_elapsed_s": 168.872,
+        "throughput_tickets_per_minute": 0.710595,
+        "p99_confirmatorio": false,
+        "nota_p99": "exploratório; requer pelo menos 500 latências medidas por tratamento",
+        "success": true
+      }
+    },
+    {
+      "id": "Q1",
+      "batch": 1,
+      "interval_seconds": 1,
+      "repetition": 2,
+      "run_id": "CALQ-20260721T194004-Q1-R2",
+      "tickets": [
+        {
+          "case_id": "AVAL-CAL-A7703C2B-000017",
+          "ticket_id": 280,
+          "title": "Construir parede de alvenaria para ampliar sala administrativa"
+        },
+        {
+          "case_id": "AVAL-CAL-A7703C2B-000018",
+          "ticket_id": 281,
+          "title": "Instalar divisoria simples na sala 101"
+        }
+      ],
+      "metrics": {
+        "total": 2,
+        "total_medido": 2,
+        "warmup_descartado": 0,
+        "terminal": 2,
+        "espera_ia_media_s": "-0.142",
+        "espera_ia_p50_s": "-0.142",
+        "espera_ia_p95_s": "-0.103",
+        "espera_ia_p99_s": "-0.100",
+        "latencia_total_media_s": "60.104",
+        "latencia_total_p50_s": "60.104",
+        "latencia_total_p95_s": "60.212",
+        "latencia_total_p99_s": "60.222",
+        "erros_ia": 0,
+        "probabilidades_invalidas": 0,
+        "rate_limits": 0,
+        "violacoes_ordem": 0,
+        "observations": [
+          {
+            "ticket_id": 280,
+            "ordem_ingresso": 1,
+            "triagem_status": "FECHADO_OBRA",
+            "fila_enfileirada_em": "2026-07-21 16:41:04.916872-03:00",
+            "fila_liberar_em": "2026-07-21 16:42:00.270001-03:00",
+            "primeira_decisao": "2026-07-21 16:41:04.732913-03:00",
+            "atualizado_em": "2026-07-21 16:42:04.900840-03:00",
+            "warmup": false,
+            "espera_ia_s": "-0.184",
+            "latencia_total_s": "59.984"
+          },
+          {
+            "ticket_id": 281,
+            "ordem_ingresso": 2,
+            "triagem_status": "TRIAGEM_MANUAL",
+            "fila_enfileirada_em": "2026-07-21 16:43:02.038467-03:00",
+            "fila_liberar_em": "2026-07-21 16:44:00.193602-03:00",
+            "primeira_decisao": "2026-07-21 16:43:01.939321-03:00",
+            "atualizado_em": "2026-07-21 16:44:02.262621-03:00",
+            "warmup": false,
+            "espera_ia_s": "-0.099",
+            "latencia_total_s": "60.224"
+          }
+        ],
+        "drain_elapsed_s": 177.346,
+        "throughput_tickets_per_minute": 0.676644,
+        "p99_confirmatorio": false,
+        "nota_p99": "exploratório; requer pelo menos 500 latências medidas por tratamento",
+        "success": true
+      }
+    },
+    {
+      "id": "Q1",
+      "batch": 1,
+      "interval_seconds": 1,
+      "repetition": 3,
+      "run_id": "CALQ-20260721T194408-Q1-R3",
+      "tickets": [
+        {
+          "case_id": "AVAL-CAL-4FEF380B-000017",
+          "ticket_id": 282,
+          "title": "Construir parede de alvenaria para ampliar sala administrativa"
+        },
+        {
+          "case_id": "AVAL-CAL-4FEF380B-000018",
+          "ticket_id": 283,
+          "title": "Instalar divisoria simples no alojamento estudantil"
+        }
+      ],
+      "metrics": {
+        "total": 2,
+        "total_medido": 2,
+        "warmup_descartado": 0,
+        "terminal": 2,
+        "espera_ia_media_s": "7.244",
+        "espera_ia_p50_s": "7.244",
+        "espera_ia_p95_s": "13.884",
+        "espera_ia_p99_s": "14.475",
+        "latencia_total_media_s": "37.728",
+        "latencia_total_p50_s": "37.728",
+        "latencia_total_p95_s": "58.011",
+        "latencia_total_p99_s": "59.814",
+        "erros_ia": 0,
+        "probabilidades_invalidas": 0,
+        "rate_limits": 0,
+        "violacoes_ordem": 0,
+        "observations": [
+          {
+            "ticket_id": 282,
+            "ordem_ingresso": 1,
+            "triagem_status": "TRIAGEM_MANUAL",
+            "fila_enfileirada_em": "2026-07-21 16:44:50.058513-03:00",
+            "fila_liberar_em": null,
+            "primeira_decisao": "2026-07-21 16:45:04.680697-03:00",
+            "atualizado_em": "2026-07-21 16:45:05.250383-03:00",
+            "warmup": false,
+            "espera_ia_s": "14.622",
+            "latencia_total_s": "15.192"
+          },
+          {
+            "ticket_id": 283,
+            "ordem_ingresso": 2,
+            "triagem_status": "TRIAGEM_MANUAL",
+            "fila_enfileirada_em": "2026-07-21 16:46:01.802419-03:00",
+            "fila_liberar_em": "2026-07-21 16:47:00.113179-03:00",
+            "primeira_decisao": "2026-07-21 16:46:01.667654-03:00",
+            "atualizado_em": "2026-07-21 16:47:02.067513-03:00",
+            "warmup": false,
+            "espera_ia_s": "-0.135",
+            "latencia_total_s": "60.265"
+          }
+        ],
+        "drain_elapsed_s": 132.009,
+        "throughput_tickets_per_minute": 0.909029,
+        "p99_confirmatorio": false,
+        "nota_p99": "exploratório; requer pelo menos 500 latências medidas por tratamento",
+        "success": true
+      }
+    }
+  ]
+}

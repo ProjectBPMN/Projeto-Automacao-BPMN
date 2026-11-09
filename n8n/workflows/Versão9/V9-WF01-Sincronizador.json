@@ -1,0 +1,644 @@
+{
+  "name": "V9 - WF01 Sincronizador",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1200,
+        0
+      ],
+      "id": "v9-wf01-t1",
+      "name": "T1. Manual"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 6,12 * * *"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1200,
+        280
+      ],
+      "id": "v9-wf01-t2",
+      "name": "T2. Schedule 06h/12h"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log('[WF01][LOG] Início sincronizador V9'); return [{json:{ts:new Date().toISOString()}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -930,
+        140
+      ],
+      "id": "v9-wf01-log1",
+      "name": "LOG: Início",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- =============================================================\n-- Schema V9 — Banco de triagem de chamados GLPI\n-- Executado pelo docker-entrypoint ou pelo workflow WF01\n-- =============================================================\n\nCREATE TABLE IF NOT EXISTS tickets_processados (\n  id                    BIGINT PRIMARY KEY,\n  titulo                TEXT NOT NULL DEFAULT '',\n  descricao             TEXT,\n  tipo_servico          TEXT,\n  tipo_servico_id       BIGINT,\n  localizacao           TEXT,\n  solicitante           TEXT,\n  solicitante_id        BIGINT,\n  email_solicitante     TEXT,\n  status_num            INTEGER NOT NULL DEFAULT 0,\n  status_nome           TEXT NOT NULL DEFAULT '',\n  data_abertura         TIMESTAMPTZ,\n  data_ultima_mudanca   TIMESTAMPTZ,\n  origem_ingestao       TEXT NOT NULL DEFAULT 'SYNC',\n  triagem_status        TEXT,\n  classificacao         TEXT,\n  classificacao_final   TEXT,\n  executor              TEXT,\n  duplicado_de_id       BIGINT,\n  decisao_fiscal        TEXT,\n  fiscal_decision_token TEXT,\n  fiscal_token_expira_em TIMESTAMPTZ,\n  motivo_classificacao  TEXT,\n  confianca_ia          NUMERIC(5,4),\n  triagem_manual        BOOLEAN DEFAULT FALSE,\n  em_aprovacao_fiscal   BOOLEAN DEFAULT FALSE,\n  aprovacao_iniciada_em TIMESTAMPTZ,\n  aprovacao_decidida_em TIMESTAMPTZ,\n  triado_em             TIMESTAMPTZ,\n  ultima_acao_workflow  TEXT,\n  tentativas_ia_dedup   INTEGER DEFAULT 0,\n  tentativas_ia_classificacao INTEGER DEFAULT 0,\n  tentativas_ia         INTEGER DEFAULT 0,\n  ultimo_erro_ia        TEXT,\n  fila_enfileirada_em    TIMESTAMPTZ,\n  fila_disponivel_em     TIMESTAMPTZ,\n  fila_liberar_em        TIMESTAMPTZ,\n  fila_reservada_em      TIMESTAMPTZ,\n  fila_tentativas        INTEGER DEFAULT 0,\n  fila_ultimo_erro       TEXT,\n  fila_etapa             TEXT NOT NULL DEFAULT 'DEDUPLICACAO',\n  log_workflow          JSONB DEFAULT '[]'::jsonb,\n  wf_version            TEXT DEFAULT 'v9',\n  criado_em             TIMESTAMPTZ DEFAULT NOW(),\n  atualizado_em         TIMESTAMPTZ DEFAULT NOW()\n);\n\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS tentativas_ia_dedup INTEGER DEFAULT 0;\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS tentativas_ia_classificacao INTEGER DEFAULT 0;\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS tentativas_ia INTEGER DEFAULT 0;\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS ultimo_erro_ia TEXT;\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS log_workflow JSONB DEFAULT '[]'::jsonb;\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS wf_version TEXT DEFAULT 'v9';\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS classificacao_final TEXT;\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS tipo_servico_id BIGINT;\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS solicitante_id BIGINT;\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS confianca_ia NUMERIC(5,4);\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS triagem_manual BOOLEAN DEFAULT FALSE;\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS fiscal_decision_token TEXT;\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS fiscal_token_expira_em TIMESTAMPTZ;\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS fila_enfileirada_em TIMESTAMPTZ;\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS fila_disponivel_em TIMESTAMPTZ;\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS fila_liberar_em TIMESTAMPTZ;\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS fila_reservada_em TIMESTAMPTZ;\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS fila_tentativas INTEGER DEFAULT 0;\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS fila_ultimo_erro TEXT;\nALTER TABLE tickets_processados ADD COLUMN IF NOT EXISTS fila_etapa TEXT NOT NULL DEFAULT 'DEDUPLICACAO';\n\nCREATE INDEX IF NOT EXISTS idx_tp_status ON tickets_processados(status_num);\nCREATE INDEX IF NOT EXISTS idx_tp_data_abertura ON tickets_processados(data_abertura);\nCREATE INDEX IF NOT EXISTS idx_tp_mudanca ON tickets_processados(data_ultima_mudanca);\nCREATE INDEX IF NOT EXISTS idx_tp_localizacao ON tickets_processados(localizacao);\nCREATE INDEX IF NOT EXISTS idx_tp_triagem ON tickets_processados(triagem_status);\nCREATE INDEX IF NOT EXISTS idx_tp_aprovacao ON tickets_processados(em_aprovacao_fiscal);\nCREATE INDEX IF NOT EXISTS idx_tp_classificacao_final ON tickets_processados(classificacao_final);\nCREATE INDEX IF NOT EXISTS idx_tp_tipo_servico_id ON tickets_processados(tipo_servico_id);\nCREATE INDEX IF NOT EXISTS idx_tp_solicitante_id ON tickets_processados(solicitante_id);\nCREATE INDEX IF NOT EXISTS idx_tp_triagem_manual ON tickets_processados(triagem_manual);\nCREATE INDEX IF NOT EXISTS idx_tp_fiscal_decision_token ON tickets_processados(fiscal_decision_token);\nCREATE INDEX IF NOT EXISTS idx_tp_fiscal_token_expira ON tickets_processados(fiscal_token_expira_em);\nCREATE INDEX IF NOT EXISTS idx_tp_fila_pronta\n  ON tickets_processados(triagem_status, fila_disponivel_em, fila_enfileirada_em)\n  WHERE triagem_status IN ('PENDENTE_FILA_IA','FILA_IA_LIBERADA');\n\nCREATE TABLE IF NOT EXISTS fila_ia_controle (\n  id                    SMALLINT PRIMARY KEY DEFAULT 1 CHECK (id = 1),\n  proxima_liberacao_em   TIMESTAMPTZ NOT NULL DEFAULT NOW(),\n  intervalo_segundos     INTEGER NOT NULL DEFAULT 45,\n  lote_tamanho           INTEGER NOT NULL DEFAULT 3,\n  atualizado_em          TIMESTAMPTZ NOT NULL DEFAULT NOW()\n);\n\nINSERT INTO fila_ia_controle(id)\nVALUES (1)\nON CONFLICT(id) DO NOTHING;\n\nCREATE TABLE IF NOT EXISTS fila_ia_metricas (\n  id                    BIGSERIAL PRIMARY KEY,\n  run_id                TEXT,\n  pendentes             INTEGER NOT NULL DEFAULT 0,\n  reservados            INTEGER NOT NULL DEFAULT 0,\n  liberados_ciclo       INTEGER NOT NULL DEFAULT 0,\n  espera_media_segundos NUMERIC,\n  espera_p95_segundos   NUMERIC,\n  intervalo_segundos    INTEGER NOT NULL,\n  lote_tamanho          INTEGER NOT NULL,\n  criado_em             TIMESTAMPTZ NOT NULL DEFAULT NOW()\n);\n\nCREATE INDEX IF NOT EXISTS idx_fila_ia_metricas_run\n  ON fila_ia_metricas(run_id, criado_em DESC)\n  WHERE run_id IS NOT NULL;\nCREATE INDEX IF NOT EXISTS idx_fila_ia_metricas_criado\n  ON fila_ia_metricas(criado_em DESC);\n\nCREATE TABLE IF NOT EXISTS fila_ia_dead_letter (\n  id                BIGSERIAL PRIMARY KEY,\n  ticket_id         BIGINT NOT NULL,\n  etapa             TEXT NOT NULL,\n  tentativa_numero  INTEGER NOT NULL,\n  erro              TEXT NOT NULL,\n  run_id            TEXT,\n  case_id           TEXT,\n  episode_id        TEXT,\n  payload_contexto  JSONB NOT NULL DEFAULT '{}'::jsonb,\n  resolvido         BOOLEAN NOT NULL DEFAULT FALSE,\n  resolvido_em      TIMESTAMPTZ,\n  criado_em         TIMESTAMPTZ NOT NULL DEFAULT NOW(),\n  UNIQUE(ticket_id, etapa, tentativa_numero)\n);\n\nCREATE INDEX IF NOT EXISTS idx_fila_ia_dead_letter_aberta\n  ON fila_ia_dead_letter(criado_em DESC)\n  WHERE resolvido = FALSE;\nCREATE INDEX IF NOT EXISTS idx_fila_ia_dead_letter_run\n  ON fila_ia_dead_letter(run_id, etapa)\n  WHERE run_id IS NOT NULL;\n\n-- Expõe falhas operacionais históricas que não receberam uma dead-letter na\n-- versão do workflow vigente à época. A view não fabrica eventos retroativos:\n-- ela mantém a lacuna explícita para reconciliação e análise de causa.\nCREATE OR REPLACE VIEW vw_erros_ia_sem_dead_letter AS\nSELECT\n  tp.id AS ticket_id,\n  tp.triagem_status,\n  tp.fila_etapa,\n  tp.fila_tentativas,\n  tp.ultimo_erro_ia,\n  tp.fila_ultimo_erro,\n  tp.atualizado_em\nFROM tickets_processados tp\nWHERE tp.triagem_status='ERRO_IA'\n  AND NOT EXISTS (\n    SELECT 1\n    FROM fila_ia_dead_letter dlq\n    WHERE dlq.ticket_id=tp.id\n  );\n\n-- Observabilidade operacional e base para metricas/pesquisa\nCREATE TABLE IF NOT EXISTS ia_decisoes (\n  id                  BIGSERIAL PRIMARY KEY,\n  ticket_id           BIGINT,\n  workflow_origem     TEXT NOT NULL,\n  etapa               TEXT NOT NULL,\n  modelo_ia           TEXT DEFAULT 'Gemini',\n  versao_modelo       TEXT,\n  prompt_version      TEXT,\n  input_hash          TEXT,\n  input_resumo        JSONB,\n  output_raw          JSONB,\n  api_response_raw    JSONB,\n  output_normalizado  JSONB,\n  predicao            TEXT,\n  classe_referencia_id BIGINT,\n  confianca           NUMERIC(5,4),\n  justificativa       TEXT,\n  tempo_resposta_ms   INTEGER,\n  tentativa_numero    INTEGER,\n  run_id              TEXT,\n  case_id             TEXT,\n  episode_id          TEXT,\n  generation_profile  TEXT,\n  operational_config  JSONB,\n  probabilidades_validas BOOLEAN,\n  referencia_presente_candidatos BOOLEAN,\n  total_candidatos    INTEGER,\n  provedor_ia         TEXT,\n  papel_modelo        TEXT,\n  fallback_utilizado  BOOLEAN NOT NULL DEFAULT FALSE,\n  ciclo_tentativa     TEXT,\n  total_modelos_tentados INTEGER,\n  modo_execucao       TEXT,\n  elegivel_eficacia_confirmatoria BOOLEAN NOT NULL DEFAULT FALSE,\n  erro_ia             BOOLEAN DEFAULT FALSE,\n  mensagem_erro       TEXT,\n  criado_em           TIMESTAMPTZ DEFAULT NOW()\n);\n\nCREATE INDEX IF NOT EXISTS idx_ia_decisoes_ticket ON ia_decisoes(ticket_id);\nCREATE INDEX IF NOT EXISTS idx_ia_decisoes_etapa ON ia_decisoes(etapa);\nCREATE INDEX IF NOT EXISTS idx_ia_decisoes_prompt ON ia_decisoes(prompt_version);\nCREATE INDEX IF NOT EXISTS idx_ia_decisoes_modelo ON ia_decisoes(modelo_ia, versao_modelo);\nCREATE INDEX IF NOT EXISTS idx_ia_decisoes_criado ON ia_decisoes(criado_em);\nCREATE INDEX IF NOT EXISTS idx_ia_decisoes_predicao ON ia_decisoes(predicao);\nALTER TABLE ia_decisoes ADD COLUMN IF NOT EXISTS run_id TEXT;\nALTER TABLE ia_decisoes ADD COLUMN IF NOT EXISTS case_id TEXT;\nALTER TABLE ia_decisoes ADD COLUMN IF NOT EXISTS episode_id TEXT;\nALTER TABLE ia_decisoes ADD COLUMN IF NOT EXISTS generation_profile TEXT;\nALTER TABLE ia_decisoes ADD COLUMN IF NOT EXISTS api_response_raw JSONB;\nALTER TABLE ia_decisoes ADD COLUMN IF NOT EXISTS operational_config JSONB;\nALTER TABLE ia_decisoes ADD COLUMN IF NOT EXISTS probabilidades_validas BOOLEAN;\nALTER TABLE ia_decisoes ADD COLUMN IF NOT EXISTS referencia_presente_candidatos BOOLEAN;\nALTER TABLE ia_decisoes ADD COLUMN IF NOT EXISTS total_candidatos INTEGER;\nALTER TABLE ia_decisoes ADD COLUMN IF NOT EXISTS provedor_ia TEXT;\nALTER TABLE ia_decisoes ADD COLUMN IF NOT EXISTS papel_modelo TEXT;\nALTER TABLE ia_decisoes ADD COLUMN IF NOT EXISTS fallback_utilizado BOOLEAN NOT NULL DEFAULT FALSE;\nALTER TABLE ia_decisoes ADD COLUMN IF NOT EXISTS ciclo_tentativa TEXT;\nALTER TABLE ia_decisoes ADD COLUMN IF NOT EXISTS total_modelos_tentados INTEGER;\nALTER TABLE ia_decisoes ADD COLUMN IF NOT EXISTS modo_execucao TEXT;\nALTER TABLE ia_decisoes ADD COLUMN IF NOT EXISTS elegivel_eficacia_confirmatoria BOOLEAN NOT NULL DEFAULT FALSE;\nCREATE INDEX IF NOT EXISTS idx_ia_decisoes_run ON ia_decisoes(run_id, etapa);\nCREATE INDEX IF NOT EXISTS idx_ia_decisoes_run_etapa_criado\n  ON ia_decisoes(run_id, etapa, criado_em DESC)\n  WHERE run_id IS NOT NULL;\nCREATE INDEX IF NOT EXISTS idx_ia_decisoes_prompt_modelo\n  ON ia_decisoes(prompt_version, versao_modelo, criado_em DESC);\nCREATE INDEX IF NOT EXISTS idx_ia_decisoes_proveniencia\n  ON ia_decisoes(provedor_ia, versao_modelo, papel_modelo, criado_em DESC);\nCREATE INDEX IF NOT EXISTS idx_ia_decisoes_confirmatoria\n  ON ia_decisoes(run_id, etapa, elegivel_eficacia_confirmatoria)\n  WHERE run_id IS NOT NULL;\n\n-- Uma linha por chamada efetiva a um provedor. A decisão final acima aponta o\n-- modelo selecionado; esta tabela preserva também falhas e fallbacks anteriores.\nCREATE TABLE IF NOT EXISTS ia_tentativas_modelo (\n  id                  BIGSERIAL PRIMARY KEY,\n  ia_decisao_id       BIGINT REFERENCES ia_decisoes(id) ON DELETE CASCADE,\n  ticket_id           BIGINT,\n  run_id              TEXT,\n  case_id             TEXT,\n  episode_id          TEXT,\n  workflow_origem     TEXT NOT NULL,\n  etapa               TEXT NOT NULL,\n  ciclo_tentativa     TEXT NOT NULL,\n  ordem_tentativa     INTEGER NOT NULL CHECK (ordem_tentativa > 0),\n  papel_modelo        TEXT NOT NULL,\n  provedor_ia         TEXT NOT NULL,\n  versao_modelo       TEXT NOT NULL,\n  perfil_pensamento   TEXT,\n  fallback_utilizado  BOOLEAN NOT NULL DEFAULT FALSE,\n  iniciado_em         TIMESTAMPTZ,\n  finalizado_em       TIMESTAMPTZ,\n  duracao_ms          INTEGER,\n  transporte_ok       BOOLEAN,\n  schema_ok           BOOLEAN,\n  status_tentativa    TEXT NOT NULL,\n  codigo_erro         TEXT,\n  mensagem_erro       TEXT,\n  resposta_raw        JSONB,\n  endpoint             TEXT,\n  perfil_entrada       TEXT,\n  prompt_chars         INTEGER,\n  input_chars          INTEGER,\n  total_candidatos     INTEGER,\n  http_status          INTEGER,\n  retry_after_seconds  INTEGER,\n  retryable            BOOLEAN,\n  tipo_erro            TEXT,\n  metadata_cientifica  JSONB,\n  input_tokens        INTEGER,\n  output_tokens       INTEGER,\n  total_tokens        INTEGER,\n  politica_execucao   JSONB NOT NULL DEFAULT '{}'::jsonb,\n  criado_em           TIMESTAMPTZ NOT NULL DEFAULT NOW(),\n  UNIQUE(ciclo_tentativa, ordem_tentativa)\n);\n\nALTER TABLE ia_tentativas_modelo ADD COLUMN IF NOT EXISTS endpoint TEXT;\nALTER TABLE ia_tentativas_modelo ADD COLUMN IF NOT EXISTS perfil_entrada TEXT;\nALTER TABLE ia_tentativas_modelo ADD COLUMN IF NOT EXISTS prompt_chars INTEGER;\nALTER TABLE ia_tentativas_modelo ADD COLUMN IF NOT EXISTS input_chars INTEGER;\nALTER TABLE ia_tentativas_modelo ADD COLUMN IF NOT EXISTS total_candidatos INTEGER;\nALTER TABLE ia_tentativas_modelo ADD COLUMN IF NOT EXISTS http_status INTEGER;\nALTER TABLE ia_tentativas_modelo ADD COLUMN IF NOT EXISTS retry_after_seconds INTEGER;\nALTER TABLE ia_tentativas_modelo ADD COLUMN IF NOT EXISTS retryable BOOLEAN;\nALTER TABLE ia_tentativas_modelo ADD COLUMN IF NOT EXISTS tipo_erro TEXT;\nALTER TABLE ia_tentativas_modelo ADD COLUMN IF NOT EXISTS metadata_cientifica JSONB;\n\nCREATE INDEX IF NOT EXISTS idx_ia_tentativas_decisao\n  ON ia_tentativas_modelo(ia_decisao_id, ordem_tentativa);\nCREATE INDEX IF NOT EXISTS idx_ia_tentativas_run\n  ON ia_tentativas_modelo(run_id, etapa, criado_em DESC)\n  WHERE run_id IS NOT NULL;\nCREATE INDEX IF NOT EXISTS idx_ia_tentativas_modelo\n  ON ia_tentativas_modelo(provedor_ia, versao_modelo, status_tentativa, criado_em DESC);\n\n-- A lista de colunas desta view evolui com a auditoria do gateway. PostgreSQL\n-- não permite que CREATE OR REPLACE renomeie/reordene colunas existentes;\n-- recriá-la é seguro porque views não armazenam linhas e evita quebrar a\n-- atualização idempotente de volumes já inicializados.\nDROP VIEW IF EXISTS vw_proveniencia_gateway_ia CASCADE;\nCREATE VIEW vw_proveniencia_gateway_ia AS\nSELECT\n  d.id AS ia_decisao_id,d.ticket_id,d.run_id,d.case_id,d.episode_id,\n  d.workflow_origem,d.etapa,d.provedor_ia,d.versao_modelo,d.papel_modelo,\n  d.predicao,d.erro_ia,d.fallback_utilizado,d.total_modelos_tentados,\n  d.modo_execucao,d.elegivel_eficacia_confirmatoria,d.ciclo_tentativa,\n  d.tempo_resposta_ms,d.criado_em,\n  COUNT(t.id)::int AS tentativas_persistidas,\n  COUNT(t.id) FILTER (WHERE t.transporte_ok)::int AS transportes_ok,\n  COUNT(t.id) FILTER (WHERE t.schema_ok)::int AS schemas_ok,\n  COUNT(t.id) FILTER (WHERE t.fallback_utilizado)::int AS fallbacks_persistidos,\n  COUNT(t.id) FILTER (WHERE t.retryable)::int AS falhas_retentaveis,\n  COALESCE(\n    jsonb_agg(t.metadata_cientifica) FILTER (\n      WHERE t.papel_modelo='LOCAL' AND t.metadata_cientifica IS NOT NULL\n    ),\n    '[]'::jsonb\n  ) AS metadata_local,\n  COALESCE(SUM(t.input_tokens),0)::bigint AS input_tokens,\n  COALESCE(SUM(t.output_tokens),0)::bigint AS output_tokens,\n  COALESCE(SUM(t.total_tokens),0)::bigint AS total_tokens\nFROM ia_decisoes d\nLEFT JOIN ia_tentativas_modelo t ON t.ia_decisao_id=d.id\nGROUP BY d.id;\n\nCREATE TABLE IF NOT EXISTS avaliacoes_humanas (\n  id                 BIGSERIAL PRIMARY KEY,\n  ticket_id          BIGINT,\n  etapa              TEXT NOT NULL,\n  avaliador          TEXT,\n  decisao_ia         TEXT,\n  decisao_humana     TEXT,\n  classe_correta     TEXT,\n  ia_estava_correta  BOOLEAN,\n  tipo_erro          TEXT,\n  gravidade_erro     TEXT,\n  motivo_divergencia TEXT,\n  observacao         TEXT,\n  avaliacao_token    TEXT,\n  avaliacao_token_expira_em TIMESTAMPTZ,\n  status_avaliacao   TEXT DEFAULT 'CONCLUIDA',\n  origem_amostra     TEXT,\n  run_id             TEXT,\n  case_id            TEXT,\n  episode_id         TEXT,\n  fonte_gabarito     TEXT,\n  revisao_id         TEXT,\n  adjudicada         BOOLEAN DEFAULT FALSE,\n  solicitado_em      TIMESTAMPTZ,\n  concluido_em       TIMESTAMPTZ,\n  avaliado_em        TIMESTAMPTZ DEFAULT NOW()\n);\n\nALTER TABLE avaliacoes_humanas ADD COLUMN IF NOT EXISTS avaliacao_token TEXT;\nALTER TABLE avaliacoes_humanas ADD COLUMN IF NOT EXISTS avaliacao_token_expira_em TIMESTAMPTZ;\nALTER TABLE avaliacoes_humanas ADD COLUMN IF NOT EXISTS status_avaliacao TEXT DEFAULT 'CONCLUIDA';\nALTER TABLE avaliacoes_humanas ADD COLUMN IF NOT EXISTS origem_amostra TEXT;\nALTER TABLE avaliacoes_humanas ADD COLUMN IF NOT EXISTS solicitado_em TIMESTAMPTZ;\nALTER TABLE avaliacoes_humanas ADD COLUMN IF NOT EXISTS concluido_em TIMESTAMPTZ;\nALTER TABLE avaliacoes_humanas ADD COLUMN IF NOT EXISTS run_id TEXT;\nALTER TABLE avaliacoes_humanas ADD COLUMN IF NOT EXISTS case_id TEXT;\nALTER TABLE avaliacoes_humanas ADD COLUMN IF NOT EXISTS episode_id TEXT;\nALTER TABLE avaliacoes_humanas ADD COLUMN IF NOT EXISTS fonte_gabarito TEXT;\nALTER TABLE avaliacoes_humanas ADD COLUMN IF NOT EXISTS revisao_id TEXT;\nALTER TABLE avaliacoes_humanas ADD COLUMN IF NOT EXISTS adjudicada BOOLEAN DEFAULT FALSE;\n\nCREATE INDEX IF NOT EXISTS idx_avaliacoes_ticket ON avaliacoes_humanas(ticket_id);\nCREATE INDEX IF NOT EXISTS idx_avaliacoes_etapa ON avaliacoes_humanas(etapa);\nCREATE INDEX IF NOT EXISTS idx_avaliacoes_correta ON avaliacoes_humanas(ia_estava_correta);\nCREATE INDEX IF NOT EXISTS idx_avaliacoes_tipo_erro ON avaliacoes_humanas(tipo_erro);\nCREATE INDEX IF NOT EXISTS idx_avaliacoes_data ON avaliacoes_humanas(avaliado_em);\nCREATE UNIQUE INDEX IF NOT EXISTS idx_avaliacoes_token ON avaliacoes_humanas(avaliacao_token) WHERE avaliacao_token IS NOT NULL;\nCREATE UNIQUE INDEX IF NOT EXISTS idx_avaliacoes_pendente ON avaliacoes_humanas(ticket_id, etapa) WHERE status_avaliacao = 'PENDENTE';\nCREATE INDEX IF NOT EXISTS idx_avaliacoes_status ON avaliacoes_humanas(status_avaliacao);\nCREATE INDEX IF NOT EXISTS idx_avaliacoes_run ON avaliacoes_humanas(run_id, etapa);\n\n-- Assessor determinístico usado exclusivamente em execuções sintéticas. A\n-- decisão da IA continua em ia_decisoes; esta tabela registra, em outra linha\n-- e somente depois da inferência, qual ação do gabarito foi enviada aos mesmos\n-- webhooks disponíveis ao fiscal/revisor. Tokens são persistidos apenas como\n-- hash e a chave única torna o clique idempotente por realização e etapa.\nCREATE TABLE IF NOT EXISTS avaliacao_auto_confirmacoes (\n  id                    BIGSERIAL PRIMARY KEY,\n  ticket_id             BIGINT NOT NULL CHECK (ticket_id > 0),\n  run_id                TEXT NOT NULL CHECK (run_id ~ '^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$'),\n  scenario_id           TEXT NOT NULL CHECK (scenario_id ~ '^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$'),\n  realization_id        TEXT NOT NULL CHECK (realization_id ~ '^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$'),\n  episode_id            TEXT,\n  etapa                  TEXT NOT NULL CHECK (etapa IN ('DEDUPLICACAO','CLASSIFICACAO')),\n  tipo_confirmacao       TEXT NOT NULL CHECK (\n    tipo_confirmacao IN ('FISCAL_DUPLICIDADE','AVALIACAO_METRICA')\n  ),\n  ia_decisao_id          BIGINT NOT NULL REFERENCES ia_decisoes(id),\n  avaliacao_id           BIGINT REFERENCES avaliacoes_humanas(id),\n  predicao_ia            TEXT NOT NULL,\n  classe_gabarito        TEXT NOT NULL,\n  decisao_webhook        TEXT NOT NULL CHECK (\n    decisao_webhook IN ('confirmar','nao_duplicado','correta','incorreta')\n  ),\n  label_source           TEXT NOT NULL,\n  token_hash             TEXT NOT NULL CHECK (token_hash ~ '^[a-f0-9]{64}$'),\n  assessor_nonce_hash    TEXT NOT NULL CHECK (assessor_nonce_hash ~ '^[a-f0-9]{64}$'),\n  status                 TEXT NOT NULL DEFAULT 'RESERVADA' CHECK (\n    status IN ('RESERVADA','ENVIADA','CONFIRMADA','FALHA')\n  ),\n  tentativas             INTEGER NOT NULL DEFAULT 1 CHECK (tentativas > 0),\n  resposta_resumo        TEXT,\n  mensagem_erro          TEXT,\n  proxima_tentativa_em   TIMESTAMPTZ,\n  reservada_em           TIMESTAMPTZ NOT NULL DEFAULT NOW(),\n  enviada_em             TIMESTAMPTZ,\n  confirmada_em          TIMESTAMPTZ,\n  atualizado_em          TIMESTAMPTZ NOT NULL DEFAULT NOW(),\n  criado_em              TIMESTAMPTZ NOT NULL DEFAULT NOW(),\n  UNIQUE(run_id, realization_id, tipo_confirmacao, etapa)\n);\n\nCREATE INDEX IF NOT EXISTS idx_auto_confirmacoes_pendentes\n  ON avaliacao_auto_confirmacoes(status, proxima_tentativa_em, criado_em)\n  WHERE status IN ('RESERVADA','ENVIADA','FALHA');\nCREATE INDEX IF NOT EXISTS idx_auto_confirmacoes_run\n  ON avaliacao_auto_confirmacoes(run_id, scenario_id, realization_id, etapa);\nCREATE UNIQUE INDEX IF NOT EXISTS idx_auto_confirmacoes_nonce\n  ON avaliacao_auto_confirmacoes(assessor_nonce_hash);\n\nCREATE TABLE IF NOT EXISTS workflow_eventos (\n  id              BIGSERIAL PRIMARY KEY,\n  ticket_id       BIGINT,\n  workflow        TEXT NOT NULL,\n  node_name       TEXT,\n  fase            TEXT,\n  acao            TEXT,\n  status_evento   TEXT,\n  status_anterior TEXT,\n  status_novo     TEXT,\n  erro            BOOLEAN DEFAULT FALSE,\n  mensagem_erro   TEXT,\n  execution_id    TEXT,\n  inicio_em       TIMESTAMPTZ,\n  fim_em          TIMESTAMPTZ,\n  duracao_ms      INTEGER,\n  criado_em       TIMESTAMPTZ DEFAULT NOW()\n);\n\nCREATE INDEX IF NOT EXISTS idx_workflow_eventos_ticket ON workflow_eventos(ticket_id);\nCREATE INDEX IF NOT EXISTS idx_workflow_eventos_workflow ON workflow_eventos(workflow);\nCREATE INDEX IF NOT EXISTS idx_workflow_eventos_fase ON workflow_eventos(fase);\nCREATE INDEX IF NOT EXISTS idx_workflow_eventos_criado ON workflow_eventos(criado_em);\nCREATE INDEX IF NOT EXISTS idx_workflow_eventos_erro ON workflow_eventos(erro);\n\nCREATE TABLE IF NOT EXISTS dataset_controle (\n  id                              BIGSERIAL PRIMARY KEY,\n  ticket_id                       BIGINT,\n  origem                          TEXT NOT NULL DEFAULT 'SEED_CONTROLADO',\n  cenario_controle                TEXT,\n  duplicado_esperado              BOOLEAN,\n  referencia_duplicado_esperada   BIGINT,\n  classificacao_esperada          TEXT,\n  executor_esperado               TEXT,\n  status_final_esperado           TEXT,\n  nivel_dificuldade               TEXT,\n  run_id                          TEXT,\n  case_id                         TEXT,\n  episode_id                      TEXT,\n  scenario_id                     TEXT,\n  dimension                       TEXT,\n  order_in_episode                INTEGER,\n  reference_case_id               TEXT,\n  requires_human_review           BOOLEAN DEFAULT FALSE,\n  risk                            TEXT,\n  rationale                       TEXT,\n  label_source                    TEXT DEFAULT 'GABARITO_SINTETICO',\n  template_family                 TEXT,\n  dataset_version                 TEXT,\n  split                           TEXT DEFAULT 'TEST',\n  observacao                      TEXT,\n  criado_em                       TIMESTAMPTZ DEFAULT NOW()\n);\n\nCREATE INDEX IF NOT EXISTS idx_dataset_ticket ON dataset_controle(ticket_id);\nCREATE INDEX IF NOT EXISTS idx_dataset_cenario ON dataset_controle(cenario_controle);\nCREATE INDEX IF NOT EXISTS idx_dataset_origem ON dataset_controle(origem);\nALTER TABLE dataset_controle ADD COLUMN IF NOT EXISTS run_id TEXT;\nALTER TABLE dataset_controle ADD COLUMN IF NOT EXISTS case_id TEXT;\nALTER TABLE dataset_controle ADD COLUMN IF NOT EXISTS episode_id TEXT;\nALTER TABLE dataset_controle ADD COLUMN IF NOT EXISTS scenario_id TEXT;\nALTER TABLE dataset_controle ADD COLUMN IF NOT EXISTS dimension TEXT;\nALTER TABLE dataset_controle ADD COLUMN IF NOT EXISTS order_in_episode INTEGER;\nALTER TABLE dataset_controle ADD COLUMN IF NOT EXISTS reference_case_id TEXT;\nALTER TABLE dataset_controle ADD COLUMN IF NOT EXISTS requires_human_review BOOLEAN DEFAULT FALSE;\nALTER TABLE dataset_controle ADD COLUMN IF NOT EXISTS risk TEXT;\nALTER TABLE dataset_controle ADD COLUMN IF NOT EXISTS rationale TEXT;\nALTER TABLE dataset_controle ADD COLUMN IF NOT EXISTS label_source TEXT DEFAULT 'GABARITO_SINTETICO';\nALTER TABLE dataset_controle ADD COLUMN IF NOT EXISTS template_family TEXT;\nALTER TABLE dataset_controle ADD COLUMN IF NOT EXISTS dataset_version TEXT;\nALTER TABLE dataset_controle ADD COLUMN IF NOT EXISTS split TEXT DEFAULT 'TEST';\nCREATE UNIQUE INDEX IF NOT EXISTS idx_dataset_run_case\n  ON dataset_controle(run_id, case_id)\n  WHERE run_id IS NOT NULL AND case_id IS NOT NULL;\nCREATE INDEX IF NOT EXISTS idx_dataset_episode ON dataset_controle(run_id, episode_id);\nCREATE UNIQUE INDEX IF NOT EXISTS idx_dataset_run_ticket\n  ON dataset_controle(run_id, ticket_id)\n  WHERE run_id IS NOT NULL AND ticket_id IS NOT NULL;\n\nCREATE TABLE IF NOT EXISTS experimentos_avaliacao (\n  run_id                    TEXT PRIMARY KEY,\n  origem                    TEXT NOT NULL,\n  dataset_version           TEXT NOT NULL,\n  dataset_sha256            TEXT NOT NULL,\n  seed                      BIGINT NOT NULL,\n  split                     TEXT NOT NULL DEFAULT 'TEST',\n  modelo_ia                 TEXT NOT NULL,\n  prompt_dedup_version      TEXT NOT NULL,\n  prompt_classif_version    TEXT NOT NULL,\n  generation_profile        TEXT NOT NULL,\n  generation_config         JSONB NOT NULL DEFAULT '{}'::jsonb,\n  protocolo_version         TEXT NOT NULL,\n  status                    TEXT NOT NULL DEFAULT 'PREPARADO',\n  rotulos_validados         BOOLEAN NOT NULL DEFAULT FALSE,\n  protocolo_rotulagem_validado BOOLEAN NOT NULL DEFAULT FALSE,\n  auditoria_humana_concluida BOOLEAN NOT NULL DEFAULT FALSE,\n  congelado_em              TIMESTAMPTZ,\n  iniciado_em               TIMESTAMPTZ,\n  concluido_em              TIMESTAMPTZ,\n  criado_em                 TIMESTAMPTZ NOT NULL DEFAULT NOW()\n);\n\nALTER TABLE experimentos_avaliacao\n  ADD COLUMN IF NOT EXISTS protocolo_rotulagem_validado BOOLEAN NOT NULL DEFAULT FALSE;\nALTER TABLE experimentos_avaliacao\n  ADD COLUMN IF NOT EXISTS auditoria_humana_concluida BOOLEAN NOT NULL DEFAULT FALSE;\n\nCREATE OR REPLACE VIEW vw_decisoes_confirmatorias_elegiveis AS\nSELECT d.*\nFROM ia_decisoes d\nJOIN experimentos_avaliacao e ON e.run_id=d.run_id\nWHERE UPPER(e.split) IN ('TEST','TESTE','BENCHMARK')\n  AND e.rotulos_validados=TRUE\n  AND e.protocolo_rotulagem_validado=TRUE\n  AND e.auditoria_humana_concluida=TRUE\n  AND d.elegivel_eficacia_confirmatoria=TRUE\n  AND d.fallback_utilizado=FALSE\n  AND d.total_modelos_tentados=1\n  AND d.versao_modelo=e.modelo_ia\n  AND EXISTS (\n    SELECT 1\n    FROM avaliacoes_humanas a\n    WHERE a.run_id=d.run_id\n      AND a.ticket_id=d.ticket_id\n      AND a.etapa=d.etapa\n      AND COALESCE(a.status_avaliacao,'CONCLUIDA')='CONCLUIDA'\n      AND COALESCE(NULLIF(a.classe_correta,''),NULLIF(a.decisao_humana,'')) IS NOT NULL\n      AND a.fonte_gabarito IN ('ADJUDICADO','REVISAO_HUMANA')\n  );\n\nDROP VIEW IF EXISTS vw_log_loss_deduplicacao CASCADE;\nDROP VIEW IF EXISTS vw_average_precision_deduplicacao CASCADE;\nDROP VIEW IF EXISTS vw_pr_deduplicacao CASCADE;\nDROP VIEW IF EXISTS vw_auc_deduplicacao CASCADE;\nDROP VIEW IF EXISTS vw_roc_deduplicacao CASCADE;\nDROP VIEW IF EXISTS vw_scores_deduplicacao CASCADE;\nDROP VIEW IF EXISTS vw_recall_candidatos_deduplicacao CASCADE;\nDROP VIEW IF EXISTS vw_metricas_deduplicacao_desafio CASCADE;\nDROP VIEW IF EXISTS vw_decisoes_deduplicacao_desafio CASCADE;\nDROP VIEW IF EXISTS vw_metricas_deduplicacao CASCADE;\nDROP VIEW IF EXISTS vw_decisoes_deduplicacao CASCADE;\nDROP VIEW IF EXISTS vw_risco_cobertura_classificacao CASCADE;\nDROP VIEW IF EXISTS vw_brier_classificacao CASCADE;\nDROP VIEW IF EXISTS vw_log_loss_classificacao CASCADE;\nDROP VIEW IF EXISTS vw_average_precision_classificacao CASCADE;\nDROP VIEW IF EXISTS vw_pr_classificacao CASCADE;\nDROP VIEW IF EXISTS vw_auc_classificacao CASCADE;\nDROP VIEW IF EXISTS vw_roc_classificacao CASCADE;\nDROP VIEW IF EXISTS vw_scores_classificacao CASCADE;\nDROP VIEW IF EXISTS vw_kpi_classificacao CASCADE;\nDROP VIEW IF EXISTS vw_metricas_assertividade_classificacao CASCADE;\nDROP VIEW IF EXISTS vw_matriz_confusao_classificacao CASCADE;\nDROP VIEW IF EXISTS vw_decisoes_classificacao CASCADE;\nDROP VIEW IF EXISTS vw_gabarito_final CASCADE;\nDROP VIEW IF EXISTS metricas_ia_duplicidade_v9 CASCADE;\nDROP VIEW IF EXISTS vw_dataset_controle_resultados CASCADE;\n\nCREATE OR REPLACE VIEW vw_dataset_controle_resultados AS\nSELECT\n  d.id AS dataset_id,\n  d.ticket_id,\n  d.origem,\n  d.cenario_controle,\n  d.duplicado_esperado,\n  d.referencia_duplicado_esperada,\n  d.classificacao_esperada,\n  d.executor_esperado,\n  d.status_final_esperado,\n  d.nivel_dificuldade,\n  t.classificacao_final AS classificacao_obtida,\n  t.executor AS executor_obtido,\n  t.status_nome AS status_final_obtido,\n  t.duplicado_de_id AS referencia_duplicado_obtida,\n  CASE\n    WHEN d.duplicado_esperado IS NULL THEN NULL\n    WHEN d.duplicado_esperado = TRUE THEN COALESCE(t.duplicado_de_id IS NOT NULL OR t.classificacao_final='DUPLICADO', FALSE)\n    ELSE COALESCE(t.duplicado_de_id IS NULL AND COALESCE(t.classificacao_final,'') <> 'DUPLICADO', FALSE)\n  END AS duplicidade_ok,\n  CASE\n    WHEN d.classificacao_esperada IS NULL THEN NULL\n    ELSE COALESCE(t.classificacao_final = d.classificacao_esperada, FALSE)\n  END AS classificacao_ok,\n  CASE\n    WHEN d.executor_esperado IS NULL THEN NULL\n    ELSE COALESCE(t.executor = d.executor_esperado, FALSE)\n  END AS executor_ok,\n  CASE\n    WHEN d.status_final_esperado IS NULL THEN NULL\n    ELSE COALESCE(t.status_nome = d.status_final_esperado, FALSE)\n  END AS status_final_ok,\n  t.ultima_acao_workflow,\n  t.atualizado_em\nFROM dataset_controle d\nLEFT JOIN tickets_processados t ON t.id = d.ticket_id;\n\n-- Trigger para atualizar atualizado_em automaticamente\nCREATE OR REPLACE FUNCTION trg_atualizado_em() RETURNS trigger AS $$\nBEGIN NEW.atualizado_em = NOW(); RETURN NEW; END;\n$$ LANGUAGE plpgsql;\n\nDROP TRIGGER IF EXISTS trg_tickets_atualizado ON tickets_processados;\nCREATE TRIGGER trg_tickets_atualizado\n  BEFORE UPDATE ON tickets_processados\n  FOR EACH ROW EXECUTE FUNCTION trg_atualizado_em();\n\nCREATE OR REPLACE VIEW metricas_ia_duplicidade_v9 AS\nWITH base AS (\n  SELECT\n    COUNT(*) FILTER (\n      WHERE classificacao = 'POSSIVEL_DUPLICADO'\n         OR classificacao_final IN ('POSSIVEL_DUPLICADO','DUPLICADO')\n         OR decisao_fiscal IN ('CONFIRMOU_DUP','REJEITOU_DUP')\n    ) AS suspeitas_ia,\n    COUNT(*) FILTER (WHERE decisao_fiscal = 'CONFIRMOU_DUP') AS confirmadas_fiscal,\n    COUNT(*) FILTER (WHERE decisao_fiscal = 'REJEITOU_DUP') AS rejeitadas_fiscal,\n    COUNT(*) FILTER (WHERE em_aprovacao_fiscal = TRUE) AS pendentes_fiscal\n  FROM tickets_processados\n)\nSELECT\n  suspeitas_ia,\n  confirmadas_fiscal,\n  rejeitadas_fiscal,\n  pendentes_fiscal,\n  CASE\n    WHEN confirmadas_fiscal + rejeitadas_fiscal = 0 THEN NULL\n    ELSE ROUND((confirmadas_fiscal::numeric * 100.0) / (confirmadas_fiscal + rejeitadas_fiscal), 2)\n  END AS assertividade_percentual\nFROM base;\n\nCREATE OR REPLACE VIEW vw_matriz_confusao_classificacao AS\nWITH base AS (\n  SELECT\n    COALESCE(NULLIF(classe_correta, ''), NULLIF(decisao_humana, '')) AS classe_correta,\n    NULLIF(decisao_ia, '') AS classe_predita_pela_ia\n  FROM avaliacoes_humanas\n  WHERE etapa = 'CLASSIFICACAO'\n    AND COALESCE(status_avaliacao, 'CONCLUIDA') = 'CONCLUIDA'\n    AND COALESCE(NULLIF(classe_correta, ''), NULLIF(decisao_humana, '')) IS NOT NULL\n    AND NULLIF(decisao_ia, '') IS NOT NULL\n)\nSELECT\n  classe_correta,\n  classe_predita_pela_ia,\n  COUNT(*)::int AS quantidade,\n  ROUND(100.0 * COUNT(*) / NULLIF(SUM(COUNT(*)) OVER (PARTITION BY classe_correta), 0), 2) AS percentual\nFROM base\nGROUP BY classe_correta, classe_predita_pela_ia;\n\nCREATE OR REPLACE VIEW vw_kpi_classificacao AS\nWITH classes(classe) AS (VALUES ('OBRA'), ('DEMO'), ('SOB_DEMANDA'), ('TRIAGEM_MANUAL')),\naval AS (\n  SELECT decisao_ia, COALESCE(NULLIF(classe_correta, ''), NULLIF(decisao_humana, '')) AS classe_correta, ia_estava_correta\n  FROM avaliacoes_humanas\n  WHERE etapa = 'CLASSIFICACAO'\n    AND COALESCE(status_avaliacao, 'CONCLUIDA') = 'CONCLUIDA'\n),\nmetricas AS (\n  SELECT\n    c.classe,\n    COUNT(*) FILTER (WHERE a.decisao_ia = c.classe AND a.classe_correta = c.classe)::numeric AS tp,\n    COUNT(*) FILTER (WHERE a.decisao_ia = c.classe AND a.classe_correta <> c.classe)::numeric AS fp,\n    COUNT(*) FILTER (WHERE a.decisao_ia <> c.classe AND a.classe_correta = c.classe)::numeric AS fn\n  FROM classes c CROSS JOIN aval a\n  GROUP BY c.classe\n),\npor_classe AS (\n  SELECT\n    classe,\n    tp / NULLIF(tp + fp, 0) AS precisao,\n    tp / NULLIF(tp + fn, 0) AS recall,\n    (2 * (tp / NULLIF(tp + fp, 0)) * (tp / NULLIF(tp + fn, 0))) / NULLIF((tp / NULLIF(tp + fp, 0)) + (tp / NULLIF(tp + fn, 0)), 0) AS f1\n  FROM metricas\n)\nSELECT\n  ROUND(AVG((ia_estava_correta::int)::numeric) FILTER (WHERE ia_estava_correta IS NOT NULL), 4) AS acuracia_geral,\n  ROUND(MAX(precisao) FILTER (WHERE classe='OBRA'), 4) AS precisao_obra,\n  ROUND(MAX(recall) FILTER (WHERE classe='OBRA'), 4) AS recall_obra,\n  ROUND(MAX(f1) FILTER (WHERE classe='OBRA'), 4) AS f1_obra,\n  ROUND(MAX(precisao) FILTER (WHERE classe='DEMO'), 4) AS precisao_demo,\n  ROUND(MAX(recall) FILTER (WHERE classe='DEMO'), 4) AS recall_demo,\n  ROUND(MAX(f1) FILTER (WHERE classe='DEMO'), 4) AS f1_demo,\n  ROUND(MAX(precisao) FILTER (WHERE classe='SOB_DEMANDA'), 4) AS precisao_sob_demanda,\n  ROUND(MAX(recall) FILTER (WHERE classe='SOB_DEMANDA'), 4) AS recall_sob_demanda,\n  ROUND(MAX(f1) FILTER (WHERE classe='SOB_DEMANDA'), 4) AS f1_sob_demanda,\n  ROUND(MAX(precisao) FILTER (WHERE classe='TRIAGEM_MANUAL'), 4) AS precisao_triagem_manual,\n  ROUND(MAX(recall) FILTER (WHERE classe='TRIAGEM_MANUAL'), 4) AS recall_triagem_manual,\n  ROUND(MAX(f1) FILTER (WHERE classe='TRIAGEM_MANUAL'), 4) AS f1_triagem_manual,\n  ROUND(AVG(f1), 4) AS f1_macro\nFROM por_classe, aval;\n\nCREATE OR REPLACE VIEW vw_scores_classificacao AS\nWITH classes(classe) AS (VALUES ('OBRA'), ('DEMO'), ('SOB_DEMANDA'), ('TRIAGEM_MANUAL')),\naval AS (\n  SELECT\n    a.ticket_id,\n    COALESCE(NULLIF(a.classe_correta, ''), NULLIF(a.decisao_humana, '')) AS classe_correta,\n    NULLIF(a.decisao_ia, '') AS classe_predita,\n    a.ia_estava_correta,\n    a.avaliado_em\n  FROM avaliacoes_humanas a\n  WHERE a.etapa = 'CLASSIFICACAO'\n    AND COALESCE(a.status_avaliacao, 'CONCLUIDA') = 'CONCLUIDA'\n    AND COALESCE(NULLIF(a.classe_correta, ''), NULLIF(a.decisao_humana, '')) IS NOT NULL\n    AND NULLIF(a.decisao_ia, '') IS NOT NULL\n),\nbase AS (\n  SELECT\n    a.ticket_id,\n    c.classe,\n    a.classe_correta,\n    COALESCE(d.predicao, a.classe_predita) AS classe_predita,\n    (a.classe_correta = c.classe) AS classe_positiva,\n    COALESCE(d.confianca, CASE WHEN a.ia_estava_correta THEN 1 ELSE 0 END::numeric) AS confianca_decisao,\n    CASE\n      WHEN d.output_normalizado IS NOT NULL\n       AND jsonb_typeof(d.output_normalizado->'probabilidades') = 'object'\n       AND (d.output_normalizado->'probabilidades'->>c.classe) ~ '^[0-9]+(\\.[0-9]+)?$'\n      THEN (d.output_normalizado->'probabilidades'->>c.classe)::numeric\n      WHEN COALESCE(d.predicao, a.classe_predita) = c.classe THEN COALESCE(d.confianca, CASE WHEN a.ia_estava_correta THEN 1 ELSE 0 END::numeric)\n      ELSE GREATEST(0, (1 - COALESCE(d.confianca, CASE WHEN a.ia_estava_correta THEN 1 ELSE 0 END::numeric)) / 4.0)\n    END AS score_classe,\n    d.prompt_version,\n    d.modelo_ia,\n    d.versao_modelo,\n    a.avaliado_em\n  FROM aval a\n  CROSS JOIN classes c\n  LEFT JOIN LATERAL (\n    SELECT predicao, confianca, output_normalizado, prompt_version, modelo_ia, versao_modelo\n    FROM ia_decisoes d\n    WHERE d.ticket_id = a.ticket_id\n      AND d.etapa = 'CLASSIFICACAO'\n      AND d.erro_ia = FALSE\n    ORDER BY d.criado_em DESC, d.id DESC\n    LIMIT 1\n  ) d ON TRUE\n)\nSELECT\n  ticket_id,\n  classe,\n  classe_correta,\n  classe_predita,\n  classe_positiva,\n  LEAST(0.999999, GREATEST(0.000001, COALESCE(score_classe, 0.000001))) AS score_classe,\n  confianca_decisao,\n  prompt_version,\n  modelo_ia,\n  versao_modelo,\n  avaliado_em\nFROM base;\n\nCREATE OR REPLACE VIEW vw_metricas_assertividade_classificacao AS\nWITH metricas AS (\n  SELECT\n    classe,\n    COUNT(*)::numeric AS total,\n    COUNT(*) FILTER (WHERE classe_positiva = TRUE AND classe_predita = classe)::numeric AS tp,\n    COUNT(*) FILTER (WHERE classe_positiva = FALSE AND classe_predita = classe)::numeric AS fp,\n    COUNT(*) FILTER (WHERE classe_positiva = TRUE AND classe_predita <> classe)::numeric AS fn,\n    COUNT(*) FILTER (WHERE classe_positiva = FALSE AND classe_predita <> classe)::numeric AS tn\n  FROM vw_scores_classificacao\n  GROUP BY classe\n)\nSELECT\n  classe,\n  total::int,\n  tp::int,\n  fp::int,\n  fn::int,\n  tn::int,\n  ROUND((tp + tn) / NULLIF(total, 0), 4) AS acuracia,\n  ROUND(tp / NULLIF(tp + fp, 0), 4) AS precisao,\n  ROUND(tp / NULLIF(tp + fn, 0), 4) AS recall_sensitivity,\n  ROUND(tn / NULLIF(tn + fp, 0), 4) AS especificidade,\n  ROUND((2 * tp) / NULLIF((2 * tp) + fp + fn, 0), 4) AS f1_score\nFROM metricas;\n\nCREATE OR REPLACE VIEW vw_roc_classificacao AS\nWITH thresholds AS (\n  SELECT classe, score_classe AS threshold FROM vw_scores_classificacao\n  UNION\n  SELECT DISTINCT classe, 0::numeric AS threshold FROM vw_scores_classificacao\n  UNION\n  SELECT DISTINCT classe, 1::numeric AS threshold FROM vw_scores_classificacao\n)\nSELECT\n  t.classe,\n  t.threshold,\n  ROUND(COUNT(*) FILTER (WHERE s.classe_positiva = TRUE AND s.score_classe >= t.threshold)::numeric / NULLIF(COUNT(*) FILTER (WHERE s.classe_positiva = TRUE), 0), 6) AS recall_tpr,\n  ROUND(COUNT(*) FILTER (WHERE s.classe_positiva = FALSE AND s.score_classe >= t.threshold)::numeric / NULLIF(COUNT(*) FILTER (WHERE s.classe_positiva = FALSE), 0), 6) AS falso_positivo_fpr,\n  COUNT(*) FILTER (WHERE s.classe_positiva = TRUE)::int AS positivos,\n  COUNT(*) FILTER (WHERE s.classe_positiva = FALSE)::int AS negativos\nFROM thresholds t\nJOIN vw_scores_classificacao s ON s.classe = t.classe\nGROUP BY t.classe, t.threshold;\n\nCREATE OR REPLACE VIEW vw_auc_classificacao AS\nWITH ordenado AS (\n  SELECT\n    classe,\n    falso_positivo_fpr,\n    recall_tpr,\n    LAG(falso_positivo_fpr) OVER (PARTITION BY classe ORDER BY falso_positivo_fpr, recall_tpr) AS prev_fpr,\n    LAG(recall_tpr) OVER (PARTITION BY classe ORDER BY falso_positivo_fpr, recall_tpr) AS prev_tpr\n  FROM vw_roc_classificacao\n  WHERE falso_positivo_fpr IS NOT NULL\n    AND recall_tpr IS NOT NULL\n),\nauc AS (\n  SELECT\n    classe,\n    SUM((falso_positivo_fpr - prev_fpr) * (recall_tpr + prev_tpr) / 2.0) AS auc_roc\n  FROM ordenado\n  WHERE prev_fpr IS NOT NULL\n    AND prev_tpr IS NOT NULL\n  GROUP BY classe\n)\nSELECT classe, ROUND(auc_roc, 6) AS auc_roc\nFROM auc;\n\nCREATE OR REPLACE VIEW vw_log_loss_classificacao AS\nWITH por_classe AS (\n  SELECT\n    classe,\n    COUNT(*)::int AS total_avaliado,\n    ROUND(AVG(\n      CASE\n        WHEN classe_positiva THEN -LN(score_classe)\n        ELSE -LN(1 - score_classe)\n      END\n    ), 6) AS log_loss_binario\n  FROM vw_scores_classificacao\n  GROUP BY classe\n)\nSELECT classe, total_avaliado, log_loss_binario\nFROM por_classe\nUNION ALL\nSELECT 'MACRO' AS classe, SUM(total_avaliado)::int AS total_avaliado, ROUND(AVG(log_loss_binario), 6) AS log_loss_binario\nFROM por_classe;\n\n-- =============================================================\n-- Metricas experimentais V2\n-- Estas definicoes substituem as views legadas acima. Nenhum score\n-- probabilistico e inferido a partir do acerto ou do gabarito.\n-- =============================================================\n\nDROP VIEW IF EXISTS vw_log_loss_classificacao CASCADE;\nDROP VIEW IF EXISTS vw_auc_classificacao CASCADE;\nDROP VIEW IF EXISTS vw_roc_classificacao CASCADE;\nDROP VIEW IF EXISTS vw_scores_classificacao CASCADE;\nDROP VIEW IF EXISTS vw_kpi_classificacao CASCADE;\nDROP VIEW IF EXISTS vw_metricas_assertividade_classificacao CASCADE;\nDROP VIEW IF EXISTS vw_matriz_confusao_classificacao CASCADE;\n\nCREATE OR REPLACE VIEW vw_gabarito_final AS\nSELECT DISTINCT ON (COALESCE(a.run_id, d.run_id, ''), a.ticket_id, a.etapa)\n  COALESCE(a.run_id, d.run_id) AS run_id,\n  COALESCE(a.case_id, d.case_id) AS case_id,\n  COALESCE(a.episode_id, d.episode_id) AS episode_id,\n  a.ticket_id,\n  a.etapa,\n  COALESCE(NULLIF(a.classe_correta, ''), NULLIF(a.decisao_humana, '')) AS classe_correta,\n  a.decisao_ia,\n  a.fonte_gabarito,\n  COALESCE(a.fonte_gabarito,'') IN ('ADJUDICADO','REVISAO_HUMANA') AS gabarito_humano,\n  (\n    COALESCE(a.fonte_gabarito,'')='ORACULO_GABARITO'\n    OR COALESCE(a.fonte_gabarito,'') LIKE 'SINTETICO_%'\n  ) AS gabarito_sintetico,\n  a.adjudicada,\n  a.avaliado_em\nFROM avaliacoes_humanas a\nLEFT JOIN dataset_controle d\n  ON d.ticket_id = a.ticket_id\n AND (a.run_id IS NULL OR d.run_id = a.run_id)\nWHERE COALESCE(a.status_avaliacao, 'CONCLUIDA') = 'CONCLUIDA'\n  AND COALESCE(NULLIF(a.classe_correta, ''), NULLIF(a.decisao_humana, '')) IS NOT NULL\nORDER BY\n  COALESCE(a.run_id, d.run_id, ''),\n  a.ticket_id,\n  a.etapa,\n  a.adjudicada DESC,\n  CASE COALESCE(a.fonte_gabarito, '')\n    WHEN 'ADJUDICADO' THEN 3\n    WHEN 'REVISAO_HUMANA' THEN 2\n    ELSE 1\n  END DESC,\n  a.avaliado_em DESC,\n  a.id DESC;\n\nCREATE OR REPLACE VIEW vw_decisoes_classificacao AS\nSELECT\n  g.run_id,\n  g.case_id,\n  g.episode_id,\n  g.ticket_id,\n  dc.dimension,\n  dc.order_in_episode,\n  dc.scenario_id,\n  dc.template_family,\n  g.classe_correta,\n  i.id AS ia_decisao_id,\n  COALESCE(NULLIF(i.predicao, ''), NULLIF(g.decisao_ia, ''), 'SEM_DECISAO') AS classe_predita,\n  i.confianca,\n  i.input_resumo,\n  i.total_candidatos,\n  i.output_normalizado,\n  i.prompt_version,\n  i.modelo_ia,\n  i.versao_modelo,\n  i.generation_profile,\n  i.erro_ia,\n  (\n    COALESCE(i.erro_ia, FALSE)\n    OR COALESCE(NULLIF(i.predicao, ''), NULLIF(g.decisao_ia, ''), 'SEM_DECISAO')\n       NOT IN ('OBRA','DEMO','SOB_DEMANDA','TRIAGEM_MANUAL')\n    OR CASE\n      WHEN LOWER(COALESCE(i.output_normalizado->>'abstained', '')) IN ('true','false')\n        THEN (i.output_normalizado->>'abstained')::boolean\n      ELSE FALSE\n    END\n  ) AS abstencao,\n  i.operational_config,\n  i.provedor_ia,\n  i.papel_modelo,\n  COALESCE(\n    NULLIF(i.operational_config->>'local_probability_semantics', ''),\n    NULLIF(i.operational_config->'local_scientific_metadata'->>'probability_semantics', '')\n  ) AS probability_semantics\nFROM vw_gabarito_final g\nLEFT JOIN dataset_controle dc\n  ON dc.ticket_id = g.ticket_id\n AND dc.run_id IS NOT DISTINCT FROM g.run_id\nLEFT JOIN experimentos_avaliacao e ON e.run_id = g.run_id\nLEFT JOIN LATERAL (\n  SELECT d.*\n  FROM ia_decisoes d\n  WHERE d.ticket_id = g.ticket_id\n    AND d.etapa = 'CLASSIFICACAO'\n    AND d.run_id IS NOT DISTINCT FROM g.run_id\n  ORDER BY d.criado_em DESC, d.id DESC\n  LIMIT 1\n) i ON TRUE\nWHERE g.etapa = 'CLASSIFICACAO'\n  AND (\n    g.gabarito_humano\n    OR (\n      COALESCE(UPPER(e.split),'') NOT IN ('TEST','TESTE','BENCHMARK')\n      AND LOWER(COALESCE(e.generation_config->>'confirmatory_eligible','false')) <> 'true'\n      AND LOWER(COALESCE(e.generation_config->>'scientific_result','false')) <> 'true'\n    )\n  );\n\nCREATE OR REPLACE VIEW vw_matriz_confusao_classificacao AS\nSELECT\n  run_id,\n  classe_correta,\n  classe_predita AS classe_predita_pela_ia,\n  COUNT(*)::int AS quantidade,\n  ROUND(\n    COUNT(*)::numeric /\n    NULLIF(SUM(COUNT(*)) OVER (PARTITION BY run_id, classe_correta), 0),\n    6\n  ) AS proporcao\nFROM vw_decisoes_classificacao\nWHERE NOT abstencao\nGROUP BY run_id, classe_correta, classe_predita;\n\nCREATE OR REPLACE VIEW vw_metricas_assertividade_classificacao AS\nWITH classes(classe) AS (\n  VALUES ('OBRA'), ('DEMO'), ('SOB_DEMANDA'), ('TRIAGEM_MANUAL')\n),\nruns AS (\n  SELECT DISTINCT run_id FROM vw_decisoes_classificacao\n),\nm AS (\n  SELECT\n    r.run_id,\n    c.classe,\n    COUNT(d.ticket_id)::numeric AS total,\n    COUNT(*) FILTER (WHERE d.classe_correta = c.classe AND d.classe_predita = c.classe)::numeric AS tp,\n    COUNT(*) FILTER (WHERE d.classe_correta <> c.classe AND d.classe_predita = c.classe)::numeric AS fp,\n    COUNT(*) FILTER (WHERE d.classe_correta = c.classe AND d.classe_predita <> c.classe)::numeric AS fn,\n    COUNT(*) FILTER (WHERE d.classe_correta <> c.classe AND d.classe_predita <> c.classe)::numeric AS tn\n  FROM runs r\n  CROSS JOIN classes c\n  LEFT JOIN vw_decisoes_classificacao d\n    ON d.run_id IS NOT DISTINCT FROM r.run_id\n   AND NOT d.abstencao\n  GROUP BY r.run_id, c.classe\n)\nSELECT\n  run_id,\n  classe,\n  total::int,\n  tp::int,\n  fp::int,\n  fn::int,\n  tn::int,\n  ROUND((tp + tn) / NULLIF(total, 0), 6) AS acuracia_binaria,\n  ROUND(tp / NULLIF(tp + fp, 0), 6) AS precisao,\n  ROUND(tp / NULLIF(tp + fn, 0), 6) AS recall_sensitivity,\n  ROUND(tn / NULLIF(tn + fp, 0), 6) AS especificidade,\n  ROUND((2 * tp) / NULLIF((2 * tp) + fp + fn, 0), 6) AS f1_score\nFROM m;\n\nCREATE OR REPLACE VIEW vw_kpi_classificacao AS\nWITH base AS (\n  SELECT\n    run_id,\n    COUNT(*)::int AS total,\n    COUNT(*) FILTER (WHERE NOT abstencao)::int AS cobertos,\n    COUNT(*) FILTER (WHERE abstencao)::int AS abstencoes,\n    COUNT(*) FILTER (WHERE NOT abstencao AND classe_predita = classe_correta)::numeric /\n      NULLIF(COUNT(*), 0) AS acuracia_geral,\n    COUNT(*) FILTER (WHERE NOT abstencao)::numeric /\n      NULLIF(COUNT(*), 0) AS cobertura_automatica,\n    AVG((classe_predita = classe_correta)::int::numeric)\n      FILTER (WHERE NOT abstencao) AS acuracia_sob_cobertura\n  FROM vw_decisoes_classificacao\n  GROUP BY run_id\n),\nmacro AS (\n  SELECT run_id, AVG(f1_score) FILTER (WHERE f1_score IS NOT NULL) AS f1_macro\n  FROM vw_metricas_assertividade_classificacao\n  GROUP BY run_id\n)\nSELECT\n  b.run_id,\n  b.total,\n  b.cobertos,\n  b.abstencoes,\n  ROUND(b.acuracia_geral, 6) AS acuracia_geral,\n  ROUND(m.f1_macro, 6) AS f1_macro,\n  ROUND(b.cobertura_automatica, 6) AS cobertura_automatica,\n  ROUND(b.acuracia_sob_cobertura, 6) AS acuracia_sob_cobertura\nFROM base b\nLEFT JOIN macro m ON m.run_id IS NOT DISTINCT FROM b.run_id;\n\nCREATE OR REPLACE VIEW vw_scores_classificacao AS\nWITH classes(classe) AS (\n  VALUES ('OBRA'), ('DEMO'), ('SOB_DEMANDA'), ('TRIAGEM_MANUAL')\n),\ncandidatas AS (\n  SELECT\n    d.*,\n    COALESCE(\n      d.output_normalizado->'probabilidades_semanticas',\n      d.output_normalizado->'probabilidades'\n    ) AS probabilidades_modelo\n  FROM ia_decisoes d\n  WHERE d.etapa = 'CLASSIFICACAO'\n    AND d.erro_ia = FALSE\n    AND d.predicao IN ('OBRA','DEMO','SOB_DEMANDA','TRIAGEM_MANUAL')\n    -- Regras determinísticas pertencem à eficácia do pipeline, mas seus\n    -- vetores one-hot não são probabilidades calibradas do candidato local.\n    AND (\n      COALESCE(UPPER(NULLIF(d.papel_modelo, '')), '') <> 'LOCAL'\n      OR (\n        LOWER(COALESCE(\n          d.operational_config->>'local_candidate_evaluation_eligible', 'false'\n        )) = 'true'\n        AND COALESCE(d.operational_config->>'local_decision_path', '')\n          IN ('hybrid_model','hybrid_model_abstention')\n      )\n    )\n),\nvalidas AS (\n  SELECT\n    d.*,\n    (\n      SELECT SUM(value::numeric)\n      FROM jsonb_each_text(d.probabilidades_modelo)\n      WHERE value ~ '^[0-9]+([.][0-9]+)?$'\n    ) AS soma_prob\n  FROM candidatas d\n  WHERE jsonb_typeof(d.probabilidades_modelo) = 'object'\n    AND d.probabilidades_modelo ?& ARRAY[\n      'OBRA','DEMO','SOB_DEMANDA','TRIAGEM_MANUAL'\n    ]\n)\nSELECT\n  g.run_id,\n  g.case_id,\n  g.ticket_id,\n  c.classe,\n  g.classe_correta,\n  u.predicao AS classe_predita,\n  (g.classe_correta = c.classe) AS classe_positiva,\n  LEAST(\n    0.999999999999999,\n    GREATEST(0.000000000000001, (u.probabilidades_modelo->>c.classe)::numeric)\n  ) AS score_classe,\n  u.confianca AS confianca_decisao,\n  u.prompt_version,\n  u.modelo_ia,\n  u.versao_modelo,\n  u.generation_profile,\n  u.criado_em AS decidido_em,\n  u.provedor_ia,\n  u.papel_modelo,\n  COALESCE(\n    NULLIF(u.operational_config->>'local_probability_semantics', ''),\n    NULLIF(u.operational_config->'local_scientific_metadata'->>'probability_semantics', '')\n  ) AS probability_semantics,\n  u.operational_config->>'local_decision_path' AS local_decision_path\nFROM vw_decisoes_classificacao g\nJOIN validas u ON u.id = g.ia_decisao_id\nCROSS JOIN classes c\nWHERE u.soma_prob BETWEEN 0.999 AND 1.001\n;\n\nCREATE OR REPLACE VIEW vw_roc_classificacao AS\nWITH thresholds AS (\n  SELECT DISTINCT run_id, classe, score_classe AS threshold FROM vw_scores_classificacao\n  UNION SELECT DISTINCT run_id, classe, 0::numeric FROM vw_scores_classificacao\n  UNION SELECT DISTINCT run_id, classe, 1::numeric FROM vw_scores_classificacao\n)\nSELECT\n  t.run_id,\n  t.classe,\n  t.threshold,\n  COUNT(*) FILTER (WHERE s.classe_positiva AND s.score_classe >= t.threshold)::numeric /\n    NULLIF(COUNT(*) FILTER (WHERE s.classe_positiva), 0) AS recall_tpr,\n  COUNT(*) FILTER (WHERE NOT s.classe_positiva AND s.score_classe >= t.threshold)::numeric /\n    NULLIF(COUNT(*) FILTER (WHERE NOT s.classe_positiva), 0) AS falso_positivo_fpr\nFROM thresholds t\nJOIN vw_scores_classificacao s\n  ON s.run_id IS NOT DISTINCT FROM t.run_id AND s.classe = t.classe\nGROUP BY t.run_id, t.classe, t.threshold;\n\nCREATE OR REPLACE VIEW vw_auc_classificacao AS\nWITH pontos AS (\n  SELECT\n    *,\n    LAG(falso_positivo_fpr) OVER (\n      PARTITION BY run_id, classe ORDER BY falso_positivo_fpr, recall_tpr\n    ) AS fpr_anterior,\n    LAG(recall_tpr) OVER (\n      PARTITION BY run_id, classe ORDER BY falso_positivo_fpr, recall_tpr\n    ) AS tpr_anterior\n  FROM vw_roc_classificacao\n  WHERE falso_positivo_fpr IS NOT NULL AND recall_tpr IS NOT NULL\n)\nSELECT\n  run_id,\n  classe,\n  ROUND(\n    SUM((falso_positivo_fpr - fpr_anterior) * (recall_tpr + tpr_anterior) / 2.0),\n    6\n  ) AS auc_roc\nFROM pontos\nWHERE fpr_anterior IS NOT NULL AND tpr_anterior IS NOT NULL\nGROUP BY run_id, classe;\n\nCREATE OR REPLACE VIEW vw_pr_classificacao AS\nWITH thresholds AS (\n  SELECT DISTINCT run_id, classe, score_classe AS threshold\n  FROM vw_scores_classificacao\n  UNION SELECT DISTINCT run_id, classe, 0::numeric FROM vw_scores_classificacao\n  UNION SELECT DISTINCT run_id, classe, 1::numeric FROM vw_scores_classificacao\n)\nSELECT\n  t.run_id,\n  t.classe,\n  t.threshold,\n  COUNT(*) FILTER (\n    WHERE s.classe_positiva AND s.score_classe >= t.threshold\n  )::numeric / NULLIF(COUNT(*) FILTER (WHERE s.classe_positiva),0) AS recall,\n  COUNT(*) FILTER (\n    WHERE s.classe_positiva AND s.score_classe >= t.threshold\n  )::numeric / NULLIF(COUNT(*) FILTER (WHERE s.score_classe >= t.threshold),0) AS precision\nFROM thresholds t\nJOIN vw_scores_classificacao s\n  ON s.run_id IS NOT DISTINCT FROM t.run_id AND s.classe=t.classe\nGROUP BY t.run_id,t.classe,t.threshold;\n\nCREATE OR REPLACE VIEW vw_average_precision_classificacao AS\nWITH ranked AS (\n  SELECT\n    run_id,\n    classe,\n    ticket_id,\n    classe_positiva,\n    score_classe,\n    ROW_NUMBER() OVER (\n      PARTITION BY run_id,classe ORDER BY score_classe DESC,ticket_id\n    ) AS k,\n    SUM(classe_positiva::int) OVER (\n      PARTITION BY run_id,classe ORDER BY score_classe DESC,ticket_id\n      ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW\n    ) AS tp_acumulado,\n    SUM(classe_positiva::int) OVER (PARTITION BY run_id,classe) AS positivos\n  FROM vw_scores_classificacao\n)\nSELECT\n  run_id,\n  classe,\n  ROUND(\n    SUM((tp_acumulado::numeric/k) * classe_positiva::int) /\n    NULLIF(MAX(positivos),0),\n    6\n  ) AS average_precision\nFROM ranked\nGROUP BY run_id,classe;\n\nCREATE OR REPLACE VIEW vw_log_loss_classificacao AS\nWITH por_ticket AS (\n  SELECT\n    run_id,\n    ticket_id,\n    MAX(score_classe) FILTER (WHERE classe_positiva) AS probabilidade_classe_correta\n  FROM vw_scores_classificacao\n  GROUP BY run_id, ticket_id\n)\nSELECT\n  run_id,\n  COUNT(*)::int AS total_avaliado,\n  ROUND(AVG(-LN(probabilidade_classe_correta)), 6) AS log_loss_multiclasse\nFROM por_ticket\nGROUP BY run_id;\n\nCREATE OR REPLACE VIEW vw_brier_classificacao AS\nSELECT\n  run_id,\n  COUNT(DISTINCT ticket_id)::int AS total_avaliado,\n  ROUND(\n    SUM(POWER(score_classe - CASE WHEN classe_positiva THEN 1 ELSE 0 END, 2)) /\n    NULLIF(COUNT(DISTINCT ticket_id), 0),\n    6\n  ) AS brier_multiclasse\nFROM vw_scores_classificacao\nGROUP BY run_id;\n\nCREATE OR REPLACE VIEW vw_risco_cobertura_classificacao AS\nWITH thresholds AS (\n  SELECT DISTINCT run_id, confianca AS threshold\n  FROM vw_decisoes_classificacao\n  WHERE NOT abstencao AND confianca IS NOT NULL\n  UNION SELECT DISTINCT run_id, 0::numeric FROM vw_decisoes_classificacao\n  UNION SELECT DISTINCT run_id, 1::numeric FROM vw_decisoes_classificacao\n)\nSELECT\n  t.run_id,\n  t.threshold,\n  COUNT(*) FILTER (\n    WHERE NOT d.abstencao AND d.confianca >= t.threshold\n  )::numeric / NULLIF(COUNT(*), 0) AS cobertura,\n  1 - AVG((d.classe_predita = d.classe_correta)::int::numeric) FILTER (\n    WHERE NOT d.abstencao AND d.confianca >= t.threshold\n  ) AS risco\nFROM thresholds t\nJOIN vw_decisoes_classificacao d ON d.run_id IS NOT DISTINCT FROM t.run_id\nGROUP BY t.run_id, t.threshold;\n\nCREATE OR REPLACE VIEW vw_decisoes_deduplicacao AS\nSELECT\n  g.run_id,\n  g.case_id,\n  g.episode_id,\n  g.ticket_id,\n  dc.dimension,\n  dc.order_in_episode,\n  dc.scenario_id,\n  dc.template_family,\n  g.classe_correta,\n  COALESCE(NULLIF(i.predicao, ''), NULLIF(g.decisao_ia, ''), 'SEM_DECISAO') AS classe_predita,\n  i.classe_referencia_id,\n  dc.referencia_duplicado_esperada,\n  i.confianca,\n  i.input_resumo,\n  i.total_candidatos,\n  i.output_normalizado,\n  i.prompt_version,\n  i.modelo_ia,\n  i.versao_modelo,\n  i.generation_profile,\n  i.erro_ia,\n  CASE\n    WHEN LOWER(COALESCE(i.output_normalizado->>'requer_revisao', '')) IN ('true','false')\n      THEN (i.output_normalizado->>'requer_revisao')::boolean\n    ELSE FALSE\n  END AS requer_revisao,\n  (\n    COALESCE(i.erro_ia, FALSE)\n    OR COALESCE(NULLIF(i.predicao, ''), NULLIF(g.decisao_ia, ''), 'SEM_DECISAO')\n       NOT IN ('DUPLICADO','NAO_DUPLICADO')\n    OR CASE\n      WHEN LOWER(COALESCE(i.output_normalizado->>'requer_revisao', '')) IN ('true','false')\n        THEN (i.output_normalizado->>'requer_revisao')::boolean\n      ELSE FALSE\n    END\n  ) AS abstencao,\n  i.operational_config,\n  i.provedor_ia,\n  i.papel_modelo,\n  COALESCE(\n    NULLIF(i.operational_config->>'local_probability_semantics', ''),\n    NULLIF(i.operational_config->'local_scientific_metadata'->>'probability_semantics', '')\n  ) AS probability_semantics\nFROM vw_gabarito_final g\nLEFT JOIN dataset_controle dc\n  ON dc.ticket_id = g.ticket_id\n AND dc.run_id IS NOT DISTINCT FROM g.run_id\nLEFT JOIN experimentos_avaliacao e ON e.run_id = g.run_id\nLEFT JOIN LATERAL (\n  SELECT d.*\n  FROM ia_decisoes d\n  WHERE d.ticket_id = g.ticket_id\n    AND d.etapa = 'DEDUPLICACAO'\n    AND d.run_id IS NOT DISTINCT FROM g.run_id\n  ORDER BY d.criado_em DESC, d.id DESC\n  LIMIT 1\n) i ON TRUE\nWHERE g.etapa = 'DEDUPLICACAO'\n  AND (\n    g.gabarito_humano\n    OR (\n      COALESCE(UPPER(e.split),'') NOT IN ('TEST','TESTE','BENCHMARK')\n      AND LOWER(COALESCE(e.generation_config->>'confirmatory_eligible','false')) <> 'true'\n      AND LOWER(COALESCE(e.generation_config->>'scientific_result','false')) <> 'true'\n    )\n  );\n\nCREATE OR REPLACE VIEW vw_recall_candidatos_deduplicacao AS\nWITH positivos AS (\n  SELECT\n    d.run_id,\n    d.ticket_id,\n    d.referencia_duplicado_esperada,\n    d.total_candidatos,\n    EXISTS (\n      SELECT 1\n      FROM jsonb_array_elements(COALESCE(d.input_resumo->'historico','[]'::jsonb)) item\n      WHERE (item->>'id') ~ '^[0-9]+$'\n        AND (item->>'id')::bigint = d.referencia_duplicado_esperada\n    ) AS referencia_recuperada\n  FROM vw_decisoes_deduplicacao d\n  WHERE d.classe_correta='DUPLICADO'\n    AND d.referencia_duplicado_esperada IS NOT NULL\n)\nSELECT\n  run_id,\n  COUNT(*)::int AS positivos_avaliados,\n  COUNT(*) FILTER (WHERE referencia_recuperada)::int AS referencias_recuperadas,\n  ROUND(AVG(referencia_recuperada::int::numeric),6) AS recall_candidatos,\n  ROUND(AVG(total_candidatos::numeric),2) AS candidatos_medios\nFROM positivos\nGROUP BY run_id;\n\nCREATE OR REPLACE VIEW vw_decisoes_deduplicacao_desafio AS\nSELECT *\nFROM vw_decisoes_deduplicacao\nWHERE dimension = 'DEDUPLICACAO'\n  AND order_in_episode > 1;\n\nCREATE OR REPLACE VIEW vw_metricas_deduplicacao AS\nWITH m AS (\n  SELECT\n    run_id,\n    COUNT(*)::numeric AS total,\n    COUNT(*) FILTER (WHERE NOT abstencao AND classe_predita IN ('DUPLICADO','NAO_DUPLICADO'))::numeric AS cobertos,\n    COUNT(*) FILTER (WHERE abstencao OR classe_predita NOT IN ('DUPLICADO','NAO_DUPLICADO'))::numeric AS abstencoes,\n    COUNT(*) FILTER (WHERE classe_correta='DUPLICADO')::numeric AS positivos_total,\n    COUNT(*) FILTER (WHERE NOT abstencao AND classe_correta='DUPLICADO' AND classe_predita='DUPLICADO')::numeric AS tp,\n    COUNT(*) FILTER (WHERE NOT abstencao AND classe_correta='NAO_DUPLICADO' AND classe_predita='DUPLICADO')::numeric AS fp,\n    COUNT(*) FILTER (WHERE NOT abstencao AND classe_correta='DUPLICADO' AND classe_predita='NAO_DUPLICADO')::numeric AS fn,\n    COUNT(*) FILTER (WHERE NOT abstencao AND classe_correta='NAO_DUPLICADO' AND classe_predita='NAO_DUPLICADO')::numeric AS tn,\n    COUNT(*) FILTER (\n      WHERE NOT abstencao\n        AND classe_correta='DUPLICADO'\n        AND classe_predita='DUPLICADO'\n        AND classe_referencia_id = referencia_duplicado_esperada\n    )::numeric AS referencias_corretas\n  FROM vw_decisoes_deduplicacao\n  GROUP BY run_id\n)\nSELECT\n  run_id,\n  total::int,\n  cobertos::int,\n  abstencoes::int,\n  tp::int,\n  fp::int,\n  fn::int,\n  tn::int,\n  ROUND(cobertos/NULLIF(total,0),6) AS cobertura_automatica,\n  ROUND((tp+tn)/NULLIF(cobertos,0),6) AS acuracia,\n  ROUND(tp/NULLIF(tp+fp,0),6) AS precisao,\n  ROUND(tp/NULLIF(tp+fn,0),6) AS recall,\n  ROUND(tp/NULLIF(positivos_total,0),6) AS recall_automatizado_global,\n  ROUND((2*tp)/NULLIF((2*tp)+fp+fn,0),6) AS f1,\n  ROUND(fp/NULLIF(fp+tn,0),6) AS taxa_falso_positivo,\n  ROUND(fn/NULLIF(fn+tp,0),6) AS taxa_falso_negativo,\n  ROUND(referencias_corretas/NULLIF(tp,0),6) AS acuracia_referencia_entre_tp\nFROM m;\n\nCREATE OR REPLACE VIEW vw_metricas_deduplicacao_desafio AS\nWITH m AS (\n  SELECT\n    run_id,\n    COUNT(*)::numeric AS total,\n    COUNT(*) FILTER (WHERE NOT abstencao AND classe_predita IN ('DUPLICADO','NAO_DUPLICADO'))::numeric AS cobertos,\n    COUNT(*) FILTER (WHERE abstencao OR classe_predita NOT IN ('DUPLICADO','NAO_DUPLICADO'))::numeric AS abstencoes,\n    COUNT(*) FILTER (WHERE classe_correta='DUPLICADO')::numeric AS positivos_total,\n    COUNT(*) FILTER (WHERE NOT abstencao AND classe_correta='DUPLICADO' AND classe_predita='DUPLICADO')::numeric AS tp,\n    COUNT(*) FILTER (WHERE NOT abstencao AND classe_correta='NAO_DUPLICADO' AND classe_predita='DUPLICADO')::numeric AS fp,\n    COUNT(*) FILTER (WHERE NOT abstencao AND classe_correta='DUPLICADO' AND classe_predita='NAO_DUPLICADO')::numeric AS fn,\n    COUNT(*) FILTER (WHERE NOT abstencao AND classe_correta='NAO_DUPLICADO' AND classe_predita='NAO_DUPLICADO')::numeric AS tn,\n    COUNT(*) FILTER (\n      WHERE NOT abstencao\n        AND classe_correta='DUPLICADO'\n        AND classe_predita='DUPLICADO'\n        AND classe_referencia_id = referencia_duplicado_esperada\n    )::numeric AS referencias_corretas\n  FROM vw_decisoes_deduplicacao_desafio\n  GROUP BY run_id\n)\nSELECT\n  run_id,\n  total::int,\n  cobertos::int,\n  abstencoes::int,\n  tp::int,\n  fp::int,\n  fn::int,\n  tn::int,\n  ROUND(cobertos/NULLIF(total,0),6) AS cobertura_automatica,\n  ROUND((tp+tn)/NULLIF(cobertos,0),6) AS acuracia,\n  ROUND(tp/NULLIF(tp+fp,0),6) AS precisao,\n  ROUND(tp/NULLIF(tp+fn,0),6) AS recall,\n  ROUND(tp/NULLIF(positivos_total,0),6) AS recall_automatizado_global,\n  ROUND((2*tp)/NULLIF((2*tp)+fp+fn,0),6) AS f1,\n  ROUND(fp/NULLIF(fp+tn,0),6) AS taxa_falso_positivo,\n  ROUND(fn/NULLIF(fn+tp,0),6) AS taxa_falso_negativo,\n  ROUND(referencias_corretas/NULLIF(tp,0),6) AS acuracia_referencia_entre_tp\nFROM m;\n\nCREATE OR REPLACE VIEW vw_scores_deduplicacao AS\nWITH candidatas AS (\n  SELECT\n    d.*,\n    COALESCE(\n      d.output_normalizado->'probabilidades_semanticas',\n      d.output_normalizado->'probabilidades'\n    ) AS probabilidades_modelo\n  FROM vw_decisoes_deduplicacao d\n)\nSELECT\n  run_id,\n  case_id,\n  ticket_id,\n  (classe_correta='DUPLICADO') AS positivo,\n  LEAST(\n    0.999999999999999,\n    GREATEST(\n      0.000000000000001,\n      (probabilidades_modelo->>'duplicado')::numeric\n    )\n  ) AS score_duplicado,\n  provedor_ia,\n  papel_modelo,\n  probability_semantics,\n  operational_config->>'local_decision_path' AS local_decision_path\nFROM candidatas\nWHERE erro_ia = FALSE\n  AND (\n    COALESCE(UPPER(NULLIF(papel_modelo, '')), '') <> 'LOCAL'\n    OR (\n      LOWER(COALESCE(\n        operational_config->>'local_candidate_evaluation_eligible', 'false'\n      )) = 'true'\n      AND COALESCE(operational_config->>'local_decision_path', '')\n        IN ('hybrid_model','hybrid_model_abstention')\n    )\n  )\n  AND jsonb_typeof(probabilidades_modelo)='object'\n  AND (probabilidades_modelo->>'duplicado') ~ '^[0-9]+([.][0-9]+)?$'\n  AND (probabilidades_modelo->>'nao_duplicado') ~ '^[0-9]+([.][0-9]+)?$'\n  AND (\n    (probabilidades_modelo->>'duplicado')::numeric +\n    (probabilidades_modelo->>'nao_duplicado')::numeric\n  ) BETWEEN 0.999 AND 1.001\n  AND (probabilidades_modelo->>'duplicado')::numeric BETWEEN 0 AND 1\n  AND (probabilidades_modelo->>'nao_duplicado')::numeric BETWEEN 0 AND 1;\n\nCREATE OR REPLACE VIEW vw_roc_deduplicacao AS\nWITH thresholds AS (\n  SELECT DISTINCT run_id,score_duplicado AS threshold FROM vw_scores_deduplicacao\n  UNION SELECT DISTINCT run_id,0::numeric FROM vw_scores_deduplicacao\n  UNION SELECT DISTINCT run_id,1::numeric FROM vw_scores_deduplicacao\n)\nSELECT\n  t.run_id,\n  t.threshold,\n  COUNT(*) FILTER (\n    WHERE s.positivo AND s.score_duplicado >= t.threshold\n  )::numeric / NULLIF(COUNT(*) FILTER (WHERE s.positivo),0) AS recall_tpr,\n  COUNT(*) FILTER (\n    WHERE NOT s.positivo AND s.score_duplicado >= t.threshold\n  )::numeric / NULLIF(COUNT(*) FILTER (WHERE NOT s.positivo),0) AS falso_positivo_fpr\nFROM thresholds t\nJOIN vw_scores_deduplicacao s ON s.run_id IS NOT DISTINCT FROM t.run_id\nGROUP BY t.run_id,t.threshold;\n\nCREATE OR REPLACE VIEW vw_auc_deduplicacao AS\nWITH pontos AS (\n  SELECT\n    *,\n    LAG(falso_positivo_fpr) OVER (\n      PARTITION BY run_id ORDER BY falso_positivo_fpr,recall_tpr\n    ) AS fpr_anterior,\n    LAG(recall_tpr) OVER (\n      PARTITION BY run_id ORDER BY falso_positivo_fpr,recall_tpr\n    ) AS tpr_anterior\n  FROM vw_roc_deduplicacao\n  WHERE falso_positivo_fpr IS NOT NULL AND recall_tpr IS NOT NULL\n)\nSELECT\n  run_id,\n  ROUND(\n    SUM((falso_positivo_fpr-fpr_anterior)*(recall_tpr+tpr_anterior)/2.0),\n    6\n  ) AS auc_roc\nFROM pontos\nWHERE fpr_anterior IS NOT NULL AND tpr_anterior IS NOT NULL\nGROUP BY run_id;\n\nCREATE OR REPLACE VIEW vw_pr_deduplicacao AS\nWITH thresholds AS (\n  SELECT DISTINCT run_id,score_duplicado AS threshold FROM vw_scores_deduplicacao\n  UNION SELECT DISTINCT run_id,0::numeric FROM vw_scores_deduplicacao\n  UNION SELECT DISTINCT run_id,1::numeric FROM vw_scores_deduplicacao\n)\nSELECT\n  t.run_id,\n  t.threshold,\n  COUNT(*) FILTER (\n    WHERE s.positivo AND s.score_duplicado >= t.threshold\n  )::numeric / NULLIF(COUNT(*) FILTER (WHERE s.positivo),0) AS recall,\n  COUNT(*) FILTER (\n    WHERE s.positivo AND s.score_duplicado >= t.threshold\n  )::numeric / NULLIF(COUNT(*) FILTER (WHERE s.score_duplicado >= t.threshold),0) AS precision\nFROM thresholds t\nJOIN vw_scores_deduplicacao s ON s.run_id IS NOT DISTINCT FROM t.run_id\nGROUP BY t.run_id,t.threshold;\n\nCREATE OR REPLACE VIEW vw_average_precision_deduplicacao AS\nWITH ranked AS (\n  SELECT\n    run_id,\n    ticket_id,\n    positivo,\n    score_duplicado,\n    ROW_NUMBER() OVER (\n      PARTITION BY run_id ORDER BY score_duplicado DESC,ticket_id\n    ) AS k,\n    SUM(positivo::int) OVER (\n      PARTITION BY run_id ORDER BY score_duplicado DESC,ticket_id\n      ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW\n    ) AS tp_acumulado,\n    SUM(positivo::int) OVER (PARTITION BY run_id) AS positivos\n  FROM vw_scores_deduplicacao\n)\nSELECT\n  run_id,\n  ROUND(\n    SUM((tp_acumulado::numeric/k)*positivo::int) / NULLIF(MAX(positivos),0),\n    6\n  ) AS average_precision\nFROM ranked\nGROUP BY run_id;\n\nCREATE OR REPLACE VIEW vw_log_loss_deduplicacao AS\nSELECT\n  run_id,\n  COUNT(*)::int AS total_avaliado,\n  ROUND(AVG(\n    CASE WHEN positivo THEN -LN(score_duplicado) ELSE -LN(1-score_duplicado) END\n  ),6) AS log_loss,\n  ROUND(AVG(POWER(score_duplicado - positivo::int, 2)),6) AS brier_score\nFROM vw_scores_deduplicacao\nGROUP BY run_id;\n\nSELECT 'schema_ok' AS result;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -680,
+        140
+      ],
+      "id": "v9-wf01-schema",
+      "name": "PG: Garantir Schema",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "\nWITH removidos AS (\n  DELETE FROM tickets_processados\n  WHERE status_num IN (5,6)\n    AND GREATEST(\n      COALESCE(data_abertura, 'epoch'::timestamptz),\n      COALESCE(data_ultima_mudanca, 'epoch'::timestamptz)\n    ) < NOW() - INTERVAL '90 days'\n    AND COALESCE(em_aprovacao_fiscal, FALSE) = FALSE\n  RETURNING id\n)\nSELECT COUNT(*)::int AS removidos FROM removidos;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -430,
+        140
+      ],
+      "id": "v9-wf01-retencao",
+      "name": "PG: Retenção 90 dias",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const r=$json||{}; console.log('[WF01][LOG] Retencao 90 dias removeu '+Number(r.removidos||0)+' registros'); return [{json:r}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -180,
+        140
+      ],
+      "id": "v9-wf01-ret-log",
+      "name": "LOG: Retenção 90 dias",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "url": "={{ ('http://glpi-credential-proxy:8080/apirest.php' || 'http://host.docker.internal:9080/apirest.php') + '/initSession' }}",
+        "options": {},
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": []
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        70,
+        140
+      ],
+      "id": "v9-wf01-gs",
+      "name": "GLPI: Iniciar Sessão",
+      "typeOptions": {
+        "timeoutMilliseconds": 15000
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "url": "={{ ('http://glpi-credential-proxy:8080/apirest.php' || 'http://host.docker.internal:9080/apirest.php') + '/search/Ticket' }}",
+        "options": {},
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessão').first().json.session_token }}"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "criteria[0][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[0][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[0][value]",
+              "value": "1"
+            },
+            {
+              "name": "criteria[1][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[1][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[1][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[1][value]",
+              "value": "2"
+            },
+            {
+              "name": "criteria[2][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[2][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[2][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[2][value]",
+              "value": "3"
+            },
+            {
+              "name": "criteria[3][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[3][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[3][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[3][value]",
+              "value": "4"
+            },
+            {
+              "name": "criteria[4][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[4][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[4][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[4][value]",
+              "value": "5"
+            },
+            {
+              "name": "criteria[5][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[5][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[5][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[5][value]",
+              "value": "6"
+            },
+            {
+              "name": "forcedisplay[0]",
+              "value": "1"
+            },
+            {
+              "name": "forcedisplay[1]",
+              "value": "2"
+            },
+            {
+              "name": "forcedisplay[2]",
+              "value": "12"
+            },
+            {
+              "name": "forcedisplay[3]",
+              "value": "21"
+            },
+            {
+              "name": "forcedisplay[4]",
+              "value": "83"
+            },
+            {
+              "name": "forcedisplay[5]",
+              "value": "15"
+            },
+            {
+              "name": "forcedisplay[6]",
+              "value": "4"
+            },
+            {
+              "name": "forcedisplay[7]",
+              "value": "22"
+            },
+            {
+              "name": "forcedisplay[8]",
+              "value": "7"
+            },
+            {
+              "name": "forcedisplay[9]",
+              "value": "19"
+            },
+            {
+              "name": "range",
+              "value": "0-9999"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        350,
+        140
+      ],
+      "id": "v9-wf01-search",
+      "name": "GLPI: Buscar Chamados",
+      "typeOptions": {
+        "timeoutMilliseconds": 15000
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst STATUS_MAP = {1:'Novo',2:'Em atendimento',3:'Planejado',4:'Pendente',5:'Solucionado',6:'Fechado'};\nconst corte = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000);\nlet trigger = 'SCHEDULE';\ntry {\n  if ($('T1. Manual').first().json) trigger = 'MANUAL';\n} catch(e) {}\nfunction stripHtml(value) {\n  return String(value || '')\n    .replace(/<br\\s*\\/?>/gi, '\\n')\n    .replace(/<[^>]+>/g, ' ')\n    .replace(/&nbsp;/g, ' ')\n    .replace(/&amp;/g, '&')\n    .replace(/\\s+/g, ' ')\n    .trim();\n}\nfunction parseId(value) {\n  if (value === null || value === undefined) return null;\n  if (typeof value === 'number') return Number.isFinite(value) && value > 0 ? value : null;\n  const match = String(value).match(/\\d+/);\n  return match ? Number(match[0]) : null;\n}\nfunction parseStatus(value) {\n  if (typeof value === 'number') return value;\n  const text = String(value || '').trim();\n  if (/^\\d+$/.test(text)) return Number(text);\n  const n = text.normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLowerCase();\n  if (n.includes('novo')) return 1;\n  if (n.includes('atendimento')) return 2;\n  if (n.includes('planejado')) return 3;\n  if (n.includes('pendente')) return 4;\n  if (n.includes('solucionado')) return 5;\n  if (n.includes('fechado')) return 6;\n  return 0;\n}\nfunction keepByTrigger(c) {\n  if ([1,4].includes(c.status_num)) return true;\n  if (![2,3,5,6].includes(c.status_num)) return false;\n  const abertura = new Date(c.data_abertura);\n  const mudanca = new Date(c.data_ultima_mudanca);\n  const aberturaDentro = !isNaN(abertura) && abertura >= corte;\n  const mudancaDentro = !isNaN(mudanca) && mudanca >= corte;\n  return aberturaDentro || mudancaDentro;\n}\nfunction readableDropdown(detailValue, fallback) {\n  return String(detailValue ?? fallback ?? '').trim();\n}\nfunction userDisplayName(user, fallback) {\n  if (!user || typeof user !== 'object') return String(fallback || '');\n  const full = [user.firstname, user.realname].filter(Boolean).join(' ').trim();\n  return full || String(user.name || fallback || '');\n}\nfunction firstEmail(items) {\n  if (!Array.isArray(items)) return '';\n  const def = items.find(e => e?.is_default === 1 || e?.is_default === '1') || items[0];\n  return String(def?.email || '').trim();\n}\nfunction linkId(detail, rel) {\n  const link = Array.isArray(detail?.links) ? detail.links.find(l => l.rel === rel) : null;\n  const m = String(link?.href || '').match(/\\/(\\d+)\\/?$/);\n  return m ? Number(m[1]) : null;\n}\nfunction collectSearchRows() {\n  const rows = [];\n  for (const it of $input.all()) {\n    const d = it.json;\n    if (Array.isArray(d)) {\n      rows.push(...d);\n    } else if (Array.isArray(d?.data)) {\n      rows.push(...d.data);\n    } else if (d && typeof d === 'object') {\n      const numericKeys = Object.keys(d).filter(k => /^\\d+$/.test(k) && d[k] && typeof d[k] === 'object');\n      if (numericKeys.length > 0) rows.push(...numericKeys.map(k => d[k]));\n      else if (d['2'] || d.id) rows.push(d);\n    }\n  }\n  return rows;\n}\nconst baseUrl = String((typeof process !== 'undefined' && 'http://glpi-credential-proxy:8080/apirest.php') || 'http://host.docker.internal:9080/apirest.php').replace(/\\/$/, '');\nconst appToken = '';\nconst sessionToken = (() => { const value = String($('GLPI: Iniciar Sessão').first().json.session_token || '').trim(); if (!value) throw new Error('GLPI session_token ausente'); return value; })();\nasync function glpi(path) {\n  try {\n    return await helpers.httpRequest({\n      method: 'GET',\n      url: baseUrl + path,\n      headers: {'Session-Token': sessionToken, 'Content-Type': 'application/json'},\n      json: true\n    });\n  } catch (e) {\n    console.log(`[WF01][LOG] Falha GLPI ${path}: ${e.message}`);\n    return null;\n  }\n}\nfunction configuredChunkSize() {\n  const rawSize = String((typeof process !== 'undefined' && \"10\") || '10').trim();\n  const parsed = Number(rawSize);\n  if (!Number.isInteger(parsed) || parsed < 1 || parsed > 25) return 10;\n  return parsed;\n}\nfunction chunked(items, size) {\n  const chunks = [];\n  for (let i = 0; i < items.length; i += size) chunks.push(items.slice(i, i + size));\n  return chunks;\n}\nasync function processTicket(c) {\n  try {\n    const id = Number(c['2'] ?? c.id);\n    if (!Number.isFinite(id) || id <= 0) return null;\n    const [detailRaw, actorsRaw] = await Promise.all([\n      glpi(`/Ticket/${id}?expand_dropdowns=true`),\n      glpi(`/Ticket/${id}/Ticket_User`)\n    ]);\n    const detail = detailRaw || {};\n    const actors = Array.isArray(actorsRaw) ? actorsRaw : [];\n    const requester = actors.find(a => Number(a.type) === 1 && Number(a.users_id) > 0)\n      || actors.find(a => Number(a.users_id) > 0)\n      || null;\n    const solicitanteId = parseId(requester?.users_id) || parseId(c['4']);\n    const [userRaw, emailsRaw] = solicitanteId\n      ? await Promise.all([\n        glpi(`/User/${solicitanteId}`),\n        glpi(`/User/${solicitanteId}/UserEmail`)\n      ])\n      : [null, []];\n    const st = parseStatus(detail.status ?? c['12'] ?? c.status);\n    const tipoServicoId = linkId(detail, 'ITILCategory') || parseId(c['7']);\n    const chamado = {\n      id,\n      titulo: String(detail.name || c['1'] || c.name || ''),\n      descricao: stripHtml(detail.content || c['21'] || c.content || ''),\n      tipo_servico: readableDropdown(detail.itilcategories_id, c['7']),\n      tipo_servico_id: tipoServicoId,\n      localizacao: readableDropdown(detail.locations_id, c['83'] ?? c.locations_id),\n      solicitante: userDisplayName(userRaw || null, c['4'] ?? detail.users_id_recipient),\n      solicitante_id: solicitanteId,\n      email_solicitante: String(requester?.alternative_email || firstEmail(Array.isArray(emailsRaw) ? emailsRaw : []) || '').trim(),\n      status_num: st,\n      status_nome: STATUS_MAP[st] || String(st || ''),\n      data_abertura: detail.date || c['15'] || c.date || null,\n      data_ultima_mudanca: detail.date_mod || c['19'] || c.date_mod || c['15'] || null\n    };\n    return keepByTrigger(chamado) ? chamado : null;\n  } catch (e) {\n    console.log(`[WF01][LOG] Falha ao estruturar chamado: ${e.message}`);\n    return null;\n  }\n}\nconst raw = collectSearchRows();\nconst chunkSize = configuredChunkSize();\nconst out = [];\nconst batches = chunked(raw, chunkSize);\nfor (let i = 0; i < batches.length; i++) {\n  const results = await Promise.all(batches[i].map(processTicket));\n  out.push(...results.filter(Boolean));\n}\nconsole.log(`[WF01][LOG] Estruturados ${out.length} chamados usando saida do GLPI: Buscar Chamados | trigger=${trigger} | raw=${raw.length} | chunkSize=${chunkSize} | lotes=${batches.length}`);\nif (out.length === 0) return [{json:{sem_chamados:true, trigger, total:0, chamados:[], raw:raw.length, chunkSize, lotes:batches.length}}];\nreturn [{json:{chamados:out, trigger, total:out.length, raw:raw.length, chunkSize, lotes:batches.length}}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        630,
+        140
+      ],
+      "id": "v9-wf01-struct",
+      "name": "Estruturar e Filtrar",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ Array.isArray($json.chamados) && $json.chamados.length > 0 }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              },
+              "id": "if1"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        880,
+        140
+      ],
+      "id": "v9-wf01-has",
+      "name": "Tem Chamados?"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ (() => {\n  const chamados = Array.isArray($json.chamados) ? $json.chamados : [];\n  const esc = s => \"'\" + String(s ?? '').replace(/'/g, \"''\") + \"'\";\n  const origem = esc($json.trigger === 'MANUAL' ? 'MANUAL_BOOTSTRAP' : 'SCHEDULE_SYNC');\n  const trigger = esc($json.trigger || 'SCHEDULE');\n  const ts = esc(new Date().toISOString());\n  const payload = esc(JSON.stringify(chamados));\n  if (chamados.length === 0) {\n    return `SELECT 0::int AS total, 0::int AS inseridos, 0::int AS atualizados;`;\n  }\n  return `\n  WITH payload_raw AS (\n    SELECT *\n    FROM jsonb_to_recordset(${payload}::jsonb) AS c(\n      id BIGINT,\n      titulo TEXT,\n      descricao TEXT,\n      tipo_servico TEXT,\n      tipo_servico_id BIGINT,\n      localizacao TEXT,\n      solicitante TEXT,\n      solicitante_id BIGINT,\n      email_solicitante TEXT,\n      status_num INTEGER,\n      status_nome TEXT,\n      data_abertura TIMESTAMPTZ,\n      data_ultima_mudanca TIMESTAMPTZ\n    )\n    WHERE id IS NOT NULL\n  ),\n  payload AS (\n    SELECT DISTINCT ON (id) *\n    FROM payload_raw\n    ORDER BY id\n  ),\n  upserted AS (\n    INSERT INTO tickets_processados(\n      id,titulo,descricao,tipo_servico,tipo_servico_id,localizacao,solicitante,solicitante_id,email_solicitante,\n      status_num,status_nome,data_abertura,data_ultima_mudanca,origem_ingestao,\n      triagem_status,ultima_acao_workflow,log_workflow,wf_version\n    )\n    SELECT\n      id,\n      COALESCE(titulo,''),\n      descricao,\n      tipo_servico,\n      tipo_servico_id,\n      localizacao,\n      solicitante,\n      solicitante_id,\n      email_solicitante,\n      COALESCE(status_num,0),\n      COALESCE(status_nome,''),\n      data_abertura,\n      data_ultima_mudanca,\n      ${origem},\n      'PENDENTE_SYNC',\n      'WF01_SYNC',\n      jsonb_build_array(jsonb_build_object('wf','WF01','acao','SYNC','trigger',${trigger},'ts',${ts},'status',COALESCE(status_nome,''))),\n      'v9'\n    FROM payload\n    ON CONFLICT(id) DO UPDATE SET\n      titulo=EXCLUDED.titulo,\n      descricao=EXCLUDED.descricao,\n      tipo_servico=EXCLUDED.tipo_servico,\n      tipo_servico_id=EXCLUDED.tipo_servico_id,\n      localizacao=EXCLUDED.localizacao,\n      solicitante=EXCLUDED.solicitante,\n      solicitante_id=EXCLUDED.solicitante_id,\n      email_solicitante=EXCLUDED.email_solicitante,\n      status_num=EXCLUDED.status_num,\n      status_nome=EXCLUDED.status_nome,\n      data_abertura=COALESCE(EXCLUDED.data_abertura,tickets_processados.data_abertura),\n      data_ultima_mudanca=CASE\n        WHEN EXCLUDED.data_ultima_mudanca IS NULL THEN tickets_processados.data_ultima_mudanca\n        WHEN tickets_processados.data_ultima_mudanca IS NULL THEN EXCLUDED.data_ultima_mudanca\n        ELSE GREATEST(tickets_processados.data_ultima_mudanca, EXCLUDED.data_ultima_mudanca)\n      END,\n      origem_ingestao=EXCLUDED.origem_ingestao,\n      ultima_acao_workflow='WF01_SYNC',\n      log_workflow=COALESCE(tickets_processados.log_workflow,'[]'::jsonb)\n        || jsonb_build_object('wf','WF01','acao','SYNC','trigger',${trigger},'ts',${ts},'status',EXCLUDED.status_nome)\n    RETURNING id,status_num,status_nome,triagem_status,em_aprovacao_fiscal,(xmax = 0) AS inserido\n  )\n  SELECT\n    COUNT(*)::int AS total,\n    COUNT(*) FILTER (WHERE inserido)::int AS inseridos,\n    COUNT(*) FILTER (WHERE NOT inserido)::int AS atualizados\n  FROM upserted;`;\n})() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1140,
+        20
+      ],
+      "id": "v9-wf01-upsert",
+      "name": "PG: UPSERT Chamado",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const r=$input.first().json||{}; const total=Number(r.total||0); const inseridos=Number(r.inseridos||0); const atualizados=Number(r.atualizados||0); console.log('[WF01][LOG] UPSERT em lote concluido: '+total+' chamados | inseridos='+inseridos+' atualizados='+atualizados); return [{json:{ok:true,total,inseridos,atualizados}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        20
+      ],
+      "id": "v9-wf01-resumo",
+      "name": "LOG: Resumo Sync",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "url": "={{ ('http://glpi-credential-proxy:8080/apirest.php' || 'http://host.docker.internal:9080/apirest.php') + '/killSession' }}",
+        "options": {},
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessão').first().json.session_token }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1660,
+        140
+      ],
+      "id": "v9-wf01-gk",
+      "name": "GLPI: Encerrar Sessão",
+      "typeOptions": {
+        "timeoutMilliseconds": 15000
+      },
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log('[WF01][LOG] Fim sincronizador V9'); return [{json:{ok:true,ts:new Date().toISOString()}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1920,
+        140
+      ],
+      "id": "v9-wf01-fim",
+      "name": "LOG: Fim",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const token = String($json.session_token || '').trim(); if (!token) { throw new Error('GLPI initSession nao retornou session_token no WF01'); } return [{json:{...$json,session_token:token}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        320,
+        140
+      ],
+      "id": "v9-wf01-validar-sessao",
+      "name": "Validar Sessão GLPI",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "\nUPDATE tickets_processados\nSET triagem_status='PENDENTE_FILA_IA',\n    fila_etapa='DEDUPLICACAO',\n    fila_enfileirada_em=COALESCE(fila_enfileirada_em,NOW()),\n    fila_liberar_em=NULL,\n    fila_reservada_em=NULL,\n    fila_ultimo_erro=NULL,\n    ultima_acao_workflow='WF01_RECUPEROU_PARA_FILA',\n    log_workflow=COALESCE(log_workflow,'[]'::jsonb)\n      || jsonb_build_object(\n           'wf','WF01','acao','RECUPERAR_PARA_FILA','ts',NOW()\n         ),\n    atualizado_em=NOW()\nWHERE status_num=1\n  AND triagem_status='PENDENTE_SYNC'\n  AND COALESCE(em_aprovacao_fiscal,FALSE)=FALSE\nRETURNING id,triagem_status,fila_enfileirada_em;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1640,
+        20
+      ],
+      "id": "v9-wf01-enfileirar-wf06",
+      "name": "PG: Enfileirar Pendentes WF06",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      },
+      "alwaysOutputData": true
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "T1. Manual": {
+      "main": [
+        [
+          {
+            "node": "LOG: Início",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "T2. Schedule 06h/12h": {
+      "main": [
+        [
+          {
+            "node": "LOG: Início",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LOG: Início": {
+      "main": [
+        [
+          {
+            "node": "PG: Garantir Schema",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Garantir Schema": {
+      "main": [
+        [
+          {
+            "node": "PG: Retenção 90 dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Retenção 90 dias": {
+      "main": [
+        [
+          {
+            "node": "LOG: Retenção 90 dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LOG: Retenção 90 dias": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Iniciar Sessão",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Iniciar Sessão": {
+      "main": [
+        [
+          {
+            "node": "Validar Sessão GLPI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Buscar Chamados": {
+      "main": [
+        [
+          {
+            "node": "Estruturar e Filtrar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Estruturar e Filtrar": {
+      "main": [
+        [
+          {
+            "node": "Tem Chamados?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tem Chamados?": {
+      "main": [
+        [
+          {
+            "node": "PG: UPSERT Chamado",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GLPI: Encerrar Sessão",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: UPSERT Chamado": {
+      "main": [
+        [
+          {
+            "node": "LOG: Resumo Sync",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LOG: Resumo Sync": {
+      "main": [
+        [
+          {
+            "node": "PG: Enfileirar Pendentes WF06",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Encerrar Sessão": {
+      "main": [
+        [
+          {
+            "node": "LOG: Fim",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validar Sessão GLPI": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Buscar Chamados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Enfileirar Pendentes WF06": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Encerrar Sessão",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Sao_Paulo",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true
+  },
+  "versionId": "v9-V9 - WF01 ",
+  "meta": {},
+  "tags": [],
+  "id": "BCrENoTzdW20owz4"
+}

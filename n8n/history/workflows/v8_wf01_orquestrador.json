@@ -1,0 +1,1022 @@
+{
+  "active": false,
+  "connections": {
+    "Estruturar Chamados": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "PG: UPSERT",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Executar WF02: Triagem": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "GLPI: Encerrar Sessao",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Filtrar para Triagem": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Tem Chamados?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GLPI: Buscar 1 Ticket": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Estruturar Chamados",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GLPI: Buscar TUDO": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Estruturar Chamados",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GLPI: Iniciar Sessao": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Switch Modo",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GLPI: Refresh Sync": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Estruturar Chamados",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Identificar Modo": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "PG: Schema+Contar",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "PG: Reservar Triagem": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Preparar Reservados",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "PG: Schema+Contar": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Resolver Modo",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "PG: UPSERT": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Filtrar para Triagem",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Preparar Reservados": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Executar WF02: Triagem",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Resolver Modo": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "GLPI: Iniciar Sessao",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Sem Acao (NOOP)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "GLPI: Encerrar Sessao",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Switch Modo": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "GLPI: Buscar TUDO",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "GLPI: Buscar 1 Ticket",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "GLPI: Refresh Sync",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Sem Acao (NOOP)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "T1. Manual (Bootstrap)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Identificar Modo",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "T2. Webhook GLPI": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Identificar Modo",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "T3. Schedule 06h/12h": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Identificar Modo",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Tem Chamados?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "PG: Reservar Triagem",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "GLPI: Encerrar Sessao",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "name": "V8 - WF01 Orquestrador",
+  "nodes": [
+    {
+      "id": "wf01-t1",
+      "name": "T1. Manual (Bootstrap)",
+      "parameters": {},
+      "position": [
+        -1200,
+        0
+      ],
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1
+    },
+    {
+      "id": "wf01-t2",
+      "name": "T2. Webhook GLPI",
+      "parameters": {
+        "httpMethod": "POST",
+        "options": {},
+        "path": "glpi-ticket-novo-troque-esta-chave-glpi",
+        "responseMode": "onReceived"
+      },
+      "position": [
+        -1200,
+        240
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "wf01-glpi-novo"
+    },
+    {
+      "id": "wf01-t3",
+      "name": "T3. Schedule 06h/12h",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "expression": "0 6,12 * * *",
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "position": [
+        -1200,
+        480
+      ],
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2
+    },
+    {
+      "id": "wf01-n1",
+      "name": "Identificar Modo",
+      "parameters": {
+        "jsCode": "\nlet modo='NOOP',tid=null,origem='DESCONHECIDA';\ntry{\n  const m=$('T1. Manual (Bootstrap)').first()?.json;\n  if(m){modo='INICIAL';origem='MANUAL';}\n}catch(e){}\ntry{\n  const s=$('T3. Schedule 06h/12h').first()?.json;\n  if(s&&s.timestamp){modo='SCHEDULE';origem='SCHEDULE';}\n}catch(e){}\ntry{\n  const w=$('T2. Webhook GLPI').first()?.json;\n  if(w){\n    origem='WEBHOOK';\n    const b=w.body||w;\n    const i=Number(b.ticket_id??b.items_id??b.id);\n    if(i>0){modo='INCREMENTAL';tid=i;}\n    else{modo='NOOP';}\n  }\n}catch(e){}\nreturn[{json:{modo,tid,origem,ts:new Date().toISOString()}}];\n"
+      },
+      "position": [
+        -960,
+        240
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "wf01-n2",
+      "name": "PG: Schema+Contar",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {},
+        "query": "CREATE TABLE IF NOT EXISTS tickets_processados(\nid BIGINT PRIMARY KEY,titulo TEXT,descricao TEXT,tipo_servico TEXT,localizacao TEXT,\nsolicitante TEXT,email_solicitante TEXT,status_num INT,status_nome TEXT,\ndata_abertura TIMESTAMPTZ,data_ultima_mudanca TIMESTAMPTZ,origem_ingestao TEXT,\ntriagem_status TEXT,classificacao TEXT,executor TEXT,duplicado_de_id BIGINT,\ndecisao_fiscal TEXT,motivo_classificacao TEXT,em_aprovacao_fiscal BOOL DEFAULT FALSE,\naprovacao_iniciada_em TIMESTAMPTZ,aprovacao_decidida_em TIMESTAMPTZ,triado_em TIMESTAMPTZ,\nultima_acao_workflow TEXT,criado_em TIMESTAMPTZ DEFAULT NOW(),atualizado_em TIMESTAMPTZ DEFAULT NOW());\nCREATE INDEX IF NOT EXISTS idx_tp_status ON tickets_processados(status_num);\nCREATE INDEX IF NOT EXISTS idx_tp_data_abertura ON tickets_processados(data_abertura);\nCREATE INDEX IF NOT EXISTS idx_tp_localizacao ON tickets_processados(localizacao);\nCREATE INDEX IF NOT EXISTS idx_tp_triagem ON tickets_processados(triagem_status);\nCREATE INDEX IF NOT EXISTS idx_tp_aprovacao ON tickets_processados(em_aprovacao_fiscal);\nSELECT COUNT(*)::int AS total FROM tickets_processados;"
+      },
+      "position": [
+        -720,
+        240
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5
+    },
+    {
+      "id": "wf01-n3",
+      "name": "Resolver Modo",
+      "parameters": {
+        "jsCode": "\nconst c=$('Identificar Modo').first().json;const t=Number($json.total??0);\nlet m=c.modo;\nif(t===0&&['INCREMENTAL','SCHEDULE'].includes(m))m='INICIAL';\nif(t===0&&m==='NOOP'&&c.origem==='MANUAL')m='INICIAL';\nreturn[{json:{...c,modo:m,totalBd:t}}];\n"
+      },
+      "position": [
+        -480,
+        240
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "wf01-gs",
+      "name": "GLPI: Iniciar Sessao",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ 'user_token ' + $env.GLPI_USER_TOKEN }}"
+            }
+          ]
+        },
+        "options": {},
+        "sendHeaders": true,
+        "url": "http://host.docker.internal:8080/apirest.php/initSession"
+      },
+      "position": [
+        -240,
+        240
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "wf01-sw",
+      "name": "Switch Modo",
+      "parameters": {
+        "options": {},
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "b5c6db19",
+                    "leftValue": "={{ $('Resolver Modo').first().json.modo }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "INICIAL"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "INICIAL",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "1680f494",
+                    "leftValue": "={{ $('Resolver Modo').first().json.modo }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "INCREMENTAL"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "INCREMENTAL",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "f79be06b",
+                    "leftValue": "={{ $('Resolver Modo').first().json.modo }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "SCHEDULE"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "SCHEDULE",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "e5ff89da",
+                    "leftValue": "={{ $('Resolver Modo').first().json.modo }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "NOOP"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "NOOP",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        0,
+        240
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2
+    },
+    {
+      "id": "wf01-g-all",
+      "name": "GLPI: Buscar TUDO",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "criteria[0][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[0][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[0][value]",
+              "value": "1"
+            },
+            {
+              "name": "criteria[0][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[1][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[1][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[1][value]",
+              "value": "3"
+            },
+            {
+              "name": "criteria[1][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[2][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[2][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[2][value]",
+              "value": "4"
+            },
+            {
+              "name": "criteria[2][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[3][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[3][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[3][value]",
+              "value": "5"
+            },
+            {
+              "name": "criteria[3][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[4][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[4][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[4][value]",
+              "value": "6"
+            },
+            {
+              "name": "forcedisplay[0]",
+              "value": "1"
+            },
+            {
+              "name": "forcedisplay[1]",
+              "value": "2"
+            },
+            {
+              "name": "forcedisplay[2]",
+              "value": "12"
+            },
+            {
+              "name": "forcedisplay[3]",
+              "value": "21"
+            },
+            {
+              "name": "forcedisplay[4]",
+              "value": "83"
+            },
+            {
+              "name": "forcedisplay[5]",
+              "value": "15"
+            },
+            {
+              "name": "forcedisplay[6]",
+              "value": "4"
+            },
+            {
+              "name": "forcedisplay[7]",
+              "value": "22"
+            },
+            {
+              "name": "forcedisplay[8]",
+              "value": "14"
+            },
+            {
+              "name": "forcedisplay[9]",
+              "value": "19"
+            },
+            {
+              "name": "range",
+              "value": "0-9999"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "sendQuery": true,
+        "url": "http://host.docker.internal:8080/apirest.php/search/Ticket"
+      },
+      "position": [
+        280,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "wf01-g-one",
+      "name": "GLPI: Buscar 1 Ticket",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "criteria[0][field]",
+              "value": "2"
+            },
+            {
+              "name": "criteria[0][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[0][value]",
+              "value": "={{ $('Resolver Modo').first().json.tid }}"
+            },
+            {
+              "name": "forcedisplay[0]",
+              "value": "1"
+            },
+            {
+              "name": "forcedisplay[1]",
+              "value": "2"
+            },
+            {
+              "name": "forcedisplay[2]",
+              "value": "12"
+            },
+            {
+              "name": "forcedisplay[3]",
+              "value": "21"
+            },
+            {
+              "name": "forcedisplay[4]",
+              "value": "83"
+            },
+            {
+              "name": "forcedisplay[5]",
+              "value": "15"
+            },
+            {
+              "name": "forcedisplay[6]",
+              "value": "4"
+            },
+            {
+              "name": "forcedisplay[7]",
+              "value": "22"
+            },
+            {
+              "name": "forcedisplay[8]",
+              "value": "14"
+            },
+            {
+              "name": "forcedisplay[9]",
+              "value": "19"
+            },
+            {
+              "name": "range",
+              "value": "0-1"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "sendQuery": true,
+        "url": "http://host.docker.internal:8080/apirest.php/search/Ticket"
+      },
+      "position": [
+        280,
+        240
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "wf01-g-ref",
+      "name": "GLPI: Refresh Sync",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "criteria[0][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[0][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[0][value]",
+              "value": "3"
+            },
+            {
+              "name": "criteria[0][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[1][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[1][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[1][value]",
+              "value": "4"
+            },
+            {
+              "name": "criteria[1][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[2][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[2][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[2][value]",
+              "value": "5"
+            },
+            {
+              "name": "criteria[2][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[3][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[3][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[3][value]",
+              "value": "6"
+            },
+            {
+              "name": "forcedisplay[0]",
+              "value": "1"
+            },
+            {
+              "name": "forcedisplay[1]",
+              "value": "2"
+            },
+            {
+              "name": "forcedisplay[2]",
+              "value": "12"
+            },
+            {
+              "name": "forcedisplay[3]",
+              "value": "21"
+            },
+            {
+              "name": "forcedisplay[4]",
+              "value": "83"
+            },
+            {
+              "name": "forcedisplay[5]",
+              "value": "15"
+            },
+            {
+              "name": "forcedisplay[6]",
+              "value": "4"
+            },
+            {
+              "name": "forcedisplay[7]",
+              "value": "22"
+            },
+            {
+              "name": "forcedisplay[8]",
+              "value": "14"
+            },
+            {
+              "name": "forcedisplay[9]",
+              "value": "19"
+            },
+            {
+              "name": "range",
+              "value": "0-9999"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "sendQuery": true,
+        "url": "http://host.docker.internal:8080/apirest.php/search/Ticket"
+      },
+      "position": [
+        280,
+        480
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "wf01-e1",
+      "name": "Estruturar Chamados",
+      "parameters": {
+        "jsCode": "\nconst S={1:'Novo',2:'Atribuido',3:'Planejado',4:'Pendente',5:'Solucionado',6:'Fechado'};\nconst corte=new Date(Date.now()-90*86400000);\nconst ctx=$('Resolver Modo').first().json;\nfunction sn(s){if(typeof s==='number')return s;const t=String(s||'').toLowerCase();\nif(t.includes('novo'))return 1;if(t.includes('atribu'))return 2;if(t.includes('planejad'))return 3;\nif(t.includes('pendent'))return 4;if(t.includes('soluc'))return 5;if(t.includes('fechado')||t.includes('close'))return 6;return Number(s)||null;}\nfunction lh(s){return String(s||'').replace(/<[^>]*>/g,'').trim();}\nlet lista=[];\nfor(const it of $input.all()){const d=it.json;if(Array.isArray(d?.data))lista.push(...d.data);else if(d&&typeof d==='object'&&d['2'])lista.push(d);}\nconst r=lista.map(c=>{const id=Number(c['2']??c.id);const st=sn(c['12']??c.status);\nreturn{id,titulo:c['1']??c.name??'',descricao:lh(c['21']??c.content??''),\ntipo_servico:String(c['14']??c.itilcategories_id??''),localizacao:String(c['83']??c.locations_id??''),\nsolicitante:String(c['4']??c.users_id_recipient??''),email_solicitante:String(c['22']??''),\nstatus_num:st,status_nome:S[st]||'?',data_abertura:c['15']??c.date??null,\ndata_ultima_mudanca:c['19']??c.date_mod??c['15']??null};\n}).filter(c=>{if(!Number.isFinite(c.id)||c.id<=0)return false;\nif(ctx.modo==='INCREMENTAL')return c.status_num===1;\nif([1,4].includes(c.status_num))return true;\nif([3,5,6].includes(c.status_num)){const d=new Date(c.data_abertura);return !isNaN(d)&&d>=corte;}return false;});\nreturn r.map(c=>({json:{chamado:c,modo:ctx.modo}}));\n"
+      },
+      "position": [
+        560,
+        240
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "wf01-u1",
+      "name": "PG: UPSERT",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {},
+        "query": "={{ (() => {\n  const c = $json.chamado;\n  const esc = (s) => \"'\" + String(s||'').replace(/'/g, \"''\") + \"'\";\n  const dt = (d) => d ? \"'\" + String(d) + \"'::timestamptz\" : \"NULL\";\n  const ori = esc($json.modo === 'INICIAL' ? 'BOOTSTRAP' : $json.modo === 'SCHEDULE' ? 'SCHEDULE' : 'WEBHOOK');\n  return `INSERT INTO tickets_processados(id,titulo,descricao,tipo_servico,localizacao,solicitante,email_solicitante,status_num,status_nome,data_abertura,data_ultima_mudanca,origem_ingestao)\n   VALUES (${c.id}, ${esc(c.titulo)}, ${esc(c.descricao)}, ${esc(c.tipo_servico)}, ${esc(c.localizacao)}, ${esc(c.solicitante)}, ${esc(c.email_solicitante)}, ${c.status_num}, ${esc(c.status_nome)}, ${dt(c.data_abertura)}, ${dt(c.data_ultima_mudanca)}, ${ori})\n   ON CONFLICT(id) DO UPDATE SET titulo=EXCLUDED.titulo, descricao=EXCLUDED.descricao, tipo_servico=EXCLUDED.tipo_servico, localizacao=EXCLUDED.localizacao, solicitante=EXCLUDED.solicitante, email_solicitante=EXCLUDED.email_solicitante, status_num=EXCLUDED.status_num, status_nome=EXCLUDED.status_nome, data_ultima_mudanca=EXCLUDED.data_ultima_mudanca\n   RETURNING id, status_num, triagem_status, em_aprovacao_fiscal;`;\n})() }}"
+      },
+      "position": [
+        800,
+        240
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5
+    },
+    {
+      "id": "wf01-f1",
+      "name": "Filtrar para Triagem",
+      "parameters": {
+        "jsCode": "\nconst ctx=$('Resolver Modo').first().json;\nif(ctx.modo==='SCHEDULE')return[];\nconst items=$input.all();const allE=$('Estruturar Chamados').all();const out=[];\nfor(const it of items){const u=it.json;\nconst o=allE.find(x=>Number(x.json.chamado.id)===Number(u.id));if(!o)continue;\nconst c=o.json.chamado;const ok=ctx.modo==='INCREMENTAL'?[1]:[1,4];\nif(!ok.includes(c.status_num))continue;\nif(u.triagem_status&&!['PENDENTE','ERRO_IA'].includes(u.triagem_status))continue;\nif(u.em_aprovacao_fiscal===true)continue;\nout.push({json:{chamado:c}});}\nout.sort((a,b)=>Number(a.json.chamado.id)-Number(b.json.chamado.id));\nreturn out.slice(0,4);\n"
+      },
+      "position": [
+        1040,
+        240
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "wf01-has",
+      "name": "Tem Chamados?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "6b73c1b0",
+              "leftValue": "={{ $input.all().length }}",
+              "operator": {
+                "operation": "gt",
+                "type": "number"
+              },
+              "rightValue": 0
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          }
+        }
+      },
+      "position": [
+        1280,
+        240
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "wf01-res",
+      "name": "PG: Reservar Triagem",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {},
+        "query": "={{ (() => {\nconst id=Number($json.chamado.id);\nreturn `UPDATE tickets_processados\nSET triagem_status='ENFILEIRADO', ultima_acao_workflow='ENFILEIRADO_TRIAGEM', atualizado_em=NOW()\nWHERE id=${id}\nAND COALESCE(em_aprovacao_fiscal,FALSE)=FALSE\nAND (triagem_status IS NULL OR triagem_status IN ('PENDENTE','ERRO_IA'))\nRETURNING id;`;\n})() }}"
+      },
+      "position": [
+        1520,
+        160
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5
+    },
+    {
+      "id": "wf01-prep",
+      "name": "Preparar Reservados",
+      "parameters": {
+        "jsCode": "\nconst reservados=new Set($input.all().map(i=>Number(i.json.id)).filter(Number.isFinite));\nconst candidatos=$('Filtrar para Triagem').all();\nreturn candidatos\n  .filter(i=>reservados.has(Number(i.json.chamado.id)))\n  .map((i,idx)=>({json:{chamado:i.json.chamado,delay_seconds:idx*20}}));\n"
+      },
+      "position": [
+        1760,
+        160
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "wf01-exec",
+      "name": "Executar WF02: Triagem",
+      "notes": "ID sera preenchido apos deploy do WF02",
+      "parameters": {
+        "mode": "each",
+        "options": {
+          "waitForSubWorkflow": false
+        },
+        "source": "database",
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "0iD47TUYD2PJTfo2"
+        }
+      },
+      "position": [
+        2000,
+        160
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2
+    },
+    {
+      "id": "wf01-noop",
+      "name": "Sem Acao (NOOP)",
+      "parameters": {
+        "jsCode": "return [{json:{ok:true,motivo:'Evento ignorado por payload invalido'}}];"
+      },
+      "position": [
+        280,
+        720
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "alwaysOutputData": true,
+      "id": "wf01-gk",
+      "name": "GLPI: Encerrar Sessao",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "options": {},
+        "sendHeaders": true,
+        "url": "http://host.docker.internal:8080/apirest.php/killSession"
+      },
+      "position": [
+        2240,
+        240
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "timezone": "America/Sao_Paulo"
+  }
+}

@@ -1,0 +1,6 @@
+Checkpoint test evidence — 2026-09-25T03:42:25.2362728+00:00
+
+Command:
+  .venv\\Scripts\\python.exe -m pytest avaliacao/operacional/tests/test_operacional.py avaliacao/operacional/tests/test_monitoring_integrity.py -q
+
+Result: 45 passed in 6.20s.

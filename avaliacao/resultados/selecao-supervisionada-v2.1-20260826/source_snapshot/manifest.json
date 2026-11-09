@@ -1,0 +1,27 @@
+{
+  "purpose": "Immutable source copy for reproducing the partially valid V2.1 run after later code changes.",
+  "protocol_sha256": "3a58410ecbe440b3a759c2673a9f4de5e9329dcae78e18e7b1d2da6cdda73c3e",
+  "run_fingerprint": "6b112d9f1d331c571e47ffbe4e9478813d748a50f1e5536c45d024c336dec211",
+  "files": {
+    "selection_executor": {
+      "path": "selecionar_modelos_supervisionados.py",
+      "sha256": "9878cb40fd434c5f4aba1d9f20fbff560d8e0d5fedc3d4aa9316efef02cd7314"
+    },
+    "training_helper": {
+      "path": "treinar_modelo_local.py",
+      "sha256": "73bc75ff565c7b40c2190b4fed18f8507d8ab8e32110699d037946bc87fbc5f7"
+    },
+    "benchmark_requirements": {
+      "path": "requirements-benchmark.txt",
+      "sha256": "37d76acbff4cebde3ebf70797a70eed348bd2617928beaead4f0d3f6ac3d5a8b"
+    },
+    "hybrid_requirements": {
+      "path": "requirements-hybrid.txt",
+      "sha256": "a79848e354ed44c21ed072e827a34a750011aed644cdaddf4fb71cedb498517a"
+    },
+    "granite_requirements": {
+      "path": "requirements-granite.txt",
+      "sha256": "290c1fabc2b7e3f634dbb1209d5398e33ac080d70d0bd1c3ddd6a29d38b99d31"
+    }
+  }
+}

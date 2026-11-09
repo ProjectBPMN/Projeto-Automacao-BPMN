@@ -1,0 +1,25 @@
+{
+  "path": "avaliacao\\datasets\\desenvolvimento_local_v2.jsonl",
+  "sha256": "620a2004ace1b2fb86673d753e967083539775d82ad417046ea1dd8510b80219",
+  "records": 2800,
+  "classification_model_records": 1114,
+  "classification_groups": 230,
+  "deduplication_pairs": 1000,
+  "deduplication_groups": 200,
+  "source_audit": {
+    "path": "avaliacao\\datasets\\desenvolvimento_local_v2.jsonl",
+    "role": "TRAIN",
+    "splits": [
+      "DESENVOLVIMENTO"
+    ],
+    "records": 2800,
+    "sha256": "620a2004ace1b2fb86673d753e967083539775d82ad417046ea1dd8510b80219",
+    "neighbor_metadata_checked": [
+      "avaliacao\\datasets\\desenvolvimento_local_v2_manifest.json"
+    ],
+    "test_split_detected": false,
+    "reserved_scenario_set_detected": false
+  },
+  "synthetic": true,
+  "development_only": true
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "eh_duplicado": {
+      "type": "boolean"
+    },
+    "chamado_referencia_id": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "justificativa": {
+      "type": "string"
+    },
+    "caracteristicas_match": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 10
+    },
+    "confianca": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "probabilidades": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "duplicado": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "nao_duplicado": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "duplicado",
+        "nao_duplicado"
+      ]
+    }
+  },
+  "required": [
+    "eh_duplicado",
+    "chamado_referencia_id",
+    "justificativa",
+    "caracteristicas_match",
+    "confianca",
+    "probabilidades"
+  ]
+}

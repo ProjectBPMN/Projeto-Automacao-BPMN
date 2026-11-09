@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-02T04:51:39.840410Z",
+  "mode": "APPLY",
+  "status": "PASS",
+  "live_service_short_stop_required": true,
+  "temporary_target": {
+    "network": "none",
+    "published_ports": 0,
+    "volume_prefix": "projeto-ic-restore-n8n-"
+  },
+  "result": {
+    "status": "PASS",
+    "executed_at": "2026-09-02T04:52:46.408435Z",
+    "evidence_status": "ISOLATED_N8N_VOLUME_BACKUP_RESTORE_DRILL",
+    "scientific_result": false,
+    "semantic_correctness_confirmed": false,
+    "live_volume": "n8n_n8n-data",
+    "artifact": {
+      "path": "avaliacao\\runtime\\backups\\n8n-volume-20260902-045140.tar",
+      "sha256": "35847d195a0d76ed499572b63e47247d630fdedf8fcc18d52d32fce1cd0c0db0",
+      "bytes": 412945408
+    },
+    "isolated_restore": {
+      "temporary_volume_prefix": "projeto-ic-restore-n8n-",
+      "network": "none",
+      "published_ports": 0,
+      "database_sqlite_nonempty": true,
+      "exported_workflow_count": 30,
+      "included_runtime_state": [
+        "database.sqlite",
+        "database.sqlite-wal",
+        "database.sqlite-shm",
+        "config",
+        "binaryData",
+        "storage",
+        "nodes",
+        "git",
+        "ssh"
+      ],
+      "excluded_transient_content": [
+        ".cache",
+        "trace",
+        "nested_legacy_exports"
+      ]
+    },
+    "rollback_recovery_minutes": 0.7113322033333437,
+    "duration_seconds": 66.33411799999885,
+    "interpretation_limit": "Comprova restauração técnica deste snapshot; não comprova RPO/RTO institucional nem correção semântica."
+  }
+}

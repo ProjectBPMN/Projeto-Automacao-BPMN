@@ -1,0 +1,30 @@
+{
+  "schema_version": "4.1.0",
+  "purpose": "VALIDACAO_AUTOMATIZADA_INTERNA_NAO_CONFIRMATORIA",
+  "primary_analysis_unit": "narrative_core",
+  "confidence": 0.95,
+  "targets": {
+    "classification_independent_cores_per_class": 100,
+    "dedup_duplicate_independent_cores": 189,
+    "dedup_hard_nonduplicate_complete_independent_cores": 97,
+    "dedup_hard_nonduplicate_critical_independent_cores": 73
+  },
+  "expected_layout": {
+    "existing_v3_tickets_retained": 1200,
+    "new_classification_single_realization_tickets": 360,
+    "new_dedup_duplicate_single_realization_tickets": 298,
+    "new_dedup_nonduplicate_complete_single_realization_tickets": 98,
+    "new_dedup_nonduplicate_critical_single_realization_tickets": 122,
+    "recommended_total_tickets": 2078
+  },
+  "rules": [
+    "Novos casos devem adicionar núcleos semânticos, não apenas trocar seed, saudação, ortografia, solicitante ou local.",
+    "Cada núcleo novo entra uma vez na análise primária; repetições superficiais ficam na análise secundária de robustez.",
+    "Confirmações humanas e fiscais permanecem nos workflows e podem ser acionadas pelo oráculo determinístico depois do registro da predição.",
+    "O gabarito sintético não habilita scientific_result nem confirmatory_eligible.",
+    "Resultados por família individual permanecem exploratórios enquanto o suporte independente por família for pequeno.",
+    "A meta de 189 episódios positivos é o mínimo pré-fixado para que zero falsos negativos produza limite superior bilateral de Wilson <= 2%; qualquer falso negativo reprova esse gate neste tamanho."
+  ],
+  "scientific_result": false,
+  "confirmatory_eligible": false
+}

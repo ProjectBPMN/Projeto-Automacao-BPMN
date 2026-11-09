@@ -1,0 +1,83 @@
+
+services:
+  mariadb:
+    image: mariadb:10.11.16@sha256:8d9046cdb0b0961b3d2119bcb4bea62a185f11944be5968bc42b81d47801902e
+    container_name: glpi-db
+    restart: unless-stopped
+  
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Defina MYSQL_ROOT_PASSWORD em glpi/.env}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-glpi}
+      MYSQL_USER: ${MYSQL_USER:-glpi_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?Defina MYSQL_PASSWORD em glpi/.env}
+   
+    volumes:
+      - glpi-db-data:/var/lib/mysql # armazena os arquivos do banco de dados MariaDB
+    
+    networks:
+      - glpi-net # rede o container se conecta
+    healthcheck:
+      test: ['CMD', 'healthcheck.sh', '--connect', '--innodb_initialized']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 15s
+
+  glpi:
+    image: diouxx/glpi@sha256:9ca43af63ddcb7e1c9b7b452a50b8204980ac549526dee1c00296793bfe7789f # ambiente local congelado
+ 
+    container_name: glpi
+  
+    restart: unless-stopped
+
+    ports:
+      - '127.0.0.1:${GLPI_HTTP_PORT:-9080}:80'
+ 
+    environment:
+      
+      TIMEZONE: ${TZ:-America/Sao_Paulo}
+      GLPI_APP_TOKEN: ${GLPI_APP_TOKEN:?Defina GLPI_APP_TOKEN em glpi/.env}
+      GLPI_DB_HOST: ${GLPI_DB_HOST:-mariadb}
+      GLPI_DB_NAME: ${MYSQL_DATABASE:-glpi}
+      GLPI_DB_USER: ${MYSQL_USER:-glpi_user}
+      GLPI_DB_PASSWORD: ${MYSQL_PASSWORD:?Defina MYSQL_PASSWORD em glpi/.env}
+      N8N_GLPI_WEBHOOK_URL: ${N8N_GLPI_WEBHOOK_URL:-http://host.docker.internal:5678/webhook/glpi-ticket-fila-ia-v9}
+      N8N_GLPI_WEBHOOK_TEST_URL: ${N8N_GLPI_WEBHOOK_TEST_URL:-http://host.docker.internal:5678/webhook-test/glpi-ticket-fila-ia-v9}
+      N8N_GLPI_WEBHOOK_KEY: ${GLPI_WEBHOOK_KEY:?Defina GLPI_WEBHOOK_KEY em glpi/.env}
+      N8N_GLPI_WEBHOOK_SEND_TEST: ${N8N_GLPI_WEBHOOK_SEND_TEST:-0}
+      N8N_GLPI_WEBHOOK_TIMEOUT: ${N8N_GLPI_WEBHOOK_TIMEOUT:-8}
+      N8N_GLPI_WEBHOOK_RETRIES: ${N8N_GLPI_WEBHOOK_RETRIES:-3}
+      N8N_GLPI_WEBHOOK_RETRY_SLEEP_MS: ${N8N_GLPI_WEBHOOK_RETRY_SLEEP_MS:-500}
+
+    volumes:
+      # glpi-data armazena arquivos e configurações do GLPI 
+      - glpi-data:/var/www/html/glpi
+      - ./plugins/n8nwebhook:/var/www/html/glpi/plugins/n8nwebhook
+
+    healthcheck:
+      test: ['CMD-SHELL', 'curl -fsS -o /dev/null --max-time 5 http://127.0.0.1/ || exit 1']
+      interval: 10s
+      timeout: 6s
+      retries: 12
+      start_period: 45s
+  
+    # GLPI inicia apos bd
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    networks:
+      - glpi-net
+    extra_hosts:
+      - 'host.docker.internal:host-gateway' # permite enviar eventos ao webhook n8n no host
+
+volumes:
+  glpi-db-data: # glpi-db-data para armazenar os arquivos do MariaDB
+  glpi-data:
+
+
+networks:
+  # chama glpi-net em modo bridge, permitindo comunicação entre containers e acesso ao host
+  glpi-net:
+    driver: bridge
+
+

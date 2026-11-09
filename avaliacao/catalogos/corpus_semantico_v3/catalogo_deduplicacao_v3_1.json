@@ -1,0 +1,28 @@
+{
+  "schema_version": "3.1.0",
+  "status": "SINTETICO_PROXY_PENDENTE_ADJUDICACAO",
+  "note": "O rótulo negativo crítico significa apenas ausência de evidência suficiente para fusão automática; não afirma que os relatos sejam eventos diferentes.",
+  "relations": {
+    "positive": ["referencia_explicita", "mesmo_patrimonio_outro_solicitante", "complemento_mesma_falha", "parafrase_mesmo_ativo", "continuidade_nao_resolvida", "descricao_curta_com_id"],
+    "complete_negative": ["ativo_distinto_mesmo_local", "mesmo_ativo_falha_distinta", "mesmo_sintoma_outro_local", "incidente_novo_apos_resolucao", "identificador_distinto", "componente_distinto"],
+    "critical_negative": ["sem_identificador", "identificadores_conflitantes", "multiplas_ancoras", "estado_de_resolucao_incerto", "objeto_generico"]
+  },
+  "locked_relations": {
+    "positive": ["numero_de_os_compartilhado", "etiqueta_e_instante_coincidem", "retorno_do_mesmo_atendimento"],
+    "complete_negative": ["serial_explicitamente_distinto", "predio_e_unidade_distintos", "falha_posterior_documentada"],
+    "critical_negative": ["candidato_nao_identificado", "duas_os_possiveis", "historico_indeterminado_operacional"]
+  },
+  "development_assets": [
+    ["exaustor da capela", "vibra durante a operação", "Mecânica Geral"], ["sensor da câmara fria", "indica temperatura incorreta", "Suporte a Serviços Terceirizados"], ["válvula do tanque didático", "não mantém vedação", "Hidráulica"], ["luz de balizamento", "permanece apagada", "Elétrica"], ["trinco do armário de reagentes", "não trava", "Carpintaria / Marcenaria"],
+    ["bomba peristáltica", "interrompe a vazão", "Mecânica Geral"], ["grelha do lava-botas", "retém água", "Hidráulica"], ["placa acústica", "está desprendida", "Manutenção Predial"], ["motor da cortina cênica", "para no meio do percurso", "Suporte a Serviços Terceirizados"], ["tomada retrátil da mesa", "apresenta mau contato", "Elétrica"],
+    ["fecho da janela do herbário", "não mantém a folha fechada", "Carpintaria / Marcenaria"], ["registro da estufa", "goteja quando fechado", "Hidráulica"], ["controlador do silo", "reinicia sozinho", "Suporte a Serviços Terceirizados"], ["ladrilho tátil", "está solto", "Manutenção Predial"], ["ventilador do galpão", "produz ruído metálico", "Mecânica Geral"],
+    ["leitor da barreira", "não reconhece credenciais", "Suporte a Serviços Terceirizados"], ["calha da estufa", "transborda na chuva", "Manutenção Predial"], ["luminária da doca", "pisca ao acender", "Elétrica"], ["sifão do lava-olhos", "vaza na conexão", "Hidráulica"], ["porta do depósito químico", "raspa no batente", "Carpintaria / Marcenaria"],
+    ["atuador do pivô", "não completa o giro", "Suporte a Serviços Terceirizados"], ["suporte do scanner", "está instável", "Mecânica Geral"], ["vedação da câmara de sementes", "permite condensação", "Manutenção Predial"], ["disjuntor da bancada móvel", "desarma sob carga", "Elétrica"], ["torneira do biotério", "perde água pelo volante", "Hidráulica"],
+    ["dobradiça do alçapão", "soltou da folha", "Mecânica Geral"], ["sensor do reservatório", "perde comunicação", "Suporte a Serviços Terceirizados"], ["rodapé do arquivo", "descolou da parede", "Manutenção Predial"], ["botão da campainha", "não fecha contato", "Elétrica"], ["puxador da cabine", "está frouxo", "Carpintaria / Marcenaria"], ["ralo da sala de preparo", "escoa lentamente", "Hidráulica"]
+  ],
+  "locked_assets": [
+    ["agitador orbital", "varia a rotação", "Suporte a Serviços Terceirizados"], ["veneziana do abrigo elétrico", "está desalinhada", "Manutenção Predial"], ["válvula da linha de vapor", "apresenta fuga", "Mecânica Geral"], ["balizador da passarela", "não acende", "Elétrica"], ["fecho do freezer de campo", "não comprime a borracha", "Carpintaria / Marcenaria"],
+    ["bico do lavador de botas", "pulveriza sem uniformidade", "Hidráulica"], ["encoder do torno", "perde a referência", "Suporte a Serviços Terceirizados"], ["placa do forro da quarentena", "cedeu em uma borda", "Manutenção Predial"], ["interruptor do exaustor", "aquece ao uso", "Elétrica"], ["trinco da portinhola técnica", "não encaixa", "Mecânica Geral"],
+    ["dreno da cabine de lavagem", "retorna água", "Hidráulica"], ["telemetria da estação de chuva", "envia leituras intermitentes", "Suporte a Serviços Terceirizados"], ["pingadeira do banco de sementes", "permite infiltração", "Manutenção Predial"], ["conector da mesa óptica", "está sem energia", "Elétrica"], ["guia da porta de correr", "sai do trilho", "Carpintaria / Marcenaria"], ["mancal do elevador de carga", "emite estalo", "Mecânica Geral"]
+  ]
+}

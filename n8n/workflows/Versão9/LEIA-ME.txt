@@ -1,0 +1,20 @@
+PASTA N8N/WORKFLOWS/VERSAO 9
+============================
+
+- README.md: tutorial de importação, credenciais, ativação e manutenção pela UI.
+- TEST_REPORT.md: evidência atual, E2E fiscal concluído, limites e roteiro da
+  drenagem integrada ainda necessária; não confundir contratos/preflight com
+  garantia ponta a ponta.
+- validate_v9_static.py: valida builders, JSONs, grafo, schema e configuração.
+
+Os arquivos V9-*.json são os artefatos nativos/importáveis do n8n. Os
+build_wf*.py e helpers existem para manutenção e reprodutibilidade; não são
+necessários para operar os workflows importados.
+
+Exports:
+- V9-WF01-Sincronizador.json: sincronização GLPI -> PostgreSQL.
+- V9-WF02-Triagem.json: worker interno de deduplicação.
+- V9-WF03-Classificacao.json: classificação e encaminhamento.
+- V9-WF04-Decisao-Fiscal.json: decisões de duplicidade pelo fiscal.
+- V9-WF05-Metricas.json: observabilidade e avaliação.
+- V9-WF06-Fila-IA.json: webhook público, fila, lease, backoff e telemetria.

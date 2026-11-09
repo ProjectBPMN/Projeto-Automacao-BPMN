@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PASS",
+  "scope": "ISOLATED_SYNTHETIC_INFRASTRUCTURE_HOMOLOGATION",
+  "scientific_result": false,
+  "semantic_correctness_confirmed": false,
+  "production_data_copied": false,
+  "secrets_printed": false,
+  "containers": [
+    {
+      "name": "homolog-glpi",
+      "state": "running",
+      "health": "healthy",
+      "project": "projeto-ic-homolog"
+    },
+    {
+      "name": "homolog-glpi-credential-proxy",
+      "state": "running",
+      "health": "healthy",
+      "project": "projeto-ic-homolog"
+    },
+    {
+      "name": "homolog-glpi-db",
+      "state": "running",
+      "health": "healthy",
+      "project": "projeto-ic-homolog"
+    },
+    {
+      "name": "homolog-glpi-dedup-db",
+      "state": "running",
+      "health": "healthy",
+      "project": "projeto-ic-homolog"
+    },
+    {
+      "name": "homolog-local-ai-credential-proxy",
+      "state": "running",
+      "health": "healthy",
+      "project": "projeto-ic-homolog"
+    },
+    {
+      "name": "homolog-mailpit",
+      "state": "running",
+      "health": "healthy",
+      "project": "projeto-ic-homolog"
+    },
+    {
+      "name": "homolog-n8n",
+      "state": "running",
+      "health": "healthy",
+      "project": "projeto-ic-homolog"
+    },
+    {
+      "name": "homolog-n8n-gateway",
+      "state": "running",
+      "health": "healthy",
+      "project": "projeto-ic-homolog"
+    },
+    {
+      "name": "homolog-n8n-task-runners",
+      "state": "running",
+      "health": "none",
+      "project": "projeto-ic-homolog"
+    }
+  ],
+  "project_isolation": true,
+  "postgres": {
+    "runtime_role": "triagem_homolog_app",
+    "superuser": false,
+    "createdb": false,
+    "createrole": false,
+    "replication": false,
+    "bypassrls": false,
+    "public_table_count": 40,
+    "ticket_count": 0,
+    "query_ok": true
+  },
+  "http_probes": {
+    "n8n": {
+      "status": 200,
+      "ok": true
+    },
+    "glpi": {
+      "status": 200,
+      "ok": true
+    },
+    "mailpit": {
+      "status": 200,
+      "ok": true
+    }
+  },
+  "application_seed_status": "NOT_SEEDED_WITH_PRODUCTION_DATA_BY_DESIGN",
+  "interpretation_limit": "Confirma infraestrutura isolada, saúde e menor privilégio. Não equivale a aceite de produção, não contém chamados reais e não confirma semântica do modelo."
+}

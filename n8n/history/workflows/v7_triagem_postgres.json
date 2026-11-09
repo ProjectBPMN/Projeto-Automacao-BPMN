@@ -1,0 +1,2737 @@
+{
+  "active": false,
+  "connections": {
+    "C1. GLPI: Buscar Ticket do Webhook": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "E1. Estruturar Chamados",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "CL1. PG: Marcar BD (CLASSIFICANDO)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "CL1b. GLPI: Mover para Pendente",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "CL1b. GLPI: Mover para Pendente": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "CL2. IA: OBRA vs Manutencao + Executor",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "CL2. IA: OBRA vs Manutencao + Executor": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "CL3. Normalizar Classificacao",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "CL3. Normalizar Classificacao",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "CL3. Normalizar Classificacao": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "CL4. Switch: OBRA / DEMO / SOB_DEMANDA",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "CL4. Switch: OBRA / DEMO / SOB_DEMANDA": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "OBRA1. Enviar Email DDI/DG (Mailpit)",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "DEMO1. GLPI: Atribuir (status=2)",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "SOB1. GLPI: Em Atendimento Planejado (status=3)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "D1. PG: Historico para Dedup": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "D2. Montar Payload IA",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "D2. Montar Payload IA": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "D3. IA: Verificar Duplicidade",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "D3. IA: Verificar Duplicidade": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "D4. Normalizar Dedup",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "D4. Normalizar Dedup",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "D4. Normalizar Dedup": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "D5. E Duplicado?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "D5. E Duplicado?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "DUP1. PG: Marcar Em Aprovacao Fiscal",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "CL1. PG: Marcar BD (CLASSIFICANDO)",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "D4. Normalizar Dedup",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "DEMO1. GLPI: Atribuir (status=2)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "DEMO2. GLPI: Followup Atribuicao DEMO",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "DEMO2. GLPI: Followup Atribuicao DEMO": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "DEMO3. PG: Atualizar BD (ATRIBUIDO_DEMO)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "DEMO3. PG: Atualizar BD (ATRIBUIDO_DEMO)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Z1. Roteador Pos-Classificacao",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "DUP1. PG: Marcar Em Aprovacao Fiscal": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "DUP2. Preparar Corpo do Followup",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "DUP2. Preparar Corpo do Followup": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "DUP3. GLPI: Renomear Titulo [Duplicado]",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "DUP3. GLPI: Renomear Titulo [Duplicado]": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "DUP4. GLPI: Followup com Links Fiscal",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "DUP4. GLPI: Followup com Links Fiscal": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "L1. SplitInBatches (3)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "E1. Estruturar Chamados": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "U1. PG: UPSERT Chamado",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "F1. Filtrar: Apenas Novos para Triar": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "F2. Tem Chamados para Triar?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "F2. Tem Chamados para Triar?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "L1. SplitInBatches (3)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "FD1. Extrair Decisao Fiscal": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "FD1b. Link Fiscal Valido?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "FD1b. Link Fiscal Valido?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "G1. GLPI: Iniciar Sessao",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "FD99. Responder Link Fiscal Invalido",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "FD2. PG: Buscar Registro Fiscal": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "FD3. Validar Registro Fiscal",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "FD3. Validar Registro Fiscal": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "FD4. Switch Decisao Fiscal",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "FD4. Switch Decisao Fiscal": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "FD5. GLPI: Followup Duplicidade Confirmada",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "FD8. PG: Limpar Aprovacao e Reclassificar",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "FD99a. Responder Registro Fiscal Invalido",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "FD5. GLPI: Followup Duplicidade Confirmada": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "FD6. GLPI: Fechar Duplicado Confirmado",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "FD6. GLPI: Fechar Duplicado Confirmado": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "FD7. PG: Confirmar Duplicidade Fiscal",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "FD7. PG: Confirmar Duplicidade Fiscal": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "FD98a. Responder Confirmacao Duplicidade",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "FD8. PG: Limpar Aprovacao e Reclassificar": {
+      "main": [
+        {
+          "index": 0,
+          "node": "FD8b. GLPI: Restaurar Titulo Nao Duplicado",
+          "type": "main"
+        }
+      ]
+    },
+    "FD9. Reformatar Rejeicao para Classificacao": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "CL1. PG: Marcar BD (CLASSIFICANDO)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "G1. GLPI: Iniciar Sessao": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "M0. Switch: Modo",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "I1. GLPI: Buscar TUDO (Inicial)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "E1. Estruturar Chamados",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "L1. SplitInBatches (3)": {
+      "main": [
+        [],
+        [
+          {
+            "index": 0,
+            "node": "L2. Wait 20s entre lotes",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "L2. Wait 20s entre lotes": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "D1. PG: Historico para Dedup",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "M0. Switch: Modo": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "I1. GLPI: Buscar TUDO (Inicial)",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "C1. GLPI: Buscar Ticket do Webhook",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "S1. GLPI: Refresh Pend/Planej/Atrib/Soluc/Fechado",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "FD2. PG: Buscar Registro Fiscal",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "N1. Identificar Modo": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "N2. PG: Total no BD",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "N2. PG: Total no BD": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "N3. Resolver Modo Final",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "N3. Resolver Modo Final": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "G1. GLPI: Iniciar Sessao",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "OBRA1. Enviar Email DDI/DG (Mailpit)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "OBRA2. GLPI: Followup com Justificativa ao Solicitante",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "OBRA2. GLPI: Followup com Justificativa ao Solicitante": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "OBRA3. GLPI: Fechar Chamado (status=6)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "OBRA3. GLPI: Fechar Chamado (status=6)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "OBRA4. PG: Atualizar BD (FECHADO_OBRA)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "OBRA4. PG: Atualizar BD (FECHADO_OBRA)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Z1. Roteador Pos-Classificacao",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "S1. GLPI: Refresh Pend/Planej/Atrib/Soluc/Fechado": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "E1. Estruturar Chamados",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "SOB1. GLPI: Em Atendimento Planejado (status=3)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "SOB2. GLPI: Followup Sob Demanda",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "SOB2. GLPI: Followup Sob Demanda": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "SOB3. PG: Atualizar BD (ENCAMINHADO_PLANEJADO)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "SOB3. PG: Atualizar BD (ENCAMINHADO_PLANEJADO)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Z1. Roteador Pos-Classificacao",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "T1. Manual (Reprocessar / Primeira Exec)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "N1. Identificar Modo",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "T2. Webhook GLPI (Novo Chamado)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "N1. Identificar Modo",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "T3. Schedule 06h/12h/18h": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "N1. Identificar Modo",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "T4. Webhook Decisao Fiscal (Duplicidade)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "FD1. Extrair Decisao Fiscal",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "U1. PG: UPSERT Chamado": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "F1. Filtrar: Apenas Novos para Triar",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Z1. Roteador Pos-Classificacao": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "FD98. Responder Decisao Fiscal",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "L1. SplitInBatches (3)",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "L1. SplitInBatches (3)",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "name": "Triagem Inteligente de Chamados - v7 (Postgres)",
+  "nodes": [
+    {
+      "id": "2166a041-2a4a-4ce2-90cc-dce7503ea8aa",
+      "name": "T1. Manual (Reprocessar / Primeira Exec)",
+      "notes": "QUANDO USAR:\n1) BOOTSTRAP: na primeira vez que voce sobe o sistema (BD vazio), para popular o historico de 90 dias com Novo+Pendente+Planejado+Atribuido+Solucionado+Fechado.\n2) RECUPERACAO: se o webhook ficou offline e voce quer re-sincronizar tudo + triar Novos pendentes.\n3) MIGRACAO: se voce limpar a tabela tickets_processados e quiser reconstruir o estado.\n\nNAO usar no dia-a-dia: o webhook (T2) faz isso automaticamente para cada novo chamado.",
+      "parameters": {},
+      "position": [
+        -2400,
+        0
+      ],
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1
+    },
+    {
+      "id": "a605bbd7-08f4-4100-8e4b-1aa2453c23af",
+      "name": "T2. Webhook GLPI (Novo Chamado)",
+      "notes": "TRIGGER PRINCIPAL DO DIA-A-DIA.\nDispara automaticamente sempre que um chamado entra em status=Novo no GLPI.\nBusca apenas o ticket do evento (rapido) e dispara a triagem completa: dedup IA -> classificacao OBRA/Manutencao -> acao no GLPI.\n\nConfigurar no GLPI: Webhook POST com body {\"event\":\"new\",\"ticket_id\":\"#ticket.id#\"}",
+      "parameters": {
+        "httpMethod": "POST",
+        "options": {},
+        "path": "glpi-ticket-novo-v7"
+      },
+      "position": [
+        -2400,
+        240
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "b1f7e6d2-9a8c-4b13-a4e5-202604290701"
+    },
+    {
+      "id": "5ad92ddd-33ba-42d5-8877-a042e5089b8c",
+      "name": "T3. Schedule 06h/12h/18h",
+      "notes": "TRIGGER DE MANUTENCAO (NAO dispara triagem IA).\nRoda 3x ao dia (06h, 12h, 18h) e SO atualiza o BD com o estado atual dos chamados nao-Novos:\n  - Detecta mudancas que fiscais fizeram manualmente no GLPI (status, descricao)\n  - Reaplica o filtro de 90 dias (chamados antigos saem do escopo de comparacao)\n  - Mantem o BD sincronizado mesmo se o webhook falhou em algum evento\n\nTriagem IA de chamados Novos eh responsabilidade EXCLUSIVA do webhook (T2) ou do manual (T1).",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "expression": "0 6,12,18 * * *",
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "position": [
+        -2400,
+        480
+      ],
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2
+    },
+    {
+      "id": "06314295-3e56-47a3-a6d6-d2316c2b11e8",
+      "name": "N1. Identificar Modo",
+      "notes": "Detecta INICIAL (Manual), INCREMENTAL (Webhook) ou SCHEDULE.",
+      "parameters": {
+        "jsCode": "\n// Detecta de qual trigger veio a execucao\nlet modo = 'INICIAL';\nlet ticketIdEvento = null;\nlet eventoTipo = null;\n\ntry {\n  const wh = $('T2. Webhook GLPI (Novo Chamado)').first()?.json;\n  if (wh) {\n    const body = wh.body && typeof wh.body === 'object' ? wh.body : wh;\n    const evento = String(body.event ?? body.evento ?? body.payload?.event ?? '').toLowerCase().trim();\n    const idRaw = body.ticket_id ?? body.items_id ?? body.id ?? body.ticket?.id ?? body.payload?.ticket_id ?? body.payload?.id;\n    const idNum = Number(idRaw);\n    if (Number.isFinite(idNum) && idNum > 0) {\n      modo = 'INCREMENTAL';\n      ticketIdEvento = idNum;\n      eventoTipo = evento || 'new';\n    }\n  }\n} catch(e) {}\n\ntry {\n  const sc = $('T3. Schedule 06h/12h/18h').first()?.json;\n  if (sc && sc.timestamp && modo === 'INICIAL') modo = 'SCHEDULE';\n} catch(e) {}\n\nreturn [{ json: { modo_execucao: modo, ticket_id_evento: ticketIdEvento, evento_tipo: eventoTipo, iniciado_em: new Date().toISOString() } }];\n"
+      },
+      "position": [
+        -2160,
+        240
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "7a392d03-ea13-4b12-a8f9-7124f269a655",
+      "name": "N2. PG: Total no BD",
+      "notes": "Se BD vazio forca modo INICIAL mesmo se chamou via webhook/schedule.",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {},
+        "query": "SELECT COUNT(*)::int AS total FROM tickets_processados;"
+      },
+      "position": [
+        -1920,
+        240
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5
+    },
+    {
+      "id": "a90e5fc4-4de2-4d33-9195-8be1e6eaf34a",
+      "name": "N3. Resolver Modo Final",
+      "parameters": {
+        "jsCode": "\nconst ctx = $('N1. Identificar Modo').first().json;\nconst total = Number($json.total ?? 0);\nlet modo = ctx.modo_execucao;\nif (total === 0) modo = 'INICIAL';\nreturn [{ json: { ...ctx, modo_execucao: modo, total_no_bd: total, forcou_inicial: total === 0 && ctx.modo_execucao !== 'INICIAL' } }];\n"
+      },
+      "position": [
+        -1700,
+        240
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "4a6a1e08-0c3e-4df7-b843-4a61b0fc56c3",
+      "name": "G1. GLPI: Iniciar Sessao",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ 'user_token ' + $env.GLPI_USER_TOKEN }}"
+            }
+          ]
+        },
+        "options": {},
+        "sendHeaders": true,
+        "url": "http://host.docker.internal:8080/apirest.php/initSession"
+      },
+      "position": [
+        -1480,
+        240
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "f8928810-78a1-4566-b2cf-7f437243a0a8",
+      "name": "M0. Switch: Modo",
+      "parameters": {
+        "options": {},
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "c-i",
+                    "leftValue": "={{ (() => { try { return $('N3. Resolver Modo Final').first().json.modo_execucao; } catch (e) {} try { return $('FD1. Extrair Decisao Fiscal').first().json.modo_execucao; } catch (e) {} return ''; })() }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "INICIAL"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "INICIAL",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "c-c",
+                    "leftValue": "={{ (() => { try { return $('N3. Resolver Modo Final').first().json.modo_execucao; } catch (e) {} try { return $('FD1. Extrair Decisao Fiscal').first().json.modo_execucao; } catch (e) {} return ''; })() }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "INCREMENTAL"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "INCREMENTAL",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "c-s",
+                    "leftValue": "={{ (() => { try { return $('N3. Resolver Modo Final').first().json.modo_execucao; } catch (e) {} try { return $('FD1. Extrair Decisao Fiscal').first().json.modo_execucao; } catch (e) {} return ''; })() }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "SCHEDULE"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "SCHEDULE",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "c-f",
+                    "leftValue": "={{ (() => { try { return $('N3. Resolver Modo Final').first().json.modo_execucao; } catch (e) {} try { return $('FD1. Extrair Decisao Fiscal').first().json.modo_execucao; } catch (e) {} return ''; })() }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "FISCAL_DECISAO"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "FISCAL_DECISAO",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        -1240,
+        240
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2
+    },
+    {
+      "id": "5db2f568-8a32-48dc-9935-7189195557e3",
+      "name": "I1. GLPI: Buscar TUDO (Inicial)",
+      "notes": "INICIAL: traz Novo+Atribuido+Planejado+Pendente+Solucionado+Fechado. Filtro 90d aplicado em E1.",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('G1. GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "criteria[0][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[0][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[0][value]",
+              "value": "1"
+            },
+            {
+              "name": "criteria[0][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[1][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[1][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[1][value]",
+              "value": "2"
+            },
+            {
+              "name": "criteria[1][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[2][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[2][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[2][value]",
+              "value": "3"
+            },
+            {
+              "name": "criteria[2][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[3][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[3][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[3][value]",
+              "value": "4"
+            },
+            {
+              "name": "criteria[3][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[4][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[4][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[4][value]",
+              "value": "5"
+            },
+            {
+              "name": "criteria[4][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[5][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[5][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[5][value]",
+              "value": "6"
+            },
+            {
+              "name": "forcedisplay[0]",
+              "value": "1"
+            },
+            {
+              "name": "forcedisplay[1]",
+              "value": "2"
+            },
+            {
+              "name": "forcedisplay[2]",
+              "value": "12"
+            },
+            {
+              "name": "forcedisplay[3]",
+              "value": "21"
+            },
+            {
+              "name": "forcedisplay[4]",
+              "value": "83"
+            },
+            {
+              "name": "forcedisplay[5]",
+              "value": "15"
+            },
+            {
+              "name": "forcedisplay[6]",
+              "value": "4"
+            },
+            {
+              "name": "forcedisplay[7]",
+              "value": "22"
+            },
+            {
+              "name": "forcedisplay[8]",
+              "value": "14"
+            },
+            {
+              "name": "forcedisplay[9]",
+              "value": "19"
+            },
+            {
+              "name": "range",
+              "value": "0-9999"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "sendQuery": true,
+        "url": "http://host.docker.internal:8080/apirest.php/search/Ticket"
+      },
+      "position": [
+        -1000,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "4c3014ac-4ecc-4765-82a5-a8aadd77a1f6",
+      "name": "C1. GLPI: Buscar Ticket do Webhook",
+      "notes": "INCREMENTAL: busca apenas o ticket do evento. Comparacao ocorre contra o BD.",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('G1. GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "method": "GET",
+        "options": {},
+        "sendHeaders": true,
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/' + $('N3. Resolver Modo Final').first().json.ticket_id_evento }}"
+      },
+      "position": [
+        -1000,
+        240
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "a82c6c79-8a3c-4258-ba91-edf1566d4197",
+      "name": "S1. GLPI: Refresh Pend/Planej/Atrib/Soluc/Fechado",
+      "notes": "SCHEDULE: re-sincroniza chamados nao-Novos para detectar mudancas dos fiscais e re-aplicar filtro 90d.",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('G1. GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "criteria[0][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[0][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[0][value]",
+              "value": "2"
+            },
+            {
+              "name": "criteria[0][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[1][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[1][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[1][value]",
+              "value": "3"
+            },
+            {
+              "name": "criteria[1][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[2][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[2][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[2][value]",
+              "value": "4"
+            },
+            {
+              "name": "criteria[2][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[3][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[3][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[3][value]",
+              "value": "5"
+            },
+            {
+              "name": "criteria[3][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[4][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[4][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[4][value]",
+              "value": "6"
+            },
+            {
+              "name": "forcedisplay[0]",
+              "value": "1"
+            },
+            {
+              "name": "forcedisplay[1]",
+              "value": "2"
+            },
+            {
+              "name": "forcedisplay[2]",
+              "value": "12"
+            },
+            {
+              "name": "forcedisplay[3]",
+              "value": "21"
+            },
+            {
+              "name": "forcedisplay[4]",
+              "value": "83"
+            },
+            {
+              "name": "forcedisplay[5]",
+              "value": "15"
+            },
+            {
+              "name": "forcedisplay[6]",
+              "value": "4"
+            },
+            {
+              "name": "forcedisplay[7]",
+              "value": "22"
+            },
+            {
+              "name": "forcedisplay[8]",
+              "value": "14"
+            },
+            {
+              "name": "forcedisplay[9]",
+              "value": "19"
+            },
+            {
+              "name": "range",
+              "value": "0-9999"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "sendQuery": true,
+        "url": "http://host.docker.internal:8080/apirest.php/search/Ticket"
+      },
+      "position": [
+        -1000,
+        480
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "20661e13-f74c-40b8-9ba2-7486175845e6",
+      "name": "E1. Estruturar Chamados",
+      "notes": "Normaliza payload do GLPI e aplica recorte de 90 dias para Atribuido/Planejado/Solucionado/Fechado.",
+      "parameters": {
+        "jsCode": "\nconst STATUS_LABELS = { 1:'Novo', 2:'Atribuido', 3:'Planejado', 4:'Pendente', 5:'Solucionado', 6:'Fechado' };\nconst DIAS_RECORTE = 90;\nconst ctx = $('N3. Resolver Modo Final').first().json;\nconst corte = new Date(Date.now() - DIAS_RECORTE * 86400000);\n\nfunction statusNumero(s) {\n  if (typeof s === 'number') return s;\n  const t = String(s||'').toLowerCase();\n  if (t.includes('novo')||t==='1') return 1;\n  if (t.includes('atribu')||t==='2') return 2;\n  if (t.includes('planejad')||t==='3') return 3;\n  if (t.includes('pendent')||t==='4') return 4;\n  if (t.includes('soluc')||t.includes('finaliz')||t==='5') return 5;\n  if (t.includes('fechado')||t.includes('close')||t==='6') return 6;\n  return Number(s) || null;\n}\n\nfunction limpaHtml(s){ return String(s||'').replace(/<[^>]*>/g,'').trim(); }\n\nfunction normalizar(c){\n  const id = Number(c['2'] ?? c.id);\n  const status_num = statusNumero(c['12'] ?? c.status);\n  const dataAbertura = c['15'] ?? c.date ?? null;\n  const dataMod = c['19'] ?? c.date_mod ?? dataAbertura;\n  return {\n    id,\n    titulo: c['1'] ?? c.name ?? '',\n    descricao: limpaHtml(c['21'] ?? c.content ?? ''),\n    tipo_servico: String(c['14'] ?? c.itilcategories_id ?? ''),\n    localizacao: String(c['83'] ?? c.locations_id ?? ''),\n    solicitante: String(c['4'] ?? c.users_id_recipient ?? ''),\n    email_solicitante: String(c['22'] ?? ''),\n    status_num, status_nome: STATUS_LABELS[status_num] || 'Desconhecido',\n    data_abertura: dataAbertura, data_ultima_mudanca: dataMod,\n  };\n}\n\nlet lista = [];\nfor (const item of $input.all()) {\n  const d = item.json;\n  if (Array.isArray(d?.data)) lista.push(...d.data);\n  else if (Array.isArray(d)) lista.push(...d);\n  else if (d && typeof d === 'object') lista.push(d);\n}\n\nlet normalizados = lista.map(normalizar).filter(c => Number.isFinite(c.id) && c.id > 0);\nnormalizados = normalizados.filter(c => {\n  if ([1,4].includes(c.status_num)) return true;\n  if ([2,3,5,6].includes(c.status_num)) {\n    const d = new Date(c.data_abertura);\n    return !isNaN(d) && d >= corte;\n  }\n  return false;\n});\n\nreturn normalizados.map(c => ({ json: { chamado: c, modo: ctx.modo_execucao } }));\n"
+      },
+      "position": [
+        -760,
+        240
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "c6dcda60-3eb8-4087-95fb-9ffdc00af935",
+      "name": "U1. PG: UPSERT Chamado",
+      "notes": "Insere ou atualiza o chamado no BD a cada execucao. Mantem triagem_status e em_aprovacao_fiscal existentes (so atualiza colunas do GLPI).",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {},
+        "query": "INSERT INTO tickets_processados (\n  id, titulo, descricao, tipo_servico, localizacao, solicitante, email_solicitante,\n  status_num, status_nome, data_abertura, data_ultima_mudanca, origem_ingestao\n) VALUES (\n  {{ $json.chamado.id }},\n  '{{ ($json.chamado.titulo || '').split(\"'\").join(\"''\") }}',\n  '{{ ($json.chamado.descricao || '').split(\"'\").join(\"''\") }}',\n  '{{ ($json.chamado.tipo_servico || '').split(\"'\").join(\"''\") }}',\n  '{{ ($json.chamado.localizacao || '').split(\"'\").join(\"''\") }}',\n  '{{ ($json.chamado.solicitante || '').split(\"'\").join(\"''\") }}',\n  '{{ ($json.chamado.email_solicitante || '').split(\"'\").join(\"''\") }}',\n  {{ $json.chamado.status_num }},\n  '{{ ($json.chamado.status_nome || '').split(\"'\").join(\"''\") }}',\n  '{{ $json.chamado.data_abertura }}'::timestamptz,\n  '{{ $json.chamado.data_ultima_mudanca }}'::timestamptz,\n  '{{ $(\"N3. Resolver Modo Final\").first().json.modo_execucao === \"INICIAL\" ? \"BOOTSTRAP\" : $(\"N3. Resolver Modo Final\").first().json.modo_execucao === \"SCHEDULE\" ? \"SCHEDULE_REFRESH\" : \"WEBHOOK\" }}'\n)\nON CONFLICT (id) DO UPDATE SET\n  titulo               = EXCLUDED.titulo,\n  descricao            = EXCLUDED.descricao,\n  tipo_servico         = EXCLUDED.tipo_servico,\n  localizacao          = EXCLUDED.localizacao,\n  solicitante          = EXCLUDED.solicitante,\n  email_solicitante    = EXCLUDED.email_solicitante,\n  status_num           = EXCLUDED.status_num,\n  status_nome          = EXCLUDED.status_nome,\n  data_ultima_mudanca  = EXCLUDED.data_ultima_mudanca\nRETURNING id, status_num, triagem_status, em_aprovacao_fiscal;"
+      },
+      "position": [
+        -520,
+        240
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5
+    },
+    {
+      "id": "27eb8d7c-43a7-48e2-87ac-c1601a911d3a",
+      "name": "F1. Filtrar: Apenas Novos para Triar",
+      "notes": "Filtra apenas Novos+Pendentes para triar. SCHEDULE retorna vazio (so atualiza BD, nao dispara IA).",
+      "parameters": {
+        "jsCode": "// SCHEDULE apenas atualiza o BD. A triagem IA roda na primeira carga/manual\n// para Novo/Pendente e, depois disso, pelo webhook somente para Novo.\nconst ctx = $('N3. Resolver Modo Final').first().json;\nif (ctx.modo_execucao === 'SCHEDULE') return [];\n\nconst items = $input.all();\nconst allE1 = $('E1. Estruturar Chamados').all();\nconst saida = [];\n\nfor (const it of items) {\n  const upsert = it.json;\n  const orig = allE1.find(x => Number(x.json.chamado.id) === Number(upsert.id));\n  if (!orig) continue;\n  const c = orig.json.chamado;\n\n  const statusPermitidos = ctx.modo_execucao === 'INCREMENTAL' ? [1] : [1, 4];\n  if (!statusPermitidos.includes(c.status_num)) continue;\n  if (upsert.triagem_status && !['PENDENTE', 'CLASSIFICANDO'].includes(upsert.triagem_status)) continue;\n  if (upsert.em_aprovacao_fiscal === true) continue;\n\n  saida.push({ json: { chamado: c, _origem_fluxo: 'TRIAGEM' } });\n}\nreturn saida;"
+      },
+      "position": [
+        -280,
+        240
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "cf1f48a9-aac4-431f-a684-cf1787ebbd8e",
+      "name": "F2. Tem Chamados para Triar?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "has",
+              "leftValue": "={{ $input.all().length }}",
+              "operator": {
+                "operation": "gt",
+                "type": "number"
+              },
+              "rightValue": 0
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          }
+        }
+      },
+      "position": [
+        -40,
+        240
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "b18ecec8-7c10-4a76-b6dc-1e8ad4212d3d",
+      "name": "L1. SplitInBatches (3)",
+      "notes": "Processa 1 chamado por lote para reduzir risco de rate limit da IA. Configuravel.",
+      "parameters": {
+        "batchSize": 1,
+        "options": {
+          "reset": false
+        }
+      },
+      "position": [
+        200,
+        160
+      ],
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3
+    },
+    {
+      "id": "f64a9fa6-8a6f-4ef5-bf73-671c4c1c7b62",
+      "name": "L2. Wait 20s entre lotes",
+      "parameters": {
+        "jsCode": "return $input.all();"
+      },
+      "position": [
+        440,
+        160
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "f6cd4592-5c91-4fd0-88bf-3b77d79d9097",
+      "name": "D1. PG: Historico para Dedup",
+      "notes": "Compara Novo/Pendente com chamados em processamento + Solucionado/Fechado (ultimos 3 meses, max 50).",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {},
+        "query": "WITH atual AS (\n  SELECT id, titulo, descricao, tipo_servico, localizacao, data_abertura\n    FROM tickets_processados\n   WHERE id = {{ $json.chamado.id }}\n),\nhistorico AS (\n  SELECT h.*\n    FROM tickets_processados h\n   WHERE h.id <> {{ $json.chamado.id }}\n     AND (\n       h.status_num = 4\n       OR (h.status_num IN (2,3,5,6) AND h.data_abertura >= NOW() - INTERVAL '90 days')\n     )\n),\nrankeado AS (\n  SELECT h.id, h.titulo, h.descricao, h.tipo_servico, h.localizacao,\n         h.solicitante, h.email_solicitante, h.status_num, h.status_nome,\n         h.data_abertura, h.data_ultima_mudanca,\n         (\n           CASE WHEN lower(coalesce(h.localizacao,'')) = lower(coalesce(a.localizacao,'')) AND coalesce(h.localizacao,'') <> '' THEN 40 ELSE 0 END +\n           CASE WHEN lower(coalesce(h.tipo_servico,'')) = lower(coalesce(a.tipo_servico,'')) AND coalesce(h.tipo_servico,'') <> '' THEN 15 ELSE 0 END +\n           CASE WHEN lower(coalesce(h.titulo,'')) = lower(coalesce(a.titulo,'')) AND coalesce(h.titulo,'') <> '' THEN 30 ELSE 0 END +\n           CASE WHEN h.data_abertura BETWEEN a.data_abertura - INTERVAL '30 days' AND a.data_abertura + INTERVAL '30 days' THEN 10 ELSE 0 END +\n           COALESCE(ts_rank_cd(\n             to_tsvector('portuguese', coalesce(h.titulo,'') || ' ' || coalesce(h.descricao,'')),\n             plainto_tsquery('portuguese', left(coalesce(a.titulo,'') || ' ' || coalesce(a.descricao,''), 500))\n           ) * 100, 0)\n         ) AS score_pre_ia\n    FROM historico h\n    CROSS JOIN atual a\n)\nSELECT id, titulo, descricao, tipo_servico, localizacao, solicitante, email_solicitante,\n       status_num, status_nome, data_abertura, data_ultima_mudanca, score_pre_ia\n  FROM rankeado\n ORDER BY score_pre_ia DESC, data_abertura DESC\n LIMIT 60;"
+      },
+      "position": [
+        680,
+        160
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5
+    },
+    {
+      "id": "0d73b8ac-8135-47f0-ab06-d5df3fc3118b",
+      "name": "D2. Montar Payload IA",
+      "notes": "Combina chamado_atual + historico_abertos em uma unica entrada para a IA (com retry em erro).",
+      "parameters": {
+        "jsCode": "\n// Monta payload para IA e reutiliza em tentativas de reprocesso\nconst MAX_RETRY = 3;\nconst entrada = $input.all();\nconst retryPayload = entrada[0]?.json || {};\nconst veioDeRetry = !!retryPayload.chamado_atual && Array.isArray(retryPayload.historico_abertos);\n\nif (veioDeRetry) {\n  const tentativa = Number(retryPayload._retry_dedup || 0) + 1;\n  if (tentativa >= MAX_RETRY) {\n    // Esgotou retries: passa como nao_duplicado para nao travar o batch\n    return [{\n      json: {\n        chamado_atual: retryPayload.chamado_atual,\n        historico_abertos: retryPayload.historico_abertos,\n        _retry_dedup: tentativa,\n        _force_nao_dup: true,\n      }\n    }];\n  }\n  return [{\n    json: {\n      ...retryPayload,\n      _retry_dedup: tentativa,\n    }\n  }];\n}\n\nconst itensHist = entrada.map(i => i.json);\nconst atual = $('L1. SplitInBatches (3)').item.json.chamado;\nreturn [{\n  json: {\n    chamado_atual: atual,\n    historico_abertos: itensHist,\n    _retry_dedup: 0,\n  }\n}];\n"
+      },
+      "position": [
+        920,
+        160
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "alwaysOutputData": true,
+      "id": "212ccec0-2e6d-4530-943a-c73ce991867c",
+      "maxTries": 3,
+      "name": "D3. IA: Verificar Duplicidade",
+      "notes": "Output 1=sucesso, Output 2=erro -> reprocessa via D2.",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "builtInTools": {},
+        "jsonOutput": true,
+        "messages": {
+          "values": [
+            {
+              "content": "=Voce e um assistente inteligente de triagem de infraestrutura do GLPI.\n\nSua UNICA tarefa e:\n1. EXTRAIR e PADRONIZAR os campos do chamado\n2. VERIFICAR se o chamado e DUPLICADO comparando com o historico\n\n# CHAMADO ATUAL:\n{{ JSON.stringify($json.chamado_atual) }}\n\n# HISTORICO (Pendente/Planejado/Atribuido/Solucionado/Fechado, ultimos 3 meses):\n{{ JSON.stringify($json.historico_abertos) }}\n\n# REGRAS DE DUPLICIDADE:\n- E DUPLICADO se relatar o MESMO problema fisico no MESMO local, mesmo com palavras diferentes.\n- Se dois chamados tratam do MESMO TIPO de equipamento na MESMA localizacao em janela curta (<= 30 dias), considere potencial duplicata.\n- NAO compare o chamado consigo mesmo.\n- Se o historico estiver vazio, eh_duplicado=false.\n\n# FORMATO DE SAIDA OBRIGATORIO (JSON puro, sem markdown):\n{\n  \"chamado\": {\n    \"id\": number, \"titulo\": string, \"tipo_servico\": string,\n    \"descricao\": string, \"localizacao\": string,\n    \"solicitante\": string, \"data_hora_abertura\": string, \"email_solicitante\": string\n  },\n  \"duplicidade\": {\n    \"eh_duplicado\": true|false,\n    \"chamado_referencia_id\": number|null,\n    \"caracteristicas_match\": [string],\n    \"justificativa_para_fiscal\": string\n  }\n}"
+            }
+          ]
+        },
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "models/gemini-2.0-flash"
+        },
+        "options": {}
+      },
+      "position": [
+        1160,
+        160
+      ],
+      "retryOnFail": true,
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "waitBetweenTries": 20000
+    },
+    {
+      "disabled": true,
+      "id": "1c6d7f96-e5c3-4f0e-bf1a-53f01be6b8a9",
+      "name": "D3b. Wait 20s para Retry IA",
+      "notes": "Bypass tecnico: retry sem wait para evitar bloqueio por mecanismo de espera temporal.",
+      "parameters": {
+        "jsCode": "return $input.all();"
+      },
+      "position": [
+        1280,
+        20
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "0db9a1c4-26c4-40c9-a5b7-74eb398890c0",
+      "name": "D4. Normalizar Dedup",
+      "parameters": {
+        "jsCode": "function tryParse(t){ if (typeof t !== 'string') return null; try { return JSON.parse(t);} catch { return null; } }\nfunction extrair(j){\n  let d = j;\n  const t1 = d?.content?.parts?.[0]?.text;\n  if (typeof t1 === 'string') { const p = tryParse(t1); if (p) d = p; }\n  const t2 = d?.message?.content;\n  if (typeof t2 === 'string') { const p = tryParse(t2); if (p) d = p; }\n  return d;\n}\nfunction pBool(v){\n  if (typeof v === 'boolean') return v;\n  if (typeof v === 'string') return ['true','1','sim','yes'].includes(v.toLowerCase().trim());\n  return false;\n}\nfunction tok(s){\n  return String(s || '')\n    .toLowerCase()\n    .normalize('NFD').replace(/[\\u0300-\\u036f]/g, '')\n    .replace(/[^a-z0-9\\s]/g, ' ')\n    .split(/\\s+/)\n    .filter(w => w.length >= 4);\n}\nfunction jacc(a,b){\n  const A = new Set(a); const B = new Set(b);\n  if (!A.size || !B.size) return 0;\n  let inter = 0;\n  for (const x of A) if (B.has(x)) inter++;\n  const uni = A.size + B.size - inter;\n  return uni ? inter / uni : 0;\n}\nfunction dedupHeuristica(atual, historico){\n  const atualText = [atual.titulo, atual.descricao, atual.localizacao].join(' ');\n  const tAt = tok(atualText);\n  let best = null;\n  let bestScore = 0;\n  for (const h of historico) {\n    if (Number(h.id) === Number(atual.id)) continue;\n    const hText = [h.titulo, h.descricao, h.localizacao].join(' ');\n    const scoreTxt = jacc(tAt, tok(hText));\n    const locEq = String(h.localizacao || '').trim().toLowerCase() === String(atual.localizacao || '').trim().toLowerCase();\n    const tipoEq = String(h.tipo_servico || '').trim() === String(atual.tipo_servico || '').trim();\n    const score = scoreTxt + (locEq ? 0.2 : 0) + (tipoEq ? 0.1 : 0);\n    if (score > bestScore) { bestScore = score; best = h; }\n  }\n  const eh = !!best && bestScore >= 0.58;\n  return {\n    eh_duplicado: eh,\n    chamado_referencia_id: eh ? Number(best.id) : null,\n    chamado_referencia: eh ? {\n      id: best.id, titulo: best.titulo, status_nome: best.status_nome,\n      descricao: best.descricao, localizacao: best.localizacao,\n      solicitante: best.solicitante, email_solicitante: best.email_solicitante,\n    } : null,\n    justificativa_para_fiscal: eh\n      ? 'Fallback sem IA: similaridade textual/local/tipo acima do limiar (score=' + bestScore.toFixed(2) + ').'\n      : 'Fallback sem IA: nao encontrou similaridade suficiente com historico (score max=' + bestScore.toFixed(2) + ').',\n    caracteristicas_match: eh ? ['fallback_heuristica', 'score_' + bestScore.toFixed(2)] : ['fallback_heuristica']\n  };\n}\nconst saida = [];\nfor (const it of $input.all()) {\n  const payload = $('D2. Montar Payload IA').item.json;\n  const atual = payload.chamado_atual || {};\n  const historico = Array.isArray(payload.historico_abertos) ? payload.historico_abertos : [];\n\n  if (payload._force_nao_dup) {\n    saida.push({\n      json: {\n        chamado: atual,\n        duplicidade: {\n          eh_duplicado: false,\n          chamado_referencia_id: null,\n          chamado_referencia: null,\n          justificativa_para_fiscal: 'IA indisponivel apos ' + payload._retry_dedup + ' tentativas. Prosseguindo como nao-duplicado.',\n          caracteristicas_match: [],\n        },\n        _ia_ok: false,\n        _retry_dedup: payload._retry_dedup,\n      }\n    });\n    continue;\n  }\n\n  const r = extrair(it.json);\n  const iaOk = !!r && typeof r === 'object';\n  const dup = iaOk ? (r.duplicidade || {}) : {};\n  const refIdNum = Number(dup.chamado_referencia_id);\n  const ref = Number.isFinite(refIdNum) ? (historico.find(h => Number(h.id) === refIdNum) || null) : null;\n  let eh = iaOk ? pBool(dup.eh_duplicado) : null;\n\n  let duplicidadeOut = {\n    eh_duplicado: eh,\n    chamado_referencia_id: Number.isFinite(refIdNum) ? refIdNum : null,\n    chamado_referencia: ref ? {\n      id: ref.id, titulo: ref.titulo, status_nome: ref.status_nome,\n      descricao: ref.descricao, localizacao: ref.localizacao,\n      solicitante: ref.solicitante, email_solicitante: ref.email_solicitante,\n    } : null,\n    justificativa_para_fiscal: dup.justificativa_para_fiscal || (iaOk ? 'Sem justificativa' : 'Falha ao interpretar resposta da IA'),\n    caracteristicas_match: Array.isArray(dup.caracteristicas_match) ? dup.caracteristicas_match : [],\n  };\n\n  if (duplicidadeOut.eh_duplicado === null || duplicidadeOut.eh_duplicado === undefined) {\n    duplicidadeOut = dedupHeuristica(atual, historico);\n  }\n\n  saida.push({\n    json: {\n      chamado: { ...atual, ...(iaOk ? (r.chamado || {}) : {}) },\n      duplicidade: duplicidadeOut,\n      _ia_ok: iaOk,\n      _retry_dedup: Number(payload._retry_dedup || 0),\n    }\n  });\n}\nreturn saida;"
+      },
+      "position": [
+        1400,
+        160
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "af580be2-6daf-47c3-8b65-0cd3608138e1",
+      "name": "D5. E Duplicado?",
+      "parameters": {
+        "options": {
+          "fallbackOutput": "extra"
+        },
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "d-y",
+                    "leftValue": "={{ $json.duplicidade.eh_duplicado }}",
+                    "operator": {
+                      "operation": "true",
+                      "type": "boolean"
+                    },
+                    "rightValue": true
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "DUPLICADO",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "d-n",
+                    "leftValue": "={{ $json.duplicidade.eh_duplicado }}",
+                    "operator": {
+                      "operation": "false",
+                      "type": "boolean"
+                    },
+                    "rightValue": false
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "NAO_DUPLICADO",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        1640,
+        160
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2
+    },
+    {
+      "id": "d55c2b04-4c3e-430c-97a1-bacfd6e30e95",
+      "name": "DUP1. PG: Marcar Em Aprovacao Fiscal",
+      "notes": "Marca o chamado como 'em aprovacao fiscal' no BD para que outros NAO sejam bloqueados.",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {
+          "queryReplacement": "={{ $json.duplicidade.justificativa_para_fiscal }}"
+        },
+        "query": "UPDATE tickets_processados\n   SET status_num=4, status_nome='Pendente',\n       triagem_status='PENDENTE',\n       em_aprovacao_fiscal=TRUE,\n       aprovacao_iniciada_em=NOW(),\n       classificacao='POSSIVEL_DUPLICADO',\n       duplicado_de_id={{ $json.duplicidade.chamado_referencia_id || 'NULL' }},\n       motivo_classificacao=$1,\n       ultima_acao_workflow='AGUARDANDO_DECISAO_FISCAL_DUPLICIDADE'\n WHERE id={{ $json.chamado.id }}\nRETURNING id;"
+      },
+      "position": [
+        1880,
+        0
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5
+    },
+    {
+      "id": "3b72df0b-e2eb-455e-8559-19a96ed3c9fe",
+      "name": "DUP2. Preparar Corpo do Followup",
+      "parameters": {
+        "jsCode": "const src = $('D4. Normalizar Dedup').item.json;\nconst c = src.chamado;\nconst dup = src.duplicidade;\nconst ref = dup.chamado_referencia || {};\nconst refId = dup.chamado_referencia_id;\nconst titulo = (c.titulo || '').startsWith('[Duplicado]') ? c.titulo : `[Duplicado] ${c.titulo || 'Chamado #' + c.id}`;\nconst baseUrl = (process.env.FISCAL_DECISION_BASE_URL || 'http://localhost:5678/webhook/triagem-fiscal-duplicidade-v7').replace(/\\/$/, '');\nconst linkConfirmar = `${baseUrl}?decisao=confirmar&chamado_id=${encodeURIComponent(c.id)}&ref_id=${encodeURIComponent(refId || '')}`;\nconst linkNaoDuplicado = `${baseUrl}?decisao=nao_duplicado&chamado_id=${encodeURIComponent(c.id)}&ref_id=${encodeURIComponent(refId || '')}`;\n\nconst corpo = [\n  '[TRIAGEM_IA][PENDENTE_DECISAO_DUPLICIDADE]',\n  '',\n  `Chamado #${c.id} foi marcado como POSSIVEL DUPLICATA pela IA.`,\n  '',\n  `Match identificado: chamado #${ref.id || refId || 'N/A'}`,\n  `Titulo do match: ${ref.titulo || 'N/A'}`,\n  `Status do match: ${ref.status_nome || 'N/A'}`,\n  `Descricao do match: ${ref.descricao || 'N/A'}`,\n  `Localizacao do match: ${ref.localizacao || 'N/A'}`,\n  `Solicitante do match: ${ref.solicitante || 'N/A'} <${ref.email_solicitante || 'sem-email'}>`,\n  '',\n  `Motivo: ${dup.justificativa_para_fiscal}`,\n  `Caracteristicas: ${(dup.caracteristicas_match||[]).join(', ') || 'N/A'}`,\n  '',\n  `Solicitante atual: ${c.solicitante} <${c.email_solicitante || 'sem-email'}>`,\n  `Localizacao atual: ${c.localizacao}`,\n  `Tipo servico atual: ${c.tipo_servico}`,\n  `Descricao atual: ${c.descricao}`,\n  '',\n  'DECIDA clicando em um dos links abaixo:',\n  `Duplicado: ${linkConfirmar}`,\n  `Nao duplicado: ${linkNaoDuplicado}`,\n].join('\\n');\n\nreturn [{ json: { ...src, _titulo_novo: titulo, _followup_corpo: corpo, _link_confirmar: linkConfirmar, _link_nao_duplicado: linkNaoDuplicado } }];"
+      },
+      "position": [
+        2120,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "cf00c67c-750e-4e6d-92a0-68b88fdd47cc",
+      "name": "DUP3. GLPI: Renomear Titulo [Duplicado]",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('G1. GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"id\": $json.chamado.id, \"name\": $json._titulo_novo, \"status\": 4}} }}",
+        "method": "PUT",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/' + $json.chamado.id }}"
+      },
+      "position": [
+        2360,
+        -120
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "c7fc7953-694c-4e61-a160-10ad6feeabb2",
+      "name": "DUP4. GLPI: Followup com Links Fiscal",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('G1. GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"items_id\": $(\"DUP2. Preparar Corpo do Followup\").item.json.chamado.id, \"itemtype\": \"Ticket\", \"content\": $(\"DUP2. Preparar Corpo do Followup\").item.json._followup_corpo}} }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "http://host.docker.internal:8080/apirest.php/ITILFollowup"
+      },
+      "position": [
+        2360,
+        120
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "disabled": true,
+      "id": "5aa41208-0071-4779-9d39-408534d878fa",
+      "name": "DUP5. Aguardar Decisao Fiscal (infinito)",
+      "notes": "Aguarda infinitamente sem travar outros chamados (cada execucao eh independente).",
+      "parameters": {
+        "options": {},
+        "resume": "webhook"
+      },
+      "position": [
+        2600,
+        0
+      ],
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1
+    },
+    {
+      "disabled": true,
+      "id": "06b0517a-b44a-43f5-a0d0-243c46277c54",
+      "name": "DUP6. Decisao Fiscal: Confirmou?",
+      "parameters": {
+        "options": {},
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "f-c",
+                    "leftValue": "={{ ($json.query?.decisao || '').toLowerCase() }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "confirmar"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "CONFIRMADO_DUP",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "f-n",
+                    "leftValue": "={{ ($json.query?.decisao || '').toLowerCase() }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "nao_duplicado"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "NAO_DUP_FISCAL",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        2840,
+        0
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2
+    },
+    {
+      "disabled": true,
+      "id": "00018c78-e520-4a0a-be57-ed6a0ee37a28",
+      "name": "DUP7a. GLPI: Fechar Chamado Duplicado (status=6)",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('G1. GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"id\": $json._chamado_id, \"status\": 6}} }}",
+        "method": "PUT",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/' + $json._chamado_id }}"
+      },
+      "position": [
+        3080,
+        -120
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "disabled": true,
+      "id": "abacd359-9843-4d92-8ff1-dc6be9794230",
+      "name": "DUP7b. PG: Atualizar BD (DUPLICADO_FECHADO)",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {},
+        "query": "UPDATE tickets_processados\n   SET status_num=6, status_nome='Fechado',\n       triagem_status='DUPLICADO_FECHADO',\n       em_aprovacao_fiscal=FALSE,\n       classificacao='DUPLICADO',\n       triado_em=NOW(),\n       ultima_acao_workflow='FECHADO_DUPLICIDADE_CONFIRMADA'\n WHERE id={{ $('DUP6a. Extrair IDs da Decisao').item.json._chamado_id }};"
+      },
+      "position": [
+        3320,
+        -120
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5
+    },
+    {
+      "disabled": true,
+      "id": "450b2c46-7e3a-475f-93cb-38a851e95621",
+      "name": "DUP6a. Extrair IDs da Decisao",
+      "notes": "Extrai chamado_id e ref_id do query string do resume webhook.",
+      "parameters": {
+        "jsCode": "\nconst q = $json.query || {};\nconst id = Number(q.chamado_id);\nreturn [{ json: { ...$json, _chamado_id: id, _ref_id: Number(q.ref_id) || null } }];\n"
+      },
+      "position": [
+        2840,
+        240
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "disabled": true,
+      "id": "0fb7a902-9173-431b-b4ae-00e86b270534",
+      "name": "DUP8. PG: Limpar em_aprovacao (Fiscal Rejeitou)",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {},
+        "query": "UPDATE tickets_processados\n   SET em_aprovacao_fiscal=FALSE,\n       classificacao=NULL,\n       motivo_classificacao=NULL,\n       ultima_acao_workflow='FISCAL_REJEITOU_DUPLICIDADE_SEGUE_CLASSIFICACAO'\n WHERE id={{ $json._chamado_id }}\nRETURNING id, titulo, descricao, tipo_servico, localizacao,\n          solicitante, email_solicitante, status_num, status_nome,\n          data_abertura, data_ultima_mudanca;"
+      },
+      "position": [
+        3080,
+        240
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5
+    },
+    {
+      "disabled": true,
+      "id": "d9ecb0db-7d85-4c48-892f-758c10422879",
+      "name": "DUP9. Reformatar para Classificacao",
+      "parameters": {
+        "jsCode": "\n// Reformata para entrar no fluxo de classificacao\nconst r = $json;\nreturn [{ json: { chamado: r } }];\n"
+      },
+      "position": [
+        3320,
+        240
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "61267d30-5515-42a8-b1bc-75ccb4f359a5",
+      "name": "CL1. PG: Marcar BD (CLASSIFICANDO)",
+      "notes": "Coloca chamado em Pendente no BD enquanto IA classifica.",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {},
+        "query": "UPDATE tickets_processados\n   SET status_num=4, status_nome='Pendente',\n       triagem_status='CLASSIFICANDO',\n       ultima_acao_workflow='CLASSIFICANDO_OBRA_MANUTENCAO'\n WHERE id={{ $json.chamado.id }}\nRETURNING id, titulo, descricao, tipo_servico, localizacao,\n          solicitante, email_solicitante, status_num, status_nome,\n          data_abertura, data_ultima_mudanca,\n          '{{ (($json._origem_fluxo || $json.chamado._origem_fluxo || \"TRIAGEM\") + \"\").split(\"'\").join(\"''\") }}'::text AS origem_fluxo;"
+      },
+      "position": [
+        1880,
+        320
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5
+    },
+    {
+      "id": "4a5317ff-bb15-4061-86e5-2d29a08635f7",
+      "name": "CL1b. GLPI: Mover para Pendente",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('G1. GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"id\": $json.id, \"status\": 4}} }}",
+        "method": "PUT",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/' + $json.id }}"
+      },
+      "position": [
+        2120,
+        320
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "alwaysOutputData": true,
+      "id": "e1972f69-5155-469d-89c9-05d36567c796",
+      "maxTries": 3,
+      "name": "CL2. IA: OBRA vs Manutencao + Executor",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "builtInTools": {},
+        "jsonOutput": true,
+        "messages": {
+          "values": [
+            {
+              "content": "=Voce e o Especialista em Triagem de Infraestrutura.\nClassifique o chamado em OBRA ou MANUTENCAO. Se MANUTENCAO, defina executor (DEMO ou SOB_DEMANDA).\n\n# DEFINICOES:\n- OBRA: criacao de novo espaco/estrutura, ampliacao, demolicao, pavimentacao, projeto de engenharia. NAO e manutencao predial.\n- MANUTENCAO: corrigir defeitos, reparos pontuais, conservacao, substituicao de pecas. Volta ao estado original.\n- Equipe DEMO consegue: eletrica, hidraulica, carpintaria, mecanica geral, manutencao predial pequena.\n- SOB_DEMANDA (precisa empresa externa): elevadores, ar-condicionado central, sistemas de incendio, obras de telhado complexas.\n\n# CHAMADO:\n{{ JSON.stringify($('CL1. PG: Marcar BD (CLASSIFICANDO)').item.json) }}\n\n# FORMATO OBRIGATORIO (JSON puro, sem markdown):\n{\n  \"tipo\": \"OBRA\" | \"MANUTENCAO\",\n  \"executor\": \"DEMO\" | \"SOB_DEMANDA\" | \"DDI_DG\",\n  \"categoria\": string,\n  \"justificativa\": string,\n  \"mensagem_solicitante\": string\n}\n\nSe tipo=OBRA, executor SEMPRE = \"DDI_DG\" e mensagem_solicitante deve explicar ao solicitante por que foi classificado como OBRA."
+            }
+          ]
+        },
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "models/gemini-2.0-flash"
+        },
+        "options": {}
+      },
+      "position": [
+        2360,
+        320
+      ],
+      "retryOnFail": true,
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "waitBetweenTries": 20000
+    },
+    {
+      "id": "e236a90d-bd8e-473a-aeff-735fae2bf1c4",
+      "name": "CL3. Normalizar Classificacao",
+      "parameters": {
+        "jsCode": "function tryParse(t){ try { return JSON.parse(t); } catch { return null; } }\nfunction extrair(j){\n  let d = j;\n  const t1 = d?.content?.parts?.[0]?.text;\n  if (typeof t1 === 'string') { const p = tryParse(t1); if (p) d = p; }\n  const t2 = d?.message?.content;\n  if (typeof t2 === 'string') { const p = tryParse(t2); if (p) d = p; }\n  return d;\n}\nfunction heuristica(ch){\n  const txt = [ch.titulo, ch.descricao, ch.localizacao].join(' ').toLowerCase();\n  const obraKeys = ['construcao','construir','ampliacao','ampliar','nova sala','novo predio','obra','reforma completa','pavimentacao'];\n  const sobKeys = ['ar-condicionado','ar condicionado','split','chiller','elevador','incendio','servidor','switch','projetor','laboratorio especializado'];\n  const isObra = obraKeys.some(k => txt.includes(k));\n  if (isObra) {\n    return {\n      tipo: 'OBRA', executor: 'DDI_DG', categoria: 'OBRA_CIVIL',\n      justificativa: 'Fallback sem IA: texto indica criacao/ampliacao/reforma estrutural.',\n      mensagem_solicitante: 'Sua solicitacao foi classificada como OBRA e encaminhada ao setor responsavel (DDI/DG).'\n    };\n  }\n  const isSob = sobKeys.some(k => txt.includes(k));\n  return {\n    tipo: 'MANUTENCAO',\n    executor: isSob ? 'SOB_DEMANDA' : 'DEMO',\n    categoria: isSob ? 'MANUTENCAO_ESPECIALIZADA' : 'MANUTENCAO_PREDIAL',\n    justificativa: isSob\n      ? 'Fallback sem IA: item especializado identificado no texto.'\n      : 'Fallback sem IA: reparo/manutencao predial simples.',\n    mensagem_solicitante: 'Sua solicitacao foi classificada como manutencao e encaminhada para atendimento.'\n  };\n}\nconst saida = [];\nfor (const it of $input.all()) {\n  const r = extrair(it.json) || {};\n  const cl1Row = $('CL1. PG: Marcar BD (CLASSIFICANDO)').item.json;\n  const chamado = {\n    id: cl1Row.id,\n    titulo: cl1Row.titulo,\n    descricao: cl1Row.descricao,\n    tipo_servico: cl1Row.tipo_servico,\n    localizacao: cl1Row.localizacao,\n    solicitante: cl1Row.solicitante,\n    email_solicitante: cl1Row.email_solicitante,\n    status_num: cl1Row.status_num,\n    status_nome: cl1Row.status_nome,\n    data_abertura: cl1Row.data_abertura,\n    data_ultima_mudanca: cl1Row.data_ultima_mudanca,\n    _origem_fluxo: cl1Row.origem_fluxo || 'TRIAGEM',\n  };\n\n  let tipo = String(r.tipo || '').toUpperCase();\n  let executor = String(r.executor || '').toUpperCase();\n  const tipoVal = ['OBRA','MANUTENCAO'].includes(tipo);\n  const execVal = ['DDI_DG','DEMO','SOB_DEMANDA'].includes(executor);\n\n  let out;\n  if (!tipoVal || !execVal || (tipo === 'OBRA' && executor !== 'DDI_DG')) {\n    out = heuristica(chamado);\n  } else {\n    if (tipo === 'OBRA') executor = 'DDI_DG';\n    out = {\n      tipo,\n      executor,\n      categoria: r.categoria || '',\n      justificativa: r.justificativa || '',\n      mensagem_solicitante: r.mensagem_solicitante || ''\n    };\n  }\n\n  saida.push({ json: { chamado, classificacao: out } });\n}\nreturn saida;"
+      },
+      "position": [
+        2600,
+        320
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "8c73060c-e2ab-48f7-a79c-ef26e8d3b4d5",
+      "name": "CL4. Switch: OBRA / DEMO / SOB_DEMANDA",
+      "parameters": {
+        "options": {
+          "fallbackOutput": "extra"
+        },
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "o",
+                    "leftValue": "={{ $json.classificacao.tipo }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "OBRA"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "OBRA",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "d",
+                    "leftValue": "={{ $json.classificacao.executor }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "DEMO"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "DEMO",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "s",
+                    "leftValue": "={{ $json.classificacao.executor }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "SOB_DEMANDA"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "SOB_DEMANDA",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        2840,
+        320
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2
+    },
+    {
+      "id": "11ea9b30-7a07-4fbc-86cc-22180f548ce8",
+      "name": "OBRA1. Enviar Email DDI/DG (Mailpit)",
+      "parameters": {
+        "emailFormat": "text",
+        "fromEmail": "triagem@campus.local",
+        "options": {
+          "appendAttribution": false
+        },
+        "subject": "={{ '[Triagem IA] OBRA detectada - chamado #' + $json.chamado.id }}",
+        "text": "={{ 'Chamado #' + $json.chamado.id + '\\nTitulo: ' + $json.chamado.titulo + '\\nLocalizacao: ' + ($json.chamado.localizacao || 'N/A') + '\\nSolicitante: ' + ($json.chamado.solicitante || 'N/A') + ' <' + ($json.chamado.email_solicitante || 'sem-email') + '>' + '\\n\\nClassificacao: OBRA' + '\\nCategoria: ' + ($json.classificacao.categoria || 'N/A') + '\\nJustificativa: ' + ($json.classificacao.justificativa || 'N/A') + '\\n\\nDescricao:\\n' + ($json.chamado.descricao || '') }}",
+        "toEmail": "ddi-dg@campus.local"
+      },
+      "position": [
+        3080,
+        160
+      ],
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1
+    },
+    {
+      "id": "12996de8-3aeb-4ec1-b85d-fd73cbde1cd6",
+      "name": "OBRA2. GLPI: Followup com Justificativa ao Solicitante",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('G1. GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"items_id\": $(\"CL3. Normalizar Classificacao\").item.json.chamado.id, \"itemtype\": \"Ticket\", \"content\": \"[TRIAGEM_IA][CLASSIFICADO_COMO_OBRA]\\n\\n\" + $(\"CL3. Normalizar Classificacao\").item.json.classificacao.mensagem_solicitante + \"\\n\\nA demanda foi encaminhada por e-mail ao DDI/DG e este chamado sera FECHADO no GLPI por nao se tratar de servico da equipe DEMO de manutencao.\\n\\nJustificativa tecnica: \" + $(\"CL3. Normalizar Classificacao\").item.json.classificacao.justificativa}} }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "http://host.docker.internal:8080/apirest.php/ITILFollowup"
+      },
+      "position": [
+        3320,
+        160
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "7daa268a-3fa4-49ef-ac5f-02ecdd4483eb",
+      "name": "OBRA3. GLPI: Fechar Chamado (status=6)",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('G1. GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"id\": $(\"CL3. Normalizar Classificacao\").item.json.chamado.id, \"status\": 6}} }}",
+        "method": "PUT",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/' + $('CL3. Normalizar Classificacao').item.json.chamado.id }}"
+      },
+      "position": [
+        3560,
+        160
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "2738272e-49fb-4242-99e0-945c312c9205",
+      "name": "OBRA4. PG: Atualizar BD (FECHADO_OBRA)",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {
+          "queryReplacement": "={{ $('CL3. Normalizar Classificacao').item.json.classificacao.justificativa }}"
+        },
+        "query": "UPDATE tickets_processados\n   SET status_num=6, status_nome='Fechado',\n       triagem_status='FECHADO_OBRA',\n       classificacao='OBRA',\n       executor='DDI_DG',\n       em_aprovacao_fiscal=FALSE,\n       motivo_classificacao=$1,\n       triado_em=NOW(),\n       ultima_acao_workflow='FECHADO_POR_OBRA'\n WHERE id={{ $('CL3. Normalizar Classificacao').item.json.chamado.id }}\nRETURNING id, triagem_status, status_num, status_nome,\n          '{{ ($(\"CL3. Normalizar Classificacao\").item.json.chamado._origem_fluxo || \"TRIAGEM\").split(\"'\").join(\"''\") }}'::text AS origem_fluxo;"
+      },
+      "position": [
+        3800,
+        160
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5
+    },
+    {
+      "id": "02c58a0f-4764-43c6-9faf-a68424e687f8",
+      "name": "DEMO1. GLPI: Atribuir (status=2)",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('G1. GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"id\": $json.chamado.id, \"status\": 2}} }}",
+        "method": "PUT",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/' + $json.chamado.id }}"
+      },
+      "position": [
+        3080,
+        360
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "c5b89cec-0f2e-459a-9b29-e7a282a53000",
+      "name": "DEMO2. GLPI: Followup Atribuicao DEMO",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('G1. GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"items_id\": $(\"CL3. Normalizar Classificacao\").item.json.chamado.id, \"itemtype\": \"Ticket\", \"content\": \"[TRIAGEM_IA][ATRIBUIDO_DEMO]\\n\\nClassificado como MANUTENCAO executavel pela equipe DEMO.\\nCategoria sugerida: \" + $(\"CL3. Normalizar Classificacao\").item.json.classificacao.categoria + \"\\n\\nJustificativa: \" + $(\"CL3. Normalizar Classificacao\").item.json.classificacao.justificativa}} }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "http://host.docker.internal:8080/apirest.php/ITILFollowup"
+      },
+      "position": [
+        3320,
+        360
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "6d6babcf-63e9-4c7f-b283-0d84fff8fb26",
+      "name": "DEMO3. PG: Atualizar BD (ATRIBUIDO_DEMO)",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {
+          "queryReplacement": "={{ $('CL3. Normalizar Classificacao').item.json.classificacao.justificativa }}"
+        },
+        "query": "UPDATE tickets_processados\n   SET status_num=2, status_nome='Atribuido',\n       triagem_status='ATRIBUIDO_DEMO',\n       classificacao='MANUTENCAO',\n       executor='DEMO',\n       em_aprovacao_fiscal=FALSE,\n       motivo_classificacao=$1,\n       triado_em=NOW(),\n       ultima_acao_workflow='ATRIBUIDO_EQUIPE_DEMO'\n WHERE id={{ $('CL3. Normalizar Classificacao').item.json.chamado.id }}\nRETURNING id, triagem_status, status_num, status_nome,\n          '{{ ($(\"CL3. Normalizar Classificacao\").item.json.chamado._origem_fluxo || \"TRIAGEM\").split(\"'\").join(\"''\") }}'::text AS origem_fluxo;"
+      },
+      "position": [
+        3560,
+        360
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5
+    },
+    {
+      "id": "f47be78e-1ba1-4bfd-9e59-2c5188633936",
+      "name": "SOB1. GLPI: Em Atendimento Planejado (status=3)",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('G1. GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"id\": $json.chamado.id, \"status\": 3}} }}",
+        "method": "PUT",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/' + $json.chamado.id }}"
+      },
+      "position": [
+        3080,
+        560
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "56648bc8-7aa1-4d55-b38a-f79966bbca0c",
+      "name": "SOB2. GLPI: Followup Sob Demanda",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('G1. GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"items_id\": $(\"CL3. Normalizar Classificacao\").item.json.chamado.id, \"itemtype\": \"Ticket\", \"content\": \"[TRIAGEM_IA][SOB_DEMANDA]\\n\\nClassificado como MANUTENCAO mas FORA do escopo da equipe DEMO. Necessario contratacao/orcamento externo.\\nCategoria: \" + $(\"CL3. Normalizar Classificacao\").item.json.classificacao.categoria + \"\\n\\nJustificativa: \" + $(\"CL3. Normalizar Classificacao\").item.json.classificacao.justificativa}} }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "http://host.docker.internal:8080/apirest.php/ITILFollowup"
+      },
+      "position": [
+        3320,
+        560
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "f9ecc7ce-c2e7-479f-8dbd-842425e3060a",
+      "name": "SOB3. PG: Atualizar BD (ENCAMINHADO_PLANEJADO)",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {
+          "queryReplacement": "={{ $('CL3. Normalizar Classificacao').item.json.classificacao.justificativa }}"
+        },
+        "query": "UPDATE tickets_processados\n   SET status_num=3, status_nome='Planejado',\n       triagem_status='ENCAMINHADO_PLANEJADO',\n       classificacao='MANUTENCAO',\n       executor='SOB_DEMANDA',\n       em_aprovacao_fiscal=FALSE,\n       motivo_classificacao=$1,\n       triado_em=NOW(),\n       ultima_acao_workflow='ENCAMINHADO_SOB_DEMANDA'\n WHERE id={{ $('CL3. Normalizar Classificacao').item.json.chamado.id }}\nRETURNING id, triagem_status, status_num, status_nome,\n          '{{ ($(\"CL3. Normalizar Classificacao\").item.json.chamado._origem_fluxo || \"TRIAGEM\").split(\"'\").join(\"''\") }}'::text AS origem_fluxo;"
+      },
+      "position": [
+        3560,
+        560
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5
+    },
+    {
+      "id": "v7-webhook-fiscal-decisao",
+      "name": "T4. Webhook Decisao Fiscal (Duplicidade)",
+      "notes": "Recebe os cliques do fiscal: ?decisao=confirmar|nao_duplicado&chamado_id=ID&ref_id=ID_MATCH",
+      "parameters": {
+        "httpMethod": "GET",
+        "options": {},
+        "path": "triagem-fiscal-duplicidade-v7",
+        "responseMode": "responseNode"
+      },
+      "position": [
+        -1180,
+        480
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "b1f7e6d2-9a8c-4b13-a4e5-202604290702"
+    },
+    {
+      "id": "v7-fd-extrair-decisao",
+      "name": "FD1. Extrair Decisao Fiscal",
+      "parameters": {
+        "jsCode": "const q = $json.query || {};\nconst b = $json.body || {};\nconst decisao = String(q.decisao ?? b.decisao ?? '').toLowerCase().trim();\nconst chamadoId = Number(q.chamado_id ?? b.chamado_id ?? q.ticket_id ?? b.ticket_id ?? q.id ?? b.id);\nconst refId = Number(q.ref_id ?? b.ref_id ?? '');\nconst fiscalValido = Number.isFinite(chamadoId) && chamadoId > 0 && ['confirmar', 'nao_duplicado'].includes(decisao);\n\nreturn [{\n  json: {\n    modo_execucao: 'FISCAL_DECISAO',\n    fiscal_valido: fiscalValido,\n    decisao,\n    chamado_id: fiscalValido ? chamadoId : null,\n    chamado_id_sql: fiscalValido ? chamadoId : -1,\n    ref_id: Number.isFinite(refId) && refId > 0 ? refId : null,\n    recebido_em: new Date().toISOString(),\n    mensagem_resposta: fiscalValido\n      ? 'Decisao recebida. Processando...'\n      : 'Link invalido: informe decisao=confirmar ou decisao=nao_duplicado e chamado_id valido.',\n  }\n}];"
+      },
+      "position": [
+        -940,
+        480
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "v7-fd-link-valido",
+      "name": "FD1b. Link Fiscal Valido?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "fiscal-valido",
+              "leftValue": "={{ $json.fiscal_valido }}",
+              "operator": {
+                "operation": "true",
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          }
+        }
+      },
+      "position": [
+        -720,
+        480
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "v7-pos-classificacao-router",
+      "name": "Z1. Roteador Pos-Classificacao",
+      "parameters": {
+        "options": {
+          "fallbackOutput": "extra"
+        },
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "origem-fiscal",
+                    "leftValue": "={{ $json.origem_fluxo }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "FISCAL_REJEITOU_DUP"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "FISCAL",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "origem-triagem",
+                    "leftValue": "={{ $json.origem_fluxo || \"TRIAGEM\" }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "TRIAGEM"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "TRIAGEM",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        3880,
+        260
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "v7-fd-pg-buscar-registro",
+      "name": "FD2. PG: Buscar Registro Fiscal",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {},
+        "query": "WITH encontrado AS (\n  SELECT id, titulo, descricao, tipo_servico, localizacao, solicitante, email_solicitante,\n         status_num, status_nome, data_abertura, data_ultima_mudanca,\n         triagem_status, classificacao, duplicado_de_id, motivo_classificacao,\n         em_aprovacao_fiscal\n    FROM tickets_processados\n   WHERE id = {{ $('FD1. Extrair Decisao Fiscal').first().json.chamado_id_sql }}\n)\nSELECT COALESCE(e.id, {{ $('FD1. Extrair Decisao Fiscal').first().json.chamado_id_sql }}) AS id,\n       e.titulo, e.descricao, e.tipo_servico, e.localizacao,\n       e.solicitante, e.email_solicitante, e.status_num, e.status_nome,\n       e.data_abertura, e.data_ultima_mudanca, e.triagem_status,\n       e.classificacao, e.duplicado_de_id, e.motivo_classificacao,\n       COALESCE(e.em_aprovacao_fiscal, FALSE) AS em_aprovacao_fiscal,\n       (e.id IS NOT NULL) AS encontrado,\n       '{{ $(\"FD1. Extrair Decisao Fiscal\").first().json.decisao }}'::text AS decisao,\n       {{ $('FD1. Extrair Decisao Fiscal').first().json.ref_id || 'NULL' }}::bigint AS ref_id;"
+      },
+      "position": [
+        560,
+        520
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6
+    },
+    {
+      "id": "v7-fd-validar-registro",
+      "name": "FD3. Validar Registro Fiscal",
+      "parameters": {
+        "jsCode": "const r = $json;\nlet acao = 'INVALIDO';\nlet mensagem = '';\n\nif (!r.encontrado) {\n  mensagem = `Chamado #${r.id} nao encontrado no banco de triagem.`;\n} else if (!r.em_aprovacao_fiscal) {\n  mensagem = `Chamado #${r.id} nao esta aguardando decisao fiscal de duplicidade.`;\n} else if (r.decisao === 'confirmar') {\n  acao = 'CONFIRMAR';\n  mensagem = `Duplicidade confirmada pelo fiscal para o chamado #${r.id}.`;\n} else if (r.decisao === 'nao_duplicado') {\n  acao = 'REJEITAR';\n  mensagem = `Duplicidade rejeitada pelo fiscal para o chamado #${r.id}. O chamado seguira para classificacao.`;\n} else {\n  mensagem = 'Decisao fiscal invalida.';\n}\n\nreturn [{ json: { ...r, acao, mensagem_resposta: mensagem } }];"
+      },
+      "position": [
+        800,
+        520
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "v7-fd-switch-acao",
+      "name": "FD4. Switch Decisao Fiscal",
+      "parameters": {
+        "options": {},
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "fd-confirmar",
+                    "leftValue": "={{ $json.acao }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "CONFIRMAR"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "CONFIRMAR",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "fd-rejeitar",
+                    "leftValue": "={{ $json.acao }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "REJEITAR"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "NAO_DUPLICADO",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "fd-invalido",
+                    "leftValue": "={{ $json.acao }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "INVALIDO"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "INVALIDO",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        1040,
+        520
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "v7-fd-followup-confirmado",
+      "name": "FD5. GLPI: Followup Duplicidade Confirmada",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('G1. GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"items_id\": $json.id, \"itemtype\": \"Ticket\", \"content\": \"[TRIAGEM_IA][DUPLICIDADE_CONFIRMADA_FISCAL]\\n\\nO fiscal confirmou que este chamado e duplicado do chamado #\" + ($json.duplicado_de_id || $json.ref_id || \"N/A\") + \".\\n\\nMotivo original da IA: \" + ($json.motivo_classificacao || \"N/A\")}} }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "http://host.docker.internal:8080/apirest.php/ITILFollowup"
+      },
+      "position": [
+        1320,
+        360
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "v7-fd-glpi-fechar-confirmado",
+      "name": "FD6. GLPI: Fechar Duplicado Confirmado",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('G1. GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"id\": $(\"FD3. Validar Registro Fiscal\").item.json.id, \"status\": 6}} }}",
+        "method": "PUT",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/' + $('FD3. Validar Registro Fiscal').item.json.id }}"
+      },
+      "position": [
+        1560,
+        360
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "v7-fd-pg-confirmado",
+      "name": "FD7. PG: Confirmar Duplicidade Fiscal",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {},
+        "query": "UPDATE tickets_processados\n   SET status_num=6, status_nome='Fechado',\n       triagem_status='DUPLICADO_FECHADO',\n       em_aprovacao_fiscal=FALSE,\n       aprovacao_decidida_em=NOW(),\n       decisao_fiscal='CONFIRMOU_DUP',\n       classificacao='DUPLICADO',\n       triado_em=NOW(),\n       ultima_acao_workflow='FECHADO_DUPLICIDADE_CONFIRMADA'\n WHERE id={{ $('FD3. Validar Registro Fiscal').item.json.id }}\nRETURNING id, triagem_status, status_num, status_nome;"
+      },
+      "position": [
+        1800,
+        360
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6
+    },
+    {
+      "id": "v7-fd-pg-rejeitar",
+      "name": "FD8. PG: Limpar Aprovacao e Reclassificar",
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {},
+        "query": "UPDATE tickets_processados\n   SET em_aprovacao_fiscal=FALSE,\n       aprovacao_decidida_em=NOW(),\n       decisao_fiscal='REJEITOU_DUP',\n       classificacao=NULL,\n       motivo_classificacao=NULL,\n       ultima_acao_workflow='FISCAL_REJEITOU_DUPLICIDADE_SEGUE_CLASSIFICACAO'\n WHERE id={{ $json.id }}\nRETURNING id, titulo, descricao, tipo_servico, localizacao,\n          solicitante, email_solicitante, status_num, status_nome,\n          data_abertura, data_ultima_mudanca,\n          'FISCAL_REJEITOU_DUP'::text AS origem_fluxo;"
+      },
+      "position": [
+        1320,
+        560
+      ],
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6
+    },
+    {
+      "id": "v7-fd-formatar-reclassificacao",
+      "name": "FD9. Reformatar Rejeicao para Classificacao",
+      "parameters": {
+        "jsCode": "const r = $json;\nreturn [{\n  json: {\n    _origem_fluxo: r.origem_fluxo || 'FISCAL_REJEITOU_DUP',\n    chamado: {\n      id: r.id,\n      titulo: r.titulo,\n      descricao: r.descricao,\n      tipo_servico: r.tipo_servico,\n      localizacao: r.localizacao,\n      solicitante: r.solicitante,\n      email_solicitante: r.email_solicitante,\n      status_num: r.status_num,\n      status_nome: r.status_nome,\n      data_abertura: r.data_abertura,\n      data_ultima_mudanca: r.data_ultima_mudanca,\n      _origem_fluxo: r.origem_fluxo || 'FISCAL_REJEITOU_DUP',\n    }\n  }\n}];"
+      },
+      "position": [
+        1560,
+        560
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "v7-fd-responder-ok",
+      "name": "FD98. Responder Decisao Fiscal",
+      "parameters": {
+        "options": {
+          "enableStreaming": false,
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              }
+            ]
+          }
+        },
+        "respondWith": "text",
+        "responseBody": "={{ $json.origem_fluxo === 'FISCAL_REJEITOU_DUP' ? 'Decisao registrada: o chamado #' + $json.id + ' NAO era duplicado e foi reclassificado. Resultado: ' + $json.triagem_status + ' / status GLPI ' + $json.status_nome + '.' : 'Decisao registrada para o chamado #' + $json.id + '.' }}"
+      },
+      "position": [
+        4260,
+        500
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5
+    },
+    {
+      "id": "v7-fd-responder-confirmado",
+      "name": "FD98a. Responder Confirmacao Duplicidade",
+      "parameters": {
+        "options": {
+          "enableStreaming": false,
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              }
+            ]
+          }
+        },
+        "respondWith": "text",
+        "responseBody": "={{ 'Decisao registrada: chamado #' + $json.id + ' confirmado como duplicado e fechado no GLPI.' }}"
+      },
+      "position": [
+        2040,
+        360
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5
+    },
+    {
+      "id": "v7-fd-responder-invalido",
+      "name": "FD99. Responder Link Fiscal Invalido",
+      "parameters": {
+        "options": {
+          "enableStreaming": false,
+          "responseCode": 400,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              }
+            ]
+          }
+        },
+        "respondWith": "text",
+        "responseBody": "={{ $json.mensagem_resposta || 'Link de decisao fiscal invalido.' }}"
+      },
+      "position": [
+        -480,
+        620
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5
+    },
+    {
+      "id": "v7-fd-responder-registro-invalido",
+      "name": "FD99a. Responder Registro Fiscal Invalido",
+      "parameters": {
+        "options": {
+          "enableStreaming": false,
+          "responseCode": 400,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              }
+            ]
+          }
+        },
+        "respondWith": "text",
+        "responseBody": "={{ $json.mensagem_resposta || 'Nao foi possivel processar a decisao fiscal.' }}"
+      },
+      "position": [
+        1320,
+        760
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5
+    },
+    {
+      "id": "v7-fd-glpi-restaurar-titulo",
+      "name": "FD8b. GLPI: Restaurar Titulo Nao Duplicado",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('G1. GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ Object.fromEntries([[\"input\", Object.fromEntries([[\"id\", $json.id], [\"name\", String($json.titulo || \"\").replace(\"[Duplicado] \", \"\").replace(\"[Duplicado]\", \"\")]])]]) }}",
+        "method": "PUT",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/' + $json.id }}"
+      },
+      "position": [
+        1440,
+        560
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "timezone": "America/Sao_Paulo"
+  }
+}

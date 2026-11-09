@@ -1,0 +1,1505 @@
+{
+  "name": "V9 - WF04 Decisão Fiscal",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "fiscal-decisao-fiscal-ic-2026",
+        "responseMode": "responseNode",
+        "options": {},
+        "httpMethod": "POST"
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1168,
+        0
+      ],
+      "id": "v9-wf04-wh",
+      "name": "Webhook Fiscal",
+      "webhookId": "v9-wf04-wh"
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst q={...($json.query || {}),...($json.body || {})};\nconst headers=$json.headers || {};\nconst dec=String(q.decisao ?? '').toLowerCase().trim();\nconst cid=Number(q.chamado_id);\nconst rid=Number(q.ref_id || 0);\nconst token=String(q.token || '').trim();\nconst fonte=String(q.fonte || '').toUpperCase().trim();\nconst oraculo=fonte==='ORACULO_GABARITO';\nconst runId=String(q.run_id || headers['x-test-run-id'] || '').trim();\nconst scenarioId=String(q.scenario_id || headers['x-test-scenario-id'] || '').trim();\nconst realizationId=String(q.realization_id || headers['x-test-realization-id'] || '').trim();\nconst nonce=String(headers['x-test-auto-review-nonce'] || '').trim();\nconst receivedSecret=String(headers['x-test-auto-review-token'] || '').trim();\nconst expectedSecret=String(\n  (typeof process!=='undefined' && undefined) ||\n  (typeof process!=='undefined' && undefined) || ''\n);\nconst flag=name=>{\n  let value='';\n  try { value=String((typeof process!=='undefined' && undefined) || (typeof process!=='undefined' && undefined) || ''); } catch(e) {}\n  return value.trim().toLowerCase()==='true';\n};\nfunction sameSecret(a,b){\n  if(a.length!==b.length || a.length<32) return false;\n  let diff=0; for(let i=0;i<a.length;i++) diff|=a.charCodeAt(i)^b.charCodeAt(i);\n  return diff===0;\n}\nconst idsOk=/^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$/.test(runId)\n  && /^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$/.test(scenarioId)\n  && /^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$/.test(realizationId);\nconst oracleAuthOk=!oraculo || (\n  flag('TEST_MODE') && flag('TEST_AUTO_HUMAN_CONFIRMATION') &&\n  sameSecret(expectedSecret,receivedSecret) && /^[a-f0-9]{32}$/i.test(nonce) && idsOk\n);\nconst temChamado=Number.isFinite(cid) && cid>0;\nconst decisaoValida=['confirmar','nao_duplicado'].includes(dec);\nconst tokenValidoFormato=/^[a-f0-9]{32,128}$/i.test(token);\nconst ok=temChamado && decisaoValida && tokenValidoFormato && oracleAuthOk;\nlet motivo_invalidade='';\nif(!temChamado) motivo_invalidade='chamado_id ausente ou invalido';\nelse if(!decisaoValida) motivo_invalidade='decisao ausente ou invalida: '+(dec||'vazia');\nelse if(!tokenValidoFormato) motivo_invalidade='token fiscal ausente ou invalido';\nelse if(!oracleAuthOk) motivo_invalidade='origem ORACULO_GABARITO nao autorizada';\nconsole.log('[WF04][LOG] decisao='+dec+' chamado='+cid+' origem='+(oraculo?'ORACULO_GABARITO':'FISCAL_GLPI')+' ok='+ok);\nreturn [{json:{\n  ok,decisao:dec,chamado_id:temChamado?cid:null,ref_id:rid>0?rid:null,\n  token:tokenValidoFormato?token:null,motivo_invalidade,\n  origem_decisao:oraculo?'ORACULO_GABARITO':'FISCAL_GLPI',oraculo,\n  run_id:oraculo?runId:null,scenario_id:oraculo?scenarioId:null,\n  realization_id:oraculo?realizationId:null,assessor_nonce:oraculo?nonce:null\n}}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -912,
+        0
+      ],
+      "id": "v9-wf04-fext",
+      "name": "Extrair Decisão",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.ok }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              },
+              "id": "if1"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -656,
+        0
+      ],
+      "id": "v9-wf04-fchk",
+      "name": "Link Válido?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.chamado_id !== null }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              },
+              "id": "if1"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -512,
+        208
+      ],
+      "id": "v9-wf04-has-id",
+      "name": "Tem Chamado no Link?"
+    },
+    {
+      "parameters": {
+        "url": "={{ ('http://glpi-credential-proxy:8080/apirest.php' || 'http://host.docker.internal:9080/apirest.php') + '/initSession' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": []
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -320,
+        96
+      ],
+      "id": "v9-wf04-bad-gs",
+      "name": "GLPI: Sessão Link Inválido",
+      "typeOptions": {
+        "timeoutMilliseconds": 15000
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ('http://glpi-credential-proxy:8080/apirest.php' || 'http://host.docker.internal:9080/apirest.php') + '/ITILFollowup' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Sessão Link Inválido').first().json.session_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": {
+          "input": {
+            "items_id": "={{  $('Extrair Decisão').first().json.chamado_id }}",
+            "itemtype": "Ticket",
+            "content": "={{'[TRIAGEM_IA][ERRO_AUTOMACAO] O link de decisao fiscal gerado pela automacao foi acionado, mas nao pode ser processado. Motivo tecnico: '+$('Extrair Decisão').first().json.motivo_invalidade+'. A demanda deve ser revisada pela equipe responsavel pela automacao; o fiscal nao precisa repetir a acao ate a correcao.'}}"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -96,
+        96
+      ],
+      "id": "v9-wf04-bad-fu",
+      "name": "GLPI: Anotar Link Inválido",
+      "typeOptions": {
+        "timeoutMilliseconds": 15000
+      },
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "Falha de automacao registrada no chamado para tratamento interno.",
+        "options": {
+          "responseCode": 202,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        128,
+        96
+      ],
+      "id": "v9-wf04-bad-resp",
+      "name": "Resp: Falha Anotada"
+    },
+    {
+      "parameters": {
+        "url": "={{ ('http://glpi-credential-proxy:8080/apirest.php' || 'http://host.docker.internal:9080/apirest.php') + '/killSession' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Sessão Link Inválido').first().json.session_token }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        336,
+        96
+      ],
+      "id": "v9-wf04-bad-gk",
+      "name": "GLPI: Encerrar Sessão Link Inválido",
+      "typeOptions": {
+        "timeoutMilliseconds": 15000
+      },
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log('[WF04][LOG] Link fiscal invalido anotado no GLPI'); return [{json:{ok:false,anotado:true}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        560,
+        96
+      ],
+      "id": "v9-wf04-bad-log",
+      "name": "LOG: Link Inválido Anotado",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log('[WF04][LOG] Link fiscal invalido sem chamado_id; nao ha ticket para anotar'); return [{json:{ok:false,anotado:false,motivo:$json.motivo_invalidade}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -320,
+        320
+      ],
+      "id": "v9-wf04-noid-log",
+      "name": "LOG: Link Sem Chamado",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "Falha de automacao registrada nos logs internos; nenhum chamado foi identificado no link.",
+        "options": {
+          "responseCode": 202,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        -96,
+        320
+      ],
+      "id": "v9-wf04-noid-resp",
+      "name": "Resp: Falha Sem Chamado"
+    },
+    {
+      "parameters": {
+        "url": "={{ ('http://glpi-credential-proxy:8080/apirest.php' || 'http://host.docker.internal:9080/apirest.php') + '/initSession' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": []
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -336,
+        -112
+      ],
+      "id": "v9-wf04-fgs",
+      "name": "GLPI: Sessão Fiscal",
+      "typeOptions": {
+        "timeoutMilliseconds": 15000
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "{{ (()=>{\nconst d=$('Extrair Decisão').first().json;\nconst id=Number(d.chamado_id);\nconst dec=String(d.decisao||'').toLowerCase();\nconst token=String(d.token||'').replace(/'/g,\"''\");\nconst decisao=dec==='confirmar'?'PROCESSANDO_CONFIRMAR_DUP':'PROCESSANDO_REJEITAR_DUP';\nconst acao=dec==='confirmar'?'DECISAO_RECEBIDA_CONFIRMAR':'DECISAO_RECEBIDA_REJEITAR';\nconst esc=s=>\"'\"+String(s??'').replace(/'/g,\"''\")+\"'\";\nconst oraculo=d.oraculo===true;\nconst runId=d.run_id?esc(d.run_id):'NULL';\nconst scenarioId=d.scenario_id?esc(d.scenario_id):'NULL';\nconst realizationId=d.realization_id?esc(d.realization_id):'NULL';\nconst nonce=d.assessor_nonce?esc(d.assessor_nonce):'NULL';\nconst origem=oraculo?'ORACULO_GABARITO':'FISCAL_GLPI';\nconst log=esc(JSON.stringify({wf:'WF04',acao,origem,ts:new Date().toISOString()}));\nconst oracleGuardExpr=oraculo ? `EXISTS (\n  SELECT 1\n  FROM dataset_controle dc\n  JOIN experimentos_avaliacao e ON e.run_id=dc.run_id\n  JOIN LATERAL (\n    SELECT i.id,i.predicao,i.criado_em\n    FROM ia_decisoes i\n    WHERE i.ticket_id=dc.ticket_id AND i.run_id=dc.run_id\n      AND i.case_id=dc.case_id AND i.etapa='DEDUPLICACAO'\n    ORDER BY i.criado_em DESC,i.id DESC LIMIT 1\n  ) i ON TRUE\n  JOIN avaliacao_auto_confirmacoes ac\n    ON ac.ticket_id=dc.ticket_id AND ac.run_id=dc.run_id\n   AND ac.scenario_id=dc.scenario_id AND ac.realization_id=dc.case_id\n   AND ac.tipo_confirmacao='FISCAL_DUPLICIDADE' AND ac.etapa='DEDUPLICACAO'\n   AND ac.ia_decisao_id=i.id AND ac.status='RESERVADA'\n  WHERE dc.ticket_id=tp.id AND dc.run_id=${runId}\n    AND dc.scenario_id=${scenarioId} AND dc.case_id=${realizationId}\n    AND length(dc.run_id) BETWEEN 3 AND 128\n    AND left(dc.run_id,1) ~ '[A-Za-z0-9]'\n    AND dc.run_id !~ '[^A-Za-z0-9._:-]'\n    AND length(dc.scenario_id) BETWEEN 1 AND 64\n    AND left(dc.scenario_id,1) ~ '[A-Za-z0-9]'\n    AND dc.scenario_id !~ '[^A-Za-z0-9_-]'\n    AND length(dc.case_id) BETWEEN 3 AND 128\n    AND left(dc.case_id,1) ~ '[A-Za-z0-9]'\n    AND dc.case_id !~ '[^A-Za-z0-9._:-]'\n    AND UPPER(COALESCE(dc.split,'')) IN ('PILOTO','VALIDACAO','TESTE','TEST','BENCHMARK')\n    AND COALESCE(dc.origem,'') ~ '^(AVALIACAO_|VALIDACAO_|DATASET_)'\n    AND COALESCE(dc.label_source,'') ~ '^(REGRA_SINTETICA|SYNTHETIC_|ADJUDICADO_|GABARITO_)'\n    AND LOWER(COALESCE(e.generation_config->>'test_mode','false'))='true'\n    AND LOWER(COALESCE(e.generation_config->>'auto_human_confirmation','false'))='true'\n    AND i.predicao='DUPLICADO'\n    AND i.criado_em<=COALESCE(tp.aprovacao_iniciada_em,NOW())\n    AND ac.decisao_webhook=${esc(dec)}\n    AND ac.token_hash=encode(sha256(convert_to(tp.fiscal_decision_token,'UTF8')),'hex')\n    AND ac.assessor_nonce_hash=encode(sha256(convert_to(${nonce},'UTF8')),'hex')\n)` : 'TRUE';\nreturn `WITH alvo AS (\n  SELECT id,titulo,descricao,tipo_servico,localizacao,solicitante,email_solicitante,status_num,status_nome,data_abertura,data_ultima_mudanca,triagem_status,classificacao,duplicado_de_id,motivo_classificacao,em_aprovacao_fiscal,decisao_fiscal,classificacao_final,fiscal_decision_token,fiscal_token_expira_em,(fiscal_token_expira_em IS NOT NULL AND fiscal_token_expira_em <= NOW()) AS fiscal_token_expirado,${oracleGuardExpr} AS oracle_guard_ok\n  FROM tickets_processados tp\n  WHERE id=${id}\n),\nreservado AS (\n  UPDATE tickets_processados\n  SET em_aprovacao_fiscal=FALSE,\n      aprovacao_decidida_em=NOW(),\n      decisao_fiscal='${decisao}',\n      ultima_acao_workflow='WF04_DECISAO_RECEBIDA',\n      log_workflow=COALESCE(log_workflow,'[]'::jsonb)||${log}::jsonb\n  WHERE id=${id}\n    AND COALESCE(em_aprovacao_fiscal,FALSE)=TRUE\n    AND COALESCE(decisao_fiscal,'')=''\n    AND fiscal_decision_token='${token}'\n    AND (fiscal_token_expira_em IS NULL OR fiscal_token_expira_em > NOW())\n    AND (SELECT oracle_guard_ok FROM alvo)\n  RETURNING id,titulo,descricao,tipo_servico,localizacao,solicitante,email_solicitante,status_num,status_nome,data_abertura,data_ultima_mudanca,triagem_status,classificacao,duplicado_de_id,motivo_classificacao,em_aprovacao_fiscal,decisao_fiscal,classificacao_final,fiscal_decision_token,fiscal_token_expira_em,FALSE AS fiscal_token_expirado,TRUE AS decisao_reservada,TRUE AS oracle_guard_ok\n)\nSELECT * FROM reservado\nUNION ALL\nSELECT id,titulo,descricao,tipo_servico,localizacao,solicitante,email_solicitante,status_num,status_nome,data_abertura,data_ultima_mudanca,triagem_status,classificacao,duplicado_de_id,motivo_classificacao,em_aprovacao_fiscal,decisao_fiscal,classificacao_final,fiscal_decision_token,fiscal_token_expira_em,fiscal_token_expirado,FALSE AS decisao_reservada,oracle_guard_ok\nFROM alvo\n  WHERE NOT EXISTS (SELECT 1 FROM reservado);`;\n})() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -64,
+        -112
+      ],
+      "id": "v9-wf04-fbuscar",
+      "name": "PG: Buscar Chamado",
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst r = $json || {};\nconst d = $('Extrair Decisão').first().json;\nconst reservado = r.decisao_reservada === true || String(r.decisao_reservada).toLowerCase() === 'true';\nconst expirado = r.fiscal_token_expirado === true || String(r.fiscal_token_expirado).toLowerCase() === 'true';\nconst oracleGuardOk = r.oracle_guard_ok === true || String(r.oracle_guard_ok).toLowerCase() === 'true';\nlet acao = 'INVALIDO';\nlet evento_fiscal = 'TOKEN_INVALIDO';\nlet msg = '';\nif (!r.id) { msg = 'Chamado nao encontrado.'; }\nelse if (d.oraculo===true && !oracleGuardOk) { evento_fiscal = 'ORACULO_BLOQUEADO_DB'; msg = 'Confirmacao automatica sem reserva ou contexto experimental valido.'; }\nelse if (reservado && d.decisao === 'confirmar') { acao = 'CONFIRMAR'; evento_fiscal = 'DECISAO_CONFIRMAR'; msg = 'Duplicidade confirmada #' + r.id; }\nelse if (reservado && d.decisao === 'nao_duplicado') { acao = 'REJEITAR'; evento_fiscal = 'DECISAO_REJEITAR'; msg = 'Duplicidade rejeitada #' + r.id; }\nelse if (!reservado && r.decisao_fiscal) { acao = 'JA_REGISTRADO'; evento_fiscal = 'CLIQUE_DUPLO'; msg = 'Decisao ja registrada ou em processamento para o chamado #' + r.id + ': ' + r.decisao_fiscal + '.'; }\nelse if (!reservado && expirado) { evento_fiscal = 'TOKEN_EXPIRADO'; msg = 'Token fiscal expirado para o chamado #' + r.id + '. Gere nova triagem ou revise manualmente no GLPI.'; }\nelse if (!reservado && r.em_aprovacao_fiscal) { msg = 'Token fiscal invalido ou ja utilizado para o chamado #' + r.id + '.'; }\nelse if (!r.em_aprovacao_fiscal) { msg = 'Chamado nao aguarda decisao fiscal.'; }\nelse { msg = 'Decisao invalida.'; }\nconsole.log('[WF04][LOG] Validacao fiscal acao=' + acao + ' reservado=' + reservado + ' expirado=' + expirado);\nreturn [{json:{...r,acao,evento_fiscal,msg,fiscal_token_expirado:expirado,origem_decisao:d.origem_decisao||'FISCAL_GLPI'}}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        256,
+        -112
+      ],
+      "id": "v9-wf04-fval",
+      "name": "Validar Fiscal",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.acao }}",
+                    "rightValue": "CONFIRMAR",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "c1"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "CONFIRMAR"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.acao }}",
+                    "rightValue": "REJEITAR",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "r1"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "REJEITAR"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.acao }}",
+                    "rightValue": "JA_REGISTRADO",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "j1"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "JA_REGISTRADO"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.acao }}",
+                    "rightValue": "INVALIDO",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "i1"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "INVALIDO"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        624,
+        -144
+      ],
+      "id": "v9-wf04-fsw",
+      "name": "Switch Ação Fiscal"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ 'Decisão recebida! O chamado #'+$json.id+' está sendo processado em segundo plano.' }}",
+        "options": {
+          "responseCode": 202,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        912,
+        -256
+      ],
+      "id": "v9-wf04-cf-resp",
+      "name": "Resp: Confirmado"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ('http://glpi-credential-proxy:8080/apirest.php' || 'http://host.docker.internal:9080/apirest.php') + '/ITILFollowup' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Sessão Fiscal').first().json.session_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": {
+          "input": {
+            "items_id": "={{  $('Validar Fiscal').first().json.id }}",
+            "itemtype": "Ticket",
+            "content": "={{'[TRIAGEM_IA] Duplicidade CONFIRMADA pelo fiscal. O chamado sera fechado por ja existir solicitacao anterior. Ref: #'+($('Validar Fiscal').first().json.duplicado_de_id||'N/A')}}"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1168,
+        -256
+      ],
+      "id": "v9-wf04-cf1",
+      "name": "GLPI: Followup Confirmado",
+      "typeOptions": {
+        "timeoutMilliseconds": 15000
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ ('http://glpi-credential-proxy:8080/apirest.php' || 'http://host.docker.internal:9080/apirest.php') + '/Ticket/' + $('Validar Fiscal').first().json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Sessão Fiscal').first().json.session_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": {
+          "input": {
+            "id": "={{$('Validar Fiscal').first().json.id}}",
+            "status": 6
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1424,
+        -256
+      ],
+      "id": "v9-wf04-cf2",
+      "name": "GLPI: Fechar Confirmado",
+      "typeOptions": {
+        "timeoutMilliseconds": 15000
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE tickets_processados SET status_num=6,status_nome='Fechado',triagem_status='DUPLICADO_FECHADO',em_aprovacao_fiscal=FALSE,aprovacao_decidida_em=NOW(),decisao_fiscal='CONFIRMOU_DUP',fiscal_decision_token=NULL,fiscal_token_expira_em=NULL,classificacao='DUPLICADO',classificacao_final='DUPLICADO',triado_em=NOW(),ultima_acao_workflow='DUPLICADO_FECHADO',log_workflow=COALESCE(log_workflow,'[]'::jsonb)||jsonb_build_object('wf','WF04','acao','DUPLICADO_FECHADO','ts',NOW()) WHERE id=$1::bigint RETURNING id;",
+        "options": {
+          "queryReplacement": "={{ String($('Validar Fiscal').first().json.id) }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1680,
+        -256
+      ],
+      "id": "v9-wf04-cf3",
+      "name": "PG: Duplicado Fechado",
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ ('http://glpi-credential-proxy:8080/apirest.php' || 'http://host.docker.internal:9080/apirest.php') + '/killSession' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Sessão Fiscal').first().json.session_token }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1952,
+        -256
+      ],
+      "id": "v9-wf04-fgk-ok",
+      "name": "GLPI: Encerrar Sessão Fiscal",
+      "typeOptions": {
+        "timeoutMilliseconds": 15000
+      },
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log('[WF04][LOG] Fim fiscal confirmado'); return [{json:{ok:true}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2208,
+        -256
+      ],
+      "id": "v9-wf04-flog-ok",
+      "name": "LOG: Fim Fiscal",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ 'Decisão recebida! O chamado #'+$json.id+' está sendo processado em segundo plano.' }}",
+        "options": {
+          "responseCode": 202,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        896,
+        -112
+      ],
+      "id": "v9-wf04-rj-resp",
+      "name": "Resp: Rejeitado"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "\nUPDATE tickets_processados\nSET status_num=4,\n    status_nome='Pendente',\n    em_aprovacao_fiscal=FALSE,\n    aprovacao_decidida_em=NOW(),\n    decisao_fiscal='REJEITOU_DUP',\n    fiscal_decision_token=NULL,\n    fiscal_token_expira_em=NULL,\n    classificacao=NULL,\n    classificacao_final=NULL,\n    duplicado_de_id=NULL,\n    motivo_classificacao=NULL,\n    triagem_status='AGUARDANDO_FILA_CLASSIFICACAO',\n    fila_etapa='CLASSIFICACAO',\n    fila_liberar_em=NULL,\n    fila_reservada_em=NULL,\n    ultima_acao_workflow='WF04_PREPAROU_CLASSIFICACAO',\n    log_workflow=COALESCE(log_workflow,'[]'::jsonb)\n      || jsonb_build_object('wf','WF04','acao','REJEITOU_DUP','ts',NOW())\nWHERE id=$1::bigint\nRETURNING\n  id,titulo,descricao,tipo_servico,localizacao,solicitante,\n  email_solicitante,status_num,status_nome,data_abertura,data_ultima_mudanca;\n",
+        "options": {
+          "queryReplacement": "={{ String($('Validar Fiscal').first().json.id) }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1152,
+        -112
+      ],
+      "id": "v9-wf04-rj1",
+      "name": "PG: Limpar Duplicidade",
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst r = $('PG: Limpar Duplicidade').first().json;\nconst origem = $('Validar Fiscal').first().json || {};\nconst token = String(origem.fiscal_decision_token || '').trim();\nconst marker = token ? `[WF02_DUPLICIDADE:${origem.id || r.id}:${token}]` : '';\nconst baseUrl = String((typeof process !== 'undefined' && 'http://glpi-credential-proxy:8080/apirest.php') || 'http://host.docker.internal:9080/apirest.php').replace(/\\/$/, '');\nconst appToken = '';\nconst sessionToken = (() => { const value = String($('GLPI: Sessão Fiscal').first().json.session_token || '').trim(); if (!value) throw new Error('GLPI session_token ausente'); return value; })();\nconst headers = {'Session-Token': sessionToken, 'Content-Type': 'application/json'};\nlet removidos = 0;\nlet falhas = 0;\ntry {\n  const followups = await helpers.httpRequest({\n    method: 'GET',\n    url: baseUrl + '/Ticket/' + Number(r.id) + '/ITILFollowup',\n    headers,\n    json: true\n  });\n  const candidatos = [];\n  for (const f of Array.isArray(followups) ? followups : []) {\n    const fid = Number(f.id || f['2']);\n    const content = String(f.content || f['content'] || '');\n    const criadoPelaTriagem = marker && content.includes(marker);\n    if (!fid || !criadoPelaTriagem) continue;\n    candidatos.push(fid);\n  }\n  const resultados = await Promise.all(candidatos.map(async (fid) => {\n    try {\n      await helpers.httpRequest({\n        method: 'DELETE',\n        url: baseUrl + '/ITILFollowup/' + fid,\n        headers,\n        json: true\n      });\n      return {fid, ok:true};\n    } catch (e) {\n      console.log('[WF04][LOG] Falha ao remover followup #' + fid + ' do chamado #' + r.id + ': ' + e.message);\n      return {fid, ok:false};\n    }\n  }));\n  removidos = resultados.filter(x => x.ok).length;\n  falhas = resultados.length - removidos;\n} catch (e) {\n  console.log('[WF04][LOG] Falha ao remover followups de duplicidade #' + r.id + ': ' + e.message);\n}\nconsole.log('[WF04][LOG] Followups de duplicidade removidos #' + r.id + ': ' + removidos + ' | falhas=' + falhas + ' | marker=' + (marker ? 'ok' : 'ausente'));\nreturn [{json:{...r,followups_removidos:removidos,followups_remocao_falhas:falhas,marcador_followup:marker}}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1408,
+        -112
+      ],
+      "id": "v9-wf04-rjdel",
+      "name": "GLPI: Remover Followups Dup",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ ('http://glpi-credential-proxy:8080/apirest.php' || 'http://host.docker.internal:9080/apirest.php') + '/Ticket/' + $('PG: Limpar Duplicidade').first().json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Sessão Fiscal').first().json.session_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": {
+          "input": {
+            "id": "={{$('PG: Limpar Duplicidade').first().json.id}}",
+            "name": "={{String($('PG: Limpar Duplicidade').first().json.titulo||'').replace(/^\\[Duplicado\\]\\s*/i,'')}}",
+            "status": 4
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1664,
+        -112
+      ],
+      "id": "v9-wf04-rj2",
+      "name": "GLPI: Restaurar Título",
+      "typeOptions": {
+        "timeoutMilliseconds": 15000
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ('http://glpi-credential-proxy:8080/apirest.php' || 'http://host.docker.internal:9080/apirest.php') + '/ITILFollowup' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Sessão Fiscal').first().json.session_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": {
+          "input": {
+            "items_id": "={{  $('PG: Limpar Duplicidade').first().json.id }}",
+            "itemtype": "Ticket",
+            "content": "={{'[TRIAGEM_IA] Duplicidade REJEITADA pelo fiscal. O titulo foi higienizado, os links/dados de comparacao foram removidos e o chamado sera enviado para classificacao normal. Followups removidos: '+String($('GLPI: Remover Followups Dup').first().json.followups_removidos||0)}}"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1936,
+        -112
+      ],
+      "id": "v9-wf04-rjfu",
+      "name": "GLPI: Followup Rejeitado",
+      "typeOptions": {
+        "timeoutMilliseconds": 15000
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "url": "={{ ('http://glpi-credential-proxy:8080/apirest.php' || 'http://host.docker.internal:9080/apirest.php') + '/killSession' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Sessão Fiscal').first().json.session_token }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2192,
+        -112
+      ],
+      "id": "v9-wf04-fgk-rj",
+      "name": "GLPI: Encerrar Sessão Fiscal Rejeição",
+      "typeOptions": {
+        "timeoutMilliseconds": 15000
+      },
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log('[WF04][LOG] Fim fiscal rejeicao'); return [{json:{ok:true}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2976,
+        -112
+      ],
+      "id": "v9-wf04-flog-rj",
+      "name": "LOG: Fim Fiscal Rejeição",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.msg }}",
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        896,
+        48
+      ],
+      "id": "v9-wf04-already",
+      "name": "Resp: Decisão Já Registrada"
+    },
+    {
+      "parameters": {
+        "url": "={{ ('http://glpi-credential-proxy:8080/apirest.php' || 'http://host.docker.internal:9080/apirest.php') + '/killSession' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Sessão Fiscal').first().json.session_token }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1152,
+        48
+      ],
+      "id": "v9-wf04-fgk-already",
+      "name": "GLPI: Encerrar Sessão Fiscal Já Registrada",
+      "typeOptions": {
+        "timeoutMilliseconds": 15000
+      },
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log('[WF04][LOG] Decisao fiscal ja registrada'); return [{json:{ok:true,idempotente:true}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1408,
+        48
+      ],
+      "id": "v9-wf04-flog-already",
+      "name": "LOG: Fim Fiscal Já Registrada",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.msg }}",
+        "options": {
+          "responseCode": 409,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        880,
+        208
+      ],
+      "id": "v9-wf04-finv",
+      "name": "Resp: Inválido"
+    },
+    {
+      "parameters": {
+        "url": "={{ ('http://glpi-credential-proxy:8080/apirest.php' || 'http://host.docker.internal:9080/apirest.php') + '/killSession' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Sessão Fiscal').first().json.session_token }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1136,
+        208
+      ],
+      "id": "v9-wf04-fgk-inv",
+      "name": "GLPI: Encerrar Sessão Fiscal Inválido",
+      "typeOptions": {
+        "timeoutMilliseconds": 15000
+      },
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log('[WF04][LOG] Fim fiscal invalido'); return [{json:{ok:false}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1392,
+        208
+      ],
+      "id": "v9-wf04-flog-inv",
+      "name": "LOG: Fim Fiscal Inválido",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "{{ (()=>{ const d=$('Extrair Decisão').first().json || {}; const esc=s=>\"'\"+String(s??'').replace(/'/g,\"''\")+\"'\"; const id=d.chamado_id ? Number(d.chamado_id) : 'NULL'; const erro=d.ok===true?'FALSE':'TRUE'; const origem=String(d.origem_decisao||'FISCAL_GLPI'); const acao=(d.ok===true?'LINK_FORMATO_VALIDO':'LINK_INVALIDO')+'_'+origem; return `\nCREATE TABLE IF NOT EXISTS workflow_eventos (\n  id BIGSERIAL PRIMARY KEY,\n  ticket_id BIGINT,\n  workflow TEXT NOT NULL,\n  node_name TEXT,\n  fase TEXT,\n  acao TEXT,\n  status_evento TEXT,\n  status_anterior TEXT,\n  status_novo TEXT,\n  erro BOOLEAN DEFAULT FALSE,\n  mensagem_erro TEXT,\n  execution_id TEXT,\n  inicio_em TIMESTAMPTZ,\n  fim_em TIMESTAMPTZ,\n  duracao_ms INTEGER,\n  criado_em TIMESTAMPTZ DEFAULT NOW()\n);\nINSERT INTO workflow_eventos(ticket_id,workflow,node_name,fase,acao,status_evento,erro,mensagem_erro,inicio_em,fim_em)\nVALUES(${id},'WF04','Extrair Decisão','LINK_FISCAL',${esc(acao)},${esc(d.ok===true?'OK':'INVALIDO')},${erro},${d.motivo_invalidade?esc(d.motivo_invalidade):'NULL'},NOW(),NOW());\nSELECT ${id} AS ticket_id;`; })() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -912,
+        336
+      ],
+      "id": "v9-wf04-pg-obs-link",
+      "name": "PG: Registrar Link Fiscal",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      },
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "{{ (()=>{ const v=$('Validar Fiscal').first().json || {}; const esc=s=>\"'\"+String(s??'').replace(/'/g,\"''\")+\"'\"; const id=v.id ? Number(v.id) : 'NULL'; const origem=String(v.origem_decisao||'FISCAL_GLPI'); const evento=(origem==='ORACULO_GABARITO'?'ORACULO_GABARITO_':'')+String(v.evento_fiscal || v.acao || 'TOKEN_INVALIDO'); const erro=v.acao==='INVALIDO'?'TRUE':'FALSE'; const status=v.acao==='JA_REGISTRADO'?'IDEMPOTENTE':(v.acao==='INVALIDO'?'INVALIDO':'OK'); return `\nCREATE TABLE IF NOT EXISTS workflow_eventos (\n  id BIGSERIAL PRIMARY KEY,\n  ticket_id BIGINT,\n  workflow TEXT NOT NULL,\n  node_name TEXT,\n  fase TEXT,\n  acao TEXT,\n  status_evento TEXT,\n  status_anterior TEXT,\n  status_novo TEXT,\n  erro BOOLEAN DEFAULT FALSE,\n  mensagem_erro TEXT,\n  execution_id TEXT,\n  inicio_em TIMESTAMPTZ,\n  fim_em TIMESTAMPTZ,\n  duracao_ms INTEGER,\n  criado_em TIMESTAMPTZ DEFAULT NOW()\n);\nINSERT INTO workflow_eventos(ticket_id,workflow,node_name,fase,acao,status_evento,status_anterior,erro,mensagem_erro,inicio_em,fim_em)\nVALUES(${id},'WF04','Validar Fiscal','DECISAO_FISCAL',${esc(evento)},${esc(status)},${esc(v.status_nome || '')},${erro},${v.msg?esc(v.msg):'NULL'},NOW(),NOW());\nSELECT ${id} AS ticket_id, ${esc(status)} AS status_evento;`; })() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -176,
+        352
+      ],
+      "id": "v9-wf04-pg-obs-validacao",
+      "name": "PG: Registrar Decisão Fiscal",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      },
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "{{ (()=>{ const r=$('PG: Duplicado Fechado').first().json || {}; const v=$('Validar Fiscal').first().json || {}; const esc=s=>\"'\"+String(s??'').replace(/'/g,\"''\")+\"'\"; const id=Number(r.id || v.id || 0); return `\nCREATE TABLE IF NOT EXISTS workflow_eventos (\n  id BIGSERIAL PRIMARY KEY,\n  ticket_id BIGINT,\n  workflow TEXT NOT NULL,\n  node_name TEXT,\n  fase TEXT,\n  acao TEXT,\n  status_evento TEXT,\n  status_anterior TEXT,\n  status_novo TEXT,\n  erro BOOLEAN DEFAULT FALSE,\n  mensagem_erro TEXT,\n  execution_id TEXT,\n  inicio_em TIMESTAMPTZ,\n  fim_em TIMESTAMPTZ,\n  duracao_ms INTEGER,\n  criado_em TIMESTAMPTZ DEFAULT NOW()\n);\nINSERT INTO workflow_eventos(ticket_id,workflow,node_name,fase,acao,status_evento,status_anterior,status_novo,erro,inicio_em,fim_em)\nVALUES(${id},'WF04','PG: Duplicado Fechado','DECISAO_FISCAL','DUPLICIDADE_CONFIRMADA','OK',${esc(v.status_nome || '')},'Fechado',FALSE,NOW(),NOW());\nSELECT ${id} AS ticket_id;`; })() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1376,
+        144
+      ],
+      "id": "v9-wf04-pg-obs-confirmado",
+      "name": "PG: Evento Fiscal Confirmado",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      },
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "{{ (()=>{ const r=$('PG: Limpar Duplicidade').first().json || {}; const v=$('Validar Fiscal').first().json || {}; const esc=s=>\"'\"+String(s??'').replace(/'/g,\"''\")+\"'\"; const id=Number(r.id || v.id || 0); return `\nCREATE TABLE IF NOT EXISTS workflow_eventos (\n  id BIGSERIAL PRIMARY KEY,\n  ticket_id BIGINT,\n  workflow TEXT NOT NULL,\n  node_name TEXT,\n  fase TEXT,\n  acao TEXT,\n  status_evento TEXT,\n  status_anterior TEXT,\n  status_novo TEXT,\n  erro BOOLEAN DEFAULT FALSE,\n  mensagem_erro TEXT,\n  execution_id TEXT,\n  inicio_em TIMESTAMPTZ,\n  fim_em TIMESTAMPTZ,\n  duracao_ms INTEGER,\n  criado_em TIMESTAMPTZ DEFAULT NOW()\n);\nINSERT INTO workflow_eventos(ticket_id,workflow,node_name,fase,acao,status_evento,status_anterior,status_novo,erro,inicio_em,fim_em)\nVALUES(${id},'WF04','PG: Limpar Duplicidade','DECISAO_FISCAL','DUPLICIDADE_REJEITADA','OK',${esc(v.status_nome || '')},'Pendente',FALSE,NOW(),NOW());\nSELECT ${id} AS ticket_id;`; })() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1056,
+        560
+      ],
+      "id": "v9-wf04-pg-obs-rejeitado",
+      "name": "PG: Evento Fiscal Rejeitado",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      },
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "{{ (() => {\nconst id=Number($('PG: Limpar Duplicidade').first().json.id || 0);\nconst log=JSON.stringify({wf:'WF04',acao:'ENFILEIROU_CLASSIFICACAO',ts:new Date().toISOString()}).replace(/'/g,\"''\");\nreturn `UPDATE tickets_processados\nSET triagem_status='PENDENTE_FILA_IA',\n    fila_etapa='CLASSIFICACAO',\n    fila_enfileirada_em=NOW(),\n    fila_liberar_em=NULL,\n    fila_reservada_em=NULL,\n    fila_ultimo_erro=NULL,\n    ultima_acao_workflow='WF04_ENFILEIROU_CLASSIFICACAO',\n    log_workflow=COALESCE(log_workflow,'[]'::jsonb) || '${log}'::jsonb,\n    atualizado_em=NOW()\nWHERE id=${id}\n  AND triagem_status='AGUARDANDO_FILA_CLASSIFICACAO'\nRETURNING id,triagem_status,fila_etapa;`;\n})() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        2448,
+        -112
+      ],
+      "id": "v9-wf04-enfileirar-classificacao",
+      "name": "PG: Enfileirar Classificação",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      },
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "path": "fiscal-confirmacao-v9",
+        "httpMethod": "GET",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1168,
+        -240
+      ],
+      "id": "v9-wf04-wh-confirmacao",
+      "name": "Webhook Fiscal Confirmação",
+      "webhookId": "v9-wf04-wh-confirmacao"
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst q=$json.query || {};\nconst esc=value=>String(value ?? '').replace(/[&<>\\\"']/g,ch=>({\n  '&':'&amp;','<':'&lt;','>':'&gt;','\\\"':'&quot;',\"'\":'&#39;'\n}[ch]));\nconst decisao=String(q.decisao || '').toLowerCase().trim();\nconst chamadoId=Number(q.chamado_id);\nconst refId=Number(q.ref_id || 0);\nconst token=String(q.token || '').trim();\nconst valido=['confirmar','nao_duplicado'].includes(decisao) &&\n  Number.isInteger(chamadoId) && chamadoId>0 && /^[a-f0-9]{32,128}$/i.test(token);\nconst rotulo=decisao==='confirmar' ? 'Confirmar duplicidade' : 'Marcar como não duplicado';\nconst campos={decisao,chamado_id:chamadoId,token};\nif (refId>0) campos.ref_id=refId;\nconst hidden=Object.entries(campos).map(([key,value])=>\n  '<input type=\"hidden\" name=\"'+esc(key)+'\" value=\"'+esc(value)+'\">'\n).join('');\nconst html=valido\n  ? '<!doctype html><html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Confirmar decisão fiscal</title></head><body><main><h1>Confirmar decisão fiscal</h1><p>Chamado #'+esc(chamadoId)+': '+esc(rotulo)+'.</p><p>Esta página não altera o chamado até você pressionar o botão.</p><form method=\"post\" action=\"/webhook/fiscal-decisao-fiscal-ic-2026\">'+hidden+'<button type=\"submit\">'+esc(rotulo)+'</button></form></main></body></html>'\n  : '<!doctype html><html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><title>Link inválido</title></head><body><h1>Link inválido ou incompleto</h1><p>Revise o chamado diretamente no GLPI.</p></body></html>';\nreturn [{json:{http_status:valido?200:400,response_html:html}}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -928,
+        -240
+      ],
+      "id": "v9-wf04-render-confirmacao",
+      "name": "Renderizar Confirmação Fiscal",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.response_html }}",
+        "options": {
+          "responseCode": "={{ Number($json.http_status || 200) }}",
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              },
+              {
+                "name": "Cache-Control",
+                "value": "no-store"
+              },
+              {
+                "name": "X-Content-Type-Options",
+                "value": "nosniff"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        -688,
+        -240
+      ],
+      "id": "v9-wf04-resp-confirmacao",
+      "name": "Resp: Confirmação Fiscal"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook Fiscal": {
+      "main": [
+        [
+          {
+            "node": "Extrair Decisão",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extrair Decisão": {
+      "main": [
+        [
+          {
+            "node": "Link Válido?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "PG: Registrar Link Fiscal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Link Válido?": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Sessão Fiscal",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Tem Chamado no Link?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tem Chamado no Link?": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Sessão Link Inválido",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "LOG: Link Sem Chamado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Sessão Link Inválido": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Anotar Link Inválido",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Anotar Link Inválido": {
+      "main": [
+        [
+          {
+            "node": "Resp: Falha Anotada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resp: Falha Anotada": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Encerrar Sessão Link Inválido",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Encerrar Sessão Link Inválido": {
+      "main": [
+        [
+          {
+            "node": "LOG: Link Inválido Anotado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LOG: Link Sem Chamado": {
+      "main": [
+        [
+          {
+            "node": "Resp: Falha Sem Chamado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Sessão Fiscal": {
+      "main": [
+        [
+          {
+            "node": "PG: Buscar Chamado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Buscar Chamado": {
+      "main": [
+        [
+          {
+            "node": "Validar Fiscal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validar Fiscal": {
+      "main": [
+        [
+          {
+            "node": "Switch Ação Fiscal",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "PG: Registrar Decisão Fiscal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Ação Fiscal": {
+      "main": [
+        [
+          {
+            "node": "Resp: Confirmado",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Resp: Rejeitado",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Resp: Decisão Já Registrada",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Resp: Inválido",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resp: Confirmado": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Followup Confirmado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Followup Confirmado": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Fechar Confirmado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Fechar Confirmado": {
+      "main": [
+        [
+          {
+            "node": "PG: Duplicado Fechado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Duplicado Fechado": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Encerrar Sessão Fiscal",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "PG: Evento Fiscal Confirmado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Encerrar Sessão Fiscal": {
+      "main": [
+        [
+          {
+            "node": "LOG: Fim Fiscal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resp: Rejeitado": {
+      "main": [
+        [
+          {
+            "node": "PG: Limpar Duplicidade",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Limpar Duplicidade": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Remover Followups Dup",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "PG: Evento Fiscal Rejeitado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Remover Followups Dup": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Restaurar Título",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Restaurar Título": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Followup Rejeitado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Followup Rejeitado": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Encerrar Sessão Fiscal Rejeição",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Encerrar Sessão Fiscal Rejeição": {
+      "main": [
+        [
+          {
+            "node": "PG: Enfileirar Classificação",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resp: Decisão Já Registrada": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Encerrar Sessão Fiscal Já Registrada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Encerrar Sessão Fiscal Já Registrada": {
+      "main": [
+        [
+          {
+            "node": "LOG: Fim Fiscal Já Registrada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resp: Inválido": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Encerrar Sessão Fiscal Inválido",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Encerrar Sessão Fiscal Inválido": {
+      "main": [
+        [
+          {
+            "node": "LOG: Fim Fiscal Inválido",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Enfileirar Classificação": {
+      "main": [
+        [
+          {
+            "node": "LOG: Fim Fiscal Rejeição",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Fiscal Confirmação": {
+      "main": [
+        [
+          {
+            "node": "Renderizar Confirmação Fiscal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Renderizar Confirmação Fiscal": {
+      "main": [
+        [
+          {
+            "node": "Resp: Confirmação Fiscal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Sao_Paulo",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true
+  },
+  "versionId": "4f01e6e8-1602-4ff5-94dd-c2fb0960b893",
+  "meta": {
+    "instanceId": "61b33b02f7624108f052821275a127dc5ced9722fe23c533d96378702b337c3b"
+  },
+  "id": "ZpQ0H9uV9Fiscal04",
+  "tags": []
+}

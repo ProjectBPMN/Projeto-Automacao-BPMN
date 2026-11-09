@@ -1,0 +1,200 @@
+[
+  {
+    "schema": "projeto-ic-embedding-cache-v1",
+    "created_at": "2026-08-18T03:46:17.399525+00:00",
+    "cache_hit": true,
+    "model_id": "granite97m",
+    "repository": "ibm-granite/granite-embedding-97m-multilingual-r2",
+    "revision": "835ad14087e140460703cf0fae09f97d469d65c2",
+    "local_path": "local_ai\\models\\granite-embedding-97m-multilingual-r2",
+    "tree_sha256": "28bb1e36cb3719c0c466de3013404307821da17bf901fc70f62af74bfa57a343",
+    "file_count": 13,
+    "total_bytes": 318727187,
+    "dataset_sha256": "620a2004ace1b2fb86673d753e967083539775d82ad417046ea1dd8510b80219",
+    "dimension": 384,
+    "normalized": true,
+    "backend": "pytorch_fp32",
+    "measurement_scope": "encoder_only_sequential_process",
+    "load_seconds": 13.096775699988939,
+    "rss_before_mb": 466.953125,
+    "load_peak_rss_mb": 841.29296875,
+    "encode_peak_rss_mb": 676.39453125,
+    "single_text_latency_ms": {
+      "n": 20,
+      "p50": 161.0235000262037,
+      "p95": 311.96363002818555
+    },
+    "batch8_latency_ms": {
+      "n": 10,
+      "p50": 852.3633000149857,
+      "p95": 1450.1256200164785
+    },
+    "roles": {
+      "symmetric": {
+        "records": 2314,
+        "prefix": "",
+        "keys_sha256": "768676fd2012692a68e257d9e3b1195597ba0ac81a09e21208952a439e94489e",
+        "npz_sha256": "dff22f9b1927385d04611cc13cd43b3567cf3ff22c3582dcc4f52cb075f118a4",
+        "seconds": 201.10536099999445,
+        "texts_per_second": 11.506406335930865,
+        "peak_rss_mb": 672.71484375
+      },
+      "retrieval_query": {
+        "records": 500,
+        "prefix": "",
+        "keys_sha256": "5926e441a9bfd21e961ce460a96f21167d77e63a473c1ef2f648cefa089b462a",
+        "npz_sha256": "8353230bb4d8c4c6b0eb9a4e02285999f81316642267a66798fb09ac32d5b8bf",
+        "seconds": 43.54742409999017,
+        "texts_per_second": 11.48173538007528,
+        "peak_rss_mb": 674.51953125
+      },
+      "retrieval_passage": {
+        "records": 200,
+        "prefix": "",
+        "keys_sha256": "18085ac68d331214bfa45b461d32ca3f327ec6de57fa52d5fd48704f18cf105e",
+        "npz_sha256": "187034f51d4a19751391823061caba6956d3b9be30eaa04e1bb742464b2d1228",
+        "seconds": 16.02886010002112,
+        "texts_per_second": 12.47749364284092,
+        "peak_rss_mb": 676.39453125
+      }
+    },
+    "packages": {
+      "torch": "2.13.0+cpu",
+      "sentence_transformers": "5.6.0",
+      "transformers": "4.57.6"
+    },
+    "validated_at": "2026-08-18T05:12:59.679195+00:00"
+  },
+  {
+    "schema": "projeto-ic-embedding-cache-v1",
+    "created_at": "2026-08-18T03:49:53.684158+00:00",
+    "cache_hit": true,
+    "model_id": "multilingual_e5_small",
+    "repository": "intfloat/multilingual-e5-small",
+    "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "local_path": "local_ai\\models\\multilingual-e5-small",
+    "tree_sha256": "ea6db56024d2b0c8743c6af329e69b6e5628edf75e99d9fdf9b68ba730f8e8c9",
+    "file_count": 11,
+    "total_bytes": 493294398,
+    "dataset_sha256": "620a2004ace1b2fb86673d753e967083539775d82ad417046ea1dd8510b80219",
+    "dimension": 384,
+    "normalized": true,
+    "backend": "pytorch_fp32",
+    "measurement_scope": "encoder_only_sequential_process",
+    "load_seconds": 2.774386700009927,
+    "rss_before_mb": 794.99609375,
+    "load_peak_rss_mb": 798.5078125,
+    "encode_peak_rss_mb": 785.53515625,
+    "single_text_latency_ms": {
+      "n": 20,
+      "p50": 119.39524998888373,
+      "p95": 172.06232001481112
+    },
+    "batch8_latency_ms": {
+      "n": 10,
+      "p50": 624.4657499773894,
+      "p95": 823.9436700212535
+    },
+    "roles": {
+      "symmetric": {
+        "records": 2314,
+        "prefix": "query: ",
+        "keys_sha256": "768676fd2012692a68e257d9e3b1195597ba0ac81a09e21208952a439e94489e",
+        "npz_sha256": "e78086ffcfae16936f25e1c47ccdfa665cb9b5f6d3f2f7b12c049e337ef05b33",
+        "seconds": 155.76938280003378,
+        "texts_per_second": 14.855294143205004,
+        "peak_rss_mb": 784.890625
+      },
+      "retrieval_query": {
+        "records": 500,
+        "prefix": "query: ",
+        "keys_sha256": "5926e441a9bfd21e961ce460a96f21167d77e63a473c1ef2f648cefa089b462a",
+        "npz_sha256": "f157261affa59b9a2b0469737718d21e40069a4d46a0dafce6f715d512c1b1be",
+        "seconds": 29.888935599999968,
+        "texts_per_second": 16.728598391439558,
+        "peak_rss_mb": 783.6171875
+      },
+      "retrieval_passage": {
+        "records": 200,
+        "prefix": "passage: ",
+        "keys_sha256": "18085ac68d331214bfa45b461d32ca3f327ec6de57fa52d5fd48704f18cf105e",
+        "npz_sha256": "de926a919f1d06be141fa286bd02f6cf7884db20e5674afb3b4e76d6bf7f2c6c",
+        "seconds": 11.999323099968024,
+        "texts_per_second": 16.66760685863463,
+        "peak_rss_mb": 785.53515625
+      }
+    },
+    "packages": {
+      "torch": "2.13.0+cpu",
+      "sentence_transformers": "5.6.0",
+      "transformers": "4.57.6"
+    },
+    "validated_at": "2026-08-18T05:13:04.427605+00:00"
+  },
+  {
+    "schema": "projeto-ic-embedding-cache-v1",
+    "created_at": "2026-08-18T03:53:00.225402+00:00",
+    "cache_hit": true,
+    "model_id": "multilingual_minilm_l12",
+    "repository": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+    "local_path": "local_ai\\models\\paraphrase-multilingual-MiniLM-L12-v2",
+    "tree_sha256": "2d8f7cfb97778ba4c0d8a0d17309e6ef460e40fe36f2eb0e2bbbe1777a09e217",
+    "file_count": 13,
+    "total_bytes": 499562317,
+    "dataset_sha256": "620a2004ace1b2fb86673d753e967083539775d82ad417046ea1dd8510b80219",
+    "dimension": 384,
+    "normalized": true,
+    "backend": "pytorch_fp32",
+    "measurement_scope": "encoder_only_sequential_process",
+    "load_seconds": 2.3680311999632977,
+    "rss_before_mb": 446.60546875,
+    "load_peak_rss_mb": 739.34765625,
+    "encode_peak_rss_mb": 793.3515625,
+    "single_text_latency_ms": {
+      "n": 20,
+      "p50": 138.7877999804914,
+      "p95": 224.67101504444148
+    },
+    "batch8_latency_ms": {
+      "n": 10,
+      "p50": 628.3879499824252,
+      "p95": 707.0264100068016
+    },
+    "roles": {
+      "symmetric": {
+        "records": 2314,
+        "prefix": "",
+        "keys_sha256": "768676fd2012692a68e257d9e3b1195597ba0ac81a09e21208952a439e94489e",
+        "npz_sha256": "f6e56dd16e818c5bf38c26dd54c021f87ffe165d42f723243ea3cf107e5e2909",
+        "seconds": 128.28335789998528,
+        "texts_per_second": 18.03819324564364,
+        "peak_rss_mb": 791.734375
+      },
+      "retrieval_query": {
+        "records": 500,
+        "prefix": "",
+        "keys_sha256": "5926e441a9bfd21e961ce460a96f21167d77e63a473c1ef2f648cefa089b462a",
+        "npz_sha256": "1068300235465c0410d70347015dfbd7dd890525256b7b8e8212d8ced27d4da3",
+        "seconds": 28.377187800011598,
+        "texts_per_second": 17.61978683454305,
+        "peak_rss_mb": 793.3515625
+      },
+      "retrieval_passage": {
+        "records": 200,
+        "prefix": "",
+        "keys_sha256": "18085ac68d331214bfa45b461d32ca3f327ec6de57fa52d5fd48704f18cf105e",
+        "npz_sha256": "5d16503a3f1ec2cdd4262e914f6e0c18185b66c1f68ddcaec5e6df64a7ede3c2",
+        "seconds": 12.334410499955993,
+        "texts_per_second": 16.21480005069667,
+        "peak_rss_mb": 793.21875
+      }
+    },
+    "packages": {
+      "torch": "2.13.0+cpu",
+      "sentence_transformers": "5.6.0",
+      "transformers": "4.57.6"
+    },
+    "validated_at": "2026-08-18T05:13:09.053700+00:00"
+  }
+]

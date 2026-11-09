@@ -1,0 +1,144 @@
+{
+  "dataset": {
+    "confirmatory_eligible": false,
+    "dataset_sha256": "0de50381c0dfaefeb1a940cd697f9c9a8e87b5efee9252a1f4ca43c9d904f204",
+    "dataset_version": "desenvolvimento-local-v1.1.0",
+    "manifest_path": "avaliacao\\datasets\\desenvolvimento_local_v1_manifest.json",
+    "manifest_sha256": "deb2dc0d60a22d8022dcc85722ab46dbb0a0808c5c87a6b2b7e25deef336870d",
+    "path": "avaliacao\\datasets\\desenvolvimento_local_v1.jsonl",
+    "pilot_only": true,
+    "roles": {
+      "ANCHOR": 120,
+      "CHALLENGE": 600,
+      "CLASSIFICATION": 640
+    },
+    "rows": 1360,
+    "split": "DESENVOLVIMENTO",
+    "status": "SINTETICO_PILOTO_SOMENTE_DESENVOLVIMENTO",
+    "synthetic": true
+  },
+  "design": {
+    "candidate_limit": 20,
+    "candidate_pool_status": "V9_20_CANDIDATES",
+    "classification_core_limit": 4,
+    "dedup_core_limit": 2,
+    "dedup_intermediate_region": "ABSTENCAO_FORA_DE_NAO_DUPLICADO",
+    "dedup_negative_threshold": 0.07,
+    "dedup_positive_threshold": 0.95,
+    "eligibility_strata": {
+      "legacy_compatibility": "quando pipeline_evaluation_eligible ainda não existe, registra fallback explícito ao candidate_evaluation_eligible",
+      "model_only": "candidate_evaluation_eligible + HYBRID_MODEL",
+      "pipeline": "pipeline_evaluation_eligible"
+    },
+    "provider": "local-pytorch-fp32",
+    "realizations_per_core": 5,
+    "sampling_unit": "scenario_id/narrative_core_sha256",
+    "seed": 20260715
+  },
+  "dry_run_default": true,
+  "implementation": {
+    "python": "3.12.10",
+    "script_sha256": "122128e18a01a0e07571d07032ce3787604be9a0c2202f1c923154d35106d88f"
+  },
+  "local_candidate": {
+    "bundle_path": "local_ai\\artifacts\\local_hybrid_bundle.joblib",
+    "bundle_sha256": "f518b7f9699aa9e23aab7eb2479990619ad5085994569b3f7c3f253e5207bb5d",
+    "gates": {
+      "candidate_frozen": true,
+      "evaluation_eligible": true,
+      "primary33_unused": true,
+      "scientific_claim_not_premature": true,
+      "test_data_unused": true,
+      "thresholds_approved": true
+    },
+    "manifest_path": "local_ai\\artifacts\\local_hybrid_manifest.json",
+    "manifest_payload_sha256": "86989aa11cc002ecc2cf68c501f368c62fc278efba7832e4fa426fd6400d598f",
+    "manifest_sha256": "3e818b5513bdaa4b7f037f2d4ada743d9b47ade1e882e8d90ae216d0b215eb25",
+    "model_version": "local-hybrid-v1.8.0",
+    "status": "CALIBRATED",
+    "thresholds": {
+      "abstention_is_not_triagem_manual": true,
+      "approval_scope": "operational_candidate_for_confirmatory_evaluation",
+      "approval_uses_point_estimates": true,
+      "approved": true,
+      "classification": 0.76,
+      "classification_asymmetric_risk": {
+        "most_costly_error": "maintenance_as_obra",
+        "obra_minimum_confidence": 0.9,
+        "obra_requires_explicit_evidence": true
+      },
+      "classification_obra": 0.9,
+      "classification_safety_gate": {
+        "approved": true,
+        "critical_error": "maintenance_as_obra",
+        "maximum_automatic_errors": 0,
+        "observed_automatic_errors": 0,
+        "policy": "obra_asymmetric_safety_gate_v1"
+      },
+      "confidence_intervals_are_descriptive": true,
+      "deduplication": 0.95,
+      "deduplication_negative": 0.07,
+      "deduplication_reference_margin": 0.035,
+      "error_costs": {
+        "false_negative": 5.0,
+        "false_positive": 1.0,
+        "rationale": "false_negative_bypasses_human_duplicate_confirmation"
+      },
+      "reference_selection_safety": {
+        "confirmatory_data_used": false,
+        "evidence_artifact": "avaliacao/resultados/dedup-reference-margin-v1.7.0-20260716.json",
+        "minimum_margin": 0.035,
+        "policy": "top2_candidate_margin_abstention_v1",
+        "selection_source": "development_20_candidate_pool_error_separation_v1.7"
+      },
+      "selection_objective": "minimum_weighted_covered_error_then_maximum_coverage_then_maximum_abstention_margin",
+      "selection_source": "independent_group_cross_fitted_calibration_split",
+      "threshold_grid_step": 0.01
+    }
+  },
+  "manifest_payload_sha256": "985e9dde16a3aa85a2adf49e05fc583f689f01f440c8728e0bf9e7e6fd3f413c",
+  "mode": "LOCAL_ONLY",
+  "plan_version": "local-only-pipeline-v1.0.0",
+  "remote_calls_allowed": false,
+  "runtime_source_provenance": {
+    "artifacts.py": "27bba855b42d0d2ecb0bdfd37287c323c2ab271b080bef53662b8e5487c19261",
+    "backends.py": "d9fb0ee3a971e6d7314ae875a88b87bd9c1f41b8e103a6140554ebcaaf157561",
+    "extraction.py": "5e3af908750711313d462f01f5d772ac8c42b83d77f050fffdb97a99c9c2d934",
+    "http_api.py": "0172253cb7d1385709759e6e98ae4d5629dd1d0c078018388e2a9b29c17f036a",
+    "hybrid.py": "539a4c864bc36a83332633756a80d0ce0e19eeb2784b3ebb065867515507eec4",
+    "inference.py": "9d34c18b17cf4ec5a77737061362f0ffea8a873201739a16078838e821d6c04b"
+  },
+  "sample": {
+    "core_record_counts": {
+      "DEV_CLS_DEMO_016": 5,
+      "DEV_CLS_OBRA_017": 5,
+      "DEV_CLS_SOB_DEMANDA_026": 5,
+      "DEV_CLS_TRIAGEM_MANUAL_029": 5,
+      "DEV_DD_NEG_018": 5,
+      "DEV_DD_POS_017": 5
+    },
+    "cores": 6,
+    "label_counts": {
+      "classification:DEMO": 5,
+      "classification:OBRA": 5,
+      "classification:SOB_DEMANDA": 5,
+      "classification:TRIAGEM_MANUAL": 5,
+      "deduplication:DUPLICADO": 5,
+      "deduplication:NAO_DUPLICADO": 5
+    },
+    "task_counts": {
+      "classification": 20,
+      "deduplication": 10
+    },
+    "units": 30,
+    "units_file": "local_only_units.jsonl",
+    "units_sha256": "a69fc8c207b140d3166e36e788f19d33356d8ea1cafaec4d7531c4653b863fc1"
+  },
+  "schema_version": "1.0.0",
+  "scientific_status": {
+    "confirmatory_claim_allowed": false,
+    "reason": "Execução LOCAL-only de engenharia; corpus sintético piloto ou avaliação reservada ainda sem autorização para alegação confirmatória.",
+    "scientific_result": false
+  },
+  "status": "FROZEN_LOCAL_ONLY_DRY_RUN_PLAN"
+}

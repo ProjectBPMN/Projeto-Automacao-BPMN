@@ -1,0 +1,68 @@
+{
+  "id": "Q1",
+  "batch": 1,
+  "interval_seconds": 1,
+  "repetition": 1,
+  "run_id": "CALQ-20260721T193634-Q1-R1",
+  "tickets": [
+    {
+      "case_id": "AVAL-CAL-D53EA135-000017",
+      "ticket_id": 278,
+      "title": "Construir parede de alvenaria para ampliar sala administrativa"
+    },
+    {
+      "case_id": "AVAL-CAL-D53EA135-000018",
+      "ticket_id": 279,
+      "title": "Instalar divisoria simples na biblioteca"
+    }
+  ],
+  "metrics": {
+    "total": 2,
+    "total_medido": 2,
+    "warmup_descartado": 0,
+    "terminal": 2,
+    "espera_ia_media_s": "25.952",
+    "espera_ia_p50_s": "25.952",
+    "espera_ia_p95_s": "49.375",
+    "espera_ia_p99_s": "51.457",
+    "latencia_total_media_s": "56.564",
+    "latencia_total_p50_s": "56.564",
+    "latencia_total_p95_s": "60.242",
+    "latencia_total_p99_s": "60.569",
+    "erros_ia": 0,
+    "probabilidades_invalidas": 0,
+    "rate_limits": 0,
+    "violacoes_ordem": 0,
+    "observations": [
+      {
+        "ticket_id": 278,
+        "ordem_ingresso": 1,
+        "triagem_status": "TRIAGEM_MANUAL",
+        "fila_enfileirada_em": "2026-07-21 16:37:13.312547-03:00",
+        "fila_liberar_em": null,
+        "primeira_decisao": "2026-07-21 16:38:05.290262-03:00",
+        "atualizado_em": "2026-07-21 16:38:05.789660-03:00",
+        "warmup": false,
+        "espera_ia_s": "51.978",
+        "latencia_total_s": "52.477"
+      },
+      {
+        "ticket_id": 279,
+        "ordem_ingresso": 2,
+        "triagem_status": "TRIAGEM_MANUAL",
+        "fila_enfileirada_em": "2026-07-21 16:39:01.534547-03:00",
+        "fila_liberar_em": "2026-07-21 16:40:00.096382-03:00",
+        "primeira_decisao": "2026-07-21 16:39:01.460293-03:00",
+        "atualizado_em": "2026-07-21 16:40:02.184993-03:00",
+        "warmup": false,
+        "espera_ia_s": "-0.074",
+        "latencia_total_s": "60.650"
+      }
+    ],
+    "drain_elapsed_s": 168.872,
+    "throughput_tickets_per_minute": 0.710595,
+    "p99_confirmatorio": false,
+    "nota_p99": "exploratório; requer pelo menos 500 latências medidas por tratamento",
+    "success": true
+  }
+}

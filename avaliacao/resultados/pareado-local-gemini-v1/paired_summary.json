@@ -1,0 +1,96 @@
+{
+  "confirmatory_claim_allowed": false,
+  "created_at": "2026-07-16T01:03:16.766082+00:00",
+  "paired": {
+    "abstention_counted_as_not_correct_for_pair_test": true,
+    "both_correct": 0,
+    "both_not_correct": 82,
+    "complete_pairs": 140,
+    "gemini_only_correct": 58,
+    "local_only_correct": 0,
+    "mcnemar_exact_two_sided_p": 6.938893903907228e-18
+  },
+  "plan_manifest_payload_sha256": "3374082a72d0ede886a04d09388295c978e495e0ceb133ec69a761b72e6bc8b3",
+  "predictions_sha256": "19621e09b008086affa8ec623392d6c9bf0c5ef2cbc770251ce8b2e61f49e4b5",
+  "providers": {
+    "google-gemini": {
+      "abstentions": 9,
+      "accuracy_abstention_as_not_correct": 0.4142857142857143,
+      "automation_coverage": 0.44285714285714284,
+      "confusion": {
+        "DEMO->DEMO": 10,
+        "DUPLICADO->DUPLICADO": 23,
+        "DUPLICADO->ERROR": 17,
+        "NAO_DUPLICADO->DUPLICADO": 1,
+        "NAO_DUPLICADO->ERROR": 51,
+        "NAO_DUPLICADO->NAO_DUPLICADO": 8,
+        "OBRA->OBRA": 10,
+        "SOB_DEMANDA->DEMO": 2,
+        "SOB_DEMANDA->ERROR": 1,
+        "SOB_DEMANDA->SOB_DEMANDA": 7,
+        "TRIAGEM_MANUAL->SOB_DEMANDA": 1,
+        "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 9
+      },
+      "dedup_false_negatives": 0,
+      "dedup_false_positives": 1,
+      "dedup_weighted_error_cost_fn5_fp1": 1,
+      "failures": 69,
+      "latency_ms": {
+        "mean": 2396.2384366197184,
+        "p50": 2224.001,
+        "p95": 3487.437
+      },
+      "selective_accuracy": 0.9354838709677419,
+      "total": 140,
+      "valid": 71
+    },
+    "local-pytorch-fp32": {
+      "abstentions": 22,
+      "accuracy_abstention_as_not_correct": 0.0,
+      "automation_coverage": 0.0,
+      "confusion": {
+        "DEMO->ERROR": 8,
+        "DEMO->TRIAGEM_MANUAL": 2,
+        "DUPLICADO->ERROR": 40,
+        "NAO_DUPLICADO->ERROR": 60,
+        "OBRA->ERROR": 6,
+        "OBRA->TRIAGEM_MANUAL": 4,
+        "SOB_DEMANDA->ERROR": 3,
+        "SOB_DEMANDA->TRIAGEM_MANUAL": 7,
+        "TRIAGEM_MANUAL->ERROR": 1,
+        "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 9
+      },
+      "dedup_false_negatives": 0,
+      "dedup_false_positives": 0,
+      "dedup_weighted_error_cost_fn5_fp1": 0,
+      "failures": 118,
+      "latency_ms": {
+        "mean": 49.68854545454546,
+        "p50": 24.031,
+        "p95": 42.611
+      },
+      "selective_accuracy": null,
+      "total": 140,
+      "valid": 22
+    }
+  },
+  "records": 280,
+  "remote_budget_observed": {
+    "calls": 140,
+    "limits": {
+      "approved": true,
+      "max_remote_calls": 2000,
+      "max_remote_tokens": 2000000,
+      "max_rpm": 14,
+      "required": {
+        "remote_calls": 140,
+        "remote_tokens_conservative": 1708085
+      },
+      "token_estimation": "Reserva conservadora: bytes UTF-8 do prompt + 4096 tokens de overhead de request/schema + maxOutputTokens; não usa endpoint remoto de contagem."
+    },
+    "reported_total_tokens": 413659
+  },
+  "schema_version": "1.0.0",
+  "scientific_result": false,
+  "status": "PRELIMINARY_PAIRED_RESULTS_PENDING_GOLD_GATE"
+}

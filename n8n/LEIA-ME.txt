@@ -1,0 +1,16 @@
+PASTA N8N
+=========
+
+- docker-compose.yml: imagens fixadas por versão/digest, healthcheck do PostgreSQL, redes isoladas, n8n e Mailpit.
+- .env: configuração principal sem a chave Gemini.
+- .env.local: segredos e sobrescritas locais.
+- .gitignore: exclusões locais do módulo n8n.
+
+Subpastas:
+- credentials: exemplo SMTP local e inventário de credenciais; a credencial
+  PostgreSQL deve ser criada com segredo próprio.
+- workflows: exports nativos importáveis pela UI, builders reproduzíveis e
+  tutorial visual em `workflows/Versão9/README.md`.
+- history: pacote público, inativo e sanitizado das versões V1–V8, com
+  manifesto de proveniência e validador. Ele preserva a evolução, mas não é
+  utilizado pela V9 ativa.

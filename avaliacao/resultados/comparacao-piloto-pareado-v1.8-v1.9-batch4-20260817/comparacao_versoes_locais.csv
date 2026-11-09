@@ -1,0 +1,25 @@
+﻿section,scope,metric,baseline_numerator,baseline_denominator,baseline_value,candidate_numerator,candidate_denominator,candidate_value,delta_candidate_minus_baseline,paired_n,both_positive,baseline_only,candidate_only,both_negative,note
+marginal_metric,overall,availability,30,30,1.0,30,30,1.0,0.0,30,30,0,0,0,descritivo; corpus de desenvolvimento
+marginal_metric,overall,semantic_coverage,16,30,0.5333333333333333,16,30,0.5333333333333333,0.0,30,16,0,0,14,descritivo; corpus de desenvolvimento
+marginal_metric,overall,straight_through_automation,16,30,0.5333333333333333,16,30,0.5333333333333333,0.0,30,16,0,0,14,descritivo; corpus de desenvolvimento
+marginal_metric,overall,selective_accuracy,16,16,1.0,16,16,1.0,0.0,30,,,,,descritivo; corpus de desenvolvimento
+paired_latency,overall,latency_ms_mean,,,434.20866666666666,,,454.9310666666667,20.722400000000018,30,,,,,somente unidades disponíveis nas duas versões
+paired_latency,overall,latency_ms_p50,,,114.655,,,120.31,3.078000000000003,30,,,,,somente unidades disponíveis nas duas versões
+paired_latency,overall,latency_ms_p95,,,1337.585,,,1464.24,177.52599999999995,30,,,,,somente unidades disponíveis nas duas versões
+paired_transition,overall,strict_correctness,16,30,0.5333333333333333,16,30,0.5333333333333333,0.0,30,16,0,0,14,falha e abstencao contam como incorretas
+marginal_metric,classification,availability,20,20,1.0,20,20,1.0,0.0,20,20,0,0,0,descritivo; corpus de desenvolvimento
+marginal_metric,classification,semantic_coverage,15,20,0.75,15,20,0.75,0.0,20,15,0,0,5,descritivo; corpus de desenvolvimento
+marginal_metric,classification,straight_through_automation,15,20,0.75,15,20,0.75,0.0,20,15,0,0,5,descritivo; corpus de desenvolvimento
+marginal_metric,classification,selective_accuracy,15,15,1.0,15,15,1.0,0.0,20,,,,,descritivo; corpus de desenvolvimento
+paired_latency,classification,latency_ms_mean,,,102.6317,,,106.2009,3.5692,20,,,,,somente unidades disponíveis nas duas versões
+paired_latency,classification,latency_ms_p50,,,99.441,,,96.948,2.343,20,,,,,somente unidades disponíveis nas duas versões
+paired_latency,classification,latency_ms_p95,,,147.818,,,140.949,30.203000000000017,20,,,,,somente unidades disponíveis nas duas versões
+paired_transition,classification,strict_correctness,15,20,0.75,15,20,0.75,0.0,20,15,0,0,5,falha e abstencao contam como incorretas
+marginal_metric,deduplication,availability,10,10,1.0,10,10,1.0,0.0,10,10,0,0,0,descritivo; corpus de desenvolvimento
+marginal_metric,deduplication,semantic_coverage,1,10,0.1,1,10,0.1,0.0,10,1,0,0,9,descritivo; corpus de desenvolvimento
+marginal_metric,deduplication,straight_through_automation,1,10,0.1,1,10,0.1,0.0,10,1,0,0,9,descritivo; corpus de desenvolvimento
+marginal_metric,deduplication,selective_accuracy,1,1,1.0,1,1,1.0,0.0,10,,,,,descritivo; corpus de desenvolvimento
+paired_latency,deduplication,latency_ms_mean,,,1097.3626,,,1152.3914,55.02880000000006,10,,,,,somente unidades disponíveis nas duas versões
+paired_latency,deduplication,latency_ms_p50,,,972.578,,,1026.701,41.72200000000021,10,,,,,somente unidades disponíveis nas duas versões
+paired_latency,deduplication,latency_ms_p95,,,2542.995,,,2623.686,248.13900000000012,10,,,,,somente unidades disponíveis nas duas versões
+paired_transition,deduplication,strict_correctness,1,10,0.1,1,10,0.1,0.0,10,1,0,0,9,falha e abstencao contam como incorretas

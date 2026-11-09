@@ -1,0 +1,2 @@
+tickets,chamadas_ia,erros_ia,probabilidades_invalidas,tokens_entrada,tokens_saida,tokens_total,triagens_manuais,intervencoes_fiscais,latencia_total_media_s,latencia_total_p95_s
+3,5,0,0,0,0,0,1,1,110.036,137.217

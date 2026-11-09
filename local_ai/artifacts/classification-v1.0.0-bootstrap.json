@@ -1,0 +1,106 @@
+{
+  "artifact_schema": "local-ai-calibrated-linear-v1",
+  "artifact_version": "1.0.0-bootstrap",
+  "task": "classification",
+  "model_type": "tfidf_embedding_multinomial_logistic_regression",
+  "scientific_status": "bootstrap_not_for_confirmatory_results",
+  "classes": ["OBRA", "DEMO", "SOB_DEMANDA", "TRIAGEM_MANUAL"],
+  "prototypes": {
+    "OBRA": "construção nova ampliação fundação parede estrutural reforma completa redistribuição de layout troca integral de telhado contrato de obra",
+    "DEMO": "reparo predial rotineiro elétrica hidráulica pintura localizada carpintaria serralheria divisória drywall troca localizada de telha lâmpada tomada porta torneira",
+    "SOB_DEMANDA": "serviço especializado terceirizado climatização ar condicionado elevador portão automático caldeira autoclave exaustor industrial cftv alarme cerca elétrica equipamento laboratorial",
+    "TRIAGEM_MANUAL": "informação insuficiente contraditória fora de escopo software sistema sem local sem equipamento caso limítrofe análise do fiscal"
+  },
+  "coefficients": {
+    "OBRA": {
+      "intercept": -0.25,
+      "embedding_similarity": 3.0,
+      "tfidf_terms": {
+        "construcao": 1.6,
+        "construir": 1.6,
+        "ampliacao": 1.7,
+        "fundacao": 2.0,
+        "parede estrutural": 2.0,
+        "reforma completa": 1.8,
+        "redistribuicao": 1.5,
+        "telhado inteiro": 1.5,
+        "troca integral": 1.4
+      }
+    },
+    "DEMO": {
+      "intercept": 0.0,
+      "embedding_similarity": 3.0,
+      "tfidf_terms": {
+        "lampada": 1.6,
+        "luminaria": 1.5,
+        "tomada": 1.5,
+        "interruptor": 1.4,
+        "torneira": 1.4,
+        "vazamento": 1.2,
+        "porta": 1.1,
+        "fechadura": 1.3,
+        "pintura localizada": 1.7,
+        "drywall": 1.6,
+        "divisoria": 1.4,
+        "troca localizada": 1.5,
+        "uma telha": 1.4
+      }
+    },
+    "SOB_DEMANDA": {
+      "intercept": -0.05,
+      "embedding_similarity": 3.0,
+      "tfidf_terms": {
+        "ar condicionado": 1.8,
+        "climatizacao": 1.8,
+        "elevador": 1.9,
+        "portao automatico": 1.9,
+        "portao eletronico": 1.9,
+        "caldeira": 1.8,
+        "autoclave": 1.8,
+        "exaustor industrial": 1.8,
+        "cftv": 1.9,
+        "camera de seguranca": 1.7,
+        "alarme": 1.7,
+        "cerca eletrica": 1.8
+      }
+    },
+    "TRIAGEM_MANUAL": {
+      "intercept": -0.35,
+      "embedding_similarity": 2.6,
+      "tfidf_terms": {
+        "software": 2.0,
+        "sistema": 1.6,
+        "senha": 1.6,
+        "login": 1.5,
+        "nao sei": 1.2,
+        "problema": 0.3
+      }
+    }
+  },
+  "calibration": {
+    "method": "temperature_softmax",
+    "temperature": 0.9,
+    "status": "bootstrap_not_fitted_on_evaluation_split"
+  },
+  "tfidf": {
+    "sublinear_tf": true,
+    "normalization": "l2",
+    "idf": {
+      "__default__": 1.0,
+      "construcao": 1.5,
+      "ampliacao": 1.6,
+      "fundacao": 1.7,
+      "estrutural": 1.7,
+      "lampada": 1.45,
+      "tomada": 1.45,
+      "hidraulica": 1.4,
+      "telhado": 1.5,
+      "climatizacao": 1.6,
+      "elevador": 1.65,
+      "portao": 1.55,
+      "cftv": 1.65,
+      "software": 1.6
+    }
+  }
+}
+

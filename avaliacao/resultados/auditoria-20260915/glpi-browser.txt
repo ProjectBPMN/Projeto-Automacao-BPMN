@@ -1,0 +1,9 @@
+- banner:
+  - link "Home":
+    - /url: /front/central.php
+- main:
+  - alert:
+    - generic: 
+    - text: The connection to the SQL server could not be established. Please check your configuration.
+    - link "Try again":
+      - /url: /front/ticket.php

@@ -1,0 +1,69 @@
+{
+  "confirmatory_eligible": false,
+  "dataset_version": "3.0.0",
+  "files": {
+    "generator": {
+      "path": "avaliacao\\scripts\\gerar_corpus_sintetico_v3.py",
+      "sha256": "5623f75dc2daa6a4a662c63f7576a5f996707aa1298602f30d48b1562b0af4f4"
+    },
+    "jsonl": {
+      "path": "avaliacao/datasets/desafio_sintetico_bloqueado_v3.jsonl",
+      "sha256": "39664c8fae1eebb61576aeba6e0acdabb162276b7df0cd3a19e64eb196761c03"
+    }
+  },
+  "generated_at": "2026-09-10T00:00:00Z",
+  "grouping": {
+    "generator_lineage_recorded": true,
+    "primary_field": "source_dependency_group_sha256",
+    "semantic_signature_recorded": true,
+    "surface_variations_not_counted_as_independent": true
+  },
+  "limitations": [
+    "Famílias são combinações semânticas sintéticas pré-implantação, não amostra da distribuição real.",
+    "Compartilhar gramáticas de geração cria dependência residual registrada por generator_lineage_sha256.",
+    "Rótulos proxy não demonstram eficácia institucional, justiça ou prontidão de produção."
+  ],
+  "overlap_with_legacy_reserved_corpus": {
+    "narrative_core_sha256": 0,
+    "scenario_id": 0,
+    "source_dependency_group_sha256": 0,
+    "template_family": 0,
+    "visible_text_sha256": 0
+  },
+  "overlap_with_other_v3_partition": {
+    "narrative_core_sha256": 0,
+    "scenario_id": 0,
+    "semantic_signature": 0,
+    "source_dependency_group_sha256": 0,
+    "template_family": 0,
+    "visible_text_sha256": 0
+  },
+  "pilot_only": true,
+  "production_ready": false,
+  "proxy_labels_only": true,
+  "scenario_set": "SYNTHETIC_LOCKED_CHALLENGE_V3",
+  "schema_version": "3.0.0",
+  "scientific_result": false,
+  "selection_access": "FORBIDDEN_UNTIL_MODEL_SELECTION_FROZEN",
+  "split": "TESTE",
+  "status": "FROZEN_LOCKED_SYNTHETIC_CHALLENGE",
+  "synthetic": true,
+  "validation": {
+    "classification_groups_by_class": {
+      "DEMO": 25,
+      "OBRA": 25,
+      "SOB_DEMANDA": 25,
+      "TRIAGEM_MANUAL": 25
+    },
+    "dedup_groups_by_stratum": {
+      "complete_negative": 24,
+      "critical_negative": 15,
+      "positive": 32
+    },
+    "group_label_purity": true,
+    "records": 242,
+    "source_dependency_groups": 171,
+    "status": "PASS",
+    "unique_visible_texts": 242
+  }
+}

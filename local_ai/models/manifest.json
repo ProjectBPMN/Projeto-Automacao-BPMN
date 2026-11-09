@@ -1,0 +1,113 @@
+{
+  "manifest_schema": "projeto-ic-local-models-v1",
+  "manifest_version": "1.0.0",
+  "created_utc": "2026-07-15T00:00:00Z",
+  "hash_algorithm": "sha256",
+  "models": [
+    {
+      "role": "embedding",
+      "repository": "ibm-granite/granite-embedding-97m-multilingual-r2",
+      "revision": "835ad14087e140460703cf0fae09f97d469d65c2",
+      "local_path": "granite-embedding-97m-multilingual-r2",
+      "dimension": 384,
+      "automatic_download": false,
+      "total_bytes": 220239760,
+      "files": [
+        {
+          "path": "config_sentence_transformers.json",
+          "bytes": 283,
+          "sha256": "93a59cbc7d82a47a7148719d9b21c0f2f111121e495b3918143184f4cd0ea25e"
+        },
+        {
+          "path": "config.json",
+          "bytes": 1216,
+          "sha256": "de948b0bdc6f356afad7a84b276d8dd7e7fe10fb9add1bb5e610621c28e41ebc"
+        },
+        {
+          "path": "model.safetensors",
+          "bytes": 194889568,
+          "sha256": "f3ea88b230492811046145513710e76b4cc8c2ad49e8708da0e7247e548903be"
+        },
+        {
+          "path": "model.sig",
+          "bytes": 11884,
+          "sha256": "2ccaf6a17941f5d39a584f11ff8f260b5276a5fddc5835d0f407a7fb8f5bd67f"
+        },
+        {
+          "path": "modules.json",
+          "bytes": 349,
+          "sha256": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf"
+        },
+        {
+          "path": "README.md",
+          "bytes": 20684,
+          "sha256": "a73d22110e7e6d947f55cdd4f1a8b0b622e340fd09a66d302f5fe800899024bd"
+        },
+        {
+          "path": "sentence_bert_config.json",
+          "bytes": 60,
+          "sha256": "967ef958285e4a7a37d8ff1832473d967edd913b4e48572f31c3d3ea361d5327"
+        },
+        {
+          "path": "special_tokens_map.json",
+          "bytes": 871,
+          "sha256": "013787ee251ff611722479197c00853b62113ad303cb0a36524231783c676c69"
+        },
+        {
+          "path": "tokenizer_config.json",
+          "bytes": 12860,
+          "sha256": "6ed69389e30a8ecabfce2f9ebcdf0c908b34056f24d994340f2f216521c057d5"
+        },
+        {
+          "path": "tokenizer.json",
+          "bytes": 25301672,
+          "sha256": "4f2842d568e2724370aec203652a42ac783c7937f8347a1a2cc7506d71f1582f"
+        },
+        {
+          "path": "1_Pooling/config.json",
+          "bytes": 313,
+          "sha256": "8bc5c9a40814fcf48d2fbe7cfeff4bee6736c3c2a823ba0ce098985c59d12ab7"
+        }
+      ]
+    },
+    {
+      "role": "experimental_embedding_backend",
+      "repository": "ibm-granite/granite-embedding-97m-multilingual-r2",
+      "revision": "835ad14087e140460703cf0fae09f97d469d65c2",
+      "runtime": "openvino_int8",
+      "local_path": "granite-embedding-97m-multilingual-r2",
+      "enabled_by_default": false,
+      "scientific_use": "ab_comparison_only",
+      "total_bytes": 98487427,
+      "files": [
+        {
+          "path": "openvino/openvino_model_qint8_quantized.bin",
+          "bytes": 97950112,
+          "sha256": "6a2d84b6c1b09d24af2a10c4cc5dd374d305f5e98bed3ca3db016797753f6d37"
+        },
+        {
+          "path": "openvino/openvino_model_qint8_quantized.xml",
+          "bytes": 537315,
+          "sha256": "9762e8dd805054518a1fea9cd17158b443533999e4c5e0b005e530b0ce6b8786"
+        }
+      ]
+    },
+    {
+      "role": "optional_extractor",
+      "repository": "ibm-granite/granite-4.0-h-350m-GGUF",
+      "revision": null,
+      "quantization": "Q4_K_M",
+      "local_path": "granite-4.0-h-350m-Q4_K_M.gguf",
+      "automatic_download": false,
+      "enabled_by_default": false,
+      "total_bytes": 222662560,
+      "files": [
+        {
+          "path": "granite-4.0-h-350m-Q4_K_M.gguf",
+          "bytes": 222662560,
+          "sha256": "0a8d6a7373602fadfba274a640ba784b86cc6847f1c67f1b0a90fa2ec266b7fb"
+        }
+      ]
+    }
+  ]
+}

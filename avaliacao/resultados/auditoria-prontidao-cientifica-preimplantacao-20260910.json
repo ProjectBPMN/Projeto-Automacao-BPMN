@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-10T19:15:18.852070Z",
+  "plan": "avaliacao\\config\\plano_cientifico_preimplantacao_v5.json",
+  "dataset": "avaliacao\\datasets\\desenvolvimento_local_v2.jsonl",
+  "status": "GAPS_REMAIN",
+  "observed": {
+    "classification_independent_groups_by_class": {
+      "DEMO": 32,
+      "OBRA": 32,
+      "SOB_DEMANDA": 32,
+      "TRIAGEM_MANUAL": 32
+    },
+    "dedup_duplicate_independent_groups": 6,
+    "dedup_hard_nonduplicate_complete_independent_groups": 5,
+    "dedup_hard_nonduplicate_critical_independent_groups": 1,
+    "records_missing_dependency_group": 0
+  },
+  "gates": {
+    "classification_target_met": false,
+    "dedup_duplicate_target_met": false,
+    "dedup_complete_negative_target_met": false,
+    "dedup_critical_negative_target_met": false,
+    "all_records_grouped": true,
+    "locked_challenge_exists_and_is_disjoint": false
+  },
+  "scientific_result": false,
+  "confirmatory_eligible": false,
+  "interpretation_limit": "Conta grupos declarados no corpus sintético; não testa independência causal nem validade externa."
+}

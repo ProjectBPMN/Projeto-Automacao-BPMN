@@ -1,0 +1,57 @@
+{
+  "address": [
+    "127.0.0.1",
+    5139
+  ],
+  "fake_service": true,
+  "while_partial": {
+    "status": 429,
+    "body": {
+      "error": {
+        "code": "busy",
+        "message": "Limite de inferências simultâneas atingido"
+      }
+    }
+  },
+  "health_while_partial": {
+    "status": 200,
+    "body": {
+      "alive": true
+    }
+  },
+  "after_one_second_partial": {
+    "status": 429,
+    "body": {
+      "error": {
+        "code": "busy",
+        "message": "Limite de inferências simultâneas atingido"
+      }
+    }
+  },
+  "completed_partial_status_line": "HTTP/1.1 200 OK",
+  "after_completion": {
+    "status": 200,
+    "body": {
+      "ok": true
+    }
+  },
+  "wf03": {
+    "put_on_error": "continueRegularOutput",
+    "put_connections": {
+      "main": [
+        [
+          {
+            "node": "PG: Fechado OBRA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pg_query": "{{ (()=>{ const d=$('Switch Classificação').first().json; const esc=s=>\"'\" + String(s??'').replace(/'/g,\"''\") + \"'\"; const conf=Number(d.classificacao?.confianca); const confSql=Number.isFinite(conf)?String(Math.max(0,Math.min(1,conf))):'NULL'; const log=esc(JSON.stringify({wf:'WF03',acao:'FECHADO_OBRA',ts:new Date().toISOString(),executor:'DDI_DG'})); return `UPDATE tickets_processados SET status_num=6,status_nome='Fechado',triagem_status='FECHADO_OBRA',classificacao='OBRA',classificacao_final='OBRA',executor='DDI_DG',em_aprovacao_fiscal=FALSE,triagem_manual=FALSE,confianca_ia=${confSql},motivo_classificacao=${esc(d.classificacao.justificativa)},triado_em=NOW(),ultima_acao_workflow='FECHADO_OBRA',tentativas_ia_classificacao=COALESCE(tentativas_ia_classificacao,0)+1,tentativas_ia=COALESCE(tentativas_ia,0)+1,log_workflow=COALESCE(log_workflow,'[]'::jsonb)||${log}::jsonb WHERE id=${Number(d.chamado.id)} RETURNING id,classificacao_final,status_num,status_nome;`; })() }}",
+    "final_code": "console.log('[WF03][LOG] Fim classificacao'); return [{json:{ok:true}}];"
+  },
+  "assertions_passed": true,
+  "server_thread_stopped": true,
+  "duration_seconds": 1.656
+}

@@ -1,0 +1,132 @@
+{
+  "confirmatory_block": {
+    "allowed_uses": [
+      "treino exploratório",
+      "calibração interna agrupada por núcleo",
+      "testes de engenharia e integração"
+    ],
+    "blocked": true,
+    "forbidden_uses": [
+      "métrica confirmatória",
+      "seleção pós-hoc com o holdout final",
+      "alegação de desempenho em produção"
+    ],
+    "reason": "Corpus sintético de desenvolvimento não estima eficácia ou prevalência real."
+  },
+  "confirmatory_eligible": false,
+  "counts": {
+    "classification_by_class": {
+      "DEMO": 400,
+      "OBRA": 400,
+      "SOB_DEMANDA": 400,
+      "TRIAGEM_MANUAL": 400
+    },
+    "classification_cores": 320,
+    "classification_cores_by_class": {
+      "DEMO": 80,
+      "OBRA": 80,
+      "SOB_DEMANDA": 80,
+      "TRIAGEM_MANUAL": 80
+    },
+    "classification_records": 1600,
+    "classification_source_dependency_groups": 128,
+    "classification_source_dependency_groups_by_class": {
+      "DEMO": 32,
+      "OBRA": 32,
+      "SOB_DEMANDA": 32,
+      "TRIAGEM_MANUAL": 32
+    },
+    "dedup_challenges": 1000,
+    "dedup_challenges_by_label": {
+      "DUPLICADO": 500,
+      "NAO_DUPLICADO": 500
+    },
+    "dedup_episodes": 200,
+    "dedup_episodes_by_family": {
+      "detail_asymmetry": 17,
+      "different_asset_same_room": 17,
+      "different_requester_same_issue": 17,
+      "different_symptom_same_asset": 17,
+      "explicit_previous_reference": 17,
+      "missing_location_with_reference": 16,
+      "missing_location_without_evidence": 16,
+      "noisy_paraphrase": 16,
+      "prompt_injection_hard_negative": 16,
+      "resolved_then_new_recurrence": 17,
+      "same_issue_different_location": 17,
+      "unresolved_recurrence": 17
+    },
+    "dedup_records": 1200,
+    "dedup_source_dependency_groups": 12,
+    "narrative_core_hash_overlap": 0,
+    "records": 2800,
+    "scenario_id_overlap": 0,
+    "status": "PASSOU_VALIDACAO_ESTRUTURAL_ANTI_VAZAMENTO_E_DEPENDENCIA",
+    "template_family_overlap": 0,
+    "visible_text_hash_overlap": 0,
+    "wrong_category_fraction": 0.156786,
+    "wrong_category_records": 439
+  },
+  "dataset_version": "desenvolvimento-local-v2.1.0",
+  "deterministic_generation": true,
+  "domain": "manutenção de patrimônio predial de campus federal",
+  "files": {
+    "anti_leakage_reference": {
+      "path": "avaliacao\\datasets\\corpus_v3_teste.jsonl",
+      "sha256": "26e692ba247ef7439b9a057873c7034318423214b9797b2dbe72f9f24e6801f0"
+    },
+    "generator": {
+      "path": "avaliacao\\scripts\\gerar_corpus_desenvolvimento_local_v2.py",
+      "sha256": "2b502bc3818cbc08ea733016a095425fc182af820f09cedd8cb52f7298f5e5c4"
+    },
+    "jsonl": {
+      "path": "avaliacao\\datasets\\desenvolvimento_local_v2.jsonl",
+      "sha256": "305e84164d663a19a2e224b2dc8bf08e8d3173bf50bc15c7675f9de553d2de9a"
+    }
+  },
+  "generated_at": "2026-08-26T16:34:03.663562+00:00",
+  "grouping_policy": {
+    "classification_group_field": "source_dependency_group_sha256",
+    "classification_variations_per_core": 5,
+    "dedup_challenges_per_episode": 5,
+    "deduplication_group_field": "source_dependency_group_sha256",
+    "split_requirement": "Todas as realizações e paráfrases derivadas da mesma família-fonte permanecem juntas; episódios dedup que reutilizam o mesmo molde também permanecem juntos."
+  },
+  "license": {
+    "holder": "Projeto de iniciação científica",
+    "id": "USO_INTERNO_ACADEMICO_IF_SUDESTE_MG",
+    "personal_data": false,
+    "redistribution": "Não autorizada sem revisão institucional"
+  },
+  "limitations": [
+    "As variações e paráfrases da mesma família-fonte não são observações independentes.",
+    "Os 200 episódios dedup reutilizam 12 famílias-fonte; o n efetivo para inferência agrupada é 12, não 200.",
+    "As 80 especificações nominais por classe derivam de 32 famílias-fonte; o n efetivo máximo por classe é 32.",
+    "Categorias GLPI foram intencionalmente corrompidas em uma fração dos registros.",
+    "Os rótulos derivam das regras documentais e ainda são piloto, não padrão-ouro confirmatório.",
+    "O corpus não contém chamados reais e não representa a frequência cotidiana das classes."
+  ],
+  "pilot_only": true,
+  "policy": {
+    "DEMO": "Reparo, reposição ou pequena intervenção em elemento existente, sem criar área nem alterar a estrutura.",
+    "DESEMPATE": "Telha pontual e divisória interna simples são DEMO; mudança do sistema construtivo, nova área ou rampa nova com fundação são OBRA.",
+    "GOVERNANCA": "Descrição vaga, contraditória ou insuficiente deve ir para TRIAGEM_MANUAL; não se admite escolha automática sem evidência suficiente.",
+    "OBRA": "Criação ou ampliação de área, alteração estrutural, infraestrutura de grande porte implantada do zero ou reforma integral com mudança de projeto/layout.",
+    "SOB_DEMANDA": "Serviço que exige empresa, assistência técnica ou especialidade externa, incluindo qualquer intervenção em ar-condicionado.",
+    "source": "avaliacao/metodologia_avaliacao.md"
+  },
+  "provenance": {
+    "authored_for_project": true,
+    "external_personal_data_used": false,
+    "llm_generated": false,
+    "reference_corpus_role": "ANTI_LEAKAGE_CHECK_ONLY",
+    "reserved_evaluation_corpus_used_for_training": false,
+    "sigmu_used": false
+  },
+  "scenario_set": "DEV_LOCAL_V1",
+  "schema_version": "1.0.0",
+  "seed": 20260818,
+  "split": "DESENVOLVIMENTO",
+  "status": "SINTETICO_PILOTO_SOMENTE_DESENVOLVIMENTO",
+  "synthetic": true
+}

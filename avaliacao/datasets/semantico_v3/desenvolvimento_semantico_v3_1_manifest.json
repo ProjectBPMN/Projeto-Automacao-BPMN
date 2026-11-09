@@ -1,0 +1,89 @@
+{
+  "confirmatory_eligible": false,
+  "cross_partition_overlap": {
+    "grammar_family_sha256": 0,
+    "semantic_family_sha256": 0,
+    "source_dependency_group_sha256": 0,
+    "visible_text_sha256": 0
+  },
+  "dataset_version": "3.1.0",
+  "files": {
+    "classification_catalog": {
+      "path": "avaliacao/catalogos/corpus_semantico_v3/catalogo_classificacao_v3_1.json",
+      "sha256": "aab69d62babdc514c7dd9a5a8a64fbb89f0f184a6bac10857825026a73c45ed5"
+    },
+    "dedup_catalog": {
+      "path": "avaliacao/catalogos/corpus_semantico_v3/catalogo_deduplicacao_v3_1.json",
+      "sha256": "19c5c472bc8a1ca44fc918135253e6155b6cb8b37a1e8f35b8fed53fe33b4695"
+    },
+    "fixed_router": {
+      "path": "avaliacao/scripts/treinar_modelo_local.py",
+      "sha256": "73bc75ff565c7b40c2190b4fed18f8507d8ab8e32110699d037946bc87fbc5f7"
+    },
+    "generator": {
+      "path": "avaliacao/scripts/gerar_corpus_semantico_v3.py",
+      "sha256": "e53665e3f197d1a357d800c869c7ee0a51b46fde6b259dfd8bd779d614f5d3d4"
+    },
+    "jsonl": {
+      "path": "avaliacao/datasets/semantico_v3/desenvolvimento_semantico_v3_1.jsonl",
+      "sha256": "437e516f6d198927817a9fb2dd730105e7814958c37656f864f35b90d9ac4bbb"
+    }
+  },
+  "generated_at": "2026-09-14T00:00:00Z",
+  "grouping": {
+    "coverage_is_not_effective_sample_size": true,
+    "effective_sample_size": "UNKNOWN",
+    "grammar_sensitivity_field": "grammar_family_sha256",
+    "hashes_exclude_split_seed_scenario_set_and_surface_realization": true,
+    "primary_dependency_field": "source_dependency_group_sha256",
+    "semantic_coverage_field": "semantic_family_sha256",
+    "unit_count_rule": "Somente semantic_family_sha256 com conteúdo visível factual distinto conta para cobertura; variações superficiais não contam."
+  },
+  "inference_method": "known_grammar_conditional",
+  "label_source": "synthetic_proxy",
+  "limitations": [
+    "Cobertura semântica sintética não é tamanho amostral efetivo nem amostra da distribuição institucional.",
+    "As cinco regras por ativo compartilham uma fonte autorada e devem permanecer agrupadas.",
+    "Resultados são exploratórios e condicionais às gramáticas conhecidas; relatar sensibilidade por grammar_family_sha256.",
+    "Cobertura bruta não equivale ao estrato pós-roteador; comparar o classificador condicional ao roteador fixo e o desafio no pipeline completo.",
+    "O desafio é pequeno e sintético; seu n não demonstra risco de erro menor ou igual a 2%.",
+    "Negativo crítico representa decisão operacional de não fusão automática, não certeza de eventos semanticamente distintos."
+  ],
+  "proxy_labels_only": true,
+  "schema_version": "3.1.0",
+  "scientific_result": false,
+  "selection_access": "ALLOWED_FOR_GROUPED_DEVELOPMENT",
+  "split": "DESENVOLVIMENTO",
+  "status": "SYNTHETIC_DEVELOPMENT_ONLY",
+  "synthetic": true,
+  "validation": {
+    "dedup_challenges_by_stratum": {
+      "complete_negative": 97,
+      "critical_negative": 75,
+      "positive": 186
+    },
+    "grammar_families": 37,
+    "post_fixed_router_records_by_class": {
+      "DEMO": 200,
+      "OBRA": 80,
+      "SOB_DEMANDA": 120,
+      "TRIAGEM_MANUAL": 48
+    },
+    "post_fixed_router_semantic_families_by_class": {
+      "DEMO": 100,
+      "OBRA": 40,
+      "SOB_DEMANDA": 60,
+      "TRIAGEM_MANUAL": 24
+    },
+    "records": 1516,
+    "semantic_classification_families_by_class": {
+      "DEMO": 100,
+      "OBRA": 100,
+      "SOB_DEMANDA": 100,
+      "TRIAGEM_MANUAL": 100
+    },
+    "source_dependency_groups": 111,
+    "status": "PASS",
+    "unique_visible_texts": 1516
+  }
+}

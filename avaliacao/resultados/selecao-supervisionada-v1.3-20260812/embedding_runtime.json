@@ -1,0 +1,197 @@
+[
+  {
+    "schema": "projeto-ic-embedding-cache-v1",
+    "created_at": "2026-08-04T16:54:39.800174+00:00",
+    "cache_hit": true,
+    "model_id": "granite97m",
+    "repository": "ibm-granite/granite-embedding-97m-multilingual-r2",
+    "revision": "835ad14087e140460703cf0fae09f97d469d65c2",
+    "local_path": "local_ai\\models\\granite-embedding-97m-multilingual-r2",
+    "tree_sha256": "28bb1e36cb3719c0c466de3013404307821da17bf901fc70f62af74bfa57a343",
+    "file_count": 13,
+    "total_bytes": 318727187,
+    "dataset_sha256": "0de50381c0dfaefeb1a940cd697f9c9a8e87b5efee9252a1f4ca43c9d904f204",
+    "dimension": 384,
+    "normalized": true,
+    "backend": "pytorch_fp32",
+    "load_seconds": 6.672501000000921,
+    "rss_before_mb": 453.609375,
+    "load_peak_rss_mb": 1015.02734375,
+    "encode_peak_rss_mb": 958.65234375,
+    "single_text_latency_ms": {
+      "n": 20,
+      "p50": 106.67204999845126,
+      "p95": 133.24675999792817
+    },
+    "batch8_latency_ms": {
+      "n": 10,
+      "p50": 548.1666000050609,
+      "p95": 607.1394700000383
+    },
+    "roles": {
+      "symmetric": {
+        "records": 1228,
+        "prefix": "",
+        "keys_sha256": "2b897bcb6a9287e6eac705ca95483cb75b4f75480da71d33ff2b658a356bfa49",
+        "seconds": 81.93647469999996,
+        "texts_per_second": 14.987220337415867,
+        "peak_rss_mb": 958.65234375,
+        "npz_sha256": "667b4a269b241e3fcd6af1ccc47fe0010915ce485ed813221349dceee6a6a67e"
+      },
+      "retrieval_query": {
+        "records": 300,
+        "prefix": "",
+        "keys_sha256": "6158db90beccb2875e930aea8a2d6221b5969d19a3ac67fc8ac2e4d060fc755a",
+        "seconds": 19.850796400001855,
+        "texts_per_second": 15.112743788958108,
+        "peak_rss_mb": 958.0078125,
+        "npz_sha256": "7344822586759643e1c41f9900a13bdbbb32985dcd9636a4afb91858545a6a27"
+      },
+      "retrieval_passage": {
+        "records": 120,
+        "prefix": "",
+        "keys_sha256": "ce8be8f6193fac3287a28faa0183b629ff124cd2d6242c2f4c39f7d429904690",
+        "seconds": 7.150415500000236,
+        "texts_per_second": 16.782241535473855,
+        "peak_rss_mb": 958.51171875,
+        "npz_sha256": "14a69a8434011bf750ef9e16cf30622a94defec3f2e74c6a46ed706b661ad369"
+      }
+    },
+    "packages": {
+      "torch": "2.13.0+cpu",
+      "sentence_transformers": "5.6.0",
+      "transformers": "4.57.6"
+    },
+    "validated_at": "2026-08-13T00:30:03.918763+00:00"
+  },
+  {
+    "schema": "projeto-ic-embedding-cache-v1",
+    "created_at": "2026-08-04T16:56:45.481870+00:00",
+    "cache_hit": true,
+    "model_id": "multilingual_e5_small",
+    "repository": "intfloat/multilingual-e5-small",
+    "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "local_path": "local_ai\\models\\multilingual-e5-small",
+    "tree_sha256": "ea6db56024d2b0c8743c6af329e69b6e5628edf75e99d9fdf9b68ba730f8e8c9",
+    "file_count": 11,
+    "total_bytes": 493294398,
+    "dataset_sha256": "0de50381c0dfaefeb1a940cd697f9c9a8e87b5efee9252a1f4ca43c9d904f204",
+    "dimension": 384,
+    "normalized": true,
+    "backend": "pytorch_fp32",
+    "load_seconds": 2.344214799995825,
+    "rss_before_mb": 919.6171875,
+    "load_peak_rss_mb": 921.26171875,
+    "encode_peak_rss_mb": 890.42578125,
+    "single_text_latency_ms": {
+      "n": 20,
+      "p50": 108.8068499993824,
+      "p95": 143.72435500445152
+    },
+    "batch8_latency_ms": {
+      "n": 10,
+      "p50": 501.7738999995345,
+      "p95": 585.2062649984872
+    },
+    "roles": {
+      "symmetric": {
+        "records": 1228,
+        "prefix": "query: ",
+        "keys_sha256": "2b897bcb6a9287e6eac705ca95483cb75b4f75480da71d33ff2b658a356bfa49",
+        "seconds": 74.60871210000187,
+        "texts_per_second": 16.459203830700748,
+        "peak_rss_mb": 885.6171875,
+        "npz_sha256": "19a7d93d802e9f501c1e41fe8fb5b257d509c77de9fd32069487b4c948d58de5"
+      },
+      "retrieval_query": {
+        "records": 300,
+        "prefix": "query: ",
+        "keys_sha256": "6158db90beccb2875e930aea8a2d6221b5969d19a3ac67fc8ac2e4d060fc755a",
+        "seconds": 27.666643500000646,
+        "texts_per_second": 10.843382573675516,
+        "peak_rss_mb": 890.42578125,
+        "npz_sha256": "e2ffc21720cd19f4e7ca2299f1fe1eb98d615ff026388c922a0cbd0d94204fd1"
+      },
+      "retrieval_passage": {
+        "records": 120,
+        "prefix": "passage: ",
+        "keys_sha256": "ce8be8f6193fac3287a28faa0183b629ff124cd2d6242c2f4c39f7d429904690",
+        "seconds": 9.326782999996794,
+        "texts_per_second": 12.866172612790631,
+        "peak_rss_mb": 888.453125,
+        "npz_sha256": "bc510d313254e76b824542db9b2a103b98281e582b8ac651fc4fe4fc89c85b18"
+      }
+    },
+    "packages": {
+      "torch": "2.13.0+cpu",
+      "sentence_transformers": "5.6.0",
+      "transformers": "4.57.6"
+    },
+    "validated_at": "2026-08-13T00:30:07.106610+00:00"
+  },
+  {
+    "schema": "projeto-ic-embedding-cache-v1",
+    "created_at": "2026-08-04T16:58:46.909961+00:00",
+    "cache_hit": true,
+    "model_id": "multilingual_minilm_l12",
+    "repository": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+    "local_path": "local_ai\\models\\paraphrase-multilingual-MiniLM-L12-v2",
+    "tree_sha256": "2d8f7cfb97778ba4c0d8a0d17309e6ef460e40fe36f2eb0e2bbbe1777a09e217",
+    "file_count": 13,
+    "total_bytes": 499562317,
+    "dataset_sha256": "0de50381c0dfaefeb1a940cd697f9c9a8e87b5efee9252a1f4ca43c9d904f204",
+    "dimension": 384,
+    "normalized": true,
+    "backend": "pytorch_fp32",
+    "load_seconds": 6.049372699999367,
+    "rss_before_mb": 554.3046875,
+    "load_peak_rss_mb": 844.91796875,
+    "encode_peak_rss_mb": 895.8984375,
+    "single_text_latency_ms": {
+      "n": 20,
+      "p50": 172.64095000427915,
+      "p95": 332.68064000476454
+    },
+    "batch8_latency_ms": {
+      "n": 10,
+      "p50": 584.0877999980876,
+      "p95": 1344.0939649990464
+    },
+    "roles": {
+      "symmetric": {
+        "records": 1228,
+        "prefix": "",
+        "keys_sha256": "2b897bcb6a9287e6eac705ca95483cb75b4f75480da71d33ff2b658a356bfa49",
+        "seconds": 63.97860619999847,
+        "texts_per_second": 19.193916106287876,
+        "peak_rss_mb": 892.21875,
+        "npz_sha256": "460d1aa6be8144adf547844440e3a86b0dfd182d4b9f3e6629f3d4ec308589db"
+      },
+      "retrieval_query": {
+        "records": 300,
+        "prefix": "",
+        "keys_sha256": "6158db90beccb2875e930aea8a2d6221b5969d19a3ac67fc8ac2e4d060fc755a",
+        "seconds": 21.78237049999734,
+        "texts_per_second": 13.77260569505218,
+        "peak_rss_mb": 895.37890625,
+        "npz_sha256": "6e09b6d29c34c94aa4056d67b13e32168a40669795e05d08558bc591d7ea27e2"
+      },
+      "retrieval_passage": {
+        "records": 120,
+        "prefix": "",
+        "keys_sha256": "ce8be8f6193fac3287a28faa0183b629ff124cd2d6242c2f4c39f7d429904690",
+        "seconds": 12.206496200000402,
+        "texts_per_second": 9.830830898058695,
+        "peak_rss_mb": 895.8984375,
+        "npz_sha256": "4bf5c3258f9ffe23bbb517ff26dab55c7686f72b13c723637de3955da1b8c52a"
+      }
+    },
+    "packages": {
+      "torch": "2.13.0+cpu",
+      "sentence_transformers": "5.6.0",
+      "transformers": "4.57.6"
+    },
+    "validated_at": "2026-08-13T00:30:10.810588+00:00"
+  }
+]

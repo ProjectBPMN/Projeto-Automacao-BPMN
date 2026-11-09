@@ -1,0 +1,56 @@
+{
+  "schema_version": "2.1.0",
+  "description": "Registro auditável dos estratos. D identifica a dimensão de deduplicação, não a classe positiva: vários cenários D são controles negativos deliberados.",
+  "scenario_sets": {
+    "primary33": {
+      "ids": ["D01","D02","D03","D04","D05","D06","D07","D08","D09","D10","D11","D12","D13","D14","C01","C02","C03","C04","C05","C06","C07","C08","C09","C10","C11","C12","C13","C14","C15","C16","C17","C18","C19"],
+      "role": "corpus principal solicitado"
+    },
+    "stress2": {
+      "ids": ["D15","C20"],
+      "role": "robustez suplementar; não aumenta n do corpus principal"
+    }
+  },
+  "scenarios": [
+    {"id":"D01","dimension":"DEDUPLICACAO","adversarial":["detalhe_assimetrico"]},
+    {"id":"D02","dimension":"DEDUPLICACAO","adversarial":["mesmo_local_ativos_distintos"]},
+    {"id":"D03","dimension":"DEDUPLICACAO","adversarial":["mesmo_solicitante_ativos_distintos"]},
+    {"id":"D04","dimension":"DEDUPLICACAO","adversarial":["local_incompleto"]},
+    {"id":"D05","dimension":"DEDUPLICACAO","adversarial":["mesmo_ativo_sintomas_distintos"]},
+    {"id":"D06","dimension":"DEDUPLICACAO","adversarial":["problema_nao_resolvido"]},
+    {"id":"D07","dimension":"DEDUPLICACAO","adversarial":["parafrase_curta"]},
+    {"id":"D08","dimension":"DEDUPLICACAO","adversarial":["objetos_proximos"]},
+    {"id":"D09","dimension":"DEDUPLICACAO","adversarial":["mesmo_sintoma_locais_distintos"]},
+    {"id":"D10","dimension":"DEDUPLICACAO","adversarial":["generico_depois_detalhado"]},
+    {"id":"D11","dimension":"DEDUPLICACAO","adversarial":["ambiguidade_mesmo_ativo"]},
+    {"id":"D12","dimension":"DEDUPLICACAO","adversarial":["reabertura_outro_solicitante"]},
+    {"id":"D13","dimension":"DEDUPLICACAO","adversarial":["auto_referencia"]},
+    {"id":"D14","dimension":"DEDUPLICACAO","adversarial":["mesmo_servico_locais_distintos"]},
+    {"id":"D15","dimension":"DEDUPLICACAO","adversarial":["duplicado_semantico_baixa_sobreposicao"]},
+    {"id":"C01","dimension":"CLASSIFICACAO","adversarial":["limite_obra"]},
+    {"id":"C02","dimension":"CLASSIFICACAO","adversarial":["divisoria_nao_estrutural"]},
+    {"id":"C03","dimension":"CLASSIFICACAO","adversarial":["telhado_grande"]},
+    {"id":"C04","dimension":"CLASSIFICACAO","adversarial":["telhado_rural_pequeno"]},
+    {"id":"C05","dimension":"CLASSIFICACAO","adversarial":[]},
+    {"id":"C06","dimension":"CLASSIFICACAO","adversarial":[]},
+    {"id":"C07","dimension":"CLASSIFICACAO","adversarial":["estado_operacional_externo"]},
+    {"id":"C08","dimension":"CLASSIFICACAO","adversarial":["texto_curto","local_ausente"]},
+    {"id":"C09","dimension":"CLASSIFICACAO","adversarial":["fora_escopo"]},
+    {"id":"C10","dimension":"CLASSIFICACAO","adversarial":["categoria_glpi_incorreta"]},
+    {"id":"C11","dimension":"CLASSIFICACAO","adversarial":["prompt_injection"]},
+    {"id":"C12","dimension":"CLASSIFICACAO","adversarial":["contradicao"]},
+    {"id":"C13","dimension":"CLASSIFICACAO","adversarial":["rampa_nova"]},
+    {"id":"C14","dimension":"CLASSIFICACAO","adversarial":["rampa_reparo"]},
+    {"id":"C15","dimension":"CLASSIFICACAO","adversarial":[]},
+    {"id":"C16","dimension":"CLASSIFICACAO","adversarial":[]},
+    {"id":"C17","dimension":"CLASSIFICACAO","adversarial":["multiplos_problemas"]},
+    {"id":"C18","dimension":"CLASSIFICACAO","adversarial":["erros_ortograficos","abreviacoes"]},
+    {"id":"C19","dimension":"CLASSIFICACAO","adversarial":["urgencia_irrelevante"]},
+    {"id":"C20","dimension":"CLASSIFICACAO","adversarial":["texto_extremamente_longo","truncamento_controlado"]}
+  ],
+  "split_policy": {
+    "PILOTO": "Ajuste de prompt e validação integral por especialistas.",
+    "CALIBRACAO": "Somente desempenho da fila; nunca usado para eficácia.",
+    "TESTE": "Seed, IDs, episódios e textos congelados antes da execução; proibido ajustar prompt após abertura."
+  }
+}

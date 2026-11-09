@@ -1,0 +1,12 @@
+[embedding] granite97m
+[classification__tfidf__none__logistic_regression] fold 1/5 fit=8.00s
+[classification__tfidf__none__logistic_regression] fold 2/5 fit=11.37s
+[classification__tfidf__none__logistic_regression] fold 3/5 fit=10.21s
+[classification__tfidf__none__logistic_regression] fold 4/5 fit=10.33s
+[classification__tfidf__none__logistic_regression] fold 5/5 fit=8.18s
+[deduplication__tfidf__none__logistic_regression] fold 1/5 fit=23.65s
+[deduplication__tfidf__none__logistic_regression] fold 2/5 fit=21.51s
+[deduplication__tfidf__none__logistic_regression] fold 3/5 fit=29.92s
+[deduplication__tfidf__none__logistic_regression] fold 4/5 fit=44.24s
+[deduplication__tfidf__none__logistic_regression] fold 5/5 fit=55.44s
+Seleo concluda em avaliacao\resultados\selecao-supervisionada-v1.2-smoke-20260812b

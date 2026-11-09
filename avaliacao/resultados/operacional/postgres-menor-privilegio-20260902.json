@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-02T04:08:11.226550Z",
+  "mode": "APPLY",
+  "scientific_result": false,
+  "static_audit": {
+    "status": "PASS",
+    "bootstrap_and_runtime_same_role": false,
+    "runtime_workflow_ddl_tokens": [],
+    "apply_blocked": false,
+    "required_remediation_order": [
+      "mover DDL do WF05 para migração administrada",
+      "provisionar credencial admin fora da CLI",
+      "aplicar roles migration_owner/runtime em transação",
+      "comprovar negação de CREATE TABLE sob o login runtime",
+      "reiniciar somente em janela aprovada e validar rollback"
+    ]
+  },
+  "live_audit": {
+    "status": "NOT_REQUESTED"
+  },
+  "migration": {
+    "path": "avaliacao\\operacional\\sql\\postgres_menor_privilegio.sql",
+    "sha256": "f3ff69e283ba17a3c96b9323c5c15fb71239b6765a62e2a8464fc4a544b5acdb"
+  },
+  "remediation": {
+    "status": "PASS",
+    "runtime_login": "triagem_app",
+    "ddl_denial_sqlstate": "42501",
+    "rollback_plan": "avaliacao\\resultados\\operacional\\postgres-menor-privilegio-20260902.rollback.sql",
+    "rollback_plan_sha256": "6846eaf6cec898e9cfc2f890d9799523c1f5a620199777f1bee993fbf7c0ba87"
+  },
+  "status": "PASS"
+}

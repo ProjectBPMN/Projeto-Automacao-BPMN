@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-10T18:55:37.038816Z",
+  "mode": "APPLY_ISOLATED",
+  "status": "PASS",
+  "live_services_touched": false,
+  "artifacts": {
+    "postgresql": {
+      "path": "avaliacao\\runtime\\backups\\live-20260910T1850Z\\triagem-live.dump",
+      "exists": true
+    },
+    "mariadb": {
+      "path": "avaliacao\\runtime\\backups\\live-20260910T1850Z\\glpi-live.sql",
+      "exists": true
+    }
+  },
+  "temporary_target_controls": {
+    "random_container_names": true,
+    "network": "none",
+    "published_ports": 0,
+    "cleanup_in_finally": true,
+    "resource_strategy": "SEQUENTIAL_EPHEMERAL_DATABASES",
+    "pinned_images": [
+      "postgres:16.13@sha256:71e27bf60b70bded003791b5573f8b808365613f341df20ffcf0c1ed7bc13ddf",
+      "mariadb:10.11.16@sha256:8d9046cdb0b0961b3d2119bcb4bea62a185f11944be5968bc42b81d47801902e"
+    ]
+  },
+  "required_tables": {
+    "postgresql": [
+      "tickets_processados",
+      "fila_ia_controle",
+      "fila_ia_dead_letter",
+      "ia_decisoes",
+      "ia_tentativas_modelo",
+      "avaliacoes_humanas",
+      "workflow_eventos"
+    ],
+    "mariadb": [
+      "glpi_tickets",
+      "glpi_users",
+      "glpi_itilcategories"
+    ]
+  },
+  "result": {
+    "status": "PASS",
+    "evidence_status": "ISOLATED_BACKUP_RESTORE_DRILL",
+    "scientific_result": false,
+    "live_services_touched": false,
+    "isolated_targets": {
+      "network": "none",
+      "published_ports": 0
+    },
+    "resource_strategy": "SEQUENTIAL_EPHEMERAL_DATABASES",
+    "artifacts": {
+      "postgresql": {
+        "path": "avaliacao\\runtime\\backups\\live-20260910T1850Z\\triagem-live.dump",
+        "sha256": "ecc82f405e26df5e22adadb9e55a58c8b45c4d85b292206d9a66808b60d85fe3",
+        "row_counts": {
+          "tickets_processados": 230,
+          "fila_ia_controle": 1,
+          "fila_ia_dead_letter": 110,
+          "ia_decisoes": 411,
+          "ia_tentativas_modelo": 339,
+          "avaliacoes_humanas": 50,
+          "workflow_eventos": 929
+        }
+      },
+      "mariadb": {
+        "path": "avaliacao\\runtime\\backups\\live-20260910T1850Z\\glpi-live.sql",
+        "sha256": "0f8400eef1661d535ce78a5913df00f86ae31a17315092ef966c182325d9889f",
+        "container_staging_sha256": "0f8400eef1661d535ce78a5913df00f86ae31a17315092ef966c182325d9889f",
+        "row_counts": {
+          "glpi_tickets": 210,
+          "glpi_users": 16,
+          "glpi_itilcategories": 13
+        }
+      }
+    },
+    "duration_seconds": 68.77784269999756,
+    "interpretation_limit": "Prova somente que estes artefatos restauraram nos alvos efêmeros e que as tabelas exigidas foram consultáveis. init_v9.sql restaura esquema, não dados vivos nem o volume n8n."
+  }
+}

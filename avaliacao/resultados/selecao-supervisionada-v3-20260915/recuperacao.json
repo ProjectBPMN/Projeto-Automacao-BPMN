@@ -1,0 +1,3752 @@
+{
+  "summary": [
+    {
+      "representation": "tfidf",
+      "queries": 186,
+      "candidates_per_query": 358,
+      "recall_at_1": 1.0,
+      "recall_at_5": 1.0,
+      "recall_at_20": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_20": 1.0,
+      "median_rank": 1.0
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "queries": 186,
+      "candidates_per_query": 358,
+      "recall_at_1": 0.9731182795698925,
+      "recall_at_5": 1.0,
+      "recall_at_20": 1.0,
+      "mrr": 0.9865591397849462,
+      "ndcg_at_20": 0.990078756816437,
+      "median_rank": 1.0
+    }
+  ],
+  "details": [
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0082-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0082-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0135-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0135-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0129-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0129-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0126-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0126-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0104-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0104-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0140-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0140-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0030-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0030-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0174-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0174-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0074-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0074-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0151-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0151-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0065-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0065-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0057-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0057-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0180-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0180-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0054-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0054-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0006-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0006-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0083-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0083-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0059-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0059-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0028-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0028-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0183-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0183-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0142-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0142-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0070-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0070-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0098-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0098-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0118-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0118-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0157-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0157-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0136-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0136-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0155-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0155-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0039-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0039-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0050-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0050-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0035-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0035-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0085-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0085-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0131-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0131-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0060-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0060-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0011-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0011-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0181-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0181-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0001-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0001-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0108-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0108-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0109-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0109-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0182-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0182-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0014-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0014-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0040-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0040-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0002-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0002-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0031-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0031-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0033-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0033-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0045-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0045-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0023-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0023-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0068-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0068-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0161-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0161-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0064-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0064-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0119-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0119-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0124-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0124-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0115-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0115-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0125-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0125-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0138-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0138-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0116-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0116-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0100-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0100-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0165-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0165-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0164-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0164-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0055-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0055-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0051-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0051-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0087-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0087-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0073-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0073-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0127-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0127-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0094-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0094-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0036-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0036-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0105-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0105-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0029-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0029-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0112-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0112-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0012-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0012-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0117-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0117-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0121-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0121-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0053-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0053-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0067-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0067-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0037-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0037-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0153-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0153-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0160-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0160-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0069-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0069-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0086-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0086-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0122-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0122-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0049-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0049-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0175-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0175-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0110-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0110-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0154-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0154-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0169-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0169-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0128-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0128-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0062-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0062-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0026-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0026-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0185-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0185-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0137-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0137-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0106-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0106-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0015-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0015-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0007-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0007-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0178-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0178-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0008-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0008-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0146-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0146-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0017-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0017-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0101-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0101-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0088-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0088-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0013-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0013-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0130-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0130-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0179-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0179-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0066-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0066-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0123-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0123-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0102-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0102-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0141-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0141-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0034-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0034-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0024-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0024-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0173-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0173-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0184-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0184-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0071-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0071-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0139-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0139-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0038-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0038-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0047-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0047-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0016-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0016-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0090-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0090-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0113-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0113-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0061-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0061-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0177-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0177-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0078-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0078-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0171-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0171-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0103-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0103-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0021-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0021-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0058-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0058-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0052-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0052-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0046-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0046-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0150-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0150-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0092-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0092-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0089-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0089-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0133-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0133-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0019-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0019-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0003-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0003-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0095-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0095-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0027-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0027-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0048-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0048-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0032-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0032-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0041-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0041-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0044-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0044-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0107-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0107-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0152-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0152-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0005-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0005-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0099-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0099-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0167-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0167-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0020-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0020-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0166-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0166-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0093-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0093-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0111-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0111-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0018-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0018-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0132-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0132-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0163-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0163-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0010-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0010-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0176-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0176-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0162-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0162-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0076-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0076-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0145-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0145-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0072-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0072-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0134-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0134-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0043-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0043-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0168-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0168-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0156-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0156-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0170-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0170-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0077-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0077-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0004-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0004-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0172-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0172-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0081-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0081-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0025-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0025-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0042-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0042-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0148-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0148-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0149-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0149-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0147-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0147-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0143-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0143-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0096-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0096-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0063-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0063-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0097-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0097-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0158-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0158-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0079-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0079-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0091-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0091-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0009-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0009-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0120-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0120-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0075-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0075-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0056-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0056-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0084-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0084-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0114-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0114-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0159-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0159-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0144-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0144-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0186-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0186-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0080-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0080-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "tfidf",
+      "query_case_id": "DEV-SEM31-D-0022-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0022-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0082-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0082-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0135-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0135-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0129-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0129-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0126-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0126-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0104-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0104-A",
+      "rank": 2,
+      "reciprocal_rank": 0.5,
+      "hit_at_1": false,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0140-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0140-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0030-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0030-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0174-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0174-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0074-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0074-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0151-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0151-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0065-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0065-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0057-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0057-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0180-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0180-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0054-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0054-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0006-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0006-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0083-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0083-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0059-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0059-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0028-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0028-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0183-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0183-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0142-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0142-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0070-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0070-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0098-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0098-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0118-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0118-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0157-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0157-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0136-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0136-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0155-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0155-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0039-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0039-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0050-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0050-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0035-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0035-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0085-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0085-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0131-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0131-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0060-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0060-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0011-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0011-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0181-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0181-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0001-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0001-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0108-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0108-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0109-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0109-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0182-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0182-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0014-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0014-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0040-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0040-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0002-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0002-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0031-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0031-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0033-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0033-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0045-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0045-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0023-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0023-A",
+      "rank": 2,
+      "reciprocal_rank": 0.5,
+      "hit_at_1": false,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0068-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0068-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0161-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0161-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0064-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0064-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0119-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0119-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0124-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0124-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0115-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0115-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0125-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0125-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0138-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0138-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0116-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0116-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0100-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0100-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0165-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0165-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0164-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0164-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0055-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0055-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0051-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0051-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0087-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0087-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0073-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0073-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0127-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0127-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0094-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0094-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0036-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0036-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0105-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0105-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0029-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0029-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0112-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0112-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0012-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0012-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0117-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0117-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0121-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0121-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0053-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0053-A",
+      "rank": 2,
+      "reciprocal_rank": 0.5,
+      "hit_at_1": false,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0067-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0067-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0037-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0037-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0153-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0153-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0160-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0160-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0069-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0069-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0086-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0086-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0122-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0122-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0049-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0049-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0175-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0175-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0110-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0110-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0154-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0154-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0169-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0169-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0128-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0128-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0062-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0062-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0026-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0026-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0185-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0185-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0137-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0137-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0106-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0106-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0015-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0015-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0007-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0007-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0178-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0178-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0008-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0008-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0146-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0146-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0017-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0017-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0101-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0101-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0088-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0088-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0013-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0013-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0130-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0130-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0179-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0179-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0066-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0066-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0123-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0123-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0102-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0102-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0141-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0141-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0034-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0034-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0024-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0024-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0173-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0173-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0184-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0184-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0071-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0071-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0139-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0139-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0038-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0038-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0047-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0047-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0016-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0016-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0090-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0090-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0113-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0113-A",
+      "rank": 2,
+      "reciprocal_rank": 0.5,
+      "hit_at_1": false,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0061-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0061-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0177-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0177-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0078-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0078-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0171-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0171-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0103-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0103-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0021-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0021-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0058-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0058-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0052-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0052-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0046-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0046-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0150-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0150-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0092-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0092-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0089-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0089-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0133-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0133-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0019-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0019-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0003-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0003-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0095-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0095-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0027-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0027-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0048-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0048-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0032-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0032-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0041-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0041-A",
+      "rank": 2,
+      "reciprocal_rank": 0.5,
+      "hit_at_1": false,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0044-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0044-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0107-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0107-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0152-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0152-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0005-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0005-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0099-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0099-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0167-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0167-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0020-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0020-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0166-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0166-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0093-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0093-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0111-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0111-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0018-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0018-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0132-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0132-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0163-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0163-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0010-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0010-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0176-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0176-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0162-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0162-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0076-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0076-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0145-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0145-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0072-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0072-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0134-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0134-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0043-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0043-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0168-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0168-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0156-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0156-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0170-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0170-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0077-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0077-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0004-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0004-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0172-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0172-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0081-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0081-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0025-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0025-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0042-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0042-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0148-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0148-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0149-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0149-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0147-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0147-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0143-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0143-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0096-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0096-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0063-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0063-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0097-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0097-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0158-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0158-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0079-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0079-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0091-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0091-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0009-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0009-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0120-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0120-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0075-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0075-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0056-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0056-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0084-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0084-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0114-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0114-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0159-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0159-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0144-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0144-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0186-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0186-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0080-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0080-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    },
+    {
+      "representation": "multilingual_e5_small",
+      "query_case_id": "DEV-SEM31-D-0022-C",
+      "expected_reference_case_id": "DEV-SEM31-D-0022-A",
+      "rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "hit_at_20": true
+    }
+  ],
+  "scientific_result": false,
+  "development_only": true,
+  "confirmatory_eligible": false,
+  "evidence_basis": "SYNTHETIC_PROXY_LABELS"
+}

@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PROPOSTA_NAO_APROVADA",
+  "scope": "piloto_sombra_local",
+  "safe_defaults": {
+    "loopback_only": true,
+    "max_load_requests": 500,
+    "max_concurrency": 16,
+    "max_duration_seconds": 300,
+    "mutating_drills_require_explicit_apply": true,
+    "failure_drills_require_isolation": true
+  },
+  "slo": {
+    "approval_status": "PROPOSTO_NAO_APROVADO",
+    "window_mode": "TECHNICAL_INTRADAY_SYNTHETIC_LOCAL",
+    "window_seconds": 14400,
+    "minimum_observations_per_window": 180,
+    "minimum_observation_windows": 3,
+    "longitudinal_production_window_days": 30,
+    "longitudinal_production_evaluation_in_scope": false,
+    "component_availability_minimum": {
+      "local_ai": 0.995,
+      "n8n": 0.995,
+      "glpi": 0.990,
+      "postgresql": 0.995
+    },
+    "local_ai_inference_p95_ms_maximum": 1500,
+    "queue_wait_p95_seconds_maximum": 900,
+    "open_dead_letters_maximum": 0,
+    "technical_error_rate_maximum": 0.01,
+    "critical_automatic_error_count_maximum": 0,
+    "rollback_recovery_minutes_maximum": 30,
+    "backup_restore_age_hours_maximum": 168
+  },
+  "drift": {
+    "approval_status": "PROPOSTO_NAO_APROVADO",
+    "minimum_current_sample_size": 200,
+    "minimum_reference_sample_size": 200,
+    "jensen_shannon_warning": 0.05,
+    "jensen_shannon_stop": 0.10,
+    "psi_warning": 0.10,
+    "psi_stop": 0.20,
+    "zero_probability_epsilon": 1e-06
+  },
+  "monitoring": {
+    "approval_status": "PROPOSTO_NAO_APROVADO",
+    "collector_status": "INSTALADO_LOCALMENTE_2026-09-02",
+    "collection_interval_seconds": 60,
+    "decision_reconciliation_lag_seconds": 300,
+    "retention_days_proposed": 90,
+    "required_signals": [
+      "component_availability",
+      "local_ai_inference_latency",
+      "queue_wait",
+      "open_dead_letters",
+      "technical_error_rate",
+      "critical_automatic_errors",
+      "rollback_recovery_time",
+      "backup_restore_age",
+      "input_and_output_drift",
+      "role_and_workflow_changes"
+    ],
+    "automatic_retraining_allowed": false,
+    "automatic_stop_enabled": true,
+    "stop_requires_human_review": false,
+    "semantic_validation_mode": "PROXY_LABELS_ONLY"
+  },
+  "failure_policy": {
+    "glpi_unavailable": {
+      "required_action": "BLOCK_GLPI_MUTATION_AND_RETRY",
+      "automatic_decision_allowed": false
+    },
+    "local_ai_unavailable": {
+      "required_action": "ABSTAIN_RETRY_THEN_DLQ",
+      "automatic_decision_allowed": false
+    },
+    "postgresql_unavailable": {
+      "required_action": "FAIL_CLOSED_WITHOUT_GLPI_MUTATION",
+      "automatic_decision_allowed": false
+    }
+  },
+  "required_backup_tables": {
+    "postgresql": [
+      "tickets_processados",
+      "fila_ia_controle",
+      "fila_ia_dead_letter",
+      "ia_decisoes",
+      "ia_tentativas_modelo",
+      "avaliacoes_humanas",
+      "workflow_eventos"
+    ],
+    "mariadb": [
+      "glpi_tickets",
+      "glpi_users",
+      "glpi_itilcategories"
+    ]
+  },
+  "evidence_labels": {
+    "single_probe": "POINT_IN_TIME_TECHNICAL_EVIDENCE",
+    "isolated_harness": "ISOLATED_COMPONENT_HARNESS_ONLY",
+    "load_probe": "BOUNDED_TECHNICAL_LOAD_SCENARIO",
+    "restore_drill": "ISOLATED_BACKUP_RESTORE_DRILL",
+    "scientific_claim_allowed": false
+  }
+}

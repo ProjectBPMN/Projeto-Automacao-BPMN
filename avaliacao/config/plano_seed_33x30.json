@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-07-15",
+  "scenario_set": "primary33",
+  "scenario_count": 33,
+  "realizations_per_scenario": 30,
+  "scenario_realizations": 990,
+  "glpi_ticket_accounting": {
+    "dedup_scenarios": 14,
+    "dedup_episodes": 420,
+    "tickets_per_dedup_episode": 2,
+    "dedup_tickets": 840,
+    "classification_scenarios": 19,
+    "classification_single_ticket_realizations": 570,
+    "classification_tickets": 570,
+    "total_glpi_tickets": 1410
+  },
+  "dedup_label_semantics": {
+    "positive_scenarios": ["D01", "D06", "D07", "D12", "D13"],
+    "negative_control_scenarios": ["D02", "D03", "D04", "D05", "D08", "D09", "D10", "D11", "D14"],
+    "note": "O prefixo D significa tarefa de deduplicacao, nao duplicado verdadeiro. O primeiro ticket de cada episodio e ancora e tem expected_dedup=false."
+  },
+  "supplementary_stress_set": {
+    "scenario_set": "stress2",
+    "scenarios": ["D15", "C20"],
+    "realizations_if_30_each": 60,
+    "additional_glpi_tickets": 90,
+    "all35_total_glpi_tickets": 1500
+  },
+  "scientific_interpretation": {
+    "surface_variations_are_clustered": true,
+    "independent_semantic_cores": false,
+    "primary_analysis_unit": "episode_id para deduplicacao; case_id para classificacao",
+    "recommended_inference": "bootstrap e intervalos agrupados por scenario_id e episode_id",
+    "scientific_result": false,
+    "confirmatory_eligible": false,
+    "reason": "Trinta variacoes ortograficas ou estilisticas do mesmo cenario medem robustez linguistica, mas nao equivalem a trinta novos nucleos semanticos independentes."
+  },
+  "human_review_policy": {
+    "double_review_in_current_automated_phase": false,
+    "human_confirmation_nodes_preserved": true
+  }
+}

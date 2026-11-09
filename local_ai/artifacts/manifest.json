@@ -1,0 +1,35 @@
+{
+  "manifest_schema": "local-ai-artifact-manifest-v1",
+  "manifest_version": "1.0.0",
+  "created_utc": "2026-07-15T00:00:00Z",
+  "artifacts": [
+    {
+      "task": "deduplication",
+      "path": "dedup-v1.0.0-bootstrap.json",
+      "format": "json_calibrated_linear_v1",
+      "version": "1.0.0-bootstrap",
+      "scientific_status": "bootstrap_not_for_confirmatory_results",
+      "sha256": "79aaff8fa45af80cdada71be5ded97946f66821775c79a69b7423fbedd1165d7"
+    },
+    {
+      "task": "classification",
+      "path": "classification-v1.0.0-bootstrap.json",
+      "format": "json_calibrated_linear_v1",
+      "version": "1.0.0-bootstrap",
+      "scientific_status": "bootstrap_not_for_confirmatory_results",
+      "sha256": "233c01606aeae48e6e20236404649d77f8630c614bb091d5d5e29d90059fe5bf"
+    }
+  ],
+  "preferred_embedding": {
+    "model": "ibm-granite/granite-embedding-97m-multilingual-r2",
+    "dimension": 384,
+    "lazy": true,
+    "automatic_download": false
+  },
+  "optional_extractor": {
+    "model": "ibm-granite/granite-4.0-h-350m",
+    "lazy": true,
+    "required": false
+  }
+}
+

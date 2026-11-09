@@ -1,0 +1,3 @@
+- heading "504 Gateway Time-out" [level=1]
+- separator
+- generic: nginx

@@ -1,0 +1,1591 @@
+{
+  "schema": "projeto-ic-selecao-supervisionada-resultados-v1",
+  "created_at": "2026-08-12T23:33:44.794635+00:00",
+  "protocol_sha256": "def128b925c576a08e59a29e05d798307e6045e1f861d50844065ce17c4aa857",
+  "run_fingerprint": "ab6ecc3a24f0e4c0d71f6091fa06deb1ebff807aede1b3c13fa533b7b514b4fb",
+  "scientific_result": false,
+  "development_only": true,
+  "confirmatory_eligible": false,
+  "dataset": {
+    "path": "avaliacao\\datasets\\desenvolvimento_local_v1.jsonl",
+    "sha256": "0de50381c0dfaefeb1a940cd697f9c9a8e87b5efee9252a1f4ca43c9d904f204",
+    "records": 1360,
+    "classification_model_records": 508,
+    "classification_groups": 105,
+    "deduplication_pairs": 600,
+    "deduplication_groups": 120,
+    "source_audit": {
+      "path": "avaliacao\\datasets\\desenvolvimento_local_v1.jsonl",
+      "role": "TRAIN",
+      "splits": [
+        "DESENVOLVIMENTO"
+      ],
+      "records": 1360,
+      "sha256": "0de50381c0dfaefeb1a940cd697f9c9a8e87b5efee9252a1f4ca43c9d904f204",
+      "neighbor_metadata_checked": [
+        "avaliacao\\datasets\\desenvolvimento_local_v1_manifest.json"
+      ],
+      "test_split_detected": false,
+      "reserved_scenario_set_detected": false
+    },
+    "synthetic": true,
+    "development_only": true
+  },
+  "embedding_runtime": [
+    {
+      "schema": "projeto-ic-embedding-cache-v1",
+      "created_at": "2026-08-04T16:54:39.800174+00:00",
+      "cache_hit": true,
+      "model_id": "granite97m",
+      "repository": "ibm-granite/granite-embedding-97m-multilingual-r2",
+      "revision": "835ad14087e140460703cf0fae09f97d469d65c2",
+      "local_path": "local_ai\\models\\granite-embedding-97m-multilingual-r2",
+      "tree_sha256": "28bb1e36cb3719c0c466de3013404307821da17bf901fc70f62af74bfa57a343",
+      "file_count": 13,
+      "total_bytes": 318727187,
+      "dataset_sha256": "0de50381c0dfaefeb1a940cd697f9c9a8e87b5efee9252a1f4ca43c9d904f204",
+      "dimension": 384,
+      "normalized": true,
+      "backend": "pytorch_fp32",
+      "load_seconds": 6.672501000000921,
+      "rss_before_mb": 453.609375,
+      "load_peak_rss_mb": 1015.02734375,
+      "encode_peak_rss_mb": 958.65234375,
+      "single_text_latency_ms": {
+        "n": 20,
+        "p50": 106.67204999845126,
+        "p95": 133.24675999792817
+      },
+      "batch8_latency_ms": {
+        "n": 10,
+        "p50": 548.1666000050609,
+        "p95": 607.1394700000383
+      },
+      "roles": {
+        "symmetric": {
+          "records": 1228,
+          "prefix": "",
+          "keys_sha256": "2b897bcb6a9287e6eac705ca95483cb75b4f75480da71d33ff2b658a356bfa49",
+          "seconds": 81.93647469999996,
+          "texts_per_second": 14.987220337415867,
+          "peak_rss_mb": 958.65234375,
+          "npz_sha256": "667b4a269b241e3fcd6af1ccc47fe0010915ce485ed813221349dceee6a6a67e"
+        },
+        "retrieval_query": {
+          "records": 300,
+          "prefix": "",
+          "keys_sha256": "6158db90beccb2875e930aea8a2d6221b5969d19a3ac67fc8ac2e4d060fc755a",
+          "seconds": 19.850796400001855,
+          "texts_per_second": 15.112743788958108,
+          "peak_rss_mb": 958.0078125,
+          "npz_sha256": "7344822586759643e1c41f9900a13bdbbb32985dcd9636a4afb91858545a6a27"
+        },
+        "retrieval_passage": {
+          "records": 120,
+          "prefix": "",
+          "keys_sha256": "ce8be8f6193fac3287a28faa0183b629ff124cd2d6242c2f4c39f7d429904690",
+          "seconds": 7.150415500000236,
+          "texts_per_second": 16.782241535473855,
+          "peak_rss_mb": 958.51171875,
+          "npz_sha256": "14a69a8434011bf750ef9e16cf30622a94defec3f2e74c6a46ed706b661ad369"
+        }
+      },
+      "packages": {
+        "torch": "2.13.0+cpu",
+        "sentence_transformers": "5.6.0",
+        "transformers": "4.57.6"
+      },
+      "validated_at": "2026-08-12T23:27:37.266549+00:00"
+    }
+  ],
+  "retrieval": [
+    {
+      "representation": "tfidf",
+      "queries": 300,
+      "candidates_per_query": 120,
+      "recall_at_1": 0.35333333333333333,
+      "recall_at_5": 0.7266666666666667,
+      "recall_at_20": 0.7966666666666666,
+      "mrr": 0.4991129869579527,
+      "ndcg_at_20": 0.5642334711743894,
+      "median_rank": 3.0
+    },
+    {
+      "representation": "granite97m",
+      "queries": 300,
+      "candidates_per_query": 120,
+      "recall_at_1": 0.24,
+      "recall_at_5": 0.6533333333333333,
+      "recall_at_20": 0.9466666666666667,
+      "mrr": 0.42063830840654937,
+      "ndcg_at_20": 0.5404001969869785,
+      "median_rank": 4.0
+    }
+  ],
+  "results": [
+    {
+      "schema": "projeto-ic-selecao-supervisionada-resultados-v1",
+      "protocol_sha256": "def128b925c576a08e59a29e05d798307e6045e1f861d50844065ce17c4aa857",
+      "run_fingerprint": "ab6ecc3a24f0e4c0d71f6091fa06deb1ebff807aede1b3c13fa533b7b514b4fb",
+      "combination_id": "classification__tfidf__none__logistic_regression",
+      "task": "classification",
+      "representation": "tfidf",
+      "embedding": null,
+      "classifier": "logistic_regression",
+      "status": "COMPLETED_DEVELOPMENT_OOF",
+      "failure": null,
+      "scientific_result": false,
+      "development_only": true,
+      "confirmatory_eligible": false,
+      "outer_oof": true,
+      "folds": [
+        {
+          "combination_id": "classification__tfidf__none__logistic_regression",
+          "task": "classification",
+          "representation": "tfidf",
+          "embedding": "",
+          "classifier": "logistic_regression",
+          "fold": 0,
+          "outer_train_records": 406,
+          "outer_test_records": 102,
+          "outer_train_groups": 84,
+          "outer_test_groups": 21,
+          "group_overlap": 0,
+          "fit_seconds": 8.002155800000764,
+          "calibration_seconds": 0.9946042000010493,
+          "predict_seconds": 0.15203160000237403,
+          "predict_ms_per_record": 1.490505882376216,
+          "prediction_measurement_scope": "classifier_pipeline_including_tfidf_transform",
+          "best_params": {
+            "model__C": 10.0
+          },
+          "best_inner_score": 0.6383778233412102,
+          "calibration_policy": {
+            "threshold": 0.67,
+            "obra_threshold": 0.9,
+            "covered": 86,
+            "coverage": 0.5212121212121212,
+            "errors": 4,
+            "risk": 0.046511627906976744,
+            "automatic_maintenance_as_obra": 0,
+            "automatic_non_obra_as_obra": 0,
+            "eligible": true
+          },
+          "calibration_split": {
+            "fit_records": 241,
+            "calibration_records": 165,
+            "fit_groups": 50,
+            "calibration_groups": 34,
+            "fit_label_counts": {
+              "0": 60,
+              "1": 79,
+              "2": 73,
+              "3": 29
+            },
+            "calibration_label_counts": {
+              "0": 41,
+              "1": 55,
+              "2": 50,
+              "3": 19
+            },
+            "fit_group_counts_by_label": {
+              "0": 12,
+              "1": 16,
+              "2": 15,
+              "3": 7
+            },
+            "calibration_group_counts_by_label": {
+              "0": 9,
+              "1": 11,
+              "2": 10,
+              "3": 4
+            },
+            "group_overlap": 0,
+            "balance_score": 0.013121361397223433
+          },
+          "calibration_folds": [
+            {
+              "fold": 0,
+              "fit_records": 80,
+              "validation_records": 85,
+              "fit_groups": 17,
+              "validation_groups": 17,
+              "fit_group_counts_by_label": {
+                "0": 5,
+                "1": 5,
+                "2": 5,
+                "3": 2
+              },
+              "validation_group_counts_by_label": {
+                "0": 4,
+                "1": 6,
+                "2": 5,
+                "3": 2
+              },
+              "group_overlap": 0
+            },
+            {
+              "fold": 1,
+              "fit_records": 85,
+              "validation_records": 80,
+              "fit_groups": 17,
+              "validation_groups": 17,
+              "fit_group_counts_by_label": {
+                "0": 4,
+                "1": 6,
+                "2": 5,
+                "3": 2
+              },
+              "validation_group_counts_by_label": {
+                "0": 5,
+                "1": 5,
+                "2": 5,
+                "3": 2
+              },
+              "group_overlap": 0
+            }
+          ],
+          "convergence_warnings": 0
+        },
+        {
+          "combination_id": "classification__tfidf__none__logistic_regression",
+          "task": "classification",
+          "representation": "tfidf",
+          "embedding": "",
+          "classifier": "logistic_regression",
+          "fold": 1,
+          "outer_train_records": 415,
+          "outer_test_records": 93,
+          "outer_train_groups": 84,
+          "outer_test_groups": 21,
+          "group_overlap": 0,
+          "fit_seconds": 11.366467699997884,
+          "calibration_seconds": 1.6522026999955415,
+          "predict_seconds": 0.27933159999520285,
+          "predict_ms_per_record": 3.003565591346267,
+          "prediction_measurement_scope": "classifier_pipeline_including_tfidf_transform",
+          "best_params": {
+            "model__C": 0.1
+          },
+          "best_inner_score": 0.5981041194201763,
+          "calibration_policy": {
+            "threshold": 0.6,
+            "obra_threshold": 0.9,
+            "covered": 84,
+            "coverage": 0.509090909090909,
+            "errors": 8,
+            "risk": 0.09523809523809523,
+            "automatic_maintenance_as_obra": 0,
+            "automatic_non_obra_as_obra": 0,
+            "eligible": true
+          },
+          "calibration_split": {
+            "fit_records": 250,
+            "calibration_records": 165,
+            "fit_groups": 50,
+            "calibration_groups": 34,
+            "fit_label_counts": {
+              "0": 70,
+              "1": 80,
+              "2": 75,
+              "3": 25
+            },
+            "calibration_label_counts": {
+              "0": 47,
+              "1": 49,
+              "2": 50,
+              "3": 19
+            },
+            "fit_group_counts_by_label": {
+              "0": 14,
+              "1": 16,
+              "2": 15,
+              "3": 5
+            },
+            "calibration_group_counts_by_label": {
+              "0": 10,
+              "1": 10,
+              "2": 10,
+              "3": 4
+            },
+            "group_overlap": 0,
+            "balance_score": 0.030156991602774727
+          },
+          "calibration_folds": [
+            {
+              "fold": 0,
+              "fit_records": 84,
+              "validation_records": 81,
+              "fit_groups": 17,
+              "validation_groups": 17,
+              "fit_group_counts_by_label": {
+                "0": 3,
+                "1": 5,
+                "2": 7,
+                "3": 2
+              },
+              "validation_group_counts_by_label": {
+                "0": 7,
+                "1": 5,
+                "2": 3,
+                "3": 2
+              },
+              "group_overlap": 0
+            },
+            {
+              "fold": 1,
+              "fit_records": 81,
+              "validation_records": 84,
+              "fit_groups": 17,
+              "validation_groups": 17,
+              "fit_group_counts_by_label": {
+                "0": 7,
+                "1": 5,
+                "2": 3,
+                "3": 2
+              },
+              "validation_group_counts_by_label": {
+                "0": 3,
+                "1": 5,
+                "2": 7,
+                "3": 2
+              },
+              "group_overlap": 0
+            }
+          ],
+          "convergence_warnings": 0
+        },
+        {
+          "combination_id": "classification__tfidf__none__logistic_regression",
+          "task": "classification",
+          "representation": "tfidf",
+          "embedding": "",
+          "classifier": "logistic_regression",
+          "fold": 2,
+          "outer_train_records": 405,
+          "outer_test_records": 103,
+          "outer_train_groups": 84,
+          "outer_test_groups": 21,
+          "group_overlap": 0,
+          "fit_seconds": 10.214497900000424,
+          "calibration_seconds": 1.3031375999999,
+          "predict_seconds": 0.16482949999772245,
+          "predict_ms_per_record": 1.6002864077448782,
+          "prediction_measurement_scope": "classifier_pipeline_including_tfidf_transform",
+          "best_params": {
+            "model__C": 0.1
+          },
+          "best_inner_score": 0.5985251236857426,
+          "calibration_policy": {
+            "threshold": null,
+            "obra_threshold": 0.9,
+            "eligible": false
+          },
+          "calibration_split": {
+            "fit_records": 237,
+            "calibration_records": 168,
+            "fit_groups": 50,
+            "calibration_groups": 34,
+            "fit_label_counts": {
+              "0": 58,
+              "1": 75,
+              "2": 78,
+              "3": 26
+            },
+            "calibration_label_counts": {
+              "0": 40,
+              "1": 55,
+              "2": 55,
+              "3": 18
+            },
+            "fit_group_counts_by_label": {
+              "0": 13,
+              "1": 15,
+              "2": 16,
+              "3": 6
+            },
+            "calibration_group_counts_by_label": {
+              "0": 8,
+              "1": 11,
+              "2": 11,
+              "3": 4
+            },
+            "group_overlap": 0,
+            "balance_score": 0.02760141093474426
+          },
+          "calibration_folds": [
+            {
+              "fold": 0,
+              "fit_records": 85,
+              "validation_records": 83,
+              "fit_groups": 17,
+              "validation_groups": 17,
+              "fit_group_counts_by_label": {
+                "0": 4,
+                "1": 4,
+                "2": 7,
+                "3": 2
+              },
+              "validation_group_counts_by_label": {
+                "0": 4,
+                "1": 7,
+                "2": 4,
+                "3": 2
+              },
+              "group_overlap": 0
+            },
+            {
+              "fold": 1,
+              "fit_records": 83,
+              "validation_records": 85,
+              "fit_groups": 17,
+              "validation_groups": 17,
+              "fit_group_counts_by_label": {
+                "0": 4,
+                "1": 7,
+                "2": 4,
+                "3": 2
+              },
+              "validation_group_counts_by_label": {
+                "0": 4,
+                "1": 4,
+                "2": 7,
+                "3": 2
+              },
+              "group_overlap": 0
+            }
+          ],
+          "convergence_warnings": 0
+        },
+        {
+          "combination_id": "classification__tfidf__none__logistic_regression",
+          "task": "classification",
+          "representation": "tfidf",
+          "embedding": "",
+          "classifier": "logistic_regression",
+          "fold": 3,
+          "outer_train_records": 403,
+          "outer_test_records": 105,
+          "outer_train_groups": 84,
+          "outer_test_groups": 21,
+          "group_overlap": 0,
+          "fit_seconds": 10.330802899996343,
+          "calibration_seconds": 0.9230910999976913,
+          "predict_seconds": 0.15557499999704305,
+          "predict_ms_per_record": 1.4816666666385052,
+          "prediction_measurement_scope": "classifier_pipeline_including_tfidf_transform",
+          "best_params": {
+            "model__C": 0.1
+          },
+          "best_inner_score": 0.5125198189205138,
+          "calibration_policy": {
+            "threshold": 0.64,
+            "obra_threshold": 0.9,
+            "covered": 81,
+            "coverage": 0.5,
+            "errors": 4,
+            "risk": 0.04938271604938271,
+            "automatic_maintenance_as_obra": 0,
+            "automatic_non_obra_as_obra": 0,
+            "eligible": true
+          },
+          "calibration_split": {
+            "fit_records": 241,
+            "calibration_records": 162,
+            "fit_groups": 50,
+            "calibration_groups": 34,
+            "fit_label_counts": {
+              "0": 71,
+              "1": 70,
+              "2": 70,
+              "3": 30
+            },
+            "calibration_label_counts": {
+              "0": 47,
+              "1": 44,
+              "2": 48,
+              "3": 23
+            },
+            "fit_group_counts_by_label": {
+              "0": 15,
+              "1": 14,
+              "2": 14,
+              "3": 7
+            },
+            "calibration_group_counts_by_label": {
+              "0": 10,
+              "1": 9,
+              "2": 10,
+              "3": 5
+            },
+            "group_overlap": 0,
+            "balance_score": 0.02989308580706429
+          },
+          "calibration_folds": [
+            {
+              "fold": 0,
+              "fit_records": 83,
+              "validation_records": 79,
+              "fit_groups": 17,
+              "validation_groups": 17,
+              "fit_group_counts_by_label": {
+                "0": 4,
+                "1": 4,
+                "2": 6,
+                "3": 3
+              },
+              "validation_group_counts_by_label": {
+                "0": 6,
+                "1": 5,
+                "2": 4,
+                "3": 2
+              },
+              "group_overlap": 0
+            },
+            {
+              "fold": 1,
+              "fit_records": 79,
+              "validation_records": 83,
+              "fit_groups": 17,
+              "validation_groups": 17,
+              "fit_group_counts_by_label": {
+                "0": 6,
+                "1": 5,
+                "2": 4,
+                "3": 2
+              },
+              "validation_group_counts_by_label": {
+                "0": 4,
+                "1": 4,
+                "2": 6,
+                "3": 3
+              },
+              "group_overlap": 0
+            }
+          ],
+          "convergence_warnings": 0
+        },
+        {
+          "combination_id": "classification__tfidf__none__logistic_regression",
+          "task": "classification",
+          "representation": "tfidf",
+          "embedding": "",
+          "classifier": "logistic_regression",
+          "fold": 4,
+          "outer_train_records": 403,
+          "outer_test_records": 105,
+          "outer_train_groups": 84,
+          "outer_test_groups": 21,
+          "group_overlap": 0,
+          "fit_seconds": 8.17914490000112,
+          "calibration_seconds": 1.1003075999979046,
+          "predict_seconds": 0.13931159999629017,
+          "predict_ms_per_record": 1.3267771428218111,
+          "prediction_measurement_scope": "classifier_pipeline_including_tfidf_transform",
+          "best_params": {
+            "model__C": 0.1
+          },
+          "best_inner_score": 0.6358239327114746,
+          "calibration_policy": {
+            "threshold": 0.64,
+            "obra_threshold": 0.9,
+            "covered": 88,
+            "coverage": 0.5269461077844312,
+            "errors": 6,
+            "risk": 0.06818181818181818,
+            "automatic_maintenance_as_obra": 0,
+            "automatic_non_obra_as_obra": 0,
+            "eligible": true
+          },
+          "calibration_split": {
+            "fit_records": 236,
+            "calibration_records": 167,
+            "fit_groups": 50,
+            "calibration_groups": 34,
+            "fit_label_counts": {
+              "0": 58,
+              "1": 75,
+              "2": 78,
+              "3": 25
+            },
+            "calibration_label_counts": {
+              "0": 40,
+              "1": 54,
+              "2": 55,
+              "3": 18
+            },
+            "fit_group_counts_by_label": {
+              "0": 13,
+              "1": 15,
+              "2": 16,
+              "3": 6
+            },
+            "calibration_group_counts_by_label": {
+              "0": 8,
+              "1": 11,
+              "2": 11,
+              "3": 4
+            },
+            "group_overlap": 0,
+            "balance_score": 0.023069493766808807
+          },
+          "calibration_folds": [
+            {
+              "fold": 0,
+              "fit_records": 84,
+              "validation_records": 83,
+              "fit_groups": 17,
+              "validation_groups": 17,
+              "fit_group_counts_by_label": {
+                "0": 4,
+                "1": 6,
+                "2": 5,
+                "3": 2
+              },
+              "validation_group_counts_by_label": {
+                "0": 4,
+                "1": 5,
+                "2": 6,
+                "3": 2
+              },
+              "group_overlap": 0
+            },
+            {
+              "fold": 1,
+              "fit_records": 83,
+              "validation_records": 84,
+              "fit_groups": 17,
+              "validation_groups": 17,
+              "fit_group_counts_by_label": {
+                "0": 4,
+                "1": 5,
+                "2": 6,
+                "3": 2
+              },
+              "validation_group_counts_by_label": {
+                "0": 4,
+                "1": 6,
+                "2": 5,
+                "3": 2
+              },
+              "group_overlap": 0
+            }
+          ],
+          "convergence_warnings": 0
+        }
+      ],
+      "best_parameters": [
+        {
+          "model__C": 10.0
+        },
+        {
+          "model__C": 0.1
+        },
+        {
+          "model__C": 0.1
+        },
+        {
+          "model__C": 0.1
+        },
+        {
+          "model__C": 0.1
+        }
+      ],
+      "metrics": {
+        "records": 508,
+        "accuracy": 0.7992125984251969,
+        "macro_f1": 0.7592163282919336,
+        "log_loss": 0.5721076473318946,
+        "brier_score": 0.29719431256096923,
+        "expected_calibration_error_10_bins": 0.04406547181425317,
+        "confusion_matrix": {
+          "labels": [
+            "OBRA",
+            "DEMO",
+            "SOB_DEMANDA",
+            "TRIAGEM_MANUAL"
+          ],
+          "values": [
+            [
+              118,
+              7,
+              5,
+              3
+            ],
+            [
+              17,
+              114,
+              7,
+              21
+            ],
+            [
+              5,
+              8,
+              143,
+              2
+            ],
+            [
+              1,
+              19,
+              7,
+              31
+            ]
+          ]
+        },
+        "per_class": {
+          "OBRA": {
+            "precision": 0.8368794326241135,
+            "recall": 0.8872180451127819,
+            "f1-score": 0.8613138686131386,
+            "support": 133
+          },
+          "DEMO": {
+            "precision": 0.7702702702702703,
+            "recall": 0.7169811320754716,
+            "f1-score": 0.742671009771987,
+            "support": 159
+          },
+          "SOB_DEMANDA": {
+            "precision": 0.8827160493827161,
+            "recall": 0.9050632911392406,
+            "f1-score": 0.89375,
+            "support": 158
+          },
+          "TRIAGEM_MANUAL": {
+            "precision": 0.543859649122807,
+            "recall": 0.5344827586206896,
+            "f1-score": 0.5391304347826087,
+            "support": 58
+          }
+        },
+        "obra_recall": 0.8872180451127819,
+        "automatic_records": 227,
+        "automatic_coverage": 0.4468503937007874,
+        "human_review_required_records": 281,
+        "triagem_manual_is_automatic": false,
+        "automatic_errors": 28,
+        "automatic_risk": 0.12334801762114538,
+        "automatic_maintenance_as_obra": 1,
+        "automatic_non_obra_as_obra": 1,
+        "automatic_non_obra_records": 199,
+        "automatic_non_obra_as_obra_rate": 0.005025125628140704,
+        "automatic_non_obra_as_obra_group_events": 1,
+        "automatic_non_obra_exposed_groups": 49,
+        "automatic_non_obra_as_obra_group_rate_upper": 0.09319247143420123,
+        "semantic_maintenance_as_obra": 22,
+        "confidence_level": 0.95,
+        "confidence_intervals_group_bootstrap": {
+          "accuracy": [
+            0.7367230135341629,
+            0.8594111766945925
+          ],
+          "macro_f1": [
+            0.6789676954727034,
+            0.8282779371985437
+          ],
+          "coverage": [
+            0.3614457831325301,
+            0.5362952933129732
+          ],
+          "selective_risk": [
+            0.05627462425215235,
+            0.20208538056101474
+          ]
+        }
+      },
+      "elapsed_seconds": 63.30546879999747
+    },
+    {
+      "schema": "projeto-ic-selecao-supervisionada-resultados-v1",
+      "protocol_sha256": "def128b925c576a08e59a29e05d798307e6045e1f861d50844065ce17c4aa857",
+      "run_fingerprint": "ab6ecc3a24f0e4c0d71f6091fa06deb1ebff807aede1b3c13fa533b7b514b4fb",
+      "combination_id": "deduplication__tfidf__none__logistic_regression",
+      "task": "deduplication",
+      "representation": "tfidf",
+      "embedding": null,
+      "classifier": "logistic_regression",
+      "status": "COMPLETED_DEVELOPMENT_OOF",
+      "failure": null,
+      "scientific_result": false,
+      "development_only": true,
+      "confirmatory_eligible": false,
+      "outer_oof": true,
+      "folds": [
+        {
+          "combination_id": "deduplication__tfidf__none__logistic_regression",
+          "task": "deduplication",
+          "representation": "tfidf",
+          "embedding": "",
+          "classifier": "logistic_regression",
+          "fold": 0,
+          "outer_train_records": 480,
+          "outer_test_records": 120,
+          "outer_train_groups": 96,
+          "outer_test_groups": 24,
+          "group_overlap": 0,
+          "fit_seconds": 23.646831699996255,
+          "calibration_seconds": 2.4240082999967854,
+          "predict_seconds": 0.43316090000007534,
+          "predict_ms_per_record": 3.6096741666672947,
+          "prediction_measurement_scope": "classifier_pipeline_including_tfidf_transform",
+          "best_params": {
+            "model__C": 0.1
+          },
+          "best_inner_score": 0.0,
+          "calibration_policy": {
+            "positive_threshold": 0.94,
+            "negative_threshold": 0.08,
+            "eligible": true,
+            "selected": {
+              "threshold": 0.94,
+              "positive_threshold": 0.94,
+              "negative_threshold": 0.08,
+              "coverage": 1.0,
+              "covered": 195,
+              "abstained": 0,
+              "tp": 100,
+              "fp": 0,
+              "tn": 95,
+              "fn": 0,
+              "positives": 100,
+              "negatives": 95,
+              "precision": 1.0,
+              "negative_predictive_value": 1.0,
+              "automated_false_positive_rate": 0.0,
+              "automated_false_negative_rate": 0.0,
+              "covered_error_rate": 0.0,
+              "weighted_covered_error": 0.0,
+              "automation_duplicate_recall": 1.0,
+              "automation_nonduplicate_recall": 1.0,
+              "false_negative_cost": 5.0,
+              "false_positive_cost": 1.0
+            },
+            "curve_points": 2450
+          },
+          "calibration_split": {
+            "fit_records": 285,
+            "calibration_records": 195,
+            "fit_groups": 57,
+            "calibration_groups": 39,
+            "fit_label_counts": {
+              "0": 140,
+              "1": 145
+            },
+            "calibration_label_counts": {
+              "0": 95,
+              "1": 100
+            },
+            "fit_group_counts_by_label": {
+              "0": 28,
+              "1": 29
+            },
+            "calibration_group_counts_by_label": {
+              "0": 19,
+              "1": 20
+            },
+            "group_overlap": 0,
+            "balance_score": 0.011057692307692268
+          },
+          "calibration_folds": [
+            {
+              "fold": 0,
+              "fit_records": 95,
+              "validation_records": 100,
+              "fit_groups": 19,
+              "validation_groups": 20,
+              "fit_group_counts_by_label": {
+                "0": 11,
+                "1": 8
+              },
+              "validation_group_counts_by_label": {
+                "0": 8,
+                "1": 12
+              },
+              "group_overlap": 0
+            },
+            {
+              "fold": 1,
+              "fit_records": 100,
+              "validation_records": 95,
+              "fit_groups": 20,
+              "validation_groups": 19,
+              "fit_group_counts_by_label": {
+                "0": 8,
+                "1": 12
+              },
+              "validation_group_counts_by_label": {
+                "0": 11,
+                "1": 8
+              },
+              "group_overlap": 0
+            }
+          ],
+          "convergence_warnings": 0
+        },
+        {
+          "combination_id": "deduplication__tfidf__none__logistic_regression",
+          "task": "deduplication",
+          "representation": "tfidf",
+          "embedding": "",
+          "classifier": "logistic_regression",
+          "fold": 1,
+          "outer_train_records": 480,
+          "outer_test_records": 120,
+          "outer_train_groups": 96,
+          "outer_test_groups": 24,
+          "group_overlap": 0,
+          "fit_seconds": 21.512529200001154,
+          "calibration_seconds": 1.9924430000028224,
+          "predict_seconds": 0.3436322999987169,
+          "predict_ms_per_record": 2.8636024999893075,
+          "prediction_measurement_scope": "classifier_pipeline_including_tfidf_transform",
+          "best_params": {
+            "model__C": 0.1
+          },
+          "best_inner_score": 0.0,
+          "calibration_policy": {
+            "positive_threshold": 0.92,
+            "negative_threshold": 0.08,
+            "eligible": true,
+            "selected": {
+              "threshold": 0.92,
+              "positive_threshold": 0.92,
+              "negative_threshold": 0.08,
+              "coverage": 1.0,
+              "covered": 195,
+              "abstained": 0,
+              "tp": 100,
+              "fp": 0,
+              "tn": 95,
+              "fn": 0,
+              "positives": 100,
+              "negatives": 95,
+              "precision": 1.0,
+              "negative_predictive_value": 1.0,
+              "automated_false_positive_rate": 0.0,
+              "automated_false_negative_rate": 0.0,
+              "covered_error_rate": 0.0,
+              "weighted_covered_error": 0.0,
+              "automation_duplicate_recall": 1.0,
+              "automation_nonduplicate_recall": 1.0,
+              "false_negative_cost": 5.0,
+              "false_positive_cost": 1.0
+            },
+            "curve_points": 2450
+          },
+          "calibration_split": {
+            "fit_records": 285,
+            "calibration_records": 195,
+            "fit_groups": 57,
+            "calibration_groups": 39,
+            "fit_label_counts": {
+              "0": 140,
+              "1": 145
+            },
+            "calibration_label_counts": {
+              "0": 95,
+              "1": 100
+            },
+            "fit_group_counts_by_label": {
+              "0": 28,
+              "1": 29
+            },
+            "calibration_group_counts_by_label": {
+              "0": 19,
+              "1": 20
+            },
+            "group_overlap": 0,
+            "balance_score": 0.011057692307692268
+          },
+          "calibration_folds": [
+            {
+              "fold": 0,
+              "fit_records": 95,
+              "validation_records": 100,
+              "fit_groups": 19,
+              "validation_groups": 20,
+              "fit_group_counts_by_label": {
+                "0": 11,
+                "1": 8
+              },
+              "validation_group_counts_by_label": {
+                "0": 8,
+                "1": 12
+              },
+              "group_overlap": 0
+            },
+            {
+              "fold": 1,
+              "fit_records": 100,
+              "validation_records": 95,
+              "fit_groups": 20,
+              "validation_groups": 19,
+              "fit_group_counts_by_label": {
+                "0": 8,
+                "1": 12
+              },
+              "validation_group_counts_by_label": {
+                "0": 11,
+                "1": 8
+              },
+              "group_overlap": 0
+            }
+          ],
+          "convergence_warnings": 0
+        },
+        {
+          "combination_id": "deduplication__tfidf__none__logistic_regression",
+          "task": "deduplication",
+          "representation": "tfidf",
+          "embedding": "",
+          "classifier": "logistic_regression",
+          "fold": 2,
+          "outer_train_records": 480,
+          "outer_test_records": 120,
+          "outer_train_groups": 96,
+          "outer_test_groups": 24,
+          "group_overlap": 0,
+          "fit_seconds": 29.922058000003744,
+          "calibration_seconds": 5.2990253000025405,
+          "predict_seconds": 1.0390985999983968,
+          "predict_ms_per_record": 8.65915499998664,
+          "prediction_measurement_scope": "classifier_pipeline_including_tfidf_transform",
+          "best_params": {
+            "model__C": 0.1
+          },
+          "best_inner_score": 0.0,
+          "calibration_policy": {
+            "positive_threshold": 0.94,
+            "negative_threshold": 0.1,
+            "eligible": true,
+            "selected": {
+              "threshold": 0.94,
+              "positive_threshold": 0.94,
+              "negative_threshold": 0.1,
+              "coverage": 1.0,
+              "covered": 195,
+              "abstained": 0,
+              "tp": 100,
+              "fp": 0,
+              "tn": 95,
+              "fn": 0,
+              "positives": 100,
+              "negatives": 95,
+              "precision": 1.0,
+              "negative_predictive_value": 1.0,
+              "automated_false_positive_rate": 0.0,
+              "automated_false_negative_rate": 0.0,
+              "covered_error_rate": 0.0,
+              "weighted_covered_error": 0.0,
+              "automation_duplicate_recall": 1.0,
+              "automation_nonduplicate_recall": 1.0,
+              "false_negative_cost": 5.0,
+              "false_positive_cost": 1.0
+            },
+            "curve_points": 2450
+          },
+          "calibration_split": {
+            "fit_records": 285,
+            "calibration_records": 195,
+            "fit_groups": 57,
+            "calibration_groups": 39,
+            "fit_label_counts": {
+              "0": 140,
+              "1": 145
+            },
+            "calibration_label_counts": {
+              "0": 95,
+              "1": 100
+            },
+            "fit_group_counts_by_label": {
+              "0": 28,
+              "1": 29
+            },
+            "calibration_group_counts_by_label": {
+              "0": 19,
+              "1": 20
+            },
+            "group_overlap": 0,
+            "balance_score": 0.011057692307692268
+          },
+          "calibration_folds": [
+            {
+              "fold": 0,
+              "fit_records": 95,
+              "validation_records": 100,
+              "fit_groups": 19,
+              "validation_groups": 20,
+              "fit_group_counts_by_label": {
+                "0": 8,
+                "1": 11
+              },
+              "validation_group_counts_by_label": {
+                "0": 11,
+                "1": 9
+              },
+              "group_overlap": 0
+            },
+            {
+              "fold": 1,
+              "fit_records": 100,
+              "validation_records": 95,
+              "fit_groups": 20,
+              "validation_groups": 19,
+              "fit_group_counts_by_label": {
+                "0": 11,
+                "1": 9
+              },
+              "validation_group_counts_by_label": {
+                "0": 8,
+                "1": 11
+              },
+              "group_overlap": 0
+            }
+          ],
+          "convergence_warnings": 0
+        },
+        {
+          "combination_id": "deduplication__tfidf__none__logistic_regression",
+          "task": "deduplication",
+          "representation": "tfidf",
+          "embedding": "",
+          "classifier": "logistic_regression",
+          "fold": 3,
+          "outer_train_records": 480,
+          "outer_test_records": 120,
+          "outer_train_groups": 96,
+          "outer_test_groups": 24,
+          "group_overlap": 0,
+          "fit_seconds": 44.24256279999827,
+          "calibration_seconds": 3.2666165999980876,
+          "predict_seconds": 0.5390315000040573,
+          "predict_ms_per_record": 4.491929166700477,
+          "prediction_measurement_scope": "classifier_pipeline_including_tfidf_transform",
+          "best_params": {
+            "model__C": 0.1
+          },
+          "best_inner_score": 0.0,
+          "calibration_policy": {
+            "positive_threshold": 0.92,
+            "negative_threshold": 0.1,
+            "eligible": true,
+            "selected": {
+              "threshold": 0.92,
+              "positive_threshold": 0.92,
+              "negative_threshold": 0.1,
+              "coverage": 1.0,
+              "covered": 195,
+              "abstained": 0,
+              "tp": 95,
+              "fp": 0,
+              "tn": 100,
+              "fn": 0,
+              "positives": 95,
+              "negatives": 100,
+              "precision": 1.0,
+              "negative_predictive_value": 1.0,
+              "automated_false_positive_rate": 0.0,
+              "automated_false_negative_rate": 0.0,
+              "covered_error_rate": 0.0,
+              "weighted_covered_error": 0.0,
+              "automation_duplicate_recall": 1.0,
+              "automation_nonduplicate_recall": 1.0,
+              "false_negative_cost": 5.0,
+              "false_positive_cost": 1.0
+            },
+            "curve_points": 2450
+          },
+          "calibration_split": {
+            "fit_records": 285,
+            "calibration_records": 195,
+            "fit_groups": 57,
+            "calibration_groups": 39,
+            "fit_label_counts": {
+              "0": 150,
+              "1": 135
+            },
+            "calibration_label_counts": {
+              "0": 100,
+              "1": 95
+            },
+            "fit_group_counts_by_label": {
+              "0": 30,
+              "1": 27
+            },
+            "calibration_group_counts_by_label": {
+              "0": 20,
+              "1": 19
+            },
+            "group_overlap": 0,
+            "balance_score": 0.022275641025641058
+          },
+          "calibration_folds": [
+            {
+              "fold": 0,
+              "fit_records": 95,
+              "validation_records": 100,
+              "fit_groups": 19,
+              "validation_groups": 20,
+              "fit_group_counts_by_label": {
+                "0": 12,
+                "1": 7
+              },
+              "validation_group_counts_by_label": {
+                "0": 8,
+                "1": 12
+              },
+              "group_overlap": 0
+            },
+            {
+              "fold": 1,
+              "fit_records": 100,
+              "validation_records": 95,
+              "fit_groups": 20,
+              "validation_groups": 19,
+              "fit_group_counts_by_label": {
+                "0": 8,
+                "1": 12
+              },
+              "validation_group_counts_by_label": {
+                "0": 12,
+                "1": 7
+              },
+              "group_overlap": 0
+            }
+          ],
+          "convergence_warnings": 0
+        },
+        {
+          "combination_id": "deduplication__tfidf__none__logistic_regression",
+          "task": "deduplication",
+          "representation": "tfidf",
+          "embedding": "",
+          "classifier": "logistic_regression",
+          "fold": 4,
+          "outer_train_records": 480,
+          "outer_test_records": 120,
+          "outer_train_groups": 96,
+          "outer_test_groups": 24,
+          "group_overlap": 0,
+          "fit_seconds": 55.44310839999525,
+          "calibration_seconds": 6.225544500004617,
+          "predict_seconds": 0.5041582999983802,
+          "predict_ms_per_record": 4.201319166653168,
+          "prediction_measurement_scope": "classifier_pipeline_including_tfidf_transform",
+          "best_params": {
+            "model__C": 0.1
+          },
+          "best_inner_score": -0.2280701754385965,
+          "calibration_policy": {
+            "positive_threshold": 0.91,
+            "negative_threshold": 0.07,
+            "eligible": true,
+            "selected": {
+              "threshold": 0.91,
+              "positive_threshold": 0.91,
+              "negative_threshold": 0.07,
+              "coverage": 1.0,
+              "covered": 195,
+              "abstained": 0,
+              "tp": 95,
+              "fp": 0,
+              "tn": 100,
+              "fn": 0,
+              "positives": 95,
+              "negatives": 100,
+              "precision": 1.0,
+              "negative_predictive_value": 1.0,
+              "automated_false_positive_rate": 0.0,
+              "automated_false_negative_rate": 0.0,
+              "covered_error_rate": 0.0,
+              "weighted_covered_error": 0.0,
+              "automation_duplicate_recall": 1.0,
+              "automation_nonduplicate_recall": 1.0,
+              "false_negative_cost": 5.0,
+              "false_positive_cost": 1.0
+            },
+            "curve_points": 2450
+          },
+          "calibration_split": {
+            "fit_records": 285,
+            "calibration_records": 195,
+            "fit_groups": 57,
+            "calibration_groups": 39,
+            "fit_label_counts": {
+              "0": 145,
+              "1": 140
+            },
+            "calibration_label_counts": {
+              "0": 100,
+              "1": 95
+            },
+            "fit_group_counts_by_label": {
+              "0": 29,
+              "1": 28
+            },
+            "calibration_group_counts_by_label": {
+              "0": 20,
+              "1": 19
+            },
+            "group_overlap": 0,
+            "balance_score": 0.011057692307692268
+          },
+          "calibration_folds": [
+            {
+              "fold": 0,
+              "fit_records": 95,
+              "validation_records": 100,
+              "fit_groups": 19,
+              "validation_groups": 20,
+              "fit_group_counts_by_label": {
+                "0": 9,
+                "1": 10
+              },
+              "validation_group_counts_by_label": {
+                "0": 11,
+                "1": 9
+              },
+              "group_overlap": 0
+            },
+            {
+              "fold": 1,
+              "fit_records": 100,
+              "validation_records": 95,
+              "fit_groups": 20,
+              "validation_groups": 19,
+              "fit_group_counts_by_label": {
+                "0": 11,
+                "1": 9
+              },
+              "validation_group_counts_by_label": {
+                "0": 9,
+                "1": 10
+              },
+              "group_overlap": 0
+            }
+          ],
+          "convergence_warnings": 0
+        }
+      ],
+      "best_parameters": [
+        {
+          "model__C": 0.1
+        },
+        {
+          "model__C": 0.1
+        },
+        {
+          "model__C": 0.1
+        },
+        {
+          "model__C": 0.1
+        },
+        {
+          "model__C": 0.1
+        }
+      ],
+      "metrics": {
+        "records": 600,
+        "positive_records": 300,
+        "negative_records": 300,
+        "semantic_accuracy": 1.0,
+        "semantic_f1": 1.0,
+        "average_precision": 1.0,
+        "roc_auc": 1.0,
+        "log_loss": 0.011463102690376913,
+        "brier_score": 0.0002607552245737562,
+        "expected_calibration_error_10_bins": 0.011329696075815132,
+        "semantic_confusion_matrix": [
+          [
+            300,
+            0
+          ],
+          [
+            0,
+            300
+          ]
+        ],
+        "decision_records": 600,
+        "decision_coverage": 1.0,
+        "automatic_positive_records_requiring_human_confirmation": 300,
+        "fully_automated_negative_records": 300,
+        "full_automation_coverage": 0.5,
+        "human_review_required_records": 300,
+        "tp": 300,
+        "fp": 0,
+        "tn": 300,
+        "fn": 0,
+        "precision": 1.0,
+        "negative_predictive_value": 1.0,
+        "automatic_false_positive_rate": 0.0,
+        "automatic_false_negative_rate": 0.0,
+        "false_negative_group_events": 0,
+        "positive_groups": 60,
+        "false_negative_group_rate_upper": 0.04870291331009749,
+        "false_positive_group_events": 0,
+        "negative_groups": 60,
+        "false_positive_group_rate_upper": 0.04870291331009749,
+        "weighted_error_fn5_fp1_total": 0.0,
+        "weighted_error_fn5_fp1_per_record": 0.0,
+        "weighted_error_fn5_fp1_per_automatic": 0.0,
+        "confidence_level": 0.95,
+        "semantic_confidence_intervals_group_bootstrap": {
+          "accuracy": [
+            1.0,
+            1.0
+          ],
+          "macro_f1": [
+            1.0,
+            1.0
+          ]
+        },
+        "operating_confidence_intervals_group_bootstrap": {
+          "precision": [
+            1.0,
+            1.0
+          ],
+          "negative_predictive_value": [
+            1.0,
+            1.0
+          ],
+          "false_positive_rate": [
+            0.0,
+            0.0
+          ],
+          "false_negative_rate": [
+            0.0,
+            0.0
+          ],
+          "weighted_error_per_record": [
+            0.0,
+            0.0
+          ],
+          "decision_coverage": [
+            1.0,
+            1.0
+          ],
+          "full_automation_coverage": [
+            0.4083333333333333,
+            0.5833333333333334
+          ]
+        }
+      },
+      "elapsed_seconds": 213.38260650000302
+    }
+  ],
+  "ranking": [
+    {
+      "rank": 1,
+      "task": "classification",
+      "combination_id": "classification__tfidf__none__logistic_regression",
+      "eligible": false,
+      "confidence_qualified": false,
+      "provisional_point_eligible": false,
+      "exclusion_reasons": [
+        "automatic_non_obra_as_obra",
+        "classification_selective_risk",
+        "classification_coverage",
+        "classification_critical_upper_confidence"
+      ],
+      "representation": "tfidf",
+      "embedding": "",
+      "classifier": "logistic_regression",
+      "status": "COMPLETED_DEVELOPMENT_OOF",
+      "failure": "",
+      "elapsed_seconds": 63.30546879999747,
+      "mean_fold_fit_seconds": 9.618613839999307,
+      "mean_predict_ms_per_record": 1.7805603381855355,
+      "records": 508,
+      "accuracy": 0.7992125984251969,
+      "macro_f1": 0.7592163282919336,
+      "log_loss": 0.5721076473318946,
+      "brier_score": 0.29719431256096923,
+      "expected_calibration_error_10_bins": 0.04406547181425317,
+      "obra_recall": 0.8872180451127819,
+      "automatic_records": 227,
+      "automatic_coverage": 0.4468503937007874,
+      "human_review_required_records": 281,
+      "triagem_manual_is_automatic": false,
+      "automatic_errors": 28,
+      "automatic_risk": 0.12334801762114538,
+      "automatic_maintenance_as_obra": 1,
+      "automatic_non_obra_as_obra": 1,
+      "automatic_non_obra_records": 199,
+      "automatic_non_obra_as_obra_rate": 0.005025125628140704,
+      "automatic_non_obra_as_obra_group_events": 1,
+      "automatic_non_obra_exposed_groups": 49,
+      "automatic_non_obra_as_obra_group_rate_upper": 0.09319247143420123,
+      "semantic_maintenance_as_obra": 22,
+      "confidence_level": 0.95
+    },
+    {
+      "rank": 1,
+      "task": "deduplication",
+      "combination_id": "deduplication__tfidf__none__logistic_regression",
+      "eligible": false,
+      "confidence_qualified": false,
+      "provisional_point_eligible": true,
+      "exclusion_reasons": [
+        "deduplication_safety_upper_confidence"
+      ],
+      "representation": "tfidf",
+      "embedding": "",
+      "classifier": "logistic_regression",
+      "status": "COMPLETED_DEVELOPMENT_OOF",
+      "failure": "",
+      "elapsed_seconds": 213.38260650000302,
+      "mean_fold_fit_seconds": 34.953418019998935,
+      "mean_predict_ms_per_record": 4.765135999999377,
+      "records": 600,
+      "positive_records": 300,
+      "negative_records": 300,
+      "semantic_accuracy": 1.0,
+      "semantic_f1": 1.0,
+      "average_precision": 1.0,
+      "roc_auc": 1.0,
+      "log_loss": 0.011463102690376913,
+      "brier_score": 0.0002607552245737562,
+      "expected_calibration_error_10_bins": 0.011329696075815132,
+      "decision_records": 600,
+      "decision_coverage": 1.0,
+      "automatic_positive_records_requiring_human_confirmation": 300,
+      "fully_automated_negative_records": 300,
+      "full_automation_coverage": 0.5,
+      "human_review_required_records": 300,
+      "tp": 300,
+      "fp": 0,
+      "tn": 300,
+      "fn": 0,
+      "precision": 1.0,
+      "negative_predictive_value": 1.0,
+      "automatic_false_positive_rate": 0.0,
+      "automatic_false_negative_rate": 0.0,
+      "false_negative_group_events": 0,
+      "positive_groups": 60,
+      "false_negative_group_rate_upper": 0.04870291331009749,
+      "false_positive_group_events": 0,
+      "negative_groups": 60,
+      "false_positive_group_rate_upper": 0.04870291331009749,
+      "weighted_error_fn5_fp1_total": 0.0,
+      "weighted_error_fn5_fp1_per_record": 0.0,
+      "weighted_error_fn5_fp1_per_automatic": 0.0,
+      "confidence_level": 0.95
+    }
+  ],
+  "winners": {
+    "classification": null,
+    "deduplication": null
+  },
+  "provisional_point_candidates": {
+    "classification": null,
+    "deduplication": "deduplication__tfidf__none__logistic_regression"
+  },
+  "paired_group_comparison": [],
+  "xai": [],
+  "limitations": [
+    "Corpus sintético de desenvolvimento, sem prevalência real.",
+    "Variações agrupadas por núcleo/episódio; n efetivo menor que registros.",
+    "Seleção não confirmatória; holdout permaneceu fechado.",
+    "SHAP explica associação no score-base, não causalidade."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": "projeto-ic-homolog-checkpoint-v2",
+  "checkpoint_at_utc": "2026-09-16T15:54:24.5433260Z",
+  "checkpoint_at_brt": "2026-09-16T12:54:24.5551549-03:00",
+  "timezone": "America/Sao_Paulo",
+  "daemon": {
+    "valid_process_count": 1,
+    "valid_process_pids": [9192],
+    "required_executable_path": ".venv\\Scripts\\pythonw.exe",
+    "required_command_line_fragments": ["monitor_daemon.py", "monitoring-homolog-20260910-v2", "--interval-seconds 60"],
+    "action": "NONE_VALID_DAEMON_PRESERVED"
+  },
+  "technical_windows": {
+    "completed": 23,
+    "required": 3,
+    "complete_decision_coverage": 23,
+    "passing_all_slo_checks": 0,
+    "latest_window_index": 23,
+    "latest_slo_status": "FAIL",
+    "latest_drift_status": "INSUFFICIENT_DATA",
+    "latest_availability": {"local_ai": 0.0, "n8n": 1.0, "glpi": 1.0, "postgresql": 1.0},
+    "interpretation_limit": "Janelas técnicas locais/sintéticas não comprovam disponibilidade longitudinal nem correção semântica institucional."
+  },
+  "queue_evidence": {
+    "artifact": "runtime-queue-state-20260916T155358Z.json",
+    "collected_at": "2026-09-16T12:53:59.641814-03:00",
+    "status": "PASS",
+    "erro_ia": 0,
+    "active_queue": 0,
+    "open_dlq": 0
+  },
+  "validation": {
+    "pytest_artifact": "pytest-homolog-20260916T155358Z.xml",
+    "pytest": "45 passed",
+    "v9_static_validation": "PASS"
+  },
+  "scientific_grid": {
+    "artifact": "../selecao-supervisionada-v3-20260915/execucao_checkpoint.json",
+    "expected": 10,
+    "completed": 10,
+    "failed": 0,
+    "pending": 0,
+    "running": 0,
+    "retry_count": 0,
+    "last_error_fingerprint": null,
+    "protocol_sha256": "5632375c8b0c4db66c5da375bb1fdf1f84d0890637f8a2684447bff2b78db2f0",
+    "run_fingerprint": "4e693e499be3b80489c2e27e6f7bed5c9c2a5f704253f8e7533cbdf538122484",
+    "resultados_json_present": true,
+    "xai_complete": true,
+    "performance_benchmark_complete": true,
+    "challenge_evaluation_recorded": true,
+    "scientific_result": false,
+    "production_ready": false
+  }
+}

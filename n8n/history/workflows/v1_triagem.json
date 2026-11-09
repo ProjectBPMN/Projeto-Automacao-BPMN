@@ -1,0 +1,574 @@
+{
+  "active": false,
+  "connections": {
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Loop Over Items",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Switch",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Switch2",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Code in JavaScript",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "InitSession (login API)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "HTTP Request",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Code in JavaScript1",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Message a model",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Code in JavaScript2",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Message a model1",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Loop Over Items",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Loop Over Items",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Message a model1": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Wait",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [],
+        [
+          {
+            "index": 0,
+            "node": "Loop Over Items1",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Switch2": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Simulador de E-mail",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Loop Over Items1",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "InitSession (login API)",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "name": "My workflow",
+  "nodes": [
+    {
+      "id": "4889730d-5695-45ec-af6f-bffe7ef476df",
+      "name": "When clicking ‘Execute workflow’",
+      "parameters": {},
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1
+    },
+    {
+      "id": "92e94527-9950-43c0-8187-5c0c6757b344",
+      "name": "InitSession (login API)",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ 'user_token ' + $env.GLPI_USER_TOKEN }}"
+            }
+          ]
+        },
+        "options": {},
+        "sendHeaders": true,
+        "url": "http://host.docker.internal:8080/apirest.php/initSession"
+      },
+      "position": [
+        208,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "bd6fbc6a-7e7b-4f93-b2ec-c2719832f722",
+      "name": "HTTP Request",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ 'user_token ' + $env.GLPI_USER_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $json.session_token }}"
+            }
+          ]
+        },
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "criteria[0][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[0][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[0][value]",
+              "value": "1"
+            },
+            {
+              "name": "range",
+              "value": "0-999"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "sendQuery": true,
+        "url": "http://host.docker.internal:8080/apirest.php/Ticket"
+      },
+      "position": [
+        416,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "77775bec-2644-4ef7-b00f-8a8a1aa839a6",
+      "name": "Code in JavaScript",
+      "parameters": {
+        "jsCode": "const todosChamados = $input.all().map(item => item.json);\n\n// 1. Criar a lista de chamados ABERTOS (ignorando os Fechados=5 e Resolvidos=6)\nconst chamadosAbertos = todosChamados\n  .filter(c => c.status !== 5 && c.status !== 6)\n  .map(c => ({\n    id: c.id,\n    titulo: c.name,\n    descricao: c.content,\n    local_id: c.locations_id\n  }));\n\n// 2. Filtrar apenas os chamados NOVOS (Status = 1) que precisam de triagem agora\nconst chamadosNovos = todosChamados.filter(c => c.status === 1);\n\nconst saida = [];\n\n// 3. Montar o pacote perfeito para a IA (O Novo + O Histórico)\nfor (const novo of chamadosNovos) {\n  // Removemos o próprio chamado novo da lista de histórico para a IA não achar que ele é cópia de si mesmo!\n  const historicoParaComparar = chamadosAbertos.filter(aberto => aberto.id !== novo.id);\n\n  saida.push({\n    json: {\n      chamado_atual: {\n        id: novo.id,\n        titulo: novo.name,\n        descricao: novo.content,\n        local_id: novo.locations_id\n      },\n      historico_abertos: historicoParaComparar\n    }\n  });\n}\n\nreturn saida;"
+      },
+      "position": [
+        624,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "alwaysOutputData": true,
+      "id": "c7f6edce-c92c-4722-8faf-5540f4f29a36",
+      "name": "Message a model",
+      "notesInFlow": false,
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "builtInTools": {},
+        "jsonOutput": true,
+        "messages": {
+          "values": [
+            {
+              "content": "=Você é um assistente inteligente de triagem de infraestrutura do sistema GLPI.\nSua única tarefa agora é identificar se o \"CHAMADO ATUAL\" é uma potencial duplicata de algum dos chamados na lista de \"HISTÓRICO DE ABERTOS\".\n\nDADOS:\nChamado Atual: {{ JSON.stringify($json.chamado_atual) }}\nHistórico de Abertos: {{ JSON.stringify($json.historico_abertos) }}\nDescrição: {{ $('Loop Over Items').item.json.chamado_atual.descricao }}\nLocalização (ID): {{ $('Loop Over Items').item.json.chamado_atual.local_id }}\n\n\nREGRA DE DUPLICIDADE (O Problema dos Ventiladores):\n- É duplicado se relatar exatamente o mesmo problema físico no mesmo local (mesmo 'local_id'), mesmo que o usuário tenha usado palavras diferentes.\n- ATENÇÃO: Se o chamado relatar defeito em um equipamento (ex: ventilador, carteira) e já houver outro chamado para o MESMO TIPO de equipamento na MESMA SALA, considere como potencial duplicata para que um administrador vá verificar se é o mesmo aparelho ou um segundo aparelho quebrado.\n\nRESPONDA ÚNICA E EXCLUSIVAMENTE NESTE FORMATO JSON:\n{\n  \"potencial_duplicata\": true ou false,\n  \"chamado_referencia_id\": ID do chamado mais antigo que parece ser igual (ou null se false),\n  \"justificativa_para_fiscal\": \"Explicação técnica e direta para o administrador tomar a decisão de fechar ou não.\"\n}"
+            }
+          ]
+        },
+        "modelId": {
+          "__rl": true,
+          "cachedResultName": "models/gemini-3.1-flash-lite-preview",
+          "mode": "list",
+          "value": "models/gemini-3.1-flash-lite-preview"
+        },
+        "options": {}
+      },
+      "position": [
+        1104,
+        16
+      ],
+      "retryOnFail": true,
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.1,
+      "waitBetweenTries": 5000
+    },
+    {
+      "id": "f9c59e7f-f7d5-4c22-b1d0-7b33d2d67e06",
+      "name": "Loop Over Items",
+      "parameters": {
+        "batchSize": 5,
+        "options": {
+          "reset": false
+        }
+      },
+      "position": [
+        832,
+        0
+      ],
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3
+    },
+    {
+      "id": "aec4573e-1576-41ef-814d-f281124a1db2",
+      "name": "Switch",
+      "parameters": {
+        "options": {},
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "f6774399-4c9d-4c3c-a7ef-dfacc3620500",
+                    "leftValue": "={{ $json.potencial_duplicata }}",
+                    "operator": {
+                      "operation": "true",
+                      "singleValue": true,
+                      "type": "boolean"
+                    },
+                    "rightValue": true
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              }
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "33accd45-27e2-4877-a31e-54a1f6ba5059",
+                    "leftValue": "={{ $json.potencial_duplicata }}",
+                    "operator": {
+                      "operation": "false",
+                      "singleValue": true,
+                      "type": "boolean"
+                    },
+                    "rightValue": "false"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              }
+            }
+          ]
+        }
+      },
+      "position": [
+        816,
+        224
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "372743ba-205a-46f9-a154-546afe8d17ab",
+      "name": "Message a model1",
+      "parameters": {
+        "builtInTools": {},
+        "messages": {
+          "values": [
+            {
+              "content": "Você é o Especialista em Triagem de Infraestrutura do IF Sudeste MG – Campus Rio Pomba.\nSua tarefa é classificar chamados do GLPI com precisão técnica absoluta, seguindo rigorosamente as normas da Instituição e os critérios abaixo.\nNUNCA invente informações que não estejam no chamado ou nas regras fornecidas.\n\n# 1. CLASSIFICAÇÃO: MANUTENÇÃO vs. OBRA\n\n## CLASSIFIQUE COMO \"MANUTENCAO\" se o chamado atender a pelo menos DOIS destes critérios:\n- Finalidade: Corrigir defeitos, reparar desgastes ou realizar manutenção preventiva/corretiva.\n- Resultado: O ambiente volta a ficar igual ou muito semelhante ao estado original, SEM criação de novo espaço físico e SEM ampliação de área construída.\n- Escala: Intervenção pontual ou localizada (ex: uma sala, um trecho de telhado, um trecho de tubulação, um equipamento), não um bloco ou prédio completo.\n- Complexidade: Serviço básico do tipo \"trocar, consertar, recompor, limpar, ajustar\", que não exige grande reprojeto arquitetônico ou estrutural (mesmo que exija ART/RRT).\n- Exemplos Práticos: Troca de telhas danificadas; reparo de forro de uma sala; conserto de rede elétrica em laboratório existente; construção de pequenas paredes/muretas de fechamento ou divisão simples (ex: dividir uma sala em duas com alvenaria, mantendo portas/janelas e instalações mínimas).\n\n## CLASSIFIQUE COMO \"OBRA\" se o chamado apresentar pelo menos UM destes aspectos fortes:\n- Criação de novo espaço: Construção de sala, laboratório, anexo, galpão ou prédio onde antes não existia aquele ambiente (mesmo aproveitando volume já coberto).\n- Ampliação de área construída: Aumento de metragem (ex: fechar varanda para virar sala, avançar construção, criar mezanino estrutural).\n- Reforma substancial/geral: Reconfiguração forte de um bloco (derrubar/levantar muitas paredes, mudar circulação, trocar estrutura de cobertura inteira, alterar redes principais elétrica/hidrossanitária), tornando o conjunto \"outro\" funcional ou construtivamente.\n- Complexidade: Necessidade clara de projeto de engenharia/arquitetura elaborado, parecer estrutural, ou análise em comitê de obras.\n- Exemplos Práticos: Construção de nova sala com toda infraestrutura; construção de novo prédio; reforma completa de um bloco com troca integral de cobertura e layout; construção de rampa de acessibilidade ou guarita.\n\n# 2. DEFINIÇÃO DE EXECUTOR\n\n## Se classificacao = \"OBRA\", o executor será SEMPRE e EXCLUSIVAMENTE:\n- \"DDI_DG\" (Diretoria de Desenvolvimento Institucional / Direção Geral + Projetos/Obras). Nunca atribua \"DEMO\" ou \"SOB_DEMANDA\" para OBRA.\n\n## Se classificacao = \"MANUTENCAO\", você DEVE escolher entre:\n\nA) \"DEMO\" (Dedicação Exclusiva de Mão de Obra / Prefeitura do Campus):\n- Serviços simples, padronizados, recorrentes e pontuais.\n- Não exige laudo técnico especializado, ART/RRT externa, nem equipamentos específicos fora do escopo predial.\n- Envolve infraestrutura predial básica executável pelas especialidades internas:\n  - Elétrica predial (lâmpada, tomada, disjuntor, quadro, curto, fiação local).\n  - Hidráulica/sanitária simples ou bombeiro hidráulico (torneira, pia, sifão, vaso sanitário, ralo, cano, esgoto pontual).\n  - Alvenaria/Pedreiro (parede, piso, azulejo, rejunte, rachadura pequena, reboco).\n  - Carpintaria/Marcenaria (porta ou janela de madeira, batente, armário fixo simples, móvel).\n  - Serralheria simples (portão, grade, estrutura metálica pequena, solda).\n  - Pintura (retoques de parede, fachada, correção de descascados).\n  - Jardinagem e poda simples (grama, arbusto, árvore de pequeno porte).\n  - Serviços gerais (limpeza de calhas, pequenos ajustes em telhados).\n  - Apoio à operação de ETA (painel/bomba da ETA padrão).\n\nB) \"SOB_DEMANDA\" (Contratação de Terceiros / Empresa Especializada):\n- Manutenção que excede o escopo da DEMO e exige empresa/profissional externo especializado, laudo, garantia ou orçamentação específica (OS).\n- Envolve equipamentos específicos ou alta complexidade:\n  - Ar-condicionado (split, cassete, chiller: instalação, manutenção corretiva complexa, troca de compressor, recarga de gás).\n  - Equipamentos Eletrônicos/TI (TV, projetor multimídia, sistema de som profissional, racks, switches, computadores, servidores).\n  - Equipamentos de Laboratório/Zootecnia (balanças animais, troncos, ordenhadeiras, incubadoras, câmaras frias, centrífugas).\n  - Sistemas especiais complexos (ETA avançada, caldeiras, autoclaves, exaustão complexa).\n  - Serviços estruturais grandes (substituição de esquadrias em massa, reforço estrutural não considerado obra nova).\n- Dica: Textos citando explicitamente \"empresa especializada\", \"assistência técnica autorizada\", ou \"garantia de fabricante\" indicam SOB_DEMANDA.\n\n# 3. REGRAS DE DECISÃO CONTRA ALUCINAÇÃO E CASOS VAGOS\n1. Apenas Três Executores Permitidos: \"DDI_DG\", \"DEMO\", \"SOB_DEMANDA\". A IA NUNCA deve inventar outro executor ou tipo de profissional.\n2. Análise de Ambiguidade: Se a descrição for muito vaga (ex: \"fazer reforma\"), aplique o critério conservador:\n   - Contém \"construção\", \"ampliação\", \"novo espaço\", \"reforma geral\"? -> OBRA e executor DDI_DG.\n   - Contém equipamento específico/tecnologia (TV, ar-condicionado, laboratório)? -> MANUTENCAO e executor SOB_DEMANDA.\n   - Contém infraestrutura predial genérica ou termos simples de reparo sem clareza? -> MANUTENCAO e executor DEMO (mas justifique a incerteza).\n   - Textos totalmente insuficientes (ex: \"problema na sala\"): Responda \"MANUTENCAO\" e \"SOB_DEMANDA\" com justificativa apontando \"Indeterminado, requer análise humana por falta de dados\".\n3. Silêncio Processual: NUNCA descreva no JSON procedimentos burocráticos (processo de OS, empenho, projeto básico, orçamentos SINAPI). Apenas justifique tecnicamente a escolha baseada nos critérios de finalidade, escala e complexidade.\n\n# 4. FORMATO DE SAÍDA OBRIGATÓRIO (JSON PURO)\nVocê deve responder ÚNICA e EXCLUSIVAMENTE em formato JSON, sem crases, sem formatação markdown e sem comentários iniciais ou finais. O JSON deve conter estritamente as chaves abaixo:\n\n{\n  \"classificacao\": \"OBRA\" ou \"MANUTENCAO\",\n  \"executor\": \"DDI_DG\" ou \"DEMO\" ou \"SOB_DEMANDA\",\n  \"justificativa_tecnica\": \"Explicação objetiva baseada na dimensão da intervenção, impacto no layout, se requer criação de área ou se exige conhecimento especializado/equipamento específico.\",\n  \"palavras_chave_identificadas\": [\"lista\", \"de\", \"palavras\", \"que\", \"basearam\", \"a\", \"decisao\"]\n}",
+              "role": "model"
+            },
+            {
+              "content": "=Analise o seguinte chamado do GLPI para classificação segundo as regras fornecidas:\n\nID do Chamado: {{ $('Loop Over Items').item.json.chamado_atual.id }}\nTítulo: {{ $('Loop Over Items').item.json.chamado_atual.titulo }}\nDescrição: {{ $('Loop Over Items').item.json.chamado_atual.descricao }}\nLocalização (ID): {{ $('Loop Over Items').item.json.chamado_atual.local_id }}"
+            }
+          ]
+        },
+        "modelId": {
+          "__rl": true,
+          "cachedResultName": "models/gemini-3.1-flash-lite-preview",
+          "mode": "list",
+          "value": "models/gemini-3.1-flash-lite-preview"
+        },
+        "options": {}
+      },
+      "position": [
+        1264,
+        576
+      ],
+      "retryOnFail": true,
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "bec1015f-29a7-49d1-8093-62eacfae5816",
+      "name": "Code in JavaScript2",
+      "parameters": {
+        "jsCode": "return $input.all().map(item => {\n  try {\n    const parts = item.json?.content?.parts;\n    if (parts && parts.length > 0) {\n      const jsonLimpo = JSON.parse(parts[0].text);\n      return { json: jsonLimpo };\n    }\n  } catch (error) {\n    return { json: { classificacao: \"ERRO\", erro: \"Falha no parse\" } };\n  }\n  return { json: { classificacao: \"ERRO\", erro: \"Sem conteúdo\" } };\n});"
+      },
+      "position": [
+        1280,
+        416
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "6169b5d9-88c2-4fa8-ad07-71bbb0683fd5",
+      "name": "Switch2",
+      "parameters": {
+        "options": {},
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "508ef0ef-4478-465b-9b94-351de4044df4",
+                    "leftValue": "={{ $json.classificacao }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "OBRA"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "Obra",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "c2426706-2d74-4199-91a9-82efeb8e6318",
+                    "leftValue": "={{ $json.classificacao }}",
+                    "operator": {
+                      "name": "filter.operator.equals",
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "MANUTENCAO"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "Manutenção",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        1504,
+        416
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "13fa93b1-db5d-4a0a-89ef-5e79ed91c69c",
+      "name": "Loop Over Items1",
+      "parameters": {
+        "batchSize": 5,
+        "options": {}
+      },
+      "position": [
+        1056,
+        464
+      ],
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3
+    },
+    {
+      "id": "79762649-f277-4922-a06c-e2d50ca57886",
+      "name": "Wait",
+      "parameters": {
+        "amount": 1
+      },
+      "position": [
+        1552,
+        576
+      ],
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "webhookId": "6816adba-05b2-4562-8d0e-307c0dd79442"
+    },
+    {
+      "id": "33b07982-c75f-4285-b58e-c8d93c138e76",
+      "name": "Code in JavaScript1",
+      "parameters": {
+        "jsCode": "// Mapeia todos os itens que chegam (seja 1 ou 5 de cada vez)\nreturn $input.all().map(item => {\n  try {\n    // Verifica se a estrutura básica da IA existe\n    const parts = item.json?.content?.parts;\n    \n    if (parts && parts.length > 0) {\n      // Transforma a string de texto em um objeto JSON real\n      const jsonLimpo = JSON.parse(parts[0].text);\n      \n      // Retorna o objeto processado para o Switch\n      return { json: jsonLimpo };\n    }\n  } catch (error) {\n    // Se a IA alucinar ou o JSON vier quebrado, define como 'false' para não travar o fluxo\n    return { \n      json: { \n        potencial_duplicata: false, \n        erro: \"Falha no parse\",\n        original: item.json?.content?.parts[0]?.text \n      } \n    };\n  }\n  \n  // Caso o item venha totalmente vazio\n  return { json: { potencial_duplicata: false, erro: \"Sem conteúdo da IA\" } };\n});"
+      },
+      "position": [
+        608,
+        224
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "281d2420-c95c-400a-afa7-774ecb133a6f",
+      "name": "Simulador de E-mail",
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "257ea619-d078-4b35-a6b2-d678047c6346",
+              "name": "Simulacao_Destinatario",
+              "type": "string",
+              "value": "ddi.riopomba@ifsudestemg.edu.br"
+            },
+            {
+              "id": "1ddae303-64fb-4ee8-b548-727d4c801a00",
+              "name": "Simulacao_Assunto",
+              "type": "string",
+              "value": "=[Triagem IA - TESTE] Nova Obra Detectada - Chamado #{{ $('Loop Over Items').item.json.historico_abertos[0].id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "position": [
+        1712,
+        320
+      ],
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4
+    }
+  ],
+  "settings": {
+    "availableInMCP": false,
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  }
+}

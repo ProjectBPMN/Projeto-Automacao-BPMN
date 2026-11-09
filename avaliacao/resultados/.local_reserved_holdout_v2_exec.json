@@ -1,0 +1,9 @@
+{
+  "completed_at": "2026-08-18T22:01:01.419053+00:00",
+  "dataset_sha256": "26e692ba247ef7439b9a057873c7034318423214b9797b2dbe72f9f24e6801f0",
+  "plan_manifest_payload_sha256": "f50bc5f540fe540cf00b692a06304cac781dc301ee853147d8fce16ae14cdc61",
+  "predictions_sha256": "0189d61208813bf8800d5e40911c7c3061461b634f34db33c34a0fb1cf0de1b2",
+  "scientific_result": false,
+  "started_at": "2026-08-18T21:31:01.754488+00:00",
+  "status": "COMPLETED_NO_RETRY"
+}

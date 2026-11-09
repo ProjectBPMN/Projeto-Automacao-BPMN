@@ -1,0 +1,21 @@
+PASTA AVALIACAO/SCHEMAS
+========================
+
+Contratos JSON canônicos de saída aplicados ao serviço LOCAL e aos adaptadores
+remotos. No Gemini, estes schemas também restringem a resposta estruturada da
+API `generateContent`; eles não são exclusivos desse provedor.
+
+- deduplicacao_v9.1.schema.json: saída da decisão de duplicidade.
+- classificacao_v9.1.schema.json: saída da classificação semântica.
+
+Os builders WF02/WF03 incorporam os contratos consumidos pelos workflows n8n.
+Antes de implantar, execute a partir da raiz do projeto:
+
+  python avaliacao\scripts\sincronizar_manifesto.py --check
+  python n8n\workflows\Versão9\validate_v9_static.py
+
+O primeiro comando detecta divergência entre os artefatos e os hashes
+registrados; o segundo valida estrutura, conexões e invariantes dos workflows.
+Um resultado válido depende de ambos terminarem sem erro. Alterar um schema sem
+sincronizar o manifesto e regenerar os workflows invalida a identidade da
+execução.

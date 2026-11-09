@@ -1,0 +1,23 @@
+[
+  {
+    "service": "n8n",
+    "error": "ReadTimeout",
+    "seconds": 10.01
+  },
+  {
+    "service": "glpi",
+    "error": "ReadTimeout",
+    "seconds": 10.02
+  },
+  {
+    "service": "mailpit",
+    "status": 200,
+    "seconds": 1.39,
+    "health": null
+  },
+  {
+    "service": "ai",
+    "error": "ConnectionError",
+    "seconds": 2.05
+  }
+]

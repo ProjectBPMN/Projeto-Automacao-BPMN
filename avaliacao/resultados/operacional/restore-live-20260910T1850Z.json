@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-10T18:54:39.428106Z",
+  "mode": "APPLY_ISOLATED",
+  "status": "FAIL",
+  "live_services_touched": false,
+  "artifacts": {
+    "postgresql": {
+      "path": "avaliacao\\runtime\\backups\\live-20260910T1850Z\\triagem-live.dump",
+      "exists": true
+    },
+    "mariadb": {
+      "path": "avaliacao\\runtime\\backups\\live-20260910T1850Z\\glpi-live.sql",
+      "exists": true
+    }
+  },
+  "temporary_target_controls": {
+    "random_container_names": true,
+    "network": "none",
+    "published_ports": 0,
+    "cleanup_in_finally": true,
+    "resource_strategy": "SEQUENTIAL_EPHEMERAL_DATABASES",
+    "pinned_images": [
+      "postgres:16.13@sha256:71e27bf60b70bded003791b5573f8b808365613f341df20ffcf0c1ed7bc13ddf",
+      "mariadb:10.11.16@sha256:8d9046cdb0b0961b3d2119bcb4bea62a185f11944be5968bc42b81d47801902e"
+    ]
+  },
+  "required_tables": {
+    "postgresql": [
+      "tickets_processados",
+      "fila_ia_controle",
+      "fila_ia_dead_letter",
+      "ia_decisoes",
+      "ia_tentativas_modelo",
+      "avaliacoes_humanas",
+      "workflow_eventos"
+    ],
+    "mariadb": [
+      "glpi_tickets",
+      "glpi_users",
+      "glpi_itilcategories"
+    ]
+  },
+  "error": "restauração PostgreSQL falhou: ssificacao OWNER TO triagem_migration_owner;\n\npg_restore: error: could not execute query: ERROR:  role \"triagem_migration_owner\" does not exist\nCommand was: ALTER VIEW public.vw_metricas_deduplicacao OWNER TO triagem_migration_owner;\n\npg_restore: error: could not execute query: ERROR:  role \"triagem_migration_owner\" does not exist\nCommand was: ALTER VIEW public.vw_metricas_deduplicacao_desafio OWNER TO triagem_migration_owner;\n\npg_restore: error: could not execute query: ERROR:  role \"triagem_migration_owner\" does not exist\nCommand was: ALTER VIEW public.vw_pr_classificacao OWNER TO triagem_migration_owner;\n\npg_restore: error: could not execute query: ERROR:  role \"triagem_migration_owner\" does not exist\nCommand was: ALTER VIEW public.vw_pr_deduplicacao OWNER TO triagem_migration_owner;\n\npg_restore: error: could not execute query: ERROR:  role \"triagem_migration_owner\" does not exist\nCommand was: ALTER VIEW public.vw_proveniencia_gateway_ia OWNER TO triagem_migration_owner;\n\npg_restore: error: could not execute query: ERROR:  role \"triagem_migration_owner\" does not exist\nCommand was: ALTER VIEW public.vw_recall_candidatos_deduplicacao OWNER TO triagem_migration_owner;\n\npg_restore: error: could not execute query: ERROR:  role \"triagem_migration_owner\" does not exist\nCommand was: ALTER VIEW public.vw_risco_cobertura_classificacao OWNER TO triagem_migration_owner;\n\npg_restore: error: could not execute query: ERROR:  role \"triagem_migration_owner\" does not exist\nCommand was: ALTER TABLE public.workflow_eventos OWNER TO triagem_migration_owner;\n\npg_restore: error: could not execute query: ERROR:  role \"triagem_migration_owner\" does not exist\nCommand was: ALTER VIEW public.vw_tempo_execucao_workflow OWNER TO triagem_migration_owner;\n\npg_restore: error: could not execute query: ERROR:  role \"triagem_migration_owner\" does not exist\nCommand was: ALTER SEQUENCE public.workflow_eventos_id_seq OWNER TO triagem_migration_owner;\n\npg_restore: warning: errors ignored on restore: 66"
+}

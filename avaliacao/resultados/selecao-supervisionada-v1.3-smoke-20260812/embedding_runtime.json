@@ -1,0 +1,67 @@
+[
+  {
+    "schema": "projeto-ic-embedding-cache-v1",
+    "created_at": "2026-08-04T16:54:39.800174+00:00",
+    "cache_hit": true,
+    "model_id": "granite97m",
+    "repository": "ibm-granite/granite-embedding-97m-multilingual-r2",
+    "revision": "835ad14087e140460703cf0fae09f97d469d65c2",
+    "local_path": "local_ai\\models\\granite-embedding-97m-multilingual-r2",
+    "tree_sha256": "28bb1e36cb3719c0c466de3013404307821da17bf901fc70f62af74bfa57a343",
+    "file_count": 13,
+    "total_bytes": 318727187,
+    "dataset_sha256": "0de50381c0dfaefeb1a940cd697f9c9a8e87b5efee9252a1f4ca43c9d904f204",
+    "dimension": 384,
+    "normalized": true,
+    "backend": "pytorch_fp32",
+    "load_seconds": 6.672501000000921,
+    "rss_before_mb": 453.609375,
+    "load_peak_rss_mb": 1015.02734375,
+    "encode_peak_rss_mb": 958.65234375,
+    "single_text_latency_ms": {
+      "n": 20,
+      "p50": 106.67204999845126,
+      "p95": 133.24675999792817
+    },
+    "batch8_latency_ms": {
+      "n": 10,
+      "p50": 548.1666000050609,
+      "p95": 607.1394700000383
+    },
+    "roles": {
+      "symmetric": {
+        "records": 1228,
+        "prefix": "",
+        "keys_sha256": "2b897bcb6a9287e6eac705ca95483cb75b4f75480da71d33ff2b658a356bfa49",
+        "seconds": 81.93647469999996,
+        "texts_per_second": 14.987220337415867,
+        "peak_rss_mb": 958.65234375,
+        "npz_sha256": "667b4a269b241e3fcd6af1ccc47fe0010915ce485ed813221349dceee6a6a67e"
+      },
+      "retrieval_query": {
+        "records": 300,
+        "prefix": "",
+        "keys_sha256": "6158db90beccb2875e930aea8a2d6221b5969d19a3ac67fc8ac2e4d060fc755a",
+        "seconds": 19.850796400001855,
+        "texts_per_second": 15.112743788958108,
+        "peak_rss_mb": 958.0078125,
+        "npz_sha256": "7344822586759643e1c41f9900a13bdbbb32985dcd9636a4afb91858545a6a27"
+      },
+      "retrieval_passage": {
+        "records": 120,
+        "prefix": "",
+        "keys_sha256": "ce8be8f6193fac3287a28faa0183b629ff124cd2d6242c2f4c39f7d429904690",
+        "seconds": 7.150415500000236,
+        "texts_per_second": 16.782241535473855,
+        "peak_rss_mb": 958.51171875,
+        "npz_sha256": "14a69a8434011bf750ef9e16cf30622a94defec3f2e74c6a46ed706b661ad369"
+      }
+    },
+    "packages": {
+      "torch": "2.13.0+cpu",
+      "sentence_transformers": "5.6.0",
+      "transformers": "4.57.6"
+    },
+    "validated_at": "2026-08-13T00:14:25.962153+00:00"
+  }
+]

@@ -1,0 +1,86 @@
+PASTA AVALIACAO/SCRIPTS
+=======================
+- gerar_dataset_avaliacao.py: gera casos, gabaritos, CSV/JSONL e, quando
+  solicitado, chamados no GLPI.
+- gerar_corpus_desenvolvimento_local.py: gera o corpus sintético interno usado
+  no desenvolvimento do candidato LOCAL e seu manifesto; a saída não é
+  holdout e não tem redistribuição pública autorizada.
+- validar_dataset.py: verifica isolamento, referências, duplicatas, distribuição
+  opcional e vazamento entre splits.
+- executar_avaliacao.py: executa somente piloto e validação técnica
+  automatizada, com papel fixo LOCAL ou SECONDARY e sem fallback. A antiga rota
+  `benchmark` falha antes de criar arquivos, chamados ou registros: este
+  executor usa gabarito sintético e o ORACULO_GABARITO para clicar WF04/WF05,
+  portanto nunca produz evidência confirmatória. Benchmark confirmatório exige
+  uma rota V3 dedicada (ainda não implementada neste utilitário), holdout
+  independente e rótulos humanos adjudicados.
+- conferir_gabarito.py: confere um `run_id` isolado e calcula métricas; no modo
+  `test-only`, atua como oráculo determinístico externo de teste somente depois
+  da persistência da predição, com trilha separada e sem identidade humana. Os
+  arquivos opcionais de especialistas/adjudicação são uma etapa futura distinta
+  e nunca são satisfeitos pelo clique automático.
+- calibrar_vazao.py: protocolo v2.6; repete e randomiza configurações, warm-up,
+  concorrência e percentis p50/p95/p99 da fila. Antes do ensaio, captura apenas
+  os parâmetros não sensíveis do WF06 e o controlador da fila; ao terminar,
+  restaura exatamente o estado capturado e falha fechado se a restauração não
+  puder ser comprovada.
+- calibrar_limiar.py: calibra limiares independentes para classificação e
+  deduplicação somente no piloto adjudicado; separa abstenção da classe
+  semântica TRIAGEM_MANUAL e nunca converte baixa confiança em NAO_DUPLICADO.
+- treinar_modelo_local.py: treina o candidato local TF-IDF + embeddings
+  opcionais + regressão logística calibrada, com split agrupado, bloqueio de
+  TESTE/benchmark/primary33 e bundle joblib acompanhado de manifesto e hashes.
+- selecionar_modelos_supervisionados.py: executa a seleção interna reproduzível
+  entre Granite 97M, multilingual-e5-small e MiniLM multilingual; compara
+  TF-IDF, embedding e híbrido realmente isolados, além de metadados isolados e
+  híbrido+metadados operacional, com LogReg, árvore,
+  LinearSVC, MLP e XGBoost. Usa validação cruzada aninhada por grupos,
+  calibração separada, abstenção, custos assimétricos, comparação pareada por
+  grupo e SHAP dos vencedores. O protocolo autoritativo está em
+  `avaliacao/PROTOCOLO_SELECAO_MODELOS_V1.md`.
+- validar_resultados_selecao.py: verifica a matriz 35+55, fingerprints,
+  previsões OOF, probabilidades, cinco dobras, isolamento de grupos, rankings,
+  comparações pareadas e flags que impedem promover desenvolvimento sintético
+  a resultado confirmatório.
+- executar_demo_off.py: executa três cenários controlados com equipe DEMO
+  indisponível, recusa fila não vazia e restaura a configuração padrão.
+- comparar_baselines.py: compara regras, maioria, TF-IDF/LogReg, similaridade
+  cosseno e predições externas, com `challenge_only`, bootstrap e McNemar.
+- comparar_candidatos_locais.py: compara candidatos locais sob o mesmo contrato
+  e conserva a identidade dos dados usados.
+- comparar_versoes_locais.py: recompõe métricas históricas de duas versões no
+  mesmo conjunto de desenvolvimento; não executa nova inferência nem estima
+  generalização. A recomendação de engenharia é calculada por critérios
+  explícitos informados na linha de comando; nenhuma versão é recomendada por
+  nome ou de forma incondicional.
+- benchmark_pareado_local_gemini.py: executa comparação pareada com papel e
+  modelo congelados, orçamento remoto explícito, reserva em janela móvel de RPM
+  e TPM, ledger de tentativas, interrupção na primeira falha remota e bloqueio de
+  não inferioridade quando houver pares ausentes ou inválidos. A execução exige
+  confirmação separada das cotas ativas e do status de faturamento; consulte
+  avaliacao/PROTOCOLO_BENCHMARK_REMOTO_V1.md.
+- consolidar_classificacao_hierarquica.py: separa as métricas OBRA/MANUTENÇÃO e
+  DEMO/SOB_DEMANDA, preservando abstenções e grupos semânticos.
+- estatistica.py: bootstrap episódico e McNemar exato.
+- planejar_amostra.py: suporte por classe e poder aproximado para McNemar.
+- sincronizar_manifesto.py: valida identidade entre prompts, schemas, JSONs,
+  modelo, opções, seed e hashes.
+- validar_rotulos_especialistas.py: exporta o piloto cego e calcula concordância,
+  kappa e alterações após dois especialistas/adjudicação.
+- gerar_diagnostico_operacional.py: extrai tentativas, fila, dead letter, tokens
+  e gates, sempre marcando a saída como diagnóstico não científico.
+- isolamento_experimentos.py: impede a concorrência entre calibração de fila e
+  testes E2E por bloqueio compartilhado e estado do experimento.
+- validar_webhooks_confirmacao_e2e.py: verifica os ramos `confirmar` e
+  `nao_duplicado`; GET é somente leitura, POST muta uma única vez, replay é
+  recusado e o ramo negativo prova limpeza e handoff para a fila. Durante os
+  asserts negativos, mantém a reserva WF06 bloqueada e só libera depois do
+  cleanup dos tickets sintéticos.
+- gerar_planilha_resultados.py: consolida somente evidências existentes e
+  mantém o estado científico de cada execução; ausência de evidência não é
+  preenchida com valor estimado.
+
+Os scripts não transformam clique automático com gabarito em revisão humana.
+Resultados do corpus de desenvolvimento ou do piloto permanecem descritivos;
+apenas um protocolo pré-registrado com holdout independente e rótulos humanos
+ou adjudicados pode sustentar uma conclusão confirmatória.

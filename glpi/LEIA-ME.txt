@@ -1,0 +1,7 @@
+PASTA GLPI
+==========
+Contém o ambiente local de gestão de chamados.
+
+- docker-compose.yml: define os containers GLPI e MariaDB, volumes, rede,
+  porta e montagem do plugin.
+- .env: variáveis locais usadas pelo Compose; pode conter dados sensíveis.

@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "date_local": "2026-09-09",
+  "scope": "AUTHENTICATED_BROWSER_TECHNICAL_INSPECTION",
+  "scientific_result": false,
+  "semantic_correctness_confirmed": false,
+  "credentials_source": "AUTHORIZED_LOCAL_CONFIGURATION_NOT_RECORDED",
+  "credentials_printed": false,
+  "n8n": {
+    "url": "http://localhost:5678",
+    "login_succeeded": true,
+    "published_v9_workflows_visible": 6,
+    "wf06_editor_opened": true,
+    "connection_lost_observed_before_fix": true,
+    "origin_mismatch_confirmed_in_server_logs": true,
+    "proxy_external_port_preserved": true,
+    "origin_validation_disabled": false,
+    "editor_reconnected_after_fix": true,
+    "wf06_execution_ids_visible_as_succeeded": [69270, 69271, 69272, 69273, 69274, 69275],
+    "execution_rows_are_not_semantic_validation": true
+  },
+  "glpi": {
+    "url": "http://localhost:9180",
+    "login_succeeded": true,
+    "remember_me_unchecked": true,
+    "dashboard_opened": true,
+    "ticket_list_opened": true,
+    "tickets_created_or_edited_through_browser": false,
+    "default_password_warning_visible_for": ["normal", "post-only", "tech"],
+    "passwords_changed": false
+  },
+  "overall_status": "ACCESS_VALIDATED_WITH_SECURITY_FINDINGS",
+  "interpretation_limit": "As telas e execuções verificam acesso e funcionamento dos caminhos inspecionados. Não confirmam semântica dos tickets, não aprovam produção e não substituem o relatório E2E separado."
+}

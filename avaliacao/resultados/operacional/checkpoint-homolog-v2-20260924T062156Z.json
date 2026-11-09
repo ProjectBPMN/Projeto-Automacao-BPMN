@@ -1,0 +1,47 @@
+{
+  "schema_version": "projeto-ic-homolog-checkpoint-v2",
+  "checkpoint_at_utc": "2026-09-24T06:21:56.7490364Z",
+  "checkpoint_at_brt": "2026-09-24T03:21:56.7548310-03:00",
+  "timezone": "America/Sao_Paulo",
+  "authorized_daemon": {
+    "status": "PASS",
+    "valid_instance_count": 1,
+    "pid": 9124,
+    "executable_path": ".venv\\Scripts\\pythonw.exe",
+    "command_requirements": ["monitor_daemon.py", "monitoring-homolog-20260910-v2", "--interval-seconds 60"],
+    "action": "PRESERVED"
+  },
+  "temporal_gap": {
+    "status": "DETECTED_PREVIOUSLY_UNRESOLVED",
+    "last_closed_window_end_at_utc": "2026-09-18T03:27:48.876537Z",
+    "daemon_refreshed_at_utc": "2026-09-24T06:20:55.425914Z",
+    "interpretation": "The resumed collector has not closed a new technical window; the prior unobserved period prevents a continuity inference."
+  },
+  "technical_windows": {
+    "runtime_status": "TECHNICAL_WINDOWS_COMPLETE",
+    "completed": 32,
+    "required": 3,
+    "latest_window_index": 32,
+    "latest_window_end_at_utc": "2026-09-18T03:27:48.876537Z",
+    "latest_slo_status": "FAIL",
+    "latest_local_ai_availability": 0.0,
+    "latest_backup_restore_age_hours": 176.22170935805556,
+    "latest_drift_status": "INSUFFICIENT_DATA"
+  },
+  "scientific_protocol": {
+    "expected": 10,
+    "completed": 10,
+    "failed": 0,
+    "pending": 0,
+    "running": 0,
+    "required_completed_status": "COMPLETED_DEVELOPMENT_OOF",
+    "xai_complete": true,
+    "performance_benchmark_complete": true,
+    "locked_challenge_recorded": true,
+    "scientific_result": false,
+    "production_ready": false,
+    "interpretation_limit": "Synthetic/proxy labels do not demonstrate institutional efficacy, scientific_ready, or production readiness."
+  },
+  "homologation_status": "BLOCKED_BY_PREVIOUS_TEMPORAL_GAP_SLO_AND_INSUFFICIENT_DATA",
+  "required_action": "Collect a new uninterrupted observation period and renew backup/restore, local-AI, and decision-level evidence before reconsidering the gates."
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "e2e-webhooks-v1",
+  "run_id": "VALIDACAO-POSTS-E2E-20260722T040402Z",
+  "natureza_evidencia": "VALIDACAO_TECNICA_NAO_CONFIRMATORIA",
+  "synthetic_only": true,
+  "started_at": "2026-07-22T04:04:03.459125+00:00",
+  "ids": {
+    "glpi_reference_ticket_id": 298,
+    "glpi_target_ticket_id": 299
+  },
+  "error": "KeyError: 0",
+  "glpi_synthetic_tickets_closed": true,
+  "passed": false,
+  "finished_at": "2026-07-22T04:04:05.696243+00:00"
+}

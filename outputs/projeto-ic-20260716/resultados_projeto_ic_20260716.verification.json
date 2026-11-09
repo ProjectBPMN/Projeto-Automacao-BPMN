@@ -1,0 +1,209 @@
+{
+  "generated_at": "2026-07-16T19:58:32.771148+00:00",
+  "output": "outputs\\projeto-ic-20260716\\resultados_projeto_ic_20260716.xlsx",
+  "output_sha256": "20ff13d942cf4ffe8219387d18aa75d2abeb3aa42ed98f1a1d5c747c448620b9",
+  "size_bytes": 152049,
+  "generator": "avaliacao/scripts/gerar_planilha_resultados.py",
+  "generator_sha256": "5c1748b90d9efa772e152b770d1cc61400956f6b0a029614b0fe76540298eb04",
+  "latest_model": "local-hybrid-v1.8.0",
+  "baseline_model": "local-hybrid-v1.1.0",
+  "integrity_checks": {
+    "total": 73,
+    "passed": 73,
+    "failed": 0,
+    "required_failed": 0
+  },
+  "key_metrics_recomputed": {
+    "total": 1240,
+    "valid": 1240,
+    "semantic_triage_predictions": 57,
+    "operational_abstentions": 569,
+    "routed_to_human_total": 735,
+    "semantic_coverage": 0.5411290322580645,
+    "straight_through_coverage": 0.40725806451612906,
+    "selective_accuracy": 0.9970193740685543
+  },
+  "source_files": [
+    {
+      "path": "avaliacao/resultados/integracao-v1.8.0-final4-20260716/VALIDACAO-20260716T145412/metricas.json",
+      "sha256": "3e56f1e9df4321351af92a059e22c6a2f5be4e3091f952d336fc48e95b00d2f2"
+    },
+    {
+      "path": "avaliacao/resultados/interfaces-web-v1.8.0-20260716/resultado.json",
+      "sha256": "d3740aed7314903c6ba9ce64775d4aa22da85ad1220245cdf88f0c7ecbcbcdbd"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.5.0-20260716/local_only_plan.json",
+      "sha256": "5ec1a1146b24d9e99b81c987866d11cfd670613f30db22bac4b57c4f5dc89ecb"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.5.0-20260716/local_only_predictions.jsonl",
+      "sha256": "259ff193b4e3b8eb27a85f4c522bd6c72c24d2eb93699cde589300c12e38d1ce"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.5.0-20260716/local_only_summary.json",
+      "sha256": "8c4788cb1333908789a4458de95a84af38f83d70b89a6e193ea00a84c7f228cc"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.5.0-20260716/local_only_units.jsonl",
+      "sha256": "88b6b2125e8d7ba11edfe50c09c55fd9069a1778f7a79ff0e294c8f7b233d6f6"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.6.0-20260716/local_only_plan.json",
+      "sha256": "34bb5ae0b2ce700f2e402d650a63a97012f521ba49577ba054fe8781b42129cf"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.6.0-20260716/local_only_predictions.jsonl",
+      "sha256": "45b8a59da7bfac0c234673a5530f5cdeb300288d56dab699b6c666ba02896fed"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.6.0-20260716/local_only_summary.json",
+      "sha256": "919a7a678ea8ce317fbd96a2faf24746e249d2070201f0825c928ca67a9b9660"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.6.0-20260716/local_only_units.jsonl",
+      "sha256": "88b6b2125e8d7ba11edfe50c09c55fd9069a1778f7a79ff0e294c8f7b233d6f6"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.7.0-20260716/local_only_plan.json",
+      "sha256": "11c247932c3c18943bd0de35d4dec541684990fc2d0c922bd7c51856f1989136"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.7.0-20260716/local_only_predictions.jsonl",
+      "sha256": "674171e457a0943018fcc87cabff6827c229659fb5e22c9b95165b1c5f47ec59"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.7.0-20260716/local_only_summary.json",
+      "sha256": "13650c6dd02a0dc5e2d137b010f5fed7d4494c3698858ccf4bcc41ff5de9176e"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.7.0-20260716/local_only_units.jsonl",
+      "sha256": "88b6b2125e8d7ba11edfe50c09c55fd9069a1778f7a79ff0e294c8f7b233d6f6"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.8.0-20260716/local_only_plan.json",
+      "sha256": "ae7ed0b9ae262b165e15c86af57805639a892fb9fbc3908901c7209e1402d618"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.8.0-20260716/local_only_predictions.jsonl",
+      "sha256": "258106f1eebbaee5a56e118c1b4bda09c193719de8af4ce7f40e565562103603"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.8.0-20260716/local_only_summary.json",
+      "sha256": "ea2dc418fa849d5ea328efb220e15577197f92f3476644a3b36cfbd30e7979f3"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1.8.0-20260716/local_only_units.jsonl",
+      "sha256": "88b6b2125e8d7ba11edfe50c09c55fd9069a1778f7a79ff0e294c8f7b233d6f6"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1/local_only_plan.json",
+      "sha256": "4c5b964a12e07fbc075276a4851a3e7daf3137c713f9119fceee889de2a22fd7"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1/local_only_predictions.jsonl",
+      "sha256": "52e62769e1b3ed15920026d0ae03edfbf2141bfb028635029e5c5023a6822799"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1/local_only_summary.json",
+      "sha256": "7d46e9641393f67a7611e14048c1e8f10ce717f27cc8bca66e9f27f014470e45"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-desenvolvimento-v1/local_only_units.jsonl",
+      "sha256": "88b6b2125e8d7ba11edfe50c09c55fd9069a1778f7a79ff0e294c8f7b233d6f6"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-paired40-v1.8.0-20260716/local_only_plan.json",
+      "sha256": "48a9b2ebed97aa7c517954f325ab86b98d920abc6b6078c2e4d4ce68dfe93b61"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-paired40-v1.8.0-20260716/local_only_predictions.jsonl",
+      "sha256": "79b6a6f3e28b7d1e898279f1b78c44526d3084e2d19147b30343a23dc07416e5"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-paired40-v1.8.0-20260716/local_only_summary.json",
+      "sha256": "f4634af04e0afd028990c5210f1fb828bdd34cc1a0ec32faf40aa81b1199dd9d"
+    },
+    {
+      "path": "avaliacao/resultados/local-only-paired40-v1.8.0-20260716/local_only_units.jsonl",
+      "sha256": "3f338fb6280b54f17f9004c7bd146dc285975ee00d0ca3d49dca8c2bb9d70161"
+    },
+    {
+      "path": "avaliacao/resultados/pareado-local-gemini-v1/paired_plan.json",
+      "sha256": "152d6292ee1fe5df46d8c3982957650636d91f0545942dc2e54c3173e586a01a"
+    },
+    {
+      "path": "avaliacao/resultados/pareado-local-gemini-v1/paired_predictions.jsonl",
+      "sha256": "19621e09b008086affa8ec623392d6c9bf0c5ef2cbc770251ce8b2e61f49e4b5"
+    },
+    {
+      "path": "avaliacao/resultados/pareado-local-gemini-v1/paired_summary.json",
+      "sha256": "60fd7c7db420cddb60797fadee4939615ecf9c73f087a4be997e57a47e10e95a"
+    },
+    {
+      "path": "avaliacao/resultados/pareado-local-gemini-v1/paired_units.jsonl",
+      "sha256": "1e9ef284148dbce3fa461d41a077074c87ee56609176464e88ade2e3a82cffae"
+    },
+    {
+      "path": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-4rpm-20260716/paired_plan.json",
+      "sha256": "534a6be45bf598d9ec8a9890305b2a1b4ca32be76aa560e990f2e713c627f1fe"
+    },
+    {
+      "path": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-4rpm-20260716/paired_predictions.jsonl",
+      "sha256": "b134408d80dc855bea00006a0808c216a985f885f30b47bef9ab26a4e70d7bd7"
+    },
+    {
+      "path": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-4rpm-20260716/paired_summary.json",
+      "sha256": "f6e00818bb51626c3fa76450c7d2b55d27054213deae01386bc056a01df4dfea"
+    },
+    {
+      "path": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-4rpm-20260716/paired_units.jsonl",
+      "sha256": "f8ff3caead66783a880dfd54b77014a68cc4077d367179cfa823981263b08e69"
+    },
+    {
+      "path": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-dev-20260716/paired_plan.json",
+      "sha256": "41782356a35cc0941e480950695ff49d189bbe04d674b56674a2c5235f74836b"
+    },
+    {
+      "path": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-dev-20260716/paired_predictions.jsonl",
+      "sha256": "e53740893b0812b51ebe6a06c534207ce00a10d79662d6f03415475098c394a0"
+    },
+    {
+      "path": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-dev-20260716/paired_summary.json",
+      "sha256": "8519631010288bce9c221f337ebd37d9eb81c46a78d97f6431bf3f55a97edbd3"
+    },
+    {
+      "path": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-dev-20260716/paired_units.jsonl",
+      "sha256": "46aec2ca813f842f3127ac787792432a68b5041add4f672ebdcfa1ae653bfbae"
+    },
+    {
+      "path": "avaliacao/resultados/static-validation-v1.8.0-20260716.txt",
+      "sha256": "99ee8d7f139094c98163b1b107d8df989f01eb61b9f15f9402848c315bf63b9c"
+    },
+    {
+      "path": "avaliacao/resultados/validacao-links-fiscais-v1.8.0-20260716.md",
+      "sha256": "c0bf527402d50fb713b459eef1c4b361dc9d7df22c820d3dad3b41d99faa080d"
+    }
+  ],
+  "sheet_names": [
+    "Resumo",
+    "Versoes local",
+    "Classificacao latest",
+    "Deduplicacao latest",
+    "Predicoes processadas",
+    "Provedores",
+    "Integracao",
+    "WF06",
+    "Proveniencia QA",
+    "Metodologia"
+  ],
+  "formula_count": 51,
+  "table_count": 12,
+  "chart_count": 1,
+  "formula_error_scan": "PASS",
+  "xlsx_structure": "PASS",
+  "visual_render": {
+    "status": "UNAVAILABLE",
+    "reason": "O runtime não expôs @oai/artifact-tool nem um renderizador headless de Excel/LibreOffice; foi feita verificação estrutural do pacote XLSX, tabelas, fórmulas e gráficos."
+  }
+}

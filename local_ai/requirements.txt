@@ -1,0 +1,3 @@
+# Runtime principal: apenas a biblioteca padrão do Python 3.11+.
+# Instale um dos arquivos opcionais conforme o backend realmente usado.
+

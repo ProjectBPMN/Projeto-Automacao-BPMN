@@ -1,0 +1,558 @@
+{
+  "experimento": {
+    "run_id": "VALIDACAO-20260716T145412",
+    "origem": "VALIDACAO_AUTOMATIZADA_NAO_CONFIRMATORIA",
+    "dataset_version": "dataset-v2.0.0-episodico",
+    "dataset_sha256": "c8770d3d4ca777c8a34bb1edfa2cc9dcd8bcb945ca0baec26d1d1380017c63f5",
+    "seed": 20260702,
+    "split": "VALIDACAO",
+    "modelo_ia": "local-hybrid-v1.8.0",
+    "prompt_dedup_version": "deduplicacao_v9.1-episodica",
+    "prompt_classif_version": "classificacao_v9.1-episodica",
+    "generation_profile": "local-hybrid-v1.8.0_fixed-not_applicable",
+    "generation_config": {
+      "files": {
+        "n8n\\.env": "62791c1b9dbe10d5ef3708f17e618f4ade967f9ea725e702e409363207a9db31",
+        "local_ai\\text.py": "c2796729ed8780e5c5761955f04baa080956a92750076d9a9a0feb8f4b072b93",
+        "requirements.txt": "8cfa3ae2354ce7a8ede9340eb09b2dde16b50f1ee55c50f6f0b30eb0da831bb8",
+        "local_ai\\cache.py": "f5a6bc8c5ca385fd712d022641d365b0c0dbf0ec099847622845c48a8c08b286",
+        "local_ai\\config.py": "b36a291f109a0afc8f61af5484aa433771085b7a97b60b4ce42b2834b4b4f6c3",
+        "local_ai\\hybrid.py": "dc9b868fc5a31c0d5c37cc5a977af4243b0bb52adbd217fc16a4d2a5e9e151dc",
+        "database\\init_v9.sql": "20e4563ffc36ac7efad8272742d0ce46b9cde7f81081772b0c6d36bae649acc0",
+        "local_ai\\__init__.py": "9cfd6b2955b1041a93153757480ec86cd902a35e94f1be822f23ed041f37538d",
+        "local_ai\\__main__.py": "200dbda47b7fa5d5d977816202f86c3ef1a98ec47743119de087182eacfc4df7",
+        "local_ai\\backends.py": "d9fb0ee3a971e6d7314ae875a88b87bd9c1f41b8e103a6140554ebcaaf157561",
+        "local_ai\\http_api.py": "0172253cb7d1385709759e6e98ae4d5629dd1d0c078018388e2a9b29c17f036a",
+        "local_ai\\artifacts.py": "27bba855b42d0d2ecb0bdfd37287c323c2ab271b080bef53662b8e5487c19261",
+        "local_ai\\contracts.py": "2f3874ae33f93cdde8f2505dcc4504b25dc2e8c5af9b2f6d930f14952de08a85",
+        "local_ai\\inference.py": "9d34c18b17cf4ec5a77737061362f0ffea8a873201739a16078838e821d6c04b",
+        "local_ai\\extraction.py": "5e3af908750711313d462f01f5d772ac8c42b83d77f050fffdb97a99c9c2d934",
+        "n8n\\docker-compose.yml": "cc8be82ab1df7f4201514419565c326699ddfac069c863014217bc8509e74b33",
+        "local_ai\\requirements.txt": "744e984ab7ffe2b2411ca0a4e47b58ea3f16474a7372ef33a693e994bca7d0aa",
+        "local_ai\\models\\manifest.json": "e596681fa782b49242ff60f887e000e999b7d02b5f710fa69570221f4d2bbd80",
+        "avaliacao\\scripts\\estatistica.py": "147bdb60684109ba2218e4f0e924ba3e59ed79ab8fde57f33d1358013f65d604",
+        "local_ai\\requirements-hybrid.txt": "a79848e354ed44c21ed072e827a34a750011aed644cdaddf4fb71cedb498517a",
+        "n8n\\workflows\\Versão9\\deploy.py": "69b3f6640b8ee6386b9ff0afb9b2e3b695c25278a944b4af8df607f04f8b3c86",
+        "local_ai\\requirements-granite.txt": "290c1fabc2b7e3f634dbb1209d5398e33ac080d70d0bd1c3ddd6a29d38b99d31",
+        "n8n\\workflows\\Versão9\\helpers.py": "35577c88796c9199594fb5fd2f3ed5df7cdbd259735a6456228f9353b0c0fa8b",
+        "local_ai\\scripts\\stop-local-ai.ps1": "4a669ce13d0b58177b49ecc61ff365d36a7e0b0538e2b4bff951c7b649cdb709",
+        "avaliacao\\config\\modelos_ia_v1.json": "ef0d216eed3b6033c545fa549b7402164833d8c4c3835d0f4d056127cc72a309",
+        "avaliacao\\datasets\\cenarios_v2.json": "9c65fdbcd04a4641631b81b83c8522f1b2285d0fec0951d0f9b6ca25adfba914",
+        "avaliacao\\scripts\\calibrar_vazao.py": "5898321f8b0d760d0e2c65391ab3b2dc9f78455eb033e627f7b0758466341c1b",
+        "local_ai\\requirements-benchmark.txt": "86f6ece8ee55be012f1d0eabaf598e0c0fa081151335fe91ddc5c51ac0cb12e0",
+        "local_ai\\scripts\\start-local-ai.ps1": "061b8eca3e501bf2329e92eceb907290b2e9de47fb7b36c6483f459f889a30a4",
+        "avaliacao\\scripts\\calibrar_limiar.py": "3d786f9fb05293742bbc2e73a3ca5382404339c44b22ed552222a2b839af941f",
+        "avaliacao\\scripts\\validar_dataset.py": "ff5fe1268b735fe2f25d8890c25f9fe50fe976dc22aeea511752910b99b1ad22",
+        "local_ai\\scripts\\local-ai-common.ps1": "fdcd621e558713ea6c28f46322d39f9218152d7a9043eb2fd1adab364aec9f22",
+        "local_ai\\scripts\\status-local-ai.ps1": "2378b33988840402c0b098ad0e4bfcdfb6340d49beec97e5e4a505fe04fd6350",
+        "n8n\\workflows\\Versão9\\build_wf01.py": "9c3319a3fc278e2ce56d76b909871932a69ba3d79c47d0a6c1f529e9c2a63a29",
+        "n8n\\workflows\\Versão9\\build_wf02.py": "5474c3b762aa26595190da6f6516c0f8cea3ae571161e14ea7467063cd49a471",
+        "n8n\\workflows\\Versão9\\build_wf03.py": "db32b5d32bfd2d5da007798bfc42db9c2ad5454f6a604479689322638e2682fc",
+        "n8n\\workflows\\Versão9\\build_wf04.py": "471b239ce0fe65adfb100c4b12511b1aa6709882a224674de8b64dc95dba6cb9",
+        "n8n\\workflows\\Versão9\\build_wf05.py": "5c5dc28c273da98244c40619a69f7d677726bb6bf2578348a284391261f9b1cf",
+        "n8n\\workflows\\Versão9\\build_wf06.py": "6173ac0db10b23deb225bd46647e248312759baf90d10074598c2dedc36c70af",
+        "avaliacao\\scripts\\planejar_amostra.py": "bbc4705aa99d6f50b6eb0fa2a59fe233d2c5eac2f8fd421450f8f4809e136154",
+        "avaliacao\\scripts\\conferir_gabarito.py": "04944fe8b752c782ad6ff45e41694090df342aac20a205f0f10744f6c74fa93b",
+        "avaliacao\\scripts\\executar_demo_off.py": "f62f9a29696b3cd2d7586cbd1e8f8c9f0b164fececb0f6d49a78411915ac241e",
+        "avaliacao\\manifesto_modelo_prompts.json": "a42e8a6e12ef65e9b951e9b1f10cd18ef929e9555824dc0f8c8bc013f80c88c6",
+        "avaliacao\\scripts\\comparar_baselines.py": "a1d0bc53c9582e11aba38ae43c537720dac6e664fb257a683de1de34d1b300e5",
+        "avaliacao\\scripts\\executar_avaliacao.py": "f8edb1f5f50e41f721a83286e4ae29260629a42f62082958ce1a2d24eb6425dd",
+        "avaliacao\\scripts\\treinar_modelo_local.py": "73bc75ff565c7b40c2190b4fed18f8507d8ab8e32110699d037946bc87fbc5f7",
+        "avaliacao\\scripts\\sincronizar_manifesto.py": "1a193f8895c027bae061f87a3be22c9423b69de3d92a291ec23e65b638c1edc9",
+        "avaliacao\\scripts\\testar_interfaces_web.py": "9a5723ca7cc07c09edc75f986369697c33cb17a3dcd6fa85dbebe8cb3eff2633",
+        "n8n\\workflows\\Versão9\\V9-WF02-Triagem.json": "74014693543dfdb11e90073722488cc270128f5aa9efc8c7f423c57b371cc1f2",
+        "n8n\\workflows\\Versão9\\V9-WF06-Fila-IA.json": "c0b1e08ac51cda1633dcd72b6c7aa610c9fa308ba0aeadb2b7ba490ac1f68448",
+        "avaliacao\\scripts\\gerar_dataset_avaliacao.py": "47402c902a72cdc12bfe6c9a5185fe24eaed8c0ce845c48ddf00adcfd50dff9e",
+        "n8n\\workflows\\Versão9\\V9-WF05-Metricas.json": "919dbe5efc3c7a45e67b28c329c4715fc8e5792cd255d296724ceee7ae427d04",
+        "n8n\\workflows\\Versão9\\ai_gateway_builder.py": "b79b0d8e3a9c1555bf847528527c55961f98da4def49abe4d27c9d7043bc6991",
+        "n8n\\workflows\\Versão9\\validate_v9_static.py": "535588c544d2ae91780fd1481acc00f217a6c121c956b8234dd8a1e34a4509b9",
+        "local_ai\\artifacts\\local_hybrid_bundle.joblib": "f518b7f9699aa9e23aab7eb2479990619ad5085994569b3f7c3f253e5207bb5d",
+        "local_ai\\artifacts\\local_hybrid_manifest.json": "3e818b5513bdaa4b7f037f2d4ada743d9b47ade1e882e8d90ae216d0b215eb25",
+        "n8n\\workflows\\Versão9\\deploy_rest_session.py": "746d96e74726fbd4aa75a8ece58fab050a5de0b0e8a3b6a10d25d5c79e5e0418",
+        "n8n\\workflows\\Versão9\\retry_queue_builder.py": "48cc06ed31406c4db4293bcd0c99ca0d31a327ffc19170669971be29ec113979",
+        "avaliacao\\prompts\\prompt_deduplicacao_v9.1.txt": "d6e5e02ffece332ef88ef2ff57fc51313fe229b7cff86e8e80aec101245a5700",
+        "avaliacao\\prompts\\prompt_classificacao_v9.1.txt": "7aca17de96de49c60ed7c7a40fbf0c58c2ac08db9a863afab410cf251b5aaa81",
+        "avaliacao\\schemas\\deduplicacao_v9.1.schema.json": "b7f457d3fd21810825215e4d98c60b9b96c372e6cb3aee09a481b816d7e162a0",
+        "avaliacao\\scripts\\comparar_candidatos_locais.py": "424d1740f1f6f0f9163bd655db4f18cdf27abc3fd541dd7d5c43c2b4794ceb87",
+        "avaliacao\\schemas\\classificacao_v9.1.schema.json": "15909927a3668fc3a2e210d8bdb6f91fd1d44aefa17f8e40420b03000a10bfbf",
+        "avaliacao\\scripts\\auditar_suficiencia_amostral.py": "67aea37aad610d38914370b7d9ffea9e2cec15caa58707d217d0a2c13b5b63a7",
+        "n8n\\workflows\\Versão9\\V9-WF01-Sincronizador.json": "86a5e47c9afaaeb20560e51b680d4c8ea3e9ab93037479967dac58a082ef6492",
+        "n8n\\workflows\\Versão9\\V9-WF03-Classificacao.json": "d4309d40bc0141d5d3fd77f331a70a6cb52eaba9d7abd575172c31f969169d46",
+        "avaliacao\\scripts\\gerar_diagnostico_operacional.py": "3e9f77174e1154975a4dfe064f648323cd9d9515f49e2185e10a1d5d003d74b3",
+        "avaliacao\\scripts\\validar_rotulos_especialistas.py": "93cd1e883a862ec02abb64e43859f3bab80a0d47f299fd9be0ab977aa6616106",
+        "n8n\\workflows\\Versão9\\V9-WF04-Decisao-Fiscal.json": "c6292d8cf3971a27cf32e41b061227cd5d9b720f79cada158160e6a3199f86ec",
+        "avaliacao\\scripts\\benchmark_pareado_local_gemini.py": "ef607eeb4e83e22d906284cbb757712a009ff6921d0ef4766964a1e45d00d5c8",
+        "avaliacao\\scripts\\gerar_corpus_desenvolvimento_local.py": "1b75d9479116d192e44240b4fd7b755f1e34624826f53ee74b5d08840e7d00c1"
+      },
+      "model": "local-hybrid-v1.8.0",
+      "provider": "local-native",
+      "sampling": "provider_default",
+      "test_mode": true,
+      "model_role": "LOCAL",
+      "code_sha256": "d67e9ab04f9e915a672308c6af0dd91e949e3de705d750eea70eb710818146e9",
+      "queue_batch": null,
+      "label_source": "SYNTHETIC_GENERATOR",
+      "scenario_set": "stress2",
+      "demo_available": true,
+      "scenario_count": 2,
+      "thinking_level": "medium_default",
+      "dataset_version": "dataset-v2.0.0-episodico",
+      "evaluation_phase": "VALIDACAO",
+      "ia_execution_mode": "AUTOMATED_VALIDATION",
+      "ia_expected_model": "local-hybrid-v1.8.0",
+      "scientific_result": false,
+      "validation_status": "COMPLETED_AUTOMATED",
+      "generation_profile": "local-hybrid-v1.8.0_fixed-not_applicable",
+      "ia_failover_enabled": false,
+      "ia_fixed_model_role": "LOCAL",
+      "operational_profile": "PADRAO",
+      "confidence_threshold": 0.65,
+      "ia_expected_provider": "local-native",
+      "prompt_dedup_version": "deduplicacao_v9.1-episodica",
+      "confirmatory_eligible": false,
+      "prompt_classif_version": "classificacao_v9.1-episodica",
+      "queue_interval_seconds": null,
+      "auto_human_confirmation": true,
+      "auto_human_confirmation_source": "ORACULO_GABARITO",
+      "human_workflow_confirmations_preserved": true
+    },
+    "protocolo_version": "protocolo-v2.0.0",
+    "status": "CONCLUIDO_AUTOMATIZADO",
+    "rotulos_validados": false,
+    "congelado_em": "2026-07-16 14:54:24.568257-03:00",
+    "iniciado_em": "2026-07-16 14:54:25.391529-03:00",
+    "concluido_em": "2026-07-16 14:57:30.255648-03:00",
+    "criado_em": "2026-07-16 14:54:14.591486-03:00",
+    "protocolo_rotulagem_validado": false,
+    "auditoria_humana_concluida": false
+  },
+  "classificacao_evidencia": {
+    "natureza": "VALIDACAO AUTOMATIZADA NAO CONFIRMATORIA",
+    "scientific_result": false,
+    "confirmatory_eligible": false,
+    "label_source": "SYNTHETIC_GENERATOR",
+    "synthetic_gold": true,
+    "gold_source_summary": {
+      "total": 5,
+      "humanos": 0,
+      "sinteticos": 5,
+      "oraculo": 0,
+      "nao_humanos": 5
+    },
+    "integrity_errors": [],
+    "gate_status": {
+      "rotulos_validados": false,
+      "protocolo_rotulagem_validado": false,
+      "auditoria_humana_concluida": false,
+      "auditoria_humana_exigida_nesta_fase": false,
+      "gates_obrigatorios_satisfeitos": false
+    }
+  },
+  "metricas": {
+    "matriz_confusao_classificacao": [
+      {
+        "run_id": "VALIDACAO-20260716T145412",
+        "classe_correta": "SOB_DEMANDA",
+        "classe_predita_pela_ia": "SOB_DEMANDA",
+        "quantidade": 1,
+        "proporcao": "1.000000"
+      }
+    ],
+    "metricas_classificacao": [
+      {
+        "run_id": "VALIDACAO-20260716T145412",
+        "classe": "DEMO",
+        "total": 1,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 1,
+        "acuracia_binaria": "1.000000",
+        "precisao": null,
+        "recall_sensitivity": null,
+        "especificidade": "1.000000",
+        "f1_score": null
+      },
+      {
+        "run_id": "VALIDACAO-20260716T145412",
+        "classe": "OBRA",
+        "total": 1,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 1,
+        "acuracia_binaria": "1.000000",
+        "precisao": null,
+        "recall_sensitivity": null,
+        "especificidade": "1.000000",
+        "f1_score": null
+      },
+      {
+        "run_id": "VALIDACAO-20260716T145412",
+        "classe": "SOB_DEMANDA",
+        "total": 1,
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "tn": 0,
+        "acuracia_binaria": "1.000000",
+        "precisao": "1.000000",
+        "recall_sensitivity": "1.000000",
+        "especificidade": null,
+        "f1_score": "1.000000"
+      },
+      {
+        "run_id": "VALIDACAO-20260716T145412",
+        "classe": "TRIAGEM_MANUAL",
+        "total": 1,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 1,
+        "acuracia_binaria": "1.000000",
+        "precisao": null,
+        "recall_sensitivity": null,
+        "especificidade": "1.000000",
+        "f1_score": null
+      }
+    ],
+    "kpi_classificacao": [
+      {
+        "run_id": "VALIDACAO-20260716T145412",
+        "total": 2,
+        "cobertos": 1,
+        "abstencoes": 1,
+        "acuracia_geral": "0.500000",
+        "f1_macro": "1.000000",
+        "cobertura_automatica": "0.500000",
+        "acuracia_sob_cobertura": "1.000000"
+      }
+    ],
+    "auc_classificacao": [],
+    "average_precision_classificacao": [],
+    "log_loss_classificacao": [],
+    "brier_classificacao": [],
+    "metricas_deduplicacao": [
+      {
+        "run_id": "VALIDACAO-20260716T145412",
+        "total": 3,
+        "cobertos": 3,
+        "abstencoes": 0,
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "tn": 2,
+        "cobertura_automatica": "1.000000",
+        "acuracia": "1.000000",
+        "precisao": "1.000000",
+        "recall": "1.000000",
+        "recall_automatizado_global": "1.000000",
+        "f1": "1.000000",
+        "taxa_falso_positivo": "0.000000",
+        "taxa_falso_negativo": "0.000000",
+        "acuracia_referencia_entre_tp": "1.000000"
+      }
+    ],
+    "metricas_deduplicacao_desafio_primaria": [
+      {
+        "run_id": "VALIDACAO-20260716T145412",
+        "total": 1,
+        "cobertos": 1,
+        "abstencoes": 0,
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "tn": 0,
+        "cobertura_automatica": "1.000000",
+        "acuracia": "1.000000",
+        "precisao": "1.000000",
+        "recall": "1.000000",
+        "recall_automatizado_global": "1.000000",
+        "f1": "1.000000",
+        "taxa_falso_positivo": null,
+        "taxa_falso_negativo": "0.000000",
+        "acuracia_referencia_entre_tp": "1.000000"
+      }
+    ],
+    "recall_candidatos_deduplicacao": [
+      {
+        "run_id": "VALIDACAO-20260716T145412",
+        "positivos_avaliados": 1,
+        "referencias_recuperadas": 1,
+        "recall_candidatos": "1.000000",
+        "candidatos_medios": "1.00"
+      }
+    ],
+    "auc_deduplicacao": [
+      {
+        "run_id": "VALIDACAO-20260716T145412",
+        "auc_roc": "1.000000"
+      }
+    ],
+    "average_precision_deduplicacao": [
+      {
+        "run_id": "VALIDACAO-20260716T145412",
+        "average_precision": "1.000000"
+      }
+    ],
+    "log_loss_deduplicacao": [
+      {
+        "run_id": "VALIDACAO-20260716T145412",
+        "total_avaliado": 2,
+        "log_loss": "0.050812",
+        "brier_score": "0.002455"
+      }
+    ],
+    "risco_cobertura": [
+      {
+        "run_id": "VALIDACAO-20260716T145412",
+        "threshold": "0",
+        "cobertura": "0.50000000000000000000",
+        "risco": "0E-20"
+      },
+      {
+        "run_id": "VALIDACAO-20260716T145412",
+        "threshold": "1.0000",
+        "cobertura": "0.50000000000000000000",
+        "risco": "0E-20"
+      }
+    ],
+    "metricas_operacionais": [
+      {
+        "tickets": 3,
+        "chamadas_ia": 5,
+        "erros_ia": 0,
+        "probabilidades_invalidas": 0,
+        "tokens_entrada": 0,
+        "tokens_saida": 0,
+        "tokens_total": 0,
+        "triagens_manuais": 1,
+        "intervencoes_fiscais": 1,
+        "latencia_total_media_s": "110.036",
+        "latencia_total_p95_s": "137.217"
+      }
+    ]
+  },
+  "intervalos_confianca_wilson": {
+    "cobertura_automatica_classificacao": {
+      "estimate": 0.5,
+      "lower": 0.09453120573423074,
+      "upper": 0.9054687942657693,
+      "method": "Wilson 95%"
+    },
+    "acuracia_classificacao_sob_cobertura": {
+      "estimate": 1.0,
+      "lower": 0.20654931437723745,
+      "upper": 1.0,
+      "method": "Wilson 95%"
+    },
+    "deduplicacao_desafio_primaria_cobertura_automatica": {
+      "estimate": 1.0,
+      "lower": 0.20654931437723745,
+      "upper": 1.0,
+      "method": "Wilson 95%"
+    },
+    "deduplicacao_desafio_primaria_acuracia": {
+      "estimate": 1.0,
+      "lower": 0.20654931437723745,
+      "upper": 1.0,
+      "method": "Wilson 95%"
+    },
+    "deduplicacao_desafio_primaria_recall_duplicado": {
+      "estimate": 1.0,
+      "lower": 0.20654931437723745,
+      "upper": 1.0,
+      "method": "Wilson 95%"
+    },
+    "deduplicacao_desafio_primaria_precisao_duplicado": {
+      "estimate": 1.0,
+      "lower": 0.20654931437723745,
+      "upper": 1.0,
+      "method": "Wilson 95%"
+    },
+    "deduplicacao_global_secundaria_cobertura_automatica": {
+      "estimate": 1.0,
+      "lower": 0.4385029682449546,
+      "upper": 1.0,
+      "method": "Wilson 95%"
+    },
+    "deduplicacao_global_secundaria_acuracia": {
+      "estimate": 1.0,
+      "lower": 0.4385029682449546,
+      "upper": 1.0,
+      "method": "Wilson 95%"
+    },
+    "deduplicacao_global_secundaria_recall_duplicado": {
+      "estimate": 1.0,
+      "lower": 0.20654931437723745,
+      "upper": 1.0,
+      "method": "Wilson 95%"
+    },
+    "deduplicacao_global_secundaria_precisao_duplicado": {
+      "estimate": 1.0,
+      "lower": 0.20654931437723745,
+      "upper": 1.0,
+      "method": "Wilson 95%"
+    }
+  },
+  "intervalos_confianca_bootstrap": {
+    "classificacao": {
+      "per_class": {
+        "DEMO": {
+          "precision": {
+            "estimate": null,
+            "lower": null,
+            "upper": null,
+            "method": "bootstrap_percentil_episodico_95",
+            "replicacoes_validas": 0
+          },
+          "recall": {
+            "estimate": null,
+            "lower": null,
+            "upper": null,
+            "method": "bootstrap_percentil_episodico_95",
+            "replicacoes_validas": 0
+          },
+          "f1": {
+            "estimate": null,
+            "lower": null,
+            "upper": null,
+            "method": "bootstrap_percentil_episodico_95",
+            "replicacoes_validas": 0
+          }
+        },
+        "OBRA": {
+          "precision": {
+            "estimate": null,
+            "lower": null,
+            "upper": null,
+            "method": "bootstrap_percentil_episodico_95",
+            "replicacoes_validas": 0
+          },
+          "recall": {
+            "estimate": null,
+            "lower": null,
+            "upper": null,
+            "method": "bootstrap_percentil_episodico_95",
+            "replicacoes_validas": 0
+          },
+          "f1": {
+            "estimate": null,
+            "lower": null,
+            "upper": null,
+            "method": "bootstrap_percentil_episodico_95",
+            "replicacoes_validas": 0
+          }
+        },
+        "SOB_DEMANDA": {
+          "precision": {
+            "estimate": 1.0,
+            "lower": 1.0,
+            "upper": 1.0,
+            "method": "bootstrap_percentil_episodico_95",
+            "replicacoes_validas": 2000
+          },
+          "recall": {
+            "estimate": 1.0,
+            "lower": 1.0,
+            "upper": 1.0,
+            "method": "bootstrap_percentil_episodico_95",
+            "replicacoes_validas": 2000
+          },
+          "f1": {
+            "estimate": 1.0,
+            "lower": 1.0,
+            "upper": 1.0,
+            "method": "bootstrap_percentil_episodico_95",
+            "replicacoes_validas": 2000
+          }
+        },
+        "TRIAGEM_MANUAL": {
+          "precision": {
+            "estimate": null,
+            "lower": null,
+            "upper": null,
+            "method": "bootstrap_percentil_episodico_95",
+            "replicacoes_validas": 0
+          },
+          "recall": {
+            "estimate": null,
+            "lower": null,
+            "upper": null,
+            "method": "bootstrap_percentil_episodico_95",
+            "replicacoes_validas": 0
+          },
+          "f1": {
+            "estimate": null,
+            "lower": null,
+            "upper": null,
+            "method": "bootstrap_percentil_episodico_95",
+            "replicacoes_validas": 0
+          }
+        }
+      },
+      "macro_f1": {
+        "estimate": 1.0,
+        "lower": 1.0,
+        "upper": 1.0,
+        "method": "bootstrap_percentil_episodico_95",
+        "replicacoes_validas": 2000
+      },
+      "seed": 20260702,
+      "replicacoes_solicitadas": 2000,
+      "unidade_reamostragem": "episode_id"
+    },
+    "deduplicacao_global_secundaria": {
+      "precision": {
+        "estimate": 1.0,
+        "lower": 1.0,
+        "upper": 1.0,
+        "method": "bootstrap_percentil_episodico_95",
+        "replicacoes_validas": 1503
+      },
+      "recall": {
+        "estimate": 1.0,
+        "lower": 1.0,
+        "upper": 1.0,
+        "method": "bootstrap_percentil_episodico_95",
+        "replicacoes_validas": 1503
+      },
+      "f1": {
+        "estimate": 1.0,
+        "lower": 1.0,
+        "upper": 1.0,
+        "method": "bootstrap_percentil_episodico_95",
+        "replicacoes_validas": 1503
+      },
+      "seed": 20260703,
+      "replicacoes_solicitadas": 2000,
+      "unidade_reamostragem": "episode_id"
+    },
+    "deduplicacao_desafio_primaria": {
+      "precision": {
+        "estimate": 1.0,
+        "lower": 1.0,
+        "upper": 1.0,
+        "method": "bootstrap_percentil_episodico_95",
+        "replicacoes_validas": 2000
+      },
+      "recall": {
+        "estimate": 1.0,
+        "lower": 1.0,
+        "upper": 1.0,
+        "method": "bootstrap_percentil_episodico_95",
+        "replicacoes_validas": 2000
+      },
+      "f1": {
+        "estimate": 1.0,
+        "lower": 1.0,
+        "upper": 1.0,
+        "method": "bootstrap_percentil_episodico_95",
+        "replicacoes_validas": 2000
+      },
+      "seed": 20260704,
+      "replicacoes_solicitadas": 2000,
+      "unidade_reamostragem": "episode_id"
+    }
+  }
+}

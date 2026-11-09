@@ -1,0 +1,25 @@
+﻿section,scope,metric,baseline_numerator,baseline_denominator,baseline_value,candidate_numerator,candidate_denominator,candidate_value,delta_candidate_minus_baseline,paired_n,both_positive,baseline_only,candidate_only,both_negative,note
+marginal_metric,overall,availability,1240,1240,1.0,1239,1240,0.9991935483870967,-0.0008064516129032695,1240,1239,1,0,0,descritivo; corpus de desenvolvimento
+marginal_metric,overall,semantic_coverage,671,1240,0.5411290322580645,753,1240,0.6072580645161291,0.06612903225806455,1240,652,19,101,468,descritivo; corpus de desenvolvimento
+marginal_metric,overall,straight_through_automation,505,1240,0.40725806451612906,586,1240,0.47258064516129034,0.06532258064516128,1240,486,19,100,635,descritivo; corpus de desenvolvimento
+marginal_metric,overall,selective_accuracy,669,671,0.9970193740685543,753,753,1.0,0.0029806259314456574,1240,,,,,descritivo; corpus de desenvolvimento
+paired_latency,overall,latency_ms_mean,,,414.12513559322036,,,663.9628684422921,249.83773284907184,1239,,,,,somente unidades disponíveis nas duas versões
+paired_latency,overall,latency_ms_p50,,,306.28,,,544.94,50.551000000000045,1239,,,,,somente unidades disponíveis nas duas versões
+paired_latency,overall,latency_ms_p95,,,838.867,,,1781.497,1137.8500000000001,1239,,,,,somente unidades disponíveis nas duas versões
+paired_transition,overall,strict_correctness,669,1240,0.5395161290322581,753,1240,0.6072580645161291,0.06774193548387097,1240,651,18,102,469,falha e abstencao contam como incorretas
+marginal_metric,classification,availability,640,640,1.0,640,640,1.0,0.0,640,640,0,0,0,descritivo; corpus de desenvolvimento
+marginal_metric,classification,semantic_coverage,458,640,0.715625,453,640,0.7078125,-0.0078125,640,439,19,14,168,descritivo; corpus de desenvolvimento
+marginal_metric,classification,straight_through_automation,401,640,0.6265625,395,640,0.6171875,-0.009375000000000022,640,382,19,13,226,descritivo; corpus de desenvolvimento
+marginal_metric,classification,selective_accuracy,456,458,0.9956331877729258,453,453,1.0,0.004366812227074246,640,,,,,descritivo; corpus de desenvolvimento
+paired_latency,classification,latency_ms_mean,,,141.91073281250002,,,215.74760625,73.8368734375,640,,,,,somente unidades disponíveis nas duas versões
+paired_latency,classification,latency_ms_p50,,,159.782,,,169.715,12.048000000000002,640,,,,,somente unidades disponíveis nas duas versões
+paired_latency,classification,latency_ms_p95,,,242.037,,,662.508,477.3829999999999,640,,,,,somente unidades disponíveis nas duas versões
+paired_transition,classification,strict_correctness,456,640,0.7125,453,640,0.7078125,-0.0046875,640,438,18,15,169,falha e abstencao contam como incorretas
+marginal_metric,deduplication,availability,600,600,1.0,599,600,0.9983333333333333,-0.0016666666666667052,600,599,1,0,0,descritivo; corpus de desenvolvimento
+marginal_metric,deduplication,semantic_coverage,213,600,0.355,300,600,0.5,0.14500000000000002,600,213,0,87,300,descritivo; corpus de desenvolvimento
+marginal_metric,deduplication,straight_through_automation,104,600,0.17333333333333334,191,600,0.31833333333333336,0.14500000000000002,600,104,0,87,409,descritivo; corpus de desenvolvimento
+marginal_metric,deduplication,selective_accuracy,213,213,1.0,300,300,1.0,0.0,600,,,,,descritivo; corpus de desenvolvimento
+paired_latency,deduplication,latency_ms_mean,,,704.9719098497496,,,1142.857305509182,437.8853956594324,599,,,,,somente unidades disponíveis nas duas versões
+paired_latency,deduplication,latency_ms_p50,,,658.908,,,878.591,205.462,599,,,,,somente unidades disponíveis nas duas versões
+paired_latency,deduplication,latency_ms_p95,,,924.554,,,2405.252,1762.585,599,,,,,somente unidades disponíveis nas duas versões
+paired_transition,deduplication,strict_correctness,213,600,0.355,300,600,0.5,0.145,600,213,0,87,300,falha e abstencao contam como incorretas

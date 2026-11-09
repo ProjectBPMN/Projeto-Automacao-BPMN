@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.5.0",
+  "verified_at": "2026-09-02",
+  "operational_policy": {
+    "name": "local-pytorch-fp32-sem-segredos-em-code-v5",
+    "sequence": ["LOCAL"],
+    "failover_enabled": false,
+    "fallback_only_after_invalid_or_failed_response": true
+  },
+  "confirmatory_policy": {
+    "one_model_per_run": true,
+    "failover_enabled": false,
+    "fallback_contaminates_confirmatory_efficacy": true
+  },
+  "models": {
+    "PRIMARY": {
+      "provider": "google",
+      "model": "gemini-3.5-flash",
+      "api": "Gemini generateContent REST",
+      "structured_output": "JSON Schema",
+      "thinking_profile": "medium_explicit",
+      "standard_free_tier_input_usd_per_million": 0.0,
+      "standard_free_tier_output_usd_per_million": 0.0,
+      "paid_input_usd_per_million": 1.5,
+      "paid_output_usd_per_million": 9.0,
+      "active_operational_role": false,
+      "note": "entrada histórica mantida apenas para rastreabilidade"
+    },
+    "SECONDARY": {
+      "provider": "google",
+      "model": "gemini-3.5-flash",
+      "api": "Gemini generateContent REST",
+      "structured_output": "JSON Schema",
+      "thinking_profile": "provider_default",
+      "standard_free_tier_input_usd_per_million": 0.0,
+      "standard_free_tier_output_usd_per_million": 0.0,
+      "paid_input_usd_per_million": 1.5,
+      "paid_output_usd_per_million": 9.0,
+      "active_operational_role": false,
+      "note": "restrito ao benchmark pareado; não é contingência do workflow operacional"
+    },
+    "LOCAL": {
+      "provider": "local-native",
+      "model": "local-hybrid-v1.8.0",
+      "api": "HTTP nativa /v1/deduplicate e /v1/classify",
+      "base_url_env_ref": "IA_LOCAL_BASE_URL",
+      "model_env_ref": "IA_MODEL_LOCAL",
+      "structured_output": "canonical JSON Schema",
+      "thinking_profile": "not_applicable",
+      "embedding_model": "ibm-granite/granite-embedding-97m-multilingual-r2",
+      "embedding_revision": "835ad14087e140460703cf0fae09f97d469d65c2",
+      "embedding_dimension": 384,
+      "runtime_backend": "pytorch_fp32",
+      "precision": "fp32",
+      "external_api_key_required": false,
+      "external_download_during_training": false,
+      "operational_failover_member": true,
+      "confirmatory_fixed_role_supported": true
+    }
+  },
+  "local_training": {
+    "candidate": "LOCAL",
+    "training_script": "avaliacao/scripts/treinar_modelo_local.py",
+    "bundle_filename": "local_hybrid_bundle.joblib",
+    "manifest_filename": "local_hybrid_manifest.json",
+    "feature_family": "TF-IDF palavras/caracteres + Granite Embedding 97M 384d + regressão logística calibrada",
+    "embedding_backends": ["granite_embedding_pytorch_fp32"],
+    "forbidden_training_sources": ["TESTE", "BENCHMARK", "primary33", "all35", "stress2"],
+    "grouped_split_required": true,
+    "separate_thresholds": ["classification", "deduplication"],
+    "abstention_is_not_triagem_manual": true,
+    "granite_downloaded": true
+  },
+  "remote_benchmark_candidates": {
+    "GEMINI_3_5_FLASH": {
+      "provider": "google",
+      "model": "gemini-3.5-flash",
+      "model_stage": "stable",
+      "standard_free_tier_listed": true,
+      "free_tier_data_used_to_improve_provider_products": true,
+      "active_quota_must_be_checked_in_ai_studio": true,
+      "quota_scope": "project_not_api_key",
+      "benchmark_role": "paired_development_only_until_independent_holdout",
+      "retry_enabled": false,
+      "fallback_enabled": false
+    },
+    "DEEPSEEK_V4_FLASH": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "model_version_observed_in_official_docs": "DeepSeek-V4-Flash-0731",
+      "guaranteed_free_api_tier": false,
+      "billing": "usage_based_or_granted_balance",
+      "official_account_concurrency_limit": 2500,
+      "public_general_rpm_tpm_rpd_limits_listed": false,
+      "legacy_aliases_retired": ["deepseek-chat", "deepseek-reasoner"],
+      "benchmark_role": "blocked_pending_dedicated_paired_adapter_and_cost_authorization",
+      "retry_enabled": false,
+      "fallback_enabled": false,
+      "active_operational_role": false
+    }
+  },
+  "sources": {
+    "gemini_models_and_pricing": "https://ai.google.dev/gemini-api/docs/pricing",
+    "gemini_model_35": "https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash",
+    "gemini_rate_limits": "https://ai.google.dev/gemini-api/docs/rate-limits",
+    "gemini_structured_output": "https://ai.google.dev/gemini-api/docs/generate-content/structured-output",
+    "gemini_thinking": "https://ai.google.dev/gemini-api/docs/generate-content/thinking",
+    "deepseek_models_and_pricing": "https://api-docs.deepseek.com/quick_start/pricing",
+    "deepseek_chat_completions": "https://api-docs.deepseek.com/api/create-chat-completion",
+    "deepseek_rate_limits": "https://api-docs.deepseek.com/quick_start/rate_limit",
+    "deepseek_thinking": "https://api-docs.deepseek.com/guides/thinking_mode",
+    "deepseek_json_output": "https://api-docs.deepseek.com/guides/json_mode"
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "schema_version": "e2e-pipeline-local-v1",
+  "run_id": "VALIDACAO-WF06-E2E-20260902T222257661176Z",
+  "natureza_evidencia": "VALIDACAO_TECNICA_NAO_CONFIRMATORIA",
+  "synthetic_only": true,
+  "started_at": "2026-09-02T22:23:08.565090+00:00",
+  "model_provenance": {
+    "model_version": "local-hybrid-v1.8.0",
+    "bundle_version": "local-hybrid-bundle-v1.8.0",
+    "status": "CALIBRATED",
+    "manifest_path": "avaliacao/resultados/treino-local-pytorch-fp32-v1.8.0-20260716/local_hybrid_manifest.json",
+    "manifest_sha256": "3e818b5513bdaa4b7f037f2d4ada743d9b47ade1e882e8d90ae216d0b215eb25",
+    "manifest_payload_sha256": "86989aa11cc002ecc2cf68c501f368c62fc278efba7832e4fa426fd6400d598f",
+    "bundle_path": "avaliacao/resultados/treino-local-pytorch-fp32-v1.8.0-20260716/local_hybrid_bundle.joblib",
+    "bundle_sha256": "f518b7f9699aa9e23aab7eb2479990619ad5085994569b3f7c3f253e5207bb5d",
+    "embedding": {
+      "model_id": "ibm-granite/granite-embedding-97m-multilingual-r2",
+      "dimension": 384,
+      "model_revision": "835ad14087e140460703cf0fae09f97d469d65c2",
+      "model_tree_sha256": "28bb1e36cb3719c0c466de3013404307821da17bf901fc70f62af74bfa57a343"
+    },
+    "gates": {
+      "candidate_frozen": true,
+      "evaluation_eligible": true,
+      "thresholds_approved": true,
+      "test_data_unused": true,
+      "primary33_unused": true,
+      "scientific_claim_not_premature": true,
+      "granite_384": true,
+      "embedding_revision_frozen": true,
+      "embedding_tree_hash_frozen": true
+    }
+  },
+  "runtime_provenance": {
+    "checked_at": "2026-09-02T22:23:06.148966+00:00",
+    "service_version": "0.8.0",
+    "mode": "production",
+    "health_gates": {
+      "alive": true,
+      "decision_ready": true,
+      "candidate_evaluation_eligible": true,
+      "pipeline_evaluation_eligible": true,
+      "production_mode": true,
+      "hybrid_loaded": true,
+      "bundle_version": true,
+      "embedding_backend": true,
+      "embedding_dimension": true,
+      "embedding_revision": true,
+      "embedding_tree_hash": true,
+      "no_embedding_fallback": true
+    },
+    "bundle_version": "local-hybrid-bundle-v1.8.0",
+    "embedding_backend": "granite_embedding_pytorch_fp32"
+  },
+  "safe_probes": {
+    "deduplicacao": {
+      "gates": {
+        "decision_path": true,
+        "pipeline_eligible": true,
+        "no_fallback": true,
+        "bundle_hash": true,
+        "manifest_hash": true,
+        "safe_decision": true
+      },
+      "decision_path": "deterministic_empty_history"
+    },
+    "classificacao": {
+      "gates": {
+        "decision_path": true,
+        "pipeline_eligible": true,
+        "no_fallback": true,
+        "bundle_hash": true,
+        "manifest_hash": true,
+        "safe_decision": true
+      },
+      "decision_path": "deterministic_out_of_scope"
+    }
+  },
+  "runtime_profile": {
+    "FILA_IA_RUN_SCOPE": "",
+    "FILA_IA_LOTE_TAMANHO": "3",
+    "FILA_IA_INTERVALO_SEGUNDOS": "45",
+    "FILA_IA_INGRESS_GRACE_SEGUNDOS": "10",
+    "FILA_IA_LEASE_SEGUNDOS": "900",
+    "IA_MODEL_LOCAL": "local-hybrid-v1.8.0",
+    "IA_MODEL_VERSION": "local-hybrid-v1.8.0",
+    "IA_FIXED_MODEL_ROLE": "LOCAL",
+    "IA_OPERATIONAL_SEQUENCE": "LOCAL",
+    "IA_FAILOVER_ENABLED": "false",
+    "IA_EXECUTION_MODE": "OPERATIONAL",
+    "IA_GENERATION_PROFILE": "local-hybrid-v1.8.0_granite97m-pytorch-fp32",
+    "TEST_MODE": "false",
+    "TEST_AUTO_HUMAN_CONFIRMATION": "false"
+  },
+  "controller": {
+    "id": 1,
+    "proxima_liberacao_em": "2026-09-02T17:18:00.487236-03:00",
+    "intervalo_segundos": 45,
+    "lote_tamanho": 3,
+    "atualizado_em": "2026-09-02T17:18:00.487236-03:00"
+  },
+  "workflow_artifacts": {
+    "V9-WF02-Triagem.json": {
+      "sha256": "312341ec150d8cb16737ad611d0be7d76a757245e08d908e8d7953a50848e405",
+      "workflow_id": "nmNEsgC8kXmCVOsX",
+      "workflow_name": "V9 - WF02 Triagem",
+      "node_count": 43
+    },
+    "V9-WF03-Classificacao.json": {
+      "sha256": "134f1332a127b0ef6854a2e9bf00acbe21c49399acf77ebfd15671c6cae69b33",
+      "workflow_id": "reVggSpJiaPhnfIo",
+      "workflow_name": "V9 - WF03 Classificação",
+      "node_count": 38
+    },
+    "V9-WF06-Fila-IA.json": {
+      "sha256": "6e52189ecd5d46dea985a0071e37540d652bcd0aaf5434378b5a2257e74189cc",
+      "workflow_id": "ZpQ0H9uV9Fila06",
+      "workflow_name": "V9 - WF06 Fila IA",
+      "node_count": 18
+    },
+    "ai_gateway_builder.py": {
+      "sha256": "b7d7b25ae444dd8a08f7094e47dc0f2fb08b124445bed9a70d631d25f10cabee"
+    },
+    "build_wf02.py": {
+      "sha256": "619af87cbb18e4b910a13b1453dbd0c1b6485be868f858383a4e16ea5ad70f3a"
+    },
+    "build_wf03.py": {
+      "sha256": "3ef99a410cce8edd70de212f5ae8975808999c9b59739c731a458ac28f304289"
+    },
+    "build_wf06.py": {
+      "sha256": "9c333c08f0e8b9b752265bfaf2bc3d1fe849ced9e5c11d10ea1ba420e9ca2a60"
+    }
+  },
+  "deployed_workflows": {
+    "V9-WF02-Triagem.json": {
+      "workflow_id": "nmNEsgC8kXmCVOsX",
+      "workflow_name": "V9 - WF02 Triagem",
+      "node_count": 43,
+      "canonical_logic_sha256": "8a4865b30c42c0a2fa0865fb51103695b491456d5b448bad5fc1b6a5c47c7a78",
+      "deployed_logic_sha256": "8a4865b30c42c0a2fa0865fb51103695b491456d5b448bad5fc1b6a5c47c7a78",
+      "active": true,
+      "archived": false,
+      "parity": true
+    },
+    "V9-WF03-Classificacao.json": {
+      "workflow_id": "reVggSpJiaPhnfIo",
+      "workflow_name": "V9 - WF03 Classificação",
+      "node_count": 38,
+      "canonical_logic_sha256": "0f95a6ae4131482bae0272f2d7bde5292a8eefa4bc17b5a1d363a1b6d0073668",
+      "deployed_logic_sha256": "0f95a6ae4131482bae0272f2d7bde5292a8eefa4bc17b5a1d363a1b6d0073668",
+      "active": true,
+      "archived": false,
+      "parity": true
+    },
+    "V9-WF06-Fila-IA.json": {
+      "workflow_id": "ZpQ0H9uV9Fila06",
+      "workflow_name": "V9 - WF06 Fila IA",
+      "node_count": 18,
+      "canonical_logic_sha256": "2f38ec50aef909e937d20c63ab88c5837752476225e4cd2082e9e6d806607bd5",
+      "deployed_logic_sha256": "2f38ec50aef909e937d20c63ab88c5837752476225e4cd2082e9e6d806607bd5",
+      "active": true,
+      "archived": false,
+      "parity": true
+    }
+  },
+  "passed": false,
+  "error": "ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=9080): Max retries exceeded with url: /apirest.php/initSession (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=9080): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente\"))",
+  "cleanup": {
+    "controller_restored": true,
+    "runtime_profile_restored": true,
+    "errors": [],
+    "complete": true
+  },
+  "finished_at": "2026-09-02T22:23:42.135323+00:00",
+  "evidence_payload_sha256": "b7b628a7892dbe863c47ca372af9b5df540ac57742ee0c07bf7b479982a7e986"
+}

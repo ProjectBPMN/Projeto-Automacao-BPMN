@@ -1,0 +1,64 @@
+{
+  "schema_version": "dedup-independent-family-v1",
+  "family_id": "PREENCHER",
+  "evidence_tier": "REAL_INSTITUTIONAL",
+  "source_dependency_group_sha256": "PREENCHER_SHA256",
+  "provenance": {
+    "source_system": "GLPI",
+    "source_instance_id": "PREENCHER",
+    "extraction_id": "PREENCHER",
+    "query_or_export_ref": "PREENCHER",
+    "collector_id": "PREENCHER",
+    "chain_of_custody_ref": "PREENCHER",
+    "collected_at": "PREENCHER_ISO8601_COM_FUSO",
+    "raw_export_sha256": "PREENCHER_SHA256"
+  },
+  "independence": {
+    "attested_independent": true,
+    "development_overlap_checked": true,
+    "other_holdout_overlap_checked": true,
+    "known_related_family_ids": [],
+    "auditor_id": "PREENCHER",
+    "method": "PREENCHER",
+    "attestation_ref": "PREENCHER",
+    "reviewed_at": "PREENCHER_ISO8601_COM_FUSO"
+  },
+  "records": [
+    {
+      "source_record_id": "PREENCHER_ANCORA",
+      "occurred_at": "PREENCHER_ISO8601_COM_FUSO",
+      "content_sha256": "PREENCHER_SHA256",
+      "protected_payload_ref": "PREENCHER_REFERENCIA_COM_ACESSO_CONTROLADO"
+    },
+    {
+      "source_record_id": "PREENCHER_DESAFIO",
+      "occurred_at": "PREENCHER_ISO8601_COM_FUSO",
+      "content_sha256": "PREENCHER_SHA256",
+      "protected_payload_ref": "PREENCHER_REFERENCIA_COM_ACESSO_CONTROLADO"
+    }
+  ],
+  "primary_anchor_id": "PREENCHER_ANCORA",
+  "primary_challenge_id": "PREENCHER_DESAFIO",
+  "adjudication": {
+    "protocol_version": "PREENCHER",
+    "reviewer_1": {
+      "reviewer_id": "PREENCHER_REVISOR_1",
+      "label": "PREENCHER_DUPLICADO_OU_NAO_DUPLICADO",
+      "reviewed_at": "PREENCHER_ISO8601_COM_FUSO",
+      "blind_to_model": true,
+      "blind_to_other_reviewer": true
+    },
+    "reviewer_2": {
+      "reviewer_id": "PREENCHER_REVISOR_2",
+      "label": "PREENCHER_DUPLICADO_OU_NAO_DUPLICADO",
+      "reviewed_at": "PREENCHER_ISO8601_COM_FUSO",
+      "blind_to_model": true,
+      "blind_to_other_reviewer": true
+    },
+    "final_label": "PREENCHER_DUPLICADO_OU_NAO_DUPLICADO",
+    "finalized_at": "PREENCHER_ISO8601_COM_FUSO"
+  },
+  "subgroups": {
+    "PREENCHER_DIMENSAO": "PREENCHER_VALOR"
+  }
+}

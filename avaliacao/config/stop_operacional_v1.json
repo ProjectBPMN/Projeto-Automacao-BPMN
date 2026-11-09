@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PRE_REGISTERED_NOT_YET_WIRED_TO_V9",
+  "purpose": "Interromper somente decisões automáticas novas quando um gate técnico crítico for violado, preservando triagem manual e auditabilidade.",
+  "inputs": {
+    "authoritative_window_artifact": "avaliacao/runtime/monitoring-homolog-20260910-v2/windows.json",
+    "minimum_complete_windows": 3,
+    "require_complete_decision_coverage": true
+  },
+  "stop_triggers": [
+    "drift_status_STOP",
+    "open_dead_letters_above_zero",
+    "critical_automatic_error_count_above_zero",
+    "decision_coverage_incomplete",
+    "integrity_hash_mismatch"
+  ],
+  "runtime_effect": {
+    "block_new_automatic_decisions": true,
+    "route_to_manual_triage": true,
+    "keep_collection_and_audit_running": true,
+    "disable_automatic_retraining": true,
+    "resume_requires_human_approval": true
+  },
+  "fail_closed_on_missing_or_malformed_evidence": true,
+  "current_enforcement": "READ_ONLY_DIAGNOSTIC_UNTIL_POST_WINDOW_WIRING",
+  "scientific_result": false,
+  "production_ready": false
+}

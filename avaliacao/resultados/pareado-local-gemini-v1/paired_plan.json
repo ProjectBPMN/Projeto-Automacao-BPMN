@@ -1,0 +1,142 @@
+{
+  "dataset": {
+    "dataset_sha256": "26e692ba247ef7439b9a057873c7034318423214b9797b2dbe72f9f24e6801f0",
+    "human_label_gate": "PENDENTE",
+    "manifest_path": "avaliacao\\datasets\\corpus_v3_teste_manifest.json",
+    "manifest_sha256": "e809f5c090ef499e48051cf5fc1dbe88b05654c35a0de177d4fa4229dfca2f2e",
+    "manifest_status": "CORPUS_GERADO_PENDENTE_VALIDACAO_ESPECIALISTAS",
+    "path": "avaliacao\\datasets\\corpus_v3_teste.jsonl",
+    "roles": {
+      "ANCHOR": 500,
+      "CHALLENGE": 500,
+      "CLASSIFICATION": 200
+    },
+    "rows": 1200,
+    "scientific_result": false
+  },
+  "dry_run_default": true,
+  "implementation": {
+    "python": "3.12.10",
+    "script_sha256": "11e0b92b6483f544a10d040fcdc270a72deb2767f1a51fd8c33df8f6c00321ce"
+  },
+  "local_candidate": {
+    "bundle_path": "local_ai\\artifacts\\local_hybrid_bundle.joblib",
+    "bundle_sha256": "6aed1363ca932f04173d66f82e1d901bd983ed519f93df32a8c5cce7339b674a",
+    "gates": {
+      "candidate_frozen": true,
+      "evaluation_eligible": true,
+      "primary33_unused": true,
+      "scientific_claim_not_premature": true,
+      "test_data_unused": true,
+      "thresholds_approved": true
+    },
+    "manifest_path": "local_ai\\artifacts\\local_hybrid_manifest.json",
+    "manifest_payload_sha256": "0c0d5e96e2479c08d704c9ea0af047478020e3b010c947776d00fd5732ca9a58",
+    "manifest_sha256": "2a70b6699819ddbbe82f8d5178d839642b5ca58194cc54ad0999a01d4d4e6afe",
+    "model_version": "local-hybrid-v1.1.0",
+    "status": "CALIBRATED",
+    "thresholds": {
+      "abstention_is_not_triagem_manual": true,
+      "approval_scope": "operational_candidate_for_confirmatory_evaluation",
+      "approval_uses_point_estimates": true,
+      "approved": true,
+      "classification": 0.67,
+      "confidence_intervals_are_descriptive": true,
+      "deduplication": 0.95,
+      "deduplication_negative": 0.08,
+      "error_costs": {
+        "false_negative": 5.0,
+        "false_positive": 1.0,
+        "rationale": "false_negative_bypasses_human_duplicate_confirmation"
+      },
+      "selection_objective": "minimum_weighted_covered_error_then_maximum_coverage_then_maximum_abstention_margin",
+      "selection_source": "independent_group_cross_fitted_calibration_split",
+      "threshold_grid_step": 0.01
+    }
+  },
+  "manifest_payload_sha256": "3374082a72d0ede886a04d09388295c978e495e0ceb133ec69a761b72e6bc8b3",
+  "paired_design": {
+    "candidate_limit": 20,
+    "candidate_policy": "âncora de contraste obrigatória + distratores de outros núcleos, selecionados e ordenados por SHA-256 com seed",
+    "candidate_pool_status": "V9_20_CANDIDATES",
+    "classification_core_limit": 40,
+    "dedup_core_limit": 100,
+    "dedup_intermediate_region": "ABSTENCAO_FORA_DA_MATRIZ_AUTOMATICA",
+    "dedup_negative_threshold": 0.08,
+    "dedup_positive_threshold": 0.95,
+    "numeric_ticket_ids": "posição 1-based imutável no corpus congelado",
+    "one_remote_attempt_per_unit": true,
+    "provider_execution_order": "todas as unidades LOCAL e depois todas as Gemini; a ordem interna das unidades é idêntica",
+    "providers": [
+      "local-pytorch-fp32",
+      "google-gemini"
+    ],
+    "realizations_per_core": 1,
+    "remote_fallback_enabled": false,
+    "remote_retry_enabled": false,
+    "same_units_same_order": true,
+    "sampling_unit": "narrative_core_sha256",
+    "seed": 20260715,
+    "shared_input_hash_required": true,
+    "temporal_arrival_simulation": false
+  },
+  "plan_version": "paired-local-gemini-v1.0.0",
+  "prompt_version": "campus-maintenance-paired-v1.0.0",
+  "remote": {
+    "api": "Gemini generateContent v1beta",
+    "budget": {
+      "approved": true,
+      "max_remote_calls": 2000,
+      "max_remote_tokens": 2000000,
+      "max_rpm": 14,
+      "required": {
+        "remote_calls": 140,
+        "remote_tokens_conservative": 1708085
+      },
+      "token_estimation": "Reserva conservadora: bytes UTF-8 do prompt + 4096 tokens de overhead de request/schema + maxOutputTokens; não usa endpoint remoto de contagem."
+    },
+    "fallback_enabled": false,
+    "max_output_tokens_per_call": 768,
+    "model": "gemini-3.1-flash-lite",
+    "official_sources": {
+      "model": "https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash",
+      "pricing": "https://ai.google.dev/gemini-api/docs/pricing",
+      "rate_limit_note": "Limites ativos variam por projeto/tier e devem ser verificados no AI Studio; nenhuma cota de conta é presumida pelo executor.",
+      "rate_limits": "https://ai.google.dev/gemini-api/docs/rate-limits",
+      "structured_output": "https://ai.google.dev/gemini-api/docs/generate-content/structured-output",
+      "verified_on": "2026-07-15"
+    },
+    "provider": "google-gemini",
+    "retry_enabled": false,
+    "stable_model_id_required": true,
+    "structured_output": true,
+    "thinking_level": "MEDIUM"
+  },
+  "sample": {
+    "gold_status_counts": {
+      "PENDENTE_DUPLA_REVISAO_E_ADJUDICACAO": 140
+    },
+    "label_counts": {
+      "classification:DEMO": 10,
+      "classification:OBRA": 10,
+      "classification:SOB_DEMANDA": 10,
+      "classification:TRIAGEM_MANUAL": 10,
+      "deduplication:DUPLICADO": 40,
+      "deduplication:NAO_DUPLICADO": 60
+    },
+    "task_counts": {
+      "classification": 40,
+      "deduplication": 100
+    },
+    "units": 140,
+    "units_file": "paired_units.jsonl",
+    "units_sha256": "1e9ef284148dbce3fa461d41a077074c87ee56609176464e88ade2e3a82cffae"
+  },
+  "schema_version": "1.0.0",
+  "scientific_status": {
+    "confirmatory_claim_allowed": false,
+    "reason": "O corpus reservado registra rótulos pendentes de revisão humana; o executor produz comparação preliminar até o gate ser atualizado.",
+    "scientific_result": false
+  },
+  "status": "FROZEN_DRY_RUN_PLAN"
+}

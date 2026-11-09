@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-10T19:14:11.460051Z",
+  "status": "PASS",
+  "backup_evidence": "avaliacao\\resultados\\operacional\\backup-live-20260910T1850Z.json",
+  "restore_evidence": "avaliacao\\resultados\\operacional\\restore-live-20260910T1850Z-retry.json",
+  "checks": {
+    "backup_captured": true,
+    "restore_passed": true,
+    "live_services_not_touched": true,
+    "isolated_network_none": true,
+    "zero_published_ports": true,
+    "postgresql_artifact_exists": true,
+    "postgresql_hash_matches_backup_manifest": true,
+    "postgresql_hash_matches_restore_evidence": true,
+    "postgresql_row_counts_match": true,
+    "mariadb_artifact_exists": true,
+    "mariadb_hash_matches_backup_manifest": true,
+    "mariadb_hash_matches_restore_evidence": true,
+    "mariadb_row_counts_match": true
+  },
+  "details": {
+    "postgresql": {
+      "sha256": "ecc82f405e26df5e22adadb9e55a58c8b45c4d85b292206d9a66808b60d85fe3",
+      "source_row_counts": {
+        "tickets_processados": 230,
+        "fila_ia_controle": 1,
+        "fila_ia_dead_letter": 110,
+        "ia_decisoes": 411,
+        "ia_tentativas_modelo": 339,
+        "avaliacoes_humanas": 50,
+        "workflow_eventos": 929
+      },
+      "restored_row_counts": {
+        "tickets_processados": 230,
+        "fila_ia_controle": 1,
+        "fila_ia_dead_letter": 110,
+        "ia_decisoes": 411,
+        "ia_tentativas_modelo": 339,
+        "avaliacoes_humanas": 50,
+        "workflow_eventos": 929
+      }
+    },
+    "mariadb": {
+      "sha256": "0f8400eef1661d535ce78a5913df00f86ae31a17315092ef966c182325d9889f",
+      "source_row_counts": {
+        "glpi_tickets": 210,
+        "glpi_users": 16,
+        "glpi_itilcategories": 13
+      },
+      "restored_row_counts": {
+        "glpi_tickets": 210,
+        "glpi_users": 16,
+        "glpi_itilcategories": 13
+      }
+    }
+  },
+  "scientific_result": false,
+  "interpretation_limit": "Verifica hashes e igualdade das contagens registradas; não amplia o escopo do drill isolado."
+}

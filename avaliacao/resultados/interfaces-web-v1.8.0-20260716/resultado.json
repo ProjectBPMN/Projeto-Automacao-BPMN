@@ -1,0 +1,93 @@
+{
+  "generated_at": "2026-07-16T17:17:22.240980+00:00",
+  "mode": "READ_ONLY_BROWSER_VALIDATION",
+  "created_tickets": 0,
+  "workflow_mutations": 0,
+  "checks": [
+    {
+      "service": "n8n",
+      "check": "public_page",
+      "passed": true,
+      "detail": "HTTP 200",
+      "duration_ms": 7018
+    },
+    {
+      "service": "n8n",
+      "check": "login_form",
+      "passed": true,
+      "detail": "formulário de login renderizado",
+      "duration_ms": null
+    },
+    {
+      "service": "n8n",
+      "check": "healthz",
+      "passed": true,
+      "detail": "HTTP 200",
+      "duration_ms": null
+    },
+    {
+      "service": "n8n",
+      "check": "authenticated_read",
+      "passed": true,
+      "detail": "HTTP 200",
+      "duration_ms": null
+    },
+    {
+      "service": "n8n",
+      "check": "six_active_v9_workflows",
+      "passed": true,
+      "detail": "6 workflows V9 ativos em sessão autenticada somente leitura",
+      "duration_ms": null
+    },
+    {
+      "service": "GLPI",
+      "check": "public_page",
+      "passed": true,
+      "detail": "HTTP 200",
+      "duration_ms": 1260
+    },
+    {
+      "service": "GLPI",
+      "check": "login_form",
+      "passed": true,
+      "detail": "formulário de login renderizado",
+      "duration_ms": null
+    },
+    {
+      "service": "GLPI",
+      "check": "authenticated_read",
+      "passed": true,
+      "detail": "sessão somente leitura iniciada",
+      "duration_ms": null
+    },
+    {
+      "service": "GLPI",
+      "check": "tickets_page_read_only",
+      "passed": true,
+      "detail": "HTTP 200",
+      "duration_ms": null
+    },
+    {
+      "service": "Mailpit",
+      "check": "public_page",
+      "passed": true,
+      "detail": "HTTP 200",
+      "duration_ms": 869
+    },
+    {
+      "service": "Mailpit",
+      "check": "ui_title",
+      "passed": true,
+      "detail": "Mailpit - 127.0.0.1",
+      "duration_ms": null
+    },
+    {
+      "service": "Mailpit",
+      "check": "api_info",
+      "passed": true,
+      "detail": "HTTP 200",
+      "duration_ms": null
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,195 @@
+{
+  "critical_risk_comparison": {
+    "analysis_type": "PAIRED_DESCRIPTIVE_ONLY",
+    "confirmatory_claim_allowed": false,
+    "higher_rate_is_worse": true,
+    "noninferiority_evaluated": false,
+    "noninferiority_margin": null,
+    "reason": "Margens e regras de decisão específicas por risco ainda não foram pré-registradas; o piloto reporta somente estimativas pareadas descritivas.",
+    "risk_difference_direction": "local_minus_gemini",
+    "strata": [
+      "automatic_dedup_false_negative",
+      "automatic_maintenance_as_obra"
+    ]
+  },
+  "dataset": {
+    "confirmatory_eligible": false,
+    "dataset_sha256": "0de50381c0dfaefeb1a940cd697f9c9a8e87b5efee9252a1f4ca43c9d904f204",
+    "dataset_version": "desenvolvimento-local-v1.1.0",
+    "manifest_path": "avaliacao\\datasets\\desenvolvimento_local_v1_manifest.json",
+    "manifest_sha256": "bb2732014f0ee6b734190f8bf6ddb26bb61f4f2d9aa53b66366d4c9718a0e2b1",
+    "path": "avaliacao\\datasets\\desenvolvimento_local_v1.jsonl",
+    "pilot_only": true,
+    "roles": {
+      "ANCHOR": 120,
+      "CHALLENGE": 600,
+      "CLASSIFICATION": 640
+    },
+    "rows": 1360,
+    "split": "DESENVOLVIMENTO",
+    "status": "SINTETICO_PILOTO_SOMENTE_DESENVOLVIMENTO",
+    "synthetic": true
+  },
+  "dry_run_default": true,
+  "implementation": {
+    "python": "3.12.10",
+    "script_sha256": "d5564fddb8ceb274f24f0500c86c41c8dea2a85b0fe63d4bf37d2f9909f5afff"
+  },
+  "local_candidate": {
+    "bundle_path": "local_ai\\artifacts\\local_hybrid_bundle.joblib",
+    "bundle_sha256": "f518b7f9699aa9e23aab7eb2479990619ad5085994569b3f7c3f253e5207bb5d",
+    "gates": {
+      "candidate_frozen": true,
+      "evaluation_eligible": true,
+      "primary33_unused": true,
+      "scientific_claim_not_premature": true,
+      "test_data_unused": true,
+      "thresholds_approved": true
+    },
+    "manifest_path": "local_ai\\artifacts\\local_hybrid_manifest.json",
+    "manifest_payload_sha256": "86989aa11cc002ecc2cf68c501f368c62fc278efba7832e4fa426fd6400d598f",
+    "manifest_sha256": "3e818b5513bdaa4b7f037f2d4ada743d9b47ade1e882e8d90ae216d0b215eb25",
+    "model_version": "local-hybrid-v1.8.0",
+    "status": "CALIBRATED",
+    "thresholds": {
+      "abstention_is_not_triagem_manual": true,
+      "approval_scope": "operational_candidate_for_confirmatory_evaluation",
+      "approval_uses_point_estimates": true,
+      "approved": true,
+      "classification": 0.76,
+      "classification_asymmetric_risk": {
+        "most_costly_error": "maintenance_as_obra",
+        "obra_minimum_confidence": 0.9,
+        "obra_requires_explicit_evidence": true
+      },
+      "classification_obra": 0.9,
+      "classification_safety_gate": {
+        "approved": true,
+        "critical_error": "maintenance_as_obra",
+        "maximum_automatic_errors": 0,
+        "observed_automatic_errors": 0,
+        "policy": "obra_asymmetric_safety_gate_v1"
+      },
+      "confidence_intervals_are_descriptive": true,
+      "deduplication": 0.95,
+      "deduplication_negative": 0.07,
+      "deduplication_reference_margin": 0.035,
+      "error_costs": {
+        "false_negative": 5.0,
+        "false_positive": 1.0,
+        "rationale": "false_negative_bypasses_human_duplicate_confirmation"
+      },
+      "reference_selection_safety": {
+        "confirmatory_data_used": false,
+        "evidence_artifact": "avaliacao/resultados/dedup-reference-margin-v1.7.0-20260716.json",
+        "minimum_margin": 0.035,
+        "policy": "top2_candidate_margin_abstention_v1",
+        "selection_source": "development_20_candidate_pool_error_separation_v1.7"
+      },
+      "selection_objective": "minimum_weighted_covered_error_then_maximum_coverage_then_maximum_abstention_margin",
+      "selection_source": "independent_group_cross_fitted_calibration_split",
+      "threshold_grid_step": 0.01
+    }
+  },
+  "manifest_payload_sha256": "57f4284457329bdc873d0a1962a5dafb6f3020e2f29fc94c08d232027593ad98",
+  "noninferiority": {
+    "abstention_counted_as_incorrect": true,
+    "confidence": 0.95,
+    "critical_risk_h2_evaluated": false,
+    "critical_risk_note": "Este estimando global não testa o risco crítico H2; riscos de FN de não duplicidade e manutenção encaminhada como OBRA exigem estimandos estratificados próprios.",
+    "decision_rule": "NOT_EVALUATED_WITHOUT_EXPLICIT_MARGIN",
+    "eligible_in_development_pilot": false,
+    "estimand": "overall_accuracy_local_minus_accuracy_gemini",
+    "estimand_scope": "pooled_classification_and_deduplication_units",
+    "margin_local_minus_gemini": null,
+    "method": "paired_hoeffding_distribution_free_bounds",
+    "pre_registered": false,
+    "requires_every_planned_pair_present_and_valid": true
+  },
+  "paired_design": {
+    "analysis_intent": "DESCRIPTIVE_DEVELOPMENT_PILOT",
+    "candidate_limit": 20,
+    "candidate_policy": "âncora de contraste obrigatória + distratores de outros núcleos, selecionados e ordenados por SHA-256 com seed",
+    "candidate_pool_status": "V9_20_CANDIDATES",
+    "classification_core_limit": 10,
+    "dedup_core_limit": 30,
+    "dedup_intermediate_region": "ABSTENCAO_FORA_DA_MATRIZ_AUTOMATICA",
+    "dedup_negative_threshold": 0.07,
+    "dedup_positive_threshold": 0.95,
+    "numeric_ticket_ids": "posição 1-based imutável no corpus congelado",
+    "one_remote_attempt_per_unit": true,
+    "provider_execution_order": "todas as unidades LOCAL e depois todas as Gemini; a ordem interna das unidades é idêntica",
+    "providers": [
+      "local-pytorch-fp32",
+      "google-gemini"
+    ],
+    "realizations_per_core": 1,
+    "remote_fallback_enabled": false,
+    "remote_retry_enabled": false,
+    "same_units_same_order": true,
+    "sampling_unit": "narrative_core_sha256",
+    "seed": 20260715,
+    "shared_input_hash_required": true,
+    "temporal_arrival_simulation": false
+  },
+  "plan_version": "paired-local-gemini-v1.1.0",
+  "prompt_version": "campus-maintenance-paired-v1.0.0",
+  "remote": {
+    "api": "Gemini generateContent v1beta",
+    "budget": {
+      "approved": true,
+      "max_remote_calls": 40,
+      "max_remote_rpd": 80,
+      "max_remote_tokens": 500000,
+      "max_rpm": 4,
+      "required": {
+        "remote_calls": 40,
+        "remote_tokens_conservative": 492324
+      },
+      "token_estimation": "Reserva conservadora: bytes UTF-8 do prompt + 4096 tokens de overhead de request/schema + maxOutputTokens; não usa endpoint remoto de contagem."
+    },
+    "fallback_enabled": false,
+    "max_output_tokens_per_call": 768,
+    "model": "gemini-3.5-flash",
+    "official_sources": {
+      "model": "https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash",
+      "pricing": "https://ai.google.dev/gemini-api/docs/pricing",
+      "rate_limit_note": "Limites ativos variam por projeto/tier e devem ser verificados no AI Studio; nenhuma cota de conta é presumida pelo executor.",
+      "rate_limits": "https://ai.google.dev/gemini-api/docs/rate-limits",
+      "structured_output": "https://ai.google.dev/gemini-api/docs/generate-content/structured-output",
+      "verified_on": "2026-07-15"
+    },
+    "provider": "google-gemini",
+    "retry_enabled": false,
+    "stable_model_id_required": true,
+    "structured_output": true,
+    "thinking_level": "MEDIUM"
+  },
+  "sample": {
+    "gold_status_counts": {
+      "ROTULO_PILOTO_NAO_CONFIRMATORIO": 40
+    },
+    "label_counts": {
+      "classification:DEMO": 2,
+      "classification:OBRA": 3,
+      "classification:SOB_DEMANDA": 2,
+      "classification:TRIAGEM_MANUAL": 3,
+      "deduplication:DUPLICADO": 15,
+      "deduplication:NAO_DUPLICADO": 15
+    },
+    "task_counts": {
+      "classification": 10,
+      "deduplication": 30
+    },
+    "units": 40,
+    "units_file": "paired_units.jsonl",
+    "units_sha256": "acaef8886f9d8b7517462e23b3784d9cedf2e6fa2080d29ffa241552e3b44528"
+  },
+  "schema_version": "1.0.0",
+  "scientific_status": {
+    "confirmatory_claim_allowed": false,
+    "reason": "Comparação pareada em corpus sintético de desenvolvimento; não autoriza alegação confirmatória.",
+    "scientific_result": false
+  },
+  "status": "FROZEN_DRY_RUN_PLAN"
+}

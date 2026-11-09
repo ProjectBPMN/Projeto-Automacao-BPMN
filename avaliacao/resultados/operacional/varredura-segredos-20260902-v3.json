@@ -1,0 +1,231 @@
+{
+  "schema_version": "1.0.0",
+  "candidate_tree": {
+    "status": "FAIL",
+    "finding_count": 3,
+    "findings": [
+      {
+        "scope": "candidate_tree",
+        "path": "n8n/.env.example",
+        "rule": "credential_assignment",
+        "variable": "V9_E2E_FISCAL_TOKEN",
+        "line": 69,
+        "fingerprint": "60f1b1e4c652a2c9",
+        "blob": null
+      },
+      {
+        "scope": "candidate_tree",
+        "path": "n8n/.env.example",
+        "rule": "credential_assignment",
+        "variable": "GEMINI_API_KEY_PRIMARY",
+        "line": 74,
+        "fingerprint": "574c79ff1ec3ef58",
+        "blob": null
+      },
+      {
+        "scope": "candidate_tree",
+        "path": "n8n/.env.local.example",
+        "rule": "credential_assignment",
+        "variable": "GEMINI_API_KEY",
+        "line": 1,
+        "fingerprint": "d55223319c4679e1",
+        "blob": null
+      }
+    ],
+    "large_text_files_not_content_scanned": []
+  },
+  "reachable_git_history": {
+    "status": "FAIL",
+    "blob_count_scanned": 14764,
+    "finding_count": 21,
+    "findings": [
+      {
+        "scope": "reachable_git_history",
+        "path": ".codex/Memória.md",
+        "rule": "openai_key",
+        "line": 215,
+        "fingerprint": "2cde2abdb21a3c38",
+        "blob": "fc8618fe3cb28899c62c053d23c156d58e85a245"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": ".codex/Memória.md",
+        "rule": "google_api_key",
+        "line": 215,
+        "fingerprint": "fb62c2ed4afe56bf",
+        "blob": "fc8618fe3cb28899c62c053d23c156d58e85a245"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "n8n/.env.example",
+        "rule": "credential_assignment",
+        "variable": "V9_E2E_FISCAL_TOKEN",
+        "line": 60,
+        "fingerprint": "60f1b1e4c652a2c9",
+        "blob": "701d1e3522f8347f452622e860bef1385b092917"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "n8n/.env.example",
+        "rule": "credential_assignment",
+        "variable": "GEMINI_API_KEY_PRIMARY",
+        "line": 65,
+        "fingerprint": "574c79ff1ec3ef58",
+        "blob": "701d1e3522f8347f452622e860bef1385b092917"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "n8n/.env.local.example",
+        "rule": "credential_assignment",
+        "variable": "GEMINI_API_KEY",
+        "line": 1,
+        "fingerprint": "d55223319c4679e1",
+        "blob": "bdc5cab9603ba352e0105c6395dd4055aca7723d"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "glpi/.env",
+        "rule": "credential_assignment",
+        "variable": "MYSQL_ROOT_PASSWORD",
+        "line": 2,
+        "fingerprint": "cdf95b61a1525a57",
+        "blob": "d763f10ae0563a8184dd45828874fb644b2ba654"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "glpi/.env",
+        "rule": "credential_assignment",
+        "variable": "MYSQL_PASSWORD",
+        "line": 5,
+        "fingerprint": "801309fed736ed9a",
+        "blob": "d763f10ae0563a8184dd45828874fb644b2ba654"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "glpi/.env",
+        "rule": "credential_assignment",
+        "variable": "GLPI_APP_TOKEN",
+        "line": 6,
+        "fingerprint": "783e2e5720889347",
+        "blob": "d763f10ae0563a8184dd45828874fb644b2ba654"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "glpi/backups/glpi_full_backup_20260506_210824/app_files/glpi_app/config/oauth.pem",
+        "rule": "private_key",
+        "line": 1,
+        "fingerprint": "3021d90eb9437b2d",
+        "blob": "a685d3dca08dc9aeb047ed6399892748fd5e0779"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "glpi/backups/glpi_full_backup_20260506_210824/app_files/glpi_app/vendor/firebase/php-jwt/README.md",
+        "rule": "private_key",
+        "line": 113,
+        "fingerprint": "8bcac7908eb95041",
+        "blob": "65b6c8609dde7241add142c82d0b11c499514ed7"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "glpi/backups/glpi_full_backup_20260506_210824/integration_webhook/glpi_docker-compose.yml",
+        "rule": "credential_assignment",
+        "variable": "MYSQL_ROOT_PASSWORD",
+        "line": 11,
+        "fingerprint": "cdf95b61a1525a57",
+        "blob": "f60ed1ed65f700a1ff846bf92cc3d40095d40005"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "glpi/backups/glpi_full_backup_20260506_210824/integration_webhook/glpi_docker-compose.yml",
+        "rule": "credential_assignment",
+        "variable": "MYSQL_PASSWORD",
+        "line": 14,
+        "fingerprint": "801309fed736ed9a",
+        "blob": "f60ed1ed65f700a1ff846bf92cc3d40095d40005"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "glpi/backups/glpi_full_backup_20260506_210824/integration_webhook/n8n_docker-compose.yml",
+        "rule": "google_api_key",
+        "line": 38,
+        "fingerprint": "fb62c2ed4afe56bf",
+        "blob": "8e8e9ef316b22cbaf7b9d62cde53b8da6c3663dd"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "n8n/.env",
+        "rule": "credential_assignment",
+        "variable": "POSTGRES_PASSWORD",
+        "line": 1,
+        "fingerprint": "8a63428090aa967a",
+        "blob": "1d0d8b47f774bc8b534308c350178da2594d6f41"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "n8n/.env",
+        "rule": "credential_assignment",
+        "variable": "GLPI_APP_TOKEN",
+        "line": 8,
+        "fingerprint": "783e2e5720889347",
+        "blob": "1d0d8b47f774bc8b534308c350178da2594d6f41"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "n8n/.env",
+        "rule": "credential_assignment",
+        "variable": "TEST_AUTO_REVIEW_TOKEN",
+        "line": 17,
+        "fingerprint": "5c9b97780d2be7a5",
+        "blob": "1d0d8b47f774bc8b534308c350178da2594d6f41"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "n8n/.env",
+        "rule": "credential_assignment",
+        "variable": "IA_LOCAL_API_TOKEN",
+        "line": 46,
+        "fingerprint": "7d7b5ffb947701e1",
+        "blob": "1d0d8b47f774bc8b534308c350178da2594d6f41"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "n8n/.env.example",
+        "rule": "credential_assignment",
+        "variable": "V9_E2E_FISCAL_TOKEN",
+        "line": 60,
+        "fingerprint": "60f1b1e4c652a2c9",
+        "blob": "5a830e4baa810ec49b263e5198bb5a51e498717b"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "n8n/.env.example",
+        "rule": "credential_assignment",
+        "variable": "GEMINI_API_KEY_PRIMARY",
+        "line": 65,
+        "fingerprint": "574c79ff1ec3ef58",
+        "blob": "5a830e4baa810ec49b263e5198bb5a51e498717b"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "n8n/workflows/all_credentials_export_runtime.json",
+        "rule": "google_api_key",
+        "line": 1,
+        "fingerprint": "fb62c2ed4afe56bf",
+        "blob": "291e265b3701f4d14fdd01a37e4890081ef81fcd"
+      },
+      {
+        "scope": "reachable_git_history",
+        "path": "n8n/.env.example",
+        "rule": "credential_assignment",
+        "variable": "GEMINI_API_KEY_PRIMARY",
+        "line": 53,
+        "fingerprint": "574c79ff1ec3ef58",
+        "blob": "14b9061d4118a132fdedc9314a93b465c33b5945"
+      }
+    ]
+  },
+  "secrets_printed": false,
+  "scientific_result": false,
+  "requires_rotation_or_history_remediation": true,
+  "interpretation_limit": "Varredura por padrões reduz risco, mas não prova ausência absoluta de segredos. Arquivos binários e textos acima de 2 MiB não foram lidos como conteúdo."
+}

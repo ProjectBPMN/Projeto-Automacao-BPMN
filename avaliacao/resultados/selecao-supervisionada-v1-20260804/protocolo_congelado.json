@@ -1,0 +1,277 @@
+{
+  "protocol_sha256": "4e1bef9f964bca2d14760765ce2d1b71ec7c3e65af250f125eee509edf3ff64e",
+  "run_fingerprint": "b7ca367c21628e3e89b865d7afd5ad5b8118dc76c26f24488620fce1013f75e3",
+  "implementation": {
+    "source_files": {
+      "selection_executor": {
+        "path": "avaliacao\\scripts\\selecionar_modelos_supervisionados.py",
+        "sha256": "6f6ba9ed2ae136bbcaf66de42244f08bdd185ee3158f2e02e83d19fa261e4a75"
+      },
+      "training_helper": {
+        "path": "avaliacao\\scripts\\treinar_modelo_local.py",
+        "sha256": "73bc75ff565c7b40c2190b4fed18f8507d8ab8e32110699d037946bc87fbc5f7"
+      },
+      "benchmark_requirements": {
+        "path": "local_ai\\requirements-benchmark.txt",
+        "sha256": "37d76acbff4cebde3ebf70797a70eed348bd2617928beaead4f0d3f6ac3d5a8b"
+      },
+      "hybrid_requirements": {
+        "path": "local_ai\\requirements-hybrid.txt",
+        "sha256": "a79848e354ed44c21ed072e827a34a750011aed644cdaddf4fb71cedb498517a"
+      },
+      "granite_requirements": {
+        "path": "local_ai\\requirements-granite.txt",
+        "sha256": "290c1fabc2b7e3f634dbb1209d5398e33ac080d70d0bd1c3ddd6a29d38b99d31"
+      }
+    },
+    "packages": {
+      "numpy": "2.3.5",
+      "scipy": "1.16.3",
+      "scikit_learn": "1.7.2",
+      "joblib": "1.5.3",
+      "psutil": "7.2.2",
+      "torch": "2.13.0+cpu",
+      "transformers": "4.57.6",
+      "sentence_transformers": "5.6.0",
+      "xgboost": "3.4.0",
+      "shap": "0.52.0",
+      "pandas": "3.0.5"
+    },
+    "run_fingerprint": "b7ca367c21628e3e89b865d7afd5ad5b8118dc76c26f24488620fce1013f75e3"
+  },
+  "config": {
+    "schema": "projeto-ic-selecao-modelos-supervisionados-v1",
+    "protocol_version": "1.1.0",
+    "created_at": "2026-08-04",
+    "development_only": true,
+    "scientific_result": false,
+    "confirmatory_eligible": false,
+    "dataset": {
+      "path": "avaliacao/datasets/desenvolvimento_local_v1.jsonl",
+      "sha256": "0de50381c0dfaefeb1a940cd697f9c9a8e87b5efee9252a1f4ca43c9d904f204",
+      "allowed_split": "DESENVOLVIMENTO",
+      "classification_group_field": "narrative_core_sha256",
+      "deduplication_group_field": "episode_id",
+      "forbidden_paths": [
+        "avaliacao/datasets/corpus_v3_teste.jsonl",
+        "avaliacao/datasets/dataset_avaliacao_v2.jsonl",
+        "avaliacao/datasets/dataset_piloto_v2.jsonl"
+      ]
+    },
+    "hardware": {
+      "device": "cpu",
+      "torch_precision": "fp32",
+      "cpu_threads": 4,
+      "embedding_batch_size": 8,
+      "parallel_model_fits": 1
+    },
+    "embeddings": [
+      {
+        "id": "granite97m",
+        "repository": "ibm-granite/granite-embedding-97m-multilingual-r2",
+        "revision": "835ad14087e140460703cf0fae09f97d469d65c2",
+        "local_path": "local_ai/models/granite-embedding-97m-multilingual-r2",
+        "tree_sha256": "28bb1e36cb3719c0c466de3013404307821da17bf901fc70f62af74bfa57a343",
+        "dimension": 384,
+        "symmetric_prefix": "",
+        "retrieval_query_prefix": "",
+        "retrieval_passage_prefix": ""
+      },
+      {
+        "id": "multilingual_e5_small",
+        "repository": "intfloat/multilingual-e5-small",
+        "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+        "local_path": "local_ai/models/multilingual-e5-small",
+        "tree_sha256": "ea6db56024d2b0c8743c6af329e69b6e5628edf75e99d9fdf9b68ba730f8e8c9",
+        "dimension": 384,
+        "symmetric_prefix": "query: ",
+        "retrieval_query_prefix": "query: ",
+        "retrieval_passage_prefix": "passage: "
+      },
+      {
+        "id": "multilingual_minilm_l12",
+        "repository": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+        "local_path": "local_ai/models/paraphrase-multilingual-MiniLM-L12-v2",
+        "tree_sha256": "2d8f7cfb97778ba4c0d8a0d17309e6ef460e40fe36f2eb0e2bbbe1777a09e217",
+        "dimension": 384,
+        "symmetric_prefix": "",
+        "retrieval_query_prefix": "",
+        "retrieval_passage_prefix": ""
+      }
+    ],
+    "representations": {
+      "tfidf": {
+        "uses_tfidf": true,
+        "uses_embedding": false,
+        "tasks": [
+          "classification",
+          "deduplication"
+        ]
+      },
+      "embedding": {
+        "uses_tfidf": false,
+        "uses_embedding": true,
+        "tasks": [
+          "classification",
+          "deduplication"
+        ]
+      },
+      "hybrid": {
+        "uses_tfidf": true,
+        "uses_embedding": true,
+        "tasks": [
+          "classification",
+          "deduplication"
+        ]
+      },
+      "metadata": {
+        "uses_tfidf": false,
+        "uses_embedding": false,
+        "tasks": [
+          "deduplication"
+        ],
+        "diagnostic_only": true
+      }
+    },
+    "classifiers": [
+      {
+        "id": "logistic_regression",
+        "family": "linear",
+        "calibration": "sigmoid",
+        "grid": {
+          "C": [
+            0.1,
+            1.0,
+            10.0
+          ]
+        }
+      },
+      {
+        "id": "decision_tree",
+        "family": "tree",
+        "calibration": "sigmoid",
+        "grid": {
+          "max_depth": [
+            3,
+            6
+          ],
+          "min_samples_leaf": [
+            2,
+            5
+          ]
+        }
+      },
+      {
+        "id": "linear_svm",
+        "family": "linear",
+        "calibration": "sigmoid",
+        "grid": {
+          "C": [
+            0.1,
+            1.0,
+            10.0
+          ]
+        }
+      },
+      {
+        "id": "mlp",
+        "family": "neural",
+        "calibration": "sigmoid",
+        "grid": {
+          "hidden_layer_sizes": [
+            [
+              16
+            ],
+            [
+              32
+            ]
+          ],
+          "alpha": [
+            0.001
+          ]
+        },
+        "early_stopping": false
+      },
+      {
+        "id": "xgboost",
+        "family": "boosted_tree",
+        "calibration": "sigmoid",
+        "grid": {
+          "max_depth": [
+            2,
+            4
+          ],
+          "n_estimators": [
+            160
+          ],
+          "learning_rate": [
+            0.05
+          ]
+        }
+      }
+    ],
+    "cross_validation": {
+      "outer_strategy": "StratifiedGroupKFold",
+      "outer_folds": 5,
+      "outer_seed": 20260804,
+      "inner_strategy": "StratifiedGroupKFold",
+      "inner_folds": 3,
+      "calibration_fraction": 0.25,
+      "calibration_search_attempts": 512,
+      "calibration_oof_folds": 2,
+      "calibration_method": "sigmoid",
+      "bootstrap_group_resamples": 2000,
+      "confidence_level": 0.95
+    },
+    "objectives": {
+      "classification_tuning": "macro_f1",
+      "deduplication_tuning": "weighted_error_fn5_fp1",
+      "deduplication_false_negative_cost": 5.0,
+      "deduplication_false_positive_cost": 1.0
+    },
+    "operating_policy": {
+      "classification_max_selective_risk": 0.1,
+      "classification_min_coverage": 0.5,
+      "classification_obra_min_confidence": 0.9,
+      "classification_max_automatic_non_obra_as_obra": 0,
+      "deduplication_max_false_negative_rate": 0.02,
+      "deduplication_min_negative_predictive_value": 0.98,
+      "deduplication_max_false_positive_rate": 0.05,
+      "deduplication_min_precision": 0.9,
+      "deduplication_min_coverage": 0.5
+    },
+    "selection_rule": {
+      "type": "hierarchical_no_composite_score",
+      "classification": [
+        "automatic_non_obra_as_obra_equals_zero",
+        "selective_risk_at_most_configured_limit",
+        "automatic_coverage_at_least_configured_limit",
+        "highest_macro_f1",
+        "highest_obra_recall",
+        "highest_automatic_coverage",
+        "lowest_log_loss",
+        "lowest_mean_fit_seconds"
+      ],
+      "deduplication": [
+        "lowest_automatic_false_negatives",
+        "lowest_weighted_error_fn5_fp1",
+        "highest_negative_predictive_value",
+        "highest_precision",
+        "highest_full_automation_coverage",
+        "highest_decision_coverage",
+        "lowest_mean_fit_seconds"
+      ],
+      "tie_policy": "deterministic_lexicographic_only"
+    },
+    "xai": {
+      "enabled": true,
+      "finalists_per_task": 1,
+      "background_groups": 20,
+      "explained_records_per_task": 24,
+      "random_seed": 20260804,
+      "explain_base_score_not_calibrated_probability": true,
+      "aggregate_feature_families": true
+    }
+  }
+}

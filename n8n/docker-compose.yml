@@ -1,0 +1,248 @@
+services:
+  glpi-dedup-db:
+    image: postgres:16.13@sha256:71e27bf60b70bded003791b5573f8b808365613f341df20ffcf0c1ed7bc13ddf
+    container_name: glpi-dedup-db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-triagem}
+      # Credencial bootstrap/migração distinta do login runtime armazenado no n8n.
+      # Em volume existente, estas variáveis não recriam roles automaticamente.
+      - POSTGRES_USER=${POSTGRES_BOOTSTRAP_USER:?Defina POSTGRES_BOOTSTRAP_USER em n8n/.env}
+      - POSTGRES_PASSWORD=${POSTGRES_BOOTSTRAP_PASSWORD:?Defina POSTGRES_BOOTSTRAP_PASSWORD em n8n/.env}
+      - POSTGRES_RUNTIME_USER=${POSTGRES_RUNTIME_USER:?Defina POSTGRES_RUNTIME_USER em n8n/.env}
+      - POSTGRES_RUNTIME_PASSWORD=${POSTGRES_RUNTIME_PASSWORD:?Defina POSTGRES_RUNTIME_PASSWORD em n8n/.env}
+      - TZ=${TZ:-America/Sao_Paulo}
+    ports:
+      - '127.0.0.1:${POSTGRES_PORT:-5432}:5432'
+    volumes:
+      - glpi-dedup-db-data:/var/lib/postgresql/data
+      - '../database/init_v9.sql:/docker-entrypoint-initdb.d/01-init-schema.sql:ro'
+      - '../avaliacao/operacional/sql/postgres_menor_privilegio.sql:/docker-entrypoint-initdb.d/02-postgres-menor-privilegio.sql:ro'
+      - '../database/provision_runtime_login.sh:/docker-entrypoint-initdb.d/03-provision-runtime-login.sh:ro'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+    networks:
+      - research_backend
+      - database_host_access
+
+  n8n:
+    image: n8nio/n8n:2.10.3@sha256:7d90cdb066ae31f08776b0f8287d33102c4b55d7d0173faf5edb5767c94d2b83
+    container_name: n8n
+    restart: unless-stopped
+    expose:
+      # A porta do processo principal não é publicada. O gateway abaixo é o
+      # único ponto de entrada e aplica autenticação ao webhook do GLPI.
+      - '5678'
+      - '5679'
+
+    environment:
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE:-America/Sao_Paulo}
+      - TZ=${TZ:-America/Sao_Paulo}
+      - N8N_SECURE_COOKIE=false
+      # O processo principal recebe apenas configuração da plataforma. Segredos
+      # das integrações ficam nos proxies e variáveis operacionais no runner.
+      - N8N_BLOCK_ENV_ACCESS_IN_NODE=${N8N_BLOCK_ENV_ACCESS_IN_NODE:-true}
+      - N8N_DISABLE_SANDBOX=${N8N_DISABLE_SANDBOX:-false}
+      - N8N_RUNNERS_ENABLED=${N8N_RUNNERS_ENABLED:-true}
+      - N8N_RUNNERS_MODE=${N8N_RUNNERS_MODE:-external}
+      - N8N_RUNNERS_AUTH_TOKEN=${N8N_RUNNERS_AUTH_TOKEN:?Defina N8N_RUNNERS_AUTH_TOKEN em n8n/.env}
+      - N8N_RUNNERS_BROKER_LISTEN_ADDRESS=0.0.0.0
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=${N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS:-true}
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER:?Defina N8N_BASIC_AUTH_USER em n8n/.env}
+      - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD:?Defina N8N_BASIC_AUTH_PASSWORD em n8n/.env}
+      - N8N_PROXY_HOPS=1
+      - EXECUTIONS_DATA_PRUNE=true
+      - EXECUTIONS_DATA_MAX_AGE=168
+
+    volumes:
+    #n8n-data armazena: Workflows, credenciais, histórico de execuções e configurações da aplicação
+        - n8n-data:/home/node/.n8n
+
+    healthcheck:
+      test: ['CMD-SHELL', 'wget -q -O - http://127.0.0.1:5678/healthz >/dev/null 2>&1 || exit 1']
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+    extra_hosts:
+      - 'host.docker.internal:host-gateway' # permite que o n8n se comunique com serviços rodando no host 
+    depends_on:
+      glpi-dedup-db:
+        condition: service_healthy
+    networks:
+      - research_backend
+      - workflow_services
+
+  n8n-gateway:
+    image: nginx@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+    container_name: n8n-gateway
+    restart: unless-stopped
+    environment:
+      - GLPI_WEBHOOK_KEY=${GLPI_WEBHOOK_KEY:?Defina GLPI_WEBHOOK_KEY em n8n/.env}
+    ports:
+      - '127.0.0.1:${N8N_PORT:-5678}:8080'
+    volumes:
+      - './proxies/n8n-gateway.conf.template:/etc/nginx/templates/default.conf.template:ro'
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+      - /etc/nginx/conf.d
+    security_opt:
+      - no-new-privileges:true
+    depends_on:
+      n8n:
+        condition: service_healthy
+    networks:
+      - workflow_services
+    healthcheck:
+      test: ['CMD-SHELL', 'wget -q -O - http://127.0.0.1:8080/healthz >/dev/null 2>&1 || exit 1']
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+  glpi-credential-proxy:
+    image: nginx@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+    container_name: glpi-credential-proxy
+    restart: unless-stopped
+    environment:
+      - GLPI_APP_TOKEN=${GLPI_APP_TOKEN:?Defina GLPI_APP_TOKEN em n8n/.env}
+      - GLPI_AUTH_BASIC=${GLPI_AUTH_BASIC:?Defina GLPI_AUTH_BASIC em n8n/.env}
+      - GLPI_UPSTREAM_HOST=${GLPI_UPSTREAM_HOST:-host.docker.internal}
+      - GLPI_UPSTREAM_PORT=${GLPI_UPSTREAM_PORT:-9080}
+    volumes:
+      - './proxies/glpi-credential-proxy.conf.template:/etc/nginx/templates/default.conf.template:ro'
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+      - /etc/nginx/conf.d
+    security_opt:
+      - no-new-privileges:true
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    healthcheck:
+      test: ['CMD-SHELL', 'wget -q -O - http://127.0.0.1:8080/proxy-health >/dev/null 2>&1 || exit 1']
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    networks:
+      - workflow_services
+
+  local-ai-credential-proxy:
+    image: nginx@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+    container_name: local-ai-credential-proxy
+    restart: unless-stopped
+    environment:
+      - IA_LOCAL_API_TOKEN=${IA_LOCAL_API_TOKEN:-}
+    volumes:
+      - './proxies/local-ai-credential-proxy.conf.template:/etc/nginx/templates/default.conf.template:ro'
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+      - /etc/nginx/conf.d
+    security_opt:
+      - no-new-privileges:true
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    healthcheck:
+      test: ['CMD-SHELL', 'wget -q -O - http://127.0.0.1:8080/proxy-health >/dev/null 2>&1 || exit 1']
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    networks:
+      - workflow_services
+
+  n8n-task-runners:
+    image: n8nio/runners@sha256:13d5413bb36469e8b512a2f5c7ed5a92d20b80fa29914c18840d2a7411b7b68f
+    container_name: n8n-task-runners
+    restart: unless-stopped
+    user: '65532:65532'
+    read_only: true
+    environment:
+      - N8N_RUNNERS_TASK_BROKER_URI=http://n8n:5679
+      - N8N_RUNNERS_AUTH_TOKEN=${N8N_RUNNERS_AUTH_TOKEN:?Defina N8N_RUNNERS_AUTH_TOKEN em n8n/.env}
+      # Mantém o runner pronto; evita expiração da oferta entre ciclos curtos do WF06.
+      - N8N_RUNNERS_AUTO_SHUTDOWN_TIMEOUT=0
+      - N8N_RUNNERS_TASK_TIMEOUT=120
+      - N8N_RUNNERS_MAX_CONCURRENCY=1
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE:-America/Sao_Paulo}
+      - GLPI_API_URL=http://glpi-credential-proxy:8080/apirest.php
+      - IA_LOCAL_BASE_URL=http://local-ai-credential-proxy:8080
+      - IA_FAILOVER_ENABLED=false
+      - IA_EXECUTION_MODE=${IA_EXECUTION_MODE:-OPERATIONAL}
+      - IA_FIXED_MODEL_ROLE=${IA_FIXED_MODEL_ROLE:-LOCAL}
+      - IA_OPERATIONAL_SEQUENCE=LOCAL
+      - IA_MODEL_LOCAL=${IA_MODEL_LOCAL:-local-hybrid-v1.8.0}
+      - IA_MODEL_SECONDARY=${IA_MODEL_SECONDARY:-gemini-3.5-flash}
+      - LOCAL_AI_EMBED_BACKEND=${LOCAL_AI_EMBED_BACKEND:-pytorch_fp32}
+      - LOCAL_AI_EMBED_MODEL_REVISION=${LOCAL_AI_EMBED_MODEL_REVISION:-835ad14087e140460703cf0fae09f97d469d65c2}
+      - IA_CONFIANCA_MINIMA=${IA_CONFIANCA_MINIMA:-0.65}
+      - IA_OBRA_CONFIANCA_MINIMA=${IA_OBRA_CONFIANCA_MINIMA:-0.90}
+      - DEDUP_CANDIDATE_LIMIT=${DEDUP_CANDIDATE_LIMIT:-20}
+      - DEDUP_LOCAL_TOP_K=${DEDUP_LOCAL_TOP_K:-20}
+      - DEDUP_POSITIVE_THRESHOLD=${DEDUP_POSITIVE_THRESHOLD:-0.78}
+      - DEDUP_NEGATIVE_THRESHOLD=${DEDUP_NEGATIVE_THRESHOLD:-0.22}
+      - DEMO_EQUIPE_DISPONIVEL=${DEMO_EQUIPE_DISPONIVEL:-true}
+      - IA_GENERATION_SEED=${IA_GENERATION_SEED:-20260702}
+      - IA_GENERATION_PROFILE=${IA_GENERATION_PROFILE:-local-hybrid-deterministic}
+      - IA_MODEL_NAME=${IA_MODEL_NAME:-LocalHybrid}
+      - IA_MODEL_VERSION=${IA_MODEL_VERSION:-local-hybrid-v1.8.0}
+      - PROMPT_DEDUP_VERSION=${PROMPT_DEDUP_VERSION:-deduplicacao_v9.1-episodica}
+      - PROMPT_CLASSIF_VERSION=${PROMPT_CLASSIF_VERSION:-classificacao_v9.1-episodica}
+      - IA_LOCAL_TIMEOUT_MS=${IA_LOCAL_TIMEOUT_MS:-60000}
+      - N8N_PUBLIC_BASE_URL=${N8N_PUBLIC_BASE_URL:-http://localhost:5678}
+      - FISCAL_DECISION_BASE_URL=${FISCAL_DECISION_BASE_URL:-http://localhost:5678/webhook/fiscal-decisao-v9}
+      - FISCAL_CONFIRMATION_BASE_URL=${FISCAL_CONFIRMATION_BASE_URL:-http://localhost:5678/webhook/fiscal-confirmacao-v9}
+      - FISCAL_TOKEN_TTL_MINUTOS=${FISCAL_TOKEN_TTL_MINUTOS:-1440}
+      - WF01_GLPI_CHUNK_SIZE=${WF01_GLPI_CHUNK_SIZE:-10}
+      - FILA_IA_RUN_SCOPE=${FILA_IA_RUN_SCOPE:-}
+      - FILA_IA_LOTE_TAMANHO=${FILA_IA_LOTE_TAMANHO:-3}
+      - FILA_IA_INTERVALO_SEGUNDOS=${FILA_IA_INTERVALO_SEGUNDOS:-45}
+      - FILA_IA_INGRESS_GRACE_SEGUNDOS=${FILA_IA_INGRESS_GRACE_SEGUNDOS:-10}
+      - FILA_IA_LEASE_SEGUNDOS=${FILA_IA_LEASE_SEGUNDOS:-900}
+      - TEST_MODE=${TEST_MODE:-false}
+      - TEST_AUTO_HUMAN_CONFIRMATION=false
+    volumes:
+      - './task-runners/n8n-task-runners.json:/etc/n8n-task-runners.json:ro'
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    depends_on:
+      n8n:
+        condition: service_healthy
+      glpi-credential-proxy:
+        condition: service_healthy
+      local-ai-credential-proxy:
+        condition: service_healthy
+    networks:
+      - research_backend
+      - workflow_services
+
+  mailpit:
+    image: axllent/mailpit:v1.29.7@sha256:757f22b56c1da03570afdb3d259effe5091018008a81bbedc8158cee7e16fdbc
+    container_name: mailpit
+    restart: unless-stopped
+    ports:
+      - '127.0.0.1:${MAILPIT_UI_PORT:-18025}:8025'  # UI Web; SMTP permanece interno em mailpit:1025
+    networks:
+      - workflow_services
+
+
+volumes:
+  glpi-dedup-db-data:
+  n8n-data:
+
+networks:
+  research_backend:
+    internal: true
+  workflow_services:
+  database_host_access:

@@ -1,0 +1,1531 @@
+{
+  "updatedAt": "2026-05-07T14:48:16.354Z",
+  "createdAt": "2026-05-06T17:05:48.081Z",
+  "id": "0iD47TUYD2PJTfo2",
+  "name": "V8 - WF02 Triagem e Classificacao",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        300
+      ],
+      "id": "wf02-trigger",
+      "name": "Inicio"
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.max(Number($json.delay_seconds || 1), 1) }}",
+        "unit": "seconds"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -160,
+        300
+      ],
+      "id": "wf02-wait",
+      "name": "Aguardar Ritmo IA",
+      "notes": "Escalona subexecucoes disparadas em lote para reduzir rate limit da IA sem usar Loop Over Items."
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8080/apirest.php/initSession",
+        "options": {},
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "bdEeA72JRgRrGMnBSop06TYGCRwusEhKs0uOobUw"
+            },
+            {
+              "name": "Authorization",
+              "value": "Basic Z2xwaTphZG1pbg=="
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        80,
+        300
+      ],
+      "id": "wf02-gs",
+      "name": "GLPI: Iniciar Sessao"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT id,titulo,descricao,tipo_servico,localizacao,solicitante,email_solicitante,\nstatus_num,status_nome,data_abertura,data_ultima_mudanca\nFROM tickets_processados WHERE id<>$1::bigint\nAND(status_num IN(1,4) OR(status_num IN(2,3,5,6) AND data_abertura>=NOW()-INTERVAL '90 days'))\nORDER BY data_abertura DESC LIMIT 60;",
+        "options": {
+          "queryReplacement": "={{ String($('Inicio').first().json.chamado.id) }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        320,
+        300
+      ],
+      "id": "wf02-d1",
+      "name": "PG: Historico Dedup",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst hist=$input.all().map(i=>i.json);\nconst atual=$('Inicio').first().json.chamado;\nreturn[{json:{chamado_atual:atual,historico:hist}}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        560,
+        300
+      ],
+      "id": "wf02-d2",
+      "name": "Montar Payload Dedup"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "models/gemini-2.0-flash"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Voce e um assistente de triagem de infraestrutura GLPI.\nTarefa: verificar se o chamado atual e DUPLICADO comparando com o historico.\n\nCHAMADO ATUAL:\n{{ JSON.stringify($json.chamado_atual) }}\n\nHISTORICO (ultimos 3 meses):\n{{ JSON.stringify($json.historico) }}\n\nREGRAS:\n- DUPLICADO se mesmo problema fisico no mesmo local, mesmo com palavras diferentes.\n- Mesmo tipo de equipamento na mesma localizacao em <=30 dias = potencial duplicata.\n- NAO compare o chamado consigo mesmo.\n- Se historico vazio, eh_duplicado=false.\n\nFORMATO JSON puro (sem markdown):\n{\"eh_duplicado\":true|false,\"chamado_referencia_id\":number|null,\"justificativa\":\"string\",\"caracteristicas_match\":[\"string\"]}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        800,
+        300
+      ],
+      "id": "wf02-d3",
+      "name": "IA: Verificar Duplicidade",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "pB0khsb0a1JbDWM7",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      },
+      "onError": "continueErrorOutput",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 20000
+    },
+    {
+      "parameters": {
+        "jsCode": "\nfunction tp(t){try{return JSON.parse(t)}catch{return null}}\nfunction ext(j){\n  let d=j;\n  const cands=[\n    d?.content?.parts?.[0]?.text,\n    d?.message?.content,\n    d?.output_text,\n    d?.output,\n    d?.text,\n    d?.response?.text\n  ];\n  for(const t of cands){\n    if(typeof t!=='string')continue;\n    const clean=t.replace(/```json/gi,'').replace(/```/g,'').trim();\n    const direct=tp(clean);\n    if(direct){d=direct;break;}\n    const m=clean.match(/\\{[\\s\\S]*\\}/);\n    if(m?.[0]){const parsed=tp(m[0]);if(parsed){d=parsed;break;}}\n  }\n  return d;\n}\nfunction pb(v){return typeof v==='boolean'?v:typeof v==='string'?['true','sim','yes','1'].includes(v.toLowerCase()):Number(v)===1;}\n\nconst atual=$('Inicio').first().json.chamado;\nconst raw=$input.first().json||{};\nconst hist=$('PG: Historico Dedup').all().map(i=>i.json);\nif(raw.error){\n  const msg=raw.error?.message||raw.error||'Erro na IA de deduplicacao';\n  return[{json:{chamado:atual,erro_ia:true,mensagem_erro:String(msg),duplicidade:{eh_duplicado:false,chamado_referencia_id:null,chamado_referencia:null,justificativa:'IA indisponivel',caracteristicas_match:[]}}}];\n}\nconst r=ext(raw)||{};\nconst dup=r.duplicidade||r;\nconst ehRaw=dup?.eh_duplicado ?? dup?.ehDuplicado ?? dup?.duplicado ?? dup?.is_duplicate ?? dup?.isDuplicated;\nif(ehRaw===undefined){\n  return[{json:{chamado:atual,erro_ia:true,mensagem_erro:'Resposta da IA sem campo eh_duplicado',duplicidade:{eh_duplicado:false,chamado_referencia_id:null,chamado_referencia:null,justificativa:'Resposta invalida da IA',caracteristicas_match:[]}}}];\n}\nconst eh=pb(ehRaw);\nconst refId=Number(dup.chamado_referencia_id ?? dup.chamadoReferenciaId ?? dup.reference_id);\nconst ref=Number.isFinite(refId)?hist.find(h=>Number(h.id)===refId):null;\n\nreturn[{json:{chamado:atual,duplicidade:{\n  eh_duplicado:eh,chamado_referencia_id:eh&&Number.isFinite(refId)?refId:null,\n  chamado_referencia:ref||null,\n  justificativa:dup.justificativa||dup.justificativa_para_fiscal||dup.reason||'Sem justificativa',\n  caracteristicas_match:Array.isArray(dup.caracteristicas_match)?dup.caracteristicas_match:(Array.isArray(dup.matches)?dup.matches:[])\n},erro_ia:false,mensagem_erro:null}}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        300
+      ],
+      "id": "wf02-d4",
+      "name": "Normalizar Dedup"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ String($json.erro_ia) }}",
+                    "rightValue": "true",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "ebf0aa72"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "ERRO_IA"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ String($json.duplicidade.eh_duplicado) }}",
+                    "rightValue": "true",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "4cc6235b"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "DUPLICADO"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ String($json.duplicidade.eh_duplicado) }}",
+                    "rightValue": "false",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "408cde56"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "NAO_DUP"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1280,
+        300
+      ],
+      "id": "wf02-d5",
+      "name": "Duplicado?"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ (() => {\nconst d=$json;\nconst ch=d.chamado||d.chamado_atual||$('Inicio').first().json.chamado||{};\nconst esc=s=>\"'\"+String(s??'').replace(/'/g,\"''\")+\"'\";\nconst msg=d.mensagem_erro||d.error?.message||d.error||'Erro na IA de deduplicacao';\nreturn `UPDATE tickets_processados SET triagem_status='ERRO_IA',ultima_acao_workflow='ERRO_IA_DEDUP',\nmotivo_classificacao=${esc(msg)}\nWHERE id=${Number(ch.id)};`;\n})() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1320,
+        -100
+      ],
+      "id": "wf02-dedup-err",
+      "name": "PG: Reprocessar Erro Dedup",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ (() => {\n  const d = $('Normalizar Dedup').first().json;\n  const esc = (s) => \"'\" + String(s ?? '').replace(/'/g, \"''\") + \"'\";\n  const id = Number(d.chamado.id);\n  const ref = Number(d.duplicidade.chamado_referencia_id || 0);\n  return `UPDATE tickets_processados SET status_num=4,status_nome='Pendente',triagem_status='PENDENTE',\nem_aprovacao_fiscal=TRUE,aprovacao_iniciada_em=NOW(),classificacao='POSSIVEL_DUPLICADO',\nduplicado_de_id=${ref},motivo_classificacao=${esc(d.duplicidade.justificativa)},ultima_acao_workflow='AGUARDANDO_FISCAL'\nWHERE id=${id} RETURNING id;`;\n})() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1320,
+        100
+      ],
+      "id": "wf02-dup1",
+      "name": "PG: Marcar Duplicado",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst c=$('Normalizar Dedup').first().json.chamado;\nconst d=$('Normalizar Dedup').first().json.duplicidade;\nconst ref=d.chamado_referencia||{};\nconst base='http://localhost:5678/webhook/fiscal-decisao-troque-esta-chave-fiscal';\nconst lC=base+'?decisao=confirmar&chamado_id='+c.id+'&ref_id='+(d.chamado_referencia_id||'');\nconst lN=base+'?decisao=nao_duplicado&chamado_id='+c.id;\nconst titulo='[Duplicado] '+(c.titulo||'#'+c.id);\nconst corpo=[\n'[TRIAGEM_IA] Possivel duplicata do chamado #'+(ref.id||d.chamado_referencia_id||'N/A'),\n'Titulo match: '+(ref.titulo||'N/A'),'Status: '+(ref.status_nome||'N/A'),\n'Descricao: '+(ref.descricao||'N/A'),'Local: '+(ref.localizacao||'N/A'),\n'Solicitante: '+(ref.solicitante||'N/A')+' <'+(ref.email_solicitante||'')+'>',\n'Motivo: '+d.justificativa,'',\n'LINKS DE DECISAO:','Confirmar duplicado: '+lC,'NAO duplicado: '+lN].join('\\n');\nreturn[{json:{chamado:c,titulo_novo:titulo,corpo,linkConfirmar:lC,linkNaoDup:lN}}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1560,
+        100
+      ],
+      "id": "wf02-dup2",
+      "name": "Preparar Followup Dup"
+    },
+    {
+      "parameters": {
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/'+$('Preparar Followup Dup').first().json.chamado.id }}",
+        "options": {},
+        "method": "PUT",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "bdEeA72JRgRrGMnBSop06TYGCRwusEhKs0uOobUw"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": {
+          "input": {
+            "id": "={{$('Preparar Followup Dup').first().json.chamado.id}}",
+            "name": "={{$('Preparar Followup Dup').first().json.titulo_novo}}",
+            "status": 4
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1800,
+        0
+      ],
+      "id": "wf02-dup3",
+      "name": "GLPI: Renomear [Duplicado]"
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8080/apirest.php/ITILFollowup",
+        "options": {},
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "bdEeA72JRgRrGMnBSop06TYGCRwusEhKs0uOobUw"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": {
+          "input": {
+            "items_id": "={{$('Preparar Followup Dup').first().json.chamado.id}}",
+            "itemtype": "Ticket",
+            "content": "={{$('Preparar Followup Dup').first().json.corpo}}"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1800,
+        200
+      ],
+      "id": "wf02-dup4",
+      "name": "GLPI: Followup Links"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE tickets_processados SET status_num=4,status_nome='Pendente',\ntriagem_status='CLASSIFICANDO',ultima_acao_workflow='CLASSIFICANDO'\nWHERE id=$1::bigint RETURNING id,titulo,descricao,tipo_servico,localizacao,solicitante,email_solicitante,status_num,status_nome,data_abertura,data_ultima_mudanca;",
+        "options": {
+          "queryReplacement": "={{ String($('Normalizar Dedup').first().json.chamado.id) }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1320,
+        400
+      ],
+      "id": "wf02-cl1",
+      "name": "PG: Marcar Classificando",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/'+$json.id }}",
+        "options": {},
+        "method": "PUT",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "bdEeA72JRgRrGMnBSop06TYGCRwusEhKs0uOobUw"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": {
+          "input": {
+            "id": "={{$json.id}}",
+            "status": 4
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1560,
+        400
+      ],
+      "id": "wf02-cl1b",
+      "name": "GLPI: Status Pendente"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "models/gemini-2.0-flash"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Voce e o Especialista em Triagem de Infraestrutura do IF Sudeste MG - Campus Rio Pomba.\nAvalie o chamado e decida:\n1) INVIAVEL: fora do escopo de manutencao/infraestrutura\n2) OBRA: construcao nova, ampliacao, reforma estrutural -> DDI/DG\n3) MANUTENCAO+DEMO: reparo simples executavel pela equipe interna\n4) MANUTENCAO+SOB_DEMANDA: requer empresa/prestador especializado\n\nCHAMADO:\n{{ JSON.stringify($json) }}\n\nREGRAS OBRA: cria area nova, amplia, altera estrutura, requer projeto engenharia.\nREGRAS DEMO: eletrica simples, hidraulica simples, carpintaria, pintura, serralheria simples, jardinagem.\nREGRAS SOB_DEMANDA: ar-condicionado, elevador, cameras, equipamento lab, portao automatico, caldeira.\n\nFORMATO JSON puro:\n{\"tipo\":\"INVIAVEL\"|\"OBRA\"|\"MANUTENCAO\",\"executor\":\"NENHUM\"|\"DDI_DG\"|\"DEMO\"|\"SOB_DEMANDA\",\"categoria\":\"string\",\"justificativa\":\"string\",\"mensagem_solicitante\":\"string\"}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        1800,
+        400
+      ],
+      "id": "wf02-cl2",
+      "name": "IA: Classificar",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "pB0khsb0a1JbDWM7",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      },
+      "onError": "continueErrorOutput",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 20000
+    },
+    {
+      "parameters": {
+        "jsCode": "\nfunction tp(t){try{return JSON.parse(t)}catch{return null}}\nfunction ext(j){let d=j;const t1=d?.content?.parts?.[0]?.text;if(typeof t1==='string'){const p=tp(t1);if(p)d=p;}\nconst t2=d?.message?.content;if(typeof t2==='string'){const p=tp(t2);if(p)d=p;}return d;}\nconst ch=$('PG: Marcar Classificando').first().json;\nconst raw=$input.first().json||{};\nif(raw.error){\n  const msg=raw.error?.message||raw.error||'Erro na IA de classificacao';\n  return[{json:{chamado:ch,erro_ia:true,mensagem_erro:String(msg)}}];\n}\nlet r=ext(raw)||{};\nlet tipo=String(r.tipo||'').toUpperCase().trim();\nlet exec=String(r.executor||'').toUpperCase().trim();\nconst tv=['INVIAVEL','OBRA','MANUTENCAO'].includes(tipo);\nconst ev=['NENHUM','DDI_DG','DEMO','SOB_DEMANDA'].includes(exec);\nif(!tv||!ev||(tipo==='INVIAVEL'&&exec!=='NENHUM')||(tipo==='OBRA'&&exec!=='DDI_DG')||\n(tipo==='MANUTENCAO'&&!['DEMO','SOB_DEMANDA'].includes(exec))){\n  return[{json:{chamado:ch,erro_ia:true,mensagem_erro:'Resposta da IA com tipo/executor invalido'}}];\n}\nif(tipo==='INVIAVEL')exec='NENHUM';if(tipo==='OBRA')exec='DDI_DG';\nreturn[{json:{chamado:ch,classificacao:{tipo,executor:exec,\ncategoria:r.categoria||'',justificativa:r.justificativa||'Classificado por IA',\nmensagem_solicitante:r.mensagem_solicitante||''},erro_ia:false,mensagem_erro:null}}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2040,
+        400
+      ],
+      "id": "wf02-cl3",
+      "name": "Normalizar Classificacao"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ String($json.erro_ia) }}",
+                    "rightValue": "true",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "3dfff42d"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "ERRO_IA"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.classificacao.tipo }}",
+                    "rightValue": "INVIAVEL",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "7aea7523"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "INVIAVEL"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.classificacao.tipo }}",
+                    "rightValue": "OBRA",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "c71997c2"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "OBRA"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.classificacao.executor }}",
+                    "rightValue": "DEMO",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "9623c986"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "DEMO"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.classificacao.executor }}",
+                    "rightValue": "SOB_DEMANDA",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "44452aae"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "SOB_DEMANDA"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2280,
+        400
+      ],
+      "id": "wf02-cl4",
+      "name": "Switch Classificacao"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ (() => {\nconst c=$json;\nconst ch=c.chamado||$('PG: Marcar Classificando').first().json||{};\nconst esc=s=>\"'\"+String(s??'').replace(/'/g,\"''\")+\"'\";\nconst msg=c.mensagem_erro||'Erro na IA de classificacao';\nreturn `UPDATE tickets_processados SET triagem_status='ERRO_IA',ultima_acao_workflow='ERRO_IA_CLASSIFICACAO',\nmotivo_classificacao=${esc(msg)},atualizado_em=NOW()\nWHERE id=${Number(ch.id)} RETURNING id;`;\n})() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        2560,
+        -80
+      ],
+      "id": "wf02-cl-err",
+      "name": "PG: Reprocessar Erro Classificacao",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8080/apirest.php/ITILFollowup",
+        "options": {},
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "bdEeA72JRgRrGMnBSop06TYGCRwusEhKs0uOobUw"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": {
+          "input": {
+            "items_id": "={{$('Normalizar Classificacao').first().json.chamado.id}}",
+            "itemtype": "Ticket",
+            "content": "={{'[TRIAGEM_IA][INVIAVEL] '+$('Normalizar Classificacao').first().json.classificacao.mensagem_solicitante+' Justificativa: '+$('Normalizar Classificacao').first().json.classificacao.justificativa}}"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2560,
+        100
+      ],
+      "id": "wf02-inv1",
+      "name": "GLPI: Followup Inviavel"
+    },
+    {
+      "parameters": {
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/'+$('Normalizar Classificacao').first().json.chamado.id }}",
+        "options": {},
+        "method": "PUT",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "bdEeA72JRgRrGMnBSop06TYGCRwusEhKs0uOobUw"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": {
+          "input": {
+            "id": "={{$('Normalizar Classificacao').first().json.chamado.id}}",
+            "status": 6
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2800,
+        100
+      ],
+      "id": "wf02-inv2",
+      "name": "GLPI: Fechar Inviavel"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ (() => { const c=$('Normalizar Classificacao').first().json; const esc=s=>\"'\"+String(s??'').replace(/'/g,\"''\")+\"'\"; return `UPDATE tickets_processados SET status_num=6,status_nome='Fechado',triagem_status='FECHADO_INVIAVEL',classificacao='INVIAVEL',executor='NENHUM',em_aprovacao_fiscal=FALSE,motivo_classificacao=${esc(c.classificacao.justificativa)},triado_em=NOW(),ultima_acao_workflow='FECHADO_INVIAVEL' WHERE id=${Number(c.chamado.id)};`; })() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        3040,
+        100
+      ],
+      "id": "wf02-inv3",
+      "name": "PG: Fechado Inviavel",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "triagem@campus.local",
+        "toEmail": "ddi-dg@campus.local",
+        "subject": "={{ '[Triagem IA] OBRA - #'+$('Normalizar Classificacao').first().json.chamado.id }}",
+        "emailFormat": "text",
+        "text": "={{ 'Chamado #'+$('Normalizar Classificacao').first().json.chamado.id+'\\nTitulo: '+$('Normalizar Classificacao').first().json.chamado.titulo+'\\nLocal: '+($('Normalizar Classificacao').first().json.chamado.localizacao||'N/A')+'\\nSolicitante: '+($('Normalizar Classificacao').first().json.chamado.solicitante||'N/A')+'\\n\\nClassificacao: OBRA\\nJustificativa: '+$('Normalizar Classificacao').first().json.classificacao.justificativa+'\\n\\nDescricao:\\n'+($('Normalizar Classificacao').first().json.chamado.descricao||'') }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        2560,
+        300
+      ],
+      "id": "wf02-ob1",
+      "name": "Email DDI/DG (OBRA)",
+      "credentials": {
+        "smtp": {
+          "id": "SMTP_MAILPIT_LOCAL",
+          "name": "SMTP Mailpit Local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8080/apirest.php/ITILFollowup",
+        "options": {},
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "bdEeA72JRgRrGMnBSop06TYGCRwusEhKs0uOobUw"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": {
+          "input": {
+            "items_id": "={{$('Normalizar Classificacao').first().json.chamado.id}}",
+            "itemtype": "Ticket",
+            "content": "={{'[TRIAGEM_IA][OBRA] '+$('Normalizar Classificacao').first().json.classificacao.mensagem_solicitante+' Encaminhado ao DDI/DG. Justificativa: '+$('Normalizar Classificacao').first().json.classificacao.justificativa}}"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2800,
+        300
+      ],
+      "id": "wf02-ob2",
+      "name": "GLPI: Followup OBRA"
+    },
+    {
+      "parameters": {
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/'+$('Normalizar Classificacao').first().json.chamado.id }}",
+        "options": {},
+        "method": "PUT",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "bdEeA72JRgRrGMnBSop06TYGCRwusEhKs0uOobUw"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": {
+          "input": {
+            "id": "={{$('Normalizar Classificacao').first().json.chamado.id}}",
+            "status": 6
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3040,
+        300
+      ],
+      "id": "wf02-ob3",
+      "name": "GLPI: Fechar OBRA"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ (() => { const c=$('Normalizar Classificacao').first().json; const esc=s=>\"'\"+String(s??'').replace(/'/g,\"''\")+\"'\"; return `UPDATE tickets_processados SET status_num=6,status_nome='Fechado',triagem_status='FECHADO_OBRA',classificacao='OBRA',executor='DDI_DG',em_aprovacao_fiscal=FALSE,motivo_classificacao=${esc(c.classificacao.justificativa)},triado_em=NOW(),ultima_acao_workflow='FECHADO_OBRA' WHERE id=${Number(c.chamado.id)};`; })() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        3280,
+        300
+      ],
+      "id": "wf02-ob4",
+      "name": "PG: Fechado OBRA",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/'+$('Normalizar Classificacao').first().json.chamado.id }}",
+        "options": {},
+        "method": "PUT",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "bdEeA72JRgRrGMnBSop06TYGCRwusEhKs0uOobUw"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": {
+          "input": {
+            "id": "={{$('Normalizar Classificacao').first().json.chamado.id}}",
+            "status": 2
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2560,
+        500
+      ],
+      "id": "wf02-dm1",
+      "name": "GLPI: Atribuir DEMO"
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8080/apirest.php/ITILFollowup",
+        "options": {},
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "bdEeA72JRgRrGMnBSop06TYGCRwusEhKs0uOobUw"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": {
+          "input": {
+            "items_id": "={{$('Normalizar Classificacao').first().json.chamado.id}}",
+            "itemtype": "Ticket",
+            "content": "={{'[TRIAGEM_IA][DEMO] Manutencao pela equipe DEMO. Categoria: '+$('Normalizar Classificacao').first().json.classificacao.categoria+' Justificativa: '+$('Normalizar Classificacao').first().json.classificacao.justificativa}}"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2800,
+        500
+      ],
+      "id": "wf02-dm2",
+      "name": "GLPI: Followup DEMO"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ (() => { const c=$('Normalizar Classificacao').first().json; const esc=s=>\"'\"+String(s??'').replace(/'/g,\"''\")+\"'\"; return `UPDATE tickets_processados SET status_num=2,status_nome='Atribuido',triagem_status='ATRIBUIDO_DEMO',classificacao='MANUTENCAO',executor='DEMO',em_aprovacao_fiscal=FALSE,motivo_classificacao=${esc(c.classificacao.justificativa)},triado_em=NOW(),ultima_acao_workflow='ATRIBUIDO_DEMO' WHERE id=${Number(c.chamado.id)};`; })() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        3040,
+        500
+      ],
+      "id": "wf02-dm3",
+      "name": "PG: Atribuido DEMO",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/'+$('Normalizar Classificacao').first().json.chamado.id }}",
+        "options": {},
+        "method": "PUT",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "bdEeA72JRgRrGMnBSop06TYGCRwusEhKs0uOobUw"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": {
+          "input": {
+            "id": "={{$('Normalizar Classificacao').first().json.chamado.id}}",
+            "status": 3
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2560,
+        700
+      ],
+      "id": "wf02-sd1",
+      "name": "GLPI: Planejado SOB_DEMANDA"
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8080/apirest.php/ITILFollowup",
+        "options": {},
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "bdEeA72JRgRrGMnBSop06TYGCRwusEhKs0uOobUw"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": {
+          "input": {
+            "items_id": "={{$('Normalizar Classificacao').first().json.chamado.id}}",
+            "itemtype": "Ticket",
+            "content": "={{'[TRIAGEM_IA][SOB_DEMANDA] Requer empresa especializada. Categoria: '+$('Normalizar Classificacao').first().json.classificacao.categoria+' Justificativa: '+$('Normalizar Classificacao').first().json.classificacao.justificativa}}"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2800,
+        700
+      ],
+      "id": "wf02-sd2",
+      "name": "GLPI: Followup SOB_DEMANDA"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ (() => { const c=$('Normalizar Classificacao').first().json; const esc=s=>\"'\"+String(s??'').replace(/'/g,\"''\")+\"'\"; return `UPDATE tickets_processados SET status_num=3,status_nome='Planejado',triagem_status='ENCAMINHADO_PLANEJADO',classificacao='MANUTENCAO',executor='SOB_DEMANDA',em_aprovacao_fiscal=FALSE,motivo_classificacao=${esc(c.classificacao.justificativa)},triado_em=NOW(),ultima_acao_workflow='SOB_DEMANDA' WHERE id=${Number(c.chamado.id)};`; })() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        3040,
+        700
+      ],
+      "id": "wf02-sd3",
+      "name": "PG: Planejado SOB_DEMANDA",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8080/apirest.php/killSession",
+        "options": {},
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "bdEeA72JRgRrGMnBSop06TYGCRwusEhKs0uOobUw"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('GLPI: Iniciar Sessao').first().json.session_token }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3320,
+        400
+      ],
+      "id": "wf02-gk",
+      "name": "GLPI: Encerrar Sessao",
+      "onError": "continueRegularOutput",
+      "alwaysOutputData": true
+    }
+  ],
+  "connections": {
+    "Inicio": {
+      "main": [
+        [
+          {
+            "node": "Aguardar Ritmo IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aguardar Ritmo IA": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Iniciar Sessao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Iniciar Sessao": {
+      "main": [
+        [
+          {
+            "node": "PG: Historico Dedup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Historico Dedup": {
+      "main": [
+        [
+          {
+            "node": "Montar Payload Dedup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Montar Payload Dedup": {
+      "main": [
+        [
+          {
+            "node": "IA: Verificar Duplicidade",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IA: Verificar Duplicidade": {
+      "main": [
+        [
+          {
+            "node": "Normalizar Dedup",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Normalizar Dedup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizar Dedup": {
+      "main": [
+        [
+          {
+            "node": "Duplicado?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Duplicado?": {
+      "main": [
+        [
+          {
+            "node": "PG: Reprocessar Erro Dedup",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "PG: Marcar Duplicado",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "PG: Marcar Classificando",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "PG: Reprocessar Erro Dedup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Reprocessar Erro Dedup": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Encerrar Sessao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Marcar Duplicado": {
+      "main": [
+        [
+          {
+            "node": "Preparar Followup Dup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar Followup Dup": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Renomear [Duplicado]",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Renomear [Duplicado]": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Followup Links",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Followup Links": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Encerrar Sessao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Marcar Classificando": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Status Pendente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Status Pendente": {
+      "main": [
+        [
+          {
+            "node": "IA: Classificar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IA: Classificar": {
+      "main": [
+        [
+          {
+            "node": "Normalizar Classificacao",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Normalizar Classificacao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizar Classificacao": {
+      "main": [
+        [
+          {
+            "node": "Switch Classificacao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Classificacao": {
+      "main": [
+        [
+          {
+            "node": "PG: Reprocessar Erro Classificacao",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GLPI: Followup Inviavel",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Email DDI/DG (OBRA)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GLPI: Atribuir DEMO",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GLPI: Planejado SOB_DEMANDA",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GLPI: Encerrar Sessao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Reprocessar Erro Classificacao": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Encerrar Sessao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Followup Inviavel": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Fechar Inviavel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Fechar Inviavel": {
+      "main": [
+        [
+          {
+            "node": "PG: Fechado Inviavel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Fechado Inviavel": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Encerrar Sessao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email DDI/DG (OBRA)": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Followup OBRA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Followup OBRA": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Fechar OBRA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Fechar OBRA": {
+      "main": [
+        [
+          {
+            "node": "PG: Fechado OBRA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Fechado OBRA": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Encerrar Sessao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Atribuir DEMO": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Followup DEMO",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Followup DEMO": {
+      "main": [
+        [
+          {
+            "node": "PG: Atribuido DEMO",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Atribuido DEMO": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Encerrar Sessao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Planejado SOB_DEMANDA": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Followup SOB_DEMANDA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI: Followup SOB_DEMANDA": {
+      "main": [
+        [
+          {
+            "node": "PG: Planejado SOB_DEMANDA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Planejado SOB_DEMANDA": {
+      "main": [
+        [
+          {
+            "node": "GLPI: Encerrar Sessao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Sao_Paulo",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true
+  },
+  "staticData": {},
+  "meta": null,
+  "pinData": {},
+  "versionId": "3aaccab4-c6e9-4dd1-b8ff-7cb70ad78ddc",
+  "activeVersionId": "3aaccab4-c6e9-4dd1-b8ff-7cb70ad78ddc",
+  "versionCounter": 181,
+  "triggerCount": 0,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-05-06T17:05:48.101Z",
+      "createdAt": "2026-05-06T17:05:48.101Z",
+      "role": "workflow:owner",
+      "workflowId": "0iD47TUYD2PJTfo2",
+      "projectId": "hSQejR5qoKNMc2Sr",
+      "project": {
+        "updatedAt": "2026-03-11T16:09:40.611Z",
+        "createdAt": "2026-03-04T13:02:15.694Z",
+        "id": "hSQejR5qoKNMc2Sr",
+        "name": "adm 2026 <adm@mail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "creatorId": "d9191cd0-2103-42eb-8ddd-defb43c4e915"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": "0iD47TUYD2PJTfo2",
+    "description": ""
+  }
+}

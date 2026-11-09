@@ -1,0 +1,761 @@
+{
+  "schema_version": "rotulagem-cega-v2.1.0",
+  "dataset": "avaliacao\\datasets\\dataset_piloto_v2.jsonl",
+  "dataset_sha256": "54e3718ad8ab635ab4588a1bbdfbe54d9d39b2f558c0c996730889ab3da4555a",
+  "generated_at_utc": "2026-07-10T18:37:30.317642+00:00",
+  "total_decisoes": 94,
+  "decisoes": [
+    {
+      "review_id": "ROTULO-0001",
+      "case_id": "AVAL-PIL-F51B75BD-000001",
+      "episode_id": "D01-PIL-F51B75BD-G00001",
+      "scenario_id": "D01",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0002",
+      "case_id": "AVAL-PIL-F51B75BD-000001",
+      "episode_id": "D01-PIL-F51B75BD-G00001",
+      "scenario_id": "D01",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "SOB_DEMANDA"
+    },
+    {
+      "review_id": "ROTULO-0003",
+      "case_id": "AVAL-PIL-F51B75BD-000002",
+      "episode_id": "D01-PIL-F51B75BD-G00001",
+      "scenario_id": "D01",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0004",
+      "case_id": "AVAL-PIL-F51B75BD-000003",
+      "episode_id": "D02-PIL-F51B75BD-G00002",
+      "scenario_id": "D02",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0005",
+      "case_id": "AVAL-PIL-F51B75BD-000003",
+      "episode_id": "D02-PIL-F51B75BD-G00002",
+      "scenario_id": "D02",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0006",
+      "case_id": "AVAL-PIL-F51B75BD-000004",
+      "episode_id": "D02-PIL-F51B75BD-G00002",
+      "scenario_id": "D02",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0007",
+      "case_id": "AVAL-PIL-F51B75BD-000004",
+      "episode_id": "D02-PIL-F51B75BD-G00002",
+      "scenario_id": "D02",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0008",
+      "case_id": "AVAL-PIL-F51B75BD-000005",
+      "episode_id": "D03-PIL-F51B75BD-G00003",
+      "scenario_id": "D03",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0009",
+      "case_id": "AVAL-PIL-F51B75BD-000005",
+      "episode_id": "D03-PIL-F51B75BD-G00003",
+      "scenario_id": "D03",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0010",
+      "case_id": "AVAL-PIL-F51B75BD-000006",
+      "episode_id": "D03-PIL-F51B75BD-G00003",
+      "scenario_id": "D03",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0011",
+      "case_id": "AVAL-PIL-F51B75BD-000006",
+      "episode_id": "D03-PIL-F51B75BD-G00003",
+      "scenario_id": "D03",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0012",
+      "case_id": "AVAL-PIL-F51B75BD-000007",
+      "episode_id": "D04-PIL-F51B75BD-G00004",
+      "scenario_id": "D04",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0013",
+      "case_id": "AVAL-PIL-F51B75BD-000007",
+      "episode_id": "D04-PIL-F51B75BD-G00004",
+      "scenario_id": "D04",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "TRIAGEM_MANUAL"
+    },
+    {
+      "review_id": "ROTULO-0014",
+      "case_id": "AVAL-PIL-F51B75BD-000008",
+      "episode_id": "D04-PIL-F51B75BD-G00004",
+      "scenario_id": "D04",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0015",
+      "case_id": "AVAL-PIL-F51B75BD-000008",
+      "episode_id": "D04-PIL-F51B75BD-G00004",
+      "scenario_id": "D04",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "TRIAGEM_MANUAL"
+    },
+    {
+      "review_id": "ROTULO-0016",
+      "case_id": "AVAL-PIL-F51B75BD-000009",
+      "episode_id": "D05-PIL-F51B75BD-G00005",
+      "scenario_id": "D05",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0017",
+      "case_id": "AVAL-PIL-F51B75BD-000009",
+      "episode_id": "D05-PIL-F51B75BD-G00005",
+      "scenario_id": "D05",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "SOB_DEMANDA"
+    },
+    {
+      "review_id": "ROTULO-0018",
+      "case_id": "AVAL-PIL-F51B75BD-000010",
+      "episode_id": "D05-PIL-F51B75BD-G00005",
+      "scenario_id": "D05",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0019",
+      "case_id": "AVAL-PIL-F51B75BD-000010",
+      "episode_id": "D05-PIL-F51B75BD-G00005",
+      "scenario_id": "D05",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "SOB_DEMANDA"
+    },
+    {
+      "review_id": "ROTULO-0020",
+      "case_id": "AVAL-PIL-F51B75BD-000011",
+      "episode_id": "D06-PIL-F51B75BD-G00006",
+      "scenario_id": "D06",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0021",
+      "case_id": "AVAL-PIL-F51B75BD-000011",
+      "episode_id": "D06-PIL-F51B75BD-G00006",
+      "scenario_id": "D06",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "SOB_DEMANDA"
+    },
+    {
+      "review_id": "ROTULO-0022",
+      "case_id": "AVAL-PIL-F51B75BD-000012",
+      "episode_id": "D06-PIL-F51B75BD-G00006",
+      "scenario_id": "D06",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0023",
+      "case_id": "AVAL-PIL-F51B75BD-000013",
+      "episode_id": "D07-PIL-F51B75BD-G00007",
+      "scenario_id": "D07",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0024",
+      "case_id": "AVAL-PIL-F51B75BD-000013",
+      "episode_id": "D07-PIL-F51B75BD-G00007",
+      "scenario_id": "D07",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0025",
+      "case_id": "AVAL-PIL-F51B75BD-000014",
+      "episode_id": "D07-PIL-F51B75BD-G00007",
+      "scenario_id": "D07",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0026",
+      "case_id": "AVAL-PIL-F51B75BD-000015",
+      "episode_id": "D08-PIL-F51B75BD-G00008",
+      "scenario_id": "D08",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0027",
+      "case_id": "AVAL-PIL-F51B75BD-000015",
+      "episode_id": "D08-PIL-F51B75BD-G00008",
+      "scenario_id": "D08",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0028",
+      "case_id": "AVAL-PIL-F51B75BD-000016",
+      "episode_id": "D08-PIL-F51B75BD-G00008",
+      "scenario_id": "D08",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0029",
+      "case_id": "AVAL-PIL-F51B75BD-000016",
+      "episode_id": "D08-PIL-F51B75BD-G00008",
+      "scenario_id": "D08",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0030",
+      "case_id": "AVAL-PIL-F51B75BD-000017",
+      "episode_id": "C01-PIL-F51B75BD-G00009",
+      "scenario_id": "C01",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0031",
+      "case_id": "AVAL-PIL-F51B75BD-000017",
+      "episode_id": "C01-PIL-F51B75BD-G00009",
+      "scenario_id": "C01",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "OBRA"
+    },
+    {
+      "review_id": "ROTULO-0032",
+      "case_id": "AVAL-PIL-F51B75BD-000018",
+      "episode_id": "C02-PIL-F51B75BD-G00010",
+      "scenario_id": "C02",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0033",
+      "case_id": "AVAL-PIL-F51B75BD-000018",
+      "episode_id": "C02-PIL-F51B75BD-G00010",
+      "scenario_id": "C02",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0034",
+      "case_id": "AVAL-PIL-F51B75BD-000019",
+      "episode_id": "C03-PIL-F51B75BD-G00011",
+      "scenario_id": "C03",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0035",
+      "case_id": "AVAL-PIL-F51B75BD-000019",
+      "episode_id": "C03-PIL-F51B75BD-G00011",
+      "scenario_id": "C03",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "OBRA"
+    },
+    {
+      "review_id": "ROTULO-0036",
+      "case_id": "AVAL-PIL-F51B75BD-000020",
+      "episode_id": "C04-PIL-F51B75BD-G00012",
+      "scenario_id": "C04",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0037",
+      "case_id": "AVAL-PIL-F51B75BD-000020",
+      "episode_id": "C04-PIL-F51B75BD-G00012",
+      "scenario_id": "C04",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0038",
+      "case_id": "AVAL-PIL-F51B75BD-000021",
+      "episode_id": "C05-PIL-F51B75BD-G00013",
+      "scenario_id": "C05",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0039",
+      "case_id": "AVAL-PIL-F51B75BD-000021",
+      "episode_id": "C05-PIL-F51B75BD-G00013",
+      "scenario_id": "C05",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "SOB_DEMANDA"
+    },
+    {
+      "review_id": "ROTULO-0040",
+      "case_id": "AVAL-PIL-F51B75BD-000022",
+      "episode_id": "C06-PIL-F51B75BD-G00014",
+      "scenario_id": "C06",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0041",
+      "case_id": "AVAL-PIL-F51B75BD-000022",
+      "episode_id": "C06-PIL-F51B75BD-G00014",
+      "scenario_id": "C06",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0042",
+      "case_id": "AVAL-PIL-F51B75BD-000023",
+      "episode_id": "C07-PIL-F51B75BD-G00015",
+      "scenario_id": "C07",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0043",
+      "case_id": "AVAL-PIL-F51B75BD-000023",
+      "episode_id": "C07-PIL-F51B75BD-G00015",
+      "scenario_id": "C07",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0044",
+      "case_id": "AVAL-PIL-F51B75BD-000024",
+      "episode_id": "C08-PIL-F51B75BD-G00016",
+      "scenario_id": "C08",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0045",
+      "case_id": "AVAL-PIL-F51B75BD-000024",
+      "episode_id": "C08-PIL-F51B75BD-G00016",
+      "scenario_id": "C08",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "TRIAGEM_MANUAL"
+    },
+    {
+      "review_id": "ROTULO-0046",
+      "case_id": "AVAL-PIL-F51B75BD-000025",
+      "episode_id": "C09-PIL-F51B75BD-G00017",
+      "scenario_id": "C09",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0047",
+      "case_id": "AVAL-PIL-F51B75BD-000025",
+      "episode_id": "C09-PIL-F51B75BD-G00017",
+      "scenario_id": "C09",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "TRIAGEM_MANUAL"
+    },
+    {
+      "review_id": "ROTULO-0048",
+      "case_id": "AVAL-PIL-F51B75BD-000026",
+      "episode_id": "C10-PIL-F51B75BD-G00018",
+      "scenario_id": "C10",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0049",
+      "case_id": "AVAL-PIL-F51B75BD-000026",
+      "episode_id": "C10-PIL-F51B75BD-G00018",
+      "scenario_id": "C10",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "SOB_DEMANDA"
+    },
+    {
+      "review_id": "ROTULO-0050",
+      "case_id": "AVAL-PIL-F51B75BD-000027",
+      "episode_id": "C11-PIL-F51B75BD-G00019",
+      "scenario_id": "C11",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0051",
+      "case_id": "AVAL-PIL-F51B75BD-000027",
+      "episode_id": "C11-PIL-F51B75BD-G00019",
+      "scenario_id": "C11",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0052",
+      "case_id": "AVAL-PIL-F51B75BD-000028",
+      "episode_id": "C12-PIL-F51B75BD-G00020",
+      "scenario_id": "C12",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0053",
+      "case_id": "AVAL-PIL-F51B75BD-000028",
+      "episode_id": "C12-PIL-F51B75BD-G00020",
+      "scenario_id": "C12",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "TRIAGEM_MANUAL"
+    },
+    {
+      "review_id": "ROTULO-0054",
+      "case_id": "AVAL-PIL-F51B75BD-000029",
+      "episode_id": "D09-PIL-F51B75BD-G00021",
+      "scenario_id": "D09",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0055",
+      "case_id": "AVAL-PIL-F51B75BD-000029",
+      "episode_id": "D09-PIL-F51B75BD-G00021",
+      "scenario_id": "D09",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0056",
+      "case_id": "AVAL-PIL-F51B75BD-000030",
+      "episode_id": "D09-PIL-F51B75BD-G00021",
+      "scenario_id": "D09",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0057",
+      "case_id": "AVAL-PIL-F51B75BD-000030",
+      "episode_id": "D09-PIL-F51B75BD-G00021",
+      "scenario_id": "D09",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0058",
+      "case_id": "AVAL-PIL-F51B75BD-000031",
+      "episode_id": "D10-PIL-F51B75BD-G00022",
+      "scenario_id": "D10",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0059",
+      "case_id": "AVAL-PIL-F51B75BD-000031",
+      "episode_id": "D10-PIL-F51B75BD-G00022",
+      "scenario_id": "D10",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "TRIAGEM_MANUAL"
+    },
+    {
+      "review_id": "ROTULO-0060",
+      "case_id": "AVAL-PIL-F51B75BD-000032",
+      "episode_id": "D10-PIL-F51B75BD-G00022",
+      "scenario_id": "D10",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0061",
+      "case_id": "AVAL-PIL-F51B75BD-000032",
+      "episode_id": "D10-PIL-F51B75BD-G00022",
+      "scenario_id": "D10",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0062",
+      "case_id": "AVAL-PIL-F51B75BD-000033",
+      "episode_id": "D11-PIL-F51B75BD-G00023",
+      "scenario_id": "D11",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0063",
+      "case_id": "AVAL-PIL-F51B75BD-000033",
+      "episode_id": "D11-PIL-F51B75BD-G00023",
+      "scenario_id": "D11",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "TRIAGEM_MANUAL"
+    },
+    {
+      "review_id": "ROTULO-0064",
+      "case_id": "AVAL-PIL-F51B75BD-000034",
+      "episode_id": "D11-PIL-F51B75BD-G00023",
+      "scenario_id": "D11",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0065",
+      "case_id": "AVAL-PIL-F51B75BD-000034",
+      "episode_id": "D11-PIL-F51B75BD-G00023",
+      "scenario_id": "D11",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "TRIAGEM_MANUAL"
+    },
+    {
+      "review_id": "ROTULO-0066",
+      "case_id": "AVAL-PIL-F51B75BD-000035",
+      "episode_id": "D12-PIL-F51B75BD-G00024",
+      "scenario_id": "D12",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0067",
+      "case_id": "AVAL-PIL-F51B75BD-000035",
+      "episode_id": "D12-PIL-F51B75BD-G00024",
+      "scenario_id": "D12",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0068",
+      "case_id": "AVAL-PIL-F51B75BD-000036",
+      "episode_id": "D12-PIL-F51B75BD-G00024",
+      "scenario_id": "D12",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0069",
+      "case_id": "AVAL-PIL-F51B75BD-000037",
+      "episode_id": "D13-PIL-F51B75BD-G00025",
+      "scenario_id": "D13",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0070",
+      "case_id": "AVAL-PIL-F51B75BD-000037",
+      "episode_id": "D13-PIL-F51B75BD-G00025",
+      "scenario_id": "D13",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0071",
+      "case_id": "AVAL-PIL-F51B75BD-000038",
+      "episode_id": "D13-PIL-F51B75BD-G00025",
+      "scenario_id": "D13",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0072",
+      "case_id": "AVAL-PIL-F51B75BD-000039",
+      "episode_id": "D14-PIL-F51B75BD-G00026",
+      "scenario_id": "D14",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0073",
+      "case_id": "AVAL-PIL-F51B75BD-000039",
+      "episode_id": "D14-PIL-F51B75BD-G00026",
+      "scenario_id": "D14",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0074",
+      "case_id": "AVAL-PIL-F51B75BD-000040",
+      "episode_id": "D14-PIL-F51B75BD-G00026",
+      "scenario_id": "D14",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0075",
+      "case_id": "AVAL-PIL-F51B75BD-000040",
+      "episode_id": "D14-PIL-F51B75BD-G00026",
+      "scenario_id": "D14",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0076",
+      "case_id": "AVAL-PIL-F51B75BD-000041",
+      "episode_id": "D15-PIL-F51B75BD-G00027",
+      "scenario_id": "D15",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0077",
+      "case_id": "AVAL-PIL-F51B75BD-000041",
+      "episode_id": "D15-PIL-F51B75BD-G00027",
+      "scenario_id": "D15",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0078",
+      "case_id": "AVAL-PIL-F51B75BD-000042",
+      "episode_id": "D15-PIL-F51B75BD-G00027",
+      "scenario_id": "D15",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0079",
+      "case_id": "AVAL-PIL-F51B75BD-000043",
+      "episode_id": "C13-PIL-F51B75BD-G00028",
+      "scenario_id": "C13",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0080",
+      "case_id": "AVAL-PIL-F51B75BD-000043",
+      "episode_id": "C13-PIL-F51B75BD-G00028",
+      "scenario_id": "C13",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "OBRA"
+    },
+    {
+      "review_id": "ROTULO-0081",
+      "case_id": "AVAL-PIL-F51B75BD-000044",
+      "episode_id": "C14-PIL-F51B75BD-G00029",
+      "scenario_id": "C14",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0082",
+      "case_id": "AVAL-PIL-F51B75BD-000044",
+      "episode_id": "C14-PIL-F51B75BD-G00029",
+      "scenario_id": "C14",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0083",
+      "case_id": "AVAL-PIL-F51B75BD-000045",
+      "episode_id": "C15-PIL-F51B75BD-G00030",
+      "scenario_id": "C15",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0084",
+      "case_id": "AVAL-PIL-F51B75BD-000045",
+      "episode_id": "C15-PIL-F51B75BD-G00030",
+      "scenario_id": "C15",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "SOB_DEMANDA"
+    },
+    {
+      "review_id": "ROTULO-0085",
+      "case_id": "AVAL-PIL-F51B75BD-000046",
+      "episode_id": "C16-PIL-F51B75BD-G00031",
+      "scenario_id": "C16",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0086",
+      "case_id": "AVAL-PIL-F51B75BD-000046",
+      "episode_id": "C16-PIL-F51B75BD-G00031",
+      "scenario_id": "C16",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "SOB_DEMANDA"
+    },
+    {
+      "review_id": "ROTULO-0087",
+      "case_id": "AVAL-PIL-F51B75BD-000047",
+      "episode_id": "C17-PIL-F51B75BD-G00032",
+      "scenario_id": "C17",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0088",
+      "case_id": "AVAL-PIL-F51B75BD-000047",
+      "episode_id": "C17-PIL-F51B75BD-G00032",
+      "scenario_id": "C17",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "TRIAGEM_MANUAL"
+    },
+    {
+      "review_id": "ROTULO-0089",
+      "case_id": "AVAL-PIL-F51B75BD-000048",
+      "episode_id": "C18-PIL-F51B75BD-G00033",
+      "scenario_id": "C18",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0090",
+      "case_id": "AVAL-PIL-F51B75BD-000048",
+      "episode_id": "C18-PIL-F51B75BD-G00033",
+      "scenario_id": "C18",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0091",
+      "case_id": "AVAL-PIL-F51B75BD-000049",
+      "episode_id": "C19-PIL-F51B75BD-G00034",
+      "scenario_id": "C19",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0092",
+      "case_id": "AVAL-PIL-F51B75BD-000049",
+      "episode_id": "C19-PIL-F51B75BD-G00034",
+      "scenario_id": "C19",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "DEMO"
+    },
+    {
+      "review_id": "ROTULO-0093",
+      "case_id": "AVAL-PIL-F51B75BD-000050",
+      "episode_id": "C20-PIL-F51B75BD-G00035",
+      "scenario_id": "C20",
+      "etapa": "DEDUPLICACAO",
+      "gabarito_sintetico": "NAO_DUPLICADO"
+    },
+    {
+      "review_id": "ROTULO-0094",
+      "case_id": "AVAL-PIL-F51B75BD-000050",
+      "episode_id": "C20-PIL-F51B75BD-G00035",
+      "scenario_id": "C20",
+      "etapa": "CLASSIFICACAO",
+      "gabarito_sintetico": "SOB_DEMANDA"
+    }
+  ]
+}

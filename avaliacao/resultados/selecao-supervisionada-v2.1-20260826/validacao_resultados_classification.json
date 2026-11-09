@@ -1,0 +1,26 @@
+{
+  "schema": "projeto-ic-validacao-resultados-selecao-v2",
+  "validated_at": "2026-09-10T16:00:19.452027+00:00",
+  "status": "VALID_PARTIAL_TASK_SCOPE",
+  "validated_tasks": [
+    "classification"
+  ],
+  "output_dir": "avaliacao\\resultados\\selecao-supervisionada-v2.1-20260826",
+  "protocol_sha256": "3a58410ecbe440b3a759c2673a9f4de5e9329dcae78e18e7b1d2da6cdda73c3e",
+  "run_fingerprint": "6b112d9f1d331c571e47ffbe4e9478813d748a50f1e5536c45d024c336dec211",
+  "configurations": 35,
+  "classification_configurations": 35,
+  "deduplication_configurations": 0,
+  "predictions": 38990,
+  "fold_rows": 175,
+  "paired_group_comparisons": 8,
+  "paired_objective_comparisons": 40,
+  "xai_finalists": 1,
+  "latency_scenarios": 1,
+  "retrieval_detail_rows": 2000,
+  "retrieval_metrics_recomputed": true,
+  "metrics_recomputed_from_oof": true,
+  "ranking_recomputed": true,
+  "development_only": true,
+  "confirmatory_eligible": false
+}

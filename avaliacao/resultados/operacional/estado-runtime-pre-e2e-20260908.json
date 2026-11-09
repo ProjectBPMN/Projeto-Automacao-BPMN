@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PASS",
+  "erro_ia": 0,
+  "active_queue": 0,
+  "open_dlq": 0,
+  "historical_records_deleted": false,
+  "scientific_result": false,
+  "semantic_correctness_confirmed": false,
+  "interpretation_limit": "Contagens operacionais; não validam a correção semântica das decisões."
+}

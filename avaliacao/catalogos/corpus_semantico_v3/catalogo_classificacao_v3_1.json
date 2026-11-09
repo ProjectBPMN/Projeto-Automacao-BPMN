@@ -1,0 +1,95 @@
+{
+  "schema_version": "3.1.0",
+  "status": "SINTETICO_PROXY_PENDENTE_ADJUDICACAO",
+  "note": "Cada ativo e cada mecanismo alteram o fato decisório; local, solicitante e estilo nunca definem família. Cinco cenários do mesmo ativo compartilham um grupo-fonte superior.",
+  "mechanisms": {
+    "OBRA": [
+      ["implantacao", "implantar {asset} onde não existe estrutura equivalente", "inclui fundação, estrutura e instalações permanentes novas"],
+      ["ampliacao", "ampliar fisicamente {asset} além dos limites atuais", "a área construída e a envoltória da edificação serão aumentadas"],
+      ["mudanca_estrutural", "reconfigurar {asset} com intervenção no sistema resistente", "o projeto altera pilares, vigas, lajes ou fundações"],
+      ["reconstrucao_integral", "demolir e reconstruir integralmente {asset}", "o layout e os principais sistemas construtivos serão refeitos"],
+      ["infraestrutura_principal", "criar infraestrutura principal permanente para {asset}", "será implantada capacidade física inexistente, com obra civil associada"]
+    ],
+    "DEMO": [
+      ["troca_localizada", "substituir somente o componente avariado de {asset}", "a instalação, o vão e a capacidade existentes serão preservados"],
+      ["ajuste", "regular e fixar novamente {asset}", "não haverá ampliação nem alteração estrutural"],
+      ["reparo", "reparar a falha pontual de {asset}", "o atendimento permanece restrito ao elemento existente"],
+      ["desobstrucao", "limpar ou desobstruir {asset}", "o traçado e a capacidade do sistema não serão modificados"],
+      ["recomposicao", "recompor o acabamento ou a vedação de {asset}", "a intervenção é superficial e localizada"]
+    ],
+    "SOB_DEMANDA": [
+      ["diagnostico_fabricante", "diagnosticar falha interna em {asset}", "é necessária ferramenta proprietária ou assistência autorizada"],
+      ["calibracao", "calibrar e certificar {asset}", "o resultado exige rastreabilidade metrológica de prestador habilitado"],
+      ["garantia", "acionar a garantia de {asset}", "abrir o equipamento internamente invalidaria a cobertura contratual"],
+      ["contrato", "executar manutenção prevista em contrato para {asset}", "o ativo possui atendimento terceirizado obrigatório"],
+      ["seguranca_regulada", "corrigir falha de segurança em {asset}", "norma técnica e risco operacional exigem profissional legalmente habilitado"]
+    ],
+    "TRIAGEM_MANUAL": [
+      ["objeto_ausente", "atender ocorrência relacionada a {asset}", "o objeto ou componente afetado não foi identificado"],
+      ["escopo_contraditorio", "avaliar pedido contraditório envolvendo {asset}", "o relato mistura reparo pontual e reconstrução sem indicar o escopo real"],
+      ["multiplos_servicos", "atender vários problemas associados a {asset}", "ativos e executores distintos não foram separados em solicitações verificáveis"],
+      ["evidencia_ausente", "resolver {asset} conforme foto ou áudio citado", "o anexo não foi enviado e o texto não descreve sintoma suficiente"],
+      ["fronteira_indefinida", "definir o tratamento de {asset}", "faltam material, extensão ou estado para distinguir as modalidades possíveis"]
+    ]
+  },
+  "locked_mechanisms": {
+    "OBRA": [
+      ["programa_novo", "O programa de necessidades de {asset} parte de área livre e prevê canteiro completo", "Memorial e desenhos incluem terraplenagem, fundações e edificação inédita"],
+      ["expansao_envoltoria", "O limite externo de {asset} será deslocado para incorporar área hoje descoberta", "A solução prolonga cobertura, laje e fachadas, aumentando a área física"],
+      ["reforco_sistema_resistente", "Laudo de {asset} determinou substituição e reforço de elementos portantes", "A execução interfere no caminho de cargas e depende de projeto estrutural"],
+      ["reforma_total", "Todo o interior de {asset} será removido para outra organização física", "Paredes, redes e acabamentos serão reconstruídos segundo novo projeto"],
+      ["rede_primaria_nova", "O atendimento de {asset} requer uma rede troncal que ainda não existe", "Escavações, bases e unidades principais criam infraestrutura permanente"]
+    ],
+    "DEMO": [
+      ["peca_avariada", "Foi isolada uma única peça defeituosa em {asset}; solicita-se sua reposição", "Nenhum outro elemento ou dimensão será alterado"],
+      ["regulagem_mecanica", "{asset} perdeu alinhamento e precisa apenas de regulagem", "A geometria e os apoios originais continuam adequados"],
+      ["correcao_pontual", "A falha de {asset} foi localizada em um ponto reparável", "O serviço não cria rede, área ou capacidade adicional"],
+      ["retirada_de_residuo", "Resíduo impede o funcionamento de {asset} e deve ser removido", "Após a limpeza o conjunto existente será conservado"],
+      ["selagem_superficial", "Há perda localizada de acabamento ou selagem em {asset}", "Somente a pequena faixa afetada receberá recomposição"]
+    ],
+    "SOB_DEMANDA": [
+      ["codigo_proprietario", "{asset} registra código interno que exige leitura do software do fabricante", "A equipe local não dispõe da interface de diagnóstico autorizada"],
+      ["certificado_rastreavel", "O certificado periódico de {asset} venceu e precisa ser renovado", "Laboratório acreditado deve medir, ajustar e emitir rastreabilidade"],
+      ["chamado_em_garantia", "{asset} ainda está coberto e a falha deve ser comunicada ao fornecedor", "Intervenção local comprometeria lacres e responsabilidade contratual"],
+      ["ordem_contratual", "A manutenção de {asset} consta de contrato exclusivo vigente", "A ordem deve ser executada pela empresa designada"],
+      ["habilitacao_especifica", "A anomalia de {asset} envolve risco controlado por norma específica", "Somente técnico habilitado e equipado pode intervir"]
+    ],
+    "TRIAGEM_MANUAL": [
+      ["referente_desconhecido", "O chamado menciona {asset}, mas não permite localizar qual objeto precisa de ação", "Não existe identificador ou descrição física suficiente"],
+      ["alternativas_incompativeis", "Para {asset}, o solicitante apresenta duas intervenções incompatíveis como se fossem equivalentes", "Sem inspeção não se sabe qual fato corresponde à ocorrência"],
+      ["chamado_composto", "{asset} aparece junto de falhas independentes em uma única mensagem", "É preciso separar objetos, locais e responsáveis antes do encaminhamento"],
+      ["fonte_indisponivel", "A única explicação de {asset} estaria em mídia que não acompanha o chamado", "O conteúdo visível não contém ação nem sintoma verificável"],
+      ["criterio_faltante", "A modalidade de {asset} depende de medida ou material que não foi informado", "As alternativas levam a executores distintos e nenhuma pode ser escolhida com segurança"]
+    ]
+  },
+  "assets": {
+    "OBRA": [
+      ["biotério de quarentena", "Manutenção Predial"], ["banco climatizado de sementes", "Manutenção Predial"], ["plataforma de observação astronômica", "Manutenção Predial"], ["central coberta de resíduos", "Manutenção Predial"], ["bicicletário institucional", "Manutenção Predial"],
+      ["doca de carga da agroindústria", "Manutenção Predial"], ["torre externa de escada de emergência", "Manutenção Predial"], ["estufa didática permanente", "Manutenção Predial"], ["campo de provas geotécnicas", "Manutenção Predial"], ["bacia estrutural de detenção pluvial", "Hidráulica"],
+      ["depósito segregado de reagentes", "Manutenção Predial"], ["ala de processamento de leite", "Manutenção Predial"], ["passagem inferior de pedestres", "Manutenção Predial"], ["cobertura solar do estacionamento", "Elétrica"], ["câmara de cadeia fria incorporada ao prédio", "Manutenção Predial"],
+      ["passarela acessível sobre o córrego", "Manutenção Predial"], ["caixa cênica ampliada do auditório", "Manutenção Predial"], ["mezanino estrutural do laboratório", "Manutenção Predial"], ["cofre em alvenaria para acervo", "Manutenção Predial"], ["reservatório de emergência contra incêndio", "Hidráulica"],
+      ["ala de isolamento veterinário", "Manutenção Predial", "TESTE_BLOQUEADO"], ["pavilhão de compostagem", "Manutenção Predial", "TESTE_BLOQUEADO"], ["base estrutural para silo de grãos", "Manutenção Predial", "TESTE_BLOQUEADO"], ["baia coberta de lavagem animal", "Manutenção Predial", "TESTE_BLOQUEADO"], ["recinto da nova subestação", "Elétrica", "TESTE_BLOQUEADO"]
+    ],
+    "DEMO": [
+      ["mola aérea da porta corta-fogo", "Mecânica Geral"], ["grelha do canal de piso", "Hidráulica"], ["batente de borracha do laboratório", "Carpintaria / Marcenaria"], ["rejunte da bancada de lavagem", "Manutenção Predial"], ["visor de nível do reservatório", "Hidráulica"],
+      ["suporte de projetor no teto", "Mecânica Geral"], ["rodízio do carrinho de biblioteca", "Mecânica Geral"], ["tela mosquiteira da copa", "Carpintaria / Marcenaria"], ["tampa da canaleta de cabos", "Elétrica"], ["ralo linear do vestiário", "Hidráulica"],
+      ["trinco da janela basculante", "Carpintaria / Marcenaria"], ["placa acústica do auditório", "Manutenção Predial"], ["protetor de quina do corredor", "Manutenção Predial"], ["corrente da calha pluvial", "Manutenção Predial"], ["espelho da caixa de inspeção", "Hidráulica"],
+      ["guarnição da porta do arquivo", "Carpintaria / Marcenaria"], ["pino da dobradiça do portão manual", "Mecânica Geral"], ["ladrilho tátil solto", "Manutenção Predial"], ["acabamento do interruptor de campainha", "Elétrica"], ["vedante do registro de jardim", "Hidráulica"],
+      ["fecho do alçapão de inspeção", "Mecânica Geral", "TESTE_BLOQUEADO"], ["cantoneira do degrau existente", "Mecânica Geral", "TESTE_BLOQUEADO"], ["aro da grelha de ventilação passiva", "Manutenção Predial", "TESTE_BLOQUEADO"], ["pingadeira da janela do herbário", "Manutenção Predial", "TESTE_BLOQUEADO"], ["bucha do corrimão existente", "Mecânica Geral", "TESTE_BLOQUEADO"]
+    ],
+    "SOB_DEMANDA": [
+      ["sequenciador genético", "Suporte a Serviços Terceirizados"], ["liofilizador piloto", "Suporte a Serviços Terceirizados"], ["espectrômetro de massas", "Suporte a Serviços Terceirizados"], ["câmara de crescimento vegetal", "Suporte a Serviços Terceirizados"], ["analisador automático de leite", "Suporte a Serviços Terceirizados"],
+      ["torno CNC didático", "Suporte a Serviços Terceirizados"], ["sistema de dosagem de cloro", "Suporte a Serviços Terceirizados"], ["detector de incêndio endereçável", "Suporte a Serviços Terceirizados"], ["balança rodoviária eletrônica", "Suporte a Serviços Terceirizados"], ["câmara anecoica de ensaio", "Suporte a Serviços Terceirizados"],
+      ["ultrafreezer de amostras", "Suporte a Serviços Terceirizados"], ["digestor de fibras", "Suporte a Serviços Terceirizados"], ["cabine de fluxo laminar", "Suporte a Serviços Terceirizados"], ["telemetria do reservatório", "Suporte a Serviços Terceirizados"], ["controlador do pivô de irrigação", "Suporte a Serviços Terceirizados"],
+      ["forno tubular de laboratório", "Suporte a Serviços Terceirizados"], ["scanner planetário de acervo", "Suporte a Serviços Terceirizados"], ["sistema de áudio do auditório", "Suporte a Serviços Terceirizados"], ["barreira automática veicular", "Suporte a Serviços Terceirizados"], ["reator de bancada pressurizado", "Suporte a Serviços Terceirizados"],
+      ["citômetro de fluxo", "Suporte a Serviços Terceirizados", "TESTE_BLOQUEADO"], ["microtomógrafo de raios X", "Suporte a Serviços Terceirizados", "TESTE_BLOQUEADO"], ["plataforma robótica de pipetagem", "Suporte a Serviços Terceirizados", "TESTE_BLOQUEADO"], ["sistema de supressão por gás", "Suporte a Serviços Terceirizados", "TESTE_BLOQUEADO"], ["estação total robotizada", "Suporte a Serviços Terceirizados", "TESTE_BLOQUEADO"]
+    ],
+    "TRIAGEM_MANUAL": [
+      ["estrutura chamada apenas de módulo", "Manutenção Predial"], ["equipamento indicado por apelido local", "Mecânica Geral"], ["ponto molhado sem origem descrita", "Hidráulica"], ["ruído relatado em setor com várias máquinas", "Mecânica Geral"], ["pedido misto de compra e conserto", "Suporte a Serviços Terceirizados"],
+      ["divisão de sala sem material definido", "Manutenção Predial"], ["cobertura sem extensão informada", "Manutenção Predial"], ["dois patrimônios conflitantes", "Mecânica Geral"], ["odor sem ambiente verificável", "Hidráulica"], ["painel mencionado sem sistema identificado", "Elétrica"],
+      ["ocorrência em dois prédios simultâneos", "Manutenção Predial"], ["intervenção descrita só como adequação", "Manutenção Predial"], ["máquina sem fabricante ou função", "Mecânica Geral"], ["parede com ação não especificada", "Manutenção Predial"], ["rede sem distinção entre física e lógica", "Elétrica"],
+      ["solicitação baseada em orçamento ausente", "Suporte a Serviços Terceirizados"], ["ativo descrito somente pela cor", "Mecânica Geral"], ["serviço citado em áudio não anexado", "Manutenção Predial"], ["falha com estado resolvido e aberto ao mesmo tempo", "Manutenção Predial"], ["pedido para classificar sem descrever serviço", "Manutenção Predial"],
+      ["componente referido apenas como peça três", "Mecânica Geral", "TESTE_BLOQUEADO"], ["localização dada por referência removida", "Manutenção Predial", "TESTE_BLOQUEADO"], ["reforma ou limpeza conforme decisão futura", "Manutenção Predial", "TESTE_BLOQUEADO"], ["sistema citado por sigla não cadastrada", "Suporte a Serviços Terceirizados", "TESTE_BLOQUEADO"], ["ocorrência que reúne três executores", "Manutenção Predial", "TESTE_BLOQUEADO"]
+    ]
+  }
+}

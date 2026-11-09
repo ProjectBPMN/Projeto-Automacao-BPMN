@@ -1,0 +1,78 @@
+{
+  "schema_version": "confirmatory-evaluation-config-v1",
+  "protocol_id": "PREENCHER_ID_IMUTAVEL",
+  "hypotheses": [
+    {
+      "id": "H1",
+      "primary": true,
+      "statement": "PREENCHER_HIPOTESE",
+      "endpoint": "ALL_PRE_REGISTERED_GATES",
+      "null_hypothesis": "PREENCHER_H0",
+      "decision_rule": "ALL_GATES_PASS"
+    }
+  ],
+  "candidate": {
+    "id": "PREENCHER_CANDIDATO_CONGELADO",
+    "task": "deduplication",
+    "selection_evidence_ref": "PREENCHER_REFERENCIA_DESENVOLVIMENTO",
+    "frozen_no_retraining": true,
+    "trained_without_holdout": true
+  },
+  "metrics": [
+    "brier",
+    "log_loss",
+    "ece",
+    "risk_coverage",
+    "subgroups",
+    "critical_errors"
+  ],
+  "decision_policy": {
+    "automatic_duplicate_min_probability": "PREENCHER",
+    "automatic_nonduplicate_max_probability": "PREENCHER",
+    "abstain_between_thresholds": true
+  },
+  "analysis": {
+    "confidence": 0.95,
+    "ece_bins": 10,
+    "missing_prediction_policy": "FAIL_CLOSED",
+    "single_confirmatory_execution": true,
+    "count_abstention_as_correct": false
+  },
+  "gates": {
+    "minimum_independent_families": "PREENCHER_COM_PLANEJAMENTO_FORMAL",
+    "maximum_technical_failures": 0,
+    "minimum_automatic_coverage": "PREENCHER",
+    "maximum_selective_risk": "PREENCHER",
+    "maximum_ece": "PREENCHER",
+    "maximum_brier": "PREENCHER"
+  },
+  "subgroups": [
+    "PREENCHER_DIMENSAO_PRE_ESPECIFICADA"
+  ],
+  "critical_errors": [
+    {
+      "id": "FN_DUPLICIDADE_AUTOMATICO",
+      "true_label": "DUPLICADO",
+      "automatic_predicted_label": "NAO_DUPLICADO",
+      "maximum_events": 0,
+      "confidence": 0.95,
+      "maximum_upper_exclusive": 0.02,
+      "minimum_independent_exposures": 149
+    },
+    {
+      "id": "FP_DUPLICIDADE_AUTOMATICO",
+      "true_label": "NAO_DUPLICADO",
+      "automatic_predicted_label": "DUPLICADO",
+      "maximum_events": 0,
+      "confidence": 0.95,
+      "maximum_upper_exclusive": 0.02,
+      "minimum_independent_exposures": 149
+    }
+  ],
+  "approvals": {
+    "institutional_responsible_id": "PREENCHER",
+    "scientific_reviewer_id": "PREENCHER_OUTRA_PESSOA",
+    "approved_at": "PREENCHER_ISO8601_COM_FUSO",
+    "approval_ref": "PREENCHER_REFERENCIA_DE_ACEITE"
+  }
+}

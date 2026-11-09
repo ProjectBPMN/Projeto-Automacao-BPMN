@@ -1,0 +1,28 @@
+{
+  "schema": "projeto-ic-validacao-resultados-selecao-v2",
+  "validated_at": "2026-08-18T18:16:03.902331+00:00",
+  "status": "INVALIDATED_POST_AUDIT",
+  "invalidated_at": "2026-08-26",
+  "invalidation_reasons": [
+    "O SHA-256 congelado 620a2004... não corresponde ao corpus versionado e não é reproduzível a partir do histórico Git disponível.",
+    "narrative_core_sha256 separava paráfrases derivadas da mesma família-fonte.",
+    "episode_id tratava 200 episódios gerados por apenas 12 moldes-fonte como grupos independentes."
+  ],
+  "allowed_use": "AUDITORIA_HISTORICA_SOMENTE",
+  "output_dir": "avaliacao\\resultados\\selecao-supervisionada-v2",
+  "protocol_sha256": "359119aa924ea149732acdda549eb4cdc4994c93960eb10ab50ecab477194a1f",
+  "run_fingerprint": "5a5f6b1d1098b79f7d3f0a4e4ba4ffae1f35ade85c86ad0678cc83debccfc110",
+  "configurations": 90,
+  "classification_configurations": 35,
+  "deduplication_configurations": 55,
+  "predictions": 93990,
+  "fold_rows": 450,
+  "paired_group_comparisons": 18,
+  "paired_objective_comparisons": 100,
+  "xai_finalists": 2,
+  "latency_scenarios": 2,
+  "metrics_recomputed_from_oof": true,
+  "ranking_recomputed": true,
+  "development_only": true,
+  "confirmatory_eligible": false
+}

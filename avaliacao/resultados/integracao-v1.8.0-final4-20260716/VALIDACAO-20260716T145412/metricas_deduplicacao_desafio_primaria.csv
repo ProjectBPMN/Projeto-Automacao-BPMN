@@ -1,0 +1,2 @@
+run_id,total,cobertos,abstencoes,tp,fp,fn,tn,cobertura_automatica,acuracia,precisao,recall,recall_automatizado_global,f1,taxa_falso_positivo,taxa_falso_negativo,acuracia_referencia_entre_tp
+VALIDACAO-20260716T145412,1,1,0,1,0,0,0,1.000000,1.000000,1.000000,1.000000,1.000000,1.000000,,0.000000,1.000000

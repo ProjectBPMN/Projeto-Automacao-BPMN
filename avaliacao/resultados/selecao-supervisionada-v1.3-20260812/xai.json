@@ -1,0 +1,4245 @@
+[
+  {
+    "status": "COMPLETED",
+    "task": "classification",
+    "combination_id": "classification__hybrid__granite97m__linear_svm",
+    "method": "LinearExplainer",
+    "explains": "base_model_score_before_sigmoid_calibration_and_threshold",
+    "causal_interpretation": false,
+    "background_groups": [
+      "5846be7c5d9d8500b51fccf5050a4949394ac32bea598df559827c98aa1378f4",
+      "b103d5807c9c86e3d179af648d204d63059c9d85400e01fd2f790e64b6d90a45",
+      "73e89e1664ab439e608462112723e29e601389502e364ff5bf46c17f109490a2",
+      "2f8252b982618f6cb52127512bee092328700bffa261bd9e66a2dbaa17d53907",
+      "ec461a519e1316fbb84f105cf3cec7371189c18e78df708e5de4884c984ac43a",
+      "15e64dfeb9588573ba870513c9f6b5fe3bc6c8bd834ca7a5b2ff32788f83b6dd",
+      "98f8409e8dc971fe069e87a88e20ac7ca33377fa2e895438389b5dbb2a2ed3f0",
+      "83de73d7f38927ba1b294bf8c5119da1fe16c012486a23f19c0e85378d341b39",
+      "556e254c1be7aa96072244a299b52c7aae7c703552e6c791d5f00b988e4d8764",
+      "3f243a0de03fd7b98aa88c4b0815162080a37de67994191844cb872c4da0eddc",
+      "ae5825b2d3eac1cc8e3e4216b5dd2cda18003145c3b320215ae5c88f20502f07",
+      "165d8104233292f8ad4a2585835b22067de6886f25c2350031022ac90a926c58",
+      "b6f10ee8e5fa7431fd11b5d5efd9ddd5b624de245f8f092155020e5e3071d65f",
+      "c6b88c9bfd2a92a63f7c12b896eab80ac8f0959b241481219be39dfbb8a6dea6",
+      "71ccd860ae615219b27a5e8f7be94e30cfc8cc982833744d80d2da793d3fcb34",
+      "8db79e4b879c64296ca62f1d351556bcc67e974506ae12cee1a7e7907608ebe7",
+      "89f8db83fc9c1f61a8af218f66d6b9b110a44c1b49825f91a28e821ead976270",
+      "cf876eede53c324d590910302fbb7c19c111f6c7dcf0e930f81751daf49b0d93",
+      "1089875c09c73b61ffa5acfbd4acf87409982147cfb101745afd8a30d13cef7b",
+      "3abc6aa9018480036738b1d5050a2977cf5ed99ed7f29d1fc9aff62d90d0dbb0"
+    ],
+    "background_groups_sha256": "24dba052980be2ce23f5df77a1ed661606faf7e747bd1a9eee58f3a7cdd8c377",
+    "explained_unit_ids": [
+      "DEV-LOCAL-V1-000130",
+      "DEV-LOCAL-V1-000172",
+      "DEV-LOCAL-V1-000436",
+      "DEV-LOCAL-V1-000593",
+      "DEV-LOCAL-V1-000247",
+      "DEV-LOCAL-V1-000168",
+      "DEV-LOCAL-V1-000462",
+      "DEV-LOCAL-V1-000013",
+      "DEV-LOCAL-V1-000019",
+      "DEV-LOCAL-V1-000468",
+      "DEV-LOCAL-V1-000367",
+      "DEV-LOCAL-V1-000236",
+      "DEV-LOCAL-V1-000226",
+      "DEV-LOCAL-V1-000024",
+      "DEV-LOCAL-V1-000638",
+      "DEV-LOCAL-V1-000122",
+      "DEV-LOCAL-V1-000588",
+      "DEV-LOCAL-V1-000066",
+      "DEV-LOCAL-V1-000346",
+      "DEV-LOCAL-V1-000003",
+      "DEV-LOCAL-V1-000010",
+      "DEV-LOCAL-V1-000573",
+      "DEV-LOCAL-V1-000220",
+      "DEV-LOCAL-V1-000268"
+    ],
+    "explained_labels": [
+      0,
+      1,
+      2,
+      3,
+      1,
+      1,
+      2,
+      0,
+      0,
+      2,
+      2,
+      1,
+      1,
+      0,
+      3,
+      0,
+      3,
+      0,
+      2,
+      0,
+      0,
+      3,
+      1,
+      1
+    ],
+    "max_absolute_additivity_residual": 4.884981308350689e-15,
+    "feature_count": 12697,
+    "family_importance": [
+      {
+        "family": "tfidf_character",
+        "mean_abs_shap_sum": 1.0608453614577211,
+        "fraction": 0.44942968479071727
+      },
+      {
+        "family": "embedding",
+        "mean_abs_shap_sum": 0.6600120429340064,
+        "fraction": 0.27961568687664917
+      },
+      {
+        "family": "tfidf_word",
+        "mean_abs_shap_sum": 0.6395682580825202,
+        "fraction": 0.27095462833263356
+      }
+    ],
+    "global_top_features": [
+      {
+        "feature": "embedding__220",
+        "family": "embedding",
+        "mean_abs_shap": 0.009266883422732658
+      },
+      {
+        "feature": "tfidf__word__se",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.008921486565528318
+      },
+      {
+        "feature": "tfidf__word__ou",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.008915917735620801
+      },
+      {
+        "feature": "embedding__294",
+        "family": "embedding",
+        "mean_abs_shap": 0.007480352762732764
+      },
+      {
+        "feature": "embedding__190",
+        "family": "embedding",
+        "mean_abs_shap": 0.006591552047669318
+      },
+      {
+        "feature": "embedding__034",
+        "family": "embedding",
+        "mean_abs_shap": 0.006265826668468589
+      },
+      {
+        "feature": "embedding__374",
+        "family": "embedding",
+        "mean_abs_shap": 0.006206860265596004
+      },
+      {
+        "feature": "embedding__194",
+        "family": "embedding",
+        "mean_abs_shap": 0.005683389900645704
+      },
+      {
+        "feature": "embedding__257",
+        "family": "embedding",
+        "mean_abs_shap": 0.005603920059201288
+      },
+      {
+        "feature": "embedding__283",
+        "family": "embedding",
+        "mean_abs_shap": 0.005348701693385422
+      },
+      {
+        "feature": "embedding__041",
+        "family": "embedding",
+        "mean_abs_shap": 0.005094431461023199
+      },
+      {
+        "feature": "embedding__135",
+        "family": "embedding",
+        "mean_abs_shap": 0.0049754732978512595
+      },
+      {
+        "feature": "embedding__141",
+        "family": "embedding",
+        "mean_abs_shap": 0.004893540074913591
+      },
+      {
+        "feature": "embedding__349",
+        "family": "embedding",
+        "mean_abs_shap": 0.004819174921364512
+      },
+      {
+        "feature": "embedding__362",
+        "family": "embedding",
+        "mean_abs_shap": 0.004748502272916577
+      },
+      {
+        "feature": "embedding__333",
+        "family": "embedding",
+        "mean_abs_shap": 0.00474240133794993
+      },
+      {
+        "feature": "tfidf__word__porta",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004662451185258806
+      },
+      {
+        "feature": "embedding__219",
+        "family": "embedding",
+        "mean_abs_shap": 0.004612250856536302
+      },
+      {
+        "feature": "embedding__378",
+        "family": "embedding",
+        "mean_abs_shap": 0.004558492506698471
+      },
+      {
+        "feature": "tfidf__word__na",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.0045035257661407875
+      },
+      {
+        "feature": "tfidf__word__existente",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004479147122198498
+      },
+      {
+        "feature": "embedding__260",
+        "family": "embedding",
+        "mean_abs_shap": 0.004261273602482295
+      },
+      {
+        "feature": "tfidf__word__de uma",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00425023683992597
+      },
+      {
+        "feature": "tfidf__word__nova",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004247039080848602
+      },
+      {
+        "feature": "embedding__047",
+        "family": "embedding",
+        "mean_abs_shap": 0.0040694158046650905
+      },
+      {
+        "feature": "embedding__082",
+        "family": "embedding",
+        "mean_abs_shap": 0.004061736996028933
+      },
+      {
+        "feature": "embedding__032",
+        "family": "embedding",
+        "mean_abs_shap": 0.004019749239007183
+      },
+      {
+        "feature": "tfidf__word__nao",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00397406985900716
+      },
+      {
+        "feature": "embedding__369",
+        "family": "embedding",
+        "mean_abs_shap": 0.00385804819928481
+      },
+      {
+        "feature": "embedding__074",
+        "family": "embedding",
+        "mean_abs_shap": 0.0038456788441976354
+      },
+      {
+        "feature": "embedding__005",
+        "family": "embedding",
+        "mean_abs_shap": 0.0037964171862540316
+      },
+      {
+        "feature": "tfidf__word__uma",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.0037879783698279925
+      },
+      {
+        "feature": "embedding__238",
+        "family": "embedding",
+        "mean_abs_shap": 0.0037760981461120065
+      },
+      {
+        "feature": "embedding__098",
+        "family": "embedding",
+        "mean_abs_shap": 0.0037088092982333295
+      },
+      {
+        "feature": "embedding__290",
+        "family": "embedding",
+        "mean_abs_shap": 0.0036118907894672285
+      },
+      {
+        "feature": "embedding__128",
+        "family": "embedding",
+        "mean_abs_shap": 0.0036114137891068393
+      },
+      {
+        "feature": "embedding__193",
+        "family": "embedding",
+        "mean_abs_shap": 0.0035718161578799095
+      },
+      {
+        "feature": "tfidf__word__consertar",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.0035655276727718037
+      },
+      {
+        "feature": "embedding__138",
+        "family": "embedding",
+        "mean_abs_shap": 0.0035366089516457367
+      },
+      {
+        "feature": "tfidf__word__para",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.0035063447073405557
+      },
+      {
+        "feature": "embedding__363",
+        "family": "embedding",
+        "mean_abs_shap": 0.003434834415442914
+      },
+      {
+        "feature": "embedding__013",
+        "family": "embedding",
+        "mean_abs_shap": 0.0034292511095762885
+      },
+      {
+        "feature": "embedding__010",
+        "family": "embedding",
+        "mean_abs_shap": 0.0034185283290171253
+      },
+      {
+        "feature": "embedding__292",
+        "family": "embedding",
+        "mean_abs_shap": 0.003412543560576488
+      },
+      {
+        "feature": "embedding__046",
+        "family": "embedding",
+        "mean_abs_shap": 0.0034065790673441718
+      },
+      {
+        "feature": "tfidf__word__09 02",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.003393268658753777
+      },
+      {
+        "feature": "tfidf__word__09",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.003393268658753777
+      },
+      {
+        "feature": "tfidf__word__em 09",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.003393268658753777
+      },
+      {
+        "feature": "embedding__156",
+        "family": "embedding",
+        "mean_abs_shap": 0.003350539031256827
+      },
+      {
+        "feature": "embedding__068",
+        "family": "embedding",
+        "mean_abs_shap": 0.003345081255652523
+      },
+      {
+        "feature": "embedding__008",
+        "family": "embedding",
+        "mean_abs_shap": 0.0033304548569563345
+      },
+      {
+        "feature": "embedding__295",
+        "family": "embedding",
+        "mean_abs_shap": 0.003281432554261145
+      },
+      {
+        "feature": "embedding__085",
+        "family": "embedding",
+        "mean_abs_shap": 0.0032745095825686098
+      },
+      {
+        "feature": "tfidf__word__um",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.0032696247734587494
+      },
+      {
+        "feature": "embedding__186",
+        "family": "embedding",
+        "mean_abs_shap": 0.0032520503039819193
+      },
+      {
+        "feature": "embedding__057",
+        "family": "embedding",
+        "mean_abs_shap": 0.003204100555000639
+      },
+      {
+        "feature": "embedding__149",
+        "family": "embedding",
+        "mean_abs_shap": 0.003204051169852455
+      },
+      {
+        "feature": "embedding__311",
+        "family": "embedding",
+        "mean_abs_shap": 0.003194332117485809
+      },
+      {
+        "feature": "embedding__042",
+        "family": "embedding",
+        "mean_abs_shap": 0.0031474894569239625
+      },
+      {
+        "feature": "embedding__312",
+        "family": "embedding",
+        "mean_abs_shap": 0.0031442895631468453
+      },
+      {
+        "feature": "embedding__268",
+        "family": "embedding",
+        "mean_abs_shap": 0.003143864609930816
+      },
+      {
+        "feature": "embedding__272",
+        "family": "embedding",
+        "mean_abs_shap": 0.0031277796453151427
+      },
+      {
+        "feature": "embedding__256",
+        "family": "embedding",
+        "mean_abs_shap": 0.0031213035690746908
+      },
+      {
+        "feature": "embedding__043",
+        "family": "embedding",
+        "mean_abs_shap": 0.003107766607179887
+      },
+      {
+        "feature": "embedding__073",
+        "family": "embedding",
+        "mean_abs_shap": 0.0031031264698339893
+      },
+      {
+        "feature": "tfidf__word__persiana",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.0030608999668030813
+      },
+      {
+        "feature": "embedding__056",
+        "family": "embedding",
+        "mean_abs_shap": 0.00300546524246879
+      },
+      {
+        "feature": "tfidf__word__tomada",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.003005073236439906
+      },
+      {
+        "feature": "embedding__341",
+        "family": "embedding",
+        "mean_abs_shap": 0.0029872107131538924
+      },
+      {
+        "feature": "tfidf__word__de um",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.0029692833343513713
+      },
+      {
+        "feature": "embedding__087",
+        "family": "embedding",
+        "mean_abs_shap": 0.0029193142262754833
+      },
+      {
+        "feature": "tfidf__word__de",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.0028935316294206605
+      },
+      {
+        "feature": "tfidf__word__area",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.002888615843860402
+      },
+      {
+        "feature": "embedding__280",
+        "family": "embedding",
+        "mean_abs_shap": 0.002888328822398183
+      },
+      {
+        "feature": "embedding__372",
+        "family": "embedding",
+        "mean_abs_shap": 0.0028554597162865764
+      },
+      {
+        "feature": "embedding__072",
+        "family": "embedding",
+        "mean_abs_shap": 0.0028421450362118923
+      },
+      {
+        "feature": "embedding__104",
+        "family": "embedding",
+        "mean_abs_shap": 0.002828801060191892
+      },
+      {
+        "feature": "embedding__006",
+        "family": "embedding",
+        "mean_abs_shap": 0.0027990983936985654
+      },
+      {
+        "feature": "embedding__269",
+        "family": "embedding",
+        "mean_abs_shap": 0.002790688513005896
+      },
+      {
+        "feature": "embedding__100",
+        "family": "embedding",
+        "mean_abs_shap": 0.0027846198880500657
+      },
+      {
+        "feature": "embedding__018",
+        "family": "embedding",
+        "mean_abs_shap": 0.002769043263352831
+      },
+      {
+        "feature": "embedding__003",
+        "family": "embedding",
+        "mean_abs_shap": 0.002746617893126507
+      },
+      {
+        "feature": "tfidf__word__corrigir",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.0027365280193359727
+      },
+      {
+        "feature": "tfidf__word__em 22",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.002731694313170213
+      },
+      {
+        "feature": "tfidf__word__22",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.002731694313170213
+      },
+      {
+        "feature": "tfidf__word__22 02",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.002731694313170213
+      },
+      {
+        "feature": "embedding__033",
+        "family": "embedding",
+        "mean_abs_shap": 0.0027177475996796644
+      },
+      {
+        "feature": "embedding__319",
+        "family": "embedding",
+        "mean_abs_shap": 0.002634145115228203
+      },
+      {
+        "feature": "embedding__164",
+        "family": "embedding",
+        "mean_abs_shap": 0.002614615496681353
+      },
+      {
+        "feature": "embedding__246",
+        "family": "embedding",
+        "mean_abs_shap": 0.0026102669352213136
+      },
+      {
+        "feature": "embedding__007",
+        "family": "embedding",
+        "mean_abs_shap": 0.0025955920903017004
+      },
+      {
+        "feature": "embedding__035",
+        "family": "embedding",
+        "mean_abs_shap": 0.0025949442611590415
+      },
+      {
+        "feature": "embedding__351",
+        "family": "embedding",
+        "mean_abs_shap": 0.0025408579594440365
+      },
+      {
+        "feature": "embedding__288",
+        "family": "embedding",
+        "mean_abs_shap": 0.00253117079935368
+      },
+      {
+        "feature": "embedding__377",
+        "family": "embedding",
+        "mean_abs_shap": 0.002507216414848094
+      },
+      {
+        "feature": "embedding__102",
+        "family": "embedding",
+        "mean_abs_shap": 0.0025056212055664545
+      },
+      {
+        "feature": "embedding__076",
+        "family": "embedding",
+        "mean_abs_shap": 0.002495880084400575
+      },
+      {
+        "feature": "embedding__146",
+        "family": "embedding",
+        "mean_abs_shap": 0.002484111571550897
+      },
+      {
+        "feature": "embedding__251",
+        "family": "embedding",
+        "mean_abs_shap": 0.002478975774091501
+      },
+      {
+        "feature": "embedding__366",
+        "family": "embedding",
+        "mean_abs_shap": 0.0024727778949158604
+      }
+    ],
+    "local_explanations": [
+      {
+        "unit_id": "DEV-LOCAL-V1-000130",
+        "gold": 0,
+        "target_class": "OBRA",
+        "base_value": -0.5396062048871284,
+        "base_model_output": 0.9499499383388421,
+        "reconstructed_base_model_output": 0.949949938338841,
+        "additivity_residual": -1.1102230246251565e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__novo",
+            "family": "tfidf_word",
+            "signed_shap": 0.04648503806742829
+          },
+          {
+            "feature": "tfidf__word__animal",
+            "family": "tfidf_word",
+            "signed_shap": 0.03302929407615965
+          },
+          {
+            "feature": "tfidf__word__abrigo",
+            "family": "tfidf_word",
+            "signed_shap": 0.03302929407615965
+          },
+          {
+            "feature": "tfidf__word__para",
+            "family": "tfidf_word",
+            "signed_shap": 0.030172285977364006
+          },
+          {
+            "feature": "embedding__294",
+            "family": "embedding",
+            "signed_shap": 0.025446618859161146
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf__word__nao",
+            "family": "tfidf_word",
+            "signed_shap": -0.012274928562996725
+          },
+          {
+            "feature": "embedding__135",
+            "family": "embedding",
+            "signed_shap": -0.007343716420132622
+          },
+          {
+            "feature": "embedding__297",
+            "family": "embedding",
+            "signed_shap": -0.007126283225755994
+          },
+          {
+            "feature": "embedding__366",
+            "family": "embedding",
+            "signed_shap": -0.006831068042722438
+          },
+          {
+            "feature": "embedding__336",
+            "family": "embedding",
+            "signed_shap": -0.006215403164744418
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000172",
+        "gold": 1,
+        "target_class": "DEMO",
+        "base_value": -0.21729131616830621,
+        "base_model_output": 0.8719695826807075,
+        "reconstructed_base_model_output": 0.8719695826807067,
+        "additivity_residual": -7.771561172376096e-16,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__disjuntor",
+            "family": "tfidf_word",
+            "signed_shap": 0.10321417447381243
+          },
+          {
+            "feature": "tfidf__word__defeituoso",
+            "family": "tfidf_word",
+            "signed_shap": 0.05174248754958171
+          },
+          {
+            "feature": "tfidf__word__trocar",
+            "family": "tfidf_word",
+            "signed_shap": 0.037215119857577104
+          },
+          {
+            "feature": "tfidf__word__disjuntor de",
+            "family": "tfidf_word",
+            "signed_shap": 0.036003930926226384
+          },
+          {
+            "feature": "tfidf__word__um circuito",
+            "family": "tfidf_word",
+            "signed_shap": 0.036003930926226384
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__162",
+            "family": "embedding",
+            "signed_shap": -0.013504547192066894
+          },
+          {
+            "feature": "embedding__074",
+            "family": "embedding",
+            "signed_shap": -0.011853707203860791
+          },
+          {
+            "feature": "embedding__068",
+            "family": "embedding",
+            "signed_shap": -0.01032251271777038
+          },
+          {
+            "feature": "embedding__276",
+            "family": "embedding",
+            "signed_shap": -0.009204287228887498
+          },
+          {
+            "feature": "tfidf__word__uma",
+            "family": "tfidf_word",
+            "signed_shap": -0.008100983563552112
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000436",
+        "gold": 2,
+        "target_class": "SOB_DEMANDA",
+        "base_value": -0.42659323517789155,
+        "base_model_output": 0.9520156581317577,
+        "reconstructed_base_model_output": 0.9520156581317576,
+        "additivity_residual": -1.1102230246251565e-16,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__industrial",
+            "family": "tfidf_word",
+            "signed_shap": 0.051969171797420916
+          },
+          {
+            "feature": "tfidf__word__corrigir",
+            "family": "tfidf_word",
+            "signed_shap": 0.025491840751251608
+          },
+          {
+            "feature": "tfidf__word__compressor",
+            "family": "tfidf_word",
+            "signed_shap": 0.023552813330960383
+          },
+          {
+            "feature": "tfidf__word__compressor industrial",
+            "family": "tfidf_word",
+            "signed_shap": 0.023552813330960383
+          },
+          {
+            "feature": "tfidf__word__17",
+            "family": "tfidf_word",
+            "signed_shap": 0.01798356278996037
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__104",
+            "family": "embedding",
+            "signed_shap": -0.00955118462487591
+          },
+          {
+            "feature": "embedding__042",
+            "family": "embedding",
+            "signed_shap": -0.008081264654221947
+          },
+          {
+            "feature": "embedding__214",
+            "family": "embedding",
+            "signed_shap": -0.005994631407522044
+          },
+          {
+            "feature": "embedding__073",
+            "family": "embedding",
+            "signed_shap": -0.004146063089192843
+          },
+          {
+            "feature": "embedding__349",
+            "family": "embedding",
+            "signed_shap": -0.003895846608491139
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000593",
+        "gold": 3,
+        "target_class": "TRIAGEM_MANUAL",
+        "base_value": -0.8877049630659477,
+        "base_model_output": 0.9803781856723726,
+        "reconstructed_base_model_output": 0.9803781856723746,
+        "additivity_residual": 1.9984014443252818e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__aparelho",
+            "family": "tfidf_word",
+            "signed_shap": 0.0920402669542558
+          },
+          {
+            "feature": "tfidf__word__se",
+            "family": "tfidf_word",
+            "signed_shap": 0.053239274497108004
+          },
+          {
+            "feature": "tfidf__word__sabe",
+            "family": "tfidf_word",
+            "signed_shap": 0.03549963255926706
+          },
+          {
+            "feature": "tfidf__word__esta",
+            "family": "tfidf_word",
+            "signed_shap": 0.03277146142040829
+          },
+          {
+            "feature": "tfidf__word__garantia nao",
+            "family": "tfidf_word",
+            "signed_shap": 0.028278144687229445
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf__word__ou",
+            "family": "tfidf_word",
+            "signed_shap": -0.011741782629607442
+          },
+          {
+            "feature": "embedding__351",
+            "family": "embedding",
+            "signed_shap": -0.008117572859852224
+          },
+          {
+            "feature": "embedding__260",
+            "family": "embedding",
+            "signed_shap": -0.00714022381983094
+          },
+          {
+            "feature": "tfidf__word__consertar",
+            "family": "tfidf_word",
+            "signed_shap": -0.005553392621969413
+          },
+          {
+            "feature": "tfidf__word__pedido",
+            "family": "tfidf_word",
+            "signed_shap": -0.005371107209596924
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000247",
+        "gold": 1,
+        "target_class": "DEMO",
+        "base_value": -0.21729131616830621,
+        "base_model_output": 0.8301292154140765,
+        "reconstructed_base_model_output": 0.8301292154140772,
+        "additivity_residual": 7.771561172376096e-16,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__persiana",
+            "family": "tfidf_word",
+            "signed_shap": 0.0788963795499777
+          },
+          {
+            "feature": "tfidf__word__de uma",
+            "family": "tfidf_word",
+            "signed_shap": 0.031686174483879746
+          },
+          {
+            "feature": "embedding__374",
+            "family": "embedding",
+            "signed_shap": 0.027596051713827004
+          },
+          {
+            "feature": "tfidf__word__persiana desalinhada",
+            "family": "tfidf_word",
+            "signed_shap": 0.02752121803161307
+          },
+          {
+            "feature": "tfidf__word__uma persiana",
+            "family": "tfidf_word",
+            "signed_shap": 0.02752121803161307
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__378",
+            "family": "embedding",
+            "signed_shap": -0.011740163590277476
+          },
+          {
+            "feature": "embedding__188",
+            "family": "embedding",
+            "signed_shap": -0.008589224229163965
+          },
+          {
+            "feature": "embedding__280",
+            "family": "embedding",
+            "signed_shap": -0.007535414868732919
+          },
+          {
+            "feature": "embedding__098",
+            "family": "embedding",
+            "signed_shap": -0.007301604078370876
+          },
+          {
+            "feature": "embedding__014",
+            "family": "embedding",
+            "signed_shap": -0.006800024147619263
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000168",
+        "gold": 1,
+        "target_class": "DEMO",
+        "base_value": -0.21729131616830621,
+        "base_model_output": 0.9537491427108151,
+        "reconstructed_base_model_output": 0.953749142710813,
+        "additivity_residual": -2.1094237467877974e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__tomada",
+            "family": "tfidf_word",
+            "signed_shap": 0.06441029814310242
+          },
+          {
+            "feature": "tfidf__word__repor",
+            "family": "tfidf_word",
+            "signed_shap": 0.027878380377975902
+          },
+          {
+            "feature": "tfidf__word__existente",
+            "family": "tfidf_word",
+            "signed_shap": 0.025925122945449967
+          },
+          {
+            "feature": "tfidf__word__tomada frouxa",
+            "family": "tfidf_word",
+            "signed_shap": 0.02246807608649038
+          },
+          {
+            "feature": "tfidf__word__frouxa",
+            "family": "tfidf_word",
+            "signed_shap": 0.02246807608649038
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf__word__se",
+            "family": "tfidf_word",
+            "signed_shap": -0.020979142347504004
+          },
+          {
+            "feature": "embedding__041",
+            "family": "embedding",
+            "signed_shap": -0.015312303025107448
+          },
+          {
+            "feature": "embedding__294",
+            "family": "embedding",
+            "signed_shap": -0.006553718777965967
+          },
+          {
+            "feature": "tfidf__word__de uma",
+            "family": "tfidf_word",
+            "signed_shap": -0.006382826158343892
+          },
+          {
+            "feature": "embedding__068",
+            "family": "embedding",
+            "signed_shap": -0.006261087113186467
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000462",
+        "gold": 2,
+        "target_class": "SOB_DEMANDA",
+        "base_value": -0.42659323517789155,
+        "base_model_output": 0.9199756721297402,
+        "reconstructed_base_model_output": 0.9199756721297376,
+        "additivity_residual": -2.55351295663786e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__falha",
+            "family": "tfidf_word",
+            "signed_shap": 0.05975812891940032
+          },
+          {
+            "feature": "embedding__294",
+            "family": "embedding",
+            "signed_shap": 0.045641195060192846
+          },
+          {
+            "feature": "tfidf__word__microscopio motorizado",
+            "family": "tfidf_word",
+            "signed_shap": 0.03945627947586146
+          },
+          {
+            "feature": "tfidf__word__microscopio",
+            "family": "tfidf_word",
+            "signed_shap": 0.03945627947586146
+          },
+          {
+            "feature": "tfidf__word__motorizado",
+            "family": "tfidf_word",
+            "signed_shap": 0.03945627947586146
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__190",
+            "family": "embedding",
+            "signed_shap": -0.016100228291700283
+          },
+          {
+            "feature": "embedding__186",
+            "family": "embedding",
+            "signed_shap": -0.01359082645559327
+          },
+          {
+            "feature": "embedding__219",
+            "family": "embedding",
+            "signed_shap": -0.010819168982256093
+          },
+          {
+            "feature": "embedding__032",
+            "family": "embedding",
+            "signed_shap": -0.010530061018625348
+          },
+          {
+            "feature": "embedding__046",
+            "family": "embedding",
+            "signed_shap": -0.010389222436453465
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000013",
+        "gold": 0,
+        "target_class": "OBRA",
+        "base_value": -0.5396062048871284,
+        "base_model_output": 0.9340765093494872,
+        "reconstructed_base_model_output": 0.9340765093494909,
+        "additivity_residual": 3.774758283725532e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__guarita",
+            "family": "tfidf_word",
+            "signed_shap": 0.05148469788583101
+          },
+          {
+            "feature": "embedding__220",
+            "family": "embedding",
+            "signed_shap": 0.04301322213888497
+          },
+          {
+            "feature": "tfidf__word__nova",
+            "family": "tfidf_word",
+            "signed_shap": 0.032509232296176964
+          },
+          {
+            "feature": "tfidf__word__projeto",
+            "family": "tfidf_word",
+            "signed_shap": 0.025306411599368188
+          },
+          {
+            "feature": "tfidf__word__erguer uma",
+            "family": "tfidf_word",
+            "signed_shap": 0.02205519405434878
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__193",
+            "family": "embedding",
+            "signed_shap": -0.00983817303155614
+          },
+          {
+            "feature": "tfidf__word__ginasio",
+            "family": "tfidf_word",
+            "signed_shap": -0.008656091172339668
+          },
+          {
+            "feature": "tfidf__word__ginasio do",
+            "family": "tfidf_word",
+            "signed_shap": -0.008656091172339668
+          },
+          {
+            "feature": "embedding__349",
+            "family": "embedding",
+            "signed_shap": -0.007660722565485023
+          },
+          {
+            "feature": "embedding__040",
+            "family": "embedding",
+            "signed_shap": -0.006409319148229832
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000019",
+        "gold": 0,
+        "target_class": "OBRA",
+        "base_value": -0.5396062048871284,
+        "base_model_output": 1.021821364546351,
+        "reconstructed_base_model_output": 1.0218213645463543,
+        "additivity_residual": 3.3306690738754696e-15,
+        "top_positive_features": [
+          {
+            "feature": "embedding__220",
+            "family": "embedding",
+            "signed_shap": 0.03352368178535858
+          },
+          {
+            "feature": "embedding__194",
+            "family": "embedding",
+            "signed_shap": 0.02510833272295517
+          },
+          {
+            "feature": "tfidf__word__02 02",
+            "family": "tfidf_word",
+            "signed_shap": 0.02229092243759807
+          },
+          {
+            "feature": "tfidf__word__em 02",
+            "family": "tfidf_word",
+            "signed_shap": 0.02229092243759807
+          },
+          {
+            "feature": "embedding__362",
+            "family": "embedding",
+            "signed_shap": 0.020423075799601557
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__085",
+            "family": "embedding",
+            "signed_shap": -0.010880579714254818
+          },
+          {
+            "feature": "embedding__374",
+            "family": "embedding",
+            "signed_shap": -0.006777129851239256
+          },
+          {
+            "feature": "tfidf__char__ des",
+            "family": "tfidf_character",
+            "signed_shap": -0.005181556390064247
+          },
+          {
+            "feature": "tfidf__char__str",
+            "family": "tfidf_character",
+            "signed_shap": -0.0049241395541445845
+          },
+          {
+            "feature": "embedding__141",
+            "family": "embedding",
+            "signed_shap": -0.004567610861145926
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000468",
+        "gold": 2,
+        "target_class": "SOB_DEMANDA",
+        "base_value": -0.42659323517789155,
+        "base_model_output": 0.980138062663274,
+        "reconstructed_base_model_output": 0.9801380626632781,
+        "additivity_residual": 4.107825191113079e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__leitura",
+            "family": "tfidf_word",
+            "signed_shap": 0.02922142199158446
+          },
+          {
+            "feature": "tfidf__word__espectrofotometro",
+            "family": "tfidf_word",
+            "signed_shap": 0.02922142199158446
+          },
+          {
+            "feature": "tfidf__word__diagnosticar",
+            "family": "tfidf_word",
+            "signed_shap": 0.025316216634200948
+          },
+          {
+            "feature": "embedding__128",
+            "family": "embedding",
+            "signed_shap": 0.020090835132748626
+          },
+          {
+            "feature": "tfidf__word__em 18",
+            "family": "tfidf_word",
+            "signed_shap": 0.01948379300784938
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__047",
+            "family": "embedding",
+            "signed_shap": -0.010272797942039433
+          },
+          {
+            "feature": "embedding__010",
+            "family": "embedding",
+            "signed_shap": -0.008615551969194725
+          },
+          {
+            "feature": "embedding__290",
+            "family": "embedding",
+            "signed_shap": -0.007908521939853221
+          },
+          {
+            "feature": "embedding__013",
+            "family": "embedding",
+            "signed_shap": -0.006648072554738166
+          },
+          {
+            "feature": "embedding__285",
+            "family": "embedding",
+            "signed_shap": -0.0062542096413275875
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000367",
+        "gold": 2,
+        "target_class": "SOB_DEMANDA",
+        "base_value": -0.42659323517789155,
+        "base_model_output": 0.7543788452367116,
+        "reconstructed_base_model_output": 0.7543788452367117,
+        "additivity_residual": 1.1102230246251565e-16,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__portao automatico",
+            "family": "tfidf_word",
+            "signed_shap": 0.07759495469804674
+          },
+          {
+            "feature": "tfidf__word__automatico",
+            "family": "tfidf_word",
+            "signed_shap": 0.044167677167933496
+          },
+          {
+            "feature": "tfidf__word__reparar",
+            "family": "tfidf_word",
+            "signed_shap": 0.04345549440333612
+          },
+          {
+            "feature": "tfidf__word__automatico almoxarifado",
+            "family": "tfidf_word",
+            "signed_shap": 0.030494963805386705
+          },
+          {
+            "feature": "tfidf__word__travado reparar",
+            "family": "tfidf_word",
+            "signed_shap": 0.030494963805386705
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__138",
+            "family": "embedding",
+            "signed_shap": -0.0105899863365314
+          },
+          {
+            "feature": "embedding__174",
+            "family": "embedding",
+            "signed_shap": -0.008209807043004228
+          },
+          {
+            "feature": "embedding__043",
+            "family": "embedding",
+            "signed_shap": -0.008024873532607796
+          },
+          {
+            "feature": "embedding__290",
+            "family": "embedding",
+            "signed_shap": -0.007418933456584561
+          },
+          {
+            "feature": "embedding__046",
+            "family": "embedding",
+            "signed_shap": -0.007274703823799283
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000236",
+        "gold": 1,
+        "target_class": "DEMO",
+        "base_value": -0.21729131616830621,
+        "base_model_output": 0.9556848854023487,
+        "reconstructed_base_model_output": 0.9556848854023466,
+        "additivity_residual": -2.1094237467877974e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__faixa",
+            "family": "tfidf_word",
+            "signed_shap": 0.036245721569465345
+          },
+          {
+            "feature": "tfidf__word__junto",
+            "family": "tfidf_word",
+            "signed_shap": 0.035177118749592284
+          },
+          {
+            "feature": "tfidf__word__janela",
+            "family": "tfidf_word",
+            "signed_shap": 0.03429568190969254
+          },
+          {
+            "feature": "tfidf__word__09",
+            "family": "tfidf_word",
+            "signed_shap": 0.03198028146894457
+          },
+          {
+            "feature": "tfidf__word__em 09",
+            "family": "tfidf_word",
+            "signed_shap": 0.03198028146894457
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__033",
+            "family": "embedding",
+            "signed_shap": -0.01509099572216028
+          },
+          {
+            "feature": "embedding__156",
+            "family": "embedding",
+            "signed_shap": -0.009621491857696729
+          },
+          {
+            "feature": "embedding__014",
+            "family": "embedding",
+            "signed_shap": -0.007409135277306597
+          },
+          {
+            "feature": "tfidf__word__existente",
+            "family": "tfidf_word",
+            "signed_shap": -0.0067202017429503595
+          },
+          {
+            "feature": "embedding__137",
+            "family": "embedding",
+            "signed_shap": -0.006613000527068183
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000226",
+        "gold": 1,
+        "target_class": "DEMO",
+        "base_value": -0.21729131616830621,
+        "base_model_output": 0.9682738329710279,
+        "reconstructed_base_model_output": 0.9682738329710275,
+        "additivity_residual": -3.3306690738754696e-16,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__solda",
+            "family": "tfidf_word",
+            "signed_shap": 0.06346856343047347
+          },
+          {
+            "feature": "tfidf__word__solda em",
+            "family": "tfidf_word",
+            "signed_shap": 0.049794447404451346
+          },
+          {
+            "feature": "tfidf__word__corrimao",
+            "family": "tfidf_word",
+            "signed_shap": 0.04488409116611493
+          },
+          {
+            "feature": "tfidf__word__em corrimao",
+            "family": "tfidf_word",
+            "signed_shap": 0.0380788055306013
+          },
+          {
+            "feature": "tfidf__word__09 02",
+            "family": "tfidf_word",
+            "signed_shap": 0.029672798563592617
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__292",
+            "family": "embedding",
+            "signed_shap": -0.009024964454775705
+          },
+          {
+            "feature": "embedding__194",
+            "family": "embedding",
+            "signed_shap": -0.0073773550921651726
+          },
+          {
+            "feature": "embedding__047",
+            "family": "embedding",
+            "signed_shap": -0.0069505141083161335
+          },
+          {
+            "feature": "embedding__137",
+            "family": "embedding",
+            "signed_shap": -0.006825358364470904
+          },
+          {
+            "feature": "tfidf__word__de uma",
+            "family": "tfidf_word",
+            "signed_shap": -0.006382826158343892
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000024",
+        "gold": 0,
+        "target_class": "OBRA",
+        "base_value": -0.5396062048871284,
+        "base_model_output": 0.9923424792200375,
+        "reconstructed_base_model_output": 0.9923424792200384,
+        "additivity_residual": 8.881784197001252e-16,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__ala",
+            "family": "tfidf_word",
+            "signed_shap": 0.03941093723707718
+          },
+          {
+            "feature": "tfidf__word__uma ala",
+            "family": "tfidf_word",
+            "signed_shap": 0.029606467000639892
+          },
+          {
+            "feature": "tfidf__word__criar",
+            "family": "tfidf_word",
+            "signed_shap": 0.02698601509495594
+          },
+          {
+            "feature": "tfidf__word__em 02",
+            "family": "tfidf_word",
+            "signed_shap": 0.02221121118592364
+          },
+          {
+            "feature": "tfidf__word__02 02",
+            "family": "tfidf_word",
+            "signed_shap": 0.02221121118592364
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__378",
+            "family": "embedding",
+            "signed_shap": -0.009484217498786104
+          },
+          {
+            "feature": "embedding__085",
+            "family": "embedding",
+            "signed_shap": -0.009121511851787127
+          },
+          {
+            "feature": "embedding__135",
+            "family": "embedding",
+            "signed_shap": -0.007815663287301424
+          },
+          {
+            "feature": "embedding__290",
+            "family": "embedding",
+            "signed_shap": -0.006228245001681635
+          },
+          {
+            "feature": "embedding__363",
+            "family": "embedding",
+            "signed_shap": -0.00597583344870974
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000638",
+        "gold": 3,
+        "target_class": "TRIAGEM_MANUAL",
+        "base_value": -0.8877049630659477,
+        "base_model_output": 0.9553116018262569,
+        "reconstructed_base_model_output": 0.955311601826256,
+        "additivity_residual": -8.881784197001252e-16,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__se",
+            "family": "tfidf_word",
+            "signed_shap": 0.08925524516807798
+          },
+          {
+            "feature": "tfidf__word__ou",
+            "family": "tfidf_word",
+            "signed_shap": 0.04711955647832335
+          },
+          {
+            "feature": "tfidf__word__sabe",
+            "family": "tfidf_word",
+            "signed_shap": 0.03369682538303764
+          },
+          {
+            "feature": "tfidf__word__nao se",
+            "family": "tfidf_word",
+            "signed_shap": 0.031066866590242666
+          },
+          {
+            "feature": "tfidf__word__se sabe",
+            "family": "tfidf_word",
+            "signed_shap": 0.031066866590242666
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__351",
+            "family": "embedding",
+            "signed_shap": -0.008961768005058813
+          },
+          {
+            "feature": "embedding__156",
+            "family": "embedding",
+            "signed_shap": -0.005905619883311744
+          },
+          {
+            "feature": "embedding__146",
+            "family": "embedding",
+            "signed_shap": -0.005619513572298416
+          },
+          {
+            "feature": "tfidf__word__consertar",
+            "family": "tfidf_word",
+            "signed_shap": -0.005553392621969413
+          },
+          {
+            "feature": "embedding__128",
+            "family": "embedding",
+            "signed_shap": -0.005375874017426115
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000122",
+        "gold": 0,
+        "target_class": "OBRA",
+        "base_value": -0.5396062048871284,
+        "base_model_output": 0.8398748409212804,
+        "reconstructed_base_model_output": 0.8398748409212831,
+        "additivity_residual": 2.6645352591003757e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__patio",
+            "family": "tfidf_word",
+            "signed_shap": 0.06329212914673094
+          },
+          {
+            "feature": "tfidf__word__permanente",
+            "family": "tfidf_word",
+            "signed_shap": 0.032580527257615205
+          },
+          {
+            "feature": "embedding__005",
+            "family": "embedding",
+            "signed_shap": 0.02649165327357301
+          },
+          {
+            "feature": "tfidf__word__lo",
+            "family": "tfidf_word",
+            "signed_shap": 0.022078028115710736
+          },
+          {
+            "feature": "tfidf__word__um patio",
+            "family": "tfidf_word",
+            "signed_shap": 0.022078028115710736
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__294",
+            "family": "embedding",
+            "signed_shap": -0.02381749112480011
+          },
+          {
+            "feature": "embedding__076",
+            "family": "embedding",
+            "signed_shap": -0.010374377092170917
+          },
+          {
+            "feature": "embedding__009",
+            "family": "embedding",
+            "signed_shap": -0.0087273840936825
+          },
+          {
+            "feature": "embedding__073",
+            "family": "embedding",
+            "signed_shap": -0.008544517939028351
+          },
+          {
+            "feature": "embedding__220",
+            "family": "embedding",
+            "signed_shap": -0.008383013553913032
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000588",
+        "gold": 3,
+        "target_class": "TRIAGEM_MANUAL",
+        "base_value": -0.8877049630659477,
+        "base_model_output": 1.0410357392187457,
+        "reconstructed_base_model_output": 1.041035739218747,
+        "additivity_residual": 1.3322676295501878e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__ou",
+            "family": "tfidf_word",
+            "signed_shap": 0.09359764787960938
+          },
+          {
+            "feature": "tfidf__word__se",
+            "family": "tfidf_word",
+            "signed_shap": 0.053435084898826105
+          },
+          {
+            "feature": "tfidf__word__consertar",
+            "family": "tfidf_word",
+            "signed_shap": 0.048400318470184084
+          },
+          {
+            "feature": "tfidf__word__em 22",
+            "family": "tfidf_word",
+            "signed_shap": 0.04036308487676022
+          },
+          {
+            "feature": "tfidf__word__22",
+            "family": "tfidf_word",
+            "signed_shap": 0.04036308487676022
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__194",
+            "family": "embedding",
+            "signed_shap": -0.005965729203569625
+          },
+          {
+            "feature": "tfidf__word__pedido",
+            "family": "tfidf_word",
+            "signed_shap": -0.005371107209596924
+          },
+          {
+            "feature": "embedding__126",
+            "family": "embedding",
+            "signed_shap": -0.005167266840925682
+          },
+          {
+            "feature": "embedding__128",
+            "family": "embedding",
+            "signed_shap": -0.004161608340851797
+          },
+          {
+            "feature": "embedding__351",
+            "family": "embedding",
+            "signed_shap": -0.004020809845540388
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000066",
+        "gold": 0,
+        "target_class": "OBRA",
+        "base_value": -0.5396062048871284,
+        "base_model_output": 0.996864242492878,
+        "reconstructed_base_model_output": 0.996864242492878,
+        "additivity_residual": 0.0,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__nova",
+            "family": "tfidf_word",
+            "signed_shap": 0.033779445188781176
+          },
+          {
+            "feature": "tfidf__word__implantar",
+            "family": "tfidf_word",
+            "signed_shap": 0.03281129233337313
+          },
+          {
+            "feature": "tfidf__word__projeto",
+            "family": "tfidf_word",
+            "signed_shap": 0.02624144915569945
+          },
+          {
+            "feature": "tfidf__word__quadra coberta",
+            "family": "tfidf_word",
+            "signed_shap": 0.021994415686124397
+          },
+          {
+            "feature": "tfidf__word__quadra",
+            "family": "tfidf_word",
+            "signed_shap": 0.021994415686124397
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__272",
+            "family": "embedding",
+            "signed_shap": -0.006455282101263294
+          },
+          {
+            "feature": "embedding__349",
+            "family": "embedding",
+            "signed_shap": -0.006314937265372417
+          },
+          {
+            "feature": "embedding__260",
+            "family": "embedding",
+            "signed_shap": -0.005789753355308095
+          },
+          {
+            "feature": "embedding__254",
+            "family": "embedding",
+            "signed_shap": -0.004962487332844959
+          },
+          {
+            "feature": "embedding__149",
+            "family": "embedding",
+            "signed_shap": -0.004883279562530236
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000346",
+        "gold": 2,
+        "target_class": "SOB_DEMANDA",
+        "base_value": -0.42659323517789155,
+        "base_model_output": 0.9723505306698274,
+        "reconstructed_base_model_output": 0.9723505306698257,
+        "additivity_residual": -1.6653345369377348e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__de acesso",
+            "family": "tfidf_word",
+            "signed_shap": 0.05104577258605957
+          },
+          {
+            "feature": "tfidf__word__leitor",
+            "family": "tfidf_word",
+            "signed_shap": 0.05033465398189519
+          },
+          {
+            "feature": "tfidf__word__reparar",
+            "family": "tfidf_word",
+            "signed_shap": 0.029018322438110495
+          },
+          {
+            "feature": "tfidf__word__reparar um",
+            "family": "tfidf_word",
+            "signed_shap": 0.026805115304655052
+          },
+          {
+            "feature": "embedding__257",
+            "family": "embedding",
+            "signed_shap": 0.024425431410572556
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__135",
+            "family": "embedding",
+            "signed_shap": -0.008756177257498228
+          },
+          {
+            "feature": "embedding__294",
+            "family": "embedding",
+            "signed_shap": -0.0073093369713011155
+          },
+          {
+            "feature": "embedding__220",
+            "family": "embedding",
+            "signed_shap": -0.006822938898283747
+          },
+          {
+            "feature": "embedding__260",
+            "family": "embedding",
+            "signed_shap": -0.006004661996499147
+          },
+          {
+            "feature": "embedding__278",
+            "family": "embedding",
+            "signed_shap": -0.004901875528574456
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000003",
+        "gold": 0,
+        "target_class": "OBRA",
+        "base_value": -0.5396062048871284,
+        "base_model_output": 0.9928285434761486,
+        "reconstructed_base_model_output": 0.9928285434761437,
+        "additivity_residual": -4.884981308350689e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__tutoria",
+            "family": "tfidf_word",
+            "signed_shap": 0.03696380741884887
+          },
+          {
+            "feature": "tfidf__word__anexo",
+            "family": "tfidf_word",
+            "signed_shap": 0.03696380741884887
+          },
+          {
+            "feature": "tfidf__word__nova",
+            "family": "tfidf_word",
+            "signed_shap": 0.030723554108781234
+          },
+          {
+            "feature": "tfidf__word__para",
+            "family": "tfidf_word",
+            "signed_shap": 0.03006654384848916
+          },
+          {
+            "feature": "tfidf__word__construir",
+            "family": "tfidf_word",
+            "signed_shap": 0.024607125083401574
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__349",
+            "family": "embedding",
+            "signed_shap": -0.011492518612086295
+          },
+          {
+            "feature": "embedding__374",
+            "family": "embedding",
+            "signed_shap": -0.007524396597762883
+          },
+          {
+            "feature": "embedding__047",
+            "family": "embedding",
+            "signed_shap": -0.007258817965692942
+          },
+          {
+            "feature": "tfidf__word__havera",
+            "family": "tfidf_word",
+            "signed_shap": -0.006884639819421066
+          },
+          {
+            "feature": "embedding__290",
+            "family": "embedding",
+            "signed_shap": -0.006092596129433594
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000010",
+        "gold": 0,
+        "target_class": "OBRA",
+        "base_value": -0.5396062048871284,
+        "base_model_output": 0.9103721883549065,
+        "reconstructed_base_model_output": 0.9103721883549045,
+        "additivity_residual": -1.9984014443252818e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__galpao",
+            "family": "tfidf_word",
+            "signed_shap": 0.03741263690880879
+          },
+          {
+            "feature": "tfidf__word__para",
+            "family": "tfidf_word",
+            "signed_shap": 0.02906008259310461
+          },
+          {
+            "feature": "tfidf__word__implantar",
+            "family": "tfidf_word",
+            "signed_shap": 0.0290493018506093
+          },
+          {
+            "feature": "tfidf__word__permanente",
+            "family": "tfidf_word",
+            "signed_shap": 0.022163692192543858
+          },
+          {
+            "feature": "embedding__374",
+            "family": "embedding",
+            "signed_shap": 0.02050803175368784
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__005",
+            "family": "embedding",
+            "signed_shap": -0.010121536243033222
+          },
+          {
+            "feature": "embedding__257",
+            "family": "embedding",
+            "signed_shap": -0.008675138147076688
+          },
+          {
+            "feature": "embedding__311",
+            "family": "embedding",
+            "signed_shap": -0.007253305491892254
+          },
+          {
+            "feature": "embedding__297",
+            "family": "embedding",
+            "signed_shap": -0.007237753404340002
+          },
+          {
+            "feature": "embedding__149",
+            "family": "embedding",
+            "signed_shap": -0.006460340024520516
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000573",
+        "gold": 3,
+        "target_class": "TRIAGEM_MANUAL",
+        "base_value": -0.8877049630659477,
+        "base_model_output": 0.9546593299939743,
+        "reconstructed_base_model_output": 0.9546593299939758,
+        "additivity_residual": 1.5543122344752192e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__se",
+            "family": "tfidf_word",
+            "signed_shap": 0.05361001221026243
+          },
+          {
+            "feature": "tfidf__word__ou",
+            "family": "tfidf_word",
+            "signed_shap": 0.05065624779597645
+          },
+          {
+            "feature": "tfidf__word__em 22",
+            "family": "tfidf_word",
+            "signed_shap": 0.04048801815437874
+          },
+          {
+            "feature": "tfidf__word__22 02",
+            "family": "tfidf_word",
+            "signed_shap": 0.04048801815437874
+          },
+          {
+            "feature": "tfidf__word__22",
+            "family": "tfidf_word",
+            "signed_shap": 0.04048801815437874
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__194",
+            "family": "embedding",
+            "signed_shap": -0.007440614794804039
+          },
+          {
+            "feature": "embedding__075",
+            "family": "embedding",
+            "signed_shap": -0.00669921671348759
+          },
+          {
+            "feature": "embedding__077",
+            "family": "embedding",
+            "signed_shap": -0.006050925555533734
+          },
+          {
+            "feature": "tfidf__word__consertar",
+            "family": "tfidf_word",
+            "signed_shap": -0.005553392621969413
+          },
+          {
+            "feature": "tfidf__word__pedido",
+            "family": "tfidf_word",
+            "signed_shap": -0.005371107209596924
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000220",
+        "gold": 1,
+        "target_class": "DEMO",
+        "base_value": -0.21729131616830621,
+        "base_model_output": 0.8708421027186886,
+        "reconstructed_base_model_output": 0.8708421027186869,
+        "additivity_residual": -1.6653345369377348e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__reboco",
+            "family": "tfidf_word",
+            "signed_shap": 0.05074796259885956
+          },
+          {
+            "feature": "tfidf__word__faixa",
+            "family": "tfidf_word",
+            "signed_shap": 0.03288562006954911
+          },
+          {
+            "feature": "tfidf__word__em 09",
+            "family": "tfidf_word",
+            "signed_shap": 0.02870345819947613
+          },
+          {
+            "feature": "tfidf__word__09",
+            "family": "tfidf_word",
+            "signed_shap": 0.02870345819947613
+          },
+          {
+            "feature": "tfidf__word__09 02",
+            "family": "tfidf_word",
+            "signed_shap": 0.02870345819947613
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__141",
+            "family": "embedding",
+            "signed_shap": -0.015084285159286984
+          },
+          {
+            "feature": "embedding__010",
+            "family": "embedding",
+            "signed_shap": -0.014006857877831852
+          },
+          {
+            "feature": "embedding__333",
+            "family": "embedding",
+            "signed_shap": -0.006972864294450943
+          },
+          {
+            "feature": "embedding__283",
+            "family": "embedding",
+            "signed_shap": -0.006961592876788936
+          },
+          {
+            "feature": "embedding__022",
+            "family": "embedding",
+            "signed_shap": -0.0069567363617476854
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000268",
+        "gold": 1,
+        "target_class": "DEMO",
+        "base_value": -0.21729131616830621,
+        "base_model_output": 0.9310428719092323,
+        "reconstructed_base_model_output": 0.931042871909234,
+        "additivity_residual": 1.6653345369377348e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf__word__flexivel",
+            "family": "tfidf_word",
+            "signed_shap": 0.04288033481125338
+          },
+          {
+            "feature": "tfidf__word__em 11",
+            "family": "tfidf_word",
+            "signed_shap": 0.031058114643440778
+          },
+          {
+            "feature": "tfidf__word__11 02",
+            "family": "tfidf_word",
+            "signed_shap": 0.031058114643440778
+          },
+          {
+            "feature": "tfidf__word__11",
+            "family": "tfidf_word",
+            "signed_shap": 0.031058114643440778
+          },
+          {
+            "feature": "tfidf__word__substituir",
+            "family": "tfidf_word",
+            "signed_shap": 0.026848379303422633
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "embedding__068",
+            "family": "embedding",
+            "signed_shap": -0.01366023763437992
+          },
+          {
+            "feature": "embedding__194",
+            "family": "embedding",
+            "signed_shap": -0.011414159723221224
+          },
+          {
+            "feature": "tfidf__word__uma",
+            "family": "tfidf_word",
+            "signed_shap": -0.008100983563552112
+          },
+          {
+            "feature": "embedding__280",
+            "family": "embedding",
+            "signed_shap": -0.0074343708894568615
+          },
+          {
+            "feature": "embedding__053",
+            "family": "embedding",
+            "signed_shap": -0.0069081197166317365
+          }
+        ]
+      }
+    ],
+    "selection_evidence_status": "PROVISIONAL_POINT_CANDIDATE"
+  },
+  {
+    "status": "COMPLETED",
+    "task": "deduplication",
+    "combination_id": "deduplication__hybrid__granite97m__logistic_regression",
+    "method": "LinearExplainer",
+    "explains": "base_model_score_before_sigmoid_calibration_and_threshold",
+    "causal_interpretation": false,
+    "background_groups": [
+      "DEV_EP_DD_041",
+      "DEV_EP_DD_091",
+      "DEV_EP_DD_057",
+      "DEV_EP_DD_023",
+      "DEV_EP_DD_112",
+      "DEV_EP_DD_010",
+      "DEV_EP_DD_083",
+      "DEV_EP_DD_068",
+      "DEV_EP_DD_040",
+      "DEV_EP_DD_026",
+      "DEV_EP_DD_090",
+      "DEV_EP_DD_013",
+      "DEV_EP_DD_096",
+      "DEV_EP_DD_101",
+      "DEV_EP_DD_053",
+      "DEV_EP_DD_074",
+      "DEV_EP_DD_069",
+      "DEV_EP_DD_104",
+      "DEV_EP_DD_004",
+      "DEV_EP_DD_025"
+    ],
+    "background_groups_sha256": "fe7c443ba12317b337d328e4fa0defa9c560b5bcefbb06948ce207d2a9f06047",
+    "explained_unit_ids": [
+      "DEV-LOCAL-V1-001201",
+      "DEV-LOCAL-V1-001292",
+      "DEV-LOCAL-V1-001336",
+      "DEV-LOCAL-V1-000816",
+      "DEV-LOCAL-V1-000991",
+      "DEV-LOCAL-V1-000997",
+      "DEV-LOCAL-V1-001066",
+      "DEV-LOCAL-V1-000668",
+      "DEV-LOCAL-V1-000859",
+      "DEV-LOCAL-V1-000932",
+      "DEV-LOCAL-V1-001087",
+      "DEV-LOCAL-V1-000812",
+      "DEV-LOCAL-V1-000867",
+      "DEV-LOCAL-V1-001141",
+      "DEV-LOCAL-V1-000970",
+      "DEV-LOCAL-V1-000727",
+      "DEV-LOCAL-V1-000920",
+      "DEV-LOCAL-V1-001027",
+      "DEV-LOCAL-V1-000769",
+      "DEV-LOCAL-V1-000798",
+      "DEV-LOCAL-V1-001045",
+      "DEV-LOCAL-V1-000829",
+      "DEV-LOCAL-V1-000871",
+      "DEV-LOCAL-V1-000826"
+    ],
+    "explained_labels": [
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1
+    ],
+    "max_absolute_additivity_residual": 1.709743457922741e-14,
+    "feature_count": 10906,
+    "family_importance": [
+      {
+        "family": "tfidf_word",
+        "mean_abs_shap_sum": 1.6002207363764827,
+        "fraction": 0.5157638107762161
+      },
+      {
+        "family": "tfidf_character",
+        "mean_abs_shap_sum": 1.3848350879864126,
+        "fraction": 0.44634331129455396
+      },
+      {
+        "family": "embedding",
+        "mean_abs_shap_sum": 0.10231625159333502,
+        "fraction": 0.0329773378300362
+      },
+      {
+        "family": "tfidf_other",
+        "mean_abs_shap_sum": 0.015251068479158468,
+        "fraction": 0.004915540099193657
+      }
+    ],
+    "global_top_features": [
+      {
+        "feature": "tfidf_cosine",
+        "family": "tfidf_other",
+        "mean_abs_shap": 0.015251068479158468
+      },
+      {
+        "feature": "tfidf_abs__word__apagada",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.012006963216574703
+      },
+      {
+        "feature": "tfidf_abs__word__reparar",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.01181095953957835
+      },
+      {
+        "feature": "tfidf_abs__word__sob pia",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.010948576090159395
+      },
+      {
+        "feature": "tfidf_abs__word__vazamento sob",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.010948576090159395
+      },
+      {
+        "feature": "tfidf_abs__word__janela",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.010828389984351997
+      },
+      {
+        "feature": "tfidf_abs__word__outro",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.010708695314708227
+      },
+      {
+        "feature": "tfidf_abs__word__junto ao",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.010443047135260558
+      },
+      {
+        "feature": "tfidf_abs__word__no piso",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.008998317821695391
+      },
+      {
+        "feature": "tfidf_abs__word__piso",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.008998317821695391
+      },
+      {
+        "feature": "tfidf_abs__word__ponto",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00877934479009515
+      },
+      {
+        "feature": "tfidf_abs__word__com cordao",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.008565077733022883
+      },
+      {
+        "feature": "tfidf_abs__word__cordao rompido",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.008565077733022883
+      },
+      {
+        "feature": "tfidf_abs__word__cordao",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.008565077733022883
+      },
+      {
+        "feature": "tfidf_abs__word__rompido",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.008565077733022883
+      },
+      {
+        "feature": "tfidf_abs__word__persiana com",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.008565077733022883
+      },
+      {
+        "feature": "tfidf_abs__word__continua",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.008240321057172444
+      },
+      {
+        "feature": "tfidf_abs__word__nao liga",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.007821283592793845
+      },
+      {
+        "feature": "tfidf_abs__word__liga",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.007821283592793845
+      },
+      {
+        "feature": "tfidf_abs__word__ver",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00779556400198336
+      },
+      {
+        "feature": "tfidf_abs__word__da persiana",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.007554994210787057
+      },
+      {
+        "feature": "tfidf_abs__word__esta",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.007425715154964132
+      },
+      {
+        "feature": "tfidf_abs__word__proxima ao",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.007338540853877608
+      },
+      {
+        "feature": "tfidf_abs__word__ao quadro",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.007338540853877608
+      },
+      {
+        "feature": "tfidf_abs__word__luminaria proxima",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.007338540853877608
+      },
+      {
+        "feature": "tfidf_abs__word__quadro",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.007338540853877608
+      },
+      {
+        "feature": "tfidf_abs__word__proxima",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.007338540853877608
+      },
+      {
+        "feature": "tfidf_abs__word__avaliar",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.007134739477969553
+      },
+      {
+        "feature": "tfidf_abs__word__um",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.006979927825457935
+      },
+      {
+        "feature": "tfidf_abs__word__quebrado",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.006841827734813416
+      },
+      {
+        "feature": "tfidf_abs__word__interruptor",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.006841827734813416
+      },
+      {
+        "feature": "tfidf_abs__word__interruptor quebrado",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.006841827734813416
+      },
+      {
+        "feature": "tfidf_abs__word__ocorrencia",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.006433638543736808
+      },
+      {
+        "feature": "tfidf_abs__word__no",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.006423107690999373
+      },
+      {
+        "feature": "tfidf_abs__word__ambiente",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.006342789555332698
+      },
+      {
+        "feature": "tfidf_abs__word__este",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.006148501808232595
+      },
+      {
+        "feature": "tfidf_abs__word__anterior da",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.006084464219694704
+      },
+      {
+        "feature": "tfidf_abs__word__pedido anterior",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.006084464219694704
+      },
+      {
+        "feature": "tfidf_abs__word__energia",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.006053122257954273
+      },
+      {
+        "feature": "tfidf_abs__word__uma",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.005965368902027286
+      },
+      {
+        "feature": "tfidf_abs__word__nao",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.005948347174612054
+      },
+      {
+        "feature": "tfidf_abs__word__chamado",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.0058495724907017994
+      },
+      {
+        "feature": "tfidf_abs__word__sintoma",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00578041225452208
+      },
+      {
+        "feature": "tfidf_abs__word__torneira que",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.005565298336088726
+      },
+      {
+        "feature": "tfidf_abs__word__goteira perto",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.0055494674698880475
+      },
+      {
+        "feature": "tfidf_abs__word__da janela",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.0055494674698880475
+      },
+      {
+        "feature": "tfidf_abs__word__consertar uma",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.005324172845841828
+      },
+      {
+        "feature": "tfidf_abs__word__uma torneira",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.005324172845841828
+      },
+      {
+        "feature": "tfidf_abs__word__precisamos reparar",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.005187670573338462
+      },
+      {
+        "feature": "tfidf_abs__word__junto",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.005067251854798628
+      },
+      {
+        "feature": "tfidf_abs__word__sem",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.0050166237726733025
+      },
+      {
+        "feature": "tfidf_abs__word__vazando",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004780977244788759
+      },
+      {
+        "feature": "tfidf_abs__word__que nao",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004718113337643481
+      },
+      {
+        "feature": "tfidf_abs__word__fica",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.0045488513292752065
+      },
+      {
+        "feature": "tfidf_abs__word__fechadura prendendo",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004477029766675367
+      },
+      {
+        "feature": "tfidf_abs__word__porta da",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004477029766675367
+      },
+      {
+        "feature": "tfidf_abs__word__que prende",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004477029766675367
+      },
+      {
+        "feature": "tfidf_abs__word__corrigir fechadura",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004477029766675367
+      },
+      {
+        "feature": "tfidf_abs__word__sala de",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004477029766675367
+      },
+      {
+        "feature": "tfidf_abs__word__fechadura que",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004477029766675367
+      },
+      {
+        "feature": "tfidf_abs__word__prende",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004477029766675367
+      },
+      {
+        "feature": "tfidf_abs__word__prende ao",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004477029766675367
+      },
+      {
+        "feature": "tfidf_abs__word__normalmente",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004477029766675367
+      },
+      {
+        "feature": "tfidf_abs__word__prendendo",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004477029766675367
+      },
+      {
+        "feature": "tfidf_abs__word__apoio nao",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004477029766675367
+      },
+      {
+        "feature": "tfidf_abs__word__fecha normalmente",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004477029766675367
+      },
+      {
+        "feature": "tfidf_abs__word__girar",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004477029766675367
+      },
+      {
+        "feature": "tfidf_abs__word__ao girar",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004477029766675367
+      },
+      {
+        "feature": "tfidf_abs__word__permanece",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__nao resolveu",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__defeito permanece",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__resolveu mesmo",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__ruim",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__fechadura continua",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__fechadura ja",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__atendimento",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__anterior nao",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__ja",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__retomar reparo",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__atendimento anterior",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__retomar",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__ja comunicado",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__mesmo defeito",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__comunicado",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__continua ruim",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__reparo",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__resolveu",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__reparo da",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__da fechadura",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.004312771677402318
+      },
+      {
+        "feature": "tfidf_abs__word__corredor sem",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00429251679471586
+      },
+      {
+        "feature": "tfidf_abs__word__confirmou lampada",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00429251679471586
+      },
+      {
+        "feature": "tfidf_abs__word__restabelecer iluminacao",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00429251679471586
+      },
+      {
+        "feature": "tfidf_abs__word__restabelecer",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00429251679471586
+      },
+      {
+        "feature": "tfidf_abs__word__servidor",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00429251679471586
+      },
+      {
+        "feature": "tfidf_abs__word__sem luz",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00429251679471586
+      },
+      {
+        "feature": "tfidf_abs__word__mesmo corredor",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00429251679471586
+      },
+      {
+        "feature": "tfidf_abs__word__lampada junto",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00429251679471586
+      },
+      {
+        "feature": "tfidf_abs__word__servidor confirmou",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00429251679471586
+      },
+      {
+        "feature": "tfidf_abs__word__iluminacao",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00429251679471586
+      },
+      {
+        "feature": "tfidf_abs__word__outro servidor",
+        "family": "tfidf_word",
+        "mean_abs_shap": 0.00429251679471586
+      }
+    ],
+    "local_explanations": [
+      {
+        "unit_id": "DEV-LOCAL-V1-001201",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": -1.590352588890981,
+        "reconstructed_base_model_output": -1.5903525888909673,
+        "additivity_residual": 1.3766765505351941e-14,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__vazando",
+            "family": "tfidf_word",
+            "signed_shap": 0.009658560793023524
+          },
+          {
+            "feature": "tfidf_abs__word__liga",
+            "family": "tfidf_word",
+            "signed_shap": 0.007821283592793842
+          },
+          {
+            "feature": "tfidf_abs__word__nao liga",
+            "family": "tfidf_word",
+            "signed_shap": 0.007821283592793842
+          },
+          {
+            "feature": "tfidf_abs__word__outro",
+            "family": "tfidf_word",
+            "signed_shap": 0.006636218975413203
+          },
+          {
+            "feature": "tfidf_abs__word__avaliar",
+            "family": "tfidf_word",
+            "signed_shap": 0.005672838771406087
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__um",
+            "family": "tfidf_word",
+            "signed_shap": -0.02266671698355535
+          },
+          {
+            "feature": "tfidf_abs__word__beta",
+            "family": "tfidf_word",
+            "signed_shap": -0.021497452554202077
+          },
+          {
+            "feature": "tfidf_abs__word__basicos",
+            "family": "tfidf_word",
+            "signed_shap": -0.021497452554202077
+          },
+          {
+            "feature": "tfidf_abs__word__beta laboratorios",
+            "family": "tfidf_word",
+            "signed_shap": -0.021497452554202077
+          },
+          {
+            "feature": "tfidf_abs__word__laboratorios",
+            "family": "tfidf_word",
+            "signed_shap": -0.021497452554202077
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-001292",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": 1.411097419523836,
+        "reconstructed_base_model_output": 1.4110974195238335,
+        "additivity_residual": -2.4424906541753444e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__vazamento sob",
+            "family": "tfidf_word",
+            "signed_shap": 0.04952947361195418
+          },
+          {
+            "feature": "tfidf_abs__word__sob pia",
+            "family": "tfidf_word",
+            "signed_shap": 0.04952947361195418
+          },
+          {
+            "feature": "tfidf_abs__word__junto ao",
+            "family": "tfidf_word",
+            "signed_shap": 0.026138518834861978
+          },
+          {
+            "feature": "tfidf_abs__word__ver",
+            "family": "tfidf_word",
+            "signed_shap": 0.021373692643013174
+          },
+          {
+            "feature": "tfidf_abs__word__reparar",
+            "family": "tfidf_word",
+            "signed_shap": 0.02002532038195838
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__esta",
+            "family": "tfidf_word",
+            "signed_shap": -0.012095812230791094
+          },
+          {
+            "feature": "tfidf_abs__word__continua",
+            "family": "tfidf_word",
+            "signed_shap": -0.006615803774593724
+          },
+          {
+            "feature": "tfidf_abs__word__energia",
+            "family": "tfidf_word",
+            "signed_shap": -0.006053122257954271
+          },
+          {
+            "feature": "tfidf_abs__word__no",
+            "family": "tfidf_word",
+            "signed_shap": -0.0053385508007919216
+          },
+          {
+            "feature": "tfidf_abs__word__janela",
+            "family": "tfidf_word",
+            "signed_shap": -0.00533001801285672
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-001336",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": -1.5375607233056163,
+        "reconstructed_base_model_output": -1.5375607233056328,
+        "additivity_residual": -1.6431300764452317e-14,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__liga",
+            "family": "tfidf_word",
+            "signed_shap": 0.007821283592793842
+          },
+          {
+            "feature": "tfidf_abs__word__nao liga",
+            "family": "tfidf_word",
+            "signed_shap": 0.007821283592793842
+          },
+          {
+            "feature": "tfidf_abs__word__outro",
+            "family": "tfidf_word",
+            "signed_shap": 0.006636218975413203
+          },
+          {
+            "feature": "tfidf_abs__word__proxima ao",
+            "family": "tfidf_word",
+            "signed_shap": 0.00557108703637987
+          },
+          {
+            "feature": "tfidf_abs__word__quadro",
+            "family": "tfidf_word",
+            "signed_shap": 0.00557108703637987
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__no piso",
+            "family": "tfidf_word",
+            "signed_shap": -0.03911559054223349
+          },
+          {
+            "feature": "tfidf_abs__word__piso",
+            "family": "tfidf_word",
+            "signed_shap": -0.03911559054223349
+          },
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.019005381728597365
+          },
+          {
+            "feature": "tfidf_abs__word__ocorrencia",
+            "family": "tfidf_word",
+            "signed_shap": -0.01831072169330444
+          },
+          {
+            "feature": "tfidf_abs__word__este",
+            "family": "tfidf_word",
+            "signed_shap": -0.01754563213810333
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000816",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": -1.2915882082193764,
+        "reconstructed_base_model_output": -1.2915882082193633,
+        "additivity_residual": 1.3100631690576847e-14,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__nao liga",
+            "family": "tfidf_word",
+            "signed_shap": 0.007821283592793842
+          },
+          {
+            "feature": "tfidf_abs__word__liga",
+            "family": "tfidf_word",
+            "signed_shap": 0.007821283592793842
+          },
+          {
+            "feature": "tfidf_abs__word__outro",
+            "family": "tfidf_word",
+            "signed_shap": 0.006636218975413203
+          },
+          {
+            "feature": "tfidf_abs__word__nao",
+            "family": "tfidf_word",
+            "signed_shap": 0.006391612201994375
+          },
+          {
+            "feature": "tfidf_abs__word__no",
+            "family": "tfidf_word",
+            "signed_shap": 0.005824041238983761
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__para",
+            "family": "tfidf_word",
+            "signed_shap": -0.04360016582740289
+          },
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.02663131919268739
+          },
+          {
+            "feature": "tfidf_abs__word__uma torneira",
+            "family": "tfidf_word",
+            "signed_shap": -0.02138121863051103
+          },
+          {
+            "feature": "tfidf_abs__word__consertar uma",
+            "family": "tfidf_word",
+            "signed_shap": -0.02138121863051103
+          },
+          {
+            "feature": "tfidf_abs__word__torneira que",
+            "family": "tfidf_word",
+            "signed_shap": -0.021127020737336737
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000991",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": 1.755342052298368,
+        "reconstructed_base_model_output": 1.755342052298351,
+        "additivity_residual": -1.709743457922741e-14,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__cordao rompido",
+            "family": "tfidf_word",
+            "signed_shap": 0.03889812107323861
+          },
+          {
+            "feature": "tfidf_abs__word__cordao",
+            "family": "tfidf_word",
+            "signed_shap": 0.03889812107323861
+          },
+          {
+            "feature": "tfidf_abs__word__com cordao",
+            "family": "tfidf_word",
+            "signed_shap": 0.03889812107323861
+          },
+          {
+            "feature": "tfidf_abs__word__persiana com",
+            "family": "tfidf_word",
+            "signed_shap": 0.03889812107323861
+          },
+          {
+            "feature": "tfidf_abs__word__rompido",
+            "family": "tfidf_word",
+            "signed_shap": 0.03889812107323861
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.028209972210071602
+          },
+          {
+            "feature": "tfidf_abs__word__pavilhao",
+            "family": "tfidf_word",
+            "signed_shap": -0.010752978724179008
+          },
+          {
+            "feature": "tfidf_abs__word__fica",
+            "family": "tfidf_word",
+            "signed_shap": -0.009465243065065248
+          },
+          {
+            "feature": "tfidf_abs__word__continua",
+            "family": "tfidf_word",
+            "signed_shap": -0.006615803774593724
+          },
+          {
+            "feature": "tfidf_abs__word__energia",
+            "family": "tfidf_word",
+            "signed_shap": -0.006053122257954271
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000997",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": -1.6565996304903488,
+        "reconstructed_base_model_output": -1.6565996304903388,
+        "additivity_residual": 9.992007221626409e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__sem",
+            "family": "tfidf_word",
+            "signed_shap": 0.013992116652151422
+          },
+          {
+            "feature": "tfidf_abs__word__ponto",
+            "family": "tfidf_word",
+            "signed_shap": 0.012286081803043289
+          },
+          {
+            "feature": "tfidf_abs__word__nao liga",
+            "family": "tfidf_word",
+            "signed_shap": 0.007821283592793842
+          },
+          {
+            "feature": "tfidf_abs__word__liga",
+            "family": "tfidf_word",
+            "signed_shap": 0.007821283592793842
+          },
+          {
+            "feature": "tfidf_abs__word__que ponto",
+            "family": "tfidf_word",
+            "signed_shap": 0.007791020206856789
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__interruptor",
+            "family": "tfidf_word",
+            "signed_shap": -0.04861839227135168
+          },
+          {
+            "feature": "tfidf_abs__word__interruptor quebrado",
+            "family": "tfidf_word",
+            "signed_shap": -0.04861839227135168
+          },
+          {
+            "feature": "tfidf_abs__word__quebrado",
+            "family": "tfidf_word",
+            "signed_shap": -0.04861839227135168
+          },
+          {
+            "feature": "tfidf_abs__word__outro",
+            "family": "tfidf_word",
+            "signed_shap": -0.03393879733621038
+          },
+          {
+            "feature": "tfidf_abs__word__torneira",
+            "family": "tfidf_word",
+            "signed_shap": -0.033726842856369184
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-001066",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": 1.6846894086286621,
+        "reconstructed_base_model_output": 1.6846894086286532,
+        "additivity_residual": -8.881784197001252e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__rompido",
+            "family": "tfidf_word",
+            "signed_shap": 0.03762968923043859
+          },
+          {
+            "feature": "tfidf_abs__word__persiana com",
+            "family": "tfidf_word",
+            "signed_shap": 0.03762968923043859
+          },
+          {
+            "feature": "tfidf_abs__word__cordao rompido",
+            "family": "tfidf_word",
+            "signed_shap": 0.03762968923043859
+          },
+          {
+            "feature": "tfidf_abs__word__cordao",
+            "family": "tfidf_word",
+            "signed_shap": 0.03762968923043859
+          },
+          {
+            "feature": "tfidf_abs__word__com cordao",
+            "family": "tfidf_word",
+            "signed_shap": 0.03762968923043859
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.030843354946735107
+          },
+          {
+            "feature": "tfidf_abs__word__fica",
+            "family": "tfidf_word",
+            "signed_shap": -0.009117214795791822
+          },
+          {
+            "feature": "tfidf_abs__word__continua",
+            "family": "tfidf_word",
+            "signed_shap": -0.006615803774593724
+          },
+          {
+            "feature": "tfidf_abs__word__energia",
+            "family": "tfidf_word",
+            "signed_shap": -0.006053122257954271
+          },
+          {
+            "feature": "tfidf_abs__word__ver",
+            "family": "tfidf_word",
+            "signed_shap": -0.005624408607929052
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000668",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": 1.4256149522539743,
+        "reconstructed_base_model_output": 1.4256149522539758,
+        "additivity_residual": 1.5543122344752192e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__continua",
+            "family": "tfidf_word",
+            "signed_shap": 0.019005535457692155
+          },
+          {
+            "feature": "tfidf_abs__word__corrigir fechadura",
+            "family": "tfidf_word",
+            "signed_shap": 0.01529980751449513
+          },
+          {
+            "feature": "tfidf_abs__word__normalmente",
+            "family": "tfidf_word",
+            "signed_shap": 0.01529980751449513
+          },
+          {
+            "feature": "tfidf_abs__word__sala de",
+            "family": "tfidf_word",
+            "signed_shap": 0.01529980751449513
+          },
+          {
+            "feature": "tfidf_abs__word__porta da",
+            "family": "tfidf_word",
+            "signed_shap": 0.01529980751449513
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.01568504273741501
+          },
+          {
+            "feature": "tfidf_abs__word__reparar",
+            "family": "tfidf_word",
+            "signed_shap": -0.008724472077123324
+          },
+          {
+            "feature": "tfidf_abs__word__corrigir",
+            "family": "tfidf_word",
+            "signed_shap": -0.006244928387612153
+          },
+          {
+            "feature": "tfidf_abs__word__energia",
+            "family": "tfidf_word",
+            "signed_shap": -0.006053122257954271
+          },
+          {
+            "feature": "tfidf_abs__word__ver",
+            "family": "tfidf_word",
+            "signed_shap": -0.005624408607929052
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000859",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": 1.5336447452756075,
+        "reconstructed_base_model_output": 1.5336447452756035,
+        "additivity_residual": -3.9968028886505635e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__vazamento sob",
+            "family": "tfidf_word",
+            "signed_shap": 0.0561934508101116
+          },
+          {
+            "feature": "tfidf_abs__word__sob pia",
+            "family": "tfidf_word",
+            "signed_shap": 0.0561934508101116
+          },
+          {
+            "feature": "tfidf_abs__word__junto ao",
+            "family": "tfidf_word",
+            "signed_shap": 0.029655343884807343
+          },
+          {
+            "feature": "tfidf_abs__word__ver",
+            "family": "tfidf_word",
+            "signed_shap": 0.026406605289876317
+          },
+          {
+            "feature": "tfidf_abs__word__reparar",
+            "family": "tfidf_word",
+            "signed_shap": 0.023530015646879624
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__esta",
+            "family": "tfidf_word",
+            "signed_shap": -0.015320725956833061
+          },
+          {
+            "feature": "tfidf_abs__word__no",
+            "family": "tfidf_word",
+            "signed_shap": -0.007419450865821502
+          },
+          {
+            "feature": "tfidf_abs__word__continua",
+            "family": "tfidf_word",
+            "signed_shap": -0.006615803774593724
+          },
+          {
+            "feature": "tfidf_abs__word__energia",
+            "family": "tfidf_word",
+            "signed_shap": -0.006053122257954271
+          },
+          {
+            "feature": "tfidf_abs__word__janela",
+            "family": "tfidf_word",
+            "signed_shap": -0.00533001801285672
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000932",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": 1.4039261786653907,
+        "reconstructed_base_model_output": 1.403926178665392,
+        "additivity_residual": 1.3322676295501878e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__vazamento sob",
+            "family": "tfidf_word",
+            "signed_shap": 0.04917410964290043
+          },
+          {
+            "feature": "tfidf_abs__word__sob pia",
+            "family": "tfidf_word",
+            "signed_shap": 0.04917410964290043
+          },
+          {
+            "feature": "tfidf_abs__word__junto ao",
+            "family": "tfidf_word",
+            "signed_shap": 0.025950980241758476
+          },
+          {
+            "feature": "tfidf_abs__word__ver",
+            "family": "tfidf_word",
+            "signed_shap": 0.021200657348200945
+          },
+          {
+            "feature": "tfidf_abs__word__reparar",
+            "family": "tfidf_word",
+            "signed_shap": 0.019838428623083413
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__esta",
+            "family": "tfidf_word",
+            "signed_shap": -0.011984937288886936
+          },
+          {
+            "feature": "tfidf_abs__word__continua",
+            "family": "tfidf_word",
+            "signed_shap": -0.006615803774593724
+          },
+          {
+            "feature": "tfidf_abs__word__energia",
+            "family": "tfidf_word",
+            "signed_shap": -0.006053122257954271
+          },
+          {
+            "feature": "tfidf_abs__word__janela",
+            "family": "tfidf_word",
+            "signed_shap": -0.00533001801285672
+          },
+          {
+            "feature": "tfidf_abs__word__no",
+            "family": "tfidf_word",
+            "signed_shap": -0.005267007902774091
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-001087",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": 1.2548972147387125,
+        "reconstructed_base_model_output": 1.254897214738715,
+        "additivity_residual": 2.4424906541753444e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__apagada",
+            "family": "tfidf_word",
+            "signed_shap": 0.06642876543523096
+          },
+          {
+            "feature": "tfidf_abs__word__junto ao",
+            "family": "tfidf_word",
+            "signed_shap": 0.032153712530288446
+          },
+          {
+            "feature": "tfidf_abs__word__lampada junto",
+            "family": "tfidf_word",
+            "signed_shap": 0.026874691011388476
+          },
+          {
+            "feature": "tfidf_abs__word__iluminacao",
+            "family": "tfidf_word",
+            "signed_shap": 0.026874691011388476
+          },
+          {
+            "feature": "tfidf_abs__word__iluminacao no",
+            "family": "tfidf_word",
+            "signed_shap": 0.026874691011388476
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__outro",
+            "family": "tfidf_word",
+            "signed_shap": -0.017273319644924463
+          },
+          {
+            "feature": "tfidf_abs__word__reparar",
+            "family": "tfidf_word",
+            "signed_shap": -0.008724472077123324
+          },
+          {
+            "feature": "tfidf_abs__word__continua",
+            "family": "tfidf_word",
+            "signed_shap": -0.006615803774593724
+          },
+          {
+            "feature": "tfidf_abs__word__energia",
+            "family": "tfidf_word",
+            "signed_shap": -0.006053122257954271
+          },
+          {
+            "feature": "tfidf_abs__word__nao",
+            "family": "tfidf_word",
+            "signed_shap": -0.006047965139537382
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000812",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": 1.4621037196119984,
+        "reconstructed_base_model_output": 1.46210371961201,
+        "additivity_residual": 1.1546319456101628e-14,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__continua",
+            "family": "tfidf_word",
+            "signed_shap": 0.018232555004164444
+          },
+          {
+            "feature": "tfidf_abs__word__que prende",
+            "family": "tfidf_word",
+            "signed_shap": 0.016597192341798746
+          },
+          {
+            "feature": "tfidf_abs__word__fechadura que",
+            "family": "tfidf_word",
+            "signed_shap": 0.016597192341798746
+          },
+          {
+            "feature": "tfidf_abs__word__fecha normalmente",
+            "family": "tfidf_word",
+            "signed_shap": 0.016597192341798746
+          },
+          {
+            "feature": "tfidf_abs__word__girar",
+            "family": "tfidf_word",
+            "signed_shap": 0.016597192341798746
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__reparar",
+            "family": "tfidf_word",
+            "signed_shap": -0.008724472077123324
+          },
+          {
+            "feature": "tfidf_abs__word__corrigir",
+            "family": "tfidf_word",
+            "signed_shap": -0.006942614733612847
+          },
+          {
+            "feature": "tfidf_abs__word__precisamos corrigir",
+            "family": "tfidf_word",
+            "signed_shap": -0.0065584390295497395
+          },
+          {
+            "feature": "tfidf_abs__word__energia",
+            "family": "tfidf_word",
+            "signed_shap": -0.006053122257954271
+          },
+          {
+            "feature": "tfidf_abs__word__ver",
+            "family": "tfidf_word",
+            "signed_shap": -0.005624408607929052
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000867",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": -1.3407497187399233,
+        "reconstructed_base_model_output": -1.340749718739907,
+        "additivity_residual": 1.6431300764452317e-14,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__junto",
+            "family": "tfidf_word",
+            "signed_shap": 0.009285456231036429
+          },
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": 0.00819485262471402
+          },
+          {
+            "feature": "tfidf_abs__word__nao liga",
+            "family": "tfidf_word",
+            "signed_shap": 0.007821283592793842
+          },
+          {
+            "feature": "tfidf_abs__word__liga",
+            "family": "tfidf_word",
+            "signed_shap": 0.007821283592793842
+          },
+          {
+            "feature": "tfidf_abs__word__ao",
+            "family": "tfidf_word",
+            "signed_shap": 0.007174927985572832
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__quadro",
+            "family": "tfidf_word",
+            "signed_shap": -0.047989978656325524
+          },
+          {
+            "feature": "tfidf_abs__word__proxima",
+            "family": "tfidf_word",
+            "signed_shap": -0.047989978656325524
+          },
+          {
+            "feature": "tfidf_abs__word__proxima ao",
+            "family": "tfidf_word",
+            "signed_shap": -0.047989978656325524
+          },
+          {
+            "feature": "tfidf_abs__word__luminaria proxima",
+            "family": "tfidf_word",
+            "signed_shap": -0.047989978656325524
+          },
+          {
+            "feature": "tfidf_abs__word__ao quadro",
+            "family": "tfidf_word",
+            "signed_shap": -0.047989978656325524
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-001141",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": -1.7612279901739534,
+        "reconstructed_base_model_output": -1.7612279901739558,
+        "additivity_residual": -2.4424906541753444e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__ponto",
+            "family": "tfidf_word",
+            "signed_shap": 0.014005164286142267
+          },
+          {
+            "feature": "tfidf_abs__word__sem",
+            "family": "tfidf_word",
+            "signed_shap": 0.013427151572198596
+          },
+          {
+            "feature": "tfidf_abs__word__liga",
+            "family": "tfidf_word",
+            "signed_shap": 0.007821283592793842
+          },
+          {
+            "feature": "tfidf_abs__word__nao liga",
+            "family": "tfidf_word",
+            "signed_shap": 0.007821283592793842
+          },
+          {
+            "feature": "tfidf_abs__word__pois ponto",
+            "family": "tfidf_word",
+            "signed_shap": 0.007086272988849977
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__interruptor",
+            "family": "tfidf_word",
+            "signed_shap": -0.05359484753902731
+          },
+          {
+            "feature": "tfidf_abs__word__quebrado",
+            "family": "tfidf_word",
+            "signed_shap": -0.05359484753902731
+          },
+          {
+            "feature": "tfidf_abs__word__interruptor quebrado",
+            "family": "tfidf_word",
+            "signed_shap": -0.05359484753902731
+          },
+          {
+            "feature": "tfidf_abs__word__outro",
+            "family": "tfidf_word",
+            "signed_shap": -0.03252431065582008
+          },
+          {
+            "feature": "tfidf_abs__word__torneira",
+            "family": "tfidf_word",
+            "signed_shap": -0.03249451886009379
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000970",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": 1.4469959637976169,
+        "reconstructed_base_model_output": 1.44699596379761,
+        "additivity_residual": -6.8833827526759706e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": 0.04011349182404281
+          },
+          {
+            "feature": "tfidf_abs__word__janela",
+            "family": "tfidf_word",
+            "signed_shap": 0.039778507799014165
+          },
+          {
+            "feature": "tfidf_abs__word__goteira perto",
+            "family": "tfidf_word",
+            "signed_shap": 0.039667019593195525
+          },
+          {
+            "feature": "tfidf_abs__word__da janela",
+            "family": "tfidf_word",
+            "signed_shap": 0.039667019593195525
+          },
+          {
+            "feature": "tfidf_abs__word__pedido anterior",
+            "family": "tfidf_word",
+            "signed_shap": 0.017069486736731046
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__reparar",
+            "family": "tfidf_word",
+            "signed_shap": -0.008724472077123324
+          },
+          {
+            "feature": "tfidf_abs__word__continua",
+            "family": "tfidf_word",
+            "signed_shap": -0.006615803774593724
+          },
+          {
+            "feature": "tfidf_abs__word__energia",
+            "family": "tfidf_word",
+            "signed_shap": -0.006053122257954271
+          },
+          {
+            "feature": "tfidf_abs__word__ver",
+            "family": "tfidf_word",
+            "signed_shap": -0.005624408607929052
+          },
+          {
+            "feature": "tfidf_abs__word__vazamento sob",
+            "family": "tfidf_word",
+            "signed_shap": -0.005136609147564729
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000727",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": 1.2825408868161052,
+        "reconstructed_base_model_output": 1.2825408868161152,
+        "additivity_residual": 9.992007221626409e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__apagada",
+            "family": "tfidf_word",
+            "signed_shap": 0.06545013719541266
+          },
+          {
+            "feature": "tfidf_abs__word__junto ao",
+            "family": "tfidf_word",
+            "signed_shap": 0.031399087500746714
+          },
+          {
+            "feature": "tfidf_abs__word__outro servidor",
+            "family": "tfidf_word",
+            "signed_shap": 0.026293001309169107
+          },
+          {
+            "feature": "tfidf_abs__word__corredor sem",
+            "family": "tfidf_word",
+            "signed_shap": 0.026293001309169107
+          },
+          {
+            "feature": "tfidf_abs__word__servidor confirmou",
+            "family": "tfidf_word",
+            "signed_shap": 0.026293001309169107
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__outro",
+            "family": "tfidf_word",
+            "signed_shap": -0.016755809233572273
+          },
+          {
+            "feature": "tfidf_abs__word__reparar",
+            "family": "tfidf_word",
+            "signed_shap": -0.008724472077123324
+          },
+          {
+            "feature": "tfidf_abs__word__continua",
+            "family": "tfidf_word",
+            "signed_shap": -0.006615803774593724
+          },
+          {
+            "feature": "tfidf_abs__word__energia",
+            "family": "tfidf_word",
+            "signed_shap": -0.006053122257954271
+          },
+          {
+            "feature": "tfidf_abs__word__nao",
+            "family": "tfidf_word",
+            "signed_shap": -0.00585624177035691
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000920",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": 1.7989204080550236,
+        "reconstructed_base_model_output": 1.7989204080550232,
+        "additivity_residual": -4.440892098500626e-16,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__cordao",
+            "family": "tfidf_word",
+            "signed_shap": 0.04260063562899378
+          },
+          {
+            "feature": "tfidf_abs__word__rompido",
+            "family": "tfidf_word",
+            "signed_shap": 0.04260063562899378
+          },
+          {
+            "feature": "tfidf_abs__word__com cordao",
+            "family": "tfidf_word",
+            "signed_shap": 0.04260063562899378
+          },
+          {
+            "feature": "tfidf_abs__word__cordao rompido",
+            "family": "tfidf_word",
+            "signed_shap": 0.04260063562899378
+          },
+          {
+            "feature": "tfidf_abs__word__persiana com",
+            "family": "tfidf_word",
+            "signed_shap": 0.04260063562899378
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.027852358287218708
+          },
+          {
+            "feature": "tfidf_abs__word__fica",
+            "family": "tfidf_word",
+            "signed_shap": -0.010481127158572917
+          },
+          {
+            "feature": "tfidf_abs__word__continua",
+            "family": "tfidf_word",
+            "signed_shap": -0.006615803774593724
+          },
+          {
+            "feature": "tfidf_abs__word__energia",
+            "family": "tfidf_word",
+            "signed_shap": -0.006053122257954271
+          },
+          {
+            "feature": "tfidf_abs__word__ver",
+            "family": "tfidf_word",
+            "signed_shap": -0.005624408607929052
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-001027",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": 1.4808036902272546,
+        "reconstructed_base_model_output": 1.4808036902272594,
+        "additivity_residual": 4.884981308350689e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__continua",
+            "family": "tfidf_word",
+            "signed_shap": 0.02159773564381381
+          },
+          {
+            "feature": "tfidf_abs__word__retomar",
+            "family": "tfidf_word",
+            "signed_shap": 0.016962088169114927
+          },
+          {
+            "feature": "tfidf_abs__word__resolveu mesmo",
+            "family": "tfidf_word",
+            "signed_shap": 0.016962088169114927
+          },
+          {
+            "feature": "tfidf_abs__word__reparo",
+            "family": "tfidf_word",
+            "signed_shap": 0.016962088169114927
+          },
+          {
+            "feature": "tfidf_abs__word__reparo da",
+            "family": "tfidf_word",
+            "signed_shap": 0.016962088169114927
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__reparar",
+            "family": "tfidf_word",
+            "signed_shap": -0.008724472077123324
+          },
+          {
+            "feature": "tfidf_abs__word__defeito",
+            "family": "tfidf_word",
+            "signed_shap": -0.00606613667248424
+          },
+          {
+            "feature": "tfidf_abs__word__energia",
+            "family": "tfidf_word",
+            "signed_shap": -0.006053122257954271
+          },
+          {
+            "feature": "tfidf_abs__word__corrigir",
+            "family": "tfidf_word",
+            "signed_shap": -0.005889103047519316
+          },
+          {
+            "feature": "tfidf_abs__word__ver",
+            "family": "tfidf_word",
+            "signed_shap": -0.005624408607929052
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000769",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": -1.6547384835479397,
+        "reconstructed_base_model_output": -1.654738483547936,
+        "additivity_residual": 3.774758283725532e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__vazando",
+            "family": "tfidf_word",
+            "signed_shap": 0.009485731830990766
+          },
+          {
+            "feature": "tfidf_abs__word__nao liga",
+            "family": "tfidf_word",
+            "signed_shap": 0.007821283592793842
+          },
+          {
+            "feature": "tfidf_abs__word__liga",
+            "family": "tfidf_word",
+            "signed_shap": 0.007821283592793842
+          },
+          {
+            "feature": "tfidf_abs__word__outro",
+            "family": "tfidf_word",
+            "signed_shap": 0.006636218975413203
+          },
+          {
+            "feature": "tfidf_abs__word__avaliar",
+            "family": "tfidf_word",
+            "signed_shap": 0.005672838771406087
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__oficina",
+            "family": "tfidf_word",
+            "signed_shap": -0.03718080587006694
+          },
+          {
+            "feature": "tfidf_abs__word__oficina de",
+            "family": "tfidf_word",
+            "signed_shap": -0.03718080587006694
+          },
+          {
+            "feature": "tfidf_abs__word__de manutencao",
+            "family": "tfidf_word",
+            "signed_shap": -0.034738004740778906
+          },
+          {
+            "feature": "tfidf_abs__word__manutencao",
+            "family": "tfidf_word",
+            "signed_shap": -0.034738004740778906
+          },
+          {
+            "feature": "tfidf_abs__word__um",
+            "family": "tfidf_word",
+            "signed_shap": -0.02229327706811022
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000798",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": 1.314977289865137,
+        "reconstructed_base_model_output": 1.3149772898651317,
+        "additivity_residual": -5.329070518200751e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__apagada",
+            "family": "tfidf_word",
+            "signed_shap": 0.08318833689477945
+          },
+          {
+            "feature": "tfidf_abs__word__luz do",
+            "family": "tfidf_word",
+            "signed_shap": 0.02901837030326891
+          },
+          {
+            "feature": "tfidf_abs__word__do corredor",
+            "family": "tfidf_word",
+            "signed_shap": 0.02901837030326891
+          },
+          {
+            "feature": "tfidf_abs__word__apagada no",
+            "family": "tfidf_word",
+            "signed_shap": 0.02901837030326891
+          },
+          {
+            "feature": "tfidf_abs__word__lampada apagada",
+            "family": "tfidf_word",
+            "signed_shap": 0.02901837030326891
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__outro",
+            "family": "tfidf_word",
+            "signed_shap": -0.01427017133256928
+          },
+          {
+            "feature": "tfidf_abs__word__reparar",
+            "family": "tfidf_word",
+            "signed_shap": -0.008724472077123324
+          },
+          {
+            "feature": "tfidf_abs__word__continua",
+            "family": "tfidf_word",
+            "signed_shap": -0.006615803774593724
+          },
+          {
+            "feature": "tfidf_abs__word__energia",
+            "family": "tfidf_word",
+            "signed_shap": -0.006053122257954271
+          },
+          {
+            "feature": "tfidf_abs__word__ver",
+            "family": "tfidf_word",
+            "signed_shap": -0.005624408607929052
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-001045",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": -1.7097223251933298,
+        "reconstructed_base_model_output": -1.7097223251933258,
+        "additivity_residual": 3.9968028886505635e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__liga",
+            "family": "tfidf_word",
+            "signed_shap": 0.007821283592793842
+          },
+          {
+            "feature": "tfidf_abs__word__nao liga",
+            "family": "tfidf_word",
+            "signed_shap": 0.007821283592793842
+          },
+          {
+            "feature": "tfidf_abs__word__nao",
+            "family": "tfidf_word",
+            "signed_shap": 0.00696611538822919
+          },
+          {
+            "feature": "tfidf_abs__word__outro",
+            "family": "tfidf_word",
+            "signed_shap": 0.006636218975413203
+          },
+          {
+            "feature": "tfidf_abs__word__luminaria proxima",
+            "family": "tfidf_word",
+            "signed_shap": 0.00557108703637987
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__no piso",
+            "family": "tfidf_word",
+            "signed_shap": -0.03844774788660021
+          },
+          {
+            "feature": "tfidf_abs__word__piso",
+            "family": "tfidf_word",
+            "signed_shap": -0.03844774788660021
+          },
+          {
+            "feature": "tfidf_abs__word__ocorrencia",
+            "family": "tfidf_word",
+            "signed_shap": -0.022351110884249202
+          },
+          {
+            "feature": "tfidf_abs__word__este",
+            "family": "tfidf_word",
+            "signed_shap": -0.021404085196636276
+          },
+          {
+            "feature": "tfidf_abs__word__um",
+            "family": "tfidf_word",
+            "signed_shap": -0.02077200059330217
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000829",
+        "gold": 0,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": -1.783230008641434,
+        "reconstructed_base_model_output": -1.7832300086414314,
+        "additivity_residual": 2.6645352591003757e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__nao liga",
+            "family": "tfidf_word",
+            "signed_shap": 0.007821283592793842
+          },
+          {
+            "feature": "tfidf_abs__word__liga",
+            "family": "tfidf_word",
+            "signed_shap": 0.007821283592793842
+          },
+          {
+            "feature": "tfidf_abs__word__nao",
+            "family": "tfidf_word",
+            "signed_shap": 0.00696611538822919
+          },
+          {
+            "feature": "tfidf_abs__word__outro",
+            "family": "tfidf_word",
+            "signed_shap": 0.006636218975413203
+          },
+          {
+            "feature": "tfidf_abs__word__proxima",
+            "family": "tfidf_word",
+            "signed_shap": 0.00557108703637987
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__piso",
+            "family": "tfidf_word",
+            "signed_shap": -0.04554831181442716
+          },
+          {
+            "feature": "tfidf_abs__word__no piso",
+            "family": "tfidf_word",
+            "signed_shap": -0.04554831181442716
+          },
+          {
+            "feature": "tfidf_abs__word__ocorrencia",
+            "family": "tfidf_word",
+            "signed_shap": -0.022806276467618344
+          },
+          {
+            "feature": "tfidf_abs__word__este",
+            "family": "tfidf_word",
+            "signed_shap": -0.021838754965881686
+          },
+          {
+            "feature": "tfidf_abs__word__um",
+            "family": "tfidf_word",
+            "signed_shap": -0.0211952809366795
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000871",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": 1.4067088972744952,
+        "reconstructed_base_model_output": 1.4067088972744988,
+        "additivity_residual": 3.552713678800501e-15,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__apagada",
+            "family": "tfidf_word",
+            "signed_shap": 0.0730998776723698
+          },
+          {
+            "feature": "tfidf_abs__word__junto ao",
+            "family": "tfidf_word",
+            "signed_shap": 0.031477708391299
+          },
+          {
+            "feature": "tfidf_abs__word__iluminacao",
+            "family": "tfidf_word",
+            "signed_shap": 0.02635360486805365
+          },
+          {
+            "feature": "tfidf_abs__word__restabelecer iluminacao",
+            "family": "tfidf_word",
+            "signed_shap": 0.02635360486805365
+          },
+          {
+            "feature": "tfidf_abs__word__confirmou lampada",
+            "family": "tfidf_word",
+            "signed_shap": 0.02635360486805365
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_abs__word__outro",
+            "family": "tfidf_word",
+            "signed_shap": -0.0168097262490671
+          },
+          {
+            "feature": "tfidf_abs__word__reparar",
+            "family": "tfidf_word",
+            "signed_shap": -0.008724472077123324
+          },
+          {
+            "feature": "tfidf_abs__word__continua",
+            "family": "tfidf_word",
+            "signed_shap": -0.006615803774593724
+          },
+          {
+            "feature": "tfidf_abs__word__energia",
+            "family": "tfidf_word",
+            "signed_shap": -0.006053122257954271
+          },
+          {
+            "feature": "tfidf_abs__word__ver",
+            "family": "tfidf_word",
+            "signed_shap": -0.005624408607929052
+          }
+        ]
+      },
+      {
+        "unit_id": "DEV-LOCAL-V1-000826",
+        "gold": 1,
+        "target_class": "DUPLICADO",
+        "base_value": 0.025783194670833405,
+        "base_model_output": 1.4956001220827928,
+        "reconstructed_base_model_output": 1.4956001220828046,
+        "additivity_residual": 1.176836406102666e-14,
+        "top_positive_features": [
+          {
+            "feature": "tfidf_abs__word__janela",
+            "family": "tfidf_word",
+            "signed_shap": 0.04338388634367012
+          },
+          {
+            "feature": "tfidf_abs__word__goteira perto",
+            "family": "tfidf_word",
+            "signed_shap": 0.0430209417091046
+          },
+          {
+            "feature": "tfidf_abs__word__da janela",
+            "family": "tfidf_word",
+            "signed_shap": 0.0430209417091046
+          },
+          {
+            "feature": "tfidf_abs__word__pedido anterior",
+            "family": "tfidf_word",
+            "signed_shap": 0.01727477063527359
+          },
+          {
+            "feature": "tfidf_abs__word__anterior da",
+            "family": "tfidf_word",
+            "signed_shap": 0.01727477063527359
+          }
+        ],
+        "top_negative_features": [
+          {
+            "feature": "tfidf_cosine",
+            "family": "tfidf_other",
+            "signed_shap": -0.016043893592669604
+          },
+          {
+            "feature": "tfidf_abs__word__reparar",
+            "family": "tfidf_word",
+            "signed_shap": -0.008724472077123324
+          },
+          {
+            "feature": "tfidf_abs__word__continua",
+            "family": "tfidf_word",
+            "signed_shap": -0.006615803774593724
+          },
+          {
+            "feature": "tfidf_abs__word__energia",
+            "family": "tfidf_word",
+            "signed_shap": -0.006053122257954271
+          },
+          {
+            "feature": "tfidf_abs__word__ver",
+            "family": "tfidf_word",
+            "signed_shap": -0.005624408607929052
+          }
+        ]
+      }
+    ],
+    "selection_evidence_status": "PROVISIONAL_POINT_CANDIDATE"
+  }
+]

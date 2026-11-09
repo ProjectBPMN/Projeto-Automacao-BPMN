@@ -1,0 +1,65 @@
+{
+  "schema_version": "projeto-ic-homolog-checkpoint-v2",
+  "checkpoint_at_utc": "2026-09-24T08:23:54.3249345Z",
+  "checkpoint_at_brt": "2026-09-24T05:23:54.3249345-03:00",
+  "timezone": "America/Sao_Paulo",
+  "authorized_daemon": {
+    "status": "PASS",
+    "valid_instance_count": 1,
+    "pid": 9124,
+    "executable_path": ".venv\\Scripts\\pythonw.exe",
+    "command_requirements": ["monitor_daemon.py", "monitoring-homolog-20260910-v2", "--interval-seconds 60"],
+    "action": "PRESERVED"
+  },
+  "temporal_gap": {
+    "status": "DETECTED_PREVIOUSLY_UNRESOLVED",
+    "gap_before_current_window": true,
+    "last_closed_window_before_gap_end_at_utc": "2026-09-18T03:27:48.876537Z",
+    "current_closed_window_end_at_utc": "2026-09-24T07:27:48.876537Z",
+    "interpretation": "A new post-restart window closed, but it does not establish continuity across the previously unobserved interval."
+  },
+  "technical_windows": {
+    "runtime_status": "TECHNICAL_WINDOWS_COMPLETE",
+    "completed": 33,
+    "required": 3,
+    "latest_window_index": 33,
+    "latest_window_start_at_utc": "2026-09-24T03:27:48.876537Z",
+    "latest_window_end_at_utc": "2026-09-24T07:27:48.876537Z",
+    "decision_coverage": "COMPLETE",
+    "latest_slo_status": "FAIL",
+    "latest_local_ai_availability": 0.0,
+    "latest_backup_restore_age_hours": 324.2262167230556,
+    "latest_drift_status": "INSUFFICIENT_DATA"
+  },
+  "atomic_queue_capture": {
+    "artifact": "runtime-queue-state-20260924T082244Z.json",
+    "status": "PASS",
+    "erro_ia": 0,
+    "active_queue": 0,
+    "open_dlq": 0
+  },
+  "verification": {
+    "operational_tests": "53 passed",
+    "operational_tests_artifact": "pytest-homolog-20260924T082244Z.xml",
+    "v9_static_validation": "PASS",
+    "v9_static_validation_artifact": "validate-v9-static-20260924T082244Z.txt"
+  },
+  "scientific_protocol": {
+    "expected": 10,
+    "completed": 10,
+    "failed": 0,
+    "pending": 0,
+    "running": 0,
+    "protocol_sha256": "5632375c8b0c4db66c5da375bb1fdf1f84d0890637f8a2684447bff2b78db2f0",
+    "run_fingerprint": "4e693e499be3b80489c2e27e6f7bed5c9c2a5f704253f8e7533cbdf538122484",
+    "required_completed_status": "COMPLETED_DEVELOPMENT_OOF",
+    "xai_complete": true,
+    "performance_benchmark_complete": true,
+    "locked_challenge_recorded": true,
+    "scientific_result": false,
+    "production_ready": false,
+    "interpretation_limit": "Synthetic/proxy labels do not demonstrate institutional efficacy, scientific_ready, or production readiness."
+  },
+  "homologation_status": "BLOCKED_BY_PREVIOUS_TEMPORAL_GAP_SLO_AND_INSUFFICIENT_DATA",
+  "required_action": "Collect a new uninterrupted observation period and renew backup/restore, local-AI, and decision-level evidence before reconsidering the gates."
+}

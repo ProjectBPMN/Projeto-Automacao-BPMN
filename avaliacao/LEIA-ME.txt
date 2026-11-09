@@ -1,0 +1,74 @@
+PASTA AVALIACAO
+===============
+
+- datasets: conjuntos de casos sintéticos.
+- scripts: programas de geração, execução, conferência e calibração.
+- config: política versionada dos modelos externos e do candidato LOCAL, além
+  dos planos amostrais.
+- schemas: contratos JSON canônicos aplicados a todos os provedores.
+- prompts: instruções versionadas usadas pelos adaptadores remotos.
+- sql: consultas e carga do gabarito no PostgreSQL.
+- tests: testes automatizados dos contratos, executores e bloqueios científicos.
+- resultados: evidências brutas e resumos das execuções.
+
+Estado do protocolo versionado:
+- a seleção interna de embeddings e classificadores segue
+  `PROTOCOLO_SELECAO_MODELOS_V1.md`; ela usa somente
+  `desenvolvimento_local_v1.jsonl`, bloqueia os conjuntos reservados e não é
+  resultado confirmatório;
+- a rodada v1.3 terminou e foi validada independentemente em 17/08/2026: 90
+  configurações, 50.780 predições fora da dobra, 450 dobras, XAI e latência;
+  seus candidatos são de desenvolvimento e ficaram `UNDERPOWERED`, portanto
+  não autorizam promover automaticamente o candidato operacional;
+- a etapa corrente é automatizada e não realiza dupla revisão humana;
+- confirmações humanas continuam nos workflows e podem ser percorridas pelo
+  oráculo determinístico externo de teste somente depois do registro da
+  predição; essa ação não é revisão humana nem validação externa;
+- a opção clara do conferidor é `--resolver-confirmacoes-automaticas`; o
+  antigo `--resolver-fiscal` permanece apenas como alias compatível/deprecado.
+  Ambos percorrem os mesmos endpoints WF04/WF05 e exigem TEST_MODE, autorização
+  do experimento, decisão da IA persistida, reserva auditada e nonce único;
+- as métricas significam concordância com gabarito sintético, não validade real;
+- o seed `primary33` usa D01-D14 + C01-C19, com 30 realizações por cenário:
+  são 990 realizações de cenário e 1.410 chamados GLPI, pois cada D gera um par;
+- D15 + C20 formam `stress2`; com 30 realizações cada, acrescentam 90 tickets;
+- as variações naturalísticas são medidas repetidas e não novos núcleos
+  semânticos independentes;
+- o plano revisado V4.1 prevê futuramente 878 chamados oriundos de 619
+  núcleos/episódios, totalizando aproximadamente 2.078 chamados; nenhum caso
+  novo será gerado nesta etapa.
+
+Política operacional de IA:
+- LOCAL: `local-hybrid-v1.8.0`, candidato local híbrido PyTorch FP32 sem API
+  externa;
+- SECONDARY operacional: `gemini-3.5-flash`.
+
+Essa sequência local-first é somente operacional. O gateway ativo implementa
+apenas `LOCAL` e `SECONDARY`. Papéis antigos permanecem como registro histórico;
+DeepSeek é um candidato bloqueado, sem executor pareado nem chamada operacional.
+Benchmark e comparação de eficácia usam um
+papel/modelo fixo por `run_id`, com fallback desabilitado e toda tentativa
+preservada; um fallback nunca pode substituir silenciosamente o modelo avaliado.
+
+O candidato local v1.8 está congelado e elegível para avaliação, mas
+continua com `scientifically_validated=false` e `scientific_result=false` até o
+holdout independente. Calibração de desenvolvimento não é eficácia final.
+
+Os arquivos `corpus_v3_teste.*`, `dataset_*_v2.*` e
+`desenvolvimento_local_v1.*` são desenvolvimento/piloto e expõem gabaritos ou
+foram usados no ajuste. Eles não podem ser renomeados como holdout nem usados
+para alegação confirmatória. O corpus `desenvolvimento_local_v1` tem licença de
+uso interno acadêmico e redistribuição não autorizada sem revisão
+institucional. Variações sintéticas do mesmo núcleo também não substituem
+novos episódios independentes.
+
+Para distribuição pública, não inclua o corpus interno nem um bundle derivado
+dele sem autorização institucional explícita. Uma alternativa é publicar o
+código sem o bundle treinado e exigir que cada instalação forneça um bundle
+produzido com dados cuja licença permita redistribuição. Os pesos externos IBM
+Granite seguem as licenças dos respectivos repositórios, não a licença do
+código deste projeto.
+
+Referências a partir da raiz do projeto:
+`avaliacao/config/plano_seed_33x30.json`,
+`avaliacao/PRE_REGISTRO_PENDENTE.md` e `NOTICE`.

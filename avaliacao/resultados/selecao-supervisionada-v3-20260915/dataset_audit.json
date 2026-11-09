@@ -1,0 +1,34 @@
+{
+  "path": "avaliacao\\datasets\\semantico_v3\\desenvolvimento_semantico_v3_1.jsonl",
+  "sha256": "437e516f6d198927817a9fb2dd730105e7814958c37656f864f35b90d9ac4bbb",
+  "records": 1516,
+  "classification_model_records": 448,
+  "classification_group_field": "source_dependency_group_sha256",
+  "classification_groups": 80,
+  "deduplication_pairs": 358,
+  "deduplication_group_field": "source_dependency_group_sha256",
+  "deduplication_groups": 31,
+  "source_audit": {
+    "path": "avaliacao\\datasets\\semantico_v3\\desenvolvimento_semantico_v3_1.jsonl",
+    "role": "TRAIN",
+    "splits": [
+      "DESENVOLVIMENTO"
+    ],
+    "records": 1516,
+    "sha256": "437e516f6d198927817a9fb2dd730105e7814958c37656f864f35b90d9ac4bbb",
+    "neighbor_metadata_checked": [
+      "avaliacao\\datasets\\semantico_v3\\desenvolvimento_semantico_v3_1_manifest.json"
+    ],
+    "test_split_detected": false,
+    "reserved_scenario_set_detected": false
+  },
+  "synthetic": true,
+  "development_only": true,
+  "execution_tasks": [
+    "classification",
+    "deduplication"
+  ],
+  "scientific_result": false,
+  "confirmatory_eligible": false,
+  "evidence_basis": "SYNTHETIC_PROXY_LABELS"
+}

@@ -1,0 +1,2140 @@
+{
+  "active": false,
+  "connections": {
+    "01. Trigger: Polling a cada 10 min": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "02. GLPI: Iniciar Sessao API",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "01b. Trigger Manual (Testes)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "02. GLPI: Iniciar Sessao API",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "01c. Trigger Webhook GLPI (Evento)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "02b. Preparar Entrada Webhook",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "02. GLPI: Iniciar Sessao API": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "03. GLPI: Buscar Chamados de Interesse",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "02b. Preparar Entrada Webhook": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "02. GLPI: Iniciar Sessao API",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "03. GLPI: Buscar Chamados de Interesse": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "04. Estruturar Dados dos Chamados",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "04. Estruturar Dados dos Chamados": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "05. Filtro: Ha Chamados Elegiveis?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "05. Filtro: Ha Chamados Elegiveis?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Loop Over Items",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "06. IA: Extracao + Verificacao de Duplicidade": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Loop Over Items",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "06. IA: Extracao + Verificacao de Duplicidade",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "07. Normalizar Resposta da IA (Duplicidade)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "08. Decisao: E Duplicado?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "08. Decisao: E Duplicado?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "06. IA: Extracao + Verificacao de Duplicidade",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "09. Preparar Alerta de Duplicidade ao Fiscal",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "13. Preparar Dados para Classificacao",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "09. Preparar Alerta de Duplicidade ao Fiscal": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "09b. GLPI: Registrar Alerta ao Fiscal",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "09b. GLPI: Registrar Alerta ao Fiscal": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "10. Aguardar Fiscal Registrar Decisao no GLPI",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "10. Aguardar Fiscal Registrar Decisao no GLPI": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "10b. GLPI: Ler Followups do Chamado",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "10b. GLPI: Ler Followups do Chamado": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "10c. Extrair Decisao do Fiscal (GLPI)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "10c. Extrair Decisao do Fiscal (GLPI)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "11. Decisao do Fiscal: Duplicado?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "11. Decisao do Fiscal: Duplicado?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "12a. Registrar: Fechar Chamado Duplicado",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "12b. Fiscal Rejeitou Duplicidade: Seguir Fluxo",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "11b. Politica Sem Decisao Fiscal",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "11b. Politica Sem Decisao Fiscal": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "13. Preparar Dados para Classificacao",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "11c. Producao: Aguardar Decisao do Fiscal",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "11c. Producao: Aguardar Decisao do Fiscal",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "11c. Producao: Aguardar Decisao do Fiscal": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "10. Aguardar Fiscal Registrar Decisao no GLPI",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "12a. Registrar: Fechar Chamado Duplicado": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "12a1. GLPI: Fechar Chamado Duplicado (Status 6)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "12a1. GLPI: Fechar Chamado Duplicado (Status 6)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "12c. GLPI: Registrar Duplicidade Confirmada",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "12b. Fiscal Rejeitou Duplicidade: Seguir Fluxo": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "13. Preparar Dados para Classificacao",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "13. Preparar Dados para Classificacao": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "14. IA: Obra vs Manutencao + Executor",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "14. IA: Obra vs Manutencao + Executor": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "15. Normalizar Resultado da Classificacao",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "E2. Log: Erro na IA de Classificacao",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "15. Normalizar Resultado da Classificacao": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "16. Decisao: Obra / DEMO / Sob Demanda",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "16. Decisao: Obra / DEMO / Sob Demanda": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "17a. OBRA: Simulador E-mail DDI/DG + Fechar Chamado",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "17b. DEMO: Aguardando Designacao do Fiscal",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "17c. SOB DEMANDA: Aguardando Orcamento do Fiscal",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "E2. Log: Erro na IA de Classificacao",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "17a. OBRA: Simulador E-mail DDI/DG + Fechar Chamado": {
+      "main": [
+        []
+      ]
+    },
+    "17b. DEMO: Aguardando Designacao do Fiscal": {
+      "main": [
+        []
+      ]
+    },
+    "17c. SOB DEMANDA: Aguardando Orcamento do Fiscal": {
+      "main": [
+        []
+      ]
+    },
+    "E1. Log: Erro na IA de Duplicidade": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "E1b. Controle Reprocesso Duplicidade",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "E1b. Controle Reprocesso Duplicidade": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "E1c. Decisao Reprocesso Duplicidade",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "E1c. Decisao Reprocesso Duplicidade": {
+      "main": [
+        []
+      ]
+    },
+    "E2. Log: Erro na IA de Classificacao": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "E2b. Controle Reprocesso Classificacao",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "E2b. Controle Reprocesso Classificacao": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "E2c. Decisao Reprocesso Classificacao",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "E2c. Decisao Reprocesso Classificacao": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "14. IA: Obra vs Manutencao + Executor",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "07. Normalizar Resposta da IA (Duplicidade)",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "06. IA: Extracao + Verificacao de Duplicidade",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "name": "Triagem Inteligente de Chamados - GLPI + IA (Webhook Runtime)",
+  "nodes": [
+    {
+      "id": "7d8422a4-c845-4834-9df2-2da455e16cdc",
+      "name": "01b. Trigger Manual (Testes)",
+      "notes": "Trigger manual para testes durante desenvolvimento. Clique em Execute Workflow para disparar.",
+      "parameters": {},
+      "position": [
+        -2016,
+        528
+      ],
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1
+    },
+    {
+      "id": "be841e42-870c-4690-a38d-c78b3b217bac",
+      "name": "12a. Registrar: Fechar Chamado Duplicado",
+      "notes": "Registra a decisao do fiscal de confirmar duplicidade. O chamado mais novo sera fechado e o mais antigo mantido.",
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "set-fechar-dup",
+              "name": "acao",
+              "type": "string",
+              "value": "CHAMADO_FECHADO_DUPLICADO"
+            },
+            {
+              "id": "set-fechar-msg",
+              "name": "mensagem",
+              "type": "string",
+              "value": "=Chamado fechado como DUPLICADO. O chamado mais antigo sera mantido."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "position": [
+        1056,
+        -48
+      ],
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "73aca59f-d437-470e-abb9-e0a0146cadc8",
+      "name": "12b. Fiscal Rejeitou Duplicidade: Seguir Fluxo",
+      "notes": "O fiscal decidiu que NAO e duplicado. Ambos os chamados seguem para a etapa de classificacao Obra/Manutencao.",
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "set-segue",
+              "name": "acao",
+              "type": "string",
+              "value": "SEGUE_PARA_CLASSIFICACAO"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "position": [
+        1248,
+        144
+      ],
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "1201d4cc-98fb-49ea-a654-24cf16e3ab8e",
+      "name": "09b. GLPI: Registrar Alerta ao Fiscal",
+      "notes": "Registra no proprio ticket do GLPI um acompanhamento orientando o fiscal a responder com DECISAO_DUPLICIDADE=CONFIRMAR ou DECISAO_DUPLICIDADE=NAO_DUPLICADO.",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('02. GLPI: Iniciar Sessao API').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"items_id\": $json._chamado_id, \"itemtype\": \"Ticket\", \"content\": $json._mensagem_followup_fiscal}} }}",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "http://host.docker.internal:8080/apirest.php/ITILFollowup"
+      },
+      "position": [
+        224,
+        -48
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "b802f29a-80c6-4f90-8156-94b898811bb3",
+      "name": "10b. GLPI: Ler Followups do Chamado",
+      "notes": "Busca os acompanhamentos do ticket para localizar a decisao registrada pelo fiscal.",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('02. GLPI: Iniciar Sessao API').first().json.session_token }}"
+            }
+          ]
+        },
+        "options": {},
+        "sendHeaders": true,
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/' + $json._chamado_id + '/ITILFollowup' }}"
+      },
+      "position": [
+        480,
+        -48
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "bfa1a1ea-ea0a-4bb2-abaa-771e8700cc6f",
+      "name": "10c. Extrair Decisao do Fiscal (GLPI)",
+      "notes": "Interpreta os acompanhamentos do ticket e converte para confirma_duplicado ou nao_duplicado.",
+      "parameters": {
+        "jsCode": "const bases = $('09. Preparar Alerta de Duplicidade ao Fiscal').all();\nconst respostasFollowup = $input.all();\n\nfunction normalizarTexto(item) {\n  const bruto = String(item?.content || item?.comment || item?.name || '');\n  return bruto.toUpperCase().replace(/\\s+/g, ' ').trim();\n}\n\nfunction extrairChave(texto) {\n  const m = texto.match(/CHAVE_DUPLICIDADE\\s*=\\s*([A-Z0-9\\-_]+)/i);\n  return m ? String(m[1]).toUpperCase() : '';\n}\n\nfunction decidirPorTexto(texto) {\n  if (/DECISAO_DUPLICIDADE\\s*=\\s*CONFIRMAR/.test(texto)) return 'confirma_duplicado';\n  if (/DECISAO_DUPLICIDADE\\s*=\\s*NAO_DUPLICADO/.test(texto)) return 'nao_duplicado';\n  if (/\\bCONFIRMAR_DUPLICIDADE\\b/.test(texto)) return 'confirma_duplicado';\n  if (/\\bREJEITAR_DUPLICIDADE\\b/.test(texto)) return 'nao_duplicado';\n  return '';\n}\n\nreturn respostasFollowup.map((entrada, idx) => {\n  const base = bases[idx]?.json || {};\n  const chaveEsperada = String(base._dup_chave || '').toUpperCase();\n  const bruto = entrada.json;\n  const lista = Array.isArray(bruto)\n    ? bruto\n    : (Array.isArray(bruto.data) ? bruto.data : (Array.isArray(bruto['hydra:member']) ? bruto['hydra:member'] : []));\n\n  const elegiveis = lista\n    .map((f) => {\n      const texto = normalizarTexto(f);\n      const decisao = decidirPorTexto(texto);\n      return {\n        data: new Date(f?.date_mod || f?.date_creation || f?.date || 0).getTime() || 0,\n        texto,\n        chave: extrairChave(texto),\n        decisao,\n      };\n    })\n    .filter((f) => !!f.decisao)\n    .filter((f) => {\n      if (!chaveEsperada) return true;\n      if (!f.chave) return true;\n      return f.chave === chaveEsperada;\n    })\n    .sort((a, b) => b.data - a.data);\n\n  if (elegiveis.length === 0) {\n    return {\n      json: {\n        ...base,\n        decisao_fiscal: '',\n        origem_decisao: 'sem_registro'\n      }\n    };\n  }\n\n  const ultimo = elegiveis[0];\n  return {\n    json: {\n      ...base,\n      decisao_fiscal: ultimo.decisao,\n      origem_decisao: 'followup_glpi',\n      _decisao_texto: ultimo.texto,\n      _decisao_chave: ultimo.chave || ''\n    }\n  };\n});"
+      },
+      "position": [
+        768,
+        32
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "7788e5ef-83c8-44dd-9a7e-10f71094d529",
+      "name": "12c. GLPI: Registrar Duplicidade Confirmada",
+      "notes": "Registra no GLPI que o fiscal confirmou a duplicidade.",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('02. GLPI: Iniciar Sessao API').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"items_id\": $json._chamado_fechar_id || $json._chamado_id || $json.chamado?.id, \"itemtype\": \"Ticket\", \"content\": \"[TRIAGEM_IA][DECISAO_DUPLICIDADE=CONFIRMADA] Duplicidade confirmada pelo fiscal. Chamado fechado como duplicado. Mantido: #\" + ($json._chamado_manter_id || $json._chamado_ref_id || \"N/A\") + \" | Chave: \" + ($json._dup_chave || \"N/A\")}} }}",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "http://host.docker.internal:8080/apirest.php/ITILFollowup"
+      },
+      "position": [
+        1296,
+        -48
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "510e7621-de4a-4e98-97d3-07a3299f82a9",
+      "name": "17a1. GLPI: Registrar Encaminhamento OBRA",
+      "notes": "Registra no GLPI a decisao de encaminhamento OBRA para DDI/DG.",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('02. GLPI: Iniciar Sessao API').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"items_id\": $json.chamado.id, \"itemtype\": \"Ticket\", \"content\": \"[TRIAGEM_IA] Classificado como OBRA. Encaminhar DDI/DG. Justificativa: \" + ($json.justificativa_tecnica || 'Sem justificativa')}} }}",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "http://host.docker.internal:8080/apirest.php/ITILFollowup"
+      },
+      "position": [
+        1456,
+        544
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "bc534e0d-1b68-416e-979a-4d153957dddb",
+      "name": "17b1. GLPI: Registrar Encaminhamento DEMO",
+      "notes": "Registra no GLPI a decisao de encaminhamento para equipe DEMO.",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('02. GLPI: Iniciar Sessao API').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"items_id\": $json.chamado.id, \"itemtype\": \"Ticket\", \"content\": \"[TRIAGEM_IA] Classificado como MANUTENCAO DEMO. Aguardar designacao presencial do fiscal. Justificativa: \" + ($json.justificativa_tecnica || 'Sem justificativa')}} }}",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "http://host.docker.internal:8080/apirest.php/ITILFollowup"
+      },
+      "position": [
+        1456,
+        720
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "6a8ddef7-09e3-4433-8ac9-6c0b3b27b6c5",
+      "name": "17c1. GLPI: Registrar Encaminhamento SOB_DEMANDA",
+      "notes": "Registra no GLPI a decisao de encaminhamento para atendimento sob demanda.",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('02. GLPI: Iniciar Sessao API').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"items_id\": $json.chamado.id, \"itemtype\": \"Ticket\", \"content\": \"[TRIAGEM_IA] Classificado como MANUTENCAO SOB_DEMANDA. Aguardar orcamento/projeto tecnico do fiscal. Justificativa: \" + ($json.justificativa_tecnica || 'Sem justificativa')}} }}",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "http://host.docker.internal:8080/apirest.php/ITILFollowup"
+      },
+      "position": [
+        1520,
+        928
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "54f342bc-b295-416a-90ad-e2cf253e95dc",
+      "name": "17a. OBRA: Simulador E-mail DDI/DG + Fechar Chamado",
+      "notes": "Simula envio de e-mail para DDI/DG quando identificada OBRA. Em producao, substituir por no Send Email real. O chamado e fechado no GLPI com justificativa.",
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "email-dest",
+              "name": "Simulacao_Destinatario",
+              "type": "string",
+              "value": "ddi.riopomba@ifsudestemg.edu.br"
+            },
+            {
+              "id": "email-assunto",
+              "name": "Simulacao_Assunto",
+              "type": "string",
+              "value": "=[Triagem IA] OBRA Detectada - Chamado #{{ $json.chamado.id }}"
+            },
+            {
+              "id": "email-corpo",
+              "name": "Simulacao_Corpo",
+              "type": "string",
+              "value": "=Chamado #{{ $json.chamado.id }} | Titulo: {{ $json.chamado.titulo }} | Local: {{ $json.chamado.localizacao }} | Justificativa: {{ $json.justificativa_tecnica }}"
+            },
+            {
+              "id": "set-acao",
+              "name": "Acao_GLPI",
+              "type": "string",
+              "value": "FECHAR_CHAMADO_COMO_OBRA"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "position": [
+        1408,
+        544
+      ],
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "4d69d4ff-ed49-4ca0-88de-87e21b8f56e5",
+      "name": "17b. DEMO: Aguardando Designacao do Fiscal",
+      "notes": "MANUTENCAO executavel pela equipe DEMO (Prefeitura Campus). Status muda para Processando e aguarda fiscal designar presencialmente. PONTO DE RETORNO AO BPMS FUTURO.",
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "demo-status",
+              "name": "Acao_GLPI",
+              "type": "string",
+              "value": "MUDAR_STATUS_PROCESSANDO"
+            },
+            {
+              "id": "demo-exec",
+              "name": "Executor",
+              "type": "string",
+              "value": "DEMO - Equipe Prefeitura do Campus"
+            },
+            {
+              "id": "demo-prox",
+              "name": "Proximo_Passo",
+              "type": "string",
+              "value": "=Encaminhar ao fiscal para designacao presencial a equipe DEMO. Chamado #{{ $json.chamado.id }} - {{ $json.chamado.titulo }}"
+            },
+            {
+              "id": "demo-just",
+              "name": "Justificativa_IA",
+              "type": "string",
+              "value": "={{ $json.justificativa_tecnica }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "position": [
+        1408,
+        720
+      ],
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "599ab8d3-4ae7-4604-bb9e-2efe06b3af5e",
+      "name": "17c. SOB DEMANDA: Aguardando Orcamento do Fiscal",
+      "notes": "MANUTENCAO que requer empresa especializada. Status muda para Processando e aguarda fiscal elaborar orcamento (SINAPI/SICRO) e projeto tecnico. PONTO DE RETORNO AO BPMS FUTURO.",
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "sob-status",
+              "name": "Acao_GLPI",
+              "type": "string",
+              "value": "MUDAR_STATUS_PROCESSANDO"
+            },
+            {
+              "id": "sob-exec",
+              "name": "Executor",
+              "type": "string",
+              "value": "SOB_DEMANDA - Contratacao Empresa Especializada"
+            },
+            {
+              "id": "sob-prox",
+              "name": "Proximo_Passo",
+              "type": "string",
+              "value": "=Encaminhar ao fiscal para elaboracao de orcamento (SINAPI/SICRO ou cotacoes) e projeto tecnico. Chamado #{{ $json.chamado.id }} - {{ $json.chamado.titulo }}"
+            },
+            {
+              "id": "sob-just",
+              "name": "Justificativa_IA",
+              "type": "string",
+              "value": "={{ $json.justificativa_tecnica }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "position": [
+        1536,
+        928
+      ],
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "5302b535-378d-4031-8370-b16496938e21",
+      "name": "E1. Log: Erro na IA de Duplicidade",
+      "notes": "Registra o erro para analise posterior.",
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "log-err1",
+              "name": "log_erro",
+              "type": "string",
+              "value": "Erro na IA de Duplicidade - Chamado requer analise manual."
+            },
+            {
+              "id": "log-err1-etapa",
+              "name": "etapa",
+              "type": "string",
+              "value": "06. IA: Extracao + Verificacao de Duplicidade"
+            },
+            {
+              "id": "log-err1-motivo",
+              "name": "motivo_erro",
+              "type": "string",
+              "value": "={{ $json.error?.message || $json.message || $json.details || 'Motivo nao informado pelo no de IA' }}"
+            },
+            {
+              "id": "log-err1-tipo",
+              "name": "tipo_erro",
+              "type": "string",
+              "value": "={{ $json.tipo_erro || 'nao_classificado' }}"
+            },
+            {
+              "id": "log-err1-chamado",
+              "name": "chamado_id",
+              "type": "string",
+              "value": "={{ $json.chamado_atual?.id || $json.chamado?.id || 'nao_identificado' }}"
+            },
+            {
+              "id": "log-err1-tentativa",
+              "name": "tentativa_reprocesso",
+              "type": "string",
+              "value": "={{ $json.tentativa_reprocesso_dup || 0 }}"
+            },
+            {
+              "id": "log-err1-contexto",
+              "name": "payload_resumido",
+              "type": "string",
+              "value": "={{ JSON.stringify($json).slice(0, 1200) }}"
+            },
+            {
+              "id": "log-err1-acao",
+              "name": "acao_recomendada",
+              "type": "string",
+              "value": "Reprocessar chamado e, se persistir, encaminhar para analise manual do fiscal."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "position": [
+        -464,
+        560
+      ],
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "e373ef3c-54c6-470d-8f91-6af1d4362ba3",
+      "name": "E2. Log: Erro na IA de Classificacao",
+      "notes": "Registra falha detalhada na IA de classificacao para depuracao e reprocessamento assistido.",
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "log-err2",
+              "name": "log_erro",
+              "type": "string",
+              "value": "Erro na IA de Classificacao - Chamado requer analise manual."
+            },
+            {
+              "id": "log-err2-etapa",
+              "name": "etapa",
+              "type": "string",
+              "value": "14. IA: Obra vs Manutencao + Executor"
+            },
+            {
+              "id": "log-err2-motivo",
+              "name": "motivo_erro",
+              "type": "string",
+              "value": "={{ $json.erro || $json.error?.message || $json.message || 'Motivo nao informado pelo no de IA' }}"
+            },
+            {
+              "id": "log-err2-tipo",
+              "name": "tipo_erro",
+              "type": "string",
+              "value": "={{ $json.tipo_erro || 'nao_classificado' }}"
+            },
+            {
+              "id": "log-err2-chamado",
+              "name": "chamado_id",
+              "type": "string",
+              "value": "={{ $json.chamado?.id || 'nao_identificado' }}"
+            },
+            {
+              "id": "log-err2-tentativa",
+              "name": "tentativa_reprocesso",
+              "type": "string",
+              "value": "={{ $json.tentativa_reprocesso_class || 0 }}"
+            },
+            {
+              "id": "log-err2-contexto",
+              "name": "payload_resumido",
+              "type": "string",
+              "value": "={{ JSON.stringify($json).slice(0, 1200) }}"
+            },
+            {
+              "id": "log-err2-acao",
+              "name": "acao_recomendada",
+              "type": "string",
+              "value": "Reprocessar classificacao uma vez e, se persistir, encaminhar para analise manual do fiscal."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "position": [
+        768,
+        960
+      ],
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "20702a7d-ab52-4eb0-a92c-c17791f4240b",
+      "name": "E1b. Controle Reprocesso Duplicidade",
+      "notes": "Incrementa tentativa de reprocessamento da etapa de duplicidade e limita em 2 ciclos extras.",
+      "parameters": {
+        "jsCode": "return $input.all().map((item, i) => {\n  const json = item.json || {};\n  const tentativa = Number(json.tentativa_reprocesso_dup || 0) + 1;\n  const reprocessar = tentativa <= 2;\n  \n  // O nó da IA exclui os dados quando falha. Vamos restaurá-los!\n  // Como as execuções item a item mantêm a ordem, tentamos buscar no runIndex ou pelo backup salvo em E1 Log.\n  // Graças a isso, a IA não vai receber campos vazios na requisição.\n  const chamadoRecuperado = $('04. Estruturar Dados dos Chamados').itemMatching(i)?.json?.chamado_atual || json.chamado_atual || json._chamado_recuperado;\n  const historicoRecuperado = $('04. Estruturar Dados dos Chamados').itemMatching(i)?.json?.historico_abertos || json.historico_abertos;\n  \n  return {\n    json: {\n      ...json,\n      tentativa_reprocesso_dup: tentativa,\n      reprocessar_dup: reprocessar,\n      // INJETANDO OS DADOS DE VOLTA PARA O LOOP\n      chamado_atual: chamadoRecuperado,\n      historico_abertos: historicoRecuperado\n    }\n  };\n});"
+      },
+      "position": [
+        -256,
+        560
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "a67635d6-b614-4444-ab3c-5eb8bf3849f5",
+      "name": "E1c. Decisao Reprocesso Duplicidade",
+      "parameters": {
+        "options": {},
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "cond-reprocessa-dup",
+                    "leftValue": "={{ $json.reprocessar_dup }}",
+                    "operator": {
+                      "operation": "true",
+                      "singleValue": true,
+                      "type": "boolean"
+                    },
+                    "rightValue": true
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "Reprocessar",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "cond-encerra-dup",
+                    "leftValue": "={{ $json.reprocessar_dup }}",
+                    "operator": {
+                      "operation": "false",
+                      "singleValue": true,
+                      "type": "boolean"
+                    },
+                    "rightValue": false
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "Encerrar",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        -336,
+        800
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "2ea674ab-94a1-42dd-99f1-9cf334c4be77",
+      "name": "E2b. Controle Reprocesso Classificacao",
+      "notes": "Incrementa tentativa da classificacao e limita em 1 ciclo extra para evitar loops longos.",
+      "parameters": {
+        "jsCode": "return $input.all().map(item => {\n  const tentativa = Number(item.json.tentativa_reprocesso_class || 0) + 1;\n  return {\n    json: {\n      ...item.json,\n      tentativa_reprocesso_class: tentativa,\n      reprocessar_class: tentativa <= 1\n    }\n  };\n});"
+      },
+      "position": [
+        1024,
+        960
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "93c57c67-b1dc-4dbf-908c-2e670b1695aa",
+      "name": "E2c. Decisao Reprocesso Classificacao",
+      "parameters": {
+        "options": {},
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "cond-reprocessa-class",
+                    "leftValue": "={{ $json.reprocessar_class }}",
+                    "operator": {
+                      "operation": "true",
+                      "singleValue": true,
+                      "type": "boolean"
+                    },
+                    "rightValue": true
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "Reprocessar",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "cond-encerra-class",
+                    "leftValue": "={{ $json.reprocessar_class }}",
+                    "operator": {
+                      "operation": "false",
+                      "singleValue": true,
+                      "type": "boolean"
+                    },
+                    "rightValue": false
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "Encerrar",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        1264,
+        960
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "a23d97af-df5f-404c-a287-7283b7e34b19",
+      "name": "Documentacao do Workflow",
+      "parameters": {
+        "color": 4,
+        "content": "\n**Fluxo Principal:**\n1. Trigger por polling OU webhook de evento GLPI\n2. Autentica na API do GLPI\n3. Busca chamados nos status reais (2/3/4/5)\n4. Limpa/estrutura dados em campos padronizados\n5. IA extrai campos + verifica duplicidade\n6. Separa: Duplicado vs Nao Duplicado\n7. Duplicados -> Fiscal decide via webhook\n8. Nao Duplicados -> IA classifica Obra/Manutencao\n9. Encaminha: Obra(DDI/DG) | DEMO | Sob Demanda\n\n**Campos padronizados do chamado:**\nID | Status | Titulo | Tipo de Servico\nProfissional Indicado | Descricao | Localizacao\nSolicitante | Data/Hora | Email | Duplicado?\n\n**Ponto de integracao BPMS (futuro):**\nApos DEMO/SOB_DEMANDA -> retorna ao processo BPMN",
+        "height": 452,
+        "width": 384
+      },
+      "position": [
+        -2480,
+        128
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    },
+    {
+      "id": "ef3cf4c7-7bf1-4e14-85db-9a7b633114a3",
+      "name": "Fase 1 - Coleta",
+      "parameters": {
+        "color": 7,
+        "content": "### FASE 1: Coleta de Dados\nConexao com GLPI via API REST\nBusca chamados ativos (2/3/4/5) com recorte temporal",
+        "height": 180,
+        "width": 560
+      },
+      "position": [
+        -2016,
+        144
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    },
+    {
+      "id": "627ff2bd-d44c-4b1b-8076-14fa40fe4f6d",
+      "name": "Fase 2 - IA Duplicidade",
+      "parameters": {
+        "color": 4,
+        "content": "### FASE 2: Limpeza + IA Duplicidade\nEstruturacao dos dados + Analise de duplicidade via IA\nSem Loop Over Items (resolve gargalo de lotes)",
+        "height": 180,
+        "width": 564
+      },
+      "position": [
+        -1264,
+        160
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    },
+    {
+      "id": "25041880-28c7-4dfb-82f9-4af5a1dbc4d1",
+      "name": "Fase 3 - Decisao Duplicidade",
+      "parameters": {
+        "color": 5,
+        "content": "### FASE 3: Decisao de Duplicidade\nFiscal avalia chamados potencialmente duplicados\nvia formulario web com botoes de acao.\nDuplicado -> fecha chamado | Nao duplicado -> segue fluxo",
+        "height": 124,
+        "width": 676
+      },
+      "position": [
+        208,
+        -176
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    },
+    {
+      "id": "61810062-501d-4ce4-b30d-15f453886ad8",
+      "name": "Fase 4 - Classificacao",
+      "parameters": {
+        "color": 6,
+        "content": "### FASE 4: Classificacao Obra/Manutencao\nIA classifica + define executor:\n- DDI_DG (obra)\n- DEMO (equipe interna)\n- SOB_DEMANDA (terceiros)",
+        "height": 180,
+        "width": 376
+      },
+      "position": [
+        480,
+        560
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    },
+    {
+      "id": "39a006b3-08ba-444c-aeae-9842f0b0e9cc",
+      "name": "Fase 5 - Encaminhamento",
+      "parameters": {
+        "color": 2,
+        "content": "### FASE 5: Encaminhamento Final\n\nObra -> E-mail DDI/DG (simulado)\nDEMO -> Fiscal designa equipe presencialmente\nSob Demanda -> Fiscal elabora orcamento SINAPI/SICRO\n\nPONTO DE RETORNO AO BPMS:\nA partir daqui, a responsabilidade e do fiscal:\n- DEMO: designacao presencial da equipe\n- SOB_DEMANDA: orcamento + projeto tecnico\n- Ambos: verificar viabilidade de execucao",
+        "height": 252,
+        "width": 412
+      },
+      "position": [
+        1520,
+        -16
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    },
+    {
+      "id": "616b9a43-c84d-477f-bfa9-d31747f34938",
+      "name": "01. Trigger: Polling a cada 10 min",
+      "notes": "Verifica periodicamente chamados de interesse para triagem de duplicidade. Em producao, ajustar o intervalo conforme volume.",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 10
+            }
+          ]
+        }
+      },
+      "position": [
+        -2016,
+        336
+      ],
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2
+    },
+    {
+      "id": "5191f629-5847-4380-b36c-23dfe2f640cf",
+      "name": "02. GLPI: Iniciar Sessao API",
+      "notes": "Autentica na API REST do GLPI e obtem o session_token necessario para todas as requisicoes seguintes.",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ 'user_token ' + $env.GLPI_USER_TOKEN }}"
+            }
+          ]
+        },
+        "options": {},
+        "sendHeaders": true,
+        "url": "http://host.docker.internal:8080/apirest.php/initSession"
+      },
+      "position": [
+        -1760,
+        336
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "3b9ef13a-b246-4998-8583-69976d1c30ac",
+      "name": "04. Estruturar Dados dos Chamados",
+      "notes": "Limpa HTML, padroniza status 1..6 e aplica recorte de duplicidade do GLPI real: 2/3/5 nos ultimos 3 meses e 4 sem limite; gera itens individuais para IA.",
+      "parameters": {
+        "jsCode": "// Processa todos os itens de entrada e extrai a lista de chamados retornada pelo GLPI\r\nlet todosChamados = [];\r\n\r\nfor (const item of $input.all()) {\r\n  let dadosBrutos = item.json;\r\n  let lista = [];\r\n\r\n  if (Array.isArray(dadosBrutos.data)) lista = dadosBrutos.data;\r\n  else if (dadosBrutos.body && Array.isArray(dadosBrutos.body.data)) lista = dadosBrutos.body.data;\r\n  else if (Array.isArray(dadosBrutos)) lista = dadosBrutos;\r\n  else if (Array.isArray(dadosBrutos['hydra:member'])) lista = dadosBrutos['hydra:member'];\r\n  else {\r\n    for (const key in dadosBrutos) {\r\n      if (Array.isArray(dadosBrutos[key])) { lista = dadosBrutos[key]; break; }\r\n    }\r\n    if (lista.length === 0) lista = [dadosBrutos];\r\n  }\r\n\r\n  lista.forEach(c => todosChamados.push(c));\r\n}\r\n\r\nif (todosChamados.length === 0) {\r\n  return [{ json: { erro: 'Nenhum chamado encontrado', total: 0 } }];\r\n}\r\n\r\nconst LIMITE_CHAMADOS_TRIAGEM = 0; // 0 = sem limite\r\nconst MAX_HISTORICO_COMPARACAO = 25;\r\nconst DIAS_FECHADO_MESES = 120;\r\nconst DIAS_TRIAGEM_ATIVA = 7;\r\nconst DIAS_CONCLUIDO_30 = 30;\r\nconst agora = new Date();\r\nconst corteFechadoMeses = new Date(agora.getTime() - DIAS_FECHADO_MESES * 24 * 60 * 60 * 1000);\r\nconst corteTriagemAtiva = new Date(agora.getTime() - DIAS_TRIAGEM_ATIVA * 24 * 60 * 60 * 1000);\r\nconst corteConcluido30 = new Date(agora.getTime() - DIAS_CONCLUIDO_30 * 24 * 60 * 60 * 1000);\r\n\r\nconst STATUS_LABELS = { 1: 'Novo', 2: 'Processando Atribuido', 3: 'Processando Planejado', 4: 'Pendente', 5: 'Finalizado', 6: 'Fechado' };\r\n\r\nfunction statusNumero(status) {\r\n  if (typeof status === 'number') return status;\r\n  const txt = String(status || '').toLowerCase();\r\n  if (txt.includes('novo') || txt === '1') return 1;\r\n  if (txt.includes('atribu') || txt === '2') return 2;\r\n  if (txt.includes('planejad') || txt === '3') return 3;\r\n  if (txt.includes('pendent') || txt === '4') return 4;\r\n  if (txt.includes('finaliz') || txt.includes('solucion') || txt === '5') return 5;\r\n  if (txt.includes('fechado') || txt.includes('close') || txt === '6') return 6;\r\n  return Number(status) || null;\r\n}\r\n\r\nfunction toEpoch(valor) {\r\n  const d = new Date(valor);\r\n  return Number.isNaN(d.getTime()) ? 0 : d.getTime();\r\n}\r\n\r\nfunction entraNoRecorteHistorico(chamado) {\r\n  const dAbertura = new Date(chamado.data_abertura);\r\n  const dataValida = !Number.isNaN(dAbertura.getTime());\r\n\r\n  // Chamados em andamento continuam visiveis para comparacao de duplicidade.\r\n  if ([2, 3, 4].includes(chamado.status_num)) return true;\r\n\r\n  // Concluido (5): somente ultimos 30 dias.\r\n  if (chamado.status_num === 5) {\r\n    return dataValida && dAbertura >= corteConcluido30;\r\n  }\r\n\r\n  // Fechado (6): janela maior de 4 meses.\r\n  if (chamado.status_num === 6) {\r\n    return dataValida && dAbertura >= corteFechadoMeses;\r\n  }\r\n\r\n  return false;\r\n}\r\n\r\nfunction entraNaTriagemAtiva(chamado) {\r\n  if (![1, 2].includes(chamado.status_num)) return false;\r\n\r\n  const dAbertura = new Date(chamado.data_abertura);\r\n  const dataValida = !Number.isNaN(dAbertura.getTime());\r\n  return dataValida && dAbertura >= corteTriagemAtiva;\r\n}\r\n\r\nfunction extrairTipoServico(c) {\r\n  return c.tipo_servico || c.tipo || c.service_type || c['14'] || c.itilcategories_id || c['itilcategories_id'] || '';\r\n}\r\n\r\nconst todosLimpos = todosChamados.map(c => {\r\n  const status_num = statusNumero(c['12'] || c.status);\r\n  const dataAbertura = c['15'] || c.date || '';\r\n  return {\r\n    id: c['2'] || c.id,\r\n    titulo: c['1'] || c.name || '',\r\n    status: c['12'] || c.status,\r\n    status_num,\r\n    status_nome: STATUS_LABELS[status_num] || 'Desconhecido',\r\n    tipo_servico: extrairTipoServico(c),\r\n    descricao: (c['21'] || c.content || '').replace(/<[^>]*>/g, '').trim(),\r\n    localizacao: c['83'] || c.locations_id || '',\r\n    data_abertura: dataAbertura,\r\n    data_hora_abertura: dataAbertura,\r\n    solicitante: c['4'] || c.users_id_recipient || '',\r\n    email_solicitante: c['22'] || ''\r\n  };\r\n});\r\n\r\nconst elegiveisHistorico = todosLimpos.filter(entraNoRecorteHistorico);\r\n\r\nlet chamadosParaTriar = todosLimpos\r\n  .filter(entraNaTriagemAtiva)\r\n  .sort((a, b) => toEpoch(b.data_abertura) - toEpoch(a.data_abertura));\r\n\r\nlet ticketIdEvento = null;\r\ntry {\r\n  const evento = $('02b. Preparar Entrada Webhook').first().json || {};\r\n  const n = Number(evento._ticket_id_evento);\r\n  if (Number.isFinite(n) && n > 0) ticketIdEvento = n;\r\n} catch {}\r\n\r\nif (ticketIdEvento) {\r\n  const alvo = todosLimpos.find((c) => String(c.id) === String(ticketIdEvento));\r\n  if (!alvo) {\r\n    return [{ json: { erro: 'Chamado do webhook nao encontrado na busca de interesse', ticket_id_evento: ticketIdEvento, total_historico: elegiveisHistorico.length } }];\r\n  }\r\n  chamadosParaTriar = [alvo];\r\n}\r\n\r\nif (LIMITE_CHAMADOS_TRIAGEM > 0 && !ticketIdEvento) chamadosParaTriar = chamadosParaTriar.slice(0, LIMITE_CHAMADOS_TRIAGEM);\r\n\r\nif (chamadosParaTriar.length === 0) {\r\n  return [{ json: { erro: 'Nenhum chamado elegivel para triagem ativa de duplicidade', total_historico: elegiveisHistorico.length } }];\r\n}\r\n\r\nlet itemsDeSaida = [];\r\n\r\nfor (let i = 0; i < chamadosParaTriar.length; i++) {\r\n  const chamadoAtual = chamadosParaTriar[i];\r\n  const historicoCompacto = elegiveisHistorico\r\n    .filter(c => String(c.id) !== String(chamadoAtual.id))\r\n    .sort((a, b) => toEpoch(b.data_abertura) - toEpoch(a.data_abertura))\r\n    .slice(0, MAX_HISTORICO_COMPARACAO);\r\n\r\n  itemsDeSaida.push({\r\n    json: {\r\n      chamado_atual: chamadoAtual,\r\n      historico_abertos: historicoCompacto,\r\n      _split_index: i + 1,\r\n      _split_total: chamadosParaTriar.length,\r\n      _chamado_recuperado: chamadoAtual\r\n    }\r\n  });\r\n}\r\n\r\nreturn itemsDeSaida;"
+      },
+      "position": [
+        -1264,
+        336
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "9bce32c8-6c8e-46d5-95bf-1ea3a47801a0",
+      "name": "05. Filtro: Ha Chamados Elegiveis?",
+      "notes": "Filtra execucoes onde nao existem chamados elegiveis no recorte de triagem. Se nao ha, o fluxo para aqui silenciosamente.",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "filter-novos",
+              "leftValue": "={{ $json.erro }}",
+              "operator": {
+                "operation": "notExists",
+                "type": "string"
+              },
+              "rightValue": ""
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        -1024,
+        336
+      ],
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2
+    },
+    {
+      "alwaysOutputData": true,
+      "id": "a5adc382-c6e9-47a0-83ac-b03bbf76602a",
+      "maxTries": 3,
+      "name": "06. IA: Extracao + Verificacao de Duplicidade",
+      "notes": "A IA extrai campos padronizados do chamado E verifica duplicidade contra o historico em uma unica chamada. Elimina o gargalo do Loop Over Items processando cada item individualmente.",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "builtInTools": {},
+        "jsonOutput": true,
+        "messages": {
+          "values": [
+            {
+              "content": "=Voce e um assistente inteligente de triagem de infraestrutura do sistema GLPI do IF Sudeste MG - Campus Rio Pomba.\n\nSua UNICA tarefa e:\n1. EXTRAIR e PADRONIZAR os campos do chamado\n2. VERIFICAR se o chamado e DUPLICADO comparando com o historico\n\n# DADOS DO CHAMADO ATUAL:\n{{ JSON.stringify($json.chamado_atual) }}\n\n# HISTORICO DE CHAMADOS ABERTOS (para comparacao):\n{{ JSON.stringify($json.historico_abertos) }}\n\n# REGRAS DE EXTRACAO:\nExtraia e padronize os seguintes campos do chamado atual:\n- id: ID do chamado\n- status: Status atual\n- titulo: Titulo do chamado\n- tipo_servico: Qual tipo de servico? (Eletrica, Hidraulica, Carpintaria, Alvenaria, Pintura, Jardinagem, Ar-Condicionado, TI/Eletronicos, Mecanica, Limpeza, Outros)\n- profissional_indicado: Qual profissional atenderia? (Eletricista, Encanador, Carpinteiro, Pedreiro, Pintor, Jardineiro, Tecnico Refrigeracao, Tecnico TI, Mecanico, Servicos Gerais, Especialista Externo)\n- descricao: Descricao limpa e resumida\n- localizacao: Onde e o problema? (Depto/Bloco/Sala)\n- solicitante: Quem abriu?\n- data_hora_abertura: Data e hora\n- email_solicitante: Email\n\n# REGRAS DE DUPLICIDADE:\n- E DUPLICADO se relatar o MESMO problema fisico no MESMO local, mesmo com palavras diferentes.\n- Se dois chamados tratam do MESMO TIPO de equipamento na MESMA localizacao, considere potencial duplicata.\n- Considere: status, titulo, tipo de servico, descricao, localizacao, solicitante, data e hora.\n- NAO compare o chamado consigo mesmo.\n\n# FORMATO DE SAIDA OBRIGATORIO (JSON PURO, sem markdown):\n{\n  \"chamado\": {\n    \"id\": number,\n    \"status\": string,\n    \"titulo\": string,\n    \"tipo_servico\": string,\n    \"profissional_indicado\": string,\n    \"descricao\": string,\n    \"localizacao\": string,\n    \"solicitante\": string,\n    \"data_hora_abertura\": string,\n    \"email_solicitante\": string\n  },\n  \"duplicidade\": {\n    \"eh_duplicado\": true ou false,\n    \"chamado_referencia_id\": number ou null,\n    \"caracteristicas_match\": [\"lista de caracteristicas que geraram o match\"] ou [],\n    \"justificativa_para_fiscal\": \"Explicacao tecnica e direta\"\n  }\n}"
+            }
+          ]
+        },
+        "modelId": {
+          "__rl": true,
+          "cachedResultName": "models/gemini-3.1-flash-lite-preview",
+          "mode": "list",
+          "value": "models/gemini-3.1-flash-lite-preview"
+        },
+        "options": {}
+      },
+      "position": [
+        -560,
+        336
+      ],
+      "retryOnFail": true,
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.1,
+      "waitBetweenTries": 3000
+    },
+    {
+      "id": "3247952f-37a9-4af0-8ba5-e1a0e1844e1d",
+      "name": "07. Normalizar Resposta da IA (Duplicidade)",
+      "notes": "Normaliza a resposta da IA independente do formato retornado. Garante estrutura consistente para os proximos nos.",
+      "parameters": {
+        "jsCode": "const entradas = $input.all();\r\nconst originais = $('04. Estruturar Dados dos Chamados').all();\r\n\r\nfunction tentarParseJson(texto) {\r\n  if (typeof texto !== 'string') return null;\r\n  try {\r\n    return JSON.parse(texto);\r\n  } catch {\r\n    return null;\r\n  }\r\n}\r\n\r\nfunction extrairCarga(jsonEntrada) {\r\n  let dados = jsonEntrada;\r\n\r\n  const textoPart = dados?.content?.parts?.[0]?.text;\r\n  if (typeof textoPart === 'string') {\r\n    const parsed = tentarParseJson(textoPart);\r\n    if (parsed !== null) dados = parsed;\r\n  }\r\n\r\n  const textoMsg = dados?.message?.content;\r\n  if (typeof textoMsg === 'string') {\r\n    const parsed = tentarParseJson(textoMsg);\r\n    if (parsed !== null) dados = parsed;\r\n  }\r\n\r\n  return dados;\r\n}\r\n\r\nfunction pareceResultadoDuplicidade(obj) {\r\n  if (!obj || typeof obj !== 'object') return false;\r\n  if (obj.duplicidade && typeof obj.duplicidade === 'object') return true;\r\n  if (obj.eh_duplicado !== undefined) return true;\r\n  if (obj.potencial_duplicata !== undefined) return true;\r\n  return false;\r\n}\r\n\r\nfunction extrairRegistrosOrdenados(payload) {\r\n  if (Array.isArray(payload)) return payload;\r\n  if (payload && Array.isArray(payload.resultados)) return payload.resultados;\r\n  if (payload && Array.isArray(payload.items)) return payload.items;\r\n\r\n  if (payload && Array.isArray(payload.data)) {\r\n    const data = payload.data;\r\n    if (data.every((x) => pareceResultadoDuplicidade(x) || (x && x.chamado))) {\r\n      return data;\r\n    }\r\n  }\r\n\r\n  return [payload];\r\n}\r\n\r\nfunction parseBool(valor) {\r\n  if (typeof valor === 'boolean') return valor;\r\n  if (typeof valor === 'number') return valor !== 0;\r\n  if (typeof valor === 'string') {\r\n    const v = valor.trim().toLowerCase();\r\n    if (['true', '1', 'sim', 'yes', 'y', 'verdadeiro'].includes(v)) return true;\r\n    if (['false', '0', 'nao', 'não', 'no', 'n', 'falso'].includes(v)) return false;\r\n  }\r\n  return false;\r\n}\r\n\r\nfunction normalizarChamado(chamado, original) {\r\n  const base = chamado && typeof chamado === 'object' ? chamado : {};\r\n  const ref = original && typeof original === 'object' ? original : {};\r\n  return { ...ref, ...base };\r\n}\r\n\r\nfunction dataMs(valor) {\r\n  const d = new Date(valor || '');\r\n  return Number.isNaN(d.getTime()) ? 0 : d.getTime();\r\n}\r\n\r\nconst registrosIA = [];\r\nfor (const entrada of entradas) {\r\n  const carga = extrairCarga(entrada.json || {});\r\n  const regs = extrairRegistrosOrdenados(carga);\r\n  if (regs.length === 0) registrosIA.push(carga);\r\n  else registrosIA.push(...regs);\r\n}\r\n\r\nconst saida = [];\r\nconst totalBase = originais.length;\r\n\r\nfor (let i = 0; i < totalBase; i++) {\r\n  const base = originais[i]?.json || {};\r\n  const original = base.chamado_atual || null;\r\n  const historico = Array.isArray(base.historico_abertos) ? base.historico_abertos : [];\r\n  const bruto = JSON.stringify(registrosIA[i] || {}).slice(0, 2000);\r\n  const dados = registrosIA[i] && typeof registrosIA[i] === 'object' ? registrosIA[i] : {};\r\n\r\n  const dupBase = dados.duplicidade && typeof dados.duplicidade === 'object' ? dados.duplicidade : {};\r\n  const temEstrutura = pareceResultadoDuplicidade(dados);\r\n\r\n  if (!temEstrutura) {\r\n    saida.push({\r\n      json: {\r\n        ...base,\r\n        chamado: original || { id: 'estrutura_invalida' },\r\n        duplicidade: {\r\n          eh_duplicado: false,\r\n          chamado_referencia_id: null,\r\n          caracteristicas_match: [],\r\n          justificativa_para_fiscal: 'Resposta da IA sem estrutura esperada.'\r\n        },\r\n        'Duplicado?': {\r\n          valor: 'Nao',\r\n          caracteristicas: [],\r\n          chamado_match: null\r\n        },\r\n        acao_duplicidade: {\r\n          manter_chamado_id: original?.id || null,\r\n          fechar_chamado_id: null,\r\n          criterio: 'sem_duplicidade'\r\n        },\r\n        _erro: true,\r\n        tipo_erro: 'estrutura_resposta_inesperada',\r\n        payload_ia_bruto: bruto\r\n      }\r\n    });\r\n    continue;\r\n  }\r\n\r\n  const chamado = normalizarChamado(dados.chamado, original);\r\n  const ehDuplicadoValor = dupBase.eh_duplicado !== undefined\r\n    ? dupBase.eh_duplicado\r\n    : (dados.eh_duplicado !== undefined ? dados.eh_duplicado : dados.potencial_duplicata);\r\n  const ehDuplicado = parseBool(ehDuplicadoValor) === true;\r\n\r\n  const refRaw = dupBase.chamado_referencia_id !== undefined\r\n    ? dupBase.chamado_referencia_id\r\n    : dados.chamado_referencia_id;\r\n  const refNum = Number(refRaw);\r\n  const referenciaId = Number.isFinite(refNum) && refNum > 0 ? refNum : null;\r\n\r\n  const caracteristicas = Array.isArray(dupBase.caracteristicas_match)\r\n    ? dupBase.caracteristicas_match\r\n    : (Array.isArray(dados.caracteristicas_match) ? dados.caracteristicas_match : []);\r\n\r\n  const justificativa = dupBase.justificativa_para_fiscal\r\n    || dados.justificativa_para_fiscal\r\n    || 'Sem justificativa';\r\n\r\n  let manterId = referenciaId;\r\n  let fecharId = chamado?.id || null;\r\n\r\n  if (ehDuplicado && referenciaId) {\r\n    const match = historico.find((h) => String(h.id) === String(referenciaId));\r\n    const dataAtual = dataMs(chamado?.data_hora_abertura || chamado?.data_abertura);\r\n    const dataMatch = dataMs(match?.data_hora_abertura || match?.data_abertura);\r\n\r\n    if (dataAtual > 0 && dataMatch > 0 && dataAtual <= dataMatch) {\r\n      manterId = chamado?.id || referenciaId;\r\n      fecharId = referenciaId;\r\n    }\r\n  }\r\n\r\n  if (!ehDuplicado) {\r\n    manterId = chamado?.id || null;\r\n    fecharId = null;\r\n  }\r\n\r\n  saida.push({\r\n    json: {\r\n      ...base,\r\n      chamado: chamado.id ? chamado : (original || { id: 'desconhecido' }),\r\n      duplicidade: {\r\n        eh_duplicado: ehDuplicado,\r\n        chamado_referencia_id: referenciaId,\r\n        caracteristicas_match: caracteristicas,\r\n        justificativa_para_fiscal: justificativa\r\n      },\r\n      'Duplicado?': {\r\n        valor: ehDuplicado ? 'Sim' : 'Nao',\r\n        caracteristicas: caracteristicas,\r\n        chamado_match: referenciaId\r\n      },\r\n      acao_duplicidade: {\r\n        manter_chamado_id: manterId,\r\n        fechar_chamado_id: fecharId,\r\n        criterio: ehDuplicado ? 'manter_mais_antigo' : 'sem_duplicidade'\r\n      },\r\n      _erro: false\r\n    }\r\n  });\r\n}\r\n\r\nreturn saida;"
+      },
+      "position": [
+        -208,
+        224
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "e431eb5c-d551-4c3f-a8d5-fdf1c4c411a9",
+      "name": "08. Decisao: E Duplicado?",
+      "notes": "Separa o fluxo em tres caminhos: Duplicado, Nao Duplicado e Erro de IA para tratamento dedicado.",
+      "parameters": {
+        "options": {},
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "cond-dup-erro",
+                    "leftValue": "={{ $json._erro }}",
+                    "operator": {
+                      "operation": "true",
+                      "singleValue": true,
+                      "type": "boolean"
+                    },
+                    "rightValue": true
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "Erro IA Duplicidade",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "cond-dup-sim",
+                    "leftValue": "={{ $json.duplicidade.eh_duplicado }}",
+                    "operator": {
+                      "operation": "true",
+                      "singleValue": true,
+                      "type": "boolean"
+                    },
+                    "rightValue": true
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "Duplicado",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "cond-dup-nao",
+                    "leftValue": "={{ $json.duplicidade.eh_duplicado }}",
+                    "operator": {
+                      "operation": "false",
+                      "singleValue": true,
+                      "type": "boolean"
+                    },
+                    "rightValue": ""
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "Nao Duplicado",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        -32,
+        336
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "4706808d-3ad5-4440-a4e8-a44a26328b87",
+      "name": "09. Preparar Alerta de Duplicidade ao Fiscal",
+      "notes": "Prepara o alerta de duplicidade para o fiscal e as instrucoes padronizadas de resposta no proprio GLPI via acompanhamento (followup). Tambem define _modo_teste para controlar fallback sem decisao.",
+      "parameters": {
+        "jsCode": "const MODO_TESTE = false;\n\nreturn $input.all().map((entrada) => {\n  const item = entrada.json;\n  const chamado = item.chamado || {};\n  const dup = item.duplicidade || {};\n  const resumoDup = item['Duplicado?'] || {};\n  const acao = item.acao_duplicidade || {};\n\n  const chamadoDecisaoId = chamado.id || null;\n  const chamadoFecharId = acao.fechar_chamado_id || chamado.id || null;\n  const chamadoManterId = acao.manter_chamado_id || dup.chamado_referencia_id || chamado.id || null;\n  const chaveDuplicidade = ['DUP', chamadoDecisaoId || 'NA', chamadoFecharId || 'NA', chamadoManterId || 'NA'].join('-');\n\n  const comandoConfirmar = 'DECISAO_DUPLICIDADE=CONFIRMAR CHAVE_DUPLICIDADE=' + chaveDuplicidade;\n  const comandoNaoDuplicado = 'DECISAO_DUPLICIDADE=NAO_DUPLICADO CHAVE_DUPLICIDADE=' + chaveDuplicidade;\n\n  return {\n    json: {\n      ...item,\n      _modo_teste: MODO_TESTE,\n      _chamado_id: chamadoDecisaoId,\n      _chamado_fechar_id: chamadoFecharId,\n      _chamado_manter_id: chamadoManterId,\n      _chamado_ref_id: chamadoManterId,\n      _dup_chave: chaveDuplicidade,\n      _comando_confirmar: comandoConfirmar,\n      _comando_nao_duplicado: comandoNaoDuplicado,\n      _formulario_titulo: 'Alerta de Duplicidade - Chamado #' + (chamadoDecisaoId || 'N/A'),\n      _formulario_mensagem: 'A IA identificou possivel duplicidade. Chamado para decisao: #' + (chamadoDecisaoId || 'N/A') + '.',\n      _mensagem_followup_fiscal: [\n        '[TRIAGEM_IA][PENDENTE_DECISAO_DUPLICIDADE]',\n        'Chamado para decisao: #' + (chamadoDecisaoId || 'N/A') + ' - ' + (chamado.titulo || ''),\n        'Chamado com match: #' + (resumoDup.chamado_match || dup.chamado_referencia_id || 'N/A'),\n        'Regra de fechamento: manter #' + (chamadoManterId || 'N/A') + ' e fechar #' + (chamadoFecharId || 'N/A'),\n        'Justificativa IA: ' + (dup.justificativa_para_fiscal || 'Sem justificativa'),\n        '',\n        'Fiscal: para decidir, adicione um novo acompanhamento neste chamado com um dos comandos abaixo (copiar e colar):',\n        comandoConfirmar,\n        comandoNaoDuplicado,\n        '',\n        'Obs: o workflow verifica periodicamente e executa a decisao automaticamente.'\n      ].join('\\n')\n    }\n  };\n});"
+      },
+      "position": [
+        96,
+        112
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "f01c4bdc-1c23-4fa6-baa5-2b34a6db71f2",
+      "name": "11b. Politica Sem Decisao Fiscal",
+      "notes": "Se nao houver decisao valida do fiscal: em TESTE segue para classificacao; em PRODUCAO para e registra pendencia no GLPI.",
+      "parameters": {
+        "options": {
+          "fallbackOutput": "extra"
+        },
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "cond-modo-teste",
+                    "leftValue": "={{ $json._modo_teste }}",
+                    "operator": {
+                      "operation": "true",
+                      "singleValue": true,
+                      "type": "boolean"
+                    },
+                    "rightValue": true
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "Teste: seguir classificacao",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "cond-modo-producao",
+                    "leftValue": "={{ $json._modo_teste }}",
+                    "operator": {
+                      "operation": "false",
+                      "singleValue": true,
+                      "type": "boolean"
+                    },
+                    "rightValue": ""
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "Producao: aguardar fiscal",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        1024,
+        352
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "cee7b3ba-1a03-471e-ac8f-7215d083ba07",
+      "name": "11c. Producao: Aguardar Decisao do Fiscal",
+      "notes": "Em producao, sem decisao do fiscal, o sistema nao classifica automaticamente.",
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "pendencia-fiscal",
+              "name": "acao",
+              "type": "string",
+              "value": "AGUARDANDO_DECISAO_FISCAL"
+            },
+            {
+              "id": "pendencia-msg",
+              "name": "mensagem",
+              "type": "string",
+              "value": "Aguardando decisao do fiscal por acompanhamento no GLPI. Rechecando automaticamente a cada 1 minuto."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "position": [
+        1344,
+        352
+      ],
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "1b648805-ccd2-4cae-b3c8-f0e3d29f6ecd",
+      "name": "11d. GLPI: Registrar Pendencia do Fiscal",
+      "notes": "Registra no GLPI que o fluxo foi interrompido por falta de decisao do fiscal.",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('02. GLPI: Iniciar Sessao API').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"items_id\": $json._chamado_id || $json.chamado?.id, \"itemtype\": \"Ticket\", \"content\": \"[TRIAGEM_IA] Sem decisao valida do fiscal no prazo configurado. Chamado permanece aguardando analise humana.\"}} }}",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "http://host.docker.internal:8080/apirest.php/ITILFollowup"
+      },
+      "position": [
+        1584,
+        304
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "085f3bbb-1bd7-4e12-94a1-cbca7f6e5c76",
+      "name": "10. Aguardar Fiscal Registrar Decisao no GLPI",
+      "notes": "Aguarda o fiscal registrar a decisao no acompanhamento do chamado no GLPI.",
+      "parameters": {
+        "amount": 1,
+        "unit": "minutes"
+      },
+      "position": [
+        512,
+        112
+      ],
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "webhookId": "d0707270-be31-4850-b028-38a720a2c5d7"
+    },
+    {
+      "id": "cd55bd66-872e-44fc-9fd7-c353bfb383ec",
+      "name": "11. Decisao do Fiscal: Duplicado?",
+      "notes": "Avalia a decisao extraida dos acompanhamentos do GLPI. Se confirmou duplicado, fecha o chamado mais novo. Se nao e duplicado, segue para classificacao.",
+      "parameters": {
+        "options": {
+          "fallbackOutput": "extra"
+        },
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "cond-confirma",
+                    "leftValue": "={{ $json.decisao_fiscal || '' }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "confirma_duplicado"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "Confirmado Duplicado",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "cond-nao-dup",
+                    "leftValue": "={{ $json.decisao_fiscal || '' }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "nao_duplicado"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "Nao e Duplicado",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        768,
+        144
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "50521df3-9dee-443a-ad90-f4caeffa1e31",
+      "name": "13. Preparar Dados para Classificacao",
+      "notes": "Normaliza os dados vindos tanto do caminho nao duplicado quanto do caminho fiscal rejeitou duplicidade, garantindo formato unico para a IA classificadora.",
+      "parameters": {
+        "jsCode": "let saida = [];\nfor (const item of $input.all()) {\n  let json = item.json;\n  let chamado = json.chamado;\n  if (!chamado && json._chamado_id) { chamado = { id: json._chamado_id }; }\n  saida.push({ json: { chamado: chamado || json, origem: json.acao === 'SEGUE_PARA_CLASSIFICACAO' ? 'fiscal_rejeitou_duplicidade' : 'nao_duplicado' } });\n}\nreturn saida;"
+      },
+      "position": [
+        240,
+        832
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "alwaysOutputData": true,
+      "id": "839e2029-5e67-415f-b853-50579b61156c",
+      "maxTries": 3,
+      "name": "14. IA: Obra vs Manutencao + Executor",
+      "notes": "Classifica se o chamado e OBRA ou MANUTENCAO e define o executor: DDI_DG (obra), DEMO (equipe interna) ou SOB_DEMANDA (terceiros).",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "builtInTools": {},
+        "jsonOutput": true,
+        "messages": {
+          "values": [
+            {
+              "content": "Voce e o Especialista em Triagem de Infraestrutura do IF Sudeste MG - Campus Rio Pomba.\nSua tarefa e classificar chamados do GLPI com precisao tecnica absoluta.\nNUNCA invente informacoes que nao estejam no chamado ou nas regras fornecidas.\n\n# 1. CLASSIFICACAO: MANUTENCAO vs. OBRA\n\n## MANUTENCAO se atender pelo menos DOIS criterios:\n- Finalidade: Corrigir defeitos, reparar desgastes ou manutencao preventiva/corretiva.\n- Resultado: Ambiente volta ao estado original, SEM criacao de novo espaco e SEM ampliacao.\n- Escala: Intervencao pontual ou localizada (uma sala, um trecho, um equipamento).\n- Complexidade: Servico basico tipo trocar, consertar, recompor, limpar, ajustar.\n- Exemplos: Troca de telhas; reparo de forro; conserto de rede eletrica; pequenas paredes de divisao.\n\n## OBRA se apresentar pelo menos UM aspecto forte:\n- Criacao de novo espaco (sala, laboratorio, anexo, galpao, predio).\n- Ampliacao de area construida.\n- Reforma substancial/geral de um bloco.\n- Necessidade de projeto de engenharia/arquitetura elaborado.\n- Exemplos: Nova sala; novo predio; reforma completa de bloco; rampa acessibilidade; guarita.\n\n# 2. EXECUTOR\n\n## OBRA: executor = DDI_DG (SEMPRE)\n\n## MANUTENCAO - escolha entre:\n\nA) DEMO (equipe interna Prefeitura Campus):\n- Eletrica predial (lampada, tomada, disjuntor, quadro, curto, fiacao).\n- Hidraulica/sanitaria simples (torneira, pia, sifao, vaso sanitario, ralo, cano).\n- Alvenaria/Pedreiro (parede, piso, azulejo, rejunte, rachadura, reboco).\n- Carpintaria/Marcenaria (porta, janela madeira, batente, armario).\n- Serralheria simples (portao, grade, solda).\n- Pintura (retoques parede, fachada).\n- Jardinagem/poda simples.\n- Servicos gerais (calhas, telhados).\n- ETA padrao.\n\nB) SOB_DEMANDA (empresa especializada terceiros):\n- Ar-condicionado (split, cassete, chiller).\n- Eletronicos/TI (TV, projetor, som, racks, switches, computadores, servidores).\n- Laboratorio/Zootecnia (balancas, ordenhadeiras, incubadoras, camaras frias).\n- Sistemas especiais (ETA avancada, caldeiras, autoclaves, exaustao complexa).\n- Servicos estruturais grandes.\n\n# 3. REGRAS ANTI-ALUCINACAO\n1. Apenas DDI_DG, DEMO, SOB_DEMANDA.\n2. Ambiguidade: construcao/ampliacao/novo espaco -> OBRA+DDI_DG. Equipamento especifico -> MANUTENCAO+SOB_DEMANDA. Reparo simples -> MANUTENCAO+DEMO. Texto insuficiente -> MANUTENCAO+SOB_DEMANDA+justificativa.\n3. NUNCA descreva procedimentos burocraticos.\n\n# 4. FORMATO JSON PURO (sem markdown):\n{\n  \"classificacao\": \"OBRA\" ou \"MANUTENCAO\",\n  \"executor\": \"DDI_DG\" ou \"DEMO\" ou \"SOB_DEMANDA\",\n  \"justificativa_tecnica\": \"Explicacao objetiva...\",\n  \"palavras_chave_identificadas\": [\"lista\"]\n}",
+              "role": "model"
+            },
+            {
+              "content": "=Analise o seguinte chamado do GLPI para classificacao:\n\nID: {{ $json.chamado.id }}\nTitulo: {{ $json.chamado.titulo }}\nDescricao: {{ $json.chamado.descricao }}\nTipo Servico: {{ $json.chamado.tipo_servico }}\nLocalizacao: {{ $json.chamado.localizacao }}\nSolicitante: {{ $json.chamado.solicitante }}"
+            }
+          ]
+        },
+        "modelId": {
+          "__rl": true,
+          "cachedResultName": "models/gemini-3.1-flash-lite-preview",
+          "mode": "list",
+          "value": "models/gemini-3.1-flash-lite-preview"
+        },
+        "options": {}
+      },
+      "position": [
+        512,
+        768
+      ],
+      "retryOnFail": true,
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.1,
+      "waitBetweenTries": 3000
+    },
+    {
+      "id": "ddfaf12d-ff1d-4cb7-b558-ae9b5ae22da8",
+      "name": "15. Normalizar Resultado da Classificacao",
+      "notes": "Normaliza a resposta da IA de classificacao e combina com os dados originais do chamado.",
+      "parameters": {
+        "jsCode": "const originais = $('13. Preparar Dados para Classificacao').all();\n\nreturn $input.all().map((item, idx) => {\n  try {\n    let dados = item.json;\n    const respostaBruta = JSON.stringify(dados).slice(0, 2000);\n\n    if (dados?.content?.parts?.[0]?.text) {\n      dados = JSON.parse(dados.content.parts[0].text);\n    }\n    if (dados?.message?.content) {\n      try { dados = JSON.parse(dados.message.content); } catch(e) {}\n    }\n\n    const chamadoOriginal = originais[idx]?.json?.chamado || item.json?.chamado || { id: 'desconhecido' };\n    const classificacao = String(dados.classificacao || '').toUpperCase();\n    const executor = String(dados.executor || '').toUpperCase();\n\n    const validoClassificacao = ['OBRA', 'MANUTENCAO'].includes(classificacao);\n    const validoExecutor = ['DDI_DG', 'DEMO', 'SOB_DEMANDA'].includes(executor);\n\n    if (!validoClassificacao || !validoExecutor) {\n      return {\n        json: {\n          chamado: chamadoOriginal,\n          classificacao: 'ERRO',\n          executor: 'ERRO',\n          erro: 'Resposta da IA com classificacao/executor fora do dominio esperado.',\n          tipo_erro: 'resposta_classificacao_invalida',\n          resposta_ia_bruta: respostaBruta\n        }\n      };\n    }\n\n    return {\n      json: {\n        chamado: chamadoOriginal,\n        classificacao,\n        executor,\n        justificativa_tecnica: dados.justificativa_tecnica || 'Sem justificativa',\n        palavras_chave: dados.palavras_chave_identificadas || []\n      }\n    };\n  } catch (error) {\n    return {\n      json: {\n        chamado: originais[idx]?.json?.chamado || { id: 'desconhecido' },\n        classificacao: 'ERRO',\n        executor: 'ERRO',\n        erro: error.message,\n        tipo_erro: 'parse_json_classificacao',\n        resposta_ia_bruta: JSON.stringify(item.json).slice(0, 2000)\n      }\n    };\n  }\n});"
+      },
+      "position": [
+        896,
+        704
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "aa509614-3f90-4f40-9a74-e923b47e2e97",
+      "name": "16. Decisao: Obra / DEMO / Sob Demanda",
+      "notes": "Encaminha o chamado para o fluxo correto: OBRA vai para DDI/DG, DEMO vai para equipe interna, SOB_DEMANDA vai para contratacao de terceiros.",
+      "parameters": {
+        "options": {
+          "fallbackOutput": "extra"
+        },
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "cond-obra",
+                    "leftValue": "={{ $json.classificacao }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "OBRA"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "OBRA - DDI/DG",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "cond-demo",
+                    "leftValue": "={{ $json.executor }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "DEMO"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "DEMO (Equipe Interna)",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "cond-sob",
+                    "leftValue": "={{ $json.executor }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "SOB_DEMANDA"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                }
+              },
+              "outputKey": "SOB DEMANDA (Terceiros)",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        1136,
+        688
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "31a7b468-c1fc-4b51-bc70-e2c86b0739d8",
+      "name": "Observacao Teste: Decisao do Fiscal",
+      "parameters": {
+        "content": "Decisao do fiscal ocorre no proprio GLPI.\n\nA IA registra um acompanhamento no ticket com instrucoes e o fiscal responde com:\n- DECISAO_DUPLICIDADE=CONFIRMAR\n- DECISAO_DUPLICIDADE=NAO_DUPLICADO",
+        "height": 176,
+        "width": 304
+      },
+      "position": [
+        432,
+        304
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    },
+    {
+      "id": "b0506850-ee52-4152-9455-080028be0e0a",
+      "name": "Observacao Tecnica: Diagnostico de Erro E1",
+      "parameters": {
+        "content": "Diagnostico de falha da IA de duplicidade:\n- O no E1 agora registra motivo_erro, chamado_id e payload_resumido\n- Usar estes campos para depurar prompt, entrada e limites do modelo\n",
+        "height": 176
+      },
+      "position": [
+        -816,
+        576
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    },
+    {
+      "id": "65574876-b7c4-4d03-96ca-85ea34e5de5f",
+      "name": "03. GLPI: Buscar Chamados de Interesse",
+      "notes": "Busca chamados com Status=5 concluídos há até 30 dias e Status=6 fechados há até 4 meses.",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $json.session_token }}"
+            }
+          ]
+        },
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "criteria[0][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[0][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[0][value]",
+              "value": "1"
+            },
+            {
+              "name": "criteria[0][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[1][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[1][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[1][value]",
+              "value": "2"
+            },
+            {
+              "name": "criteria[1][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[2][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[2][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[2][value]",
+              "value": "3"
+            },
+            {
+              "name": "criteria[2][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[3][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[3][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[3][value]",
+              "value": "4"
+            },
+            {
+              "name": "criteria[3][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[4][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[4][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[4][value]",
+              "value": "5"
+            },
+            {
+              "name": "criteria[4][link]",
+              "value": "OR"
+            },
+            {
+              "name": "criteria[5][field]",
+              "value": "12"
+            },
+            {
+              "name": "criteria[5][searchtype]",
+              "value": "equals"
+            },
+            {
+              "name": "criteria[5][value]",
+              "value": "6"
+            },
+            {
+              "name": "forcedisplay[0]",
+              "value": "1"
+            },
+            {
+              "name": "forcedisplay[1]",
+              "value": "2"
+            },
+            {
+              "name": "forcedisplay[2]",
+              "value": "12"
+            },
+            {
+              "name": "forcedisplay[3]",
+              "value": "21"
+            },
+            {
+              "name": "forcedisplay[4]",
+              "value": "83"
+            },
+            {
+              "name": "forcedisplay[5]",
+              "value": "15"
+            },
+            {
+              "name": "forcedisplay[6]",
+              "value": "4"
+            },
+            {
+              "name": "forcedisplay[7]",
+              "value": "22"
+            },
+            {
+              "name": "range",
+              "value": "0-999"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "sendQuery": true,
+        "url": "http://host.docker.internal:8080/apirest.php/search/Ticket"
+      },
+      "position": [
+        -1520,
+        336
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "c3f35435-8228-4f2d-8577-bdff2f69e469",
+      "name": "12a1. GLPI: Fechar Chamado Duplicado (Status 6)",
+      "notes": "Fecha no GLPI o chamado marcado como duplicado, mantendo o mais antigo.",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $env.GLPI_APP_TOKEN }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $('02. GLPI: Iniciar Sessao API').first().json.session_token }}"
+            }
+          ]
+        },
+        "jsonBody": "={{ {\"input\": {\"id\": ($json._chamado_fechar_id || $json._chamado_id || $json.chamado?.id), \"status\": 6}} }}",
+        "method": "PUT",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "={{ 'http://host.docker.internal:8080/apirest.php/Ticket/' + ($json._chamado_fechar_id || $json._chamado_id || $json.chamado?.id) }}"
+      },
+      "position": [
+        1296,
+        -208
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "fd21fe9f-7924-47d6-bb58-3d4b461b5e47",
+      "name": "01c. Trigger Webhook GLPI (Evento)",
+      "notes": "Entrada orientada a evento. O GLPI pode enviar notificacoes para este endpoint ao criar/atualizar chamados.",
+      "parameters": {
+        "httpMethod": "POST",
+        "options": {},
+        "path": "glpi-ticket-evento-runtime"
+      },
+      "position": [
+        -2016,
+        704
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "webhookId": "ecf64f82-86af-4eca-b90b-4d1807ec0e25"
+    },
+    {
+      "id": "f08f0d3d-5329-49e3-b0f2-8db6aa9f8f45",
+      "name": "02b. Preparar Entrada Webhook",
+      "notes": "Normaliza payload de webhook e extrai ticket_id para triagem direcionada.",
+      "parameters": {
+        "jsCode": "const entrada = $json || {};\r\nconst body = entrada.body && typeof entrada.body === 'object' ? entrada.body : entrada;\r\n\r\nconst ticketIdRaw =\r\n  body.ticket_id ??\r\n  body.id ??\r\n  body.ticket?.id ??\r\n  body.payload?.ticket_id ??\r\n  body.payload?.id ??\r\n  null;\r\n\r\nconst ticketIdNum = Number(ticketIdRaw);\r\n\r\nif (!Number.isFinite(ticketIdNum) || ticketIdNum <= 0) {\r\n  return [{\r\n    json: {\r\n      _webhook_evento_valido: false,\r\n      _ticket_id_evento: null,\r\n      _webhook_payload: body,\r\n    },\r\n  }];\r\n}\r\n\r\nreturn [{\r\n  json: {\r\n    _webhook_evento_valido: true,\r\n    _ticket_id_evento: ticketIdNum,\r\n    _webhook_payload: body,\r\n  },\r\n}];"
+      },
+      "position": [
+        -1760,
+        704
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "70af83da-60ab-4a42-9a07-ecd3416c1701",
+      "name": "Loop Over Items",
+      "parameters": {
+        "batchSize": 5,
+        "options": {}
+      },
+      "position": [
+        -816,
+        336
+      ],
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3
+    }
+  ],
+  "settings": {
+    "availableInMCP": false,
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  }
+}

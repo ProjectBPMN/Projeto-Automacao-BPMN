@@ -1,0 +1,5 @@
+PASTA GLPI/PLUGINS
+==================
+
+Agrupa os plugins locais montados no container GLPI.
+- n8nwebhook: integração que envia eventos de chamados ao n8n.

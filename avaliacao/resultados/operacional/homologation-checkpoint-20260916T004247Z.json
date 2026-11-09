@@ -1,0 +1,46 @@
+{
+  "schema_version": "projeto-ic-homologation-checkpoint-v1",
+  "checkpoint_at_utc": "2026-09-16T00:42:47.8645769Z",
+  "checkpoint_at_brt": "2026-09-15T21:42:47.8705883-03:00",
+  "timezone": "America/Sao_Paulo",
+  "daemon": {
+    "valid_instance_count": 1,
+    "executable_path": ".venv\\Scripts\\pythonw.exe",
+    "process_id": 9192,
+    "runtime_dir": "avaliacao/runtime/monitoring-homolog-20260910-v2",
+    "interval_seconds": 60,
+    "action": "NONE_ALREADY_VALID"
+  },
+  "technical_windows": {
+    "completed": 19,
+    "required": 3,
+    "complete_decision_coverage": 19,
+    "full_slo_passes": 0,
+    "latest_slo_status": "FAIL",
+    "latest_drift_status": "INSUFFICIENT_DATA"
+  },
+  "queue_capture": {
+    "artifact": "runtime-queue-state-20260916T004222Z.json",
+    "status": "PASS",
+    "erro_ia": 0,
+    "active_queue": 0,
+    "open_dlq": 0
+  },
+  "verification": {
+    "targeted_pytest": "45 passed",
+    "v9_static_validation": "PASS"
+  },
+  "scientific_protocol": {
+    "artifact": "../selecao-supervisionada-v3-20260915/execucao_checkpoint.json",
+    "completed": 10,
+    "failed": 0,
+    "pending": 0,
+    "running": 0,
+    "xai_complete": true,
+    "performance_benchmark_complete": true,
+    "challenge_evaluation_recorded": true
+  },
+  "scientific_result": false,
+  "production_ready": false,
+  "interpretation_limit": "A grade e o desafio são sintéticos/proxy. Janelas técnicas locais não demonstram eficácia institucional, correção semântica institucional, scientific_ready ou production_ready."
+}

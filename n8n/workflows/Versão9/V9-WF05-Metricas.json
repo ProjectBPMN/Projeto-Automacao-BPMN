@@ -1,0 +1,462 @@
+{
+  "name": "V9 - WF05 Métricas",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -800,
+        0
+      ],
+      "id": "v9-wf05-manual",
+      "name": "T1. Manual"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 23 * * *"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -800,
+        220
+      ],
+      "id": "v9-wf05-schedule",
+      "name": "T2. Schedule 23h"
+    },
+    {
+      "parameters": {
+        "jsCode": "const inicio=new Date(); console.log('[WF05][LOG] Inicio metricas V9'); return [{json:{inicio:inicio.toISOString(),fase:'WF05_INICIO'}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -560,
+        110
+      ],
+      "id": "v9-wf05-log-inicio",
+      "name": "LOG: Início",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "\nSELECT\n  'schema_observabilidade_ok' AS result,\n  CASE WHEN\n    to_regclass('public.ia_decisoes') IS NOT NULL AND\n    to_regclass('public.ia_tentativas_modelo') IS NOT NULL AND\n    to_regclass('public.workflow_eventos') IS NOT NULL AND\n    to_regclass('public.metricas_diarias_automacao') IS NOT NULL AND\n    to_regclass('public.metricas_prompt_version') IS NOT NULL AND\n    to_regclass('public.metricas_workflow_performance') IS NOT NULL AND\n    to_regclass('public.vw_kpi_geral_automacao') IS NOT NULL AND\n    to_regclass('public.vw_kpi_duplicidade') IS NOT NULL AND\n    to_regclass('public.vw_kpi_classificacao') IS NOT NULL\n  THEN 1 ELSE 1 / 0 END AS readiness_gate;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -320,
+        110
+      ],
+      "id": "v9-wf05-schema",
+      "name": "PG: Verificar Schema Observabilidade",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ (() => {\nconst erroLimite = Number(undefined || 5);\nconst manualLimite = Number(undefined || 25);\nconst travadosLimite = Number(undefined || 10);\nreturn `\nWITH base AS (\n  SELECT\n    CURRENT_DATE AS data_ref,\n    COUNT(*)::int AS total_chamados_processados,\n    COUNT(*) FILTER (WHERE classificacao_final IN ('OBRA','DEMO','SOB_DEMANDA','DUPLICADO'))::int AS total_classificados_automaticamente,\n    COUNT(*) FILTER (WHERE classificacao_final='TRIAGEM_MANUAL' OR triagem_manual=TRUE)::int AS total_enviados_triagem_manual,\n    COUNT(*) FILTER (WHERE triagem_status='ERRO_IA' OR ultimo_erro_ia IS NOT NULL)::int AS total_com_erro_ia,\n    COUNT(*) FILTER (WHERE em_aprovacao_fiscal=TRUE)::int AS total_aguardando_fiscal,\n    ROUND(AVG(EXTRACT(EPOCH FROM (triado_em - data_abertura)) / 60.0) FILTER (WHERE triado_em IS NOT NULL AND data_abertura IS NOT NULL AND triado_em >= data_abertura), 2) AS tempo_medio_triagem_min,\n    COUNT(*) FILTER (\n      WHERE (\n        em_aprovacao_fiscal = TRUE\n        OR triagem_status IN ('TRIAGEM_MANUAL','ERRO_IA','REPROCESSAR_IA')\n        OR ultima_acao_workflow IN ('AGUARDANDO_FISCAL','ERRO_IA_DEDUP','ERRO_IA_CLASSIF')\n      )\n      AND COALESCE(aprovacao_iniciada_em, triado_em, atualizado_em, criado_em) < NOW() - INTERVAL '24 hours'\n    )::int AS chamados_travados_24h\n  FROM tickets_processados\n),\nkpi AS (\n  SELECT\n    *,\n    ROUND(100.0 * (total_enviados_triagem_manual + total_aguardando_fiscal) / NULLIF(total_chamados_processados,0), 4) AS taxa_intervencao_humana,\n    ROUND(100.0 * total_classificados_automaticamente / NULLIF(total_chamados_processados,0), 4) AS taxa_automacao_efetiva,\n    ROUND(100.0 * total_com_erro_ia / NULLIF(total_chamados_processados,0), 4) AS taxa_erro_ia,\n    ROUND(100.0 * total_enviados_triagem_manual / NULLIF(total_chamados_processados,0), 4) AS taxa_triagem_manual\n  FROM base\n),\nupsert_diario AS (\n  INSERT INTO metricas_diarias_automacao(\n    data_ref,total_chamados_processados,total_classificados_automaticamente,total_enviados_triagem_manual,\n    total_com_erro_ia,total_aguardando_fiscal,tempo_medio_triagem_min,taxa_intervencao_humana,\n    taxa_automacao_efetiva,taxa_erro_ia,taxa_triagem_manual,chamados_travados_24h,atualizado_em\n  )\n  SELECT\n    data_ref,total_chamados_processados,total_classificados_automaticamente,total_enviados_triagem_manual,\n    total_com_erro_ia,total_aguardando_fiscal,tempo_medio_triagem_min,taxa_intervencao_humana,\n    taxa_automacao_efetiva,taxa_erro_ia,taxa_triagem_manual,chamados_travados_24h,NOW()\n  FROM kpi\n  ON CONFLICT(data_ref) DO UPDATE SET\n    total_chamados_processados=EXCLUDED.total_chamados_processados,\n    total_classificados_automaticamente=EXCLUDED.total_classificados_automaticamente,\n    total_enviados_triagem_manual=EXCLUDED.total_enviados_triagem_manual,\n    total_com_erro_ia=EXCLUDED.total_com_erro_ia,\n    total_aguardando_fiscal=EXCLUDED.total_aguardando_fiscal,\n    tempo_medio_triagem_min=EXCLUDED.tempo_medio_triagem_min,\n    taxa_intervencao_humana=EXCLUDED.taxa_intervencao_humana,\n    taxa_automacao_efetiva=EXCLUDED.taxa_automacao_efetiva,\n    taxa_erro_ia=EXCLUDED.taxa_erro_ia,\n    taxa_triagem_manual=EXCLUDED.taxa_triagem_manual,\n    chamados_travados_24h=EXCLUDED.chamados_travados_24h,\n    atualizado_em=NOW()\n  RETURNING *\n),\nprompt_metrics AS (\n  INSERT INTO metricas_prompt_version(\n    data_ref, etapa, prompt_version, modelo_ia, versao_modelo, total_decisoes,\n    total_erros_ia, confianca_media, tempo_medio_ia_ms, acuracia_avaliada, atualizado_em\n  )\n  SELECT\n    CURRENT_DATE,\n    d.etapa,\n    COALESCE(prompt_version, 'nao_informado'),\n    COALESCE(modelo_ia, 'nao_informado'),\n    COALESCE(versao_modelo, 'nao_informado'),\n    COUNT(*)::int,\n    COUNT(*) FILTER (WHERE erro_ia=TRUE)::int,\n    ROUND(AVG(confianca), 4),\n    ROUND(AVG(tempo_resposta_ms), 2),\n    ROUND(AVG((a.ia_estava_correta::int)::numeric) FILTER (WHERE a.ia_estava_correta IS NOT NULL), 4),\n    NOW()\n  FROM ia_decisoes d\n  LEFT JOIN avaliacoes_humanas a ON a.ticket_id=d.ticket_id AND a.etapa=d.etapa\n  WHERE d.criado_em >= CURRENT_DATE\n  GROUP BY d.etapa, COALESCE(prompt_version, 'nao_informado'), COALESCE(modelo_ia, 'nao_informado'), COALESCE(versao_modelo, 'nao_informado')\n  ON CONFLICT(data_ref, etapa, prompt_version, modelo_ia, versao_modelo) DO UPDATE SET\n    total_decisoes=EXCLUDED.total_decisoes,\n    total_erros_ia=EXCLUDED.total_erros_ia,\n    confianca_media=EXCLUDED.confianca_media,\n    tempo_medio_ia_ms=EXCLUDED.tempo_medio_ia_ms,\n    acuracia_avaliada=EXCLUDED.acuracia_avaliada,\n    atualizado_em=NOW()\n  RETURNING 1\n),\nworkflow_perf AS (\n  INSERT INTO metricas_workflow_performance(data_ref, workflow, fase, total_eventos, total_erros, duracao_media_ms, duracao_p95_ms, atualizado_em)\n  SELECT\n    CURRENT_DATE,\n    workflow,\n    COALESCE(fase, ''),\n    COUNT(*)::int,\n    COUNT(*) FILTER (WHERE erro=TRUE)::int,\n    ROUND(AVG(duracao_ms), 2),\n    percentile_cont(0.95) WITHIN GROUP (ORDER BY duracao_ms),\n    NOW()\n  FROM workflow_eventos\n  WHERE criado_em >= CURRENT_DATE\n  GROUP BY workflow, COALESCE(fase, '')\n  ON CONFLICT(data_ref, workflow, fase) DO UPDATE SET\n    total_eventos=EXCLUDED.total_eventos,\n    total_erros=EXCLUDED.total_erros,\n    duracao_media_ms=EXCLUDED.duracao_media_ms,\n    duracao_p95_ms=EXCLUDED.duracao_p95_ms,\n    atualizado_em=NOW()\n  RETURNING 1\n),\nevento AS (\n  INSERT INTO workflow_eventos(workflow,node_name,fase,acao,status_evento,inicio_em,fim_em,duracao_ms)\n  VALUES('WF05','PG: Consolidar Metricas','CONSOLIDACAO','CONSOLIDAR_METRICAS','OK',NOW(),NOW(),0)\n  RETURNING 1\n)\nSELECT\n  *,\n  (COALESCE(taxa_erro_ia,0) > ${erroLimite}\n   OR COALESCE(taxa_triagem_manual,0) > ${manualLimite}\n   OR COALESCE(chamados_travados_24h,0) > ${travadosLimite}) AS gerar_alerta,\n  ${erroLimite}::numeric AS limite_erro_ia_percent,\n  ${manualLimite}::numeric AS limite_triagem_manual_percent,\n  ${travadosLimite}::int AS limite_chamados_travados\nFROM upsert_diario;`;\n})() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -60,
+        110
+      ],
+      "id": "v9-wf05-consolidar",
+      "name": "PG: Consolidar Métricas",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.gerar_alerta === true }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              },
+              "id": "if1"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        200,
+        110
+      ],
+      "id": "v9-wf05-alerta-if",
+      "name": "Alerta necessário?"
+    },
+    {
+      "parameters": {
+        "fromEmail": "n8n@campus.local",
+        "toEmail": "={{ undefined || undefined || 'infraestrutura@campus.local' }}",
+        "subject": "={{ (()=>{ const d=new Date($json.data_ref); const dia=Number.isNaN(d.getTime())?String($json.data_ref).slice(0,10):d.toISOString().slice(0,10); return '[V9][Métricas] Alerta de indicadores - '+dia; })() }}",
+        "emailFormat": "text",
+        "text": "={{ (()=>{ const d=new Date($json.data_ref); const dia=Number.isNaN(d.getTime())?String($json.data_ref).slice(0,10):d.toISOString().slice(0,10); return 'Resumo WF05 '+dia+'\\n\\nErro IA: '+String($json.taxa_erro_ia)+'% (limite '+String($json.limite_erro_ia_percent)+'%)\\nTriagem manual: '+String($json.taxa_triagem_manual)+'% (limite '+String($json.limite_triagem_manual_percent)+'%)\\nChamados travados 24h: '+String($json.chamados_travados_24h)+' (limite '+String($json.limite_chamados_travados)+')\\n\\nTotal processado: '+String($json.total_chamados_processados)+'\\nAutomação efetiva: '+String($json.taxa_automacao_efetiva)+'%'; })() }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        460,
+        0
+      ],
+      "id": "v9-wf05-email-alerta",
+      "name": "Email: Alerta Métricas",
+      "credentials": {
+        "smtp": {
+          "id": "SMTP_MAILPIT_LOCAL",
+          "name": "SMTP Mailpit Local"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log('[WF05][LOG] Fim metricas alerta=' + String($json.gerar_alerta)); return [{json:{ok:true,resumo_visual:'WF05 consolidou metricas da V9.', data_ref:$json.data_ref, gerar_alerta:$json.gerar_alerta}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        110
+      ],
+      "id": "v9-wf05-fim",
+      "name": "LOG: Fim",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "path": "avaliacao-humana-v9",
+        "httpMethod": "POST",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -800,
+        440
+      ],
+      "id": "v9-wf05-webhook-avaliacao",
+      "name": "Webhook Avaliação Humana",
+      "webhookId": "v9-wf05-avaliacao-humana"
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst q = {...($json.query || {}),...($json.body || {})};\nconst headers = $json.headers || {};\nconst token = String(q.token || '').trim();\nconst resultado = String(q.resultado || '').toLowerCase().trim();\nconst classe = String(q.classe_correta || '').toUpperCase().trim();\nconst fonteSolicitada = String(q.fonte || '').toUpperCase().trim();\nconst oraculo = fonteSolicitada === 'ORACULO_GABARITO';\nconst runId = String(q.run_id || headers['x-test-run-id'] || '').trim();\nconst scenarioId = String(q.scenario_id || headers['x-test-scenario-id'] || '').trim();\nconst realizationId = String(q.realization_id || headers['x-test-realization-id'] || '').trim();\nconst nonce = String(headers['x-test-auto-review-nonce'] || '').trim();\nconst receivedSecret = String(headers['x-test-auto-review-token'] || '').trim();\nconst expectedSecret = String(\n  (typeof process!=='undefined' && undefined) ||\n  (typeof process!=='undefined' && undefined) || ''\n);\nconst flag = name => {\n  let value='';\n  try { value=String((typeof process!=='undefined' && undefined) || (typeof process!=='undefined' && undefined) || ''); } catch(e) {}\n  return value.trim().toLowerCase()==='true';\n};\nfunction sameSecret(a,b) {\n  if (a.length!==b.length || a.length<32) return false;\n  let diff=0; for (let i=0;i<a.length;i++) diff|=a.charCodeAt(i)^b.charCodeAt(i);\n  return diff===0;\n}\nconst idsOk = /^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$/.test(runId)\n  && /^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$/.test(scenarioId)\n  && /^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$/.test(realizationId);\nconst oracleAuthOk = !oraculo || (\n  flag('TEST_MODE') && flag('TEST_AUTO_HUMAN_CONFIRMATION') &&\n  sameSecret(expectedSecret,receivedSecret) && /^[a-f0-9]{32}$/i.test(nonce) && idsOk\n);\nlet avaliador = oraculo ? 'oraculo_gabarito' : String(q.avaliador || 'fiscal_glpi').trim();\nif (!oraculo && avaliador.toLowerCase().includes('oraculo')) avaliador='fiscal_glpi';\nconst motivo = String(q.motivo || '').trim();\nconst tokenOk = /^[a-f0-9]{32,128}$/i.test(token);\nconst resultadoOk = ['correta','incorreta'].includes(resultado);\nconst ok = tokenOk && resultadoOk && oracleAuthOk;\nlet msg = '';\nif (!tokenOk) msg = 'Token de avaliacao ausente ou invalido.';\nelse if (!resultadoOk) msg = 'Resultado de avaliacao invalido.';\nelse if (!oracleAuthOk) msg = 'Origem ORACULO_GABARITO nao autorizada.';\nreturn [{json:{\n  ok,token:tokenOk?token:null,resultado,classe_correta:classe,avaliador,motivo,msg,\n  fonte_gabarito:oraculo?'ORACULO_GABARITO':'REVISAO_HUMANA',oraculo,\n  run_id:oraculo?runId:null,scenario_id:oraculo?scenarioId:null,\n  realization_id:oraculo?realizationId:null,assessor_nonce:oraculo?nonce:null\n}}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -560,
+        440
+      ],
+      "id": "v9-wf05-extrair-avaliacao",
+      "name": "Extrair Avaliação Humana",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ (() => {\nconst d = $('Extrair Avaliação Humana').first().json || {};\nconst esc = s => \"'\" + String(s ?? '').replace(/'/g,\"''\") + \"'\";\nif (d.ok !== true) {\n  return `SELECT 400::int AS http_status, ${esc(d.msg || 'Avaliacao invalida.')} AS mensagem;`;\n}\nconst token = esc(d.token);\nconst resultado = String(d.resultado || '').toLowerCase();\nconst correta = resultado === 'correta';\nconst classe = d.classe_correta ? esc(d.classe_correta) : 'NULL';\nconst avaliador = esc(d.avaliador || 'fiscal_glpi');\nconst motivo = d.motivo ? esc(d.motivo) : 'NULL';\nconst oraculo = d.oraculo === true;\nconst runId = d.run_id ? esc(d.run_id) : 'NULL';\nconst scenarioId = d.scenario_id ? esc(d.scenario_id) : 'NULL';\nconst realizationId = d.realization_id ? esc(d.realization_id) : 'NULL';\nconst nonce = d.assessor_nonce ? esc(d.assessor_nonce) : 'NULL';\nconst fonte = esc(oraculo ? 'ORACULO_GABARITO' : 'REVISAO_HUMANA');\nreturn `\nWITH alvo AS (\n  SELECT *\n  FROM avaliacoes_humanas\n  WHERE avaliacao_token = ${token}\n  LIMIT 1\n),\ncontexto_oraculo AS (\n  SELECT\n    dc.run_id,dc.scenario_id,dc.case_id AS realization_id,\n    i.id AS ia_decisao_id,i.predicao,\n    CASE WHEN a.etapa='DEDUPLICACAO'\n      THEN CASE WHEN dc.duplicado_esperado THEN 'DUPLICADO' ELSE 'NAO_DUPLICADO' END\n      ELSE dc.classificacao_esperada END AS classe_gabarito,\n    (i.predicao=(CASE WHEN a.etapa='DEDUPLICACAO'\n      THEN CASE WHEN dc.duplicado_esperado THEN 'DUPLICADO' ELSE 'NAO_DUPLICADO' END\n      ELSE dc.classificacao_esperada END)) AS ia_correta\n  FROM alvo a\n  JOIN dataset_controle dc ON dc.ticket_id=a.ticket_id\n  JOIN experimentos_avaliacao e ON e.run_id=dc.run_id\n  JOIN LATERAL (\n    SELECT id,predicao,criado_em\n    FROM ia_decisoes i\n    WHERE i.ticket_id=a.ticket_id AND i.run_id=dc.run_id\n      AND i.case_id=dc.case_id AND i.etapa=a.etapa\n      AND i.criado_em<=COALESCE(a.solicitado_em,NOW())\n    ORDER BY i.criado_em DESC,i.id DESC LIMIT 1\n  ) i ON TRUE\n  WHERE ${oraculo ? 'TRUE' : 'FALSE'}\n    AND dc.run_id=${runId} AND dc.scenario_id=${scenarioId} AND dc.case_id=${realizationId}\n    AND length(dc.run_id) BETWEEN 3 AND 128\n    AND left(dc.run_id,1) ~ '[A-Za-z0-9]'\n    AND dc.run_id !~ '[^A-Za-z0-9._:-]'\n    AND length(dc.scenario_id) BETWEEN 1 AND 64\n    AND left(dc.scenario_id,1) ~ '[A-Za-z0-9]'\n    AND dc.scenario_id !~ '[^A-Za-z0-9_-]'\n    AND length(dc.case_id) BETWEEN 3 AND 128\n    AND left(dc.case_id,1) ~ '[A-Za-z0-9]'\n    AND dc.case_id !~ '[^A-Za-z0-9._:-]'\n    AND UPPER(COALESCE(dc.split,'')) IN ('PILOTO','VALIDACAO','TESTE','TEST','BENCHMARK')\n    AND COALESCE(dc.origem,'') ~ '^(AVALIACAO_|VALIDACAO_|DATASET_)'\n    AND COALESCE(dc.label_source,'') ~ '^(REGRA_SINTETICA|SYNTHETIC_|ADJUDICADO_|GABARITO_)'\n    AND LOWER(COALESCE(e.generation_config->>'test_mode','false'))='true'\n    AND LOWER(COALESCE(e.generation_config->>'auto_human_confirmation','false'))='true'\n    AND a.decisao_ia=i.predicao\n    AND (CASE WHEN a.etapa='DEDUPLICACAO'\n      THEN CASE WHEN dc.duplicado_esperado IS NULL THEN NULL\n        WHEN dc.duplicado_esperado THEN 'DUPLICADO' ELSE 'NAO_DUPLICADO' END\n      ELSE NULLIF(dc.classificacao_esperada,'') END) IS NOT NULL\n    AND ${esc(resultado)}=(CASE WHEN i.predicao=(CASE WHEN a.etapa='DEDUPLICACAO'\n      THEN CASE WHEN dc.duplicado_esperado THEN 'DUPLICADO' ELSE 'NAO_DUPLICADO' END\n      ELSE dc.classificacao_esperada END) THEN 'correta' ELSE 'incorreta' END)\n    AND (\n      ${esc(resultado)}='correta'\n      OR ${classe}=(CASE WHEN a.etapa='DEDUPLICACAO'\n        THEN CASE WHEN dc.duplicado_esperado THEN 'DUPLICADO' ELSE 'NAO_DUPLICADO' END\n        ELSE dc.classificacao_esperada END)\n    )\n    AND EXISTS (\n      SELECT 1 FROM avaliacao_auto_confirmacoes ac\n      WHERE ac.avaliacao_id=a.id AND ac.run_id=dc.run_id\n        AND ac.scenario_id=dc.scenario_id AND ac.realization_id=dc.case_id\n        AND ac.tipo_confirmacao='AVALIACAO_METRICA' AND ac.etapa=a.etapa\n        AND ac.ia_decisao_id=i.id AND ac.status='RESERVADA'\n        AND ac.predicao_ia=i.predicao\n        AND ac.classe_gabarito=(CASE WHEN a.etapa='DEDUPLICACAO'\n          THEN CASE WHEN dc.duplicado_esperado THEN 'DUPLICADO' ELSE 'NAO_DUPLICADO' END\n          ELSE dc.classificacao_esperada END)\n        AND ac.decisao_webhook=${esc(resultado)}\n        AND ac.token_hash=encode(sha256(convert_to(a.avaliacao_token,'UTF8')),'hex')\n        AND ac.assessor_nonce_hash=encode(sha256(convert_to(${nonce},'UTF8')),'hex')\n    )\n),\natualizado AS (\n  UPDATE avaliacoes_humanas a\n  SET\n    status_avaliacao = 'CONCLUIDA',\n    ia_estava_correta = CASE WHEN ${oraculo ? 'TRUE' : 'FALSE'}\n      THEN (SELECT ia_correta FROM contexto_oraculo)\n      ELSE ${correta ? 'TRUE' : 'FALSE'} END,\n    decisao_humana = CASE\n      WHEN ${oraculo ? 'TRUE' : 'FALSE'} THEN (SELECT classe_gabarito FROM contexto_oraculo)\n      WHEN ${correta ? 'TRUE' : 'FALSE'} THEN a.decisao_ia\n      ELSE COALESCE(${classe}, a.decisao_humana, 'CORRIGIR_MANUAL')\n    END,\n    classe_correta = CASE\n      WHEN ${oraculo ? 'TRUE' : 'FALSE'} THEN (SELECT classe_gabarito FROM contexto_oraculo)\n      WHEN ${correta ? 'TRUE' : 'FALSE'} THEN COALESCE(a.classe_correta, a.decisao_ia)\n      ELSE COALESCE(${classe}, a.classe_correta)\n    END,\n    avaliador = ${avaliador},\n    fonte_gabarito = ${fonte},\n    motivo_divergencia = ${motivo},\n    concluido_em = NOW(),\n    avaliado_em = NOW(),\n    observacao = COALESCE(a.observacao,'')\n      || CASE WHEN ${oraculo ? 'TRUE' : 'FALSE'} THEN E'\\n[ORACULO_GABARITO] Confirmacao automatica test-only autenticada.' ELSE '' END\n      || CASE WHEN ${motivo} IS NULL THEN '' ELSE E'\\n' || ${motivo} END\n  WHERE a.id = (SELECT id FROM alvo)\n    AND COALESCE(a.status_avaliacao,'PENDENTE') = 'PENDENTE'\n    AND (a.avaliacao_token_expira_em IS NULL OR a.avaliacao_token_expira_em > NOW())\n    AND (NOT ${oraculo ? 'TRUE' : 'FALSE'} OR EXISTS (SELECT 1 FROM contexto_oraculo))\n  RETURNING a.id, a.ticket_id, a.etapa, a.decisao_ia, a.decisao_humana, a.classe_correta\n),\nevento_ok AS (\n  INSERT INTO workflow_eventos(ticket_id,workflow,node_name,fase,acao,status_evento,erro,mensagem_erro,inicio_em,fim_em)\n  SELECT ticket_id,'WF05','PG: Registrar Avaliação Humana','AVALIACAO_HUMANA',\n         CASE WHEN ${oraculo ? 'TRUE' : 'FALSE'} THEN 'ORACULO_GABARITO'\n              WHEN ${correta ? 'TRUE' : 'FALSE'} THEN 'IA_CORRETA' ELSE 'IA_CORRIGIDA' END,\n         'OK',FALSE,NULL,NOW(),NOW()\n  FROM atualizado\n  RETURNING 1\n)\nSELECT\n  200::int AS http_status,\n  ('Avaliacao registrada para o chamado #' || ticket_id || '.')::text AS mensagem,\n  ticket_id,\n  etapa,\n  decisao_ia,\n  decisao_humana,\n  classe_correta\nFROM atualizado\nUNION ALL\nSELECT\n  CASE\n    WHEN NOT EXISTS (SELECT 1 FROM alvo) THEN 404\n    WHEN ${oraculo ? 'TRUE' : 'FALSE'} AND NOT EXISTS (SELECT 1 FROM contexto_oraculo) THEN 403\n    WHEN EXISTS (SELECT 1 FROM alvo WHERE COALESCE(status_avaliacao,'PENDENTE') <> 'PENDENTE') THEN 200\n    WHEN EXISTS (SELECT 1 FROM alvo WHERE avaliacao_token_expira_em IS NOT NULL AND avaliacao_token_expira_em <= NOW()) THEN 410\n    ELSE 409\n  END::int AS http_status,\n  CASE\n    WHEN NOT EXISTS (SELECT 1 FROM alvo) THEN 'Token de avaliacao nao encontrado.'\n    WHEN ${oraculo ? 'TRUE' : 'FALSE'} AND NOT EXISTS (SELECT 1 FROM contexto_oraculo) THEN 'Confirmacao automatica sem reserva ou contexto experimental valido.'\n    WHEN EXISTS (SELECT 1 FROM alvo WHERE COALESCE(status_avaliacao,'PENDENTE') <> 'PENDENTE') THEN 'Avaliacao ja registrada anteriormente.'\n    WHEN EXISTS (SELECT 1 FROM alvo WHERE avaliacao_token_expira_em IS NOT NULL AND avaliacao_token_expira_em <= NOW()) THEN 'Token de avaliacao expirado.'\n    ELSE 'Avaliacao nao pode ser registrada.'\n  END::text AS mensagem,\n  (SELECT ticket_id FROM alvo),\n  (SELECT etapa FROM alvo),\n  (SELECT decisao_ia FROM alvo),\n  NULL::text,\n  NULL::text\nWHERE NOT EXISTS (SELECT 1 FROM atualizado);`;\n})() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -320,
+        440
+      ],
+      "id": "v9-wf05-registrar-avaliacao",
+      "name": "PG: Registrar Avaliação Humana",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.mensagem || 'Avaliacao registrada.' }}",
+        "options": {
+          "responseCode": "={{ Number($json.http_status || 200) }}",
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        -60,
+        440
+      ],
+      "id": "v9-wf05-resp-avaliacao",
+      "name": "Resp: Avaliação Humana"
+    },
+    {
+      "parameters": {
+        "path": "avaliacao-humana-confirmacao-v9",
+        "httpMethod": "GET",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -800,
+        620
+      ],
+      "id": "v9-wf05-webhook-confirmacao",
+      "name": "Webhook Confirmação Avaliação",
+      "webhookId": "v9-wf05-confirmacao-avaliacao"
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst q=$json.query || {};\nconst esc=value=>String(value ?? '').replace(/[&<>\\\"']/g,ch=>({\n  '&':'&amp;','<':'&lt;','>':'&gt;','\\\"':'&quot;',\"'\":'&#39;'\n}[ch]));\nconst token=String(q.token || '').trim();\nconst resultado=String(q.resultado || '').toLowerCase().trim();\nconst classe=String(q.classe_correta || '').toUpperCase().trim();\nconst valido=/^[a-f0-9]{32,128}$/i.test(token) && ['correta','incorreta'].includes(resultado);\nconst campos={token,resultado};\nif (classe) campos.classe_correta=classe;\nconst hidden=Object.entries(campos).map(([key,value])=>\n  '<input type=\"hidden\" name=\"'+esc(key)+'\" value=\"'+esc(value)+'\">'\n).join('');\nconst resumo=resultado==='correta' ? 'Confirmar a decisão da automação' : 'Registrar correção da decisão';\nconst html=valido\n  ? '<!doctype html><html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Confirmar avaliação</title></head><body><main><h1>Confirmar avaliação humana</h1><p>'+esc(resumo)+(classe ? ': '+esc(classe) : '')+'.</p><p>Esta página não registra a avaliação até você pressionar o botão.</p><form method=\"post\" action=\"/webhook/avaliacao-humana-v9\">'+hidden+'<button type=\"submit\">Confirmar avaliação</button></form></main></body></html>'\n  : '<!doctype html><html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><title>Link inválido</title></head><body><h1>Link inválido ou incompleto</h1><p>Revise o chamado diretamente no GLPI.</p></body></html>';\nreturn [{json:{http_status:valido?200:400,response_html:html}}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -560,
+        620
+      ],
+      "id": "v9-wf05-render-confirmacao",
+      "name": "Renderizar Confirmação Avaliação",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.response_html }}",
+        "options": {
+          "responseCode": "={{ Number($json.http_status || 200) }}",
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              },
+              {
+                "name": "Cache-Control",
+                "value": "no-store"
+              },
+              {
+                "name": "X-Content-Type-Options",
+                "value": "nosniff"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        -320,
+        620
+      ],
+      "id": "v9-wf05-resp-confirmacao",
+      "name": "Resp: Confirmação Avaliação"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "T1. Manual": {
+      "main": [
+        [
+          {
+            "node": "LOG: Início",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "T2. Schedule 23h": {
+      "main": [
+        [
+          {
+            "node": "LOG: Início",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LOG: Início": {
+      "main": [
+        [
+          {
+            "node": "PG: Verificar Schema Observabilidade",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Verificar Schema Observabilidade": {
+      "main": [
+        [
+          {
+            "node": "PG: Consolidar Métricas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Consolidar Métricas": {
+      "main": [
+        [
+          {
+            "node": "Alerta necessário?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Alerta necessário?": {
+      "main": [
+        [
+          {
+            "node": "Email: Alerta Métricas",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "LOG: Fim",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email: Alerta Métricas": {
+      "main": [
+        [
+          {
+            "node": "LOG: Fim",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Avaliação Humana": {
+      "main": [
+        [
+          {
+            "node": "Extrair Avaliação Humana",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extrair Avaliação Humana": {
+      "main": [
+        [
+          {
+            "node": "PG: Registrar Avaliação Humana",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Registrar Avaliação Humana": {
+      "main": [
+        [
+          {
+            "node": "Resp: Avaliação Humana",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Confirmação Avaliação": {
+      "main": [
+        [
+          {
+            "node": "Renderizar Confirmação Avaliação",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Renderizar Confirmação Avaliação": {
+      "main": [
+        [
+          {
+            "node": "Resp: Confirmação Avaliação",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Sao_Paulo",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true
+  },
+  "versionId": "v9-wf05-metricas",
+  "meta": {},
+  "id": "ZpQ0H9uV9Metric05",
+  "tags": []
+}

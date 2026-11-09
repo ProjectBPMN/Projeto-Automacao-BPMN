@@ -1,0 +1,410 @@
+{
+  "timestamp": "2026-08-20T01:53:25Z",
+  "criterio_f1_minimo": 0.9,
+  "menor_macro_f1": 0.3553,
+  "aprovado": false,
+  "cenarios": {
+    "1_baseline_limpo": {
+      "semantic_model": {
+        "accuracy": 0.5556,
+        "macro_f1": 0.5774,
+        "per_class": {
+          "OBRA": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 2,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6667
+          },
+          "DEMO": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 3,
+            "precision": 1.0,
+            "recall": 0.4,
+            "f1": 0.5714
+          },
+          "SOB_DEMANDA": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 3,
+            "precision": 1.0,
+            "recall": 0.4,
+            "f1": 0.5714
+          },
+          "TRIAGEM_MANUAL": {
+            "tp": 4,
+            "fp": 8,
+            "fn": 0,
+            "precision": 0.3333,
+            "recall": 1.0,
+            "f1": 0.5
+          }
+        }
+      },
+      "operational_decision": {
+        "accuracy": 0.3333,
+        "macro_f1": 0.2833,
+        "per_class": {
+          "OBRA": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 3,
+            "precision": 1.0,
+            "recall": 0.25,
+            "f1": 0.4
+          },
+          "DEMO": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "SOB_DEMANDA": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 4,
+            "precision": 1.0,
+            "recall": 0.2,
+            "f1": 0.3333
+          },
+          "TRIAGEM_MANUAL": {
+            "tp": 4,
+            "fp": 12,
+            "fn": 0,
+            "precision": 0.25,
+            "recall": 1.0,
+            "f1": 0.4
+          }
+        }
+      },
+      "avg_latency_ms": 1707.31,
+      "p95_latency_ms": 27795.2
+    },
+    "2_ruido_digitacao": {
+      "semantic_model": {
+        "accuracy": 0.3889,
+        "macro_f1": 0.3719,
+        "per_class": {
+          "OBRA": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 3,
+            "precision": 1.0,
+            "recall": 0.25,
+            "f1": 0.4
+          },
+          "DEMO": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 4,
+            "precision": 1.0,
+            "recall": 0.2,
+            "f1": 0.3333
+          },
+          "SOB_DEMANDA": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 4,
+            "precision": 1.0,
+            "recall": 0.2,
+            "f1": 0.3333
+          },
+          "TRIAGEM_MANUAL": {
+            "tp": 4,
+            "fp": 11,
+            "fn": 0,
+            "precision": 0.2667,
+            "recall": 1.0,
+            "f1": 0.4211
+          }
+        }
+      },
+      "operational_decision": {
+        "accuracy": 0.3333,
+        "macro_f1": 0.2833,
+        "per_class": {
+          "OBRA": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 3,
+            "precision": 1.0,
+            "recall": 0.25,
+            "f1": 0.4
+          },
+          "DEMO": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "SOB_DEMANDA": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 4,
+            "precision": 1.0,
+            "recall": 0.2,
+            "f1": 0.3333
+          },
+          "TRIAGEM_MANUAL": {
+            "tp": 4,
+            "fp": 12,
+            "fn": 0,
+            "precision": 0.25,
+            "recall": 1.0,
+            "f1": 0.4
+          }
+        }
+      },
+      "avg_latency_ms": 157.99,
+      "p95_latency_ms": 569.4
+    },
+    "3_variacao_fonetica": {
+      "semantic_model": {
+        "accuracy": 0.5,
+        "macro_f1": 0.5034,
+        "per_class": {
+          "OBRA": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 3,
+            "precision": 1.0,
+            "recall": 0.25,
+            "f1": 0.4
+          },
+          "DEMO": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 3,
+            "precision": 1.0,
+            "recall": 0.4,
+            "f1": 0.5714
+          },
+          "SOB_DEMANDA": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 3,
+            "precision": 1.0,
+            "recall": 0.4,
+            "f1": 0.5714
+          },
+          "TRIAGEM_MANUAL": {
+            "tp": 4,
+            "fp": 9,
+            "fn": 0,
+            "precision": 0.3077,
+            "recall": 1.0,
+            "f1": 0.4706
+          }
+        }
+      },
+      "operational_decision": {
+        "accuracy": 0.3889,
+        "macro_f1": 0.3719,
+        "per_class": {
+          "OBRA": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 3,
+            "precision": 1.0,
+            "recall": 0.25,
+            "f1": 0.4
+          },
+          "DEMO": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 4,
+            "precision": 1.0,
+            "recall": 0.2,
+            "f1": 0.3333
+          },
+          "SOB_DEMANDA": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 4,
+            "precision": 1.0,
+            "recall": 0.2,
+            "f1": 0.3333
+          },
+          "TRIAGEM_MANUAL": {
+            "tp": 4,
+            "fp": 11,
+            "fn": 0,
+            "precision": 0.2667,
+            "recall": 1.0,
+            "f1": 0.4211
+          }
+        }
+      },
+      "avg_latency_ms": 128.77,
+      "p95_latency_ms": 451.24
+    },
+    "4_ataques_adversariais": {
+      "semantic_model": {
+        "accuracy": 0.5,
+        "macro_f1": 0.5105,
+        "per_class": {
+          "OBRA": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 2,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6667
+          },
+          "DEMO": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 4,
+            "precision": 1.0,
+            "recall": 0.2,
+            "f1": 0.3333
+          },
+          "SOB_DEMANDA": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 3,
+            "precision": 1.0,
+            "recall": 0.4,
+            "f1": 0.5714
+          },
+          "TRIAGEM_MANUAL": {
+            "tp": 4,
+            "fp": 9,
+            "fn": 0,
+            "precision": 0.3077,
+            "recall": 1.0,
+            "f1": 0.4706
+          }
+        }
+      },
+      "operational_decision": {
+        "accuracy": 0.3333,
+        "macro_f1": 0.2833,
+        "per_class": {
+          "OBRA": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 3,
+            "precision": 1.0,
+            "recall": 0.25,
+            "f1": 0.4
+          },
+          "DEMO": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "SOB_DEMANDA": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 4,
+            "precision": 1.0,
+            "recall": 0.2,
+            "f1": 0.3333
+          },
+          "TRIAGEM_MANUAL": {
+            "tp": 4,
+            "fp": 12,
+            "fn": 0,
+            "precision": 0.25,
+            "recall": 1.0,
+            "f1": 0.4
+          }
+        }
+      },
+      "avg_latency_ms": 158.24,
+      "p95_latency_ms": 381.07,
+      "injection_block_rate": 1.0
+    },
+    "5_ruido_caotico_combinado": {
+      "semantic_model": {
+        "accuracy": 0.3889,
+        "macro_f1": 0.3553,
+        "per_class": {
+          "OBRA": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 2,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6667
+          },
+          "DEMO": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 4,
+            "precision": 1.0,
+            "recall": 0.2,
+            "f1": 0.3333
+          },
+          "SOB_DEMANDA": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "TRIAGEM_MANUAL": {
+            "tp": 4,
+            "fp": 11,
+            "fn": 0,
+            "precision": 0.2667,
+            "recall": 1.0,
+            "f1": 0.4211
+          }
+        }
+      },
+      "operational_decision": {
+        "accuracy": 0.2778,
+        "macro_f1": 0.1786,
+        "per_class": {
+          "OBRA": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "DEMO": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 4,
+            "precision": 1.0,
+            "recall": 0.2,
+            "f1": 0.3333
+          },
+          "SOB_DEMANDA": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "TRIAGEM_MANUAL": {
+            "tp": 4,
+            "fp": 13,
+            "fn": 0,
+            "precision": 0.2353,
+            "recall": 1.0,
+            "f1": 0.381
+          }
+        }
+      },
+      "avg_latency_ms": 127.71,
+      "p95_latency_ms": 602.36,
+      "injection_block_rate": 1.0
+    }
+  }
+}

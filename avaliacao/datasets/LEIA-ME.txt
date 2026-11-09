@@ -1,0 +1,58 @@
+PASTA AVALIACAO/DATASETS
+========================
+
+Armazena os conjuntos sintéticos usados nos experimentos.
+
+Arquivos:
+- dataset_piloto_v2.csv: piloto episódico atual, sem IDs no texto.
+- dataset_piloto_v2.jsonl: fonte canônica do piloto V2 (50 tickets/35 episódios).
+- dataset_piloto_v2_resumo.md: distribuição do piloto V2.
+- validacao_rotulos_piloto_v2.csv: planilha cega com 94 decisões para dois
+  especialistas.
+- validacao_rotulos_piloto_v2_manifest.json: vínculo reservado entre item,
+  cenário e gabarito sintético; não deve ser entregue aos revisores.
+- cenarios_v2.json: registro auditável de `primary33` (D01-D14 + C01-C19) e
+  `stress2` (D15 + C20), além da política de split.
+- planejamento_amostral_v2.json: parâmetros e volume mínimo calculado.
+- perfil_avaliadores_template.json: metadados obrigatórios dos especialistas.
+- catalogo_corpus_v3.json: 25 famílias de contraste e 40 núcleos de
+  classificação usados pelo gerador V3.
+- corpus_v3_teste.jsonl: corpus lógico V3 (1.200 tickets/700 episódios), fonte
+  canônica ainda pendente de validação humana.
+- corpus_v3_teste.csv: visualização tabular do mesmo corpus.
+- corpus_v3_teste_manifest.json: hashes, contagens, partições, gates e limites;
+  declara explicitamente `scientific_result=false`.
+- corpus_v3_teste_resumo.md: resumo legível do desenho e das dez partições.
+- desenvolvimento_local_v1.jsonl: corpus sintético exclusivo de treino e
+  calibração do candidato local, com 1.360 registros; não pertence ao holdout.
+- desenvolvimento_local_v1_manifest.json: hashes, 128 núcleos de
+  classificação, 120 episódios de deduplicação, agrupamento e bloqueios de uso
+  confirmatório/anti-vazamento.
+- LEIA-ME.txt: este inventário.
+
+Seed naturalístico vigente:
+- `primary33`: 33 cenários x 30 realizações = 990 realizações de cenário;
+- como D01-D14 geram pares, o volume efetivo é 840 tickets D + 570 tickets C =
+  1.410 chamados GLPI;
+- `stress2` com 30 realizações de D15 e C20 acrescenta 90 tickets; `all35` gera
+  1.500 tickets;
+- as 30 variações medem robustez ortográfica/estilística e permanecem
+  agrupadas; não são 30 novos núcleos semânticos independentes.
+
+A contabilidade executável está em `../config/plano_seed_33x30.json`.
+
+Planejamento V4.1, ainda não materializado:
+- `avaliacao/PRE_REGISTRO_PENDENTE.md` registra as condições inferenciais da expansão futura de 1.200 para cerca
+  de 2.078 chamados;
+- o acréscimo correto é de 878 chamados derivados de 619 novos
+  núcleos/episódios independentes;
+- metas: 100 núcleos por classe, 189 dedup positivos, 97 negativos completos e
+  73 negativos críticos/insuficientes;
+- nenhum caso novo será gerado na etapa corrente;
+- executar outra seed com o mesmo catálogo não aumenta a amostra semântica.
+
+CSV e JSONL V2 representam os mesmos casos; JSONL é a fonte para hash.
+Os arquivos V2 são piloto/desenvolvimento e não substituem o benchmark V3.
+O corpus `desenvolvimento_local_v1` pode ajustar o candidato local, mas não pode
+ser usado para alegar eficácia nem para substituir `corpus_v3_teste`.
+Versões pré-episódicas foram removidas para impedir uso acidental.

@@ -1,0 +1,18 @@
+{
+  "schema_version": "confirmatory-predictions-v1",
+  "protocol_id": "PREENCHER_CONFORME_PRE_REGISTRO",
+  "preregistration_sha256": "PREENCHER_SHA256",
+  "dataset_sha256": "PREENCHER_SHA256",
+  "candidate_sha256": "PREENCHER_SHA256",
+  "attempt_id": "PREENCHER_DA_RESERVA",
+  "reservation_contract_sha256": "PREENCHER_DA_RESERVA",
+  "generated_at": "PREENCHER_ISO8601_COM_FUSO_APOS_CONGELAMENTO",
+  "candidate_execution_id": "PREENCHER",
+  "predictions": [
+    {
+      "family_id": "PREENCHER",
+      "status": "OK",
+      "duplicate_probability": "PREENCHER_NUMERO_ENTRE_0_E_1"
+    }
+  ]
+}

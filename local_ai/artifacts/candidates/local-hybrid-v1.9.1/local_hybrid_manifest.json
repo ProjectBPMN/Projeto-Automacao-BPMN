@@ -1,0 +1,844 @@
+{
+  "schema_version": "local-hybrid-manifest-v1.9",
+  "model_version": "local-hybrid-v1.9.1",
+  "bundle_version": "local-hybrid-bundle-v1.9.1",
+  "status": "CALIBRATED_DEVELOPMENT_CANDIDATE_UNDERPOWERED",
+  "candidate_frozen": true,
+  "evaluation_eligible": true,
+  "scientifically_validated": false,
+  "scientific_result": false,
+  "confirmatory_eligible": false,
+  "confirmatory_evaluation_completed": false,
+  "test_data_used": false,
+  "primary33_used": false,
+  "scientific_claim_status": "validated_development_selection_underpowered_not_confirmatory",
+  "pipeline": {
+    "version": "local-ai-hybrid-pipeline-v1.9.1",
+    "service_version": "0.8.0",
+    "generation_profile": "selection-v1.3-granite97m-hybrid-svm-logreg-single-refit-v1.9.1",
+    "source_sha256": {
+      "materializer": "3db2675345719bf6c55f9845285b3822a7351d528463becbb76ce8a26bd4d797",
+      "selection_executor": "99dc1cd645f64c2de2eec81f375963de3e66d34fa41a61657f77b910f9c02dc2",
+      "training_helpers": "73bc75ff565c7b40c2190b4fed18f8507d8ab8e32110699d037946bc87fbc5f7",
+      "runtime": "539a4c864bc36a83332633756a80d0ce0e19eeb2784b3ebb065867515507eec4",
+      "inference": "9d34c18b17cf4ec5a77737061362f0ffea8a873201739a16078838e821d6c04b",
+      "text": "c2796729ed8780e5c5761955f04baa080956a92750076d9a9a0feb8f4b072b93"
+    }
+  },
+  "bundle": {
+    "path": "local_hybrid_bundle.joblib",
+    "sha256": "c5854899bbaa6f9bd8e9e21773c9602bef09460882907d26af472b8869886c3a",
+    "load_contract": "joblib.load(path)",
+    "required_keys": [
+      "classification_model",
+      "dedup_model",
+      "vectorizers",
+      "feature_schema",
+      "classes",
+      "thresholds",
+      "embedding",
+      "training_metadata",
+      "pipeline_version",
+      "service_version",
+      "generation_profile",
+      "pipeline_source_sha256"
+    ]
+  },
+  "embedding": {
+    "backend": "granite",
+    "id": "granite97m",
+    "dimension": 384,
+    "model_id": "ibm-granite/granite-embedding-97m-multilingual-r2",
+    "model_revision": "835ad14087e140460703cf0fae09f97d469d65c2",
+    "model_tree_sha256": "28bb1e36cb3719c0c466de3013404307821da17bf901fc70f62af74bfa57a343",
+    "symmetric_prefix": "",
+    "normalized": true,
+    "external_download_performed": false
+  },
+  "feature_schema": {
+    "classification": {
+      "text_fields": [
+        "title",
+        "content",
+        "location"
+      ],
+      "layout": [
+        "tfidf_word_char",
+        "embedding"
+      ],
+      "structured_features": [],
+      "block_order": [
+        "tfidf",
+        "embedding"
+      ]
+    },
+    "deduplication": {
+      "pair_order": [
+        "current",
+        "reference"
+      ],
+      "text_fields": [
+        "title",
+        "content",
+        "location"
+      ],
+      "representation": "hybrid",
+      "uses_metadata": false,
+      "block_order": [
+        "tfidf",
+        "embedding"
+      ],
+      "layout": [
+        "tfidf_abs_difference",
+        "tfidf_elementwise_product",
+        "tfidf_cosine",
+        "embedding_abs_difference",
+        "embedding_elementwise_product",
+        "embedding_cosine"
+      ]
+    }
+  },
+  "classes": {
+    "classification": [
+      "DEMO",
+      "OBRA",
+      "SOB_DEMANDA",
+      "TRIAGEM_MANUAL"
+    ],
+    "deduplication": [
+      "DUPLICADO",
+      "NAO_DUPLICADO"
+    ]
+  },
+  "thresholds": {
+    "classification": 0.91,
+    "classification_obra": 0.91,
+    "deduplication": 0.95,
+    "deduplication_negative": 0.12,
+    "deduplication_reference_margin": 0.035,
+    "approved": true,
+    "selection_source": "validated_outer_oof_global_policy",
+    "approval_scope": "underpowered_development_candidate_for_engineering_comparison",
+    "approval_uses_point_estimates": true,
+    "confidence_qualified": false,
+    "abstention_is_not_triagem_manual": true,
+    "error_costs": {
+      "false_negative": 5.0,
+      "false_positive": 1.0
+    }
+  },
+  "selected_operating_points": {
+    "classification": {
+      "threshold": 0.91,
+      "obra_threshold": 0.91,
+      "covered": 255,
+      "coverage": 0.5019685039370079,
+      "errors": 3,
+      "risk": 0.011764705882352941,
+      "automatic_maintenance_as_obra": 0,
+      "automatic_non_obra_as_obra": 0,
+      "eligible": true
+    },
+    "deduplication": {
+      "positive_threshold": 0.95,
+      "negative_threshold": 0.12,
+      "eligible": true,
+      "selected": {
+        "threshold": 0.95,
+        "positive_threshold": 0.95,
+        "negative_threshold": 0.12,
+        "coverage": 1.0,
+        "covered": 600,
+        "abstained": 0,
+        "tp": 300,
+        "fp": 0,
+        "tn": 300,
+        "fn": 0,
+        "positives": 300,
+        "negatives": 300,
+        "precision": 1.0,
+        "negative_predictive_value": 1.0,
+        "automated_false_positive_rate": 0.0,
+        "automated_false_negative_rate": 0.0,
+        "covered_error_rate": 0.0,
+        "weighted_covered_error": 0.0,
+        "automation_duplicate_recall": 1.0,
+        "automation_nonduplicate_recall": 1.0,
+        "false_negative_cost": 5.0,
+        "false_positive_cost": 1.0
+      },
+      "curve_points": 2450
+    }
+  },
+  "training": {
+    "model_version": "local-hybrid-v1.9.1",
+    "pipeline_version": "local-ai-hybrid-pipeline-v1.9.1",
+    "service_version": "0.8.0",
+    "generation_profile": "selection-v1.3-granite97m-hybrid-svm-logreg-single-refit-v1.9.1",
+    "created_at": "2026-08-17T23:51:42.626766+00:00",
+    "candidate_frozen": true,
+    "evaluation_eligible": true,
+    "scientifically_validated": false,
+    "scientific_result": false,
+    "confirmatory_eligible": false,
+    "test_data_used": false,
+    "primary33_used": false,
+    "dataset": {
+      "path": "avaliacao\\datasets\\desenvolvimento_local_v1.jsonl",
+      "sha256": "0de50381c0dfaefeb1a940cd697f9c9a8e87b5efee9252a1f4ca43c9d904f204",
+      "records": 1360,
+      "classification_records": 508,
+      "classification_groups": 105,
+      "deduplication_records": 600,
+      "deduplication_groups": 120,
+      "development_only": true
+    },
+    "selection": {
+      "directory": "avaliacao\\resultados\\selecao-supervisionada-v1.3-20260812",
+      "protocol_sha256": "6dd8a17094611e98bfd233ed2cd99630c9c00b76b910e9a233a4628afc8fcac4",
+      "run_fingerprint": "1493274b792ec1d675bdc05f9b8c3eb8b90af2858975ce3a0a329691c04c4dd2",
+      "validation_sha256": "09cddaeaafc52cd90608b2d4f142125634a353279c1538a9d1a62b0da623b2bc",
+      "results_sha256": "1ebb8b66ad3d13125c100847b0d30b804d2d35348c7834ec4c5f08734afa79a4",
+      "oof_sha256": "fba929ced0a02ab9e3c5312c3a30abc415a052f802f4b3592f18ee3e0365c714",
+      "validation_status": "VALID",
+      "development_only": true,
+      "confirmatory_eligible": false
+    },
+    "candidates": {
+      "classification": {
+        "combination_id": "classification__hybrid__granite97m__linear_svm",
+        "selection_rank": 1,
+        "selection_source": "PROVISIONAL_POINT_CANDIDATE",
+        "evidence_status": "UNDERPOWERED",
+        "exclusion_reasons": [
+          "classification_critical_upper_confidence",
+          "classification_risk_upper_confidence",
+          "classification_coverage_lower_confidence"
+        ],
+        "representation": "hybrid",
+        "embedding": "granite97m",
+        "classifier": "linear_svm",
+        "development_metrics": {
+          "records": 508,
+          "accuracy": 0.8464566929133859,
+          "macro_f1": 0.8006219374088872,
+          "log_loss": 0.3949257839999563,
+          "brier_score": 0.2085726617023198,
+          "expected_calibration_error_10_bins": 0.05280891317079087,
+          "confusion_matrix": {
+            "labels": [
+              "OBRA",
+              "DEMO",
+              "SOB_DEMANDA",
+              "TRIAGEM_MANUAL"
+            ],
+            "values": [
+              [
+                124,
+                8,
+                1,
+                0
+              ],
+              [
+                12,
+                123,
+                12,
+                12
+              ],
+              [
+                0,
+                2,
+                154,
+                2
+              ],
+              [
+                6,
+                16,
+                7,
+                29
+              ]
+            ]
+          },
+          "per_class": {
+            "OBRA": {
+              "precision": 0.8732394366197183,
+              "recall": 0.9323308270676691,
+              "f1-score": 0.9018181818181819,
+              "support": 133
+            },
+            "DEMO": {
+              "precision": 0.825503355704698,
+              "recall": 0.7735849056603774,
+              "f1-score": 0.7987012987012987,
+              "support": 159
+            },
+            "SOB_DEMANDA": {
+              "precision": 0.8850574712643678,
+              "recall": 0.9746835443037974,
+              "f1-score": 0.927710843373494,
+              "support": 158
+            },
+            "TRIAGEM_MANUAL": {
+              "precision": 0.6744186046511628,
+              "recall": 0.5,
+              "f1-score": 0.5742574257425742,
+              "support": 58
+            }
+          },
+          "obra_recall": 0.9323308270676691,
+          "automatic_records": 295,
+          "automatic_coverage": 0.5807086614173228,
+          "human_review_required_records": 213,
+          "automatic_triage_records": 0,
+          "triagem_manual_is_automatic": false,
+          "automatic_errors": 15,
+          "automatic_risk": 0.05084745762711865,
+          "automatic_maintenance_as_obra": 0,
+          "automatic_non_obra_as_obra": 0,
+          "automatic_non_obra_records": 214,
+          "automatic_non_obra_as_obra_rate": 0.0,
+          "automatic_non_obra_as_obra_group_events": 0,
+          "automatic_non_obra_exposed_groups": 49,
+          "automatic_non_obra_as_obra_group_rate_upper": 0.059306014189697054,
+          "semantic_maintenance_as_obra": 12,
+          "confidence_level": 0.95,
+          "confidence_intervals_group_bootstrap": {
+            "accuracy": [
+              0.7866894719336649,
+              0.9009944163020953
+            ],
+            "macro_f1": [
+              0.7179997152324508,
+              0.8660912510038411
+            ],
+            "coverage": [
+              0.49203027248435977,
+              0.6620560154375392
+            ],
+            "selective_risk": [
+              0.014184397163120567,
+              0.10437843626134764
+            ]
+          }
+        }
+      },
+      "deduplication": {
+        "combination_id": "deduplication__hybrid__granite97m__logistic_regression",
+        "selection_rank": 1,
+        "selection_source": "PROVISIONAL_POINT_CANDIDATE",
+        "evidence_status": "UNDERPOWERED",
+        "exclusion_reasons": [
+          "deduplication_safety_upper_confidence"
+        ],
+        "representation": "hybrid",
+        "embedding": "granite97m",
+        "classifier": "logistic_regression",
+        "development_metrics": {
+          "records": 600,
+          "positive_records": 300,
+          "negative_records": 300,
+          "semantic_accuracy": 1.0,
+          "semantic_f1": 1.0,
+          "average_precision": 1.0,
+          "roc_auc": 1.0,
+          "log_loss": 0.011343595679018537,
+          "brier_score": 0.00027019981027645,
+          "expected_calibration_error_10_bins": 0.011204319467176779,
+          "semantic_confusion_matrix": [
+            [
+              300,
+              0
+            ],
+            [
+              0,
+              300
+            ]
+          ],
+          "decision_records": 600,
+          "decision_coverage": 1.0,
+          "automatic_positive_records_requiring_human_confirmation": 300,
+          "fully_automated_negative_records": 300,
+          "full_automation_coverage": 0.5,
+          "human_review_required_records": 300,
+          "tp": 300,
+          "fp": 0,
+          "tn": 300,
+          "fn": 0,
+          "precision": 1.0,
+          "negative_predictive_value": 1.0,
+          "automatic_false_positive_rate": 0.0,
+          "automatic_false_negative_rate": 0.0,
+          "false_negative_group_events": 0,
+          "positive_groups": 60,
+          "false_negative_group_rate_upper": 0.04870291331009749,
+          "false_positive_group_events": 0,
+          "negative_groups": 60,
+          "false_positive_group_rate_upper": 0.04870291331009749,
+          "weighted_error_fn5_fp1_total": 0.0,
+          "weighted_error_fn5_fp1_per_record": 0.0,
+          "weighted_error_fn5_fp1_per_automatic": 0.0,
+          "confidence_level": 0.95,
+          "semantic_confidence_intervals_group_bootstrap": {
+            "accuracy": [
+              1.0,
+              1.0
+            ],
+            "macro_f1": [
+              1.0,
+              1.0
+            ]
+          },
+          "operating_confidence_intervals_group_bootstrap": {
+            "precision": [
+              1.0,
+              1.0
+            ],
+            "negative_predictive_value": [
+              1.0,
+              1.0
+            ],
+            "false_positive_rate": [
+              0.0,
+              0.0
+            ],
+            "false_negative_rate": [
+              0.0,
+              0.0
+            ],
+            "weighted_error_per_record": [
+              0.0,
+              0.0
+            ],
+            "decision_coverage": [
+              1.0,
+              1.0
+            ],
+            "full_automation_coverage": [
+              0.4083333333333333,
+              0.5833333333333334
+            ]
+          }
+        }
+      }
+    },
+    "classification_fit": {
+      "classifier": "linear_svm",
+      "parameters": {
+        "C": 1.0
+      },
+      "calibration_method": "sigmoid",
+      "calibration_strategy": "five_fold_group_oof_single_full_refit",
+      "operational_inference_estimators": 1,
+      "folds": [
+        {
+          "fold": 0,
+          "fit_records": 406,
+          "calibration_records": 102,
+          "fit_groups": 84,
+          "calibration_groups": 21,
+          "group_overlap": 0,
+          "fit_groups_sha256": "77a81826de32ee14a794ef9d854bd99dfcd8311deabd6310345c2edb9884b782",
+          "calibration_groups_sha256": "8b547eb70a6db507bc6d7faa11e7531199d0a7bea9053cfe45d3a6318c757a9b"
+        },
+        {
+          "fold": 1,
+          "fit_records": 415,
+          "calibration_records": 93,
+          "fit_groups": 84,
+          "calibration_groups": 21,
+          "group_overlap": 0,
+          "fit_groups_sha256": "6ed4928edbe3a3c6bbb877e01799008df74046a4373c5760f5e484b20c74c492",
+          "calibration_groups_sha256": "db356cec1c3880efc49eb23c8d990b082b98ef8193f192a65d1065d01a460413"
+        },
+        {
+          "fold": 2,
+          "fit_records": 405,
+          "calibration_records": 103,
+          "fit_groups": 84,
+          "calibration_groups": 21,
+          "group_overlap": 0,
+          "fit_groups_sha256": "264a9ddf3bdb2737027b7a4dd13d4c3da1f77cfd663cc62047f0619e63d09c45",
+          "calibration_groups_sha256": "35c529b7ae383c5805601b9212ec20bc01bd80811d47bce72015f68bfe185e67"
+        },
+        {
+          "fold": 3,
+          "fit_records": 403,
+          "calibration_records": 105,
+          "fit_groups": 84,
+          "calibration_groups": 21,
+          "group_overlap": 0,
+          "fit_groups_sha256": "6f1801141a231696a59fd215403d97b08be28ec0caa337a78c33801c318cde28",
+          "calibration_groups_sha256": "73ff2789f6a00a898900c1739f9526917be5b291ab867d536400e60410bb41a4"
+        },
+        {
+          "fold": 4,
+          "fit_records": 403,
+          "calibration_records": 105,
+          "fit_groups": 84,
+          "calibration_groups": 21,
+          "group_overlap": 0,
+          "fit_groups_sha256": "32c1408a51ed3bcd85ce14b62050cf64419529f6787eec86f341035908b39935",
+          "calibration_groups_sha256": "093f1644040a72dbfaef5fa69f392549b677f55a04b5dd0fa825a2f999ff0c66"
+        }
+      ]
+    },
+    "deduplication_fit": {
+      "classifier": "logistic_regression",
+      "parameters": {
+        "C": 0.1
+      },
+      "calibration_method": "sigmoid",
+      "calibration_strategy": "five_fold_group_oof_single_full_refit",
+      "operational_inference_estimators": 1,
+      "folds": [
+        {
+          "fold": 0,
+          "fit_records": 480,
+          "calibration_records": 120,
+          "fit_groups": 96,
+          "calibration_groups": 24,
+          "group_overlap": 0,
+          "fit_groups_sha256": "c5c8025b90fc575ca49a4fd72b4b4ec29f76471957354656f5aa47eef1a98d9d",
+          "calibration_groups_sha256": "d7fbe1cb4959392cb87ea6b4067a33f20eda35d8ce9ad71ae6e69e954aa57210"
+        },
+        {
+          "fold": 1,
+          "fit_records": 480,
+          "calibration_records": 120,
+          "fit_groups": 96,
+          "calibration_groups": 24,
+          "group_overlap": 0,
+          "fit_groups_sha256": "b76dd74a9049b57a2ce7c28bfeb5872362ba8aad07070cb8e3bfbcb82dbc9a35",
+          "calibration_groups_sha256": "c644db12ab5fe69ef163bb6d80f772d27b58929cbd84971f91a4d482d2d3dd55"
+        },
+        {
+          "fold": 2,
+          "fit_records": 480,
+          "calibration_records": 120,
+          "fit_groups": 96,
+          "calibration_groups": 24,
+          "group_overlap": 0,
+          "fit_groups_sha256": "f65b8fa87d674c85964a8c3e86fe25bce93faf798bcf4c7a61bae032bb7b24b6",
+          "calibration_groups_sha256": "4657b21f23b72b38a9eaed5fd8416c12d1e218a4a47bd95c81e1b07b80412fc0"
+        },
+        {
+          "fold": 3,
+          "fit_records": 480,
+          "calibration_records": 120,
+          "fit_groups": 96,
+          "calibration_groups": 24,
+          "group_overlap": 0,
+          "fit_groups_sha256": "a476126975483e2204de1361a0bf28d213b1617962dfb9baf5d207ded1f8a206",
+          "calibration_groups_sha256": "d73e694a10a82a5e26ca95da59591d766642e48fe79e005e785e8a51b644b2a4"
+        },
+        {
+          "fold": 4,
+          "fit_records": 480,
+          "calibration_records": 120,
+          "fit_groups": 96,
+          "calibration_groups": 24,
+          "group_overlap": 0,
+          "fit_groups_sha256": "8de179fee9ebb91ae0258effd94450eb2ea5dcb488f08d5ec1569ef445bf0dc3",
+          "calibration_groups_sha256": "ecf09147c6c53fcd48a2466c84ec8870a2196bbd72007d522eaa41f360cc063f"
+        }
+      ]
+    },
+    "pipeline_source_sha256": {
+      "materializer": "3db2675345719bf6c55f9845285b3822a7351d528463becbb76ce8a26bd4d797",
+      "selection_executor": "99dc1cd645f64c2de2eec81f375963de3e66d34fa41a61657f77b910f9c02dc2",
+      "training_helpers": "73bc75ff565c7b40c2190b4fed18f8507d8ab8e32110699d037946bc87fbc5f7",
+      "runtime": "539a4c864bc36a83332633756a80d0ce0e19eeb2784b3ebb065867515507eec4",
+      "inference": "9d34c18b17cf4ec5a77737061362f0ffea8a873201739a16078838e821d6c04b",
+      "text": "c2796729ed8780e5c5761955f04baa080956a92750076d9a9a0feb8f4b072b93"
+    },
+    "embedding_runtime": {
+      "schema": "projeto-ic-embedding-cache-v1",
+      "created_at": "2026-08-04T16:54:39.800174+00:00",
+      "cache_hit": true,
+      "model_id": "granite97m",
+      "repository": "ibm-granite/granite-embedding-97m-multilingual-r2",
+      "revision": "835ad14087e140460703cf0fae09f97d469d65c2",
+      "local_path": "local_ai\\models\\granite-embedding-97m-multilingual-r2",
+      "tree_sha256": "28bb1e36cb3719c0c466de3013404307821da17bf901fc70f62af74bfa57a343",
+      "file_count": 13,
+      "total_bytes": 318727187,
+      "dataset_sha256": "0de50381c0dfaefeb1a940cd697f9c9a8e87b5efee9252a1f4ca43c9d904f204",
+      "dimension": 384,
+      "normalized": true,
+      "backend": "pytorch_fp32",
+      "load_seconds": 6.672501000000921,
+      "rss_before_mb": 453.609375,
+      "load_peak_rss_mb": 1015.02734375,
+      "encode_peak_rss_mb": 958.65234375,
+      "single_text_latency_ms": {
+        "n": 20,
+        "p50": 106.67204999845126,
+        "p95": 133.24675999792817
+      },
+      "batch8_latency_ms": {
+        "n": 10,
+        "p50": 548.1666000050609,
+        "p95": 607.1394700000383
+      },
+      "roles": {
+        "symmetric": {
+          "records": 1228,
+          "prefix": "",
+          "keys_sha256": "2b897bcb6a9287e6eac705ca95483cb75b4f75480da71d33ff2b658a356bfa49",
+          "seconds": 81.93647469999996,
+          "texts_per_second": 14.987220337415867,
+          "peak_rss_mb": 958.65234375,
+          "npz_sha256": "667b4a269b241e3fcd6af1ccc47fe0010915ce485ed813221349dceee6a6a67e"
+        },
+        "retrieval_query": {
+          "records": 300,
+          "prefix": "",
+          "keys_sha256": "6158db90beccb2875e930aea8a2d6221b5969d19a3ac67fc8ac2e4d060fc755a",
+          "seconds": 19.850796400001855,
+          "texts_per_second": 15.112743788958108,
+          "peak_rss_mb": 958.0078125,
+          "npz_sha256": "7344822586759643e1c41f9900a13bdbbb32985dcd9636a4afb91858545a6a27"
+        },
+        "retrieval_passage": {
+          "records": 120,
+          "prefix": "",
+          "keys_sha256": "ce8be8f6193fac3287a28faa0183b629ff124cd2d6242c2f4c39f7d429904690",
+          "seconds": 7.150415500000236,
+          "texts_per_second": 16.782241535473855,
+          "peak_rss_mb": 958.51171875,
+          "npz_sha256": "14a69a8434011bf750ef9e16cf30622a94defec3f2e74c6a46ed706b661ad369"
+        }
+      },
+      "packages": {
+        "torch": "2.13.0+cpu",
+        "sentence_transformers": "5.6.0",
+        "transformers": "4.57.6"
+      },
+      "validated_at": "2026-08-17T23:51:34.008263+00:00"
+    }
+  },
+  "selection_candidates": {
+    "classification": {
+      "combination_id": "classification__hybrid__granite97m__linear_svm",
+      "selection_rank": 1,
+      "selection_source": "PROVISIONAL_POINT_CANDIDATE",
+      "evidence_status": "UNDERPOWERED",
+      "exclusion_reasons": [
+        "classification_critical_upper_confidence",
+        "classification_risk_upper_confidence",
+        "classification_coverage_lower_confidence"
+      ],
+      "representation": "hybrid",
+      "embedding": "granite97m",
+      "classifier": "linear_svm",
+      "development_metrics": {
+        "records": 508,
+        "accuracy": 0.8464566929133859,
+        "macro_f1": 0.8006219374088872,
+        "log_loss": 0.3949257839999563,
+        "brier_score": 0.2085726617023198,
+        "expected_calibration_error_10_bins": 0.05280891317079087,
+        "confusion_matrix": {
+          "labels": [
+            "OBRA",
+            "DEMO",
+            "SOB_DEMANDA",
+            "TRIAGEM_MANUAL"
+          ],
+          "values": [
+            [
+              124,
+              8,
+              1,
+              0
+            ],
+            [
+              12,
+              123,
+              12,
+              12
+            ],
+            [
+              0,
+              2,
+              154,
+              2
+            ],
+            [
+              6,
+              16,
+              7,
+              29
+            ]
+          ]
+        },
+        "per_class": {
+          "OBRA": {
+            "precision": 0.8732394366197183,
+            "recall": 0.9323308270676691,
+            "f1-score": 0.9018181818181819,
+            "support": 133
+          },
+          "DEMO": {
+            "precision": 0.825503355704698,
+            "recall": 0.7735849056603774,
+            "f1-score": 0.7987012987012987,
+            "support": 159
+          },
+          "SOB_DEMANDA": {
+            "precision": 0.8850574712643678,
+            "recall": 0.9746835443037974,
+            "f1-score": 0.927710843373494,
+            "support": 158
+          },
+          "TRIAGEM_MANUAL": {
+            "precision": 0.6744186046511628,
+            "recall": 0.5,
+            "f1-score": 0.5742574257425742,
+            "support": 58
+          }
+        },
+        "obra_recall": 0.9323308270676691,
+        "automatic_records": 295,
+        "automatic_coverage": 0.5807086614173228,
+        "human_review_required_records": 213,
+        "automatic_triage_records": 0,
+        "triagem_manual_is_automatic": false,
+        "automatic_errors": 15,
+        "automatic_risk": 0.05084745762711865,
+        "automatic_maintenance_as_obra": 0,
+        "automatic_non_obra_as_obra": 0,
+        "automatic_non_obra_records": 214,
+        "automatic_non_obra_as_obra_rate": 0.0,
+        "automatic_non_obra_as_obra_group_events": 0,
+        "automatic_non_obra_exposed_groups": 49,
+        "automatic_non_obra_as_obra_group_rate_upper": 0.059306014189697054,
+        "semantic_maintenance_as_obra": 12,
+        "confidence_level": 0.95,
+        "confidence_intervals_group_bootstrap": {
+          "accuracy": [
+            0.7866894719336649,
+            0.9009944163020953
+          ],
+          "macro_f1": [
+            0.7179997152324508,
+            0.8660912510038411
+          ],
+          "coverage": [
+            0.49203027248435977,
+            0.6620560154375392
+          ],
+          "selective_risk": [
+            0.014184397163120567,
+            0.10437843626134764
+          ]
+        }
+      }
+    },
+    "deduplication": {
+      "combination_id": "deduplication__hybrid__granite97m__logistic_regression",
+      "selection_rank": 1,
+      "selection_source": "PROVISIONAL_POINT_CANDIDATE",
+      "evidence_status": "UNDERPOWERED",
+      "exclusion_reasons": [
+        "deduplication_safety_upper_confidence"
+      ],
+      "representation": "hybrid",
+      "embedding": "granite97m",
+      "classifier": "logistic_regression",
+      "development_metrics": {
+        "records": 600,
+        "positive_records": 300,
+        "negative_records": 300,
+        "semantic_accuracy": 1.0,
+        "semantic_f1": 1.0,
+        "average_precision": 1.0,
+        "roc_auc": 1.0,
+        "log_loss": 0.011343595679018537,
+        "brier_score": 0.00027019981027645,
+        "expected_calibration_error_10_bins": 0.011204319467176779,
+        "semantic_confusion_matrix": [
+          [
+            300,
+            0
+          ],
+          [
+            0,
+            300
+          ]
+        ],
+        "decision_records": 600,
+        "decision_coverage": 1.0,
+        "automatic_positive_records_requiring_human_confirmation": 300,
+        "fully_automated_negative_records": 300,
+        "full_automation_coverage": 0.5,
+        "human_review_required_records": 300,
+        "tp": 300,
+        "fp": 0,
+        "tn": 300,
+        "fn": 0,
+        "precision": 1.0,
+        "negative_predictive_value": 1.0,
+        "automatic_false_positive_rate": 0.0,
+        "automatic_false_negative_rate": 0.0,
+        "false_negative_group_events": 0,
+        "positive_groups": 60,
+        "false_negative_group_rate_upper": 0.04870291331009749,
+        "false_positive_group_events": 0,
+        "negative_groups": 60,
+        "false_positive_group_rate_upper": 0.04870291331009749,
+        "weighted_error_fn5_fp1_total": 0.0,
+        "weighted_error_fn5_fp1_per_record": 0.0,
+        "weighted_error_fn5_fp1_per_automatic": 0.0,
+        "confidence_level": 0.95,
+        "semantic_confidence_intervals_group_bootstrap": {
+          "accuracy": [
+            1.0,
+            1.0
+          ],
+          "macro_f1": [
+            1.0,
+            1.0
+          ]
+        },
+        "operating_confidence_intervals_group_bootstrap": {
+          "precision": [
+            1.0,
+            1.0
+          ],
+          "negative_predictive_value": [
+            1.0,
+            1.0
+          ],
+          "false_positive_rate": [
+            0.0,
+            0.0
+          ],
+          "false_negative_rate": [
+            0.0,
+            0.0
+          ],
+          "weighted_error_per_record": [
+            0.0,
+            0.0
+          ],
+          "decision_coverage": [
+            1.0,
+            1.0
+          ],
+          "full_automation_coverage": [
+            0.4083333333333333,
+            0.5833333333333334
+          ]
+        }
+      }
+    }
+  },
+  "reproducibility": {
+    "protocol_sha256": "6dd8a17094611e98bfd233ed2cd99630c9c00b76b910e9a233a4628afc8fcac4",
+    "run_fingerprint": "1493274b792ec1d675bdc05f9b8c3eb8b90af2858975ce3a0a329691c04c4dd2",
+    "bundle_sha256": "c5854899bbaa6f9bd8e9e21773c9602bef09460882907d26af472b8869886c3a",
+    "materializer_sha256": "3db2675345719bf6c55f9845285b3822a7351d528463becbb76ce8a26bd4d797"
+  },
+  "manifest_payload_sha256": "7f498e6a93a8b5c4eebeb0e9c1d5dd811164417944d2151817ba20a845c53d3b"
+}

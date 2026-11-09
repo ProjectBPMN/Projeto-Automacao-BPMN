@@ -1,0 +1,592 @@
+{
+  "name": "V9 - WF06 Fila IA",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "glpi-ticket-fila-ia-v9",
+        "options": {},
+        "httpMethod": "POST",
+        "responseMode": "responseNode"
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1120,
+        0
+      ],
+      "id": "v9-wf06-webhook",
+      "name": "Webhook GLPI Fila",
+      "webhookId": "v9-wf06-webhook"
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst raw = $input.first().json || {};\nconst body = raw.body || raw;\nconst id = Number(body.ticket_id ?? body.items_id ?? body.id);\n// O gateway n8n-gateway valida X-Webhook-Key antes de encaminhar este path.\n// O processo n8n não publica porta própria, portanto não existe rota de bypass.\nif (!Number.isInteger(id) || id <= 0) {\n  console.log('[WF06][LOG] Ingresso GLPI sem ticket_id válido');\n  return [{json:{authorized:false, erro:true, codigo_http:422, mensagem:'ticket_id inválido'}}];\n}\nconst chamado = {\n  id,\n  titulo: String(body.name || body.titulo || ''),\n  descricao: String(body.descricao || ''),\n  tipo_servico: String(body.itilcategories_id || body.tipo_servico || ''),\n  localizacao: String(body.localizacao || ''),\n  solicitante: String(body.solicitante || ''),\n  email_solicitante: String(body.email_solicitante || ''),\n  status_num: Number(body.status || body.status_num || 1),\n  status_nome: String(body.status_nome || 'Novo'),\n  data_abertura: body.date || body.data_abertura || new Date().toISOString(),\n  data_ultima_mudanca: body.date_mod || body.data_ultima_mudanca || new Date().toISOString(),\n  source: String(body.source || 'glpi-plugin-n8nwebhook'),\n  evento: String(body.event || 'ticket.add')\n};\nconsole.log('[WF06][LOG] Ingresso GLPI autenticado ticket=#' + id);\nreturn [{json:{authorized:true, erro:false, codigo_http:202, chamado}}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -880,
+        0
+      ],
+      "id": "v9-wf06-preparar-entrada",
+      "name": "Preparar Entrada GLPI",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.authorized === true }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              },
+              "id": "if1"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -640,
+        0
+      ],
+      "id": "v9-wf06-autorizado",
+      "name": "Entrada Autorizada?"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "Recebido pelo WF06 para processamento em fila",
+        "options": {
+          "responseCode": 202,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        -144,
+        -80
+      ],
+      "id": "v9-wf06-resp-202",
+      "name": "Resp: Enfileirado 202"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.mensagem || 'Não autorizado' }}",
+        "options": {
+          "responseCode": "={{ Number($json.codigo_http || 401) }}",
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/plain; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        -400,
+        96
+      ],
+      "id": "v9-wf06-resp-401",
+      "name": "Resp: Rejeitado"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "{{ (() => {\nconst c = $json.chamado || {};\nconst esc = value => \"'\" + String(value ?? '').replace(/'/g, \"''\") + \"'\";\nconst id = Number(c.id || 0);\nconst status = Number(c.status_num || 1);\nconst log = esc(JSON.stringify({wf:'WF06',acao:'ENFILEIRAR',origem:c.source||'GLPI',ts:new Date().toISOString()}));\nreturn `\nINSERT INTO tickets_processados(\n  id,titulo,descricao,tipo_servico,localizacao,solicitante,email_solicitante,\n  status_num,status_nome,data_abertura,data_ultima_mudanca,origem_ingestao,\n  triagem_status,ultima_acao_workflow,log_workflow,wf_version,\n  fila_enfileirada_em,fila_disponivel_em,fila_liberar_em,fila_reservada_em,fila_ultimo_erro,fila_etapa\n)\nVALUES(\n  ${id},${esc(c.titulo)},${esc(c.descricao)},${esc(c.tipo_servico)},${esc(c.localizacao)},\n  ${esc(c.solicitante)},${esc(c.email_solicitante)},${status},${esc(c.status_nome || 'Novo')},\n  ${esc(c.data_abertura)},${esc(c.data_ultima_mudanca)},${esc(c.source || 'GLPI_WEBHOOK')},\n  'PENDENTE_FILA_IA','WF06_ENFILEIRADO','[${log.substring(1,log.length-1)}]'::jsonb,'v9',\n  NOW(),NOW(),NULL,NULL,NULL,'DEDUPLICACAO'\n)\nON CONFLICT(id) DO UPDATE SET\n  titulo=COALESCE(NULLIF(EXCLUDED.titulo,''),tickets_processados.titulo),\n  descricao=COALESCE(NULLIF(EXCLUDED.descricao,''),tickets_processados.descricao),\n  tipo_servico=COALESCE(NULLIF(EXCLUDED.tipo_servico,''),tickets_processados.tipo_servico),\n  localizacao=COALESCE(NULLIF(EXCLUDED.localizacao,''),tickets_processados.localizacao),\n  solicitante=COALESCE(NULLIF(EXCLUDED.solicitante,''),tickets_processados.solicitante),\n  email_solicitante=COALESCE(NULLIF(EXCLUDED.email_solicitante,''),tickets_processados.email_solicitante),\n  status_num=EXCLUDED.status_num,\n  status_nome=EXCLUDED.status_nome,\n  data_abertura=COALESCE(EXCLUDED.data_abertura,tickets_processados.data_abertura),\n  data_ultima_mudanca=CASE\n    WHEN EXCLUDED.data_ultima_mudanca IS NULL THEN tickets_processados.data_ultima_mudanca\n    WHEN tickets_processados.data_ultima_mudanca IS NULL THEN EXCLUDED.data_ultima_mudanca\n    ELSE GREATEST(tickets_processados.data_ultima_mudanca,EXCLUDED.data_ultima_mudanca)\n  END,\n  origem_ingestao=COALESCE(NULLIF(EXCLUDED.origem_ingestao,''),tickets_processados.origem_ingestao),\n  triagem_status=CASE\n    WHEN EXCLUDED.status_num <> 1 THEN tickets_processados.triagem_status\n    WHEN COALESCE(tickets_processados.em_aprovacao_fiscal,FALSE)\n      OR tickets_processados.triagem_status IN (\n        'FILA_IA_LIBERADA','CLASSIFICANDO_DUP','PENDENTE','CLASSIFICANDO',\n        'TRIAGEM_MANUAL','ERRO_IA','DUPLICADO_FECHADO','ATRIBUIDO_DEMO',\n        'PLANEJADO_DEMO_SEM_EQUIPE','ENCAMINHADO_PLANEJADO','FECHADO_OBRA'\n      )\n      OR tickets_processados.classificacao_final IN (\n        'OBRA','DEMO','SOB_DEMANDA','TRIAGEM_MANUAL','DUPLICADO','POSSIVEL_DUPLICADO'\n      )\n    THEN tickets_processados.triagem_status\n    ELSE 'PENDENTE_FILA_IA'\n  END,\n  fila_enfileirada_em=CASE\n    WHEN EXCLUDED.status_num=1\n      AND NOT COALESCE(tickets_processados.em_aprovacao_fiscal,FALSE)\n      AND COALESCE(tickets_processados.triagem_status,'') NOT IN (\n        'FILA_IA_LIBERADA','CLASSIFICANDO_DUP','PENDENTE','CLASSIFICANDO',\n        'TRIAGEM_MANUAL','ERRO_IA','DUPLICADO_FECHADO','ATRIBUIDO_DEMO',\n        'PLANEJADO_DEMO_SEM_EQUIPE','ENCAMINHADO_PLANEJADO','FECHADO_OBRA'\n      )\n    THEN COALESCE(tickets_processados.fila_enfileirada_em,NOW())\n    ELSE tickets_processados.fila_enfileirada_em\n  END,\n  fila_disponivel_em=CASE\n    WHEN EXCLUDED.status_num=1\n      AND NOT COALESCE(tickets_processados.em_aprovacao_fiscal,FALSE)\n      AND COALESCE(tickets_processados.triagem_status,'') NOT IN (\n        'FILA_IA_LIBERADA','CLASSIFICANDO_DUP','PENDENTE','CLASSIFICANDO',\n        'TRIAGEM_MANUAL','ERRO_IA','DUPLICADO_FECHADO','ATRIBUIDO_DEMO',\n        'PLANEJADO_DEMO_SEM_EQUIPE','ENCAMINHADO_PLANEJADO','FECHADO_OBRA'\n      )\n    THEN COALESCE(tickets_processados.fila_disponivel_em,NOW())\n    ELSE tickets_processados.fila_disponivel_em\n  END,\n  fila_liberar_em=CASE\n    WHEN tickets_processados.triagem_status IN ('PENDENTE_FILA_IA','FILA_IA_LIBERADA')\n    THEN tickets_processados.fila_liberar_em ELSE NULL END,\n  fila_reservada_em=CASE\n    WHEN tickets_processados.triagem_status='FILA_IA_LIBERADA'\n    THEN tickets_processados.fila_reservada_em ELSE NULL END,\n  fila_etapa=CASE\n    WHEN tickets_processados.triagem_status IN ('PENDENTE_FILA_IA','FILA_IA_LIBERADA')\n    THEN tickets_processados.fila_etapa\n    ELSE 'DEDUPLICACAO'\n  END,\n  ultima_acao_workflow=CASE\n    WHEN tickets_processados.triagem_status IN ('PENDENTE_FILA_IA','FILA_IA_LIBERADA')\n    THEN tickets_processados.ultima_acao_workflow\n    ELSE 'WF06_ENFILEIRADO'\n  END,\n  log_workflow=COALESCE(tickets_processados.log_workflow,'[]'::jsonb) || ${log}::jsonb,\n  atualizado_em=NOW()\nRETURNING id,triagem_status,(triagem_status='PENDENTE_FILA_IA') AS enfileirado;\n`;\n})() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -400,
+        -80
+      ],
+      "id": "v9-wf06-enfileirar",
+      "name": "PG: Enfileirar Ticket",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log('[WF06][LOG] Ticket #' + ($json.id || 'N/A') + ' enfileirado=' + String($json.enfileirado)); return [{json:{ok:true,ticket_id:$json.id,enfileirado:$json.enfileirado,triagem_status:$json.triagem_status}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        112,
+        -80
+      ],
+      "id": "v9-wf06-log-ingresso",
+      "name": "LOG: Ingresso Enfileirado",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "*/1 * * * *"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1120,
+        400
+      ],
+      "id": "v9-wf06-schedule",
+      "name": "Agendador Fila IA"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1120,
+        560
+      ],
+      "id": "v9-wf06-manual",
+      "name": "Manual"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log('[WF06][LOG] Início do ciclo da fila IA'); return [{json:{ok:true,fase:'WF06_INICIO'}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -880,
+        480
+      ],
+      "id": "v9-wf06-log-inicio",
+      "name": "LOG: Início Fila",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "{{ (() => {\nconst envValue=name=>{\n  let value='';\n  try { value=String((typeof process!=='undefined' && undefined) || ''); } catch(e) {}\n  if (!value) {\n    try { value=String((typeof process!=='undefined' && undefined) || ''); } catch(e) {}\n  }\n  return value.trim();\n};\nconst loteRaw = Number(envValue('FILA_IA_LOTE_TAMANHO') || 3);\nconst loteMinRaw = Number(envValue('FILA_IA_LOTE_MIN') || 1);\nconst loteMaxRaw = Number(envValue('FILA_IA_LOTE_MAX') || 5);\nconst adaptive = ['1','true','yes','on','sim'].includes(envValue('FILA_IA_RATE_LIMIT_ADAPTATIVO').toLowerCase());\nconst intervaloRaw = Number(envValue('FILA_IA_INTERVALO_SEGUNDOS') || 45);\nconst leaseRaw = Number(envValue('FILA_IA_LEASE_SEGUNDOS') || 900);\nconst graceRaw = Number(envValue('FILA_IA_INGRESS_GRACE_SEGUNDOS') || 10);\nconst runScope = envValue('FILA_IA_RUN_SCOPE');\nif (runScope && !/^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$/.test(runScope)) {\n  throw new Error('FILA_IA_RUN_SCOPE inválido');\n}\nconst runScopeSql = runScope ? \"'\" + runScope.replace(/'/g,\"''\") + \"'\" : 'NULL';\nconst lote = Number.isFinite(loteRaw) && loteRaw > 0 ? Math.min(50,Math.floor(loteRaw)) : 3;\nconst loteMin = Number.isFinite(loteMinRaw) && loteMinRaw > 0 ? Math.min(10,Math.floor(loteMinRaw)) : 1;\nconst loteMax = Number.isFinite(loteMaxRaw) && loteMaxRaw >= loteMin ? Math.min(50,Math.floor(loteMaxRaw)) : 5;\nconst intervalo = Number.isFinite(intervaloRaw) && intervaloRaw >= 0 ? Math.min(600,Math.floor(intervaloRaw)) : 45;\nconst lease = Number.isFinite(leaseRaw) && leaseRaw >= 60 ? Math.min(86400,Math.floor(leaseRaw)) : 900;\nconst grace = Number.isFinite(graceRaw) && graceRaw >= 0 ? Math.min(300,Math.floor(graceRaw)) : 10;\nconst log = JSON.stringify({wf:'WF06',acao:'RESERVAR_FILA',lote,lote_min:loteMin,lote_max:loteMax,adaptativo:adaptive,intervalo,lease,run_scope:runScope||null,ts:new Date().toISOString()}).replace(/'/g,\"''\");\nreturn `\nWITH\nparametros AS MATERIALIZED (\n  SELECT ${runScopeSql}::text AS run_scope\n),\nescopo_ids AS MATERIALIZED (\n  SELECT DISTINCT dc.ticket_id\n  FROM dataset_controle dc\n  CROSS JOIN parametros p\n  WHERE p.run_scope IS NOT NULL\n    AND dc.run_id=p.run_scope\n    AND dc.ticket_id IS NOT NULL\n),\nbloqueio AS MATERIALIZED (\n  SELECT pg_advisory_xact_lock(9062026) AS adquirido\n),\nreservas_expiradas AS (\n  UPDATE tickets_processados t\n  SET triagem_status='PENDENTE_FILA_IA',\n      fila_liberar_em=NULL,\n      fila_reservada_em=NULL,\n      fila_ultimo_erro='Reserva expirada; reenfileirado pelo WF06',\n      ultima_acao_workflow='WF06_REENFILEIROU_RESERVA_EXPIRADA',\n      atualizado_em=NOW()\n  FROM bloqueio\n  WHERE t.triagem_status='FILA_IA_LIBERADA'\n    AND COALESCE(t.fila_liberar_em,t.fila_reservada_em,t.atualizado_em)\n        + (${lease} || ' seconds')::interval < NOW()\n    AND (\n      (SELECT run_scope FROM parametros) IS NULL\n      OR EXISTS (SELECT 1 FROM escopo_ids s WHERE s.ticket_id=t.id)\n    )\n  RETURNING t.id\n),\nexperimentos_encerrados AS (\n  UPDATE tickets_processados t\n  SET triagem_status='EXPERIMENTO_ENCERRADO',\n      fila_liberar_em=NULL,\n      fila_reservada_em=NULL,\n      fila_ultimo_erro='Experimento encerrado; removido da fila operacional pelo WF06',\n      ultima_acao_workflow='WF06_QUARENTENA_EXPERIMENTO_ENCERRADO',\n      log_workflow=COALESCE(t.log_workflow,'[]'::jsonb) || jsonb_build_array(\n        jsonb_build_object(\n          'wf','WF06',\n          'acao','QUARENTENA_EXPERIMENTO_ENCERRADO',\n          'ts',NOW()\n        )\n      ),\n      atualizado_em=NOW()\n  FROM bloqueio\n  WHERE t.triagem_status IN ('PENDENTE_FILA_IA','FILA_IA_LIBERADA')\n    AND EXISTS (\n      SELECT 1\n      FROM dataset_controle dc\n      WHERE dc.ticket_id=t.id AND dc.run_id IS NOT NULL\n    )\n    AND NOT EXISTS (\n      SELECT 1\n      FROM dataset_controle dc\n      JOIN experimentos_avaliacao e ON e.run_id=dc.run_id\n      WHERE dc.ticket_id=t.id\n        AND e.status IN ('EXECUTANDO','CALIBRANDO')\n    )\n  RETURNING t.id\n),\ncontrole AS (\n  SELECT id,GREATEST(COALESCE(proxima_liberacao_em,NOW()),NOW()) AS base\n  FROM fila_ia_controle\n  CROSS JOIN bloqueio\n  WHERE id=1\n  FOR UPDATE\n),\nlote_efetivo AS (\n  SELECT CASE\n    WHEN ${adaptive ? 'TRUE' : 'FALSE'} THEN\n      CASE\n        WHEN (SELECT AVG(COALESCE((output_normalizado->>'elapsed_ms')::numeric, 150)) FROM ia_decisoes WHERE criado_em >= NOW() - INTERVAL '5 minutes') > 600\n             OR (SELECT COUNT(*) FROM fila_ia_dead_letter WHERE criado_em >= NOW() - INTERVAL '5 minutes') > 0\n          THEN ${loteMin}\n        WHEN (SELECT AVG(COALESCE((output_normalizado->>'elapsed_ms')::numeric, 150)) FROM ia_decisoes WHERE criado_em >= NOW() - INTERVAL '5 minutes') < 250\n          THEN ${loteMax}\n        ELSE ${lote}\n      END\n    ELSE ${lote}\n  END AS tamanho\n),\nfila_elegivel AS MATERIALIZED (\n  SELECT t.id\n  FROM tickets_processados t\n  WHERE t.triagem_status IN ('PENDENTE_FILA_IA','FILA_IA_LIBERADA')\n    AND COALESCE(t.em_aprovacao_fiscal,FALSE)=FALSE\n    AND (\n      (\n        COALESCE(t.fila_etapa,'DEDUPLICACAO')='DEDUPLICACAO'\n        AND COALESCE(t.status_num,1)=1\n      )\n      OR (\n        t.fila_etapa='CLASSIFICACAO'\n        AND COALESCE(t.status_num,4)=4\n      )\n    )\n    AND (\n      (\n        (SELECT run_scope FROM parametros) IS NOT NULL\n        AND EXISTS (\n          SELECT 1\n          FROM dataset_controle dc\n          JOIN experimentos_avaliacao e ON e.run_id=dc.run_id\n          WHERE dc.ticket_id=t.id\n            AND dc.run_id=(SELECT run_scope FROM parametros)\n            AND e.status IN ('EXECUTANDO','CALIBRANDO')\n        )\n      )\n      OR (\n        (SELECT run_scope FROM parametros) IS NULL\n        AND (\n          NOT EXISTS (\n            SELECT 1 FROM dataset_controle dc\n            WHERE dc.ticket_id=t.id AND dc.run_id IS NOT NULL\n          )\n          OR EXISTS (\n            SELECT 1\n            FROM dataset_controle dc\n            JOIN experimentos_avaliacao e ON e.run_id=dc.run_id\n            WHERE dc.ticket_id=t.id\n              AND e.status IN ('EXECUTANDO','CALIBRANDO')\n          )\n        )\n      )\n    )\n),\ncapacidade AS (\n  SELECT GREATEST((SELECT tamanho FROM lote_efetivo) - COUNT(*)::int,0)::int AS slots\n  FROM tickets_processados t\n  JOIN fila_elegivel e ON e.id=t.id\n  WHERE t.triagem_status='FILA_IA_LIBERADA'\n),\ntravados AS (\n  SELECT t.id,COALESCE(t.data_abertura,t.criado_em) AS ordem_data\n  FROM tickets_processados t\n  JOIN fila_elegivel e ON e.id=t.id\n  WHERE t.triagem_status='PENDENTE_FILA_IA'\n    AND COALESCE(t.fila_enfileirada_em,t.criado_em)\n        <= NOW() - (${grace} || ' seconds')::interval\n    AND COALESCE(t.fila_disponivel_em,t.fila_enfileirada_em,t.criado_em) <= NOW()\n  ORDER BY COALESCE(t.data_abertura,t.criado_em),t.id\n  LIMIT (SELECT slots FROM capacidade)\n  FOR UPDATE SKIP LOCKED\n),\ncandidatos AS (\n  SELECT\n    id,\n    ROW_NUMBER() OVER (ORDER BY ordem_data,id)-1 AS pos\n  FROM travados\n),\nmarcados AS (\n  UPDATE tickets_processados t\n  SET triagem_status='FILA_IA_LIBERADA',\n      fila_liberar_em=c.base + (candidatos.pos * ${intervalo} || ' seconds')::interval,\n      fila_reservada_em=NOW(),\n      fila_tentativas=COALESCE(t.fila_tentativas,0)+1,\n      fila_ultimo_erro=NULL,\n      ultima_acao_workflow='WF06_RESERVOU_FILA',\n      log_workflow=COALESCE(t.log_workflow,'[]'::jsonb) || '${log}'::jsonb,\n      atualizado_em=NOW()\n  FROM candidatos CROSS JOIN controle c\n  WHERE t.id=candidatos.id\n  RETURNING t.*,GREATEST(\n    0,EXTRACT(EPOCH FROM (\n      c.base + (candidatos.pos * ${intervalo} || ' seconds')::interval - NOW()\n    ))\n  )::int AS delay_seconds\n),\navanco AS (\n  UPDATE fila_ia_controle f\n  SET proxima_liberacao_em=CASE\n        WHEN (SELECT COUNT(*) FROM marcados)>0\n        THEN (SELECT base FROM controle)\n          + ((SELECT COUNT(*) FROM marcados) * ${intervalo} || ' seconds')::interval\n        ELSE GREATEST(COALESCE(f.proxima_liberacao_em,NOW()),NOW())\n      END,\n      intervalo_segundos=${intervalo},\n      lote_tamanho=${lote},\n      atualizado_em=NOW()\n  FROM bloqueio\n  WHERE f.id=1\n  RETURNING f.id\n),\nmetricas AS (\n  INSERT INTO fila_ia_metricas(\n    run_id,pendentes,reservados,liberados_ciclo,espera_media_segundos,\n    espera_p95_segundos,intervalo_segundos,lote_tamanho\n  )\n  SELECT\n    COALESCE(\n      (SELECT run_scope FROM parametros),\n      CASE\n        WHEN COUNT(DISTINCT COALESCE(dc.run_id,'__OPERACIONAL__'))=1\n        THEN MAX(dc.run_id)\n        ELSE NULL\n      END\n    ),\n    (\n      SELECT COUNT(*)::int\n      FROM tickets_processados t\n      JOIN fila_elegivel e ON e.id=t.id\n      WHERE t.triagem_status='PENDENTE_FILA_IA'\n    ),\n    (\n      SELECT COUNT(*)::int\n      FROM tickets_processados t\n      JOIN fila_elegivel e ON e.id=t.id\n      WHERE t.triagem_status='FILA_IA_LIBERADA'\n    ),\n    (SELECT COUNT(*)::int FROM marcados),\n    (\n      SELECT AVG(EXTRACT(EPOCH FROM (NOW()-COALESCE(t.fila_enfileirada_em,t.criado_em))))\n      FROM tickets_processados t\n      JOIN fila_elegivel e ON e.id=t.id\n      WHERE t.triagem_status IN ('PENDENTE_FILA_IA','FILA_IA_LIBERADA')\n    ),\n    (\n      SELECT percentile_cont(0.95) WITHIN GROUP (\n        ORDER BY EXTRACT(EPOCH FROM (NOW()-COALESCE(t.fila_enfileirada_em,t.criado_em)))\n      )\n      FROM tickets_processados t\n      JOIN fila_elegivel e ON e.id=t.id\n      WHERE t.triagem_status IN ('PENDENTE_FILA_IA','FILA_IA_LIBERADA')\n    ),\n    ${intervalo},${lote}\n  FROM bloqueio base\n  LEFT JOIN marcados m ON TRUE\n  LEFT JOIN dataset_controle dc ON dc.ticket_id=m.id\n    AND (\n      (SELECT run_scope FROM parametros) IS NULL\n      OR dc.run_id=(SELECT run_scope FROM parametros)\n    )\n  RETURNING id\n),\ncontextualizados AS (\n  SELECT\n    m.*,\n    dc.run_id AS experiment_run_id,\n    COALESCE(dc.split,e.split) AS experiment_split,\n    COALESCE(e.generation_config,'{}'::jsonb) AS experiment_generation_config,\n    CASE\n      WHEN dc.run_id IS NULL THEN 'LOCAL'\n      ELSE e.generation_config->>'ia_fixed_model_role'\n    END AS ia_fixed_model_role,\n    COALESCE(e.generation_config->>'ia_expected_model',e.modelo_ia) AS ia_expected_model,\n    COALESCE(\n      e.generation_config->>'ia_execution_mode',\n      CASE\n        WHEN UPPER(COALESCE(dc.split,e.split,'')) IN ('TEST','TESTE','BENCHMARK') THEN 'BENCHMARK'\n        WHEN dc.run_id IS NOT NULL THEN 'EXPERIMENTAL'\n        ELSE 'OPERATIONAL'\n      END\n    ) AS ia_execution_mode\n  FROM marcados m\n  LEFT JOIN LATERAL (\n    SELECT d.run_id,d.split\n    FROM dataset_controle d\n    WHERE d.ticket_id=m.id\n      AND (\n        (SELECT run_scope FROM parametros) IS NULL\n        OR d.run_id=(SELECT run_scope FROM parametros)\n      )\n    ORDER BY d.id DESC\n    LIMIT 1\n  ) dc ON TRUE\n  LEFT JOIN experimentos_avaliacao e ON e.run_id=dc.run_id\n)\nSELECT COALESCE(\n         jsonb_agg(to_jsonb(contextualizados) ORDER BY contextualizados.fila_liberar_em,contextualizados.id),\n         '[]'::jsonb\n       ) AS tickets,\n       COUNT(*)::int AS total\nFROM contextualizados\nWHERE EXISTS (SELECT 1 FROM avanco)\n  AND EXISTS (SELECT 1 FROM metricas);\n`;\n})() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -624,
+        480
+      ],
+      "id": "v9-wf06-selecionar",
+      "name": "PG: Reservar Fila IA",
+      "credentials": {
+        "postgres": {
+          "id": "PG_TRIAGEM",
+          "name": "Postgres Triagem"
+        }
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst inputRows = $input.all().map(item => item.json || {});\nconst row = inputRows.find(candidate =>\n  Object.prototype.hasOwnProperty.call(candidate, 'tickets')\n) || {};\nlet tickets = row.tickets || [];\nif (typeof tickets === 'string') {\n  try { tickets = JSON.parse(tickets); } catch { tickets = []; }\n}\nif (!Array.isArray(tickets)) tickets = [];\nconsole.log('[WF06][LOG] Reservas liberadas no ciclo=' + tickets.length);\nif (tickets.length === 0) return [{json:{total_lote:0}}];\nreturn tickets.map((chamado,index) => ({\n  json:{\n    total_lote:tickets.length,\n    lote_posicao:index+1,\n    delay_seconds:Number(chamado.delay_seconds || 0),\n    source:'wf06-fila-ia',\n    event:'ticket_queued_release',\n    chamado:{...chamado,source:'wf06-fila-ia'}\n  }\n}));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -368,
+        480
+      ],
+      "id": "v9-wf06-preparar-lote",
+      "name": "Preparar Lote",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ Number($json.total_lote || 0) > 0 }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              },
+              "id": "if1"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -144,
+        480
+      ],
+      "id": "v9-wf06-tem-chamados",
+      "name": "Tem Chamados?"
+    },
+    {
+      "parameters": {
+        "amount": "={{ Number($json.delay_seconds || 0) }}",
+        "unit": "seconds"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        96,
+        400
+      ],
+      "id": "v9-wf06-aguardar",
+      "name": "Aguardar Janela",
+      "webhookId": "v9-wf06-aguardar"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "nmNEsgC8kXmCVOsX"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "source": "wf06-fila-ia",
+            "event": "ticket_queued_release",
+            "ticket_id": "={{ $json.chamado.id }}",
+            "id": "={{ $json.chamado.id }}",
+            "chamado": "={{ $json.chamado }}"
+          },
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "mode": "each",
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        608,
+        496
+      ],
+      "id": "v9-wf06-chamar-wf02",
+      "name": "Chamar WF02 da Fila"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ String($json.chamado.fila_etapa || 'DEDUPLICACAO') === 'CLASSIFICACAO' }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              },
+              "id": "if1"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        352,
+        400
+      ],
+      "id": "v9-wf06-etapa-classificacao",
+      "name": "É Classificação?"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "reVggSpJiaPhnfIo"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "source": "wf06-fila-ia",
+            "event": "classification_queued_release",
+            "ticket_id": "={{ $json.chamado.id }}",
+            "id": "={{ $json.chamado.id }}",
+            "chamado": "={{ $json.chamado }}"
+          },
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "mode": "each",
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        608,
+        304
+      ],
+      "id": "v9-wf06-chamar-wf03",
+      "name": "Chamar WF03 da Fila"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log('[WF06][LOG] Ticket liberado ao WF02: #' + ($json.chamado?.id || $json.ticket_id || 'N/A')); return [{json:{ok:true,fase:'WF06_LIBERADO'}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        864,
+        400
+      ],
+      "id": "v9-wf06-log-fim",
+      "name": "LOG: Fim Fila",
+      "alwaysOutputData": true
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook GLPI Fila": {
+      "main": [
+        [
+          {
+            "node": "Preparar Entrada GLPI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar Entrada GLPI": {
+      "main": [
+        [
+          {
+            "node": "Entrada Autorizada?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Entrada Autorizada?": {
+      "main": [
+        [
+          {
+            "node": "PG: Enfileirar Ticket",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Resp: Rejeitado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Enfileirar Ticket": {
+      "main": [
+        [
+          {
+            "node": "Resp: Enfileirado 202",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resp: Enfileirado 202": {
+      "main": [
+        [
+          {
+            "node": "LOG: Ingresso Enfileirado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agendador Fila IA": {
+      "main": [
+        [
+          {
+            "node": "LOG: Início Fila",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual": {
+      "main": [
+        [
+          {
+            "node": "LOG: Início Fila",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LOG: Início Fila": {
+      "main": [
+        [
+          {
+            "node": "PG: Reservar Fila IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PG: Reservar Fila IA": {
+      "main": [
+        [
+          {
+            "node": "Preparar Lote",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar Lote": {
+      "main": [
+        [
+          {
+            "node": "Tem Chamados?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tem Chamados?": {
+      "main": [
+        [
+          {
+            "node": "Aguardar Janela",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Aguardar Janela": {
+      "main": [
+        [
+          {
+            "node": "É Classificação?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "É Classificação?": {
+      "main": [
+        [
+          {
+            "node": "Chamar WF03 da Fila",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Chamar WF02 da Fila",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chamar WF02 da Fila": {
+      "main": [
+        [
+          {
+            "node": "LOG: Fim Fila",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chamar WF03 da Fila": {
+      "main": [
+        [
+          {
+            "node": "LOG: Fim Fila",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Sao_Paulo",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true
+  },
+  "versionId": "v9-V9 - WF06 ",
+  "meta": {},
+  "tags": [],
+  "id": "ZpQ0H9uV9Fila06"
+}

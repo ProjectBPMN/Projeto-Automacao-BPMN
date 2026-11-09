@@ -1,0 +1,8 @@
+PASTA AVALIACAO/PROMPTS
+========================
+
+Fontes canônicas dos prompts implantados nos JSONs V9.
+Edite estes TXT, regenere os builders e execute
+sincronizar_manifesto.py. O script recusa qualquer divergência.
+Os hashes estão em
+avaliacao/manifesto_modelo_prompts.json.

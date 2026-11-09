@@ -1,0 +1,12 @@
+services:
+  mariadb:
+    container_name: homolog-glpi-db
+
+  glpi:
+    container_name: homolog-glpi
+    ports: !override
+      - '127.0.0.1:${HOMOLOG_GLPI_PORT:-19080}:80'
+    environment:
+      N8N_GLPI_WEBHOOK_URL: http://host.docker.internal:${HOMOLOG_N8N_PORT:-15678}/webhook/glpi-ticket-fila-ia-v9
+      N8N_GLPI_WEBHOOK_TEST_URL: http://host.docker.internal:${HOMOLOG_N8N_PORT:-15678}/webhook-test/glpi-ticket-fila-ia-v9
+      N8N_GLPI_WEBHOOK_SEND_TEST: '0'

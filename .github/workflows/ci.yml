@@ -1,0 +1,59 @@
+name: CI V9
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-v9-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Integridade, segurança e testes
+    runs-on: windows-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Dependências reproduzíveis
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Segredos na superfície ativa V9
+        run: >-
+          python avaliacao/operacional/scan_secrets.py
+          --scope release
+          --output avaliacao/resultados/operacional/ci-secret-scan.json
+
+      - name: Barreira do pacote público
+        run: python scripts/validate_public_release.py --source manifest --json
+
+      - name: Workflows V9 e histórico sanitizado
+        run: |
+          python n8n/workflows/Versão9/validate_v9_static.py
+          python n8n/history/validate_history.py --check-sources
+
+      - name: Consistência científica documental
+        run: |
+          python avaliacao/scripts/validar_consistencia_cientifica_docs.py
+          python avaliacao/scripts/auditar_prontidao_cientifica_preimplantacao.py
+          python scripts/validate_tls_profile.py
+
+      - name: Suíte sem integrações vivas
+        run: python -m pytest -q -m "not live_integration" -p no:cacheprovider

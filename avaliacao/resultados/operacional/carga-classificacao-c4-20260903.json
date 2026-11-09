@@ -1,0 +1,2545 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-03T04:24:37.621103Z",
+  "mode": "EXPLICIT_ACTIVE_PROBE",
+  "policy_status": "PROPOSTA_NAO_APROVADA",
+  "institutionally_approved": false,
+  "production_ready": false,
+  "readiness_blockers": [
+    "POLICY_NOT_INSTITUTIONALLY_APPROVED",
+    "INSUFFICIENT_OPERATIONAL_EVIDENCE"
+  ],
+  "scientific_result": false,
+  "failing_sections": [],
+  "insufficient_sections": [
+    "slo_proposal_evaluation"
+  ],
+  "sections": {
+    "static_audit": {
+      "status": "PASS",
+      "evidence_status": "STATIC_CONFIGURATION_AUDIT",
+      "scientific_result": false,
+      "collected_at": "2026-09-03T04:24:36.369674Z",
+      "checks": [
+        {
+          "id": "network.loopback_ports",
+          "status": "PASS",
+          "summary": "Portas HTTP canônicas devem permanecer vinculadas ao loopback.",
+          "evidence": {}
+        },
+        {
+          "id": "supply_chain.image_digests",
+          "status": "PASS",
+          "summary": "Todas as imagens declaradas devem estar congeladas por digest.",
+          "evidence": {}
+        },
+        {
+          "id": "postgres.healthcheck",
+          "status": "PASS",
+          "summary": "PostgreSQL possui healthcheck explícito.",
+          "evidence": {}
+        },
+        {
+          "id": "n8n.healthcheck",
+          "status": "PASS",
+          "summary": "O container n8n deve possuir healthcheck próprio no Compose.",
+          "evidence": {}
+        },
+        {
+          "id": "glpi.healthcheck",
+          "status": "PASS",
+          "summary": "O container GLPI deve possuir healthcheck HTTP próprio.",
+          "evidence": {}
+        },
+        {
+          "id": "n8n.code_node_sandbox",
+          "status": "PASS",
+          "summary": "Sandbox de Code nodes deve ter default seguro no Compose.",
+          "evidence": {}
+        },
+        {
+          "id": "n8n.environment_access",
+          "status": "PASS",
+          "summary": "Acesso a variáveis de ambiente por nodes deve ter default bloqueado.",
+          "evidence": {}
+        },
+        {
+          "id": "n8n.workflow_env_migration",
+          "status": "PASS",
+          "summary": "Code nodes usam runner externo com allowlist sem segredos; $env executável é proibido.",
+          "evidence": {
+            "executable_dollar_env_references": 0,
+            "direct_secret_access": [],
+            "runner_secret_allowlist_overlap": []
+          }
+        },
+        {
+          "id": "postgres.runtime_not_bootstrap_role",
+          "status": "PASS",
+          "summary": "O usuário de bootstrap/migração deve ser distinto da credencial runtime do n8n.",
+          "evidence": {}
+        },
+        {
+          "id": "workflow.runtime_ddl_separation",
+          "status": "PASS",
+          "summary": "O JSON executável do WF05 deve conter somente readiness e DML; DDL fica em database/init_v9.sql.",
+          "evidence": {
+            "runtime_ddl_tokens": []
+          }
+        },
+        {
+          "id": "test_flags.safe_defaults",
+          "status": "PASS",
+          "summary": "Flags de teste devem iniciar desligadas no template, sem serem injetadas no processo principal.",
+          "evidence": {}
+        }
+      ]
+    },
+    "isolated_failure_simulation": {
+      "status": "PASS",
+      "evidence_status": "ISOLATED_COMPONENT_HARNESS_ONLY",
+      "scientific_result": false,
+      "collected_at": "2026-09-03T04:24:37.621103Z",
+      "live_services_touched": false,
+      "scenarios": [
+        {
+          "dependency": "glpi",
+          "detected_failure": "HTTP_503",
+          "required_action": "BLOCK_GLPI_MUTATION_AND_RETRY",
+          "automatic_decision_allowed": false,
+          "status": "PASS",
+          "isolated_observation": {
+            "status": 503,
+            "latency_ms": 2.384299998084316,
+            "error": "HTTP_503",
+            "body": null
+          },
+          "isolated_target_only": true
+        },
+        {
+          "dependency": "local_ai",
+          "detected_failure": "TIMEOUT",
+          "required_action": "ABSTAIN_RETRY_THEN_DLQ",
+          "automatic_decision_allowed": false,
+          "status": "PASS",
+          "isolated_observation": {
+            "status": 0,
+            "latency_ms": 44.32699999961187,
+            "error": "TIMEOUT",
+            "body": null
+          },
+          "isolated_target_only": true
+        },
+        {
+          "dependency": "postgresql",
+          "detected_failure": "CONNECTION_REFUSED",
+          "required_action": "FAIL_CLOSED_WITHOUT_GLPI_MUTATION",
+          "automatic_decision_allowed": false,
+          "status": "PASS",
+          "isolated_observation": {
+            "connect_ex": 10035,
+            "latency_ms": 202.30859999719542
+          },
+          "isolated_target_only": true
+        }
+      ],
+      "interpretation_limit": "Simulação técnica em loopback efêmero. Não comprova failover ou rollback do workflow vivo e não autoriza indisponibilizar dependências reais."
+    },
+    "monitoring_plan": {
+      "status": "PROPOSED_NOT_APPROVED",
+      "collector_status": "INSTALADO_LOCALMENTE_2026-09-02",
+      "required_signals": [
+        "component_availability",
+        "local_ai_inference_latency",
+        "queue_wait",
+        "open_dead_letters",
+        "technical_error_rate",
+        "critical_automatic_errors",
+        "rollback_recovery_time",
+        "backup_restore_age",
+        "input_and_output_drift",
+        "role_and_workflow_changes"
+      ],
+      "automatic_retraining_allowed": false,
+      "scientific_result": false
+    },
+    "slo_proposal_evaluation": {
+      "status": "INSUFFICIENT_DATA",
+      "policy_status": "PROPOSTA_NAO_APROVADA",
+      "institutionally_approved": false,
+      "checks": [
+        {
+          "metric": "availability.local_ai",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.995
+        },
+        {
+          "metric": "availability.n8n",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.995
+        },
+        {
+          "metric": "availability.glpi",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.99
+        },
+        {
+          "metric": "availability.postgresql",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.995
+        },
+        {
+          "metric": "local_ai.inference_p95_ms",
+          "status": "INSUFFICIENT_DATA",
+          "target": 1500.0
+        },
+        {
+          "metric": "queue.wait_p95_seconds",
+          "status": "INSUFFICIENT_DATA",
+          "target": 900.0
+        },
+        {
+          "metric": "dlq.open",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.0
+        },
+        {
+          "metric": "technical_error_rate",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.01
+        },
+        {
+          "metric": "critical_automatic_errors",
+          "status": "INSUFFICIENT_DATA",
+          "target": 0.0
+        },
+        {
+          "metric": "rollback.recovery_minutes",
+          "status": "INSUFFICIENT_DATA",
+          "target": 30.0
+        },
+        {
+          "metric": "backup.restore_age_hours",
+          "status": "INSUFFICIENT_DATA",
+          "target": 168.0
+        }
+      ],
+      "scientific_result": false,
+      "interpretation_limit": "Os limiares são uma proposta técnica pré-registrada. PASS não equivale a aceite institucional, certificação de produção ou disponibilidade mensal comprovada."
+    },
+    "drift": {
+      "status": "NOT_REQUESTED",
+      "scientific_result": false
+    },
+    "bounded_load": {
+      "evidence_status": "BOUNDED_TECHNICAL_LOAD_SCENARIO",
+      "scientific_result": false,
+      "collected_at": "2026-09-03T04:24:35.820117Z",
+      "target": "http://127.0.0.1:8090/v1/classify",
+      "requests": 40,
+      "concurrency": 4,
+      "duration_seconds": 2.1740848000008555,
+      "throughput_requests_second": 18.398546367641345,
+      "success_rate": 0.425,
+      "saturation_rate": 0.575,
+      "server_error_rate": 0.0,
+      "status_counts": {
+        "200": 17,
+        "429": 23
+      },
+      "error_counts": {
+        "HTTP_429": 23
+      },
+      "latency_ms": {
+        "p50": 45.055849999698694,
+        "p95": 1736.2959650006815,
+        "p99": 1749.1129250002268,
+        "maximum": 1750.7870000008552
+      },
+      "interpretation_limit": "Cenário técnico limitado no loopback; não estima disponibilidade mensal, desempenho multiusuário institucional nem eficácia científica."
+    },
+    "historical_bounded_load_evidence": {
+      "status": "OBSERVED",
+      "evidence_status": "BOUNDED_TECHNICAL_LOAD_SCENARIOS",
+      "scientific_result": false,
+      "artifacts": [
+        "avaliacao\\resultados\\operacional\\carga-classificacao-c1-20260902.json",
+        "avaliacao\\resultados\\operacional\\carga-classificacao-c4-20260902.json"
+      ],
+      "interpretation_limit": "Comprova somente os cenários limitados executados; saturação e HTTP 429 são resultados válidos e não devem ser ocultados."
+    },
+    "least_privilege_evidence": {
+      "status": "PASS",
+      "artifact": "avaliacao\\resultados\\operacional\\postgres-menor-privilegio-20260902.json",
+      "runtime_login": "triagem_app",
+      "ddl_denial_sqlstate": "42501",
+      "scientific_result": false
+    },
+    "n8n_volume_restore_evidence": {
+      "status": "PASS",
+      "artifact": "avaliacao\\resultados\\operacional\\restore-volume-n8n-20260902.json",
+      "rollback_recovery_minutes": 0.7113322033333437,
+      "restored_workflow_count": 30,
+      "scientific_result": false
+    },
+    "monitoring_windows": {
+      "status": "TECHNICAL_WINDOWS_COMPLETE",
+      "window_mode": "TECHNICAL_INTRADAY_SYNTHETIC_LOCAL",
+      "window_seconds": 14400,
+      "observation_count": 1203,
+      "first_collected_at": "2026-09-02T04:38:35.506864Z",
+      "last_collected_at": "2026-09-03T04:24:35.289833Z",
+      "elapsed_seconds": 85559.782969,
+      "completed_technical_windows": 4,
+      "required_technical_windows": 3,
+      "windows": [
+        {
+          "index": 1,
+          "start": "2026-09-02T04:38:35.506864Z",
+          "end": "2026-09-02T08:38:35.506864Z",
+          "observation_count": 241,
+          "minimum_observations": 180,
+          "slo_evaluation": {
+            "status": "FAIL",
+            "policy_status": "PROPOSTA_NAO_APROVADA",
+            "institutionally_approved": false,
+            "checks": [
+              {
+                "metric": "availability.local_ai",
+                "status": "PASS",
+                "value": 1.0,
+                "target": 0.995
+              },
+              {
+                "metric": "availability.n8n",
+                "status": "FAIL",
+                "value": 0.983402489626556,
+                "target": 0.995
+              },
+              {
+                "metric": "availability.glpi",
+                "status": "PASS",
+                "value": 1.0,
+                "target": 0.99
+              },
+              {
+                "metric": "availability.postgresql",
+                "status": "PASS",
+                "value": 1.0,
+                "target": 0.995
+              },
+              {
+                "metric": "local_ai.inference_p95_ms",
+                "status": "FAIL",
+                "value": 70372.24999999994,
+                "target": 1500.0
+              },
+              {
+                "metric": "queue.wait_p95_seconds",
+                "status": "FAIL",
+                "value": 2737526.8109825,
+                "target": 900.0
+              },
+              {
+                "metric": "dlq.open",
+                "status": "PASS",
+                "value": 0.0,
+                "target": 0.0
+              },
+              {
+                "metric": "technical_error_rate",
+                "status": "FAIL",
+                "value": 0.23404255319148937,
+                "target": 0.01
+              },
+              {
+                "metric": "critical_automatic_errors",
+                "status": "INSUFFICIENT_DATA",
+                "target": 0.0
+              },
+              {
+                "metric": "rollback.recovery_minutes",
+                "status": "INSUFFICIENT_DATA",
+                "target": 30.0
+              },
+              {
+                "metric": "backup.restore_age_hours",
+                "status": "INSUFFICIENT_DATA",
+                "target": 168.0
+              }
+            ],
+            "scientific_result": false,
+            "interpretation_limit": "Os limiares são uma proposta técnica pré-registrada. PASS não equivale a aceite institucional, certificação de produção ou disponibilidade mensal comprovada."
+          },
+          "drift_status_counts": {
+            "INSUFFICIENT_DATA": 241
+          },
+          "semantic_correctness_confirmed": false
+        },
+        {
+          "index": 2,
+          "start": "2026-09-02T08:38:35.506864Z",
+          "end": "2026-09-02T12:38:35.506864Z",
+          "observation_count": 240,
+          "minimum_observations": 180,
+          "slo_evaluation": {
+            "status": "FAIL",
+            "policy_status": "PROPOSTA_NAO_APROVADA",
+            "institutionally_approved": false,
+            "checks": [
+              {
+                "metric": "availability.local_ai",
+                "status": "PASS",
+                "value": 1.0,
+                "target": 0.995
+              },
+              {
+                "metric": "availability.n8n",
+                "status": "PASS",
+                "value": 1.0,
+                "target": 0.995
+              },
+              {
+                "metric": "availability.glpi",
+                "status": "PASS",
+                "value": 1.0,
+                "target": 0.99
+              },
+              {
+                "metric": "availability.postgresql",
+                "status": "PASS",
+                "value": 1.0,
+                "target": 0.995
+              },
+              {
+                "metric": "local_ai.inference_p95_ms",
+                "status": "FAIL",
+                "value": 70372.24999999994,
+                "target": 1500.0
+              },
+              {
+                "metric": "queue.wait_p95_seconds",
+                "status": "FAIL",
+                "value": 2737526.8109825,
+                "target": 900.0
+              },
+              {
+                "metric": "dlq.open",
+                "status": "PASS",
+                "value": 0.0,
+                "target": 0.0
+              },
+              {
+                "metric": "technical_error_rate",
+                "status": "FAIL",
+                "value": 0.23404255319148937,
+                "target": 0.01
+              },
+              {
+                "metric": "critical_automatic_errors",
+                "status": "INSUFFICIENT_DATA",
+                "target": 0.0
+              },
+              {
+                "metric": "rollback.recovery_minutes",
+                "status": "INSUFFICIENT_DATA",
+                "target": 30.0
+              },
+              {
+                "metric": "backup.restore_age_hours",
+                "status": "INSUFFICIENT_DATA",
+                "target": 168.0
+              }
+            ],
+            "scientific_result": false,
+            "interpretation_limit": "Os limiares são uma proposta técnica pré-registrada. PASS não equivale a aceite institucional, certificação de produção ou disponibilidade mensal comprovada."
+          },
+          "drift_status_counts": {
+            "INSUFFICIENT_DATA": 240
+          },
+          "semantic_correctness_confirmed": false
+        },
+        {
+          "index": 3,
+          "start": "2026-09-02T12:38:35.506864Z",
+          "end": "2026-09-02T16:38:35.506864Z",
+          "observation_count": 240,
+          "minimum_observations": 180,
+          "slo_evaluation": {
+            "status": "FAIL",
+            "policy_status": "PROPOSTA_NAO_APROVADA",
+            "institutionally_approved": false,
+            "checks": [
+              {
+                "metric": "availability.local_ai",
+                "status": "PASS",
+                "value": 1.0,
+                "target": 0.995
+              },
+              {
+                "metric": "availability.n8n",
+                "status": "PASS",
+                "value": 1.0,
+                "target": 0.995
+              },
+              {
+                "metric": "availability.glpi",
+                "status": "PASS",
+                "value": 1.0,
+                "target": 0.99
+              },
+              {
+                "metric": "availability.postgresql",
+                "status": "PASS",
+                "value": 1.0,
+                "target": 0.995
+              },
+              {
+                "metric": "local_ai.inference_p95_ms",
+                "status": "FAIL",
+                "value": 70372.24999999994,
+                "target": 1500.0
+              },
+              {
+                "metric": "queue.wait_p95_seconds",
+                "status": "FAIL",
+                "value": 2737667.8045437,
+                "target": 900.0
+              },
+              {
+                "metric": "dlq.open",
+                "status": "PASS",
+                "value": 0.0,
+                "target": 0.0
+              },
+              {
+                "metric": "technical_error_rate",
+                "status": "FAIL",
+                "value": 0.23404255319148937,
+                "target": 0.01
+              },
+              {
+                "metric": "critical_automatic_errors",
+                "status": "INSUFFICIENT_DATA",
+                "target": 0.0
+              },
+              {
+                "metric": "rollback.recovery_minutes",
+                "status": "INSUFFICIENT_DATA",
+                "target": 30.0
+              },
+              {
+                "metric": "backup.restore_age_hours",
+                "status": "INSUFFICIENT_DATA",
+                "target": 168.0
+              }
+            ],
+            "scientific_result": false,
+            "interpretation_limit": "Os limiares são uma proposta técnica pré-registrada. PASS não equivale a aceite institucional, certificação de produção ou disponibilidade mensal comprovada."
+          },
+          "drift_status_counts": {
+            "INSUFFICIENT_DATA": 240
+          },
+          "semantic_correctness_confirmed": false
+        },
+        {
+          "index": 4,
+          "start": "2026-09-02T16:38:35.506864Z",
+          "end": "2026-09-02T20:38:35.506864Z",
+          "observation_count": 213,
+          "minimum_observations": 180,
+          "slo_evaluation": {
+            "status": "FAIL",
+            "policy_status": "PROPOSTA_NAO_APROVADA",
+            "institutionally_approved": false,
+            "checks": [
+              {
+                "metric": "availability.local_ai",
+                "status": "PASS",
+                "value": 1.0,
+                "target": 0.995
+              },
+              {
+                "metric": "availability.n8n",
+                "status": "PASS",
+                "value": 0.9953051643192489,
+                "target": 0.995
+              },
+              {
+                "metric": "availability.glpi",
+                "status": "PASS",
+                "value": 1.0,
+                "target": 0.99
+              },
+              {
+                "metric": "availability.postgresql",
+                "status": "PASS",
+                "value": 1.0,
+                "target": 0.995
+              },
+              {
+                "metric": "local_ai.inference_p95_ms",
+                "status": "FAIL",
+                "value": 49323.75,
+                "target": 1500.0
+              },
+              {
+                "metric": "queue.wait_p95_seconds",
+                "status": "FAIL",
+                "value": 2741120.804909,
+                "target": 900.0
+              },
+              {
+                "metric": "dlq.open",
+                "status": "FAIL",
+                "value": 17.0,
+                "target": 0.0
+              },
+              {
+                "metric": "technical_error_rate",
+                "status": "FAIL",
+                "value": 0.3592233009708738,
+                "target": 0.01
+              },
+              {
+                "metric": "critical_automatic_errors",
+                "status": "INSUFFICIENT_DATA",
+                "target": 0.0
+              },
+              {
+                "metric": "rollback.recovery_minutes",
+                "status": "INSUFFICIENT_DATA",
+                "target": 30.0
+              },
+              {
+                "metric": "backup.restore_age_hours",
+                "status": "PASS",
+                "value": 15.417451277777777,
+                "target": 168.0
+              }
+            ],
+            "scientific_result": false,
+            "interpretation_limit": "Os limiares são uma proposta técnica pré-registrada. PASS não equivale a aceite institucional, certificação de produção ou disponibilidade mensal comprovada."
+          },
+          "drift_status_counts": {
+            "INSUFFICIENT_DATA": 130,
+            "STOP": 83
+          },
+          "semantic_correctness_confirmed": false
+        }
+      ],
+      "longitudinal_production_evaluation": "OUT_OF_SCOPE_BY_USER_DECISION",
+      "longitudinal_production_window_days": 30,
+      "scientific_result": false,
+      "semantic_correctness_confirmed": false,
+      "interpretation_limit": "Janelas intradiárias de telemetria local/sintética verificam o mecanismo técnico, não estimam disponibilidade longitudinal de produção nem confirmam correção semântica."
+    },
+    "accelerated_proxy_windows": {
+      "schema_version": "1.0.0",
+      "generated_at": "2026-09-02T22:49:30.948179Z",
+      "status": "THREE_ACCELERATED_PROXY_WINDOWS_COMPLETE",
+      "technical_mechanism_passed": true,
+      "candidate": "classification__hybrid__multilingual_e5_small__linear_svm",
+      "source": "avaliacao/resultados/selecao-supervisionada-v2.1-20260826/predicoes_oof.csv",
+      "source_sha256": "eb69671041ffe1c9f5b0ce4fded6d7304fd288be776f7c53be9290b5b51258b3",
+      "window_count": 3,
+      "group_leakage_between_windows": false,
+      "windows": [
+        {
+          "index": 1,
+          "mode": "ACCELERATED_COUNT_BASED_DISJOINT_PROXY_GROUPS",
+          "record_count": 372,
+          "independent_proxy_group_count": 37,
+          "proxy_class_distribution": {
+            "DEMO": 108,
+            "OBRA": 59,
+            "SOB_DEMANDA": 115,
+            "TRIAGEM_MANUAL": 90
+          },
+          "proxy_prediction_distribution": {
+            "DEMO": 118,
+            "OBRA": 68,
+            "SOB_DEMANDA": 136,
+            "TRIAGEM_MANUAL": 50
+          },
+          "metrics": {
+            "proxy_accuracy": 0.7903225806451613,
+            "proxy_macro_f1": 0.7758262598490635,
+            "proxy_ece_10_bins": 0.08686428554543468,
+            "automatic_coverage": 0.6182795698924731,
+            "proxy_selective_risk": 0.1391304347826087,
+            "proxy_non_obra_as_obra": 0
+          },
+          "component_probe": {
+            "status": "PASS",
+            "evidence_status": "POINT_IN_TIME_TECHNICAL_EVIDENCE",
+            "scientific_result": false,
+            "collected_at": "2026-09-02T22:49:30.201551Z",
+            "http_probes": {
+              "local_ai": {
+                "status": 200,
+                "latency_ms": 548.5631999999896,
+                "error": null
+              },
+              "n8n": {
+                "status": 200,
+                "latency_ms": 9.09369999953924,
+                "error": null
+              },
+              "glpi": {
+                "status": 200,
+                "latency_ms": 109.3380000002071,
+                "error": null
+              }
+            },
+            "containers": [
+              "/glpi|running|healthy",
+              "/glpi-db|running|healthy",
+              "/glpi-dedup-db|running|healthy",
+              "/n8n|running|healthy"
+            ],
+            "docker_probe_error": null,
+            "interpretation_limit": "Uma coleta pontual não mede disponibilidade na janela do SLO."
+          },
+          "semantic_correctness_confirmed": false,
+          "drift_vs_window_1": {
+            "status": "PASS",
+            "sample_size": {
+              "reference": 372,
+              "current": 372
+            },
+            "scientific_result": false,
+            "checks": [
+              {
+                "feature": "etapa",
+                "metric": "jensen_shannon",
+                "value": 0.0,
+                "status": "PASS"
+              },
+              {
+                "feature": "predicao",
+                "metric": "jensen_shannon",
+                "value": 0.0,
+                "status": "PASS"
+              },
+              {
+                "feature": "resultado_tecnico",
+                "metric": "jensen_shannon",
+                "value": 0.0,
+                "status": "PASS"
+              },
+              {
+                "feature": "confianca_10_bins",
+                "metric": "psi",
+                "value": 0.0,
+                "status": "PASS"
+              }
+            ],
+            "interpretation_limit": "Drift detecta mudança de distribuição; não demonstra queda de acurácia. STOP aciona bloqueio automático; por decisão do projeto não há revisão humana nem autorização para retreinamento automático."
+          }
+        },
+        {
+          "index": 2,
+          "mode": "ACCELERATED_COUNT_BASED_DISJOINT_PROXY_GROUPS",
+          "record_count": 371,
+          "independent_proxy_group_count": 37,
+          "proxy_class_distribution": {
+            "DEMO": 154,
+            "OBRA": 109,
+            "SOB_DEMANDA": 81,
+            "TRIAGEM_MANUAL": 27
+          },
+          "proxy_prediction_distribution": {
+            "DEMO": 130,
+            "OBRA": 118,
+            "SOB_DEMANDA": 86,
+            "TRIAGEM_MANUAL": 37
+          },
+          "metrics": {
+            "proxy_accuracy": 0.8194070080862533,
+            "proxy_macro_f1": 0.722111703564392,
+            "proxy_ece_10_bins": 0.08686323290805813,
+            "automatic_coverage": 0.6091644204851752,
+            "proxy_selective_risk": 0.017699115044247787,
+            "proxy_non_obra_as_obra": 0
+          },
+          "component_probe": {
+            "status": "PASS",
+            "evidence_status": "POINT_IN_TIME_TECHNICAL_EVIDENCE",
+            "scientific_result": false,
+            "collected_at": "2026-09-02T22:49:30.587775Z",
+            "http_probes": {
+              "local_ai": {
+                "status": 200,
+                "latency_ms": 9.2025999992984,
+                "error": null
+              },
+              "n8n": {
+                "status": 200,
+                "latency_ms": 11.599800000112737,
+                "error": null
+              },
+              "glpi": {
+                "status": 200,
+                "latency_ms": 95.17789999972592,
+                "error": null
+              }
+            },
+            "containers": [
+              "/glpi|running|healthy",
+              "/glpi-db|running|healthy",
+              "/glpi-dedup-db|running|healthy",
+              "/n8n|running|healthy"
+            ],
+            "docker_probe_error": null,
+            "interpretation_limit": "Uma coleta pontual não mede disponibilidade na janela do SLO."
+          },
+          "semantic_correctness_confirmed": false,
+          "drift_vs_window_1": {
+            "status": "PASS",
+            "sample_size": {
+              "reference": 372,
+              "current": 371
+            },
+            "scientific_result": false,
+            "checks": [
+              {
+                "feature": "etapa",
+                "metric": "jensen_shannon",
+                "value": 0.0,
+                "status": "PASS"
+              },
+              {
+                "feature": "predicao",
+                "metric": "jensen_shannon",
+                "value": 0.02669376873259728,
+                "status": "PASS"
+              },
+              {
+                "feature": "resultado_tecnico",
+                "metric": "jensen_shannon",
+                "value": 0.0,
+                "status": "PASS"
+              },
+              {
+                "feature": "confianca_10_bins",
+                "metric": "psi",
+                "value": 0.06330053939273596,
+                "status": "PASS"
+              }
+            ],
+            "interpretation_limit": "Drift detecta mudança de distribuição; não demonstra queda de acurácia. STOP aciona bloqueio automático; por decisão do projeto não há revisão humana nem autorização para retreinamento automático."
+          }
+        },
+        {
+          "index": 3,
+          "mode": "ACCELERATED_COUNT_BASED_DISJOINT_PROXY_GROUPS",
+          "record_count": 371,
+          "independent_proxy_group_count": 37,
+          "proxy_class_distribution": {
+            "DEMO": 94,
+            "OBRA": 63,
+            "SOB_DEMANDA": 154,
+            "TRIAGEM_MANUAL": 60
+          },
+          "proxy_prediction_distribution": {
+            "DEMO": 107,
+            "OBRA": 60,
+            "SOB_DEMANDA": 163,
+            "TRIAGEM_MANUAL": 41
+          },
+          "metrics": {
+            "proxy_accuracy": 0.8840970350404312,
+            "proxy_macro_f1": 0.8579609848619092,
+            "proxy_ece_10_bins": 0.11119171300811453,
+            "automatic_coverage": 0.5983827493261455,
+            "proxy_selective_risk": 0.04954954954954955,
+            "proxy_non_obra_as_obra": 0
+          },
+          "component_probe": {
+            "status": "PASS",
+            "evidence_status": "POINT_IN_TIME_TECHNICAL_EVIDENCE",
+            "scientific_result": false,
+            "collected_at": "2026-09-02T22:49:30.945181Z",
+            "http_probes": {
+              "local_ai": {
+                "status": 200,
+                "latency_ms": 3.982999999607273,
+                "error": null
+              },
+              "n8n": {
+                "status": 200,
+                "latency_ms": 6.8474999998215935,
+                "error": null
+              },
+              "glpi": {
+                "status": 200,
+                "latency_ms": 72.02420000066923,
+                "error": null
+              }
+            },
+            "containers": [
+              "/glpi|running|healthy",
+              "/glpi-db|running|healthy",
+              "/glpi-dedup-db|running|healthy",
+              "/n8n|running|healthy"
+            ],
+            "docker_probe_error": null,
+            "interpretation_limit": "Uma coleta pontual não mede disponibilidade na janela do SLO."
+          },
+          "semantic_correctness_confirmed": false,
+          "drift_vs_window_1": {
+            "status": "PASS",
+            "sample_size": {
+              "reference": 372,
+              "current": 371
+            },
+            "scientific_result": false,
+            "checks": [
+              {
+                "feature": "etapa",
+                "metric": "jensen_shannon",
+                "value": 0.0,
+                "status": "PASS"
+              },
+              {
+                "feature": "predicao",
+                "metric": "jensen_shannon",
+                "value": 0.00424260772365691,
+                "status": "PASS"
+              },
+              {
+                "feature": "resultado_tecnico",
+                "metric": "jensen_shannon",
+                "value": 0.0,
+                "status": "PASS"
+              },
+              {
+                "feature": "confianca_10_bins",
+                "metric": "psi",
+                "value": 0.04165675788681036,
+                "status": "PASS"
+              }
+            ],
+            "interpretation_limit": "Drift detecta mudança de distribuição; não demonstra queda de acurácia. STOP aciona bloqueio automático; por decisão do projeto não há revisão humana nem autorização para retreinamento automático."
+          }
+        }
+      ],
+      "labels": {
+        "proxy_labels_only": true,
+        "scientific_result": false,
+        "semantic_correctness_confirmed": false,
+        "production_slo_estimated": false,
+        "longitudinal_window": false
+      },
+      "conclusion": "As três janelas aceleradas validam cálculo, particionamento por grupo, sondagem e detecção de drift. Elas não medem SLO longitudinal, não usam chamados reais e não tornam o candidato cientificamente confirmado."
+    },
+    "isolated_homologation": {
+      "schema_version": "1.0.0",
+      "status": "PASS",
+      "scope": "ISOLATED_SYNTHETIC_INFRASTRUCTURE_HOMOLOGATION",
+      "scientific_result": false,
+      "semantic_correctness_confirmed": false,
+      "production_data_copied": false,
+      "secrets_printed": false,
+      "containers": [
+        {
+          "name": "homolog-glpi",
+          "state": "running",
+          "health": "healthy",
+          "project": "projeto-ic-homolog"
+        },
+        {
+          "name": "homolog-glpi-credential-proxy",
+          "state": "running",
+          "health": "healthy",
+          "project": "projeto-ic-homolog"
+        },
+        {
+          "name": "homolog-glpi-db",
+          "state": "running",
+          "health": "healthy",
+          "project": "projeto-ic-homolog"
+        },
+        {
+          "name": "homolog-glpi-dedup-db",
+          "state": "running",
+          "health": "healthy",
+          "project": "projeto-ic-homolog"
+        },
+        {
+          "name": "homolog-local-ai-credential-proxy",
+          "state": "running",
+          "health": "healthy",
+          "project": "projeto-ic-homolog"
+        },
+        {
+          "name": "homolog-mailpit",
+          "state": "running",
+          "health": "healthy",
+          "project": "projeto-ic-homolog"
+        },
+        {
+          "name": "homolog-n8n",
+          "state": "running",
+          "health": "healthy",
+          "project": "projeto-ic-homolog"
+        },
+        {
+          "name": "homolog-n8n-gateway",
+          "state": "running",
+          "health": "healthy",
+          "project": "projeto-ic-homolog"
+        },
+        {
+          "name": "homolog-n8n-task-runners",
+          "state": "running",
+          "health": "none",
+          "project": "projeto-ic-homolog"
+        }
+      ],
+      "project_isolation": true,
+      "postgres": {
+        "runtime_role": "triagem_homolog_app",
+        "superuser": false,
+        "createdb": false,
+        "createrole": false,
+        "replication": false,
+        "bypassrls": false,
+        "public_table_count": 40,
+        "ticket_count": 0,
+        "query_ok": true
+      },
+      "http_probes": {
+        "n8n": {
+          "status": 200,
+          "ok": true
+        },
+        "glpi": {
+          "status": 200,
+          "ok": true
+        },
+        "mailpit": {
+          "status": 200,
+          "ok": true
+        }
+      },
+      "application_seed_status": "NOT_SEEDED_WITH_PRODUCTION_DATA_BY_DESIGN",
+      "interpretation_limit": "Confirma infraestrutura isolada, saúde e menor privilégio. Não equivale a aceite de produção, não contém chamados reais e não confirma semântica do modelo."
+    },
+    "runtime_queue_state": {
+      "schema_version": "1.0.0",
+      "status": "PASS",
+      "erro_ia": 0,
+      "active_queue": 0,
+      "open_dlq": 0,
+      "historical_records_deleted": false,
+      "scientific_result": false,
+      "semantic_correctness_confirmed": false,
+      "interpretation_limit": "Contagens operacionais; não validam a correção semântica das decisões."
+    },
+    "synthetic_e2e": {
+      "schema_version": "e2e-pipeline-local-v1",
+      "run_id": "VALIDACAO-WF06-E2E-20260902T223553548835Z",
+      "natureza_evidencia": "VALIDACAO_TECNICA_NAO_CONFIRMATORIA",
+      "synthetic_only": true,
+      "started_at": "2026-09-02T22:36:07.587365+00:00",
+      "model_provenance": {
+        "model_version": "local-hybrid-v1.8.0",
+        "bundle_version": "local-hybrid-bundle-v1.8.0",
+        "status": "CALIBRATED",
+        "manifest_path": "avaliacao/resultados/treino-local-pytorch-fp32-v1.8.0-20260716/local_hybrid_manifest.json",
+        "manifest_sha256": "3e818b5513bdaa4b7f037f2d4ada743d9b47ade1e882e8d90ae216d0b215eb25",
+        "manifest_payload_sha256": "86989aa11cc002ecc2cf68c501f368c62fc278efba7832e4fa426fd6400d598f",
+        "bundle_path": "avaliacao/resultados/treino-local-pytorch-fp32-v1.8.0-20260716/local_hybrid_bundle.joblib",
+        "bundle_sha256": "f518b7f9699aa9e23aab7eb2479990619ad5085994569b3f7c3f253e5207bb5d",
+        "embedding": {
+          "model_id": "ibm-granite/granite-embedding-97m-multilingual-r2",
+          "dimension": 384,
+          "model_revision": "835ad14087e140460703cf0fae09f97d469d65c2",
+          "model_tree_sha256": "28bb1e36cb3719c0c466de3013404307821da17bf901fc70f62af74bfa57a343"
+        },
+        "gates": {
+          "candidate_frozen": true,
+          "evaluation_eligible": true,
+          "thresholds_approved": true,
+          "test_data_unused": true,
+          "primary33_unused": true,
+          "scientific_claim_not_premature": true,
+          "granite_384": true,
+          "embedding_revision_frozen": true,
+          "embedding_tree_hash_frozen": true
+        }
+      },
+      "runtime_provenance": {
+        "checked_at": "2026-09-02T22:36:04.913231+00:00",
+        "service_version": "0.8.0",
+        "mode": "production",
+        "health_gates": {
+          "alive": true,
+          "decision_ready": true,
+          "candidate_evaluation_eligible": true,
+          "pipeline_evaluation_eligible": true,
+          "production_mode": true,
+          "hybrid_loaded": true,
+          "bundle_version": true,
+          "embedding_backend": true,
+          "embedding_dimension": true,
+          "embedding_revision": true,
+          "embedding_tree_hash": true,
+          "no_embedding_fallback": true
+        },
+        "bundle_version": "local-hybrid-bundle-v1.8.0",
+        "embedding_backend": "granite_embedding_pytorch_fp32"
+      },
+      "safe_probes": {
+        "deduplicacao": {
+          "gates": {
+            "decision_path": true,
+            "pipeline_eligible": true,
+            "no_fallback": true,
+            "bundle_hash": true,
+            "manifest_hash": true,
+            "safe_decision": true
+          },
+          "decision_path": "deterministic_empty_history"
+        },
+        "classificacao": {
+          "gates": {
+            "decision_path": true,
+            "pipeline_eligible": true,
+            "no_fallback": true,
+            "bundle_hash": true,
+            "manifest_hash": true,
+            "safe_decision": true
+          },
+          "decision_path": "deterministic_out_of_scope"
+        }
+      },
+      "runtime_profile": {
+        "FILA_IA_RUN_SCOPE": "",
+        "FILA_IA_LOTE_TAMANHO": "3",
+        "FILA_IA_INTERVALO_SEGUNDOS": "45",
+        "FILA_IA_INGRESS_GRACE_SEGUNDOS": "10",
+        "FILA_IA_LEASE_SEGUNDOS": "900",
+        "IA_MODEL_LOCAL": "local-hybrid-v1.8.0",
+        "IA_MODEL_VERSION": "local-hybrid-v1.8.0",
+        "IA_FIXED_MODEL_ROLE": "LOCAL",
+        "IA_OPERATIONAL_SEQUENCE": "LOCAL",
+        "IA_FAILOVER_ENABLED": "false",
+        "IA_EXECUTION_MODE": "OPERATIONAL",
+        "IA_GENERATION_PROFILE": "local-hybrid-v1.8.0_granite97m-pytorch-fp32",
+        "TEST_MODE": "false",
+        "TEST_AUTO_HUMAN_CONFIRMATION": "false"
+      },
+      "controller": {
+        "id": 1,
+        "proxima_liberacao_em": "2026-09-02T19:36:00.250499-03:00",
+        "intervalo_segundos": 45,
+        "lote_tamanho": 3,
+        "atualizado_em": "2026-09-02T19:36:00.250499-03:00"
+      },
+      "workflow_artifacts": {
+        "V9-WF02-Triagem.json": {
+          "sha256": "312341ec150d8cb16737ad611d0be7d76a757245e08d908e8d7953a50848e405",
+          "workflow_id": "nmNEsgC8kXmCVOsX",
+          "workflow_name": "V9 - WF02 Triagem",
+          "node_count": 43
+        },
+        "V9-WF03-Classificacao.json": {
+          "sha256": "134f1332a127b0ef6854a2e9bf00acbe21c49399acf77ebfd15671c6cae69b33",
+          "workflow_id": "reVggSpJiaPhnfIo",
+          "workflow_name": "V9 - WF03 Classificação",
+          "node_count": 38
+        },
+        "V9-WF06-Fila-IA.json": {
+          "sha256": "6e52189ecd5d46dea985a0071e37540d652bcd0aaf5434378b5a2257e74189cc",
+          "workflow_id": "ZpQ0H9uV9Fila06",
+          "workflow_name": "V9 - WF06 Fila IA",
+          "node_count": 18
+        },
+        "ai_gateway_builder.py": {
+          "sha256": "b7d7b25ae444dd8a08f7094e47dc0f2fb08b124445bed9a70d631d25f10cabee"
+        },
+        "build_wf02.py": {
+          "sha256": "619af87cbb18e4b910a13b1453dbd0c1b6485be868f858383a4e16ea5ad70f3a"
+        },
+        "build_wf03.py": {
+          "sha256": "3ef99a410cce8edd70de212f5ae8975808999c9b59739c731a458ac28f304289"
+        },
+        "build_wf06.py": {
+          "sha256": "9c333c08f0e8b9b752265bfaf2bc3d1fe849ced9e5c11d10ea1ba420e9ca2a60"
+        }
+      },
+      "deployed_workflows": {
+        "V9-WF02-Triagem.json": {
+          "workflow_id": "nmNEsgC8kXmCVOsX",
+          "workflow_name": "V9 - WF02 Triagem",
+          "node_count": 43,
+          "canonical_logic_sha256": "8a4865b30c42c0a2fa0865fb51103695b491456d5b448bad5fc1b6a5c47c7a78",
+          "deployed_logic_sha256": "8a4865b30c42c0a2fa0865fb51103695b491456d5b448bad5fc1b6a5c47c7a78",
+          "active": true,
+          "archived": false,
+          "parity": true
+        },
+        "V9-WF03-Classificacao.json": {
+          "workflow_id": "reVggSpJiaPhnfIo",
+          "workflow_name": "V9 - WF03 Classificação",
+          "node_count": 38,
+          "canonical_logic_sha256": "0f95a6ae4131482bae0272f2d7bde5292a8eefa4bc17b5a1d363a1b6d0073668",
+          "deployed_logic_sha256": "0f95a6ae4131482bae0272f2d7bde5292a8eefa4bc17b5a1d363a1b6d0073668",
+          "active": true,
+          "archived": false,
+          "parity": true
+        },
+        "V9-WF06-Fila-IA.json": {
+          "workflow_id": "ZpQ0H9uV9Fila06",
+          "workflow_name": "V9 - WF06 Fila IA",
+          "node_count": 18,
+          "canonical_logic_sha256": "2f38ec50aef909e937d20c63ab88c5837752476225e4cd2082e9e6d806607bd5",
+          "deployed_logic_sha256": "2f38ec50aef909e937d20c63ab88c5837752476225e4cd2082e9e6d806607bd5",
+          "active": true,
+          "archived": false,
+          "parity": true
+        }
+      },
+      "ticket_id": 323,
+      "ingress": {
+        "status_code": 202,
+        "response_body": "TEXT",
+        "body_length": 45,
+        "body_sha256": "ae04c27b47093a97d98cb7f2c2d1b91e2d80e27a7b6e0958208a924f78f9f079"
+      },
+      "completed_at": "2026-09-02T22:38:06.576491+00:00",
+      "validation": {
+        "classification": "TRIAGEM_MANUAL",
+        "terminal": "TRIAGEM_MANUAL",
+        "reservations": 2,
+        "decisions": 2,
+        "attempts": 2,
+        "dlq": 0
+      },
+      "complete_snapshot": {
+        "dlq": [],
+        "events": [
+          {
+            "id": 1056,
+            "acao": "NAO_DUPLICADO",
+            "erro": false,
+            "fase": "DEDUPLICACAO",
+            "fim_em": "2026-09-02T19:37:03.803448-03:00",
+            "workflow": "WF02",
+            "criado_em": "2026-09-02T19:37:03.803448-03:00",
+            "inicio_em": "2026-09-02T19:37:03.803448-03:00",
+            "node_name": "Normalizar Dedup",
+            "ticket_id": 323,
+            "duracao_ms": null,
+            "status_novo": null,
+            "execution_id": null,
+            "mensagem_erro": null,
+            "status_evento": "OK",
+            "status_anterior": null
+          },
+          {
+            "id": 1057,
+            "acao": "TRIAGEM_MANUAL",
+            "erro": false,
+            "fase": "CLASSIFICACAO",
+            "fim_em": "2026-09-02T19:38:01.482165-03:00",
+            "workflow": "WF03",
+            "criado_em": "2026-09-02T19:38:01.482165-03:00",
+            "inicio_em": "2026-09-02T19:38:01.482165-03:00",
+            "node_name": "Normalizar Classificação",
+            "ticket_id": 323,
+            "duracao_ms": null,
+            "status_novo": null,
+            "execution_id": null,
+            "mensagem_erro": null,
+            "status_evento": "OK",
+            "status_anterior": "Pendente"
+          }
+        ],
+        "ticket": {
+          "id": 323,
+          "titulo": "[TESTE_AUTOMATIZADO_E2E_WF06_LOCAL_V18] Falha de senha no sistema acadêmico",
+          "executor": "FISCAL",
+          "criado_em": "2026-09-02T19:36:31.34908-03:00",
+          "descricao": "[TESTE_AUTOMATIZADO_E2E_WF06_LOCAL_V18] Caso exclusivamente sintético; não atender. O usuário não consegue fazer login por erro de senha no sistema acadêmico. Não existe defeito físico, obra ou manutenção predial neste chamado.",
+          "triado_em": "2026-09-02T19:38:02.141558-03:00",
+          "fila_etapa": "CLASSIFICACAO",
+          "status_num": 4,
+          "wf_version": "v9",
+          "localizacao": "",
+          "solicitante": "",
+          "status_nome": "Pendente",
+          "confianca_ia": 0.85,
+          "log_workflow": [
+            {
+              "ts": "2026-09-02T22:36:31.329Z",
+              "wf": "WF06",
+              "acao": "ENFILEIRAR",
+              "origem": "glpi-plugin-n8nwebhook"
+            },
+            {
+              "ts": "2026-09-02T22:36:33.728Z",
+              "wf": "WF06",
+              "acao": "ENFILEIRAR",
+              "origem": "e2e-wf06-local-v1.8"
+            },
+            {
+              "ts": "2026-09-02T22:37:00.154Z",
+              "wf": "WF06",
+              "acao": "RESERVAR_FILA",
+              "lote": 3,
+              "lease": 900,
+              "lote_max": 5,
+              "lote_min": 1,
+              "intervalo": 45,
+              "run_scope": null,
+              "adaptativo": false
+            },
+            {
+              "ts": "2026-09-02T22:37:02.915Z",
+              "wf": "WF02",
+              "acao": "INGESTAO_TRIAGEM",
+              "origem": "WF06"
+            },
+            {
+              "ts": "2026-09-02T22:37:04.025Z",
+              "wf": "WF02",
+              "acao": "ENFILEIRAR_CLASSIFICACAO",
+              "etapa": "CLASSIFICACAO"
+            },
+            {
+              "ts": "2026-09-02T22:38:00.095Z",
+              "wf": "WF06",
+              "acao": "RESERVAR_FILA",
+              "lote": 3,
+              "lease": 900,
+              "lote_max": 5,
+              "lote_min": 1,
+              "intervalo": 45,
+              "run_scope": null,
+              "adaptativo": false
+            },
+            {
+              "ts": "2026-09-02T22:38:00.730Z",
+              "wf": "WF03",
+              "acao": "PENDENTE_INICIAL"
+            },
+            {
+              "ts": "2026-09-02T22:38:02.140Z",
+              "wf": "WF03",
+              "acao": "TRIAGEM_MANUAL",
+              "confianca": 0.85
+            }
+          ],
+          "tipo_servico": "",
+          "atualizado_em": "2026-09-02T19:38:02.141558-03:00",
+          "classificacao": "TRIAGEM_MANUAL",
+          "data_abertura": "2026-09-02T19:36:27-03:00",
+          "tentativas_ia": 2,
+          "decisao_fiscal": null,
+          "solicitante_id": null,
+          "triagem_manual": true,
+          "triagem_status": "TRIAGEM_MANUAL",
+          "ultimo_erro_ia": null,
+          "duplicado_de_id": null,
+          "fila_liberar_em": "2026-09-02T19:38:00.114514-03:00",
+          "fila_tentativas": 2,
+          "origem_ingestao": "WF06",
+          "tipo_servico_id": null,
+          "fila_ultimo_erro": null,
+          "email_solicitante": "",
+          "fila_reservada_em": "2026-09-02T19:38:00.114514-03:00",
+          "primeira_vista_em": "2026-09-02T19:36:31.34908-03:00",
+          "fila_disponivel_em": "2026-09-02T19:37:04.026016-03:00",
+          "ultima_atualizacao": "2026-09-02T19:38:02.141558-03:00",
+          "classificacao_final": "TRIAGEM_MANUAL",
+          "data_ultima_mudanca": "2026-09-02T19:36:33.704-03:00",
+          "em_aprovacao_fiscal": false,
+          "fila_enfileirada_em": "2026-09-02T19:37:04.026016-03:00",
+          "tentativas_ia_dedup": 1,
+          "motivo_classificacao": "Demanda de software ou sistema fora do escopo de manutenção física.",
+          "ultima_acao_workflow": "TRIAGEM_MANUAL",
+          "aprovacao_decidida_em": null,
+          "aprovacao_iniciada_em": null,
+          "fiscal_decision_token": null,
+          "fiscal_token_expira_em": null,
+          "tentativas_ia_classificacao": 1
+        },
+        "attempts": [
+          {
+            "id": 346,
+            "etapa": "DEDUPLICACAO",
+            "run_id": "VALIDACAO-WF06-E2E-20260902T223553548835Z",
+            "case_id": "E2E-WF06-001",
+            "endpoint": "http://local-ai-credential-proxy:8080/v1/deduplicate?include_metadata=1",
+            "criado_em": "2026-09-02T19:37:03.803448-03:00",
+            "retryable": false,
+            "schema_ok": true,
+            "ticket_id": 323,
+            "tipo_erro": null,
+            "duracao_ms": 45,
+            "episode_id": "E2E-WF06-EP-001",
+            "codigo_erro": null,
+            "http_status": null,
+            "iniciado_em": "2026-09-02T19:37:03.185-03:00",
+            "input_chars": 1767,
+            "provedor_ia": "local-native",
+            "input_tokens": null,
+            "papel_modelo": "LOCAL",
+            "prompt_chars": 0,
+            "resposta_raw": {
+              "result": {
+                "confianca": 0.99,
+                "eh_duplicado": false,
+                "justificativa": "Não existem candidatos históricos distintos para comparação.",
+                "probabilidades": {
+                  "duplicado": 0.01,
+                  "nao_duplicado": 0.99
+                },
+                "caracteristicas_match": [],
+                "chamado_referencia_id": null
+              },
+              "metadata": {
+                "gates": [
+                  "missing_fields:localizacao",
+                  "empty_history"
+                ],
+                "artifact": {
+                  "file": "local_hybrid_bundle.joblib",
+                  "format": "joblib_hybrid_bundle",
+                  "version": "local-hybrid-bundle-v1.8.0",
+                  "manifest": "local_hybrid_manifest.json",
+                  "bundle_sha256": "f518b7f9699aa9e23aab7eb2479990619ad5085994569b3f7c3f253e5207bb5d",
+                  "primary33_used": false,
+                  "test_data_used": false,
+                  "candidate_frozen": true,
+                  "scientific_result": false,
+                  "scientific_status": "candidate_frozen_pending_confirmatory",
+                  "evaluation_eligible": true,
+                  "manifest_payload_sha256": "86989aa11cc002ecc2cf68c501f368c62fc278efba7832e4fa426fd6400d598f",
+                  "scientifically_validated": false,
+                  "candidate_bundle_eligible": true
+                },
+                "endpoint": "deduplicate",
+                "features": null,
+                "trace_id": "f5dd153e-5d2c-4251-b5e3-0c2b1b5a8881",
+                "embedding": null,
+                "extractor": null,
+                "elapsed_ms": 12.612,
+                "decision_path": "deterministic_empty_history",
+                "fallback_used": false,
+                "service_version": "0.8.0",
+                "operational_gate": null,
+                "scientific_eligible": false,
+                "probability_semantics": null,
+                "probabilistic_model_output": null,
+                "pipeline_evaluation_eligible": true,
+                "candidate_evaluation_eligible": false,
+                "operational_information_sufficient": null
+              }
+            },
+            "total_tokens": null,
+            "finalizado_em": "2026-09-02T19:37:03.23-03:00",
+            "ia_decisao_id": 538,
+            "mensagem_erro": null,
+            "output_tokens": null,
+            "transporte_ok": true,
+            "versao_modelo": "local-hybrid-v1.8.0",
+            "perfil_entrada": "DEDUP_LOCAL_TOP_K",
+            "ciclo_tentativa": "DEDUPLICACAO-323-1788388623182-e23005a8224e8",
+            "ordem_tentativa": 1,
+            "workflow_origem": "WF02",
+            "status_tentativa": "VALID",
+            "total_candidatos": 0,
+            "perfil_pensamento": "disabled",
+            "politica_execucao": {
+              "benchmark": false,
+              "fixed_role": "LOCAL",
+              "experimental": true,
+              "execution_mode": "VALIDACAO",
+              "expected_model": "local-hybrid-v1.8.0",
+              "local_endpoint": "http://local-ai-credential-proxy:8080/v1/deduplicate?include_metadata=1",
+              "requested_role": "LOCAL",
+              "chain_attempted": [
+                "LOCAL"
+              ],
+              "candidate_policy": {
+                "mode": "OPERATIONAL_SPLIT",
+                "ordering": "dedup_score_desc,updated_at_desc,id_asc",
+                "candidate_ids": [],
+                "benchmark_paired": false,
+                "same_list_and_order": false,
+                "effective_local_limit": 0,
+                "configured_local_limit": 20,
+                "effective_remote_limit": 0,
+                "configured_remote_limit": 20
+              },
+              "failover_allowed": false,
+              "policy_violation": false,
+              "failover_requested": false,
+              "operational_sequence": [
+                "LOCAL"
+              ],
+              "requested_role_valid": true,
+              "frozen_model_declared": true,
+              "attempt_input_profiles": [
+                {
+                  "role": "LOCAL",
+                  "endpoint": "http://local-ai-credential-proxy:8080/v1/deduplicate?include_metadata=1",
+                  "input_chars": 1767,
+                  "prompt_chars": 0,
+                  "input_profile": "DEDUP_LOCAL_TOP_K",
+                  "candidate_count": 0,
+                  "scientific_metadata": {
+                    "gates": [
+                      "missing_fields:localizacao",
+                      "empty_history"
+                    ],
+                    "artifact": {
+                      "file": "local_hybrid_bundle.joblib",
+                      "format": "joblib_hybrid_bundle",
+                      "version": "local-hybrid-bundle-v1.8.0",
+                      "manifest": "local_hybrid_manifest.json",
+                      "bundle_sha256": "f518b7f9699aa9e23aab7eb2479990619ad5085994569b3f7c3f253e5207bb5d",
+                      "primary33_used": false,
+                      "test_data_used": false,
+                      "candidate_frozen": true,
+                      "scientific_result": false,
+                      "scientific_status": "candidate_frozen_pending_confirmatory",
+                      "evaluation_eligible": true,
+                      "manifest_payload_sha256": "86989aa11cc002ecc2cf68c501f368c62fc278efba7832e4fa426fd6400d598f",
+                      "scientifically_validated": false,
+                      "candidate_bundle_eligible": true
+                    },
+                    "endpoint": "deduplicate",
+                    "features": null,
+                    "trace_id": "f5dd153e-5d2c-4251-b5e3-0c2b1b5a8881",
+                    "embedding": null,
+                    "extractor": null,
+                    "elapsed_ms": 12.612,
+                    "decision_path": "deterministic_empty_history",
+                    "fallback_used": false,
+                    "service_version": "0.8.0",
+                    "operational_gate": null,
+                    "scientific_eligible": false,
+                    "probability_semantics": null,
+                    "probabilistic_model_output": null,
+                    "pipeline_evaluation_eligible": true,
+                    "candidate_evaluation_eligible": false,
+                    "operational_information_sufficient": null
+                  }
+                }
+              ],
+              "model_matches_experiment": true,
+              "paired_candidate_set_valid": true
+            },
+            "fallback_utilizado": false,
+            "metadata_cientifica": {
+              "gates": [
+                "missing_fields:localizacao",
+                "empty_history"
+              ],
+              "artifact": {
+                "file": "local_hybrid_bundle.joblib",
+                "format": "joblib_hybrid_bundle",
+                "version": "local-hybrid-bundle-v1.8.0",
+                "manifest": "local_hybrid_manifest.json",
+                "bundle_sha256": "f518b7f9699aa9e23aab7eb2479990619ad5085994569b3f7c3f253e5207bb5d",
+                "primary33_used": false,
+                "test_data_used": false,
+                "candidate_frozen": true,
+                "scientific_result": false,
+                "scientific_status": "candidate_frozen_pending_confirmatory",
+                "evaluation_eligible": true,
+                "manifest_payload_sha256": "86989aa11cc002ecc2cf68c501f368c62fc278efba7832e4fa426fd6400d598f",
+                "scientifically_validated": false,
+                "candidate_bundle_eligible": true
+              },
+              "endpoint": "deduplicate",
+              "features": null,
+              "trace_id": "f5dd153e-5d2c-4251-b5e3-0c2b1b5a8881",
+              "embedding": null,
+              "extractor": null,
+              "elapsed_ms": 12.612,
+              "decision_path": "deterministic_empty_history",
+              "fallback_used": false,
+              "service_version": "0.8.0",
+              "operational_gate": null,
+              "scientific_eligible": false,
+              "probability_semantics": null,
+              "probabilistic_model_output": null,
+              "pipeline_evaluation_eligible": true,
+              "candidate_evaluation_eligible": false,
+              "operational_information_sufficient": null
+            },
+            "retry_after_seconds": null
+          },
+          {
+            "id": 347,
+            "etapa": "CLASSIFICACAO",
+            "run_id": "VALIDACAO-WF06-E2E-20260902T223553548835Z",
+            "case_id": "E2E-WF06-001",
+            "endpoint": "http://local-ai-credential-proxy:8080/v1/classify?include_metadata=1",
+            "criado_em": "2026-09-02T19:38:01.482165-03:00",
+            "retryable": false,
+            "schema_ok": true,
+            "ticket_id": 323,
+            "tipo_erro": null,
+            "duracao_ms": 66,
+            "episode_id": "E2E-WF06-EP-001",
+            "codigo_erro": null,
+            "http_status": null,
+            "iniciado_em": "2026-09-02T19:38:00.871-03:00",
+            "input_chars": 507,
+            "provedor_ia": "local-native",
+            "input_tokens": null,
+            "papel_modelo": "LOCAL",
+            "prompt_chars": 0,
+            "resposta_raw": {
+              "result": {
+                "tipo": "TRIAGEM_MANUAL",
+                "executor": "FISCAL",
+                "categoria": "triagem manual",
+                "confianca": 0.85,
+                "justificativa": "Demanda de software ou sistema fora do escopo de manutenção física.",
+                "probabilidades": {
+                  "DEMO": 0.05,
+                  "OBRA": 0.05,
+                  "SOB_DEMANDA": 0.05,
+                  "TRIAGEM_MANUAL": 0.85
+                },
+                "mensagem_solicitante": "O chamado será validado pelo fiscal antes de qualquer encaminhamento."
+              },
+              "metadata": {
+                "gates": [
+                  "missing_fields:localizacao",
+                  "operational_information_insufficient",
+                  "deterministic_unserviceable_location",
+                  "out_of_scope"
+                ],
+                "artifact": {
+                  "file": "local_hybrid_bundle.joblib",
+                  "format": "joblib_hybrid_bundle",
+                  "version": "local-hybrid-bundle-v1.8.0",
+                  "manifest": "local_hybrid_manifest.json",
+                  "bundle_sha256": "f518b7f9699aa9e23aab7eb2479990619ad5085994569b3f7c3f253e5207bb5d",
+                  "primary33_used": false,
+                  "test_data_used": false,
+                  "candidate_frozen": true,
+                  "scientific_result": false,
+                  "scientific_status": "candidate_frozen_pending_confirmatory",
+                  "evaluation_eligible": true,
+                  "manifest_payload_sha256": "86989aa11cc002ecc2cf68c501f368c62fc278efba7832e4fa426fd6400d598f",
+                  "scientifically_validated": false,
+                  "candidate_bundle_eligible": true
+                },
+                "endpoint": "classify",
+                "features": {
+                  "policy_source": "docs/DocumentaçãoInicialProjeto.txt:40-44",
+                  "exact_location": false,
+                  "narrative_asset": "software",
+                  "operational_gate": "deterministic_unserviceable_location",
+                  "contextual_locations": [],
+                  "serviceable_location": false,
+                  "probability_semantics": "deterministic_gate_or_policy_not_model_probability",
+                  "unique_named_location": false,
+                  "category_suggested_asset": null,
+                  "structured_location_valid": false,
+                  "probabilistic_model_output": false,
+                  "structured_location_generic": false,
+                  "structured_location_placeholder": true,
+                  "deduplication_location_sufficient": false,
+                  "operational_information_sufficient": false,
+                  "category_narrative_conflict_ignored": false,
+                  "structured_narrative_location_conflict": false
+                },
+                "trace_id": "812e19fc-d5b9-464b-b0ca-3ef0de3b8e5b",
+                "embedding": null,
+                "extractor": {
+                  "model": null,
+                  "fallback_reason": null,
+                  "optional_model_used": false,
+                  "scientific_eligible": true,
+                  "optional_model_enabled": false
+                },
+                "elapsed_ms": 32.469,
+                "decision_path": "deterministic_out_of_scope",
+                "fallback_used": false,
+                "service_version": "0.8.0",
+                "operational_gate": "deterministic_unserviceable_location",
+                "scientific_eligible": false,
+                "probability_semantics": "deterministic_gate_or_policy_not_model_probability",
+                "probabilistic_model_output": false,
+                "pipeline_evaluation_eligible": true,
+                "candidate_evaluation_eligible": false,
+                "operational_information_sufficient": false
+              }
+            },
+            "total_tokens": null,
+            "finalizado_em": "2026-09-02T19:38:00.937-03:00",
+            "ia_decisao_id": 539,
+            "mensagem_erro": null,
+            "output_tokens": null,
+            "transporte_ok": true,
+            "versao_modelo": "local-hybrid-v1.8.0",
+            "perfil_entrada": "CLASSIFICACAO_COMPACTA",
+            "ciclo_tentativa": "CLASSIFICACAO-323-1788388680869-d8b5c3fde7bd2",
+            "ordem_tentativa": 1,
+            "workflow_origem": "WF03",
+            "status_tentativa": "VALID",
+            "total_candidatos": null,
+            "perfil_pensamento": "disabled",
+            "politica_execucao": {
+              "benchmark": false,
+              "fixed_role": "LOCAL",
+              "experimental": true,
+              "execution_mode": "VALIDACAO",
+              "expected_model": "local-hybrid-v1.8.0",
+              "local_endpoint": "http://local-ai-credential-proxy:8080/v1/classify?include_metadata=1",
+              "requested_role": "LOCAL",
+              "chain_attempted": [
+                "LOCAL"
+              ],
+              "candidate_policy": {},
+              "failover_allowed": false,
+              "policy_violation": false,
+              "failover_requested": false,
+              "operational_sequence": [
+                "LOCAL"
+              ],
+              "requested_role_valid": true,
+              "frozen_model_declared": true,
+              "attempt_input_profiles": [
+                {
+                  "role": "LOCAL",
+                  "endpoint": "http://local-ai-credential-proxy:8080/v1/classify?include_metadata=1",
+                  "input_chars": 507,
+                  "prompt_chars": 0,
+                  "input_profile": "CLASSIFICACAO_COMPACTA",
+                  "candidate_count": null,
+                  "scientific_metadata": {
+                    "gates": [
+                      "missing_fields:localizacao",
+                      "operational_information_insufficient",
+                      "deterministic_unserviceable_location",
+                      "out_of_scope"
+                    ],
+                    "artifact": {
+                      "file": "local_hybrid_bundle.joblib",
+                      "format": "joblib_hybrid_bundle",
+                      "version": "local-hybrid-bundle-v1.8.0",
+                      "manifest": "local_hybrid_manifest.json",
+                      "bundle_sha256": "f518b7f9699aa9e23aab7eb2479990619ad5085994569b3f7c3f253e5207bb5d",
+                      "primary33_used": false,
+                      "test_data_used": false,
+                      "candidate_frozen": true,
+                      "scientific_result": false,
+                      "scientific_status": "candidate_frozen_pending_confirmatory",
+                      "evaluation_eligible": true,
+                      "manifest_payload_sha256": "86989aa11cc002ecc2cf68c501f368c62fc278efba7832e4fa426fd6400d598f",
+                      "scientifically_validated": false,
+                      "candidate_bundle_eligible": true
+                    },
+                    "endpoint": "classify",
+                    "features": {
+                      "policy_source": "docs/DocumentaçãoInicialProjeto.txt:40-44",
+                      "exact_location": false,
+                      "narrative_asset": "software",
+                      "operational_gate": "deterministic_unserviceable_location",
+                      "contextual_locations": [],
+                      "serviceable_location": false,
+                      "probability_semantics": "deterministic_gate_or_policy_not_model_probability",
+                      "unique_named_location": false,
+                      "category_suggested_asset": null,
+                      "structured_location_valid": false,
+                      "probabilistic_model_output": false,
+                      "structured_location_generic": false,
+                      "structured_location_placeholder": true,
+                      "deduplication_location_sufficient": false,
+                      "operational_information_sufficient": false,
+                      "category_narrative_conflict_ignored": false,
+                      "structured_narrative_location_conflict": false
+                    },
+                    "trace_id": "812e19fc-d5b9-464b-b0ca-3ef0de3b8e5b",
+                    "embedding": null,
+                    "extractor": {
+                      "model": null,
+                      "fallback_reason": null,
+                      "optional_model_used": false,
+                      "scientific_eligible": true,
+                      "optional_model_enabled": false
+                    },
+                    "elapsed_ms": 32.469,
+                    "decision_path": "deterministic_out_of_scope",
+                    "fallback_used": false,
+                    "service_version": "0.8.0",
+                    "operational_gate": "deterministic_unserviceable_location",
+                    "scientific_eligible": false,
+                    "probability_semantics": "deterministic_gate_or_policy_not_model_probability",
+                    "probabilistic_model_output": false,
+                    "pipeline_evaluation_eligible": true,
+                    "candidate_evaluation_eligible": false,
+                    "operational_information_sufficient": false
+                  }
+                }
+              ],
+              "model_matches_experiment": true,
+              "paired_candidate_set_valid": true
+            },
+            "fallback_utilizado": false,
+            "metadata_cientifica": {
+              "gates": [
+                "missing_fields:localizacao",
+                "operational_information_insufficient",
+                "deterministic_unserviceable_location",
+                "out_of_scope"
+              ],
+              "artifact": {
+                "file": "local_hybrid_bundle.joblib",
+                "format": "joblib_hybrid_bundle",
+                "version": "local-hybrid-bundle-v1.8.0",
+                "manifest": "local_hybrid_manifest.json",
+                "bundle_sha256": "f518b7f9699aa9e23aab7eb2479990619ad5085994569b3f7c3f253e5207bb5d",
+                "primary33_used": false,
+                "test_data_used": false,
+                "candidate_frozen": true,
+                "scientific_result": false,
+                "scientific_status": "candidate_frozen_pending_confirmatory",
+                "evaluation_eligible": true,
+                "manifest_payload_sha256": "86989aa11cc002ecc2cf68c501f368c62fc278efba7832e4fa426fd6400d598f",
+                "scientifically_validated": false,
+                "candidate_bundle_eligible": true
+              },
+              "endpoint": "classify",
+              "features": {
+                "policy_source": "docs/DocumentaçãoInicialProjeto.txt:40-44",
+                "exact_location": false,
+                "narrative_asset": "software",
+                "operational_gate": "deterministic_unserviceable_location",
+                "contextual_locations": [],
+                "serviceable_location": false,
+                "probability_semantics": "deterministic_gate_or_policy_not_model_probability",
+                "unique_named_location": false,
+                "category_suggested_asset": null,
+                "structured_location_valid": false,
+                "probabilistic_model_output": false,
+                "structured_location_generic": false,
+                "structured_location_placeholder": true,
+                "deduplication_location_sufficient": false,
+                "operational_information_sufficient": false,
+                "category_narrative_conflict_ignored": false,
+                "structured_narrative_location_conflict": false
+              },
+              "trace_id": "812e19fc-d5b9-464b-b0ca-3ef0de3b8e5b",
+              "embedding": null,
+              "extractor": {
+                "model": null,
+                "fallback_reason": null,
+                "optional_model_used": false,
+                "scientific_eligible": true,
+                "optional_model_enabled": false
+              },
+              "elapsed_ms": 32.469,
+              "decision_path": "deterministic_out_of_scope",
+              "fallback_used": false,
+              "service_version": "0.8.0",
+              "operational_gate": "deterministic_unserviceable_location",
+              "scientific_eligible": false,
+              "probability_semantics": "deterministic_gate_or_policy_not_model_probability",
+              "probabilistic_model_output": false,
+              "pipeline_evaluation_eligible": true,
+              "candidate_evaluation_eligible": false,
+              "operational_information_sufficient": false
+            },
+            "retry_after_seconds": null
+          }
+        ],
+        "decisions": [
+          {
+            "id": 538,
+            "etapa": "DEDUPLICACAO",
+            "run_id": "VALIDACAO-WF06-E2E-20260902T223553548835Z",
+            "case_id": "E2E-WF06-001",
+            "erro_ia": false,
+            "predicao": "NAO_DUPLICADO",
+            "confianca": 0.99,
+            "criado_em": "2026-09-02T19:37:03.803448-03:00",
+            "modelo_ia": "local-native",
+            "ticket_id": 323,
+            "episode_id": "E2E-WF06-EP-001",
+            "input_hash": "55d735684fb1902845976b5a4ac652d0",
+            "output_raw": {
+              "confianca": 0.99,
+              "eh_duplicado": false,
+              "justificativa": "Não existem candidatos históricos distintos para comparação.",
+              "probabilidades": {
+                "duplicado": 0.01,
+                "nao_duplicado": 0.99
+              },
+              "caracteristicas_match": [],
+              "chamado_referencia_id": null
+            },
+            "provedor_ia": "local-native",
+            "input_resumo": {
+              "historico": [],
+              "ticket_id": 323,
+              "chamado_atual": {
+                "id": 323,
+                "run_id": "VALIDACAO-WF06-E2E-20260902T223553548835Z",
+                "titulo": "[TESTE_AUTOMATIZADO_E2E_WF06_LOCAL_V18] Falha de senha no sistema acadêmico",
+                "descricao": "[TESTE_AUTOMATIZADO_E2E_WF06_LOCAL_V18] Caso exclusivamente sintético; não atender. O usuário não consegue fazer login por erro de senha no sistema acadêmico. Não existe defeito físico, obra ou manutenção predial neste chamado.",
+                "status_num": 1,
+                "localizacao": "",
+                "status_nome": "Novo",
+                "tipo_servico": "",
+                "data_abertura": "2026-09-02 19:36:27",
+                "origem_evento": "wf06-fila-ia",
+                "tipo_servico_id": null,
+                "experiment_split": "VALIDACAO",
+                "experiment_run_id": "VALIDACAO-WF06-E2E-20260902T223553548835Z",
+                "ia_execution_mode": "VALIDACAO",
+                "ia_expected_model": "local-hybrid-v1.8.0",
+                "status_num_evento": 1,
+                "motivo_aceite_novo": "evento_status_novo",
+                "status_nome_evento": "Novo",
+                "data_ultima_mudanca": "2026-09-02 19:36:27",
+                "ia_fixed_model_role": "LOCAL",
+                "aceitar_triagem_novo": true,
+                "experiment_generation_config": {
+                  "test_mode": true,
+                  "synthetic_only": true,
+                  "evidence_nature": "VALIDACAO_TECNICA_NAO_CONFIRMATORIA",
+                  "failover_enabled": false,
+                  "fallback_enabled": false,
+                  "ia_execution_mode": "VALIDACAO",
+                  "ia_expected_model": "local-hybrid-v1.8.0",
+                  "scientific_result": false,
+                  "ia_fixed_model_role": "LOCAL",
+                  "model_bundle_sha256": "f518b7f9699aa9e23aab7eb2479990619ad5085994569b3f7c3f253e5207bb5d",
+                  "confirmatory_eligible": false,
+                  "model_manifest_sha256": "3e818b5513bdaa4b7f037f2d4ada743d9b47ade1e882e8d90ae216d0b215eb25",
+                  "auto_human_confirmation": false,
+                  "embedding_model_revision": "835ad14087e140460703cf0fae09f97d469d65c2",
+                  "embedding_model_tree_sha256": "28bb1e36cb3719c0c466de3013404307821da17bf901fc70f62af74bfa57a343",
+                  "model_manifest_payload_sha256": "86989aa11cc002ecc2cf68c501f368c62fc278efba7832e4fa426fd6400d598f"
+                }
+              },
+              "candidate_limit": 20,
+              "historico_total": 0,
+              "candidate_policy": {
+                "mode": "OPERATIONAL_SPLIT",
+                "ordering": "dedup_score_desc,updated_at_desc,id_asc",
+                "candidate_ids": [],
+                "benchmark_paired": false,
+                "same_list_and_order": false,
+                "effective_local_limit": 0,
+                "configured_local_limit": 20,
+                "effective_remote_limit": 0,
+                "configured_remote_limit": 20
+              },
+              "candidate_profile": "LOCAL_TOP_K",
+              "candidate_order_ids": [],
+              "candidatos_enviados": 0,
+              "local_candidate_limit": 20,
+              "candidatos_recuperados": 0,
+              "remote_candidate_limit": 20
+            },
+            "papel_modelo": "LOCAL",
+            "justificativa": "Não existem candidatos históricos distintos para comparação.",
+            "mensagem_erro": null,
+            "modo_execucao": "VALIDACAO",
+            "versao_modelo": "local-hybrid-v1.8.0",
+            "prompt_version": "deduplicacao_v9.1-episodica",
+            "ciclo_tentativa": "DEDUPLICACAO-323-1788388623182-e23005a8224e8",
+            "workflow_origem": "WF02",
+            "api_response_raw": {
+              "confianca": 0.99,
+              "eh_duplicado": false,
+              "justificativa": "Não existem candidatos históricos distintos para comparação.",
+              "probabilidades": {
+                "duplicado": 0.01,
+                "nao_duplicado": 0.99
+              },
+              "caracteristicas_match": [],
+              "chamado_referencia_id": null
+            },
+            "tentativa_numero": 1,
+            "total_candidatos": 0,
+            "tempo_resposta_ms": 45,
+            "fallback_utilizado": false,
+            "generation_profile": "local-hybrid-v1.8.0_granite97m-pytorch-fp32",
+            "operational_config": {
+              "ia_policy": {
+                "benchmark": false,
+                "fixed_role": "LOCAL",
+                "experimental": true,
+                "execution_mode": "VALIDACAO",
+                "expected_model": "local-hybrid-v1.8.0",
+                "local_endpoint": "http://local-ai-credential-proxy:8080/v1/deduplicate?include_metadata=1",
+                "requested_role": "LOCAL",
+                "chain_attempted": [
+                  "LOCAL"
+                ],
+                "candidate_policy": {
+                  "mode": "OPERATIONAL_SPLIT",
+                  "ordering": "dedup_score_desc,updated_at_desc,id_asc",
+                  "candidate_ids": [],
+                  "benchmark_paired": false,
+                  "same_list_and_order": false,
+                  "effective_local_limit": 0,
+                  "configured_local_limit": 20,
+                  "effective_remote_limit": 0,
+                  "configured_remote_limit": 20
+                },
+                "failover_allowed": false,
+                "policy_violation": false,
+                "failover_requested": false,
+                "operational_sequence": [
+                  "LOCAL"
+                ],
+                "requested_role_valid": true,
+                "frozen_model_declared": true,
+                "attempt_input_profiles": [
+                  {
+                    "role": "LOCAL",
+                    "endpoint": "http://local-ai-credential-proxy:8080/v1/deduplicate?include_metadata=1",
+                    "input_chars": 1767,
+                    "prompt_chars": 0,
+                    "input_profile": "DEDUP_LOCAL_TOP_K",
+                    "candidate_count": 0,
+                    "scientific_metadata": {
+                      "gates": [
+                        "missing_fields:localizacao",
+                        "empty_history"
+                      ],
+                      "artifact": {
+                        "file": "local_hybrid_bundle.joblib",
+                        "format": "joblib_hybrid_bundle",
+                        "version": "local-hybrid-bundle-v1.8.0",
+                        "manifest": "local_hybrid_manifest.json",
+                        "bundle_sha256": "f518b7f9699aa9e23aab7eb2479990619ad5085994569b3f7c3f253e5207bb5d",
+                        "primary33_used": false,
+                        "test_data_used": false,
+                        "candidate_frozen": true,
+                        "scientific_result": false,
+                        "scientific_status": "candidate_frozen_pending_confirmatory",
+                        "evaluation_eligible": true,
+                        "manifest_payload_sha256": "86989aa11cc002ecc2cf68c501f368c62fc278efba7832e4fa426fd6400d598f",
+                        "scientifically_validated": false,
+                        "candidate_bundle_eligible": true
+                      },
+                      "endpoint": "deduplicate",
+                      "features": null,
+                      "trace_id": "f5dd153e-5d2c-4251-b5e3-0c2b1b5a8881",
+                      "embedding": null,
+                      "extractor": null,
+                      "elapsed_ms": 12.612,
+                      "decision_path": "deterministic_empty_history",
+                      "fallback_used": false,
+                      "service_version": "0.8.0",
+                      "operational_gate": null,
+                      "scientific_eligible": false,
+                      "probability_semantics": null,
+                      "probabilistic_model_output": null,
+                      "pipeline_evaluation_eligible": true,
+                      "candidate_evaluation_eligible": false,
+                      "operational_information_sufficient": null
+                    }
+                  }
+                ],
+                "model_matches_experiment": true,
+                "paired_candidate_set_valid": true
+              },
+              "candidate_limit": 20,
+              "candidate_policy": {
+                "mode": "OPERATIONAL_SPLIT",
+                "ordering": "dedup_score_desc,updated_at_desc,id_asc",
+                "candidate_ids": [],
+                "benchmark_paired": false,
+                "same_list_and_order": false,
+                "effective_local_limit": 0,
+                "configured_local_limit": 20,
+                "effective_remote_limit": 0,
+                "configured_remote_limit": 20
+              },
+              "confianca_minima": 0.65,
+              "ia_attempt_count": 1,
+              "ia_failover_used": false,
+              "ia_selected_role": "LOCAL",
+              "candidate_profile": "LOCAL_TOP_K",
+              "ia_selected_model": "local-hybrid-v1.8.0",
+              "motivos_abstencao": [],
+              "predicao_semantica": "NAO_DUPLICADO",
+              "candidate_order_ids": [],
+              "decisao_operacional": "NAO_DUPLICADO",
+              "local_decision_path": "deterministic_empty_history",
+              "ia_selected_provider": "local-native",
+              "local_runtime_frozen": true,
+              "abstencao_operacional": false,
+              "local_candidate_limit": 20,
+              "frozen_candidate_valid": false,
+              "remote_candidate_limit": 20,
+              "dedup_negative_threshold": 0.07,
+              "dedup_positive_threshold": 0.95,
+              "benchmark_record_eligible": false,
+              "local_scientific_metadata": {
+                "gates": [
+                  "missing_fields:localizacao",
+                  "empty_history"
+                ],
+                "artifact": {
+                  "file": "local_hybrid_bundle.joblib",
+                  "format": "joblib_hybrid_bundle",
+                  "version": "local-hybrid-bundle-v1.8.0",
+                  "manifest": "local_hybrid_manifest.json",
+                  "bundle_sha256": "f518b7f9699aa9e23aab7eb2479990619ad5085994569b3f7c3f253e5207bb5d",
+                  "primary33_used": false,
+                  "test_data_used": false,
+                  "candidate_frozen": true,
+                  "scientific_result": false,
+                  "scientific_status": "candidate_frozen_pending_confirmatory",
+                  "evaluation_eligible": true,
+                  "manifest_payload_sha256": "86989aa11cc002ecc2cf68c501f368c62fc278efba7832e4fa426fd6400d598f",
+                  "scientifically_validated": false,
+                  "candidate_bundle_eligible": true
+                },
+                "endpoint": "deduplicate",
+                "features": null,
+                "trace_id": "f5dd153e-5d2c-4251-b5e3-0c2b1b5a8881",
+                "embedding": null,
+                "extractor": null,
+                "elapsed_ms": 12.612,
+                "decision_path": "deterministic_empty_history",
+                "fallback_used": false,
+                "service_version": "0.8.0",
+                "operational_gate": null,
+                "scientific_eligible": false,
+                "probability_semantics": null,
+                "probabilistic_model_output": null,
+                "pipeline_evaluation_eligible": true,
+                "candidate_evaluation_eligible": false,
+                "operational_information_sufficient": null
+              },
+              "probabilidades_semanticas": {
+                "duplicado": 0.01,
+                "nao_duplicado": 0.99
+              },
+              "local_probability_semantics": null,
+              "confirmatory_result_validated": false,
+              "local_scientific_result_eligible": false,
+              "local_pipeline_evaluation_eligible": true,
+              "local_candidate_evaluation_eligible": false
+            },
+            "output_normalizado": {
+              "abstained": false,
+              "confianca": 0.99,
+              "eh_duplicado": false,
+              "justificativa": "Não existem candidatos históricos distintos para comparação.",
+              "probabilidades": {
+                "duplicado": 0.01,
+                "nao_duplicado": 0.99
+              },
+              "requer_revisao": false,
+              "limiar_negativo": 0.07,
+              "limiar_positivo": 0.95,
+              "motivos_abstencao": [],
+              "chamado_referencia": null,
+              "predicao_semantica": "NAO_DUPLICADO",
+              "confianca_declarada": 0.99,
+              "decisao_operacional": "NAO_DUPLICADO",
+              "caracteristicas_match": [],
+              "chamado_referencia_id": null,
+              "confianca_operacional": 0.99,
+              "probabilidades_semanticas": {
+                "duplicado": 0.01,
+                "nao_duplicado": 0.99
+              },
+              "probabilidades_operacionais": {
+                "duplicado": 0.01,
+                "nao_duplicado": 0.99
+              },
+              "chamado_referencia_semantica_id": null
+            },
+            "classe_referencia_id": null,
+            "probabilidades_validas": true,
+            "total_modelos_tentados": 1,
+            "referencia_presente_candidatos": null,
+            "elegivel_eficacia_confirmatoria": false
+          },
+          {
+            "id": 539,
+            "etapa": "CLASSIFICACAO",
+            "run_id": "VALIDACAO-WF06-E2E-20260902T223553548835Z",
+            "case_id": "E2E-WF06-001",
+            "erro_ia": false,
+            "predicao": "TRIAGEM_MANUAL",
+            "confianca": 0.85,
+            "criado_em": "2026-09-02T19:38:01.482165-03:00",
+            "modelo_ia": "local-native",
+            "ticket_id": 323,
+            "episode_id": "E2E-WF06-EP-001",
+            "input_hash": "21f5f05a1d170038bf721ac062fe6cce",
+            "output_raw": {
+              "tipo": "TRIAGEM_MANUAL",
+              "executor": "FISCAL",
+              "categoria": "triagem manual",
+              "confianca": 0.85,
+              "justificativa": "Demanda de software ou sistema fora do escopo de manutenção física.",
+              "probabilidades": {
+                "DEMO": 0.05,
+                "OBRA": 0.05,
+                "SOB_DEMANDA": 0.05,
+                "TRIAGEM_MANUAL": 0.85
+              },
+              "mensagem_solicitante": "O chamado será validado pelo fiscal antes de qualquer encaminhamento."
+            },
+            "provedor_ia": "local-native",
+            "input_resumo": {
+              "chamado": {
+                "id": 323,
+                "titulo": "[TESTE_AUTOMATIZADO_E2E_WF06_LOCAL_V18] Falha de senha no sistema acadêmico",
+                "descricao": "[TESTE_AUTOMATIZADO_E2E_WF06_LOCAL_V18] Caso exclusivamente sintético; não atender. O usuário não consegue fazer login por erro de senha no sistema acadêmico. Não existe defeito físico, obra ou manutenção predial neste chamado.",
+                "status_num": 4,
+                "localizacao": "",
+                "status_nome": "Pendente",
+                "tipo_servico": "",
+                "tipo_servico_id": null,
+                "status_original_num": 4,
+                "status_original_nome": "Pendente"
+              },
+              "ticket_id": 323,
+              "localizacao": null,
+              "tipo_servico": null,
+              "status_original_num": 4
+            },
+            "papel_modelo": "LOCAL",
+            "justificativa": "Demanda de software ou sistema fora do escopo de manutenção física.",
+            "mensagem_erro": null,
+            "modo_execucao": "VALIDACAO",
+            "versao_modelo": "local-hybrid-v1.8.0",
+            "prompt_version": "classificacao_v9.1-episodica",
+            "ciclo_tentativa": "CLASSIFICACAO-323-1788388680869-d8b5c3fde7bd2",
+            "workflow_origem": "WF03",
+            "api_response_raw": {
+              "tipo": "TRIAGEM_MANUAL",
+              "executor": "FISCAL",
+              "categoria": "triagem manual",
+              "confianca": 0.85,
+              "justificativa": "Demanda de software ou sistema fora do escopo de manutenção física.",
+              "probabilidades": {
+                "DEMO": 0.05,
+                "OBRA": 0.05,
+                "SOB_DEMANDA": 0.05,
+                "TRIAGEM_MANUAL": 0.85
+              },
+              "mensagem_solicitante": "O chamado será validado pelo fiscal antes de qualquer encaminhamento."
+            },
+            "tentativa_numero": 1,
+            "total_candidatos": null,
+            "tempo_resposta_ms": 66,
+            "fallback_utilizado": false,
+            "generation_profile": "local-hybrid-v1.8.0_granite97m-pytorch-fp32",
+            "operational_config": {
+              "ia_policy": {
+                "benchmark": false,
+                "fixed_role": "LOCAL",
+                "experimental": true,
+                "execution_mode": "VALIDACAO",
+                "expected_model": "local-hybrid-v1.8.0",
+                "local_endpoint": "http://local-ai-credential-proxy:8080/v1/classify?include_metadata=1",
+                "requested_role": "LOCAL",
+                "chain_attempted": [
+                  "LOCAL"
+                ],
+                "candidate_policy": {},
+                "failover_allowed": false,
+                "policy_violation": false,
+                "failover_requested": false,
+                "operational_sequence": [
+                  "LOCAL"
+                ],
+                "requested_role_valid": true,
+                "frozen_model_declared": true,
+                "attempt_input_profiles": [
+                  {
+                    "role": "LOCAL",
+                    "endpoint": "http://local-ai-credential-proxy:8080/v1/classify?include_metadata=1",
+                    "input_chars": 507,
+                    "prompt_chars": 0,
+                    "input_profile": "CLASSIFICACAO_COMPACTA",
+                    "candidate_count": null,
+                    "scientific_metadata": {
+                      "gates": [
+                        "missing_fields:localizacao",
+                        "operational_information_insufficient",
+                        "deterministic_unserviceable_location",
+                        "out_of_scope"
+                      ],
+                      "artifact": {
+                        "file": "local_hybrid_bundle.joblib",
+                        "format": "joblib_hybrid_bundle",
+                        "version": "local-hybrid-bundle-v1.8.0",
+                        "manifest": "local_hybrid_manifest.json",
+                        "bundle_sha256": "f518b7f9699aa9e23aab7eb2479990619ad5085994569b3f7c3f253e5207bb5d",
+                        "primary33_used": false,
+                        "test_data_used": false,
+                        "candidate_frozen": true,
+                        "scientific_result": false,
+                        "scientific_status": "candidate_frozen_pending_confirmatory",
+                        "evaluation_eligible": true,
+                        "manifest_payload_sha256": "86989aa11cc002ecc2cf68c501f368c62fc278efba7832e4fa426fd6400d598f",
+                        "scientifically_validated": false,
+                        "candidate_bundle_eligible": true
+                      },
+                      "endpoint": "classify",
+                      "features": {
+                        "policy_source": "docs/DocumentaçãoInicialProjeto.txt:40-44",
+                        "exact_location": false,
+                        "narrative_asset": "software",
+                        "operational_gate": "deterministic_unserviceable_location",
+                        "contextual_locations": [],
+                        "serviceable_location": false,
+                        "probability_semantics": "deterministic_gate_or_policy_not_model_probability",
+                        "unique_named_location": false,
+                        "category_suggested_asset": null,
+                        "structured_location_valid": false,
+                        "probabilistic_model_output": false,
+                        "structured_location_generic": false,
+                        "structured_location_placeholder": true,
+                        "deduplication_location_sufficient": false,
+                        "operational_information_sufficient": false,
+                        "category_narrative_conflict_ignored": false,
+                        "structured_narrative_location_conflict": false
+                      },
+                      "trace_id": "812e19fc-d5b9-464b-b0ca-3ef0de3b8e5b",
+                      "embedding": null,
+                      "extractor": {
+                        "model": null,
+                        "fallback_reason": null,
+                        "optional_model_used": false,
+                        "scientific_eligible": true,
+                        "optional_model_enabled": false
+                      },
+                      "elapsed_ms": 32.469,
+                      "decision_path": "deterministic_out_of_scope",
+                      "fallback_used": false,
+                      "service_version": "0.8.0",
+                      "operational_gate": "deterministic_unserviceable_location",
+                      "scientific_eligible": false,
+                      "probability_semantics": "deterministic_gate_or_policy_not_model_probability",
+                      "probabilistic_model_output": false,
+                      "pipeline_evaluation_eligible": true,
+                      "candidate_evaluation_eligible": false,
+                      "operational_information_sufficient": false
+                    }
+                  }
+                ],
+                "model_matches_experiment": true,
+                "paired_candidate_set_valid": true
+              },
+              "confianca_minima": 0.65,
+              "ia_attempt_count": 1,
+              "ia_failover_used": false,
+              "ia_selected_role": "LOCAL",
+              "ia_selected_model": "local-hybrid-v1.8.0",
+              "predicao_semantica": "TRIAGEM_MANUAL",
+              "decisao_operacional": "ABSTENCAO",
+              "local_decision_path": "deterministic_out_of_scope",
+              "ia_selected_provider": "local-native",
+              "local_runtime_frozen": true,
+              "abstencao_operacional": true,
+              "demo_equipe_disponivel": "true",
+              "frozen_candidate_valid": false,
+              "benchmark_record_eligible": false,
+              "local_scientific_metadata": {
+                "gates": [
+                  "missing_fields:localizacao",
+                  "operational_information_insufficient",
+                  "deterministic_unserviceable_location",
+                  "out_of_scope"
+                ],
+                "artifact": {
+                  "file": "local_hybrid_bundle.joblib",
+                  "format": "joblib_hybrid_bundle",
+                  "version": "local-hybrid-bundle-v1.8.0",
+                  "manifest": "local_hybrid_manifest.json",
+                  "bundle_sha256": "f518b7f9699aa9e23aab7eb2479990619ad5085994569b3f7c3f253e5207bb5d",
+                  "primary33_used": false,
+                  "test_data_used": false,
+                  "candidate_frozen": true,
+                  "scientific_result": false,
+                  "scientific_status": "candidate_frozen_pending_confirmatory",
+                  "evaluation_eligible": true,
+                  "manifest_payload_sha256": "86989aa11cc002ecc2cf68c501f368c62fc278efba7832e4fa426fd6400d598f",
+                  "scientifically_validated": false,
+                  "candidate_bundle_eligible": true
+                },
+                "endpoint": "classify",
+                "features": {
+                  "policy_source": "docs/DocumentaçãoInicialProjeto.txt:40-44",
+                  "exact_location": false,
+                  "narrative_asset": "software",
+                  "operational_gate": "deterministic_unserviceable_location",
+                  "contextual_locations": [],
+                  "serviceable_location": false,
+                  "probability_semantics": "deterministic_gate_or_policy_not_model_probability",
+                  "unique_named_location": false,
+                  "category_suggested_asset": null,
+                  "structured_location_valid": false,
+                  "probabilistic_model_output": false,
+                  "structured_location_generic": false,
+                  "structured_location_placeholder": true,
+                  "deduplication_location_sufficient": false,
+                  "operational_information_sufficient": false,
+                  "category_narrative_conflict_ignored": false,
+                  "structured_narrative_location_conflict": false
+                },
+                "trace_id": "812e19fc-d5b9-464b-b0ca-3ef0de3b8e5b",
+                "embedding": null,
+                "extractor": {
+                  "model": null,
+                  "fallback_reason": null,
+                  "optional_model_used": false,
+                  "scientific_eligible": true,
+                  "optional_model_enabled": false
+                },
+                "elapsed_ms": 32.469,
+                "decision_path": "deterministic_out_of_scope",
+                "fallback_used": false,
+                "service_version": "0.8.0",
+                "operational_gate": "deterministic_unserviceable_location",
+                "scientific_eligible": false,
+                "probability_semantics": "deterministic_gate_or_policy_not_model_probability",
+                "probabilistic_model_output": false,
+                "pipeline_evaluation_eligible": true,
+                "candidate_evaluation_eligible": false,
+                "operational_information_sufficient": false
+              },
+              "probabilidades_semanticas": {
+                "DEMO": 0.05,
+                "OBRA": 0.05,
+                "SOB_DEMANDA": 0.05,
+                "TRIAGEM_MANUAL": 0.85
+              },
+              "local_probability_semantics": "deterministic_gate_or_policy_not_model_probability",
+              "confirmatory_result_validated": false,
+              "local_scientific_result_eligible": false,
+              "local_pipeline_evaluation_eligible": true,
+              "local_candidate_evaluation_eligible": false
+            },
+            "output_normalizado": {
+              "tipo": "TRIAGEM_MANUAL",
+              "executor": "FISCAL",
+              "abstained": true,
+              "categoria": "triagem manual",
+              "confianca": 0.85,
+              "justificativa": "Demanda de software ou sistema fora do escopo de manutenção física.",
+              "probabilidades": {
+                "DEMO": 0.05,
+                "OBRA": 0.05,
+                "SOB_DEMANDA": 0.05,
+                "TRIAGEM_MANUAL": 0.85
+              },
+              "requer_revisao": true,
+              "tipo_declarado": "TRIAGEM_MANUAL",
+              "demo_disponivel": null,
+              "classe_semantica": "TRIAGEM_MANUAL",
+              "rota_operacional": "TRIAGEM_MANUAL",
+              "executor_declarado": "FISCAL",
+              "confianca_declarada": 0.85,
+              "obra_safety_blocked": false,
+              "mensagem_solicitante": "O chamado será validado pelo fiscal antes de qualquer encaminhamento.",
+              "confianca_operacional": 0.85,
+              "obra_confianca_minima": 0.9,
+              "obra_evidencia_explicita": false,
+              "probabilidades_semanticas": {
+                "DEMO": 0.05,
+                "OBRA": 0.05,
+                "SOB_DEMANDA": 0.05,
+                "TRIAGEM_MANUAL": 0.85
+              },
+              "probabilidades_operacionais": {
+                "DEMO": 0.05,
+                "OBRA": 0.05,
+                "SOB_DEMANDA": 0.05,
+                "TRIAGEM_MANUAL": 0.85
+              }
+            },
+            "classe_referencia_id": null,
+            "probabilidades_validas": true,
+            "total_modelos_tentados": 1,
+            "referencia_presente_candidatos": null,
+            "elegivel_eficacia_confirmatoria": false
+          }
+        ]
+      },
+      "foreign_interference": {
+        "janela_inicio_em": "2026-09-02T19:36:24.731776-03:00",
+        "janela_fim_em": "2026-09-02T19:38:04.399059-03:00",
+        "entradas_fila_estranhas": 0,
+        "reservas_wf06_estranhas": 0,
+        "tickets_fila_estranhos_ativos": 0,
+        "decisoes_ia_estranhas": 0,
+        "tickets_estranhos": [],
+        "interferencia_estranha_detectada": false
+      },
+      "passed": true,
+      "cleanup": {
+        "glpi_purged": true,
+        "database_deleted": {
+          "auto_confirmations": 0,
+          "human_reviews": 0,
+          "model_attempts": 2,
+          "ai_decisions": 2,
+          "dlq": 0,
+          "queue_metrics": 2,
+          "workflow_events": 2,
+          "dataset": 1,
+          "ticket": 1,
+          "experiment": 1
+        },
+        "controller_restored": true,
+        "runtime_profile_restored": true,
+        "errors": [],
+        "complete": true
+      },
+      "finished_at": "2026-09-02T22:38:20.189571+00:00",
+      "evidence_payload_sha256": "4893e22b0e1fced3493505bcb17b8d5052f3c20e7d86ce9efbdbb3c872c2e887"
+    },
+    "live_point_in_time": {
+      "status": "PASS",
+      "evidence_status": "POINT_IN_TIME_TECHNICAL_EVIDENCE",
+      "scientific_result": false,
+      "collected_at": "2026-09-03T04:24:36.340864Z",
+      "http_probes": {
+        "local_ai": {
+          "status": 200,
+          "latency_ms": 4.898099999991246,
+          "error": null
+        },
+        "n8n": {
+          "status": 200,
+          "latency_ms": 9.620799999538576,
+          "error": null
+        },
+        "glpi": {
+          "status": 200,
+          "latency_ms": 125.71800000296207,
+          "error": null
+        }
+      },
+      "containers": [
+        "/glpi|running|healthy",
+        "/glpi-db|running|healthy",
+        "/glpi-dedup-db|running|healthy",
+        "/n8n|running|healthy"
+      ],
+      "docker_probe_error": null,
+      "interpretation_limit": "Uma coleta pontual não mede disponibilidade na janela do SLO."
+    }
+  },
+  "interpretation_limit": "O relatório reúne evidência técnica de escopo limitado. Não substitui aceite institucional, evidência longitudinal de produção ou avaliação científica confirmatória. As janelas intradiárias locais, quando completas, validam apenas o mecanismo técnico."
+}

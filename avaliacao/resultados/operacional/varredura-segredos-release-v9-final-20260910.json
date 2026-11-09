@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "candidate_tree": {
+    "status": "PASS",
+    "finding_count": 0,
+    "findings": [],
+    "large_text_files_not_content_scanned": []
+  },
+  "reachable_git_history": {
+    "status": "PASS",
+    "blob_count_scanned": 0,
+    "finding_count": 0,
+    "findings": []
+  },
+  "secrets_printed": false,
+  "scientific_result": false,
+  "requires_rotation_or_history_remediation": false,
+  "interpretation_limit": "Varredura por padrões reduz risco, mas não prova ausência absoluta de segredos. Arquivos binários e textos acima de 2 MiB não foram lidos como conteúdo."
+}

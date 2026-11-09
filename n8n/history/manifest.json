@@ -1,0 +1,401 @@
+{
+  "archive_date": "2026-08-12",
+  "archive_schema": "n8n-history-public-v1",
+  "artifacts": [
+    {
+      "artifact": "workflows/v1_triagem.json",
+      "node_count": 14,
+      "role": "historical workflow",
+      "sanitized_sha256": "794180c23940558d9fcc5af388e21b6df6822a2e70e4af5dc89889b09b4f4079",
+      "source": {
+        "path": "n8n/workflows/Teste01_v1.json",
+        "selected_workflow_sha256": "dbda9f53df70f647061e2d3c1ce1b5753210b60394551389e8be748a7b317e86",
+        "source_file_sha256": "128e27cb2bc37a93a155a6e7a2cb637f6a743633b7112b887405a44b0a38ac22"
+      },
+      "source_name": "My workflow",
+      "source_workflow_id": "BulPd8QBfpUcrYhX",
+      "version": "V1"
+    },
+    {
+      "artifact": "workflows/v2_triagem.json",
+      "node_count": 32,
+      "role": "historical workflow",
+      "sanitized_sha256": "ba901844a5d6e6733c37aa07447d460ed9d2b0f707909335156ce7e578fcbad6",
+      "source": {
+        "path": "n8n/workflows/Teste01_v2.json",
+        "selected_workflow_sha256": "d1e9de47ff201711d2b28bf74b1fbe9ca9f590abed6012f63f2c3297e9be0ebf",
+        "source_file_sha256": "ac3d69ddb69d536e79d61cdc89daf937eb128ba87d58885d2160bdeb654f55bf"
+      },
+      "source_name": "Triagem Inteligente de Chamados - GLPI + IA",
+      "source_workflow_id": "2khCj21tn8m556qN",
+      "version": "V2"
+    },
+    {
+      "artifact": "workflows/v3_triagem.json",
+      "node_count": 49,
+      "role": "historical workflow",
+      "sanitized_sha256": "f7cd61d671747f6b33198acb08a2e20279c9e2b6ab3cbda4e9720ba969c5c96b",
+      "source": {
+        "path": "n8n/workflows/Teste01_v3.json",
+        "selected_workflow_sha256": "2db52780c3700d0bd9e8d0e4768204c60f670b7ef5d0a943f8f44fc797f4167b",
+        "source_file_sha256": "70ef1d93a8e53f60ad918cb2f53f9c758d2f96416cc46156acbb15777e99d179"
+      },
+      "source_name": "Triagem Inteligente de Chamados - GLPI + IA (Webhook Runtime)",
+      "source_workflow_id": "TwPB3OJdc6OorR9Z",
+      "version": "V3"
+    },
+    {
+      "artifact": "workflows/v4_triagem.json",
+      "node_count": 52,
+      "role": "historical workflow",
+      "sanitized_sha256": "3399539214abbb88e56d1622940616c91a4fd28e1bb2908f9df8f2c3bb422e80",
+      "source": {
+        "path": "n8n/workflows/Teste01_v4.json",
+        "selected_workflow_sha256": "dceeb77aa4399040d18c6e77caad75a2ec65e9aab03012c02ee512c46ae01a6b",
+        "source_file_sha256": "6a9ac35a1bbd04f84b8e5b77378c0c7fde7783be1366b43b73fde286f8820431"
+      },
+      "source_name": "Triagem Inteligente de Chamados  - Versão 4",
+      "source_workflow_id": "ktRywrFnVD4UXSmI",
+      "version": "V4"
+    },
+    {
+      "artifact": "workflows/v5_triagem.json",
+      "node_count": 39,
+      "role": "historical workflow",
+      "sanitized_sha256": "070a13f154542cd2bd96ede152af77b5caff42960a17e5865d4bc045875fe0ad",
+      "source": {
+        "path": "n8n/workflows/Teste01_v5.json",
+        "selected_workflow_sha256": "7722ed477d5f949844f4edc30b2340b3acb23a98e3a2941a237a7ef93a301232",
+        "source_file_sha256": "070a13f154542cd2bd96ede152af77b5caff42960a17e5865d4bc045875fe0ad"
+      },
+      "source_name": "Triagem Inteligente de Chamados  - Versão 5",
+      "source_workflow_id": null,
+      "version": "V5"
+    },
+    {
+      "artifact": "workflows/v6_triagem_postgres.json",
+      "node_count": 49,
+      "role": "historical workflow",
+      "sanitized_sha256": "c2100af1f59562f221c6c24b0d6e7762a4ee2407491ec73929855dcacbe05114",
+      "source": {
+        "path": "n8n/workflows/all_workflows_after_v7.json",
+        "selected_workflow_sha256": "bb93296c3d18cbfc71807e7876c182d9fb95289adaa9fda28315a1f3d7547edc",
+        "selector_id": "AutoFinal20260422A",
+        "source_file_sha256": "9f6eb0324fd322acaf04f0798c253e0962e3f11431546496bc7a7603f9a506d6"
+      },
+      "source_name": "Triagem Inteligente de Chamados - v6 (Postgres)",
+      "source_workflow_id": "AutoFinal20260422A",
+      "version": "V6"
+    },
+    {
+      "artifact": "workflows/v7_triagem_postgres.json",
+      "node_count": 66,
+      "role": "historical workflow",
+      "sanitized_sha256": "5c09a280d9b796a3ec3285c2ee35c286c944adda9c77398a4d93c450938ecd66",
+      "source": {
+        "path": "n8n/workflows/v7_current.json",
+        "selected_workflow_sha256": "2fd294abc20d041704c6d9baf847b505038527e7aa46f23c76177a4909124272",
+        "source_file_sha256": "701a22b4bf8cf651048849715680fa0f5c489e5fb15ac48507cfb32329f43b89"
+      },
+      "source_name": "Triagem Inteligente de Chamados - v7 (Postgres)",
+      "source_workflow_id": "TriagemV7Pg20260429",
+      "version": "V7"
+    },
+    {
+      "artifact": "workflows/v8_wf01_orquestrador.json",
+      "node_count": 20,
+      "role": "orchestrator",
+      "sanitized_sha256": "6c09ee5885d4d1f24383c6a0e384e82835d3162f1fd95c94101423c6e53d080b",
+      "source": {
+        "path": "n8n/workflows/Versão8/WF01_Orquestrador.json",
+        "selected_workflow_sha256": "da1d4aa2f88d100866d37114f0206b053fccd6531e0888ba66ebcdd9a92f6ec8",
+        "source_file_sha256": "709ad9efba8a5e8b29d53ba3c4bef06a73c1dc2d35daf19f8cae0506c5fd6911"
+      },
+      "source_name": "V8 - WF01 Orquestrador",
+      "source_workflow_id": null,
+      "version": "V8"
+    },
+    {
+      "artifact": "workflows/v8_wf02_triagem.json",
+      "node_count": 33,
+      "role": "triage and classification",
+      "sanitized_sha256": "36f47a651d84d042d3f562dd627226ae84ef60860c8740c8ee45559b3ce7c7a5",
+      "source": {
+        "path": "n8n/workflows/Versão8/WF02_Triagem.json",
+        "selected_workflow_sha256": "a0b2ffbc2281256b48d37a6c3e92f8055879f2e33cca52ef5456db46dc9db9c1",
+        "source_file_sha256": "d66a97141b6bc4fc0a80ac542381ab21e56ca1b70a8631879e4c20c979d70074"
+      },
+      "source_name": "V8 - WF02 Triagem e Classificacao",
+      "source_workflow_id": null,
+      "version": "V8"
+    },
+    {
+      "artifact": "workflows/v8_wf03_fiscal.json",
+      "node_count": 28,
+      "role": "human decision",
+      "sanitized_sha256": "3e4b949e63d9e042e73db13bfc79063b73b8cdb04f7b85fb8da5391b7d43196f",
+      "source": {
+        "path": "n8n/workflows/Versão8/WF03_Fiscal.json",
+        "selected_workflow_sha256": "ac3efd7bcbec2d71474a952a1939deaed46b6328ca413991ad10431142588a4f",
+        "source_file_sha256": "70fe4e659e2170f219444122843bf7a608872a8b812d83b742091f125295fda9"
+      },
+      "source_name": "V8 - WF03 Decisao Fiscal",
+      "source_workflow_id": null,
+      "version": "V8"
+    }
+  ],
+  "canonical_selection": {
+    "V1-V5": "named version files preserved in the private workspace",
+    "V6": "workflow id AutoFinal20260422A selected from aggregate export",
+    "V7": "latest audited 66-node snapshot v7_current.json",
+    "V8": "three named design exports: WF01, WF02 and WF03"
+  },
+  "determinism": {
+    "json_encoding": "UTF-8 without BOM",
+    "json_format": "sorted keys, two-space indentation, LF newline",
+    "source_object_hash": "SHA-256 of canonical compact JSON with sorted keys"
+  },
+  "publication_scope": "historical, sanitized, inactive and non-production",
+  "transformations": {
+    "workflows/v1_triagem.json": {
+      "credential_references_removed": 2,
+      "runtime_fields_removed": 1,
+      "sensitive_values_replaced": 4,
+      "top_level_fields_omitted": 4
+    },
+    "workflows/v2_triagem.json": {
+      "credential_references_removed": 2,
+      "runtime_fields_removed": 1,
+      "sensitive_values_replaced": 3,
+      "top_level_fields_omitted": 4
+    },
+    "workflows/v3_triagem.json": {
+      "credential_references_removed": 2,
+      "runtime_fields_removed": 4,
+      "sensitive_values_replaced": 11,
+      "top_level_fields_omitted": 11
+    },
+    "workflows/v4_triagem.json": {
+      "credential_references_removed": 2,
+      "runtime_fields_removed": 4,
+      "sensitive_values_replaced": 11,
+      "top_level_fields_omitted": 11
+    },
+    "workflows/v5_triagem.json": {
+      "credential_references_removed": 0,
+      "runtime_fields_removed": 0,
+      "sensitive_values_replaced": 0,
+      "top_level_fields_omitted": 0
+    },
+    "workflows/v6_triagem_postgres.json": {
+      "credential_references_removed": 12,
+      "runtime_fields_removed": 4,
+      "sensitive_values_replaced": 15,
+      "top_level_fields_omitted": 11
+    },
+    "workflows/v7_triagem_postgres.json": {
+      "credential_references_removed": 16,
+      "runtime_fields_removed": 4,
+      "sensitive_values_replaced": 18,
+      "top_level_fields_omitted": 11
+    },
+    "workflows/v8_wf01_orquestrador.json": {
+      "credential_references_removed": 3,
+      "runtime_fields_removed": 0,
+      "sensitive_values_replaced": 6,
+      "top_level_fields_omitted": 0
+    },
+    "workflows/v8_wf02_triagem.json": {
+      "credential_references_removed": 12,
+      "runtime_fields_removed": 0,
+      "sensitive_values_replaced": 14,
+      "top_level_fields_omitted": 0
+    },
+    "workflows/v8_wf03_fiscal.json": {
+      "credential_references_removed": 6,
+      "runtime_fields_removed": 0,
+      "sensitive_values_replaced": 9,
+      "top_level_fields_omitted": 0
+    }
+  },
+  "variants": [
+    {
+      "exclusion_reason": "Not the selected canonical snapshot; retained in the manifest for provenance and variant comparison only.",
+      "label": "excluded-v6-initial-postgres",
+      "node_count": 49,
+      "role": "excluded earlier V6 candidate",
+      "sanitized_sha256": "a098ce38e4bc017c7cb7b3aafcddea3547dea9ba122e95115fe0dbc9c063d456",
+      "selection_status": "excluded",
+      "source": {
+        "path": "n8n/workflows/all_workflows_after_v7.json",
+        "selected_workflow_sha256": "a8bffaab856ca2e763ddf270a7fd67e2719249ac21af88977fb170187a911147",
+        "selector_id": "wfTeste01v6Pg001",
+        "source_file_sha256": "9f6eb0324fd322acaf04f0798c253e0962e3f11431546496bc7a7603f9a506d6"
+      },
+      "source_name": "Triagem Inteligente de Chamados - v6 (Postgres)",
+      "source_workflow_id": "wfTeste01v6Pg001",
+      "version": "V6"
+    },
+    {
+      "exclusion_reason": "Not the selected canonical snapshot; retained in the manifest for provenance and variant comparison only.",
+      "label": "excluded-v7-63-initial",
+      "node_count": 63,
+      "role": "excluded 63-node snapshot",
+      "sanitized_sha256": "bf1efb14d00ab03a2facf69dc725b79fef2a59e2710dd5012a5766cdf648fb53",
+      "selection_status": "excluded",
+      "source": {
+        "path": "n8n/workflows/Teste01_v7.json",
+        "selected_workflow_sha256": "b7b92add8bce99af309717e2c375ffdbbd29bc173437b67ebd9f450d9e5252a7",
+        "source_file_sha256": "7e9ffdfc0b5232d310201dc99bca81cc704245e12eed57aabbabd649ca0e525f"
+      },
+      "source_name": "Teste01_v7",
+      "source_workflow_id": "TriagemV7Pg20260429",
+      "version": "V7"
+    },
+    {
+      "exclusion_reason": "Not the selected canonical snapshot; retained in the manifest for provenance and variant comparison only.",
+      "label": "excluded-v7-63-final",
+      "node_count": 63,
+      "role": "excluded 63-node snapshot",
+      "sanitized_sha256": "5b826072c54e33593e9b348c54de665dc650580bdb37eb14863a9b3adf240863",
+      "selection_status": "excluded",
+      "source": {
+        "path": "n8n/workflows/Teste01_v7final.json",
+        "selected_workflow_sha256": "acf228af744f4ce3f327f706470eaf7d1d18c68c8082cb59e0c1fc7c9fbfb54b",
+        "source_file_sha256": "a2850e8999f2161bd504c966cc28bcef8551a7362b04f76efea1ef311f2d4c27"
+      },
+      "source_name": "Teste01_v7",
+      "source_workflow_id": "TriagemV7Pg20260429",
+      "version": "V7"
+    },
+    {
+      "exclusion_reason": "Not the selected canonical snapshot; retained in the manifest for provenance and variant comparison only.",
+      "label": "excluded-v7-63-manutencao",
+      "node_count": 63,
+      "role": "excluded duplicate 63-node snapshot",
+      "sanitized_sha256": "5b826072c54e33593e9b348c54de665dc650580bdb37eb14863a9b3adf240863",
+      "selection_status": "excluded",
+      "source": {
+        "path": "n8n/workflows/Teste01_v7_MANUTENCAO.json",
+        "selected_workflow_sha256": "acf228af744f4ce3f327f706470eaf7d1d18c68c8082cb59e0c1fc7c9fbfb54b",
+        "source_file_sha256": "8a00e7532089479b7f541b0c7f5241078a65633e84ac7d3409d09a8740c31a94"
+      },
+      "source_name": "Teste01_v7",
+      "source_workflow_id": "TriagemV7Pg20260429",
+      "version": "V7"
+    },
+    {
+      "exclusion_reason": "Not the selected canonical snapshot; retained in the manifest for provenance and variant comparison only.",
+      "label": "excluded-v7-63-triagem",
+      "node_count": 63,
+      "role": "excluded duplicate 63-node snapshot",
+      "sanitized_sha256": "5b826072c54e33593e9b348c54de665dc650580bdb37eb14863a9b3adf240863",
+      "selection_status": "excluded",
+      "source": {
+        "path": "n8n/workflows/Teste01_v7_TRIAGEM.json",
+        "selected_workflow_sha256": "acf228af744f4ce3f327f706470eaf7d1d18c68c8082cb59e0c1fc7c9fbfb54b",
+        "source_file_sha256": "8a00e7532089479b7f541b0c7f5241078a65633e84ac7d3409d09a8740c31a94"
+      },
+      "source_name": "Teste01_v7",
+      "source_workflow_id": "TriagemV7Pg20260429",
+      "version": "V7"
+    },
+    {
+      "exclusion_reason": "Not the selected canonical snapshot; retained in the manifest for provenance and variant comparison only.",
+      "label": "excluded-v7-65-runtime",
+      "node_count": 65,
+      "role": "excluded 65-node runtime snapshot",
+      "sanitized_sha256": "17652163c4a93588eeb5e626503308c35af0110bb80296c3ddcbb3c5c71c64a3",
+      "selection_status": "excluded",
+      "source": {
+        "path": "n8n/workflows/all_workflows_after_v7.json",
+        "selected_workflow_sha256": "f64952b55a8711f0f3c7a2a6f0726345b1aa8f1b30b20c5737800b1a0ad89bb8",
+        "selector_id": "TriagemV7Pg20260429",
+        "source_file_sha256": "9f6eb0324fd322acaf04f0798c253e0962e3f11431546496bc7a7603f9a506d6"
+      },
+      "source_name": "Triagem Inteligente de Chamados - v7 (Postgres)",
+      "source_workflow_id": "TriagemV7Pg20260429",
+      "version": "V7"
+    },
+    {
+      "exclusion_reason": "Not the selected canonical snapshot; retained in the manifest for provenance and variant comparison only.",
+      "label": "excluded-v7-66-runtime-export",
+      "node_count": 66,
+      "role": "excluded duplicate of selected 66-node snapshot",
+      "sanitized_sha256": "5c09a280d9b796a3ec3285c2ee35c286c944adda9c77398a4d93c450938ecd66",
+      "selection_status": "excluded",
+      "source": {
+        "path": "n8n/workflows/v7_runtime_export2.json",
+        "selected_workflow_sha256": "2fd294abc20d041704c6d9baf847b505038527e7aa46f23c76177a4909124272",
+        "source_file_sha256": "701a22b4bf8cf651048849715680fa0f5c489e5fb15ac48507cfb32329f43b89"
+      },
+      "source_name": "Triagem Inteligente de Chamados - v7 (Postgres)",
+      "source_workflow_id": "TriagemV7Pg20260429",
+      "version": "V7"
+    },
+    {
+      "exclusion_reason": "Not the selected canonical snapshot; retained in the manifest for provenance and variant comparison only.",
+      "label": "excluded-v8-wf01-export",
+      "node_count": 20,
+      "role": "excluded runtime export",
+      "sanitized_sha256": "824c0a228d67d47609fd20ab9d81dae2e18a067ffeb255b93084bcef2f21ad58",
+      "selection_status": "excluded",
+      "source": {
+        "path": "n8n/workflows/Versão8/wf01_export.json",
+        "selected_workflow_sha256": "2a8b59dfc22fdddec62ab2b68bac56c25a4abf19f7c524287fed0e6ef8c9eb5f",
+        "source_file_sha256": "827aa894646e63cb7eb3063661e3e7dcbab6e0f08e154527b382cda4cd01d89b"
+      },
+      "source_name": "V8 - WF01 Orquestrador",
+      "source_workflow_id": "xT6qaPlpVMq8gA0g",
+      "version": "V8"
+    },
+    {
+      "exclusion_reason": "Not the selected canonical snapshot; retained in the manifest for provenance and variant comparison only.",
+      "label": "excluded-v8-wf01-reimport",
+      "node_count": 20,
+      "role": "excluded reimport snapshot",
+      "sanitized_sha256": "6c09ee5885d4d1f24383c6a0e384e82835d3162f1fd95c94101423c6e53d080b",
+      "selection_status": "excluded",
+      "source": {
+        "path": "n8n/workflows/Versão8/wf01_reimport.json",
+        "selected_workflow_sha256": "0f780e344503951c8654bf181104f34a05515d8b46d356dd7c0266c2c77f30a4",
+        "source_file_sha256": "a472f9d9798147fefa3d5c99ac587824394f2d497488821d7c8d465d9a4dcb1a"
+      },
+      "source_name": "V8 - WF01 Orquestrador",
+      "source_workflow_id": "xT6qaPlpVMq8gA0g",
+      "version": "V8"
+    },
+    {
+      "exclusion_reason": "Not the selected canonical snapshot; retained in the manifest for provenance and variant comparison only.",
+      "label": "excluded-v8-wf02-export",
+      "node_count": 33,
+      "role": "excluded runtime export",
+      "sanitized_sha256": "6d6bd512f703efb160da3f8893d39249b2eec93e52c50ecb518d41811c3edf84",
+      "selection_status": "excluded",
+      "source": {
+        "path": "n8n/workflows/Versão8/wf02_export.json",
+        "selected_workflow_sha256": "642925d6840d16a0117fb4a310b2a5f008a74e70f3cbab0291f1e18a0d9c2f7b",
+        "source_file_sha256": "eec8429a13c9b2bd6a20289f522d53c99bc01b674c2a3e35a52b145348f5f225"
+      },
+      "source_name": "V8 - WF02 Triagem e Classificacao",
+      "source_workflow_id": "0iD47TUYD2PJTfo2",
+      "version": "V8"
+    },
+    {
+      "exclusion_reason": "Not the selected canonical snapshot; retained in the manifest for provenance and variant comparison only.",
+      "label": "excluded-v8-wf02-reimport",
+      "node_count": 33,
+      "role": "excluded reimport snapshot",
+      "sanitized_sha256": "36f47a651d84d042d3f562dd627226ae84ef60860c8740c8ee45559b3ce7c7a5",
+      "selection_status": "excluded",
+      "source": {
+        "path": "n8n/workflows/Versão8/wf02_reimport.json",
+        "selected_workflow_sha256": "343427d7ae557da3fe685d80c421637e5cdd5493b97216e99e76cb7121df0acc",
+        "source_file_sha256": "2d3892b566cda577e5983cb38c72276342771a6b2f832d14b454cde7e84ec921"
+      },
+      "source_name": "V8 - WF02 Triagem e Classificacao",
+      "source_workflow_id": "0iD47TUYD2PJTfo2",
+      "version": "V8"
+    }
+  ]
+}

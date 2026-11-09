@@ -1,0 +1,56 @@
+{
+  "schema_version": "projeto-ic-homologation-checkpoint-v2",
+  "checkpoint_at_utc": "2026-09-17T17:16:48.4760165Z",
+  "checkpoint_at_brt": "2026-09-17T14:16:48.4760165-03:00",
+  "timezone": "America/Sao_Paulo",
+  "monitor": {
+    "valid_process_count": 1,
+    "valid_pid": 9192,
+    "executable_path": ".venv\\Scripts\\pythonw.exe",
+    "runtime_dir": "avaliacao/runtime/monitoring-homolog-20260910-v2",
+    "interval_seconds": 60,
+    "action": "PRESERVED",
+    "status_pid_mismatch": 9956
+  },
+  "technical_windows": {
+    "completed": 29,
+    "required": 3,
+    "decision_coverage_complete": 29,
+    "windows_passing_all_slo_checks": 0,
+    "latest_index": 29,
+    "latest_slo": "FAIL",
+    "latest_drift": "INSUFFICIENT_DATA",
+    "local_ai_availability": 0.0,
+    "queue_wait_p95_seconds": null,
+    "technical_error_rate": null
+  },
+  "atomic_queue_state": {
+    "artifact": "runtime-queue-state-20260917T171624Z.json",
+    "status": "PASS",
+    "erro_ia": 0,
+    "active_queue": 0,
+    "open_dlq": 0
+  },
+  "validation": {
+    "operational_tests": "45 passed",
+    "junit_artifact": "pytest-homolog-20260917T171624Z.xml",
+    "v9_static_validation": "PASS",
+    "static_validation_artifact": "validate-v9-static-20260917T171624Z.txt"
+  },
+  "development_grid": {
+    "expected": 10,
+    "completed": 10,
+    "failed": 0,
+    "pending": 0,
+    "running": 0,
+    "retry_count": 0,
+    "resultados_json_present": true,
+    "xai_complete": true,
+    "benchmark_complete": true,
+    "locked_challenge_recorded": true
+  },
+  "scientific_result": false,
+  "scientific_ready": false,
+  "production_ready": false,
+  "interpretation_limit": "Resultados da grade e do desafio são sintéticos/proxy; não demonstram eficácia institucional nem correção semântica. A homologação permanece bloqueada por SLO FAIL e drift INSUFFICIENT_DATA."
+}

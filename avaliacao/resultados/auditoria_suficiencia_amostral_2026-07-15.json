@@ -1,0 +1,72 @@
+{
+  "generated_at": "2026-08-18T02:37:12.929392+00:00",
+  "dataset": "avaliacao\\datasets\\corpus_v3_teste.jsonl",
+  "manifest_status": "CORPUS_GERADO_PENDENTE_VALIDACAO_ESPECIALISTAS",
+  "scientific_result": false,
+  "confirmatory_eligible": false,
+  "nominal": {
+    "tickets": 1200,
+    "dedup_challenges": 500,
+    "classification_cases": 200
+  },
+  "independent_units": {
+    "dedup_challenge_cores": 100,
+    "dedup_duplicate_cores": 40,
+    "dedup_nonduplicate_complete_cores": 48,
+    "dedup_nonduplicate_critical_cores": 12,
+    "classification_cores": 40,
+    "classification_cores_by_class": {
+      "DEMO": 10,
+      "OBRA": 10,
+      "SOB_DEMANDA": 10,
+      "TRIAGEM_MANUAL": 10
+    },
+    "dedup_cores_by_family_min": 4,
+    "dedup_cores_by_family_max": 4
+  },
+  "precision_reference": {
+    "required_independent_n_margin_10pp_worst_case": 97,
+    "required_independent_n_margin_5pp_worst_case": 385,
+    "required_zero_false_positive_n_for_wilson_upper_5pct": 73,
+    "required_zero_false_negative_n_for_wilson_upper_2pct": 189,
+    "current_classification_per_class_wilson_half_width_at_50pct": {
+      "DEMO": 0.26340690948743595,
+      "OBRA": 0.26340690948743595,
+      "SOB_DEMANDA": 0.26340690948743595,
+      "TRIAGEM_MANUAL": 0.26340690948743595
+    },
+    "current_dedup_challenge_wilson_half_width_at_50pct": 0.09616846963400434,
+    "current_critical_nonduplicate_zero_fp_upper": 0.2424940066552408
+  },
+  "recommended_v4": {
+    "targets": {
+      "classification_independent_cores_per_class": 100,
+      "dedup_duplicate_independent_cores": 189,
+      "dedup_hard_nonduplicate_complete_independent_cores": 97,
+      "dedup_hard_nonduplicate_critical_independent_cores": 73
+    },
+    "classification_gap_by_class": {
+      "OBRA": 90,
+      "DEMO": 90,
+      "SOB_DEMANDA": 90,
+      "TRIAGEM_MANUAL": 90
+    },
+    "gaps": {
+      "classification_new_tickets": 360,
+      "dedup_duplicate_new_episodes": 149,
+      "dedup_nonduplicate_complete_new_episodes": 49,
+      "dedup_nonduplicate_critical_new_episodes": 61
+    },
+    "additional_tickets": 878,
+    "recommended_total_tickets": 2078,
+    "increase_raw_tickets_only": false,
+    "instruction": "Acrescentar núcleos semânticos realmente novos com uma realização primária; não contar outra seed ou paráfrases como novas unidades independentes."
+  },
+  "decision": {
+    "sufficient_for_automated_functional_regression": true,
+    "sufficient_for_precise_per_class_scientific_estimates": false,
+    "human_review_required_in_this_automated_phase": false,
+    "human_workflow_confirmations_must_remain": true,
+    "real_world_external_validity_established": false
+  }
+}

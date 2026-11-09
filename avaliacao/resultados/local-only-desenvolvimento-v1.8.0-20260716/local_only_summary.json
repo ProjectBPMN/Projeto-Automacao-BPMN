@@ -1,0 +1,5442 @@
+{
+  "abstention_policy": {
+    "abstention_never_counted_as_nao_duplicado": true,
+    "dedup_intermediate_probability_is_abstention": true,
+    "dedup_negative_threshold": 0.07,
+    "dedup_positive_threshold": 0.95
+  },
+  "confirmatory_claim_allowed": false,
+  "created_at": "2026-07-16T16:53:51.692649+00:00",
+  "metrics": {
+    "all_contract_valid": {
+      "abstentions": 626,
+      "accuracy_abstention_as_not_correct": 0.49435483870967745,
+      "automation_coverage": 0.49516129032258066,
+      "confusion": {
+        "DEMO->DEMO": 144,
+        "DEMO->TRIAGEM_MANUAL": 16,
+        "DUPLICADO->DUPLICADO": 109,
+        "DUPLICADO->TRIAGEM_MANUAL": 191,
+        "NAO_DUPLICADO->NAO_DUPLICADO": 104,
+        "NAO_DUPLICADO->TRIAGEM_MANUAL": 196,
+        "OBRA->OBRA": 101,
+        "OBRA->TRIAGEM_MANUAL": 59,
+        "SOB_DEMANDA->SOB_DEMANDA": 155,
+        "SOB_DEMANDA->TRIAGEM_MANUAL": 5,
+        "TRIAGEM_MANUAL->SOB_DEMANDA": 1,
+        "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 159
+      },
+      "dedup_false_negatives": 0,
+      "dedup_false_positives": 0,
+      "dedup_weighted_error_cost_fn5_fp1": 0,
+      "failures": 0,
+      "latency_ms": {
+        "mean": 414.33127096774194,
+        "p50": 306.28,
+        "p95": 838.088
+      },
+      "selective_accuracy": 0.998371335504886,
+      "total": 1240,
+      "valid": 1240
+    },
+    "by_core": {
+      "DEV_CLS_DEMO_001": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "DEMO->DEMO": 4,
+          "DEMO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 158.7074,
+          "p50": 166.448,
+          "p95": 181.81
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_002": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 170.26839999999999,
+          "p50": 170.413,
+          "p95": 224.69
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_003": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 216.2016,
+          "p50": 187.187,
+          "p95": 376.899
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_004": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 147.4058,
+          "p50": 159.753,
+          "p95": 172.521
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_005": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 150.7614,
+          "p50": 160.761,
+          "p95": 171.369
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_006": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 151.08620000000002,
+          "p50": 160.023,
+          "p95": 172.479
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_007": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 155.50619999999998,
+          "p50": 163.744,
+          "p95": 182.689
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_008": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 169.6498,
+          "p50": 176.608,
+          "p95": 225.09
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_009": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 161.537,
+          "p50": 161.001,
+          "p95": 228.855
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_010": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 158.55180000000001,
+          "p50": 167.42,
+          "p95": 179.643
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_011": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DEMO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 152.699,
+          "p50": 157.566,
+          "p95": 186.016
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_012": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 204.86759999999998,
+          "p50": 172.603,
+          "p95": 359.791
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_013": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DEMO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 150.66019999999997,
+          "p50": 164.362,
+          "p95": 168.41
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_014": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 165.0116,
+          "p50": 171.534,
+          "p95": 192.822
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_015": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 180.6184,
+          "p50": 172.673,
+          "p95": 244.053
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_016": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 223.46120000000002,
+          "p50": 166.538,
+          "p95": 440.678
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_017": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 159.7938,
+          "p50": 162.095,
+          "p95": 175.619
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_018": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 170.6808,
+          "p50": 164.836,
+          "p95": 229.411
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_019": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 163.91400000000002,
+          "p50": 166.061,
+          "p95": 207.319
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_020": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 152.4742,
+          "p50": 158.089,
+          "p95": 180.57
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_021": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 149.3804,
+          "p50": 148.618,
+          "p95": 178.915
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_022": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 154.727,
+          "p50": 163.542,
+          "p95": 181.271
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_023": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 155.7294,
+          "p50": 160.456,
+          "p95": 173.59
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_024": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 152.0274,
+          "p50": 158.412,
+          "p95": 176.762
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_025": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 159.172,
+          "p50": 171.182,
+          "p95": 173.399
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_026": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 157.2964,
+          "p50": 169.475,
+          "p95": 177.054
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_027": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 221.8236,
+          "p50": 167.958,
+          "p95": 345.57
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_028": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 152.48420000000002,
+          "p50": 154.496,
+          "p95": 191.565
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_029": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 197.4692,
+          "p50": 166.603,
+          "p95": 317.252
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_030": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "DEMO->DEMO": 4,
+          "DEMO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 125.62819999999999,
+          "p50": 153.83,
+          "p95": 175.868
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_031": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DEMO->DEMO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 181.03019999999998,
+          "p50": 189.693,
+          "p95": 223.384
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_DEMO_032": {
+        "abstentions": 4,
+        "accuracy_abstention_as_not_correct": 0.2,
+        "automation_coverage": 0.2,
+        "confusion": {
+          "DEMO->DEMO": 1,
+          "DEMO->TRIAGEM_MANUAL": 4
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 160.4006,
+          "p50": 171.636,
+          "p95": 185.81
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_001": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 164.3784,
+          "p50": 168.865,
+          "p95": 204.957
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_002": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 292.7366,
+          "p50": 169.335,
+          "p95": 846.275
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_003": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 206.5636,
+          "p50": 162.8,
+          "p95": 370.622
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_004": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 177.6428,
+          "p50": 163.623,
+          "p95": 306.28
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_005": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "OBRA->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 172.6422,
+          "p50": 161.709,
+          "p95": 221.106
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_006": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 180.03199999999998,
+          "p50": 182.041,
+          "p95": 234.651
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_007": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 209.0964,
+          "p50": 159.645,
+          "p95": 415.073
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_008": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "OBRA->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 19.5258,
+          "p50": 17.111,
+          "p95": 38.422
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_009": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "OBRA->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 247.0634,
+          "p50": 225.655,
+          "p95": 415.842
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_010": {
+        "abstentions": 3,
+        "accuracy_abstention_as_not_correct": 0.4,
+        "automation_coverage": 0.4,
+        "confusion": {
+          "OBRA->OBRA": 2,
+          "OBRA->TRIAGEM_MANUAL": 3
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 71.12960000000001,
+          "p50": 19.773,
+          "p95": 195.191
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_011": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "OBRA->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 163.98160000000001,
+          "p50": 172.099,
+          "p95": 182.981
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_012": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "OBRA->OBRA": 4,
+          "OBRA->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 152.6426,
+          "p50": 166.941,
+          "p95": 175.202
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_013": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 151.64159999999998,
+          "p50": 155.445,
+          "p95": 176.725
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_014": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 176.8428,
+          "p50": 168.553,
+          "p95": 258.814
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_015": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "OBRA->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 18.4748,
+          "p50": 19.236,
+          "p95": 20.448
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_016": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 177.648,
+          "p50": 179.964,
+          "p95": 217.441
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_017": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 166.059,
+          "p50": 171.024,
+          "p95": 191.73
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_018": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 146.6168,
+          "p50": 154.627,
+          "p95": 171.18
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_019": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "OBRA->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 15.418199999999999,
+          "p50": 14.656,
+          "p95": 21.668
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_020": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 159.05540000000002,
+          "p50": 161.136,
+          "p95": 181.519
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_021": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 159.6986,
+          "p50": 161.202,
+          "p95": 192.842
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_022": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 154.006,
+          "p50": 161.958,
+          "p95": 177.687
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_023": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 155.2128,
+          "p50": 169.748,
+          "p95": 172.788
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_024": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "OBRA->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 241.74960000000002,
+          "p50": 189.403,
+          "p95": 486.182
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_025": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "OBRA->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 188.919,
+          "p50": 162.736,
+          "p95": 327.172
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_026": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 170.52460000000002,
+          "p50": 160.757,
+          "p95": 234.158
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_027": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "OBRA->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 21.217000000000002,
+          "p50": 18.481,
+          "p95": 32.774
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_028": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 178.4606,
+          "p50": 174.916,
+          "p95": 233.001
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_029": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "OBRA->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 184.8798,
+          "p50": 193.558,
+          "p95": 234.993
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_030": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "OBRA->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 37.2772,
+          "p50": 21.496,
+          "p95": 112.465
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_031": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 162.6042,
+          "p50": 172.641,
+          "p95": 195.752
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_OBRA_032": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "OBRA->OBRA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 176.376,
+          "p50": 184.34,
+          "p95": 225.231
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_001": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 195.727,
+          "p50": 161.56,
+          "p95": 375.189
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_002": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 183.1764,
+          "p50": 183.344,
+          "p95": 229.664
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_003": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 161.2314,
+          "p50": 163.565,
+          "p95": 201.596
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_004": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 165.1492,
+          "p50": 160.367,
+          "p95": 240.89
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_005": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 154.8702,
+          "p50": 161.98,
+          "p95": 181.0
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_006": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 222.66619999999998,
+          "p50": 160.87,
+          "p95": 477.627
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_007": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 158.1044,
+          "p50": 175.728,
+          "p95": 185.218
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_008": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 4,
+          "SOB_DEMANDA->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 194.881,
+          "p50": 153.598,
+          "p95": 406.618
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_009": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 4,
+          "SOB_DEMANDA->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 232.38540000000003,
+          "p50": 159.782,
+          "p95": 554.282
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_010": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 156.7336,
+          "p50": 160.889,
+          "p95": 191.591
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_011": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 97.8686,
+          "p50": 115.758,
+          "p95": 170.236
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_012": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 173.94099999999997,
+          "p50": 170.638,
+          "p95": 219.51
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_013": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 165.5318,
+          "p50": 164.806,
+          "p95": 237.129
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_014": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 239.6132,
+          "p50": 160.074,
+          "p95": 587.783
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_015": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 150.0496,
+          "p50": 146.916,
+          "p95": 188.61
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_016": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 170.8228,
+          "p50": 170.274,
+          "p95": 230.033
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_017": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 249.0176,
+          "p50": 176.839,
+          "p95": 556.755
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_018": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 149.5808,
+          "p50": 164.808,
+          "p95": 170.065
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_019": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 165.25719999999998,
+          "p50": 168.892,
+          "p95": 216.009
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_020": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 191.4196,
+          "p50": 167.864,
+          "p95": 311.107
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_021": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 149.9932,
+          "p50": 158.88,
+          "p95": 188.351
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_022": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 151.6248,
+          "p50": 154.864,
+          "p95": 177.09
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_023": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 148.6422,
+          "p50": 154.905,
+          "p95": 173.229
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_024": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 4,
+          "SOB_DEMANDA->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 213.1442,
+          "p50": 172.569,
+          "p95": 459.627
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_025": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 155.1584,
+          "p50": 168.815,
+          "p95": 179.092
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_026": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 171.6508,
+          "p50": 167.212,
+          "p95": 230.809
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_027": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 3,
+          "SOB_DEMANDA->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 176.932,
+          "p50": 172.093,
+          "p95": 237.362
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_028": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 148.9856,
+          "p50": 154.43,
+          "p95": 170.938
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_029": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 185.09279999999998,
+          "p50": 170.021,
+          "p95": 276.722
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_030": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 157.905,
+          "p50": 161.308,
+          "p95": 187.952
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_031": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 154.154,
+          "p50": 164.473,
+          "p95": 188.637
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_SOB_DEMANDA_032": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 180.3992,
+          "p50": 177.437,
+          "p95": 252.821
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_001": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 20.0978,
+          "p50": 20.849,
+          "p95": 22.883
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_002": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 19.8458,
+          "p50": 19.766,
+          "p95": 25.029
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_003": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 169.17239999999998,
+          "p50": 166.302,
+          "p95": 218.31
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_004": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 186.31840000000003,
+          "p50": 175.602,
+          "p95": 305.809
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_005": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 22.1688,
+          "p50": 18.451,
+          "p95": 41.389
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_006": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 153.0422,
+          "p50": 156.477,
+          "p95": 178.647
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_007": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 18.725,
+          "p50": 18.923,
+          "p95": 23.083
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_008": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 18.979,
+          "p50": 18.63,
+          "p95": 21.822
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_009": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 17.8216,
+          "p50": 16.885,
+          "p95": 22.971
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_010": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 18.215600000000002,
+          "p50": 17.755,
+          "p95": 21.097
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_011": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 20.0816,
+          "p50": 18.485,
+          "p95": 28.498
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_012": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 16.811,
+          "p50": 15.615,
+          "p95": 23.872
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_013": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 150.169,
+          "p50": 160.922,
+          "p95": 171.09
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_014": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 19.912399999999998,
+          "p50": 17.019,
+          "p95": 33.073
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_015": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 180.2168,
+          "p50": 162.663,
+          "p95": 288.053
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_016": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 17.5072,
+          "p50": 18.217,
+          "p95": 24.206
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_017": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 152.405,
+          "p50": 165.293,
+          "p95": 258.104
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_018": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 63.35260000000001,
+          "p50": 18.859,
+          "p95": 242.037
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_019": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 134.7782,
+          "p50": 163.094,
+          "p95": 174.686
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_020": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 18.784,
+          "p50": 19.388,
+          "p95": 24.749
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_021": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 175.8832,
+          "p50": 176.249,
+          "p95": 270.133
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_022": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 164.91019999999997,
+          "p50": 172.659,
+          "p95": 193.408
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_023": {
+        "abstentions": 4,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.2,
+        "confusion": {
+          "TRIAGEM_MANUAL->SOB_DEMANDA": 1,
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 4
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 155.6108,
+          "p50": 160.281,
+          "p95": 185.394
+        },
+        "selective_accuracy": 0.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_024": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 16.5064,
+          "p50": 15.65,
+          "p95": 23.127
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_025": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 16.291,
+          "p50": 16.934,
+          "p95": 19.545
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_026": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 24.7684,
+          "p50": 21.021,
+          "p95": 43.137
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_027": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 18.2322,
+          "p50": 19.307,
+          "p95": 21.023
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_028": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 173.4722,
+          "p50": 169.903,
+          "p95": 242.169
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_029": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 21.082600000000003,
+          "p50": 21.815,
+          "p95": 22.78
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_030": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 18.216,
+          "p50": 19.49,
+          "p95": 21.512
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_031": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 16.912,
+          "p50": 17.302,
+          "p95": 26.009
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_CLS_TRIAGEM_MANUAL_032": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 141.4332,
+          "p50": 166.96,
+          "p95": 189.056
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_002": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 3,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 663.756,
+          "p50": 656.434,
+          "p95": 704.131
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_004": {
+        "abstentions": 3,
+        "accuracy_abstention_as_not_correct": 0.4,
+        "automation_coverage": 0.4,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 2,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 3
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 675.8902,
+          "p50": 653.655,
+          "p95": 780.798
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_006": {
+        "abstentions": 3,
+        "accuracy_abstention_as_not_correct": 0.4,
+        "automation_coverage": 0.4,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 2,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 3
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 670.0827999999999,
+          "p50": 664.181,
+          "p95": 752.78
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_008": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 3,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 702.8728,
+          "p50": 678.458,
+          "p95": 865.212
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_010": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 643.8088,
+          "p50": 638.595,
+          "p95": 676.214
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_012": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 4,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 680.5786,
+          "p50": 649.177,
+          "p95": 838.867
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_014": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 733.0414,
+          "p50": 681.352,
+          "p95": 868.004
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_016": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 680.2474,
+          "p50": 674.487,
+          "p95": 718.299
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_018": {
+        "abstentions": 4,
+        "accuracy_abstention_as_not_correct": 0.2,
+        "automation_coverage": 0.2,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 1,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 4
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 670.3824000000001,
+          "p50": 672.138,
+          "p95": 696.901
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_020": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 4,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 714.8044,
+          "p50": 671.751,
+          "p95": 891.292
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_022": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 645.2402,
+          "p50": 649.006,
+          "p95": 692.178
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_024": {
+        "abstentions": 3,
+        "accuracy_abstention_as_not_correct": 0.4,
+        "automation_coverage": 0.4,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 2,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 3
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 644.207,
+          "p50": 652.524,
+          "p95": 672.782
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_026": {
+        "abstentions": 4,
+        "accuracy_abstention_as_not_correct": 0.2,
+        "automation_coverage": 0.2,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 1,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 4
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 724.6443999999999,
+          "p50": 698.318,
+          "p95": 834.233
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_028": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 3,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 775.2688,
+          "p50": 687.978,
+          "p95": 1122.383
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_030": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 781.8946,
+          "p50": 679.747,
+          "p95": 1241.775
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_032": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 4,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 703.6102,
+          "p50": 691.683,
+          "p95": 811.086
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_034": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 677.202,
+          "p50": 665.19,
+          "p95": 726.288
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_036": {
+        "abstentions": 3,
+        "accuracy_abstention_as_not_correct": 0.4,
+        "automation_coverage": 0.4,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 2,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 3
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 687.1207999999999,
+          "p50": 676.116,
+          "p95": 786.14
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_038": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 3,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 681.2714,
+          "p50": 672.223,
+          "p95": 710.337
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_040": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 640.4327999999999,
+          "p50": 639.768,
+          "p95": 675.159
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_042": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 659.5152,
+          "p50": 656.876,
+          "p95": 701.504
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_044": {
+        "abstentions": 3,
+        "accuracy_abstention_as_not_correct": 0.4,
+        "automation_coverage": 0.4,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 2,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 3
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 694.5506,
+          "p50": 655.713,
+          "p95": 848.936
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_046": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 874.5040000000001,
+          "p50": 676.056,
+          "p95": 1446.496
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_048": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 3,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 677.2583999999999,
+          "p50": 667.415,
+          "p95": 812.571
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_050": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 701.388,
+          "p50": 661.618,
+          "p95": 869.68
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_052": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 3,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 714.725,
+          "p50": 702.584,
+          "p95": 852.771
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_054": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 699.0482,
+          "p50": 672.077,
+          "p95": 871.973
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_056": {
+        "abstentions": 4,
+        "accuracy_abstention_as_not_correct": 0.2,
+        "automation_coverage": 0.2,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 1,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 4
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 639.1082,
+          "p50": 633.958,
+          "p95": 676.75
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_058": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 673.0046,
+          "p50": 697.577,
+          "p95": 711.139
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_060": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 4,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 639.9324,
+          "p50": 633.157,
+          "p95": 669.019
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_062": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 4,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 700.183,
+          "p50": 692.318,
+          "p95": 812.701
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_064": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 3,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 703.411,
+          "p50": 674.597,
+          "p95": 844.349
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_066": {
+        "abstentions": 3,
+        "accuracy_abstention_as_not_correct": 0.4,
+        "automation_coverage": 0.4,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 2,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 3
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 784.668,
+          "p50": 660.729,
+          "p95": 1298.148
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_068": {
+        "abstentions": 3,
+        "accuracy_abstention_as_not_correct": 0.4,
+        "automation_coverage": 0.4,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 2,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 3
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 660.7956,
+          "p50": 669.179,
+          "p95": 696.305
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_070": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 707.7366,
+          "p50": 656.484,
+          "p95": 844.864
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_072": {
+        "abstentions": 4,
+        "accuracy_abstention_as_not_correct": 0.2,
+        "automation_coverage": 0.2,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 1,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 4
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 668.5164,
+          "p50": 654.468,
+          "p95": 806.921
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_074": {
+        "abstentions": 4,
+        "accuracy_abstention_as_not_correct": 0.2,
+        "automation_coverage": 0.2,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 1,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 4
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 867.8702000000001,
+          "p50": 692.317,
+          "p95": 1353.169
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_076": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 3,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 748.6512,
+          "p50": 640.106,
+          "p95": 1116.048
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_078": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 4,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 980.1229999999999,
+          "p50": 676.168,
+          "p95": 2234.658
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_080": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 708.9508,
+          "p50": 662.17,
+          "p95": 919.796
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_082": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 657.081,
+          "p50": 654.126,
+          "p95": 731.037
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_084": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 4,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 641.7536,
+          "p50": 634.134,
+          "p95": 664.632
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_086": {
+        "abstentions": 4,
+        "accuracy_abstention_as_not_correct": 0.2,
+        "automation_coverage": 0.2,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 1,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 4
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 696.0076,
+          "p50": 662.854,
+          "p95": 855.651
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_088": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 703.6315999999999,
+          "p50": 683.631,
+          "p95": 877.552
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_090": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 708.3199999999999,
+          "p50": 672.759,
+          "p95": 867.244
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_092": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 3,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 810.119,
+          "p50": 643.403,
+          "p95": 1495.39
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_094": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 770.7308,
+          "p50": 647.081,
+          "p95": 1106.631
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_096": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 4,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 824.6328,
+          "p50": 653.715,
+          "p95": 1437.718
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_098": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 698.9064000000001,
+          "p50": 658.142,
+          "p95": 860.318
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_100": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 3,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 765.7184,
+          "p50": 693.05,
+          "p95": 955.058
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_102": {
+        "abstentions": 3,
+        "accuracy_abstention_as_not_correct": 0.4,
+        "automation_coverage": 0.4,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 2,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 3
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 652.888,
+          "p50": 660.119,
+          "p95": 670.321
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_104": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 3,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 752.0042,
+          "p50": 705.776,
+          "p95": 883.285
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_106": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 798.3398,
+          "p50": 661.359,
+          "p95": 1403.146
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_108": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 3,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 640.9446,
+          "p50": 642.558,
+          "p95": 679.053
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_110": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 683.7568,
+          "p50": 658.167,
+          "p95": 780.473
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_112": {
+        "abstentions": 3,
+        "accuracy_abstention_as_not_correct": 0.4,
+        "automation_coverage": 0.4,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 2,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 3
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 665.3672,
+          "p50": 665.086,
+          "p95": 728.639
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_114": {
+        "abstentions": 4,
+        "accuracy_abstention_as_not_correct": 0.2,
+        "automation_coverage": 0.2,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 1,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 4
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 710.8298,
+          "p50": 691.726,
+          "p95": 881.818
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_116": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 4,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 697.264,
+          "p50": 658.988,
+          "p95": 850.12
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_118": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 729.7804,
+          "p50": 701.678,
+          "p95": 977.526
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_NEG_120": {
+        "abstentions": 3,
+        "accuracy_abstention_as_not_correct": 0.4,
+        "automation_coverage": 0.4,
+        "confusion": {
+          "NAO_DUPLICADO->NAO_DUPLICADO": 2,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 3
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 768.7511999999999,
+          "p50": 651.772,
+          "p95": 1246.691
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_001": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 769.2938,
+          "p50": 689.764,
+          "p95": 944.908
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_003": {
+        "abstentions": 3,
+        "accuracy_abstention_as_not_correct": 0.4,
+        "automation_coverage": 0.4,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 2,
+          "DUPLICADO->TRIAGEM_MANUAL": 3
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 685.4654,
+          "p50": 658.673,
+          "p95": 819.371
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_005": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 650.364,
+          "p50": 656.787,
+          "p95": 680.494
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_007": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 668.6368,
+          "p50": 654.767,
+          "p95": 760.007
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_009": {
+        "abstentions": 4,
+        "accuracy_abstention_as_not_correct": 0.2,
+        "automation_coverage": 0.2,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 1,
+          "DUPLICADO->TRIAGEM_MANUAL": 4
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 640.6850000000001,
+          "p50": 632.743,
+          "p95": 676.4
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_011": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 687.2362,
+          "p50": 662.325,
+          "p95": 785.692
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_013": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 4,
+          "DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 667.813,
+          "p50": 651.789,
+          "p95": 796.039
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_015": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 647.442,
+          "p50": 652.668,
+          "p95": 676.87
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_017": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 686.3652,
+          "p50": 651.825,
+          "p95": 819.828
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_019": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 677.121,
+          "p50": 688.003,
+          "p95": 735.623
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_021": {
+        "abstentions": 3,
+        "accuracy_abstention_as_not_correct": 0.4,
+        "automation_coverage": 0.4,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 2,
+          "DUPLICADO->TRIAGEM_MANUAL": 3
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 635.6318,
+          "p50": 635.768,
+          "p95": 662.908
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_023": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 768.3992000000001,
+          "p50": 687.478,
+          "p95": 1022.491
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_025": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 4,
+          "DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 642.6648,
+          "p50": 641.888,
+          "p95": 660.528
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_027": {
+        "abstentions": 3,
+        "accuracy_abstention_as_not_correct": 0.4,
+        "automation_coverage": 0.4,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 2,
+          "DUPLICADO->TRIAGEM_MANUAL": 3
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 801.6845999999999,
+          "p50": 649.64,
+          "p95": 1447.908
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_029": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 684.5224000000001,
+          "p50": 636.503,
+          "p95": 878.424
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_031": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 741.1116,
+          "p50": 667.131,
+          "p95": 1016.412
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_033": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 4,
+          "DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 1082.7586,
+          "p50": 652.892,
+          "p95": 2808.912
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_035": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 668.5766,
+          "p50": 668.943,
+          "p95": 737.616
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_037": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 655.8453999999999,
+          "p50": 654.723,
+          "p95": 708.819
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_039": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 4,
+          "DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 752.1228,
+          "p50": 666.004,
+          "p95": 998.849
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_041": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 738.8316,
+          "p50": 688.189,
+          "p95": 876.254
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_043": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 689.5348,
+          "p50": 682.058,
+          "p95": 846.325
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_045": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 804.0436,
+          "p50": 710.137,
+          "p95": 1050.308
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_047": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 659.7556000000001,
+          "p50": 660.915,
+          "p95": 682.777
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_049": {
+        "abstentions": 3,
+        "accuracy_abstention_as_not_correct": 0.4,
+        "automation_coverage": 0.4,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 2,
+          "DUPLICADO->TRIAGEM_MANUAL": 3
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 679.4598,
+          "p50": 678.124,
+          "p95": 709.413
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_051": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 4,
+          "DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 746.9196,
+          "p50": 669.476,
+          "p95": 1108.377
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_053": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 722.0816,
+          "p50": 691.405,
+          "p95": 842.03
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_055": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 800.1076,
+          "p50": 706.647,
+          "p95": 1128.154
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_057": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 4,
+          "DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 652.6942,
+          "p50": 647.678,
+          "p95": 706.563
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_059": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 756.3276,
+          "p50": 695.222,
+          "p95": 1095.083
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_061": {
+        "abstentions": 3,
+        "accuracy_abstention_as_not_correct": 0.4,
+        "automation_coverage": 0.4,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 2,
+          "DUPLICADO->TRIAGEM_MANUAL": 3
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 667.9936,
+          "p50": 649.979,
+          "p95": 737.507
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_063": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 4,
+          "DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 638.3430000000001,
+          "p50": 648.563,
+          "p95": 657.664
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_065": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 687.6371999999999,
+          "p50": 674.525,
+          "p95": 783.601
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_067": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 651.938,
+          "p50": 651.797,
+          "p95": 702.509
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_069": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 703.0592,
+          "p50": 660.835,
+          "p95": 842.548
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_071": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 680.2178,
+          "p50": 667.637,
+          "p95": 723.143
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_073": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 4,
+          "DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 721.4434,
+          "p50": 651.615,
+          "p95": 851.181
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_075": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 735.6054,
+          "p50": 754.825,
+          "p95": 847.177
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_077": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 644.8554,
+          "p50": 635.789,
+          "p95": 669.733
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_079": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 654.164,
+          "p50": 645.214,
+          "p95": 717.47
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_081": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 3,
+          "DUPLICADO->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 649.9685999999999,
+          "p50": 633.016,
+          "p95": 719.151
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_083": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 661.2783999999999,
+          "p50": 670.41,
+          "p95": 675.991
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_085": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 641.704,
+          "p50": 641.865,
+          "p95": 690.763
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_087": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 3,
+          "DUPLICADO->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 637.0052,
+          "p50": 633.949,
+          "p95": 648.227
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_089": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 649.6474000000001,
+          "p50": 648.529,
+          "p95": 685.167
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_091": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 696.0323999999999,
+          "p50": 686.511,
+          "p95": 759.012
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_093": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 4,
+          "DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 663.5282,
+          "p50": 633.571,
+          "p95": 762.452
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_095": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 663.9618,
+          "p50": 675.803,
+          "p95": 687.177
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_097": {
+        "abstentions": 1,
+        "accuracy_abstention_as_not_correct": 0.8,
+        "automation_coverage": 0.8,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 4,
+          "DUPLICADO->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 939.7328,
+          "p50": 682.416,
+          "p95": 2029.528
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_099": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 3,
+          "DUPLICADO->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 648.9922,
+          "p50": 642.65,
+          "p95": 686.087
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_101": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 655.9424,
+          "p50": 656.345,
+          "p95": 676.994
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_103": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 658.4978,
+          "p50": 654.78,
+          "p95": 689.658
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_105": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 3,
+          "DUPLICADO->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 639.0358,
+          "p50": 649.272,
+          "p95": 657.83
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_107": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 653.8324,
+          "p50": 657.593,
+          "p95": 681.818
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_109": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 3,
+          "DUPLICADO->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 660.2474,
+          "p50": 664.539,
+          "p95": 667.977
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_111": {
+        "abstentions": 2,
+        "accuracy_abstention_as_not_correct": 0.6,
+        "automation_coverage": 0.6,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 3,
+          "DUPLICADO->TRIAGEM_MANUAL": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 771.7822,
+          "p50": 684.544,
+          "p95": 1006.919
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_113": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 666.313,
+          "p50": 645.679,
+          "p95": 772.023
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_115": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 772.9264000000001,
+          "p50": 682.175,
+          "p95": 1221.766
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_117": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 645.7024,
+          "p50": 658.023,
+          "p95": 671.195
+        },
+        "selective_accuracy": 1.0,
+        "total": 5,
+        "valid": 5
+      },
+      "DEV_DD_POS_119": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DUPLICADO->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 687.5728,
+          "p50": 685.265,
+          "p95": 745.865
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      }
+    },
+    "by_decision_path": {
+      "DETERMINISTIC_CONTRADICTION": {
+        "abstentions": 37,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "OBRA->TRIAGEM_MANUAL": 22,
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 15
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 18.904297297297298,
+          "p50": 19.226,
+          "p95": 25.684
+        },
+        "selective_accuracy": null,
+        "total": 37,
+        "valid": 37
+      },
+      "DETERMINISTIC_INSUFFICIENT_INFORMATION": {
+        "abstentions": 88,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DEMO->TRIAGEM_MANUAL": 1,
+          "OBRA->TRIAGEM_MANUAL": 5,
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 82
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 18.80151136363636,
+          "p50": 17.983,
+          "p95": 28.498
+        },
+        "selective_accuracy": null,
+        "total": 88,
+        "valid": 88
+      },
+      "DETERMINISTIC_OUT_OF_SCOPE": {
+        "abstentions": 5,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 5
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 18.725,
+          "p50": 18.923,
+          "p95": 23.083
+        },
+        "selective_accuracy": null,
+        "total": 5,
+        "valid": 5
+      },
+      "DETERMINISTIC_SPECIALIZED_ASSET": {
+        "abstentions": 0,
+        "accuracy_abstention_as_not_correct": 1.0,
+        "automation_coverage": 1.0,
+        "confusion": {
+          "SOB_DEMANDA->SOB_DEMANDA": 2
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 16.9685,
+          "p50": 15.335,
+          "p95": 18.602
+        },
+        "selective_accuracy": 1.0,
+        "total": 2,
+        "valid": 2
+      },
+      "HYBRID_MODEL": {
+        "abstentions": 57,
+        "accuracy_abstention_as_not_correct": 0.9133034379671151,
+        "automation_coverage": 0.9147982062780269,
+        "confusion": {
+          "DEMO->DEMO": 144,
+          "DEMO->TRIAGEM_MANUAL": 1,
+          "DUPLICADO->DUPLICADO": 109,
+          "NAO_DUPLICADO->NAO_DUPLICADO": 104,
+          "OBRA->OBRA": 101,
+          "SOB_DEMANDA->SOB_DEMANDA": 153,
+          "TRIAGEM_MANUAL->SOB_DEMANDA": 1,
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 56
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 344.5637503736921,
+          "p50": 176.725,
+          "p95": 752.798
+        },
+        "selective_accuracy": 0.9983660130718954,
+        "total": 669,
+        "valid": 669
+      },
+      "HYBRID_MODEL_ABSTENTION": {
+        "abstentions": 439,
+        "accuracy_abstention_as_not_correct": 0.0,
+        "automation_coverage": 0.0,
+        "confusion": {
+          "DEMO->TRIAGEM_MANUAL": 14,
+          "DUPLICADO->TRIAGEM_MANUAL": 191,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 196,
+          "OBRA->TRIAGEM_MANUAL": 32,
+          "SOB_DEMANDA->TRIAGEM_MANUAL": 5,
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 1
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 639.5810318906605,
+          "p50": 657.543,
+          "p95": 881.818
+        },
+        "selective_accuracy": null,
+        "total": 439,
+        "valid": 439
+      }
+    },
+    "by_task": {
+      "classification": {
+        "abstentions": 239,
+        "accuracy_abstention_as_not_correct": 0.625,
+        "automation_coverage": 0.6265625,
+        "confusion": {
+          "DEMO->DEMO": 144,
+          "DEMO->TRIAGEM_MANUAL": 16,
+          "OBRA->OBRA": 101,
+          "OBRA->TRIAGEM_MANUAL": 59,
+          "SOB_DEMANDA->SOB_DEMANDA": 155,
+          "SOB_DEMANDA->TRIAGEM_MANUAL": 5,
+          "TRIAGEM_MANUAL->SOB_DEMANDA": 1,
+          "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 159
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 141.91073281250002,
+          "p50": 159.782,
+          "p95": 242.037
+        },
+        "selective_accuracy": 0.9975062344139651,
+        "total": 640,
+        "valid": 640
+      },
+      "deduplication": {
+        "abstentions": 387,
+        "accuracy_abstention_as_not_correct": 0.355,
+        "automation_coverage": 0.355,
+        "confusion": {
+          "DUPLICADO->DUPLICADO": 109,
+          "DUPLICADO->TRIAGEM_MANUAL": 191,
+          "NAO_DUPLICADO->NAO_DUPLICADO": 104,
+          "NAO_DUPLICADO->TRIAGEM_MANUAL": 196
+        },
+        "dedup_false_negatives": 0,
+        "dedup_false_positives": 0,
+        "dedup_weighted_error_cost_fn5_fp1": 0,
+        "failures": 0,
+        "latency_ms": {
+          "mean": 704.9131783333333,
+          "p50": 658.908,
+          "p95": 924.514
+        },
+        "selective_accuracy": 1.0,
+        "total": 600,
+        "valid": 600
+      }
+    },
+    "eligibility_strata": {
+      "model_only": {
+        "metrics": {
+          "abstentions": 496,
+          "accuracy_abstention_as_not_correct": 0.5514440433212996,
+          "automation_coverage": 0.5523465703971119,
+          "confusion": {
+            "DEMO->DEMO": 144,
+            "DEMO->TRIAGEM_MANUAL": 15,
+            "DUPLICADO->DUPLICADO": 109,
+            "DUPLICADO->TRIAGEM_MANUAL": 191,
+            "NAO_DUPLICADO->NAO_DUPLICADO": 104,
+            "NAO_DUPLICADO->TRIAGEM_MANUAL": 196,
+            "OBRA->OBRA": 101,
+            "OBRA->TRIAGEM_MANUAL": 32,
+            "SOB_DEMANDA->SOB_DEMANDA": 153,
+            "SOB_DEMANDA->TRIAGEM_MANUAL": 5,
+            "TRIAGEM_MANUAL->SOB_DEMANDA": 1,
+            "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 57
+          },
+          "dedup_false_negatives": 0,
+          "dedup_false_positives": 0,
+          "dedup_weighted_error_cost_fn5_fp1": 0,
+          "failures": 0,
+          "latency_ms": {
+            "mean": 461.4523664259928,
+            "p50": 617.903,
+            "p95": 846.275
+          },
+          "selective_accuracy": 0.9983660130718954,
+          "total": 1108,
+          "valid": 1108
+        },
+        "selection": "candidate_evaluation_eligible=true e decision_path em HYBRID_MODEL/HYBRID_MODEL_ABSTENTION"
+      },
+      "pipeline_complete_system": {
+        "metrics": {
+          "abstentions": 626,
+          "accuracy_abstention_as_not_correct": 0.49435483870967745,
+          "automation_coverage": 0.49516129032258066,
+          "confusion": {
+            "DEMO->DEMO": 144,
+            "DEMO->TRIAGEM_MANUAL": 16,
+            "DUPLICADO->DUPLICADO": 109,
+            "DUPLICADO->TRIAGEM_MANUAL": 191,
+            "NAO_DUPLICADO->NAO_DUPLICADO": 104,
+            "NAO_DUPLICADO->TRIAGEM_MANUAL": 196,
+            "OBRA->OBRA": 101,
+            "OBRA->TRIAGEM_MANUAL": 59,
+            "SOB_DEMANDA->SOB_DEMANDA": 155,
+            "SOB_DEMANDA->TRIAGEM_MANUAL": 5,
+            "TRIAGEM_MANUAL->SOB_DEMANDA": 1,
+            "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 159
+          },
+          "dedup_false_negatives": 0,
+          "dedup_false_positives": 0,
+          "dedup_weighted_error_cost_fn5_fp1": 0,
+          "failures": 0,
+          "latency_ms": {
+            "mean": 414.33127096774194,
+            "p50": 306.28,
+            "p95": 838.088
+          },
+          "selective_accuracy": 0.998371335504886,
+          "total": 1240,
+          "valid": 1240
+        },
+        "selection": "pipeline_evaluation_eligible=true"
+      }
+    }
+  },
+  "plan_manifest_payload_sha256": "0a2d6deed415c8e5a0d1e30ff407ed72f1a297b4f6df87e546a9a12adac8c841",
+  "predictions_sha256": "258106f1eebbaee5a56e118c1b4bda09c193719de8af4ce7f40e565562103603",
+  "records": 1240,
+  "runtime_provenance": {
+    "distinct_response_fingerprints_sha256": [
+      "0183a58240013d202a719d50f93bfee3f4c2e828c9bbc16ccb37765feb2586d3",
+      "01ef4ca6d81540cae64d2c9dbb531dff2290bf53b61235a7ed54587e41379cc7",
+      "02c7c6c6ff4e691fed36efd9e2bb4631b3698fea51e181eed18eb2a5a3e42731",
+      "05390716332ecb382ca4173a518acd86b96845c3bfc7a431576680f2e9581859",
+      "057cfa3d2a48c87498007b9e07efbcee3de26b1e8c4fd8bc5c7e65bba81c7ddc",
+      "0909dba88e172ccdd2017745a21ad2b75097311726edd7a84d6c43d41da2ca21",
+      "09c75d3936d7ecd6afef4265105402d14995da6969a54b3c3f78a0fd8e2ad425",
+      "0b8afe9ab23cc4c3c572ebb15c362a96d5840ac9f5003d19630513b0a0c3799b",
+      "1325abfe128b40bf6e8f888f97f85a0b2a34fee469f8b289af9930e00715a36d",
+      "136b9955ffb2f0a607abbc6b86522e355be9833d69bbb2659f87a22c24d63d67",
+      "14ff268d9622f6ad6b60426dd2c0627b7208d429dcf686a226049745d86b162e",
+      "17564d25bd50cf9f07d9e19908b36f962335498c797f6a6acfd5af35ee0beccf",
+      "197514b360186659ae92a9d62c616ac695888aa8f1e37a90b8fd5ffe1e1f683d",
+      "1d9acc65d9a71671ba33475de45ebd4c4ee1f6f62a66490f810d3b50cd641f58",
+      "2120a1ca0341de73aa13432166a3f915194f4afcd17e62f1924e61b3a70f1ce2",
+      "22a167b2d5842addc9fae23464592c5914e57d4892fbd5043d78fef1cc27f8c3",
+      "266bfd6d299f648a4af609b5538c8d006dbd41ef190350452199cde2e8a653c3",
+      "285b78b17ca5e75b888ea6373aeb6d8a680971b0bd000dfd8d7aa6ac42b98941",
+      "2b5eea51630a73f6d1fdd5c176e9be224e6b17e9fa48df1bd5c64f47eab39826",
+      "2e810f620c493f33b8e6b9cff1bf0d8daf118d3cb4a473677081b49318f31213",
+      "3290057fb618289631b281dfce43001107f4b8895116b12425559bceabc8a2aa",
+      "3b4037e0f66c4865a467b9183cf96b5be74ec9935b7ef8af5e3004f1e723a1dc",
+      "3beb88b66d60165fe964f17a0ecce21e5b96a7b8fe1b11586ab15553fd640c48",
+      "3e12ac58207eb2175eb3a8b2af83beec85d2aff46f9c3c1d3860d2c3a2fed29d",
+      "40253b470deb514fbacae1dbce783de7e14c0fe92e540e4475ef6d7151b4be34",
+      "42770c9ed2551dbf06bdc75701b1a398b02747d155678a378cf2f4ac02cdad31",
+      "43e1d040ab68bc4556a38fd601c440f493e628e2cda1701858add05bb513e601",
+      "46e29fa3552bb4df156811d45afa11c63a12f06d53028299520fe7296dc9d0a8",
+      "47ceefd4456ff43cd27bf910d24804cb54ab7fec11a53004f83a4f25b2d5bb17",
+      "488e5b9b37f892749d2b302e0a4c45b4e4d9f2009de25d75be30f9c568251928",
+      "49ee9166b68fa6b4879fc0b39b7480e6582457fcd404ba38a1fed4f207ae3fc3",
+      "4d3107467400652039cd7c1f6dba8c6b722b379de07cab25458c6d7634fe267b",
+      "5ada2c584e30c872b9926826d95f3afa8675f4245e7e8261357f48aa5627833c",
+      "5f0ea63254aa954bb24f627e25c0072f2c2177ee31ceac2075662fb463db5362",
+      "5f8ec68502fe7f75aa9a70a076d02851efdf846c1bf338b35cc1b9dfdc2eb55b",
+      "633eb91079be6c5b95c370d6fdb0859f3de28b764ae28ebfe1683ab1685d3c70",
+      "69310227dfd03e01029045e35a523f60eeb9a942c5d1b92b1ba446ddc4f8d2ff",
+      "695808a2d529083aa828b66df3261d292e6f6d197687473a1789a15c12dfb9ef",
+      "6b5d4a84f44109243e24ee3699def488a55261bed550c0eeaea7a073eb192ce4",
+      "6baba28cff18f2677bd51ebee0d8e5f3263dd9199b70f793acf4b7a80437dc23",
+      "6efed7de9f48f238f2b76ec32c4c77291de99f2866d72f75dee1e86ccdf39c30",
+      "6fcc883ef4358400c9972955bb8dfc0e171cb1196c0c16ecc24d773da2894c11",
+      "6ffc24dc0dd629996d0118d1b81f75805214af56807f355a21aaf3c4d0ce83f6",
+      "70c7adb3effaab57a3b3245dbd4c8f6cf4430f21aa1decf8cd6ccc4c426af902",
+      "730a9ed0cd310f98a389d399f32005ebc690a51f7ea5fe678039f049fce85874",
+      "73279b9e61538335884b9d40fc3fd122da6771f50feab833c1bdd004d0f32272",
+      "7e87d2475ccc009af663843b466d9bd5d9fa4b3a00a43522b19a9aa52c89c9ce",
+      "817b1cd4737a3ea86c91b3c090a7ee616d42d470b85af3616c58af66f71934ff",
+      "8583326c46f54b8a8131ff014b6b2370799bd2c9c60a5615c5b410a24673805f",
+      "86198a8edc3808073cf9346228668ea0c2ec09dd71b689a0fb881306b486b4c2",
+      "8661832fac398e2d75f6524ab20286bbff564157b634398fcef19cdaea76184f",
+      "8cb7c951065fff0ccbc4e856e75af206746158eba42d0c1e3ecbc43a9e8a0bc4",
+      "8e5a9a20f2ce85124ca00728951eb1b9664f5bdf7bb1c97093cdf305985e4720",
+      "951f6f1a5e80366bceb7bd357eb59ae2b1f23a2e4ab9de1be2463702a605639b",
+      "96751f5394945a6ebbed0771f513dab572df924a3bfdff6e020abd9d6c46b59a",
+      "972f8574f362aa68fe6fe1b5be2887b46bdb4853221daded7106a7e7d67f6935",
+      "9d8ece6fdb6f72111b2121a923cea5a84836185a4fa81bd4c20ae0a410b5c8c4",
+      "9da58364bd16e6c57b9e913bc0bd95a9b7e8bd5081e625c4c681c5a9917e2faa",
+      "a3d7bddb0a4819b85b9a70b42faa7f028a6308a879a6dcef1dae83508ca3d74d",
+      "a53d245237bd316e0f591d29351e7ee83f7cbae9f1f72ed953667a3907ef3354",
+      "a5cecc515e27de1b3127ba8718abd72d701e2db599f2da9b7e8ebb76d2c6ec0e",
+      "a7fb6de31bd18f21f6d26fae570d7d05a4f463ae8022a03326aaacfb6691268a",
+      "a9c24cb7867a803ac32eaa025c00bfb6a162be171eb04d713d39b4c96356e251",
+      "ad9a2078e38465191f82f5c09ea9523679567f7727fd42640fdee59691481566",
+      "b3eb2fe09e99af72978183b8d12a630cefb5442d14f4ee231a8453f5d6c129c5",
+      "b4b86335a545703264f41f3726940b33f1c98ec54ea87007ab7a72eb968c9995",
+      "b7e6968e28466108e559e09fe4e6acd553d228d553e5e34ccacb3c65827fe657",
+      "bd5773368fe71a861af0f0467672bf14cb6f4480ca5b8ff8e54d47373dfd0ef4",
+      "c26e3520de3805bb1cfda76a3dbc40fad1ca3c695866355a80597724bd2c5c43",
+      "c7ba820011e9ff144ff7b064bebcfca2cddab4a7cadb4754426242bb2cb365c0",
+      "cbfa16ed536b742d51ef7a9664e2d7cb02dc3edf8b1a26c6d19603da46e08360",
+      "cd7f2e56e6e5a2b344496fcb8d96e81ad11984aa31b98f01ee14b5829f2d2ebc",
+      "d034d91bd025fbcdeb9eac92e105ced0c8e6fe4a34966a044c724b1beebadf84",
+      "d04a5a426e8b30ab84ac4a46f314f723b143e7e424328cee98f163108416078c",
+      "d475d095c78b9a4a9501e069ed54573836170b44d1b3dffea8c80f0d7233c644",
+      "d94d9f1750f4cc9a8efc6cbab38d104f9384590131751529cfa44730a604a4a8",
+      "dc65fe664ad61a002851797a62e0a69481b6028435ff5d0f71c46d6ba339865c",
+      "dca0a6e4d46e4055b79e9c200eb2e92bc11e8fc9f28f776ee4b1ebf2f88af44b",
+      "ddc505640cdf80aabb5af6504524beca57649d75b9e7cc1259882cbeeb8486e6",
+      "e7220de322bc7a734628f31892e0cddc2f2a9df1953b0ac619d6e4889ca57c4a",
+      "e8ba5b9d0448db5eb3e5daa1623e426605194e405f58cd2325750e6cb02384cf",
+      "f4615b9996952f07f485eea656ec9134706dba729ea5eaf633e013f3fbda3a6f",
+      "f755536afd77daeefc7afb084fb00e3498b89f95807777d8417dd3af51c5d955",
+      "f890d7f24ac45853d9f73165ff26daf5fe5c132ecb95f14a389dedf0c25d3bdb",
+      "fad5328085792c5e44b860302477a3a48d27809f8d24b64e210afeb616c48fef",
+      "fcb90c2053ed0a626b5fd1fdd3973adc6fc1393a57b21fc89f4c7c67a38a15f5",
+      "ff474073b33185cb8e657a1da42ff89e65f4c152cd5887a35508632262bd799e",
+      "ff495dd30293de9bc7f9b0bb8fa079b66ff5e11b8d49edab5026706d4e35fa60"
+    ],
+    "legacy_pipeline_eligibility_fallback_records": 0,
+    "pipeline_eligibility_declared_records": 1240,
+    "source_hashes": {
+      "artifacts.py": "27bba855b42d0d2ecb0bdfd37287c323c2ab271b080bef53662b8e5487c19261",
+      "backends.py": "d9fb0ee3a971e6d7314ae875a88b87bd9c1f41b8e103a6140554ebcaaf157561",
+      "extraction.py": "5e3af908750711313d462f01f5d772ac8c42b83d77f050fffdb97a99c9c2d934",
+      "http_api.py": "0172253cb7d1385709759e6e98ae4d5629dd1d0c078018388e2a9b29c17f036a",
+      "hybrid.py": "dc9b868fc5a31c0d5c37cc5a977af4243b0bb52adbd217fc16a4d2a5e9e151dc",
+      "inference.py": "9d34c18b17cf4ec5a77737061362f0ffea8a873201739a16078838e821d6c04b"
+    }
+  },
+  "schema_version": "1.0.0",
+  "scientific_result": false,
+  "status": "LOCAL_ONLY_ENGINEERING_RESULTS_NON_CONFIRMATORY"
+}

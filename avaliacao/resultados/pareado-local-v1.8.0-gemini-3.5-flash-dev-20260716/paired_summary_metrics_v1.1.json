@@ -1,0 +1,136 @@
+{
+  "confirmatory_claim_allowed": false,
+  "created_at": "2026-07-16T17:10:59.384204+00:00",
+  "metric_recalculation": {
+    "benchmark_script_sha256": "f76b3b80e35155392cb049d063df2f03d972e8819089605f883c068ecd7f4515",
+    "contract_version": "1.1.0",
+    "inference_reexecuted": false,
+    "source_artifacts_unchanged": true,
+    "source_plan": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-dev-20260716/paired_plan.json",
+    "source_plan_sha256": "41782356a35cc0941e480950695ff49d189bbe04d674b56674a2c5235f74836b",
+    "source_predictions": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-dev-20260716/paired_predictions.jsonl",
+    "source_predictions_sha256": "e53740893b0812b51ebe6a06c534207ce00a10d79662d6f03415475098c394a0",
+    "source_summary": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-dev-20260716/paired_summary.json",
+    "source_summary_sha256": "8519631010288bce9c221f337ebd37d9eb81c46a78d97f6431bf3f55a97edbd3"
+  },
+  "paired": {
+    "abstention_counted_as_not_correct_for_pair_test": true,
+    "attempted_pairs": 140,
+    "both_correct": 0,
+    "both_invalid_pairs": 0,
+    "both_not_correct": 0,
+    "comparison_status": "REJECTED_NO_JOINTLY_VALID_PAIRS",
+    "complete_pairs": 0,
+    "gemini_only_correct": 0,
+    "invalid_pairs": 140,
+    "jointly_valid_pairs": 0,
+    "local_invalid_pairs": 0,
+    "local_only_correct": 0,
+    "mcnemar_evaluable": false,
+    "mcnemar_exact_two_sided_p": null,
+    "remote_invalid_pairs": 140
+  },
+  "plan_manifest_payload_sha256": "175eae64ef714aa03dab7d43ab3aa2cc6bd8979a37d50db310a79e31b63cb403",
+  "predictions_sha256": "e53740893b0812b51ebe6a06c534207ce00a10d79662d6f03415475098c394a0",
+  "providers": {
+    "google-gemini": {
+      "abstention_count": 0,
+      "abstentions": 0,
+      "accuracy_abstention_as_not_correct": 0.0,
+      "automation_coverage": 0.0,
+      "confusion": {
+        "DEMO->ERROR": 10,
+        "DUPLICADO->ERROR": 50,
+        "NAO_DUPLICADO->ERROR": 50,
+        "OBRA->ERROR": 10,
+        "SOB_DEMANDA->ERROR": 10,
+        "TRIAGEM_MANUAL->ERROR": 10
+      },
+      "dedup_false_negatives": 0,
+      "dedup_false_positives": 0,
+      "dedup_weighted_error_cost_fn5_fp1": 0,
+      "failures": 140,
+      "latency_ms": {
+        "mean": null,
+        "p50": null,
+        "p95": null
+      },
+      "metric_semantics": {
+        "coverage_excludes_only_operational_abstention": true,
+        "legacy_records_reinterpreted_from_decision_path": 0,
+        "routed_to_human_includes_duplicate_confirmation": true,
+        "triagem_manual_is_semantic_class_for_classification": true
+      },
+      "predicted_class_triagem_manual": 0,
+      "routed_to_human_rate": 0.0,
+      "routed_to_human_total": 0,
+      "selective_accuracy": null,
+      "semantic_coverage": 0.0,
+      "straight_through_automation_coverage": 0.0,
+      "total": 140,
+      "unresolved_semantic_prediction_count": 0,
+      "valid": 0
+    },
+    "local-pytorch-fp32": {
+      "abstention_count": 78,
+      "abstentions": 78,
+      "accuracy_abstention_as_not_correct": 0.44285714285714284,
+      "automation_coverage": 0.44285714285714284,
+      "confusion": {
+        "DEMO->DEMO": 10,
+        "DUPLICADO->ABSTENCAO": 32,
+        "DUPLICADO->DUPLICADO": 18,
+        "NAO_DUPLICADO->ABSTENCAO": 34,
+        "NAO_DUPLICADO->NAO_DUPLICADO": 16,
+        "OBRA->ABSTENCAO": 4,
+        "OBRA->OBRA": 6,
+        "SOB_DEMANDA->SOB_DEMANDA": 10,
+        "TRIAGEM_MANUAL->ABSTENCAO": 8,
+        "TRIAGEM_MANUAL->TRIAGEM_MANUAL": 2
+      },
+      "dedup_false_negatives": 0,
+      "dedup_false_positives": 0,
+      "dedup_weighted_error_cost_fn5_fp1": 0,
+      "failures": 0,
+      "latency_ms": {
+        "mean": 550.4679714285714,
+        "p50": 653.097,
+        "p95": 890.829
+      },
+      "metric_semantics": {
+        "coverage_excludes_only_operational_abstention": true,
+        "legacy_records_reinterpreted_from_decision_path": 140,
+        "routed_to_human_includes_duplicate_confirmation": true,
+        "triagem_manual_is_semantic_class_for_classification": true
+      },
+      "predicted_class_triagem_manual": 2,
+      "routed_to_human_rate": 0.7,
+      "routed_to_human_total": 98,
+      "selective_accuracy": 1.0,
+      "semantic_coverage": 0.44285714285714284,
+      "straight_through_automation_coverage": 0.3,
+      "total": 140,
+      "unresolved_semantic_prediction_count": 0,
+      "valid": 140
+    }
+  },
+  "records": 280,
+  "remote_budget_observed": {
+    "calls": 140,
+    "limits": {
+      "approved": true,
+      "max_remote_calls": 140,
+      "max_remote_tokens": 1800000,
+      "max_rpm": 14,
+      "required": {
+        "remote_calls": 140,
+        "remote_tokens_conservative": 1677029
+      },
+      "token_estimation": "Reserva conservadora: bytes UTF-8 do prompt + 4096 tokens de overhead de request/schema + maxOutputTokens; não usa endpoint remoto de contagem."
+    },
+    "reported_total_tokens": 0
+  },
+  "schema_version": "1.1.0",
+  "scientific_result": false,
+  "status": "REJECTED_NO_JOINTLY_VALID_PAIRS"
+}

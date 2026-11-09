@@ -1,0 +1,352 @@
+{
+  "schema_version": "e2e-webhooks-v2",
+  "run_id": "VALIDACAO-POSTS-E2E-20260818T004129Z",
+  "fiscal_decision_under_test": "confirmar",
+  "natureza_evidencia": "VALIDACAO_TECNICA_NAO_CONFIRMATORIA",
+  "synthetic_only": true,
+  "started_at": "2026-08-18T00:41:30.269911+00:00",
+  "ids": {
+    "glpi_reference_ticket_id": 312,
+    "glpi_target_ticket_id": 313,
+    "wf04_auto_confirmation_id": 18,
+    "wf05_auto_confirmation_id": 17
+  },
+  "wf04": {
+    "get_preview": {
+      "http_status": 200,
+      "elapsed_ms": 84.863,
+      "content_type": "text/html; charset=utf-8",
+      "contains_form": true,
+      "body_summary": "<!doctype html><html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Confirmar decisão fiscal</title></head><body><main><h1>Confirmar decisão fiscal</h1><p>Chamado #313: Con"
+    },
+    "expired_token_before_valid_decision": {
+      "post": {
+        "http_status": 409,
+        "elapsed_ms": 2514.894,
+        "content_type": "text/plain; charset=utf-8",
+        "contains_form": false,
+        "body_summary": "Token fiscal expirado para o chamado #313. Gere nova triagem ou revise manualmente no GLPI."
+      },
+      "state_before": {
+        "id": 313,
+        "fila_etapa": "DEDUPLICACAO",
+        "status_num": 4,
+        "status_nome": "Pendente",
+        "classificacao": "DUPLICADO",
+        "decisao_fiscal": null,
+        "token_presente": true,
+        "triagem_status": "AGUARDANDO_APROVACAO_FISCAL",
+        "duplicado_de_id": 312,
+        "fila_reservada_em": null,
+        "classificacao_final": "DUPLICADO",
+        "em_aprovacao_fiscal": true,
+        "fila_enfileirada_em": null,
+        "motivo_classificacao": "Contexto sintético exclusivo para teste E2E",
+        "ultima_acao_workflow": "E2E_PREPARADO",
+        "fiscal_token_expirado": true,
+        "fiscal_token_expira_em": "2026-08-17T21:40:36.107237-03:00"
+      },
+      "state_after": {
+        "id": 313,
+        "fila_etapa": "DEDUPLICACAO",
+        "status_num": 4,
+        "status_nome": "Pendente",
+        "classificacao": "DUPLICADO",
+        "decisao_fiscal": null,
+        "token_presente": true,
+        "triagem_status": "AGUARDANDO_APROVACAO_FISCAL",
+        "duplicado_de_id": 312,
+        "fila_reservada_em": null,
+        "classificacao_final": "DUPLICADO",
+        "em_aprovacao_fiscal": true,
+        "fila_enfileirada_em": null,
+        "motivo_classificacao": "Contexto sintético exclusivo para teste E2E",
+        "ultima_acao_workflow": "E2E_PREPARADO",
+        "fiscal_token_expirado": true,
+        "fiscal_token_expira_em": "2026-08-17T21:40:36.107237-03:00"
+      },
+      "ticket_immutable": true,
+      "validity_restored": true,
+      "state_after_restore": {
+        "id": 313,
+        "fila_etapa": "DEDUPLICACAO",
+        "status_num": 4,
+        "status_nome": "Pendente",
+        "classificacao": "DUPLICADO",
+        "decisao_fiscal": null,
+        "token_presente": true,
+        "triagem_status": "AGUARDANDO_APROVACAO_FISCAL",
+        "duplicado_de_id": 312,
+        "fila_reservada_em": null,
+        "classificacao_final": "DUPLICADO",
+        "em_aprovacao_fiscal": true,
+        "fila_enfileirada_em": null,
+        "motivo_classificacao": "Contexto sintético exclusivo para teste E2E",
+        "ultima_acao_workflow": "E2E_PREPARADO",
+        "fiscal_token_expirado": false,
+        "fiscal_token_expira_em": "2026-08-17T22:11:38.802184-03:00"
+      }
+    },
+    "invalid_token_after_oracle_reservation": {
+      "post": {
+        "http_status": 409,
+        "elapsed_ms": 2402.02,
+        "content_type": "text/plain; charset=utf-8",
+        "contains_form": false,
+        "body_summary": "Token fiscal invalido ou ja utilizado para o chamado #313."
+      },
+      "state_before": {
+        "id": 313,
+        "fila_etapa": "DEDUPLICACAO",
+        "status_num": 4,
+        "status_nome": "Pendente",
+        "classificacao": "DUPLICADO",
+        "decisao_fiscal": null,
+        "token_presente": true,
+        "triagem_status": "AGUARDANDO_APROVACAO_FISCAL",
+        "duplicado_de_id": 312,
+        "fila_reservada_em": null,
+        "classificacao_final": "DUPLICADO",
+        "em_aprovacao_fiscal": true,
+        "fila_enfileirada_em": null,
+        "motivo_classificacao": "Contexto sintético exclusivo para teste E2E",
+        "ultima_acao_workflow": "E2E_PREPARADO",
+        "fiscal_token_expirado": false,
+        "fiscal_token_expira_em": "2026-08-17T22:11:38.802184-03:00"
+      },
+      "state_after": {
+        "id": 313,
+        "fila_etapa": "DEDUPLICACAO",
+        "status_num": 4,
+        "status_nome": "Pendente",
+        "classificacao": "DUPLICADO",
+        "decisao_fiscal": null,
+        "token_presente": true,
+        "triagem_status": "AGUARDANDO_APROVACAO_FISCAL",
+        "duplicado_de_id": 312,
+        "fila_reservada_em": null,
+        "classificacao_final": "DUPLICADO",
+        "em_aprovacao_fiscal": true,
+        "fila_enfileirada_em": null,
+        "motivo_classificacao": "Contexto sintético exclusivo para teste E2E",
+        "ultima_acao_workflow": "E2E_PREPARADO",
+        "fiscal_token_expirado": false,
+        "fiscal_token_expira_em": "2026-08-17T22:11:38.802184-03:00"
+      },
+      "ticket_immutable": true
+    },
+    "concurrent_posts": {
+      "responses": [
+        {
+          "http_status": 202,
+          "elapsed_ms": 2460.455,
+          "content_type": "text/plain; charset=utf-8",
+          "contains_form": false,
+          "body_summary": "Decisão recebida! O chamado #313 está sendo processado em segundo plano."
+        },
+        {
+          "http_status": 200,
+          "elapsed_ms": 2468.625,
+          "content_type": "text/plain; charset=utf-8",
+          "contains_form": false,
+          "body_summary": "Decisao ja registrada ou em processamento para o chamado #313: PROCESSANDO_CONFIRMAR_DUP."
+        }
+      ],
+      "status_codes": [
+        202,
+        200
+      ],
+      "accepted_http_202_count": 1,
+      "competing_response": {
+        "http_status": 200,
+        "elapsed_ms": 2468.625,
+        "content_type": "text/plain; charset=utf-8",
+        "contains_form": false,
+        "body_summary": "Decisao ja registrada ou em processamento para o chamado #313: PROCESSANDO_CONFIRMAR_DUP."
+      },
+      "single_transition_event": true,
+      "transition_event_delta": 1
+    },
+    "post_first": {
+      "http_status": 202,
+      "elapsed_ms": 2460.455,
+      "content_type": "text/plain; charset=utf-8",
+      "contains_form": false,
+      "body_summary": "Decisão recebida! O chamado #313 está sendo processado em segundo plano."
+    },
+    "post_competing": {
+      "http_status": 200,
+      "elapsed_ms": 2468.625,
+      "content_type": "text/plain; charset=utf-8",
+      "contains_form": false,
+      "body_summary": "Decisao ja registrada ou em processamento para o chamado #313: PROCESSANDO_CONFIRMAR_DUP."
+    },
+    "post_replay": {
+      "http_status": 409,
+      "elapsed_ms": 2461.991,
+      "content_type": "text/plain; charset=utf-8",
+      "contains_form": false,
+      "body_summary": "Confirmacao automatica sem reserva ou contexto experimental valido."
+    },
+    "state_before": {
+      "id": 313,
+      "fila_etapa": "DEDUPLICACAO",
+      "status_num": 4,
+      "status_nome": "Pendente",
+      "classificacao": "DUPLICADO",
+      "decisao_fiscal": null,
+      "token_presente": true,
+      "triagem_status": "AGUARDANDO_APROVACAO_FISCAL",
+      "duplicado_de_id": 312,
+      "fila_reservada_em": null,
+      "classificacao_final": "DUPLICADO",
+      "em_aprovacao_fiscal": true,
+      "fila_enfileirada_em": null,
+      "motivo_classificacao": "Contexto sintético exclusivo para teste E2E",
+      "ultima_acao_workflow": "E2E_PREPARADO",
+      "fiscal_token_expirado": false,
+      "fiscal_token_expira_em": "2026-08-17T22:11:31.184058-03:00"
+    },
+    "state_before_concurrent_posts": {
+      "id": 313,
+      "fila_etapa": "DEDUPLICACAO",
+      "status_num": 4,
+      "status_nome": "Pendente",
+      "classificacao": "DUPLICADO",
+      "decisao_fiscal": null,
+      "token_presente": true,
+      "triagem_status": "AGUARDANDO_APROVACAO_FISCAL",
+      "duplicado_de_id": 312,
+      "fila_reservada_em": null,
+      "classificacao_final": "DUPLICADO",
+      "em_aprovacao_fiscal": true,
+      "fila_enfileirada_em": null,
+      "motivo_classificacao": "Contexto sintético exclusivo para teste E2E",
+      "ultima_acao_workflow": "E2E_PREPARADO",
+      "fiscal_token_expirado": false,
+      "fiscal_token_expira_em": "2026-08-17T22:11:38.802184-03:00"
+    },
+    "state_after": {
+      "id": 313,
+      "fila_etapa": "DEDUPLICACAO",
+      "status_num": 6,
+      "status_nome": "Fechado",
+      "classificacao": "DUPLICADO",
+      "decisao_fiscal": "CONFIRMOU_DUP",
+      "token_presente": false,
+      "triagem_status": "DUPLICADO_FECHADO",
+      "duplicado_de_id": 312,
+      "fila_reservada_em": null,
+      "classificacao_final": "DUPLICADO",
+      "em_aprovacao_fiscal": false,
+      "fila_enfileirada_em": null,
+      "motivo_classificacao": "Contexto sintético exclusivo para teste E2E",
+      "ultima_acao_workflow": "DUPLICADO_FECHADO",
+      "fiscal_token_expirado": false,
+      "fiscal_token_expira_em": null
+    },
+    "state_after_replay": {
+      "id": 313,
+      "fila_etapa": "DEDUPLICACAO",
+      "status_num": 6,
+      "status_nome": "Fechado",
+      "classificacao": "DUPLICADO",
+      "decisao_fiscal": "CONFIRMOU_DUP",
+      "token_presente": false,
+      "triagem_status": "DUPLICADO_FECHADO",
+      "duplicado_de_id": 312,
+      "fila_reservada_em": null,
+      "classificacao_final": "DUPLICADO",
+      "em_aprovacao_fiscal": false,
+      "fila_enfileirada_em": null,
+      "motivo_classificacao": "Contexto sintético exclusivo para teste E2E",
+      "ultima_acao_workflow": "DUPLICADO_FECHADO",
+      "fiscal_token_expirado": false,
+      "fiscal_token_expira_em": null
+    },
+    "workflow_event_count_delta_concurrent_posts": 7,
+    "workflow_event_count_delta_replay": 2,
+    "state_transition_once": true,
+    "idempotent": true
+  },
+  "wf05": {
+    "get_preview": {
+      "http_status": 200,
+      "elapsed_ms": 90.098,
+      "content_type": "text/html; charset=utf-8",
+      "contains_form": true,
+      "body_summary": "<!doctype html><html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Confirmar avaliação</title></head><body><main><h1>Confirmar avaliação humana</h1><p>Confirmar a decisão "
+    },
+    "post_first": {
+      "http_status": 200,
+      "elapsed_ms": 2159.338,
+      "content_type": "text/plain; charset=utf-8",
+      "contains_form": false,
+      "body_summary": "Avaliacao registrada para o chamado #313."
+    },
+    "post_replay": {
+      "http_status": 403,
+      "elapsed_ms": 2145.897,
+      "content_type": "text/plain; charset=utf-8",
+      "contains_form": false,
+      "body_summary": "Confirmacao automatica sem reserva ou contexto experimental valido."
+    },
+    "state_before": {
+      "id": 93,
+      "decisao_ia": "DUPLICADO",
+      "classe_correta": null,
+      "decisao_humana": null,
+      "fonte_gabarito": null,
+      "status_avaliacao": "PENDENTE",
+      "ia_estava_correta": null
+    },
+    "state_after": {
+      "id": 93,
+      "decisao_ia": "DUPLICADO",
+      "classe_correta": "DUPLICADO",
+      "decisao_humana": "DUPLICADO",
+      "fonte_gabarito": "ORACULO_GABARITO",
+      "status_avaliacao": "CONCLUIDA",
+      "ia_estava_correta": true
+    },
+    "state_after_replay": {
+      "id": 93,
+      "decisao_ia": "DUPLICADO",
+      "classe_correta": "DUPLICADO",
+      "decisao_humana": "DUPLICADO",
+      "fonte_gabarito": "ORACULO_GABARITO",
+      "status_avaliacao": "CONCLUIDA",
+      "ia_estava_correta": true
+    },
+    "workflow_event_count_delta_first_post": 1,
+    "workflow_event_count_delta_replay": 0,
+    "state_transition_once": true,
+    "idempotent": true
+  },
+  "get_preview_no_mutation": true,
+  "database_queue_cleanup": [
+    {
+      "id": 312,
+      "triagem_status": "VALIDACAO_E2E_REFERENCIA_ENCERRADA",
+      "status_num": 6,
+      "status_nome": "Fechado",
+      "fila_enfileirada_em": null,
+      "fila_disponivel_em": null,
+      "fila_liberar_em": null,
+      "fila_reservada_em": null
+    },
+    {
+      "id": 313,
+      "triagem_status": "DUPLICADO_FECHADO",
+      "status_num": 6,
+      "status_nome": "Fechado",
+      "fila_enfileirada_em": null,
+      "fila_disponivel_em": null,
+      "fila_liberar_em": null,
+      "fila_reservada_em": null
+    }
+  ],
+  "glpi_synthetic_tickets_closed": true,
+  "passed": true,
+  "finished_at": "2026-08-18T00:41:48.419878+00:00"
+}

@@ -1,0 +1,10 @@
+{
+  "collected_at": "2026-09-15T16:26:23.633998+00:00",
+  "scientific_result": false,
+  "semantic_correctness_confirmed": false,
+  "workflow_sha256": "73a3b919c50c3975c7b9d8ff4e75cda38ed46715878e72a1bd3dfc6a6e0b6332",
+  "transaction_committed": false,
+  "sqlstate": "55P03",
+  "status": "PASS",
+  "evidence_payload_sha256": "f67cf9bc4f0a9ca8f2e34b64490ca5e2ab27025b8858d86425791be0ccf13867"
+}

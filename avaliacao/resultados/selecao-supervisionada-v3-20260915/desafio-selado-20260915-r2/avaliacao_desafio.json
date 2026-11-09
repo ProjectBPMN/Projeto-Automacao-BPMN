@@ -1,0 +1,1445 @@
+{
+  "confirmatory_eligible": false,
+  "created_at": "2026-09-15T20:47:56.642951+00:00",
+  "disjunction_audit": {
+    "case_visible_text_sha256": {
+      "challenge_unique": 280,
+      "development_unique": 1516,
+      "overlap_count": 0,
+      "overlap_ids": []
+    },
+    "episode_narrative_core_sha256": {
+      "challenge_unique": 0,
+      "development_unique": 0,
+      "overlap_count": 0,
+      "overlap_ids": []
+    },
+    "grammar_family_sha256_sensitivity": {
+      "challenge_unique": 29,
+      "development_unique": 37,
+      "interpretation": "Dependencia residual de gramatica limita a generalizacao; ICs sao condicionais ao gerador.",
+      "overlap_count": 0,
+      "overlap_ids": []
+    },
+    "normalized_semantic_signature_sha256": {
+      "challenge_unique": 0,
+      "development_unique": 0,
+      "overlap_count": 0,
+      "overlap_ids": []
+    },
+    "primary_disjoint": true,
+    "source_dependency_group_sha256": {
+      "challenge_unique": 36,
+      "development_unique": 111,
+      "overlap_count": 0,
+      "overlap_ids": []
+    }
+  },
+  "embedding_runtime": {
+    "backend": "pytorch_fp32",
+    "batch8_latency_ms": {
+      "n": 10,
+      "p50": 565.2843000025314,
+      "p95": 914.6723949983424
+    },
+    "cache_hit": false,
+    "created_at": "2026-09-15T20:47:35.068393+00:00",
+    "dataset_sha256": "a5a23ce013655ba30c4643c4eab712e541c3faf1b4db33ad988ee5d0ed45d9e3",
+    "dimension": 384,
+    "encode_peak_rss_mb": 569.15625,
+    "file_count": 11,
+    "load_peak_rss_mb": 635.5703125,
+    "load_seconds": 5.333861400002206,
+    "local_path": "local_ai\\models\\multilingual-e5-small",
+    "measurement_scope": "encoder_only_sequential_process",
+    "model_id": "multilingual_e5_small",
+    "normalized": true,
+    "packages": {
+      "sentence_transformers": "5.6.0",
+      "torch": "2.13.0+cpu",
+      "transformers": "4.57.6"
+    },
+    "repository": "intfloat/multilingual-e5-small",
+    "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "roles": {
+      "symmetric": {
+        "keys_sha256": "29f4dc0c88993e2066e56cf412c64c94131dd4f4ca4ee5eba3a2db192468dcf7",
+        "npz_sha256": "bea80b8b0166a8785bbe1c03027cc0122e96a1e50ba67944335631198f769150",
+        "peak_rss_mb": 569.15625,
+        "prefix": "query: ",
+        "records": 185,
+        "seconds": 15.754556599997159,
+        "texts_per_second": 11.742634508674993
+      }
+    },
+    "rss_before_mb": 418.62109375,
+    "schema": "projeto-ic-embedding-cache-v1",
+    "single_text_latency_ms": {
+      "n": 20,
+      "p50": 172.9797000043618,
+      "p95": 397.5812550026605
+    },
+    "total_bytes": 493294398,
+    "tree_sha256": "ea6db56024d2b0c8743c6af329e69b6e5628edf75e99d9fdf9b68ba730f8e8c9"
+  },
+  "freeze_sha256": "203e7e10ab71c7ccd885952813824be3b8a4e36803c3bdeeaba33f73b86ce3c6",
+  "gate_interpretation": {
+    "reason": "Gates requerem limites de confianca agrupados; amostra pequena ou IC indefinido nunca aprova automaticamente.",
+    "status": "EVIDENCE_ONLY_NO_AUTOMATIC_PASS"
+  },
+  "limitations": [
+    "Rotulos sinteticos proxy nao medem eficacia institucional, justica ou prontidao de producao.",
+    "Bootstrap usa source_dependency_group_sha256 e seus ICs sao condicionais ao gerador.",
+    "O gold de deduplicacao representa a acao operacional de nao fusionar, nao certeza de eventos distintos.",
+    "Familias gramaticais compartilhadas sao dependencia residual, nao unidades independentes."
+  ],
+  "locked_challenge_sha256": "a5a23ce013655ba30c4643c4eab712e541c3faf1b4db33ad988ee5d0ed45d9e3",
+  "metrics": {
+    "classification": {
+      "accuracy": 0.0,
+      "automatic_coverage": 0.0,
+      "automatic_errors": 0,
+      "automatic_maintenance_as_obra": 0,
+      "automatic_non_obra_as_obra": 0,
+      "automatic_non_obra_as_obra_group_events": 0,
+      "automatic_non_obra_as_obra_group_rate_upper": null,
+      "automatic_non_obra_as_obra_rate": null,
+      "automatic_non_obra_exposed_groups": 0,
+      "automatic_non_obra_records": 0,
+      "automatic_records": 0,
+      "automatic_risk": null,
+      "automatic_triage_records": 0,
+      "brier_score": 1.3892014753817405,
+      "confidence_intervals_group_bootstrap": {
+        "accuracy": [
+          0.0,
+          0.0
+        ],
+        "coverage": [
+          0.0,
+          0.0
+        ],
+        "macro_f1": [
+          0.0,
+          0.0
+        ],
+        "selective_risk": null
+      },
+      "confidence_level": 0.95,
+      "confusion_matrix": {
+        "labels": [
+          "OBRA",
+          "DEMO",
+          "SOB_DEMANDA",
+          "TRIAGEM_MANUAL"
+        ],
+        "values": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            5,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "expected_calibration_error_10_bins": 0.7259490765792791,
+      "human_review_required_records": 5,
+      "log_loss": 2.4635745756997482,
+      "macro_f1": 0.0,
+      "obra_recall": 0.0,
+      "per_class": {
+        "DEMO": {
+          "f1-score": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "OBRA": {
+          "f1-score": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "SOB_DEMANDA": {
+          "f1-score": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 5
+        },
+        "TRIAGEM_MANUAL": {
+          "f1-score": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        }
+      },
+      "records": 5,
+      "semantic_maintenance_as_obra": 0,
+      "triagem_manual_is_automatic": false
+    },
+    "deduplication": {
+      "automatic_false_negative_rate": 0.0,
+      "automatic_false_positive_rate": 0.0,
+      "automatic_positive_records_requiring_human_confirmation": 15,
+      "average_precision": 0.9612596893336681,
+      "brier_score": 0.10943043011745311,
+      "confidence_level": 0.95,
+      "decision_coverage": 0.4666666666666667,
+      "decision_records": 42,
+      "expected_calibration_error_10_bins": 0.09673028117305427,
+      "false_negative_group_events": 0,
+      "false_negative_group_rate_upper": 0.1707497229824809,
+      "false_positive_group_events": 0,
+      "false_positive_group_rate_upper": 0.3123439780663678,
+      "fn": 0,
+      "fp": 0,
+      "full_automation_coverage": 0.3,
+      "fully_automated_negative_records": 27,
+      "human_review_required_records": 63,
+      "log_loss": 0.33504992999734257,
+      "negative_groups": 8,
+      "negative_predictive_value": 1.0,
+      "negative_records": 43,
+      "operating_confidence_intervals_group_bootstrap": {
+        "decision_coverage": [
+          0.38980696798493414,
+          0.5142926490984743
+        ],
+        "false_negative_rate": [
+          0.0,
+          0.0
+        ],
+        "false_positive_rate": [
+          0.0,
+          0.0
+        ],
+        "full_automation_coverage": [
+          0.18745535714285722,
+          0.37383177570093457
+        ],
+        "negative_predictive_value": [
+          1.0,
+          1.0
+        ],
+        "precision": [
+          1.0,
+          1.0
+        ],
+        "weighted_error_per_record": [
+          0.0,
+          0.0
+        ]
+      },
+      "positive_groups": 16,
+      "positive_records": 47,
+      "precision": 1.0,
+      "records": 90,
+      "roc_auc": 0.9614052449282533,
+      "semantic_accuracy": 0.8333333333333334,
+      "semantic_confidence_intervals_group_bootstrap": {
+        "accuracy": [
+          0.789904909332154,
+          0.8974358974358975
+        ],
+        "macro_f1": [
+          0.7843378944498153,
+          0.8703352308665402
+        ]
+      },
+      "semantic_confusion_matrix": [
+        [
+          28,
+          15
+        ],
+        [
+          0,
+          47
+        ]
+      ],
+      "semantic_f1": 0.8623853211009175,
+      "tn": 27,
+      "tp": 15,
+      "weighted_error_fn5_fp1_per_automatic": 0.0,
+      "weighted_error_fn5_fp1_per_record": 0.0,
+      "weighted_error_fn5_fp1_total": 0.0
+    }
+  },
+  "predictions": {
+    "classification": [
+      {
+        "covered": false,
+        "gold": "SOB_DEMANDA",
+        "group": "19cbff36b6fef5cd8f51b5face7c349c1c412f7d47867b90f8abeda895ddc8bc",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "demo": 0.7223371532643081,
+          "obra": 0.02831476251601398,
+          "sob_demanda": 0.06554560801710604,
+          "triagem_manual": 0.1838024762025717
+        },
+        "semantic_prediction": "DEMO",
+        "unit_id": "LOCK-SEM31-C-0057-R1"
+      },
+      {
+        "covered": false,
+        "gold": "SOB_DEMANDA",
+        "group": "615be0a2fa191549e137c286875f0f863274c9787f6b8a39c523f8fe78ce171e",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "demo": 0.7624766885612946,
+          "obra": 0.02443656136139932,
+          "sob_demanda": 0.08643428303818339,
+          "triagem_manual": 0.12665246703912267
+        },
+        "semantic_prediction": "DEMO",
+        "unit_id": "LOCK-SEM31-C-0052-R1"
+      },
+      {
+        "covered": false,
+        "gold": "SOB_DEMANDA",
+        "group": "5351dec0e07b9818c85af35df7263b5cc5b8cc3c8607d0e5662ac2076ccb9bcc",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "demo": 0.7722419681413895,
+          "obra": 0.018861841956078703,
+          "sob_demanda": 0.1409958834804953,
+          "triagem_manual": 0.0679003064220366
+        },
+        "semantic_prediction": "DEMO",
+        "unit_id": "LOCK-SEM31-C-0067-R1"
+      },
+      {
+        "covered": false,
+        "gold": "SOB_DEMANDA",
+        "group": "5068679eb25127894daf371c20d609cd6e38d39835fbf93e16d4607b2ebd6e05",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "demo": 0.4944847119409679,
+          "obra": 0.19979760253994253,
+          "sob_demanda": 0.1426796359182388,
+          "triagem_manual": 0.16303804960085078
+        },
+        "semantic_prediction": "DEMO",
+        "unit_id": "LOCK-SEM31-C-0062-R1"
+      },
+      {
+        "covered": false,
+        "gold": "SOB_DEMANDA",
+        "group": "4b78b2626ed24f539c7bfc983d7374acdc1cb709abadd8268f999fa95f5c80e6",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "demo": 0.8782048609884354,
+          "obra": 0.020328336160843702,
+          "sob_demanda": 0.03922994724323313,
+          "triagem_manual": 0.06223685560748783
+        },
+        "semantic_prediction": "DEMO",
+        "unit_id": "LOCK-SEM31-C-0072-R1"
+      }
+    ],
+    "deduplication": [
+      {
+        "covered": false,
+        "gold": "NAO_DUPLICADO",
+        "group": "f9b4a0f3ad30073749595c821c9c797c847efc13215b1112a72ce422d5820e3b",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.5478718824006318,
+          "nao_duplicado": 0.4521281175993682
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0066-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "fd94bf36eaae90fbacb8425950f638f52a6a7bd99e95c1de2659fa35a69c5bbf",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8987540218604184,
+          "nao_duplicado": 0.10124597813958158
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0045-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "5f0ac9643bc516def2477c90d0c5cf556e36e67749af5f7faf4683cf0321b088",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.012967041071025484,
+          "nao_duplicado": 0.9870329589289745
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0076-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "f9b4a0f3ad30073749595c821c9c797c847efc13215b1112a72ce422d5820e3b",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.9255403450411132,
+          "nao_duplicado": 0.07445965495888685
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0021-C"
+      },
+      {
+        "covered": true,
+        "gold": "DUPLICADO",
+        "group": "f67811b978b5eeebb588fa98536edcd5f24d9fa02e9a10e5aa09bc290440c0c5",
+        "policy_prediction": "DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.9573339981640477,
+          "nao_duplicado": 0.04266600183595226
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0002-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "4db030d3d152a159f9abd0bc81fc69236014ee9534cc227dbd940729917156ae",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.9160173979994785,
+          "nao_duplicado": 0.08398260200052154
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0012-C"
+      },
+      {
+        "covered": true,
+        "gold": "DUPLICADO",
+        "group": "f802a11828d5a4805321a84d4f3c73a6aa1e597f17437220259820bef00bf757",
+        "policy_prediction": "DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.9333326095570517,
+          "nao_duplicado": 0.06666739044294834
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0047-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "c3d990344504beab0be0f72b7b18d8d57897c801d7ec630d9a96b9405c04b5d5",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.0300070574277915,
+          "nao_duplicado": 0.9699929425722085
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0085-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "4db030d3d152a159f9abd0bc81fc69236014ee9534cc227dbd940729917156ae",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8657621114330687,
+          "nao_duplicado": 0.1342378885669313
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0010-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "5f0ac9643bc516def2477c90d0c5cf556e36e67749af5f7faf4683cf0321b088",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.004109759695264017,
+          "nao_duplicado": 0.9958902403047359
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0077-C"
+      },
+      {
+        "covered": true,
+        "gold": "DUPLICADO",
+        "group": "086545c501a0e448a6d024464ea93663d5beed43804ac5a33d2f11d2ecae5d08",
+        "policy_prediction": "DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.9620247417406783,
+          "nao_duplicado": 0.03797525825932169
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0032-C"
+      },
+      {
+        "covered": false,
+        "gold": "NAO_DUPLICADO",
+        "group": "c3d990344504beab0be0f72b7b18d8d57897c801d7ec630d9a96b9405c04b5d5",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8517355219009257,
+          "nao_duplicado": 0.14826447809907428
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0062-C"
+      },
+      {
+        "covered": false,
+        "gold": "NAO_DUPLICADO",
+        "group": "60fef8d43da6a4687b4c62c4bc8d2692dc3d42ac75223af202be56dbf29940ad",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8664586151235836,
+          "nao_duplicado": 0.13354138487641642
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0056-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "60fef8d43da6a4687b4c62c4bc8d2692dc3d42ac75223af202be56dbf29940ad",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.008774577389343452,
+          "nao_duplicado": 0.9912254226106565
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0078-C"
+      },
+      {
+        "covered": true,
+        "gold": "DUPLICADO",
+        "group": "60fef8d43da6a4687b4c62c4bc8d2692dc3d42ac75223af202be56dbf29940ad",
+        "policy_prediction": "DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.940872772642302,
+          "nao_duplicado": 0.05912722735769804
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0008-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "2f372ff6e1f0f7fb11b7f4a4521002c0a84c51b8645b858b544e2e23f164ec8e",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.9112640872139985,
+          "nao_duplicado": 0.08873591278600146
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0024-C"
+      },
+      {
+        "covered": false,
+        "gold": "NAO_DUPLICADO",
+        "group": "60fef8d43da6a4687b4c62c4bc8d2692dc3d42ac75223af202be56dbf29940ad",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.7479809770785709,
+          "nao_duplicado": 0.2520190229214291
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0054-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "df33e4f322d4b8edb811112a2c1954a848503a792b2b09c5555976a918c48f00",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.03143265711645214,
+          "nao_duplicado": 0.9685673428835478
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0088-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "217c4597c5b36199e45152ddb0d2aa5840da730876ca82b3eda694a08b790464",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8915115705437286,
+          "nao_duplicado": 0.10848842945627135
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0042-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "04bf6e0a151852059e44575d630acf41cacacb69bae9aa3cef2eca79edb35c60",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8778142860901953,
+          "nao_duplicado": 0.1221857139098047
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0025-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "7014dcb691621e06cd56f266b90104b81939bc699fc3e92a07189f101dbb6313",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.9217659170815693,
+          "nao_duplicado": 0.0782340829184307
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0036-C"
+      },
+      {
+        "covered": false,
+        "gold": "NAO_DUPLICADO",
+        "group": "4db030d3d152a159f9abd0bc81fc69236014ee9534cc227dbd940729917156ae",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.5415332068008174,
+          "nao_duplicado": 0.4584667931991826
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0057-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "f9b4a0f3ad30073749595c821c9c797c847efc13215b1112a72ce422d5820e3b",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.873875840833016,
+          "nao_duplicado": 0.12612415916698405
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0019-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "5f0ac9643bc516def2477c90d0c5cf556e36e67749af5f7faf4683cf0321b088",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.06144396312210453,
+          "nao_duplicado": 0.9385560368778955
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0052-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "df33e4f322d4b8edb811112a2c1954a848503a792b2b09c5555976a918c48f00",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.0053409408506990925,
+          "nao_duplicado": 0.9946590591493009
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0089-C"
+      },
+      {
+        "covered": true,
+        "gold": "DUPLICADO",
+        "group": "7014dcb691621e06cd56f266b90104b81939bc699fc3e92a07189f101dbb6313",
+        "policy_prediction": "DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.9459974188371937,
+          "nao_duplicado": 0.05400258116280632
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0035-C"
+      },
+      {
+        "covered": false,
+        "gold": "NAO_DUPLICADO",
+        "group": "c3d990344504beab0be0f72b7b18d8d57897c801d7ec630d9a96b9405c04b5d5",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.7396611147055159,
+          "nao_duplicado": 0.2603388852944841
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0060-C"
+      },
+      {
+        "covered": false,
+        "gold": "NAO_DUPLICADO",
+        "group": "4db030d3d152a159f9abd0bc81fc69236014ee9534cc227dbd940729917156ae",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8404902494763652,
+          "nao_duplicado": 0.1595097505236348
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0059-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "4db030d3d152a159f9abd0bc81fc69236014ee9534cc227dbd940729917156ae",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.005752093361198257,
+          "nao_duplicado": 0.9942479066388017
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0083-C"
+      },
+      {
+        "covered": true,
+        "gold": "DUPLICADO",
+        "group": "2f372ff6e1f0f7fb11b7f4a4521002c0a84c51b8645b858b544e2e23f164ec8e",
+        "policy_prediction": "DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.9343963762704228,
+          "nao_duplicado": 0.06560362372957718
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0023-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "df33e4f322d4b8edb811112a2c1954a848503a792b2b09c5555976a918c48f00",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8757260363734475,
+          "nao_duplicado": 0.12427396362655252
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0016-C"
+      },
+      {
+        "covered": false,
+        "gold": "NAO_DUPLICADO",
+        "group": "f9b4a0f3ad30073749595c821c9c797c847efc13215b1112a72ce422d5820e3b",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.9144804525608815,
+          "nao_duplicado": 0.08551954743911849
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0068-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "217c4597c5b36199e45152ddb0d2aa5840da730876ca82b3eda694a08b790464",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8569950219455107,
+          "nao_duplicado": 0.1430049780544893
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0040-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "f67811b978b5eeebb588fa98536edcd5f24d9fa02e9a10e5aa09bc290440c0c5",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.016558753802957946,
+          "nao_duplicado": 0.9834412461970421
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0049-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "5f0ac9643bc516def2477c90d0c5cf556e36e67749af5f7faf4683cf0321b088",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.9019850755551999,
+          "nao_duplicado": 0.09801492444480009
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0006-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "60fef8d43da6a4687b4c62c4bc8d2692dc3d42ac75223af202be56dbf29940ad",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8136637715953725,
+          "nao_duplicado": 0.1863362284046275
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0007-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "df33e4f322d4b8edb811112a2c1954a848503a792b2b09c5555976a918c48f00",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.9061530484379645,
+          "nao_duplicado": 0.09384695156203549
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0018-C"
+      },
+      {
+        "covered": false,
+        "gold": "NAO_DUPLICADO",
+        "group": "df33e4f322d4b8edb811112a2c1954a848503a792b2b09c5555976a918c48f00",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.49397881605005556,
+          "nao_duplicado": 0.5060211839499444
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0063-C"
+      },
+      {
+        "covered": true,
+        "gold": "DUPLICADO",
+        "group": "4db030d3d152a159f9abd0bc81fc69236014ee9534cc227dbd940729917156ae",
+        "policy_prediction": "DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.9381072286527271,
+          "nao_duplicado": 0.06189277134727289
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0011-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "20a9ede6b95e8d85a4cfe38c03626cd5029ac2909ccbbbe11617115cdaffa84a",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.904051408414787,
+          "nao_duplicado": 0.09594859158521296
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0037-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "0b44b0285472796acb2694f10d72e01190374e5a342ca0a36a1bc80278d2dca9",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8527565843084238,
+          "nao_duplicado": 0.14724341569157617
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0028-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "5f0ac9643bc516def2477c90d0c5cf556e36e67749af5f7faf4683cf0321b088",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.009026203842031736,
+          "nao_duplicado": 0.9909737961579682
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0075-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "f67811b978b5eeebb588fa98536edcd5f24d9fa02e9a10e5aa09bc290440c0c5",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.014335389289790203,
+          "nao_duplicado": 0.9856646107102098
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0073-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "60fef8d43da6a4687b4c62c4bc8d2692dc3d42ac75223af202be56dbf29940ad",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.03742036510520002,
+          "nao_duplicado": 0.9625796348948
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0055-C"
+      },
+      {
+        "covered": true,
+        "gold": "DUPLICADO",
+        "group": "217c4597c5b36199e45152ddb0d2aa5840da730876ca82b3eda694a08b790464",
+        "policy_prediction": "DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.9414875959523248,
+          "nao_duplicado": 0.058512404047675215
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0041-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "086545c501a0e448a6d024464ea93663d5beed43804ac5a33d2f11d2ecae5d08",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.929019605405053,
+          "nao_duplicado": 0.07098039459494698
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0033-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "20a9ede6b95e8d85a4cfe38c03626cd5029ac2909ccbbbe11617115cdaffa84a",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.9279666674197256,
+          "nao_duplicado": 0.07203333258027445
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0039-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "2f372ff6e1f0f7fb11b7f4a4521002c0a84c51b8645b858b544e2e23f164ec8e",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8537586774837805,
+          "nao_duplicado": 0.14624132251621946
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0022-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "4db030d3d152a159f9abd0bc81fc69236014ee9534cc227dbd940729917156ae",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.015115884419032012,
+          "nao_duplicado": 0.984884115580968
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0082-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "c3d990344504beab0be0f72b7b18d8d57897c801d7ec630d9a96b9405c04b5d5",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8584636037203234,
+          "nao_duplicado": 0.14153639627967662
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0013-C"
+      },
+      {
+        "covered": false,
+        "gold": "NAO_DUPLICADO",
+        "group": "5f0ac9643bc516def2477c90d0c5cf556e36e67749af5f7faf4683cf0321b088",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8731021035082638,
+          "nao_duplicado": 0.12689789649173622
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0053-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "4db030d3d152a159f9abd0bc81fc69236014ee9534cc227dbd940729917156ae",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.1262813886638124,
+          "nao_duplicado": 0.8737186113361877
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0058-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "f67811b978b5eeebb588fa98536edcd5f24d9fa02e9a10e5aa09bc290440c0c5",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.0024280982152397146,
+          "nao_duplicado": 0.9975719017847603
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0074-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "4db030d3d152a159f9abd0bc81fc69236014ee9534cc227dbd940729917156ae",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.008539077542303385,
+          "nao_duplicado": 0.9914609224576966
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0081-C"
+      },
+      {
+        "covered": true,
+        "gold": "DUPLICADO",
+        "group": "c3d990344504beab0be0f72b7b18d8d57897c801d7ec630d9a96b9405c04b5d5",
+        "policy_prediction": "DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.9604904252131568,
+          "nao_duplicado": 0.03950957478684325
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0014-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "f67811b978b5eeebb588fa98536edcd5f24d9fa02e9a10e5aa09bc290440c0c5",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8846549119897175,
+          "nao_duplicado": 0.11534508801028254
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0003-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "f67811b978b5eeebb588fa98536edcd5f24d9fa02e9a10e5aa09bc290440c0c5",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.7770236468656766,
+          "nao_duplicado": 0.2229763531343234
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0001-C"
+      },
+      {
+        "covered": false,
+        "gold": "NAO_DUPLICADO",
+        "group": "2f372ff6e1f0f7fb11b7f4a4521002c0a84c51b8645b858b544e2e23f164ec8e",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.5828602401349234,
+          "nao_duplicado": 0.41713975986507656
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0069-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "0b44b0285472796acb2694f10d72e01190374e5a342ca0a36a1bc80278d2dca9",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.9004687868419476,
+          "nao_duplicado": 0.09953121315805236
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0030-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "0b44b0285472796acb2694f10d72e01190374e5a342ca0a36a1bc80278d2dca9",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.928928391630494,
+          "nao_duplicado": 0.07107160836950599
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0029-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "df33e4f322d4b8edb811112a2c1954a848503a792b2b09c5555976a918c48f00",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.09859692854736238,
+          "nao_duplicado": 0.9014030714526376
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0064-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "7014dcb691621e06cd56f266b90104b81939bc699fc3e92a07189f101dbb6313",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8865441931056476,
+          "nao_duplicado": 0.11345580689435242
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0034-C"
+      },
+      {
+        "covered": true,
+        "gold": "DUPLICADO",
+        "group": "5f0ac9643bc516def2477c90d0c5cf556e36e67749af5f7faf4683cf0321b088",
+        "policy_prediction": "DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.9413562194554155,
+          "nao_duplicado": 0.05864378054458452
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0005-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "2f372ff6e1f0f7fb11b7f4a4521002c0a84c51b8645b858b544e2e23f164ec8e",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.1196913950636255,
+          "nao_duplicado": 0.8803086049363745
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0070-C"
+      },
+      {
+        "covered": false,
+        "gold": "NAO_DUPLICADO",
+        "group": "f67811b978b5eeebb588fa98536edcd5f24d9fa02e9a10e5aa09bc290440c0c5",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8810060336518963,
+          "nao_duplicado": 0.11899396634810366
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0050-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "f67811b978b5eeebb588fa98536edcd5f24d9fa02e9a10e5aa09bc290440c0c5",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.004265454125995163,
+          "nao_duplicado": 0.9957345458740048
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0072-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "086545c501a0e448a6d024464ea93663d5beed43804ac5a33d2f11d2ecae5d08",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8961410868191283,
+          "nao_duplicado": 0.1038589131808717
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0031-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "60fef8d43da6a4687b4c62c4bc8d2692dc3d42ac75223af202be56dbf29940ad",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.025587008737059956,
+          "nao_duplicado": 0.97441299126294
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0079-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "f9b4a0f3ad30073749595c821c9c797c847efc13215b1112a72ce422d5820e3b",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.01229972979194736,
+          "nao_duplicado": 0.9877002702080526
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0090-C"
+      },
+      {
+        "covered": true,
+        "gold": "DUPLICADO",
+        "group": "20a9ede6b95e8d85a4cfe38c03626cd5029ac2909ccbbbe11617115cdaffa84a",
+        "policy_prediction": "DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.9649318725194289,
+          "nao_duplicado": 0.03506812748057109
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0038-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "f802a11828d5a4805321a84d4f3c73a6aa1e597f17437220259820bef00bf757",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.86288682524213,
+          "nao_duplicado": 0.13711317475787
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0046-C"
+      },
+      {
+        "covered": false,
+        "gold": "NAO_DUPLICADO",
+        "group": "5f0ac9643bc516def2477c90d0c5cf556e36e67749af5f7faf4683cf0321b088",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.6061495479457463,
+          "nao_duplicado": 0.39385045205425373
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0051-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "c3d990344504beab0be0f72b7b18d8d57897c801d7ec630d9a96b9405c04b5d5",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.007922720514735637,
+          "nao_duplicado": 0.9920772794852644
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0084-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "c3d990344504beab0be0f72b7b18d8d57897c801d7ec630d9a96b9405c04b5d5",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.02885972910322891,
+          "nao_duplicado": 0.9711402708967711
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0061-C"
+      },
+      {
+        "covered": true,
+        "gold": "DUPLICADO",
+        "group": "f9b4a0f3ad30073749595c821c9c797c847efc13215b1112a72ce422d5820e3b",
+        "policy_prediction": "DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.9655183969985724,
+          "nao_duplicado": 0.03448160300142755
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0020-C"
+      },
+      {
+        "covered": false,
+        "gold": "NAO_DUPLICADO",
+        "group": "2f372ff6e1f0f7fb11b7f4a4521002c0a84c51b8645b858b544e2e23f164ec8e",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8707289443494287,
+          "nao_duplicado": 0.1292710556505713
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0071-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "fd94bf36eaae90fbacb8425950f638f52a6a7bd99e95c1de2659fa35a69c5bbf",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8371350007517366,
+          "nao_duplicado": 0.16286499924826336
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0043-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "c3d990344504beab0be0f72b7b18d8d57897c801d7ec630d9a96b9405c04b5d5",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.005841474118192457,
+          "nao_duplicado": 0.9941585258818075
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0086-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "60fef8d43da6a4687b4c62c4bc8d2692dc3d42ac75223af202be56dbf29940ad",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8826022308268935,
+          "nao_duplicado": 0.11739776917310651
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0009-C"
+      },
+      {
+        "covered": true,
+        "gold": "DUPLICADO",
+        "group": "04bf6e0a151852059e44575d630acf41cacacb69bae9aa3cef2eca79edb35c60",
+        "policy_prediction": "DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.9617161584323657,
+          "nao_duplicado": 0.038283841567634314
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0026-C"
+      },
+      {
+        "covered": true,
+        "gold": "DUPLICADO",
+        "group": "df33e4f322d4b8edb811112a2c1954a848503a792b2b09c5555976a918c48f00",
+        "policy_prediction": "DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.940558352628376,
+          "nao_duplicado": 0.05944164737162405
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0017-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "04bf6e0a151852059e44575d630acf41cacacb69bae9aa3cef2eca79edb35c60",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.9099175694830303,
+          "nao_duplicado": 0.09008243051696974
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0027-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "f9b4a0f3ad30073749595c821c9c797c847efc13215b1112a72ce422d5820e3b",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.048948584980495737,
+          "nao_duplicado": 0.9510514150195043
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0067-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "c3d990344504beab0be0f72b7b18d8d57897c801d7ec630d9a96b9405c04b5d5",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.9056973189220282,
+          "nao_duplicado": 0.0943026810779718
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0015-C"
+      },
+      {
+        "covered": true,
+        "gold": "DUPLICADO",
+        "group": "fd94bf36eaae90fbacb8425950f638f52a6a7bd99e95c1de2659fa35a69c5bbf",
+        "policy_prediction": "DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.956647536469007,
+          "nao_duplicado": 0.04335246353099298
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0044-C"
+      },
+      {
+        "covered": false,
+        "gold": "DUPLICADO",
+        "group": "5f0ac9643bc516def2477c90d0c5cf556e36e67749af5f7faf4683cf0321b088",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8620207049943852,
+          "nao_duplicado": 0.1379792950056148
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0004-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "df33e4f322d4b8edb811112a2c1954a848503a792b2b09c5555976a918c48f00",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.011158345704371407,
+          "nao_duplicado": 0.9888416542956286
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0087-C"
+      },
+      {
+        "covered": true,
+        "gold": "NAO_DUPLICADO",
+        "group": "60fef8d43da6a4687b4c62c4bc8d2692dc3d42ac75223af202be56dbf29940ad",
+        "policy_prediction": "NAO_DUPLICADO",
+        "probabilities": {
+          "duplicado": 0.004069581931616926,
+          "nao_duplicado": 0.9959304180683831
+        },
+        "semantic_prediction": "NAO_DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0080-C"
+      },
+      {
+        "covered": false,
+        "gold": "NAO_DUPLICADO",
+        "group": "f67811b978b5eeebb588fa98536edcd5f24d9fa02e9a10e5aa09bc290440c0c5",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.7738904401639455,
+          "nao_duplicado": 0.22610955983605452
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0048-C"
+      },
+      {
+        "covered": false,
+        "gold": "NAO_DUPLICADO",
+        "group": "df33e4f322d4b8edb811112a2c1954a848503a792b2b09c5555976a918c48f00",
+        "policy_prediction": "ABSTENCAO",
+        "probabilities": {
+          "duplicado": 0.8513442570640514,
+          "nao_duplicado": 0.14865574293594863
+        },
+        "semantic_prediction": "DUPLICADO",
+        "unit_id": "LOCK-SEM31-D-0065-C"
+      }
+    ]
+  },
+  "schema": "projeto-ic-avaliacao-desafio-selado-v1",
+  "scientific_result": false,
+  "status": "COMPLETED_ONCE",
+  "synthetic_proxy_challenge": true
+}

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "tipo": {
+      "type": "string",
+      "enum": [
+        "OBRA",
+        "MANUTENCAO",
+        "TRIAGEM_MANUAL"
+      ]
+    },
+    "executor": {
+      "type": "string",
+      "enum": [
+        "DDI_DG",
+        "DEMO",
+        "SOB_DEMANDA",
+        "FISCAL"
+      ]
+    },
+    "categoria": {
+      "type": "string"
+    },
+    "justificativa": {
+      "type": "string"
+    },
+    "mensagem_solicitante": {
+      "type": "string"
+    },
+    "confianca": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "probabilidades": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "OBRA": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "DEMO": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "SOB_DEMANDA": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "TRIAGEM_MANUAL": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "OBRA",
+        "DEMO",
+        "SOB_DEMANDA",
+        "TRIAGEM_MANUAL"
+      ]
+    }
+  },
+  "required": [
+    "tipo",
+    "executor",
+    "categoria",
+    "justificativa",
+    "mensagem_solicitante",
+    "confianca",
+    "probabilidades"
+  ]
+}

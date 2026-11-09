@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: >-
+  Se utilizar este software em pesquisa, cite o repositório e a versão ou o
+  commit exato empregado no experimento.
+type: software
+title: >-
+  Triagem de chamados de manutenção patrimonial com n8n, GLPI e modelo local
+authors:
+  - name: Contribuidores do projeto de iniciação científica
+abstract: >-
+  Protótipo reprodutível para triagem, classificação e detecção de duplicidade
+  em chamados de manutenção do patrimônio de uma instituição federal de
+  ensino, com automação n8n, integração GLPI e avaliação comparativa de modelos.
+keywords:
+  - automação de processos
+  - classificação de chamados
+  - detecção de duplicidade
+  - GLPI
+  - n8n
+  - processamento de linguagem natural
+license: Apache-2.0

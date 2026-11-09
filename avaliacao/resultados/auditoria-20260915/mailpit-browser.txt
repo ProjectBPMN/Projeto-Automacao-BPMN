@@ -1,0 +1,35 @@
+- link "MailpitMailpit":
+  - /url: /
+  - img "Mailpit"
+  - text: Mailpit
+- textbox "Search":
+  - /placeholder: Search mailbox
+- button "":
+  - generic: 
+- text: 
+- combobox "The number of messages displayed per page" [disabled]:
+  - option "25"
+  - option "50" [selected]
+  - option "100"
+  - option "200"
+- generic: 0 of 0
+- button "" [disabled]:
+  - generic: 
+- button "" [disabled]:
+  - generic: 
+- text:     
+- button " Inbox":
+  - generic: 
+  - text: Inbox
+- button " Mark all read" [disabled]:
+  - generic: 
+  - text: Mark all read
+- button " Delete all" [disabled]:
+  - generic: 
+  - text: Delete all
+- button " About":
+  - generic: 
+  - text: About
+- button "":
+  - generic: 
+- paragraph: No messages in your mailbox

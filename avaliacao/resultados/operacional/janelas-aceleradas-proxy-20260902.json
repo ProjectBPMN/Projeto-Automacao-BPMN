@@ -1,0 +1,300 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-02T22:49:30.948179Z",
+  "status": "THREE_ACCELERATED_PROXY_WINDOWS_COMPLETE",
+  "technical_mechanism_passed": true,
+  "candidate": "classification__hybrid__multilingual_e5_small__linear_svm",
+  "source": "avaliacao/resultados/selecao-supervisionada-v2.1-20260826/predicoes_oof.csv",
+  "source_sha256": "eb69671041ffe1c9f5b0ce4fded6d7304fd288be776f7c53be9290b5b51258b3",
+  "window_count": 3,
+  "group_leakage_between_windows": false,
+  "windows": [
+    {
+      "index": 1,
+      "mode": "ACCELERATED_COUNT_BASED_DISJOINT_PROXY_GROUPS",
+      "record_count": 372,
+      "independent_proxy_group_count": 37,
+      "proxy_class_distribution": {
+        "DEMO": 108,
+        "OBRA": 59,
+        "SOB_DEMANDA": 115,
+        "TRIAGEM_MANUAL": 90
+      },
+      "proxy_prediction_distribution": {
+        "DEMO": 118,
+        "OBRA": 68,
+        "SOB_DEMANDA": 136,
+        "TRIAGEM_MANUAL": 50
+      },
+      "metrics": {
+        "proxy_accuracy": 0.7903225806451613,
+        "proxy_macro_f1": 0.7758262598490635,
+        "proxy_ece_10_bins": 0.08686428554543468,
+        "automatic_coverage": 0.6182795698924731,
+        "proxy_selective_risk": 0.1391304347826087,
+        "proxy_non_obra_as_obra": 0
+      },
+      "component_probe": {
+        "status": "PASS",
+        "evidence_status": "POINT_IN_TIME_TECHNICAL_EVIDENCE",
+        "scientific_result": false,
+        "collected_at": "2026-09-02T22:49:30.201551Z",
+        "http_probes": {
+          "local_ai": {
+            "status": 200,
+            "latency_ms": 548.5631999999896,
+            "error": null
+          },
+          "n8n": {
+            "status": 200,
+            "latency_ms": 9.09369999953924,
+            "error": null
+          },
+          "glpi": {
+            "status": 200,
+            "latency_ms": 109.3380000002071,
+            "error": null
+          }
+        },
+        "containers": [
+          "/glpi|running|healthy",
+          "/glpi-db|running|healthy",
+          "/glpi-dedup-db|running|healthy",
+          "/n8n|running|healthy"
+        ],
+        "docker_probe_error": null,
+        "interpretation_limit": "Uma coleta pontual não mede disponibilidade na janela do SLO."
+      },
+      "semantic_correctness_confirmed": false,
+      "drift_vs_window_1": {
+        "status": "PASS",
+        "sample_size": {
+          "reference": 372,
+          "current": 372
+        },
+        "scientific_result": false,
+        "checks": [
+          {
+            "feature": "etapa",
+            "metric": "jensen_shannon",
+            "value": 0.0,
+            "status": "PASS"
+          },
+          {
+            "feature": "predicao",
+            "metric": "jensen_shannon",
+            "value": 0.0,
+            "status": "PASS"
+          },
+          {
+            "feature": "resultado_tecnico",
+            "metric": "jensen_shannon",
+            "value": 0.0,
+            "status": "PASS"
+          },
+          {
+            "feature": "confianca_10_bins",
+            "metric": "psi",
+            "value": 0.0,
+            "status": "PASS"
+          }
+        ],
+        "interpretation_limit": "Drift detecta mudança de distribuição; não demonstra queda de acurácia. STOP aciona bloqueio automático; por decisão do projeto não há revisão humana nem autorização para retreinamento automático."
+      }
+    },
+    {
+      "index": 2,
+      "mode": "ACCELERATED_COUNT_BASED_DISJOINT_PROXY_GROUPS",
+      "record_count": 371,
+      "independent_proxy_group_count": 37,
+      "proxy_class_distribution": {
+        "DEMO": 154,
+        "OBRA": 109,
+        "SOB_DEMANDA": 81,
+        "TRIAGEM_MANUAL": 27
+      },
+      "proxy_prediction_distribution": {
+        "DEMO": 130,
+        "OBRA": 118,
+        "SOB_DEMANDA": 86,
+        "TRIAGEM_MANUAL": 37
+      },
+      "metrics": {
+        "proxy_accuracy": 0.8194070080862533,
+        "proxy_macro_f1": 0.722111703564392,
+        "proxy_ece_10_bins": 0.08686323290805813,
+        "automatic_coverage": 0.6091644204851752,
+        "proxy_selective_risk": 0.017699115044247787,
+        "proxy_non_obra_as_obra": 0
+      },
+      "component_probe": {
+        "status": "PASS",
+        "evidence_status": "POINT_IN_TIME_TECHNICAL_EVIDENCE",
+        "scientific_result": false,
+        "collected_at": "2026-09-02T22:49:30.587775Z",
+        "http_probes": {
+          "local_ai": {
+            "status": 200,
+            "latency_ms": 9.2025999992984,
+            "error": null
+          },
+          "n8n": {
+            "status": 200,
+            "latency_ms": 11.599800000112737,
+            "error": null
+          },
+          "glpi": {
+            "status": 200,
+            "latency_ms": 95.17789999972592,
+            "error": null
+          }
+        },
+        "containers": [
+          "/glpi|running|healthy",
+          "/glpi-db|running|healthy",
+          "/glpi-dedup-db|running|healthy",
+          "/n8n|running|healthy"
+        ],
+        "docker_probe_error": null,
+        "interpretation_limit": "Uma coleta pontual não mede disponibilidade na janela do SLO."
+      },
+      "semantic_correctness_confirmed": false,
+      "drift_vs_window_1": {
+        "status": "PASS",
+        "sample_size": {
+          "reference": 372,
+          "current": 371
+        },
+        "scientific_result": false,
+        "checks": [
+          {
+            "feature": "etapa",
+            "metric": "jensen_shannon",
+            "value": 0.0,
+            "status": "PASS"
+          },
+          {
+            "feature": "predicao",
+            "metric": "jensen_shannon",
+            "value": 0.02669376873259728,
+            "status": "PASS"
+          },
+          {
+            "feature": "resultado_tecnico",
+            "metric": "jensen_shannon",
+            "value": 0.0,
+            "status": "PASS"
+          },
+          {
+            "feature": "confianca_10_bins",
+            "metric": "psi",
+            "value": 0.06330053939273596,
+            "status": "PASS"
+          }
+        ],
+        "interpretation_limit": "Drift detecta mudança de distribuição; não demonstra queda de acurácia. STOP aciona bloqueio automático; por decisão do projeto não há revisão humana nem autorização para retreinamento automático."
+      }
+    },
+    {
+      "index": 3,
+      "mode": "ACCELERATED_COUNT_BASED_DISJOINT_PROXY_GROUPS",
+      "record_count": 371,
+      "independent_proxy_group_count": 37,
+      "proxy_class_distribution": {
+        "DEMO": 94,
+        "OBRA": 63,
+        "SOB_DEMANDA": 154,
+        "TRIAGEM_MANUAL": 60
+      },
+      "proxy_prediction_distribution": {
+        "DEMO": 107,
+        "OBRA": 60,
+        "SOB_DEMANDA": 163,
+        "TRIAGEM_MANUAL": 41
+      },
+      "metrics": {
+        "proxy_accuracy": 0.8840970350404312,
+        "proxy_macro_f1": 0.8579609848619092,
+        "proxy_ece_10_bins": 0.11119171300811453,
+        "automatic_coverage": 0.5983827493261455,
+        "proxy_selective_risk": 0.04954954954954955,
+        "proxy_non_obra_as_obra": 0
+      },
+      "component_probe": {
+        "status": "PASS",
+        "evidence_status": "POINT_IN_TIME_TECHNICAL_EVIDENCE",
+        "scientific_result": false,
+        "collected_at": "2026-09-02T22:49:30.945181Z",
+        "http_probes": {
+          "local_ai": {
+            "status": 200,
+            "latency_ms": 3.982999999607273,
+            "error": null
+          },
+          "n8n": {
+            "status": 200,
+            "latency_ms": 6.8474999998215935,
+            "error": null
+          },
+          "glpi": {
+            "status": 200,
+            "latency_ms": 72.02420000066923,
+            "error": null
+          }
+        },
+        "containers": [
+          "/glpi|running|healthy",
+          "/glpi-db|running|healthy",
+          "/glpi-dedup-db|running|healthy",
+          "/n8n|running|healthy"
+        ],
+        "docker_probe_error": null,
+        "interpretation_limit": "Uma coleta pontual não mede disponibilidade na janela do SLO."
+      },
+      "semantic_correctness_confirmed": false,
+      "drift_vs_window_1": {
+        "status": "PASS",
+        "sample_size": {
+          "reference": 372,
+          "current": 371
+        },
+        "scientific_result": false,
+        "checks": [
+          {
+            "feature": "etapa",
+            "metric": "jensen_shannon",
+            "value": 0.0,
+            "status": "PASS"
+          },
+          {
+            "feature": "predicao",
+            "metric": "jensen_shannon",
+            "value": 0.00424260772365691,
+            "status": "PASS"
+          },
+          {
+            "feature": "resultado_tecnico",
+            "metric": "jensen_shannon",
+            "value": 0.0,
+            "status": "PASS"
+          },
+          {
+            "feature": "confianca_10_bins",
+            "metric": "psi",
+            "value": 0.04165675788681036,
+            "status": "PASS"
+          }
+        ],
+        "interpretation_limit": "Drift detecta mudança de distribuição; não demonstra queda de acurácia. STOP aciona bloqueio automático; por decisão do projeto não há revisão humana nem autorização para retreinamento automático."
+      }
+    }
+  ],
+  "labels": {
+    "proxy_labels_only": true,
+    "scientific_result": false,
+    "semantic_correctness_confirmed": false,
+    "production_slo_estimated": false,
+    "longitudinal_window": false
+  },
+  "conclusion": "As três janelas aceleradas validam cálculo, particionamento por grupo, sondagem e detecção de drift. Elas não medem SLO longitudinal, não usam chamados reais e não tornam o candidato cientificamente confirmado."
+}

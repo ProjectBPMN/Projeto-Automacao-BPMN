@@ -1,0 +1,6 @@
+# Runtime oficial PyTorch FP32 do Granite Embedding 97M validado neste host.
+# O modelo não é baixado durante a instalação nem durante o import do serviço.
+torch==2.13.0
+sentence-transformers==5.6.0
+transformers==4.57.6
+huggingface-hub==0.36.2
