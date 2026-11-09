@@ -16,7 +16,7 @@
     "inference_reexecuted": false,
     "source_artifacts_unchanged": true,
     "source_plan": "avaliacao/resultados/local-only-pilot-v1.9.1-batch4-20260817/local_only_plan.json",
-    "source_plan_sha256": "4296e1eee86201bc49080385b523de23a934009988ad7a3abaebf835b32a12c4",
+    "source_plan_sha256": "66e4992821ac4cb483d72fb4a006396a30fc1da62f997f42c96a9d4570a751df",
     "source_predictions": "avaliacao/resultados/local-only-pilot-v1.9.1-batch4-20260817/local_only_predictions.jsonl",
     "source_predictions_sha256": "4a4f080e87317122a38f5d05a3d1928f1e2430c342f23ecd768e8aef95126700",
     "source_summary": "avaliacao/resultados/local-only-pilot-v1.9.1-batch4-20260817/local_only_summary.json",

@@ -7,7 +7,7 @@
     "inference_reexecuted": false,
     "source_artifacts_unchanged": true,
     "source_plan": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-4rpm-20260716/paired_plan.json",
-    "source_plan_sha256": "534a6be45bf598d9ec8a9890305b2a1b4ca32be76aa560e990f2e713c627f1fe",
+    "source_plan_sha256": "dda0c5e8d047130292c885b616044b55421609013ccd0ad97a271fd964de4f75",
     "source_predictions": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-4rpm-20260716/paired_predictions.jsonl",
     "source_predictions_sha256": "b134408d80dc855bea00006a0808c216a985f885f30b47bef9ab26a4e70d7bd7",
     "source_summary": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-4rpm-20260716/paired_summary.json",

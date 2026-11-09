@@ -52,7 +52,7 @@
       "source": {
         "path": "n8n/workflows/Teste01_v4.json",
         "selected_workflow_sha256": "dceeb77aa4399040d18c6e77caad75a2ec65e9aab03012c02ee512c46ae01a6b",
-        "source_file_sha256": "6a9ac35a1bbd04f84b8e5b77378c0c7fde7783be1366b43b73fde286f8820431"
+        "source_file_sha256": "83f135cc62e2070edda14d67875cae6f16599df8f392042d152241b249bf5316"
       },
       "source_name": "Triagem Inteligente de Chamados  - Versão 4",
       "source_workflow_id": "ktRywrFnVD4UXSmI",
@@ -95,7 +95,7 @@
       "source": {
         "path": "n8n/workflows/v7_current.json",
         "selected_workflow_sha256": "2fd294abc20d041704c6d9baf847b505038527e7aa46f23c76177a4909124272",
-        "source_file_sha256": "701a22b4bf8cf651048849715680fa0f5c489e5fb15ac48507cfb32329f43b89"
+        "source_file_sha256": "d20f2171a7f76574287261a7d2542b3450faa7c817aebd9579b0bef9ebbdc8fc"
       },
       "source_name": "Triagem Inteligente de Chamados - v7 (Postgres)",
       "source_workflow_id": "TriagemV7Pg20260429",
@@ -109,7 +109,7 @@
       "source": {
         "path": "n8n/workflows/Versão8/WF01_Orquestrador.json",
         "selected_workflow_sha256": "da1d4aa2f88d100866d37114f0206b053fccd6531e0888ba66ebcdd9a92f6ec8",
-        "source_file_sha256": "709ad9efba8a5e8b29d53ba3c4bef06a73c1dc2d35daf19f8cae0506c5fd6911"
+        "source_file_sha256": "d5d0e0c52bcad8e01484c1b75b2c1504abc430bab777ed83380097fdccbf8c28"
       },
       "source_name": "V8 - WF01 Orquestrador",
       "source_workflow_id": null,
@@ -123,7 +123,7 @@
       "source": {
         "path": "n8n/workflows/Versão8/WF02_Triagem.json",
         "selected_workflow_sha256": "a0b2ffbc2281256b48d37a6c3e92f8055879f2e33cca52ef5456db46dc9db9c1",
-        "source_file_sha256": "d66a97141b6bc4fc0a80ac542381ab21e56ca1b70a8631879e4c20c979d70074"
+        "source_file_sha256": "a251853b30b61801976186ec54a620d76313ec36b745c7c61c744e4af40bf4a6"
       },
       "source_name": "V8 - WF02 Triagem e Classificacao",
       "source_workflow_id": null,
@@ -137,7 +137,7 @@
       "source": {
         "path": "n8n/workflows/Versão8/WF03_Fiscal.json",
         "selected_workflow_sha256": "ac3efd7bcbec2d71474a952a1939deaed46b6328ca413991ad10431142588a4f",
-        "source_file_sha256": "70fe4e659e2170f219444122843bf7a608872a8b812d83b742091f125295fda9"
+        "source_file_sha256": "1908d325001281cfacdbe6a9f9269c17f02a7993112d58bd108af9cf52afb97f"
       },
       "source_name": "V8 - WF03 Decisao Fiscal",
       "source_workflow_id": null,
@@ -278,7 +278,7 @@
       "source": {
         "path": "n8n/workflows/Teste01_v7_MANUTENCAO.json",
         "selected_workflow_sha256": "acf228af744f4ce3f327f706470eaf7d1d18c68c8082cb59e0c1fc7c9fbfb54b",
-        "source_file_sha256": "8a00e7532089479b7f541b0c7f5241078a65633e84ac7d3409d09a8740c31a94"
+        "source_file_sha256": "a2850e8999f2161bd504c966cc28bcef8551a7362b04f76efea1ef311f2d4c27"
       },
       "source_name": "Teste01_v7",
       "source_workflow_id": "TriagemV7Pg20260429",
@@ -294,7 +294,7 @@
       "source": {
         "path": "n8n/workflows/Teste01_v7_TRIAGEM.json",
         "selected_workflow_sha256": "acf228af744f4ce3f327f706470eaf7d1d18c68c8082cb59e0c1fc7c9fbfb54b",
-        "source_file_sha256": "8a00e7532089479b7f541b0c7f5241078a65633e84ac7d3409d09a8740c31a94"
+        "source_file_sha256": "a2850e8999f2161bd504c966cc28bcef8551a7362b04f76efea1ef311f2d4c27"
       },
       "source_name": "Teste01_v7",
       "source_workflow_id": "TriagemV7Pg20260429",
@@ -327,7 +327,7 @@
       "source": {
         "path": "n8n/workflows/v7_runtime_export2.json",
         "selected_workflow_sha256": "2fd294abc20d041704c6d9baf847b505038527e7aa46f23c76177a4909124272",
-        "source_file_sha256": "701a22b4bf8cf651048849715680fa0f5c489e5fb15ac48507cfb32329f43b89"
+        "source_file_sha256": "d20f2171a7f76574287261a7d2542b3450faa7c817aebd9579b0bef9ebbdc8fc"
       },
       "source_name": "Triagem Inteligente de Chamados - v7 (Postgres)",
       "source_workflow_id": "TriagemV7Pg20260429",
@@ -359,7 +359,7 @@
       "source": {
         "path": "n8n/workflows/Versão8/wf01_reimport.json",
         "selected_workflow_sha256": "0f780e344503951c8654bf181104f34a05515d8b46d356dd7c0266c2c77f30a4",
-        "source_file_sha256": "a472f9d9798147fefa3d5c99ac587824394f2d497488821d7c8d465d9a4dcb1a"
+        "source_file_sha256": "7f6b2d63169cf740ec00cd919eb93996f8f1aade3b2ff52895476ab03ae12f82"
       },
       "source_name": "V8 - WF01 Orquestrador",
       "source_workflow_id": "xT6qaPlpVMq8gA0g",
@@ -391,7 +391,7 @@
       "source": {
         "path": "n8n/workflows/Versão8/wf02_reimport.json",
         "selected_workflow_sha256": "343427d7ae557da3fe685d80c421637e5cdd5493b97216e99e76cb7121df0acc",
-        "source_file_sha256": "2d3892b566cda577e5983cb38c72276342771a6b2f832d14b454cde7e84ec921"
+        "source_file_sha256": "a4ba21001b449359bcd10bbc3664643356cc17e432adafc00cc8a9dc172e4ca7"
       },
       "source_name": "V8 - WF02 Triagem e Classificacao",
       "source_workflow_id": "0iD47TUYD2PJTfo2",
