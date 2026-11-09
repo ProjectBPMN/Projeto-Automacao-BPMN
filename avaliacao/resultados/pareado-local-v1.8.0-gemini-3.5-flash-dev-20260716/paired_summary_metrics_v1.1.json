@@ -9,7 +9,7 @@
     "source_plan": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-dev-20260716/paired_plan.json",
     "source_plan_sha256": "03c714dd20804f8331994b3107fefd7de00c93655519f5b0c82d648ec4f940c8",
     "source_predictions": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-dev-20260716/paired_predictions.jsonl",
-    "source_predictions_sha256": "e53740893b0812b51ebe6a06c534207ce00a10d79662d6f03415475098c394a0",
+    "source_predictions_sha256": "91ce18488316c1cf95dd6dd1cd81ea7321b5438fe8dd7b32132dd29c3f12994b",
     "source_summary": "avaliacao/resultados/pareado-local-v1.8.0-gemini-3.5-flash-dev-20260716/paired_summary.json",
     "source_summary_sha256": "8519631010288bce9c221f337ebd37d9eb81c46a78d97f6431bf3f55a97edbd3"
   },
@@ -31,7 +31,7 @@
     "remote_invalid_pairs": 140
   },
   "plan_manifest_payload_sha256": "175eae64ef714aa03dab7d43ab3aa2cc6bd8979a37d50db310a79e31b63cb403",
-  "predictions_sha256": "e53740893b0812b51ebe6a06c534207ce00a10d79662d6f03415475098c394a0",
+  "predictions_sha256": "91ce18488316c1cf95dd6dd1cd81ea7321b5438fe8dd7b32132dd29c3f12994b",
   "providers": {
     "google-gemini": {
       "abstention_count": 0,

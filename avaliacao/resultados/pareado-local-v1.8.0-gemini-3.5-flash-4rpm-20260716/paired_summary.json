@@ -11,7 +11,7 @@
     "mcnemar_exact_two_sided_p": 1.0
   },
   "plan_manifest_payload_sha256": "5bff1fc3f4abc5d5c49e6fe9aab83ff7428bb859acab490cc1bb19e8964ad335",
-  "predictions_sha256": "b134408d80dc855bea00006a0808c216a985f885f30b47bef9ab26a4e70d7bd7",
+  "predictions_sha256": "0fa509d01b3294a6bc59fb1e7146445556af78622a5eb8abf4e59be58e31c137",
   "providers": {
     "google-gemini": {
       "abstentions": 0,

@@ -136,7 +136,7 @@
     "remote_invalid_pairs": 40
   },
   "plan_manifest_payload_sha256": "4ac41564bf8e6911e200ccef5742a135c1ef21ebb17c3844c3dc67bbb5c7f240",
-  "predictions_sha256": "24a57a50b239ab3e06e95f5c0dccbb199285e2f5d49322ca710ae33698aac2fa",
+  "predictions_sha256": "dc87d70b864ec0fd6881ed9d51ca2d865b45648dbb5ccc0c51f98279be199a12",
   "providers": {
     "google-gemini": {
       "abstention_count": 0,
