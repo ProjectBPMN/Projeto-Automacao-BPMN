@@ -56,4 +56,6 @@ jobs:
           python scripts/validate_tls_profile.py
 
       - name: Suíte sem integrações vivas
-        run: python -m pytest -q -m "not live_integration" -p no:cacheprovider
+        run: |
+          if not exist n8n\.env copy n8n\.env.example n8n\.env
+          python -m pytest -q -m "not live_integration" -p no:cacheprovider

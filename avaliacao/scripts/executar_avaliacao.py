@@ -62,10 +62,15 @@ def generation_profile(role: str, model: dict) -> str:
 def code_manifest(phase: str = "", model_role: str = "LOCAL") -> dict:
     normalized_role, selected_model = model_metadata(model_role)
     workflow_dir = ROOT / "n8n" / "workflows" / "Versão9"
+    env_file = (
+        (ROOT / "n8n" / ".env")
+        if (ROOT / "n8n" / ".env").is_file()
+        else (ROOT / "n8n" / ".env.example")
+    )
     files = [
         ROOT / "database" / "init_v9.sql",
         ROOT / "n8n" / "docker-compose.yml",
-        ROOT / "n8n" / ".env",
+        env_file,
         ROOT / "requirements.txt",
         ROOT / "avaliacao" / "manifesto_modelo_prompts.json",
         MODEL_CONFIG,
@@ -183,7 +188,12 @@ def freeze_run(
         if threshold.get("approved") is not True:
             raise RuntimeError("O arquivo de calibração do limiar não está aprovado.")
         env_values = {}
-        for line in (ROOT / "n8n" / ".env").read_text(
+        env_file = (
+            (ROOT / "n8n" / ".env")
+            if (ROOT / "n8n" / ".env").is_file()
+            else (ROOT / "n8n" / ".env.example")
+        )
+        for line in env_file.read_text(
             encoding="utf-8"
         ).splitlines():
             if "=" in line and not line.lstrip().startswith("#"):
@@ -415,7 +425,12 @@ def main() -> int:
         flush=True,
     )
     env_values = {}
-    for line in (ROOT / "n8n" / ".env").read_text(encoding="utf-8").splitlines():
+    env_file = (
+        (ROOT / "n8n" / ".env")
+        if (ROOT / "n8n" / ".env").is_file()
+        else (ROOT / "n8n" / ".env.example")
+    )
+    for line in env_file.read_text(encoding="utf-8").splitlines():
         if "=" in line and not line.lstrip().startswith("#"):
             key, value = line.split("=", 1)
             env_values[key.strip()] = value.strip()
