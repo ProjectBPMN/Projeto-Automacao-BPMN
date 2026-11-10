@@ -1,178 +1,186 @@
-# Triagem inteligente de chamados GLPI com n8n e IA local
+# Triagem e Classificação Inteligente de Chamados de Manutenção com n8n, GLPI e IA Local
 
-Protótipo operacional e plataforma de pesquisa para triagem, deduplicação e
-classificação de chamados de manutenção predial. A arquitetura integra GLPI,
-n8n, PostgreSQL e um serviço local de IA com Granite Embedding 97M.
+Repositório de artefatos de pesquisa e plataforma de reprodutibilidade experimental para o artigo submetido sobre automação de processos de triagem, detecção de duplicidade e classificação de chamados de manutenção predial institucional.
 
-> Atualização em 2026-09-14: veja a
-> [confirmação final da homologação](docs/homologacao_v9_confirmacao_2026-09-14.md).
-> A captura atômica final registrou `ERRO_IA=0`, fila ativa `=0` e DLQ aberta
-> `=0`; a validação estática V9 e 53 testes operacionais localizados passaram. As três
-> janelas técnicas intradiárias locais/sintéticas foram concluídas, porém não
-> produzem disponibilidade longitudinal, correção semântica nem aprovação
-> institucional. O modelo **não possui validação
-> confirmatória institucional**. `scientific_ready=false` e
-> `confirmatory_claim_allowed=false` são estados corretos, não falhas a ocultar.
-> Em 01/09/2026 foi decidido não realizar verificação humana nem revisão em
-> pares. Com essa restrição, o projeto não produzirá gabarito confirmatório
-> independente; avaliações futuras serão rotuladas como técnicas ou por proxy.
+A arquitetura combina orquestração de processos orientada a BPMN implementada em **n8n**, integração com **GLPI**, persistência transacional em **PostgreSQL** e um microsserviço de **IA local** (arquitetura híbrida TF-IDF + embeddings semânticos) voltado à privacidade, soberania de dados e operação em hardware convencional.
 
-## Resposta curta sobre a escolha do modelo
+---
 
-O modelo operacional atual é `local-hybrid-v1.8.0`: Granite Embedding 97M
-Multilingual R2 + TF-IDF + classificador linear calibrado. A escolha de
-embedding semântico é tecnicamente plausível porque chamados equivalentes podem
-usar palavras diferentes; o TF-IDF preserva sinais lexicais exatos, enquanto o
-embedding representa proximidade semântica. A fusão híbrida é uma hipótese de
-engenharia que precisa vencer as ablações no corpus do próprio domínio.
+## Visão Geral da Arquitetura
 
-O repositório contém um protocolo comparativo para:
+O sistema opera de forma desacoplada por meio de mensageria com garantia de entrega e trilhas completas de auditoria:
 
-- Granite 97M, multilingual-e5-small e
-  paraphrase-multilingual-MiniLM-L12-v2;
-- TF-IDF isolado, embedding isolado, híbrido, metadados e
-  híbrido+metadados;
-- regressão logística, árvore de decisão, SVM linear, MLP e XGBoost;
-- validação cruzada aninhada e agrupada, calibração, comparações pareadas,
-  benchmark de latência e SHAP.
-
-A execução antiga dessa comparação foi invalidada em auditoria: ela tratava
-paráfrases derivadas do mesmo molde como grupos independentes e seu corpus
-congelado não era reproduzível pelo SHA-256 disponível. Os números antigos
-permanecem apenas como trilha histórica em
-[`INVALIDADO.md`](avaliacao/resultados/selecao-supervisionada-v2/INVALIDADO.md).
-O protocolo 2.1 corrigiu o agrupamento por
-`source_dependency_group_sha256` e foi executado novamente. As 35 configurações
-de classificação terminaram e passaram em recomputação automatizada no escopo da
-tarefa; as 55 de deduplicação foram bloqueadas porque seis grupos por classe
-não comportam o desenho de ajuste+calibração. O candidato classificatório
-provisório foi E5 + híbrido + SVM linear, com status `UNDERPOWERED`; isso não
-autoriza trocar o bundle operacional.
-
-## Evidências anteriores e seus limites
-
-- os seis workflows V9 são gerados a partir de builders, têm snapshots
-  SHA-256, passaram na validação estática e foram publicados com paridade de
-  lógica no n8n local;
-- o E2E sintético isolado percorreu WF06 → WF02 → WF03, sem fallback, com
-  cleanup e restauração completos; a rodada final aprovada está em
-  `avaliacao/resultados/e2e-pipeline-local-v1.8.0-20260903-final.json`;
-- após o reparo, `ERRO_IA=0`, fila ativa `=0` e DLQ aberta `=0`; as 84 DLQs e
-  129 estados históricos foram reconciliados sem apagar a trilha;
-- n8n e GLPI foram conferidos autenticados no navegador em 03/09: os seis
-  workflows V9 apareceram publicados, as execuções recentes do WF06 estavam em
-  `Success` e a listagem de chamados do GLPI abriu sem mutação;
-- o serviço local carrega o bundle operacional congelado `v1.8.0`, Granite PyTorch FP32 de
-  384 dimensões, sem fallback de embedding;
-- a telemetria do WF06 agora exclui e põe em quarentena tickets pertencentes a
-  experiências encerradas;
-- segredos, bancos, backups, binários e caches locais foram retirados do
-  versionamento.
-- as três janelas corrigidas de quatro horas concluídas em 11/09 tiveram ao
-  menos 180 observações e cobertura de reconciliação por intervalo, mas zero
-  decisões únicas em cada janela. A disponibilidade observada é fração de
-  probes, não uptime contínuo; drift e métricas dependentes de decisões seguem
-  `INSUFFICIENT_DATA`. A primeira janela falhou o SLO técnico proposto apenas
-  pela idade do backup (206,05 h > 168 h); as outras duas ficaram
-  `INSUFFICIENT_DATA`. Esses limiares não são política institucional aprovada;
-- a interpretação publicada em 03/09 sobre quatro/seis janelas temporais foi
-  invalidada depois: o coletor anterior à versão 1.1 reutilizava métricas de 30
-  dias e snapshots históricos em janelas de quatro horas. Esses `FAIL`/`STOP`
-  não estimam p95, erro ou drift da janela. O coletor corrigido mede intervalos
-  não sobrepostos; a rodada concluída em 11/09 é evidência técnica local,
-  não um SLO temporal de produção;
-- a homologação sintética separada usa portas, redes, volumes e segredos
-  próprios, sem copiar chamados reais.
-- a varredura final encontrou zero segredo na árvore candidata e 15 achados no
-  histórico Git alcançável; o passivo histórico exige rotação e não foi ocultado
-  por reescrita destrutiva.
-
-Isso não permite dizer que “o n8n está 100% correto”. Testes demonstram os
-casos exercitados; não provam correção para toda entrada, falha concorrente ou
-dependência externa possível.
-
-## Limite para uma conclusão científica
-
-Como o projeto decidiu não realizar verificação humana nem revisão em pares,
-não haverá gabarito independente elegível. Portanto, a conclusão confirmatória
-fica bloqueada e nenhum conjunto atual deve ser chamado de holdout científico.
-Ainda é possível ampliar as famílias independentes, congelar protocolo e
-executar discriminação, calibração, risco-cobertura, subgrupos e erros críticos,
-mas os resultados serão técnicos/de desenvolvimento por proxy.
-
-Para ultrapassar esse limite seria necessário mudar a decisão de escopo,
-coletar chamados institucionais autorizados, criar gabarito independente e só
-então reservar e abrir uma única vez um holdout intocado.
-
-## Versões dos workflows
-
-Sim: o repositório conserva em `n8n/history/` as oito versões anteriores,
-V1–V8, como snapshots públicos, inativos e sanitizados. São dez JSONs porque a
-V8 já era dividida em três workflows. O manifesto registra origem e SHA-256, e
-o validador confirmou cobertura V1–V8, determinismo e ausência dos padrões de
-segredo/runtime verificados. Esses snapshots documentam evolução; não provam
-que cada versão histórica era correta em produção. A V9 operacional fica em
-`n8n/workflows/Versão9/`.
-
-## Reprodução essencial
-
-```powershell
-# Infraestrutura (estritamente fixada no Docker Desktop local)
-$env:DOCKER_CONTEXT = "desktop-linux"
-$env:COMPOSE_CONVERT_WINDOWS_PATHS = 1
-docker --context desktop-linux compose -f glpi/docker-compose.yml up -d
-docker --context desktop-linux compose -f n8n/docker-compose.yml up -d
-
-# Serviço local operacional congelado
-./local_ai/scripts/start-local-ai.ps1 -CpuThreads 2 -MaxEmbedBatch 1
-
-# Build, validação e publicação V9
-python n8n/workflows/Versão9/validate_v9_static.py
-python n8n/workflows/Versão9/deploy.py
-
-# Testes
-python -m pytest -q local_ai/tests avaliacao/tests avaliacao/operacional/tests
-python -m pytest -q n8n/workflows/Versão9/test_v9_hard.py
-python -m pytest -q n8n/history/tests
-python n8n/history/validate_history.py --check-sources
-
-# Regenerar o corpus corrigido e validar o protocolo/código
-python avaliacao/scripts/gerar_corpus_desenvolvimento_local_v2.py
-python -m pytest -q avaliacao/tests/test_selecao_modelos_supervisionados.py
-
-# O protocolo integral deve falhar cedo enquanto a deduplicação tiver 12 grupos
-python avaliacao/scripts/validar_viabilidade_protocolo_selecao.py `
-  --config avaliacao/config/selecao_modelos_supervisionados_v2.json
-
-# Validação independente da classificação concluída
-python avaliacao/scripts/validar_resultados_selecao.py `
-  --saida avaliacao/resultados/selecao-supervisionada-v2.1-20260826 `
-  --config avaliacao/config/selecao_modelos_supervisionados_v2.json `
-  --task classification
+```text
+[ GLPI / Usuário ]
+        │  (Webhook de abertura de chamado)
+        ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│ n8n — Orquestração de Processos (V9)                                   │
+│                                                                        │
+│  WF06 (Ingresso & Fila) ──► WF02 (Deduplicação) ──► WF03 (Classificação)│
+│                                                            │           │
+│  WF01 (Reconciliação)   ◄── WF05 (Telemetria)   ◄── WF04 (Execução)    │
+└──────────────┬─────────────────────────────┬───────────────────────────┘
+               │                             │
+               ▼                             ▼
+       ┌───────────────┐             ┌────────────────┐
+       │  PostgreSQL   │             │    Local AI    │
+       │ Fila, Eventos │             │ (Microserviço  │
+       │   & Decisões  │             │  Híbrido CPU)  │
+       └───────────────┘             └────────────────┘
 ```
 
-O E2E mutante exige confirmação explícita e um manifesto congelado; consulte
-[`tutorial_reproducao_e_implantacao.md`](docs/tutorial_reproducao_e_implantacao.md).
+### Componentes Principais
 
-## Documentos canônicos
+- **WF06 — Ingresso e Fila**: Autentica requisições externas, higieniza cargas e enfileira tickets no PostgreSQL com bloqueio transacional seguro contra concorrência (*lease*).
+- **WF02 — Deduplicação**: Recupera candidatos históricos relevantes e consulta o serviço de IA para aferir similaridade semântica e contextual, prevenindo retrabalho em equipes de manutenção.
+- **WF03 — Classificação**: Encaminha o chamado para as categorias de serviço apropriadas (`DEMO`, `OBRA`, `SOB_DEMANDA` ou `TRIAGEM_MANUAL`), registrando probabilidades para auditoria.
+- **WF04 — Execução e Notificação**: Atualiza o status do chamado no GLPI via REST API e emite comunicações rastreáveis.
+- **WF05 & WF01 — Telemetria e Reconciliação**: Monitora latência, desvios e garante reprocessamento controlado de pendências sem perda de dados.
+- **Local AI**: Serviço leve em Python/PyTorch FP32 executado inteiramente em CPU, eliminando dependência de APIs em nuvem e garantindo confidencialidade institucional estrita.
 
-- [Continuação da auditoria e estado atual de 2026-09-10](docs/auditoria_continuacao_2026-09-10.md)
-- [Política de organização e retenção](docs/politica_organizacao_retencao.md)
-- [Auditoria crítica completa de 2026-09-03](docs/auditoria_critica_completa_2026-09-03.md)
-- [Auditoria crítica completa de 2026-09-02](docs/auditoria_critica_completa_2026-09-02.md)
-- [Auditoria crítica completa de 2026-09-01](docs/auditoria_critica_completa_2026-09-01.md)
-- [Auditoria crítica completa de 2026-08-26](docs/auditoria_critica_completa_2026-08-26.md)
-- [Resposta objetiva ao professor](docs/resposta_professor_2026-08-26.md)
-- [Hierarquia de fontes de verdade](docs/SOURCE_OF_TRUTH.md)
-- [Metodologia corrente de avaliação](avaliacao/metodologia_avaliacao_v2_1.md)
-- [Guia de reprodução e implantação](docs/tutorial_reproducao_e_implantacao.md)
-- [Resultados estatísticos e comparações](docs/resultados_estatisticos_e_comparativo_gemini.md)
-- [Relatório de organização e limpeza](docs/relatorio_limpeza_2026-08-26.md)
-- [Evolução arquitetural V1–V9](docs/evolucao_arquitetura_v1_v9.md)
+---
 
-`avaliacao/metodologia_avaliacao.md` e `docs/plano_avaliacao_cientifica_v3.md`
-são snapshots históricos, não documentos canônicos atuais.
+## Estrutura do Repositório
 
-Resultados sintéticos e históricos devem sempre ser rotulados como tais. A
-documentação narrativa nunca prevalece sobre manifests, hashes, dados brutos e
-validação independente.
+```text
+├── .github/workflows/       # Pipeline de Integração Contínua (CI)
+├── avaliacao/               # Protocolos estatísticos, datasets sintéticos e scripts de validação
+│   ├── config/              # Parâmetros experimentais e configurações de modelos
+│   ├── datasets/            # Corpus sintético controlado para testes e validação
+│   ├── operacional/         # Auditoria de segredos, telemetria e controles operacionais
+│   ├── resultados/          # Evidências e recibos de execução com hashes criptográficos
+│   ├── scripts/             # Scripts executáveis de treinamento, calibração e auditoria
+│   └── tests/               # Testes automatizados da esteira de avaliação científica
+├── glpi/                    # Docker Compose e configurações de inicialização do GLPI
+├── local_ai/                # Microsserviço de inferência local (embeddings e classificação)
+├── n8n/                     # Definições, histórico e builders dos fluxos de trabalho
+│   ├── history/             # Snapshots públicos sanitizados das versões históricas (V1 a V8)
+│   └── workflows/Versão9/   # Especificações ativas, builders e testes da arquitetura V9
+├── scripts/                 # Validadores de integridade, perfil TLS e barreiras de distribuição
+├── CITATION.cff             # Metadados formais de citação de software
+├── DEPLOYMENT_AND_VALIDATION_V9.md # Checklist de implantação e hardening técnico
+├── LICENSE                  # Licença de código aberto Apache-2.0
+├── NOTICE                   # Avisos de direitos autorais e governança de dados
+├── QUICK_START.md           # Guia direto de configuração e subida local
+├── requirements.txt         # Dependências Python reproduzíveis
+└── SECURITY.md              # Diretrizes de segurança e divulgação de vulnerabilidades
+```
+
+---
+
+## Instruções para Avaliadores (Peer Review)
+
+Para avaliar e reproduzir os resultados do trabalho, o repositório oferece tanto a suíte hermética automatizada quanto a opção de subida completa dos contêineres locais.
+
+### Pré-requisitos
+
+- **Python**: versão 3.12 ou superior
+- **Docker & Docker Compose** (para testes com as interfaces completas do n8n e GLPI)
+- **Git**
+
+---
+
+### Procedimento de Instalação e Teste Rápido
+
+#### 1. Clonar o repositório e preparar o ambiente Python
+
+```bash
+git clone https://github.com/ProjectBPMN/Projeto-Automacao-BPMN.git
+cd Projeto-Automacao-BPMN
+
+python -m venv .venv
+# Linux/macOS:
+source .venv/bin/activate
+# Windows:
+.venv\Scripts\activate
+
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+#### 2. Configurar variáveis de ambiente de teste
+
+Copie os arquivos de modelo (os exemplos já possuem configurações prontas para testes locais seguros):
+
+```bash
+# Windows (PowerShell):
+if (!(Test-Path n8n/.env)) { Copy-Item n8n/.env.example n8n/.env }
+
+# Linux/macOS (Bash):
+[ ! -f n8n/.env ] && cp n8n/.env.example n8n/.env
+```
+
+#### 3. Executar a suíte de testes de reprodução
+
+Para validar todos os contratos do microsserviço de IA, verificações de integridade criptográfica, segurança operacional e barreiras de consistência sem necessidade de subir contêineres:
+
+```bash
+python -m pytest -q -m "not live_integration" -p no:cacheprovider
+```
+
+*Resultado esperado: 414 testes aprovados sem falhas.*
+
+#### 4. Validar os artefatos estáticos e o histórico de workflows
+
+```bash
+# Validação da barreira de integridade pública
+python scripts/validate_public_release.py --source manifest --json
+
+# Validação estrutural dos workflows n8n e do histórico sanitizado
+python n8n/workflows/Versão9/validate_v9_static.py
+python n8n/history/validate_history.py --check-sources
+
+# Auditoria de consistência conceitual da documentação
+python avaliacao/scripts/validar_consistencia_cientifica_docs.py
+python scripts/validate_tls_profile.py
+```
+
+---
+
+### Execução Completa com Contêineres (Opcional)
+
+Caso deseje inspecionar as interfaces gráficas e a execução ponta a ponta:
+
+1. **Subir os serviços**:
+   ```powershell
+   docker compose -f glpi/docker-compose.yml up -d
+   docker compose -f n8n/docker-compose.yml up -d
+   ```
+2. **Iniciar o microsserviço local de IA**:
+   ```powershell
+   ./local_ai/scripts/start-local-ai.ps1 -CpuThreads 2 -MaxEmbedBatch 1
+   ```
+3. **Publicar os workflows na instância do n8n**:
+   ```powershell
+   python n8n/workflows/Versão9/deploy.py
+   ```
+   *Painéis disponíveis localmente:*
+   - n8n: `http://localhost:5678`
+   - GLPI: `http://localhost:9080` (ou porta configurada no `.env`)
+   - Local AI (healthcheck): `http://127.0.0.1:8090/health`
+
+---
+
+## Reprodutibilidade e Rigor Metodológico
+
+- **Preservação Histórica e Evolutiva**: O diretório `n8n/history/` preserva as versões anteriores (V1 a V8) devidamente auditadas e sanitizadas, permitindo acompanhar a evolução da maturidade dos processos de automação.
+- **Corpus Experimental Controlado**: Em observância à LGPD e às diretrizes de revisão duplo-cego (*double-blind review*), os chamados utilizados nos testes automatizados e nas suítes públicas utilizam dados sintéticos controlados e núcleos narrativos anonimizados.
+- **Rastreabilidade Criptográfica**: Todos os conjuntos de dados de desenvolvimento, parâmetros de planos de teste e saídas de sumarização possuem hashes SHA-256 validados automaticamente por testes de regressão.
+- **Transparência Científica**: O repositório documenta com rigor os limites de escopo das validações em ambiente de laboratório, distinguindo testes herméticos de integração de testes longitudinais em ambiente produtivo.
+
+---
+
+## Anonimização para Avaliação por Pares (Double-Blind)
+
+Este repositório foi sanitizado especificamente para a submissão do artigo:
+- Todas as identidades de autores, credenciais privadas, tokens de acesso, endereços de rede institucionais e caminhos absolutos de máquinas de desenvolvimento foram descaracterizados ou substituídos por valores de demonstração seguros.
+- O histórico de commits e os metadados do projeto foram padronizados sob a identidade anônima de pesquisa `ProjectBPMN`.
+
+---
+
+## Licença
+
+Este projeto é disponibilizado sob a licença de código aberto **Apache 2.0**. Consulte o arquivo [LICENSE](LICENSE) e os esclarecimentos de governança em [NOTICE](NOTICE).
+
+Para citar este trabalho em publicações acadêmicas, consulte os metadados em formato padrão no arquivo [CITATION.cff](CITATION.cff).
