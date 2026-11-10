@@ -128,14 +128,14 @@ class _GraniteEmbeddingBackend:
         with self._lock:
             if self._model is not None:
                 return self._model
-            if importlib.util.find_spec("sentence_transformers") is None:
-                raise BackendUnavailable(
-                    "Dependência opcional sentence-transformers ausente; use requirements-granite.txt"
-                )
             if self.settings.embedding_backend != "pytorch_fp32":
                 raise BackendUnavailable(
                     "Backend de embedding não autorizado em produção: "
                     f"{self.settings.embedding_backend!r}. Use pytorch_fp32"
+                )
+            if importlib.util.find_spec("sentence_transformers") is None:
+                raise BackendUnavailable(
+                    "Dependência opcional sentence-transformers ausente; use requirements-granite.txt"
                 )
             source, source_is_local = self._source()
             try:
